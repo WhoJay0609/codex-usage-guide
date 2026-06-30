@@ -165,10 +165,10 @@ main {
   margin: 0 0.08em;
   border-radius: 999px;
   vertical-align: middle;
-  background-image: url("https://picsum.photos/seed/codex-terminal/480/240");
+  background-image: url("../figures/beginner-quickstart.png");
   background-size: cover;
-  background-position: center;
-  filter: grayscale(1) contrast(1.24);
+  background-position: center 22%;
+  filter: grayscale(1) contrast(1.08);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.42);
 }
 .lead {
@@ -213,13 +213,16 @@ main {
   min-height: 360px;
   border: 1px solid rgba(17, 17, 15, 0.18);
   border-radius: 24px;
-  background:
-    linear-gradient(180deg, rgba(17, 17, 15, 0.15), rgba(17, 17, 15, 0.78)),
-    url("https://picsum.photos/seed/codex-workspace/1200/1600");
-  background-size: cover;
-  background-position: center;
-  color: #fffaf0;
+  background: #fffaf0;
+  color: var(--ink);
   box-shadow: 0 30px 84px rgba(17, 17, 15, 0.22);
+}
+.hero-visual img {
+  display: block;
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+  background: #fffaf0;
 }
 .terminal-card {
   display: grid;
@@ -263,6 +266,53 @@ main {
   grid-template-columns: repeat(12, minmax(0, 1fr));
   grid-auto-flow: dense;
   gap: 16px;
+}
+.split-visual {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(260px, 0.6fr);
+  gap: 18px;
+  align-items: stretch;
+}
+.figure-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 250, 240, 0.9);
+  padding: clamp(18px, 2.4vw, 26px);
+}
+.figure-card img {
+  display: block;
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #fffaf0;
+}
+.figure-card figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  text-align: center;
+}
+.route-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+.route-pill {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fffaf0;
+  padding: 14px;
+}
+.route-pill strong {
+  display: block;
+  margin-bottom: 4px;
+}
+.route-pill span {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
 }
 .card,
 .source-card {
@@ -438,7 +488,9 @@ main {
   .hero,
   .section-head,
   .footer,
-  .doc-layout { grid-template-columns: 1fr; }
+  .doc-layout,
+  .split-visual,
+  .route-strip { grid-template-columns: 1fr; }
   .hero { min-height: auto; padding-top: 68px; }
   .hero-visual,
   .terminal-card { min-height: 320px; }
