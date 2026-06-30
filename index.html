@@ -8,64 +8,166 @@
   <style>
     :root {
       color-scheme: light;
-      --ink: #172033;
-      --muted: #5b667a;
-      --line: #d8dee9;
-      --panel: #f7f9fc;
+      --bg: #ffffff;
+      --surface: #f7f8fa;
+      --surface-strong: #eff3f8;
+      --ink: #111827;
+      --muted: #5b6472;
+      --line: #d9dee7;
+      --line-strong: #c4ccd8;
       --blue: #2563eb;
-      --green: #059669;
+      --green: #047857;
       --amber: #b45309;
-      --max: 1040px;
+      --code: #111827;
+      --sidebar: 288px;
+      --content: 920px;
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
       color: var(--ink);
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+      line-height: 1.68;
+    }
+    a {
+      color: var(--blue);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+    code, pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    }
+    code {
+      padding: 0.12em 0.34em;
+      border-radius: 5px;
+      background: #eef2f7;
+      font-size: 0.92em;
+    }
+    pre {
+      overflow-x: auto;
+      margin: 16px 0 0;
+      padding: 16px;
+      border-radius: 8px;
+      background: var(--code);
+      color: #f9fafb;
+      line-height: 1.55;
+    }
+    pre code {
+      padding: 0;
+      background: transparent;
+      color: inherit;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: var(--sidebar) minmax(0, 1fr);
+      min-height: 100vh;
+    }
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+      border-right: 1px solid var(--line);
+      background: var(--surface);
+      padding: 22px 18px;
+    }
+    .brand {
+      display: block;
+      margin: 0 0 22px;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .brand-title {
+      display: block;
+      font-weight: 760;
+      font-size: 1.12rem;
+    }
+    .brand-subtitle {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    .nav-section {
+      margin: 18px 0 8px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-weight: 760;
+      text-transform: uppercase;
+    }
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-list a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 6px 8px;
+      border-radius: 7px;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.94rem;
+    }
+    .nav-list a:hover,
+    .nav-list a:focus {
       background: #ffffff;
-      line-height: 1.7;
+      outline: 1px solid var(--line);
     }
-    header, main, footer {
-      max-width: var(--max);
+    .nav-list .muted-link {
+      color: var(--muted);
+    }
+    .content {
+      min-width: 0;
+    }
+    .hero,
+    .section,
+    .footer {
+      max-width: var(--content);
       margin: 0 auto;
-      padding: 0 24px;
+      padding-left: 32px;
+      padding-right: 32px;
     }
-    header {
-      padding-top: 56px;
-      padding-bottom: 36px;
+    .hero {
+      padding-top: 64px;
+      padding-bottom: 42px;
       border-bottom: 1px solid var(--line);
     }
     .eyebrow {
       margin: 0 0 12px;
       color: var(--blue);
-      font-weight: 700;
+      font-weight: 760;
       letter-spacing: 0;
+    }
+    h1, h2, h3 {
+      letter-spacing: 0;
+      line-height: 1.22;
     }
     h1 {
       margin: 0 0 16px;
-      font-size: clamp(2.2rem, 6vw, 4.4rem);
-      line-height: 1.08;
-      letter-spacing: 0;
+      font-size: clamp(2.3rem, 7vw, 4.8rem);
     }
     h2 {
-      margin: 48px 0 14px;
-      font-size: 1.8rem;
-      line-height: 1.25;
-      letter-spacing: 0;
+      margin: 0 0 14px;
+      font-size: clamp(1.75rem, 4vw, 2.35rem);
     }
     h3 {
-      margin: 28px 0 8px;
-      font-size: 1.16rem;
-      letter-spacing: 0;
+      margin: 0 0 8px;
+      font-size: 1.08rem;
     }
-    p { margin: 0 0 14px; }
-    a { color: var(--blue); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    p {
+      margin: 0 0 14px;
+    }
     .lead {
-      max-width: 800px;
+      max-width: 760px;
       color: var(--muted);
-      font-size: 1.16rem;
+      font-size: 1.13rem;
     }
-    .actions {
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
@@ -74,13 +176,14 @@
     .button {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       min-height: 42px;
       padding: 8px 14px;
-      border: 1px solid var(--line);
+      border: 1px solid var(--line-strong);
       border-radius: 8px;
       background: #fff;
       color: var(--ink);
-      font-weight: 650;
+      font-weight: 680;
       text-decoration: none;
     }
     .button.primary {
@@ -88,54 +191,119 @@
       background: var(--blue);
       color: #fff;
     }
-    .grid {
+    .section {
+      padding-top: 46px;
+      padding-bottom: 8px;
+      scroll-margin-top: 24px;
+    }
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+    .section-kicker {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-weight: 720;
+      font-size: 0.84rem;
+    }
+    .jump {
+      flex: 0 0 auto;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.88rem;
+      text-decoration: none;
+    }
+    .cards {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 14px;
       margin: 18px 0 8px;
     }
     .card {
+      min-height: 100%;
       border: 1px solid var(--line);
       border-radius: 8px;
       padding: 18px;
-      background: var(--panel);
+      background: var(--surface);
     }
-    .card h3 { margin-top: 0; }
-    .note {
+    .card-link {
+      display: block;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .card-link:hover,
+    .card-link:focus {
+      border-color: var(--blue);
+      outline: 1px solid var(--blue);
+    }
+    .card p,
+    .step p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 2px 8px;
+      background: #fff;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      counter-reset: step;
+    }
+    .step {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px 18px 18px 54px;
+      background: #fff;
+    }
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: var(--surface-strong);
+      color: var(--blue);
+      font-weight: 760;
+      font-size: 0.88rem;
+    }
+    .callout {
+      margin: 18px 0 0;
       border-left: 4px solid var(--amber);
+      border-radius: 0 8px 8px 0;
       background: #fff8eb;
-      padding: 14px 16px;
-      margin: 18px 0;
+      padding: 15px 16px;
     }
-    .ok {
+    .callout.ok {
       border-left-color: var(--green);
       background: #ecfdf5;
     }
-    code, pre {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-    }
-    code {
-      background: #eef2f7;
-      border-radius: 5px;
-      padding: 0.12em 0.35em;
-      font-size: 0.92em;
-    }
-    pre {
-      overflow-x: auto;
-      background: #111827;
-      color: #f9fafb;
-      border-radius: 8px;
-      padding: 16px;
-      line-height: 1.55;
-    }
-    pre code {
-      background: transparent;
-      padding: 0;
-      color: inherit;
-      font-size: 0.94rem;
-    }
     figure {
-      margin: 26px 0;
+      margin: 22px 0;
       padding: 18px;
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -151,89 +319,230 @@
       margin-top: 12px;
       color: var(--muted);
       text-align: center;
-      font-size: 0.94rem;
+      font-size: 0.92rem;
     }
-    ul, ol { padding-left: 1.35rem; }
-    li { margin: 0.2rem 0; }
-    footer {
-      margin-top: 56px;
+    .resource-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .resource-list a {
+      display: block;
+      min-height: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      color: var(--ink);
+      background: #fff;
+      text-decoration: none;
+    }
+    .resource-list a:hover,
+    .resource-list a:focus {
+      border-color: var(--blue);
+      outline: 1px solid var(--blue);
+    }
+    .footer {
+      margin-top: 52px;
       padding-top: 24px;
-      padding-bottom: 40px;
+      padding-bottom: 38px;
       border-top: 1px solid var(--line);
       color: var(--muted);
     }
-    @media (max-width: 800px) {
-      header, main, footer { padding-left: 18px; padding-right: 18px; }
-      header { padding-top: 34px; }
-      .grid { grid-template-columns: 1fr; }
-      h2 { margin-top: 34px; }
+    @media (max-width: 980px) {
+      .layout {
+        display: block;
+      }
+      .sidebar {
+        position: static;
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .nav-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .nav-list a {
+        border: 1px solid var(--line);
+        background: #fff;
+      }
+      .hero,
+      .section,
+      .footer {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    }
+    @media (max-width: 760px) {
+      .hero {
+        padding-top: 38px;
+      }
+      .section {
+        padding-top: 34px;
+      }
+      .section-header {
+        display: block;
+      }
+      .jump {
+        display: inline-block;
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+      .cards,
+      .steps,
+      .resource-list {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <p class="eyebrow">Codex Usage Guide</p>
-    <h1>Codex 使用指南</h1>
-    <p class="lead">一份中文优先的 Codex 上手与进阶指南，覆盖零基础任务交付、Goal objective 写法、subagent 分工、<code>AGENTS.md</code> 项目规则、本地 skills 边界和可验证收尾。</p>
-    <nav class="actions" aria-label="快速入口">
-      <a class="button primary" href="#quickstart">从零开始</a>
-      <a class="button" href="#goal">Goal 写法</a>
-      <a class="button" href="#subagent">Subagent</a>
-      <a class="button" href="src/main.tex">LaTeX 源文档</a>
-      <a class="button" href="README.md">README</a>
-    </nav>
-  </header>
+  <div class="layout">
+    <aside class="sidebar" aria-label="页面导航">
+      <a class="brand" href="#top">
+        <span class="brand-title">Codex 使用指南</span>
+        <span class="brand-subtitle">Goal · Subagent · Skills</span>
+      </a>
 
-  <main>
-    <section id="quickstart">
-      <h2>零基础 10 分钟上手</h2>
-      <p>第一次使用 Codex 时，不要先追求复杂自动化。先跑通一个最小闭环：选择项目、写清任务、让 Codex 读上下文、执行、验证、看证据。</p>
-      <figure>
-        <img src="figures/beginner-quickstart.png" alt="Codex 零基础最小使用闭环">
-        <figcaption>零基础用户的最小 Codex 使用闭环</figcaption>
-      </figure>
-      <pre><code>在这个项目里做一件事：&lt;目标&gt;。
+      <div class="nav-section">开始</div>
+      <ul class="nav-list">
+        <li><a href="#overview">指南概览</a></li>
+        <li><a href="#quickstart">零基础上手</a></li>
+        <li><a href="#request">请求模板</a></li>
+      </ul>
+
+      <div class="nav-section">核心概念</div>
+      <ul class="nav-list">
+        <li><a href="#goal">Goal 模式</a></li>
+        <li><a href="#subagent">Subagent 模式</a></li>
+        <li><a href="#agents">AGENTS.md</a></li>
+      </ul>
+
+      <div class="nav-section">场景</div>
+      <ul class="nav-list">
+        <li><a href="#engineering">工程 skills</a></li>
+        <li><a href="#research">学术 skills</a></li>
+        <li><a href="#local-skills">本机扩展备注</a></li>
+      </ul>
+
+      <div class="nav-section">资源</div>
+      <ul class="nav-list">
+        <li><a class="muted-link" href="#repo">仓库文件</a></li>
+        <li><a class="muted-link" href="src/main.tex">LaTeX 源文档</a></li>
+        <li><a class="muted-link" href="https://github.com/WhoJay0609/codex-usage-guide">GitHub 仓库</a></li>
+      </ul>
+    </aside>
+
+    <div class="content" id="top">
+      <header class="hero" id="overview">
+        <p class="eyebrow">Codex Usage Guide</p>
+        <h1>把 Codex 用成可验证的工程协作者</h1>
+        <p class="lead">这是一份中文优先的网页指南和 LaTeX 手册，帮助零基础用户先跑通最小闭环，也帮助进阶用户系统使用 Goal、subagent、<code>AGENTS.md</code>、本地 skills 和证据化 closeout。</p>
+        <nav class="hero-actions" aria-label="快速入口">
+          <a class="button primary" href="#quickstart">开始上手</a>
+          <a class="button" href="#goal">学习 Goal</a>
+          <a class="button" href="#subagent">学习 subagent</a>
+          <a class="button" href="#repo">查看源码</a>
+        </nav>
+
+        <div class="cards" aria-label="重点入口">
+          <a class="card card-link" href="#quickstart">
+            <h3>初学者路径</h3>
+            <p>打开项目、写清任务、批准命令、看验证证据。先跑通 10 分钟闭环。</p>
+            <div class="tag-row"><span class="tag">零基础</span><span class="tag">可复制模板</span></div>
+          </a>
+          <a class="card card-link" href="#goal">
+            <h3>Goal 路径</h3>
+            <p>把长任务写成目标、范围、成功标准、验收、验证和停止条件。</p>
+            <div class="tag-row"><span class="tag">长任务</span><span class="tag">closeout</span></div>
+          </a>
+          <a class="card card-link" href="#subagent">
+            <h3>Subagent 路径</h3>
+            <p>把独立调查和审查拆给 scoped agents，主线程保留整合责任。</p>
+            <div class="tag-row"><span class="tag">并行</span><span class="tag">输出合同</span></div>
+          </a>
+        </div>
+      </header>
+
+      <main>
+        <section class="section" id="quickstart">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Getting started</p>
+              <h2>零基础 10 分钟上手</h2>
+            </div>
+            <a class="jump" href="#top">回到顶部</a>
+          </div>
+          <p>第一次使用 Codex 时，不要先追求复杂自动化。先跑通一个最小闭环：选择项目、写清任务、让 Codex 读上下文、执行、验证、看证据。</p>
+          <figure>
+            <img src="figures/beginner-quickstart.png" alt="Codex 零基础最小使用闭环">
+            <figcaption>零基础用户的最小 Codex 使用闭环</figcaption>
+          </figure>
+          <div class="steps">
+            <article class="step">
+              <h3>打开项目</h3>
+              <p>在 Codex app 中选择明确项目文件夹，不要从无关的大目录开始。</p>
+            </article>
+            <article class="step">
+              <h3>写四段式请求</h3>
+              <p>目标、范围、约束、验证。哪怕只写四行，也比“帮我优化”可靠。</p>
+            </article>
+            <article class="step">
+              <h3>让 Codex 先读上下文</h3>
+              <p>要求读取 <code>AGENTS.md</code>、<code>README.md</code>、相关源码或 <code>SKILL.md</code>。</p>
+            </article>
+            <article class="step">
+              <h3>看证据再接受</h3>
+              <p>结束时检查 diff、测试、构建、日志、PDF、截图或其它可观察产物。</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="request">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Prompt contract</p>
+              <h2>最小请求模板</h2>
+            </div>
+            <a class="jump" href="#top">回到顶部</a>
+          </div>
+          <pre><code>在这个项目里做一件事：&lt;目标&gt;。
 范围：只改 &lt;路径/模块&gt;，不要动 &lt;排除范围&gt;。
 约束：&lt;语言、格式、API、字段、权限、风格等硬约束&gt;。
 验证：完成后请运行 &lt;命令/检查&gt;，并告诉我改了哪些文件、验证结果和剩余风险。</code></pre>
-      <div class="note ok">
-        <strong>判断完成的标准：</strong>不要只看 Codex 是否说“完成”，要看 diff、测试、构建、日志、PDF、截图或其它可观察证据。
-      </div>
-    </section>
+          <div class="callout ok">
+            <strong>判断完成的标准：</strong>不要只看 Codex 是否说“完成”，要看 diff、测试、构建、日志、PDF、截图或其它可观察证据。
+          </div>
+        </section>
 
-    <section id="goal">
-      <h2>Goal 模式怎么写</h2>
-      <p>Goal 不是标题，而是一份执行合同。它适合长任务、跨阶段任务、需要 artifact、验证和 closeout 的任务。</p>
-      <div class="grid">
-        <article class="card">
-          <h3>必须包含</h3>
-          <ul>
-            <li>Objective</li>
-            <li>Scope / Out of Scope</li>
-            <li>Success Criteria</li>
-            <li>Acceptance Criteria</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>必须约束</h3>
-          <ul>
-            <li>不能改什么</li>
-            <li>权限边界</li>
-            <li>语言和格式</li>
-            <li>停止条件</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>必须验证</h3>
-          <ul>
-            <li>测试命令</li>
-            <li>构建命令</li>
-            <li>截图或日志</li>
-            <li>剩余风险</li>
-          </ul>
-        </article>
-      </div>
-      <pre><code>Objective:
+        <section class="section" id="goal">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Goal mode</p>
+              <h2>Goal 模式怎么写</h2>
+            </div>
+            <a class="jump" href="#top">回到顶部</a>
+          </div>
+          <p>Goal 不是标题，而是一份执行合同。它适合长任务、跨阶段任务、需要 artifact、验证和 closeout 的任务。</p>
+          <div class="cards">
+            <article class="card">
+              <h3>必须包含</h3>
+              <p>Objective、Scope、Out of Scope、Success Criteria、Acceptance Criteria。</p>
+            </article>
+            <article class="card">
+              <h3>必须约束</h3>
+              <p>不能改什么、权限边界、输出语言、格式、公开 API、停止条件。</p>
+            </article>
+            <article class="card">
+              <h3>必须验证</h3>
+              <p>测试命令、构建命令、截图、日志、人工验收、剩余风险。</p>
+            </article>
+          </div>
+          <pre><code>Objective:
 &lt;one concrete outcome sentence&gt;
 
 Scope:
@@ -246,16 +555,22 @@ Validation:
 
 Stop Conditions:
 - &lt;when to stop and report blocked&gt;</code></pre>
-    </section>
+        </section>
 
-    <section id="subagent">
-      <h2>Subagent 怎么用</h2>
-      <p>Subagent 的价值是隔离上下文，把独立探索、测试、日志分析和审查移出主线程。它不是随便并行，必须有明确边界和输出合同。</p>
-      <figure>
-        <img src="figures/goal-subagent-flow.png" alt="Goal 生命周期与 subagent 分工流程">
-        <figcaption>Goal 生命周期与 subagent 分工的组合流程</figcaption>
-      </figure>
-      <pre><code>请用并行 subagents 审查当前分支。
+        <section class="section" id="subagent">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Subagent mode</p>
+              <h2>Subagent 怎么用</h2>
+            </div>
+            <a class="jump" href="#top">回到顶部</a>
+          </div>
+          <p>Subagent 的价值是隔离上下文，把独立探索、测试、日志分析和审查移出主线程。它不是随便并行，必须有明确边界和输出合同。</p>
+          <figure>
+            <img src="figures/goal-subagent-flow.png" alt="Goal 生命周期与 subagent 分工流程">
+            <figcaption>Goal 生命周期与 subagent 分工的组合流程</figcaption>
+          </figure>
+          <pre><code>请用并行 subagents 审查当前分支。
 spawn one agent per point, wait for all of them, then summarize.
 
 Agent 1: security risks，只读审查，不改文件。
@@ -263,12 +578,32 @@ Agent 2: missing tests，只读审查，不改文件。
 Agent 3: maintainability，只读审查，不改文件。
 
 每个 agent 返回 findings、risk level、recommended fix、tests/evidence。</code></pre>
-    </section>
+        </section>
 
-    <section id="agents">
-      <h2>项目里的 AGENTS.md</h2>
-      <p><code>AGENTS.md</code> 是项目说明书。根文件放全局规则，子目录文件放局部规则。越靠近目标路径的规则优先级越高。</p>
-      <pre><code># AGENTS.md
+        <section class="section" id="agents">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Project rules</p>
+              <h2>项目里的 <code>AGENTS.md</code></h2>
+            </div>
+            <a class="jump" href="#top">回到顶部</a>
+          </div>
+          <p><code>AGENTS.md</code> 是项目说明书。根文件放共识，子目录文件放局部规则。越靠近目标路径的规则优先级越高。</p>
+          <div class="cards">
+            <article class="card">
+              <h3>仓库期望</h3>
+              <p>搜索方式、编辑方式、保留 unrelated dirty worktree、禁止 destructive 操作。</p>
+            </article>
+            <article class="card">
+              <h3>构建与测试</h3>
+              <p>列出最窄验证命令：单测、构建、lint、PDF 编译、浏览器检查。</p>
+            </article>
+            <article class="card">
+              <h3>完成证据</h3>
+              <p>要求最终说明改了哪些文件、跑了什么、失败原因、剩余风险。</p>
+            </article>
+          </div>
+          <pre><code># AGENTS.md
 
 ## Repository Expectations
 - Preserve unrelated dirty worktree changes.
@@ -281,34 +616,94 @@ Before claiming completion, report:
 - commands run
 - tests passed or why they could not run
 - remaining risks</code></pre>
-    </section>
+        </section>
 
-    <section id="skills">
-      <h2>Skills 与本机扩展备注</h2>
-      <p>本指南提到的 skills 来源不同。Codex app、Codex CLI、worktree、automation 等属于产品或官方能力；<code>ask-research</code>、<code>research-grill-me</code>、部分 Matt Pocock 风格 workflow、本机 <code>goal-entry</code> 和若干 <code>goal-*</code> skills 属于本机安装、本地维护或自写扩展。</p>
-      <div class="note">
-        <strong>发布提醒：</strong>公开到 GitHub 时，不要把本机自写 skills 当成 OpenAI 官方内置能力。迁移到其它机器前，先读对应 <code>SKILL.md</code>，并把不可复现路径标成 local adaptation。
-      </div>
-      <h3>工程场景</h3>
-      <p>工程流主要使用 <code>ask-matt</code>、<code>grill-me</code>、<code>grill-with-docs</code>、<code>to-prd</code>、<code>to-issues</code>、<code>implement</code> 和 review 流程。</p>
-      <h3>学术场景</h3>
-      <p>学术流主要使用 <code>academic-research-suite</code>、<code>ask-research</code>、<code>research-grill-me</code>，并强调文献、新颖性、实验可信度和 claim 证据边界。</p>
-    </section>
+        <section class="section" id="engineering">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Engineering workflow</p>
+              <h2>工程场景：Matt Pocock 风格 skills</h2>
+            </div>
+            <a class="jump" href="#top">回到顶部</a>
+          </div>
+          <div class="cards">
+            <article class="card">
+              <h3><code>grill-me</code></h3>
+              <p>无代码库时打磨 idea、计划和边界，不沉淀项目文档。</p>
+            </article>
+            <article class="card">
+              <h3><code>grill-with-docs</code></h3>
+              <p>有仓库时边追问边维护 <code>CONTEXT.md</code> 和必要 ADR。</p>
+            </article>
+            <article class="card">
+              <h3><code>to-prd</code> / <code>to-issues</code></h3>
+              <p>把稳定想法拆成可实现、可 review、可验证的工作单元。</p>
+            </article>
+          </div>
+        </section>
 
-    <section id="repo">
-      <h2>仓库结构</h2>
-      <ul>
-        <li><a href="src/main.tex"><code>src/main.tex</code></a>: 完整 LaTeX 指南。</li>
-        <li><a href="CONTEXT.md"><code>CONTEXT.md</code></a>: 术语表。</li>
-        <li><a href="docs/adr/0001-dual-track-chinese-latex-guide.md"><code>docs/adr/0001-dual-track-chinese-latex-guide.md</code></a>: 文档结构决策。</li>
-        <li><a href="figures/beginner-quickstart.md"><code>figures/beginner-quickstart.md</code></a> 与 <a href="figures/goal-subagent-flow.md"><code>figures/goal-subagent-flow.md</code></a>: Mermaid 图源说明。</li>
-      </ul>
-      <pre><code>make pdf</code></pre>
-    </section>
-  </main>
+        <section class="section" id="research">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Academic workflow</p>
+              <h2>学术场景：research skills</h2>
+            </div>
+            <a class="jump" href="#top">回到顶部</a>
+          </div>
+          <div class="cards">
+            <article class="card">
+              <h3><code>academic-research-suite</code></h3>
+              <p>面向综述、论文、审稿、实验计划和完整 research pipeline 的总入口。</p>
+            </article>
+            <article class="card">
+              <h3><code>ask-research</code></h3>
+              <p>本机 AI/ML 论文研究路由器，帮助选择正确下游 skill。</p>
+            </article>
+            <article class="card">
+              <h3><code>research-grill-me</code></h3>
+              <p>中文主导的论文强门槛流程，重点检查新颖性、实验和 claim 边界。</p>
+            </article>
+          </div>
+        </section>
 
-  <footer>
-    <p>Maintained as a Chinese-first Codex guide. Generated PDFs should be released through GitHub Releases or CI artifacts; source files remain canonical.</p>
-  </footer>
+        <section class="section" id="local-skills">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Local adaptation</p>
+              <h2>本机自写 skills 备注</h2>
+            </div>
+            <a class="jump" href="#top">回到顶部</a>
+          </div>
+          <p>本指南提到的 skills 来源不同。Codex app、Codex CLI、worktree、automation 等属于产品或官方能力；<code>ask-research</code>、<code>research-grill-me</code>、部分 Matt Pocock 风格 workflow、本机 <code>goal-entry</code> 和若干 <code>goal-*</code> skills 属于本机安装、本地维护或自写扩展。</p>
+          <div class="callout">
+            <strong>发布提醒：</strong>公开到 GitHub 时，不要把本机自写 skills 当成 OpenAI 官方内置能力。迁移到其它机器前，先读对应 <code>SKILL.md</code>，并把不可复现路径标成 local adaptation。
+          </div>
+        </section>
+
+        <section class="section" id="repo">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Repository</p>
+              <h2>仓库文件与资源</h2>
+            </div>
+            <a class="jump" href="#top">回到顶部</a>
+          </div>
+          <ul class="resource-list">
+            <li><a href="src/main.tex"><strong><code>src/main.tex</code></strong><br>完整 LaTeX 指南。</a></li>
+            <li><a href="CONTEXT.md"><strong><code>CONTEXT.md</code></strong><br>术语表。</a></li>
+            <li><a href="docs/adr/0001-dual-track-chinese-latex-guide.md"><strong>ADR 0001</strong><br>文档结构和受众决策。</a></li>
+            <li><a href="figures/beginner-quickstart.md"><strong>Quickstart Mermaid</strong><br>零基础流程图源说明。</a></li>
+            <li><a href="figures/goal-subagent-flow.md"><strong>Goal/Subagent Mermaid</strong><br>组合流程图源说明。</a></li>
+            <li><a href="https://developers.openai.com/codex/app"><strong>OpenAI Codex app</strong><br>官方 Codex app 文档页面。</a></li>
+          </ul>
+          <pre><code>make pdf</code></pre>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>Maintained as a Chinese-first Codex guide. Generated PDFs should be released through GitHub Releases or CI artifacts; source files remain canonical.</p>
+      </footer>
+    </div>
+  </div>
 </body>
 </html>
