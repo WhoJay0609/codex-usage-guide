@@ -703,6 +703,45 @@ grill-with-docs 或 grill-me
   \item \keypoint{文档只记录稳定事实}：\file{CONTEXT.md} 是术语表，不是 todo list；ADR 只记录难回退、有取舍、未来会追问的决定。
 \end{itemize}
 
+\subsection{工程 skills 的具体使用例子}
+
+例子一：你只有一个模糊想法，还没有代码仓库。
+
+\begin{lstlisting}
+[$grill-me]
+我想做一个 Codex 使用指南，但现在不知道目标读者、章节结构、
+是否需要 PDF 和 GitHub Pages。请一次只问一个问题，先帮我把边界问清楚。
+\end{lstlisting}
+
+这类请求适合 \skill{grill-me}，因为它的目标是压实想法，不需要维护项目文档。
+
+例子二：你已经有仓库，需要让设计沉淀到文档里。
+
+\begin{lstlisting}
+[$grill-with-docs]
+仓库在 /home/hujie/paper/tools/codex-usage-guide。
+我要把指南改成 GitHub 可发布的中文文档站。
+请先读 README.md、CONTEXT.md、AGENTS.md，再追问设计边界；
+稳定术语写入 CONTEXT.md，重要结构决策写入 docs/adr/。
+\end{lstlisting}
+
+这类请求适合 \skill{grill-with-docs}，因为后续维护者需要知道术语、边界和架构决定从哪里来。
+
+例子三：设计已经稳定，需要拆成实现单元。
+
+\begin{lstlisting}
+[$to-prd]
+基于当前 CONTEXT.md 和 ADR，把 Codex 使用指南网页化写成 PRD。
+要求覆盖：侧边栏导航、卡片跳转、Goal 示例、research-pipeline 示例、
+GitHub Pages 发布边界、PDF 构建验证。
+
+[$to-issues]
+把上面的 PRD 拆成 3-5 个可独立实现的 issues。
+每个 issue 要有范围、验收标准、验证命令和不允许修改的边界。
+\end{lstlisting}
+
+拆成 issues 后，再用 \skill{implement} 逐个实现。这样比把“网页、PDF、仓库、发布、审查”全部塞进一个会话更稳。
+
 \section{学术场景：research skills}
 
 学术自动化不要套用工程 issue 流程。论文工作更强调研究问题、新颖性、证据边界、实验可信度和投稿风险。本机已经有两层路由：\skill{academic-research-suite} 和 \skill{ask-research}。
@@ -758,6 +797,80 @@ grill-with-docs 或 grill-me
 
 它会维护 \file{docs/research\_dossier.md}、\file{CONTEXT.md} 和必要 ADR。结论可以是 \skill{STOP}、\skill{PIVOT}、\skill{LITERATURE FIRST}、\skill{EXPERIMENT FIRST} 或 \skill{READY}。这比“帮我润色论文”更早、更严格。
 
+\subsection{\skill{research-pipeline}：从找 idea 到投稿}
+
+\skill{research-pipeline} 是更完整的研究生命周期入口。它把 idea discovery、实现、实验部署、自动 review loop 和可选论文写作串成一个端到端流程。适合用户明确说“全流程”“从找 idea 到投稿”“end-to-end research”，或者希望在一个研究方向上持续推进到 submission-ready paper。
+
+它的核心链路是：
+
+\begin{lstlisting}
+idea-discovery
+  -> implement
+  -> run-experiment / experiment-queue
+  -> auto-review-loop
+  -> NARRATIVE_REPORT.md
+  -> paper-writing (optional)
+\end{lstlisting}
+
+常用参数要先想清楚：
+
+\begin{itemize}
+  \item \keypoint{AUTO\_PROCEED}：是否在 idea 阶段自动选择排名第一的 idea。初次使用建议设为 \skill{false}。
+  \item \keypoint{HUMAN\_CHECKPOINT}：auto-review 每轮后是否暂停给人类看分数和修改意见。
+  \item \keypoint{REVIEWER\_DIFFICULTY}：review 难度，\skill{medium} 适合常规迭代，\skill{nightmare} 适合投稿前强审。
+  \item \keypoint{AUTO\_WRITE}：是否自动进入论文写作。默认 \skill{false} 更安全，因为论文故事线和 venue framing 常需要人工确认。
+  \item \keypoint{VENUE}：当 \skill{AUTO\_WRITE=true} 时必须明确，例如 \skill{ICLR}、\skill{NeurIPS}、\skill{CVPR}。
+\end{itemize}
+
+例子一：安全的半自动研究流水线。
+
+\begin{lstlisting}
+[$research-pipeline]
+方向：长上下文 LLM 推理中的 KV cache pruning。
+AUTO_PROCEED: false
+HUMAN_CHECKPOINT: true
+REVIEWER_DIFFICULTY: hard
+AUTO_WRITE: false
+
+请先生成 idea-stage/IDEA_REPORT.md，列出 top ideas、closest work、
+pilot 信号和推荐理由。不要在我确认 idea 前进入 full experiment。
+\end{lstlisting}
+
+这个写法适合零到一探索：先把 idea 和 novelty 摆出来，人确认后再花 GPU。
+
+例子二：夜间自动实验和 review。
+
+\begin{lstlisting}
+[$research-pipeline]
+方向：MoE 模型专家路由压缩。
+AUTO_PROCEED: true
+HUMAN_CHECKPOINT: false
+REVIEWER_DIFFICULTY: medium
+AUTO_WRITE: false
+
+如果 Stage 1 排名第一的 idea 同时满足 novelty confirmed 和 pilot positive，
+自动进入实现、实验部署和 auto-review-loop。记录 GPU-hours，
+最终生成 NARRATIVE_REPORT.md 和 review-stage/AUTO_REVIEW.md。
+\end{lstlisting}
+
+这个写法适合“晚上启动，早上看结果”。但如果算力昂贵或题目敏感，应把 \skill{AUTO\_PROCEED} 改成 \skill{false}。
+
+例子三：投稿前强审，但不自动写论文。
+
+\begin{lstlisting}
+[$research-pipeline]
+方向：已有 repo 中的 pruning 方法是否能投 NeurIPS。
+AUTO_PROCEED: false
+HUMAN_CHECKPOINT: true
+REVIEWER_DIFFICULTY: nightmare
+AUTO_WRITE: false
+
+请优先检查 novelty、baseline、ablation、metric、seed、claim-evidence。
+如果 auto-review-loop 到第 4 轮仍不到 6/10，停止并列出 blocker。
+\end{lstlisting}
+
+\skill{research-pipeline} 的关键产物不是“模型说可以投”，而是 \file{IDEA\_REPORT.md}、实验结果、\file{AUTO\_REVIEW.md}、\file{NARRATIVE\_REPORT.md} 和剩余 blocker。没有这些证据，不要把结论写成 submission-ready。
+
 \subsection{学术安全边界}
 
 \begin{itemize}
@@ -775,9 +888,10 @@ grill-with-docs 或 grill-me
   \item \keypoint{工程大任务}：\skill{ask-matt} 路由到 grill、PRD、issues、implement、review。
   \item \keypoint{AI/ML 论文研究}：\skill{ask-research} 或 \skill{academic-research-suite}。
   \item \keypoint{论文强门槛拷问}：\skill{research-grill-me}。
+  \item \keypoint{从找 idea 到实验、review、写作 handoff}：\skill{research-pipeline}。
   \item \keypoint{多个独立实现任务}：\skill{subagent-driven-development}。
   \item \keypoint{多个独立故障调查}：\skill{dispatching-parallel-agents}。
-  \item \keypoint{长流程、强审计、需要目标闭环}：使用 Goal 模式；本机入口见最后一节。
+  \item \keypoint{长流程、强审计、需要目标闭环}：使用 Goal 模式；本机入口是 \skill{goal-entry}，具体见最后一节。
 \end{itemize}
 
 \section{官方资料与维护方法}
@@ -789,7 +903,9 @@ grill-with-docs 或 grill-me
   \item OpenAI Codex manual：\url{https://developers.openai.com/codex/codex-manual.md}
   \item 本机 skills：\file{/home/hujie/.codex/skills/ask-matt/SKILL.md}
   \item 本机 skills：\file{/home/hujie/.codex/skills/academic-research-suite/SKILL.md}
+  \item 本机 skills：\file{/home/hujie/.codex/skills/research-pipeline/SKILL.md}
   \item 本机 skills：\file{/home/hujie/.codex/skills/subagent-driven-development/SKILL.md}
+  \item \skill{goal-entry} 公开仓库：\url{https://github.com/WhoJay0609/codex-goal-entry}
 \end{itemize}
 
 \subsection{本机自写或本地维护 skills 备注}
@@ -811,7 +927,7 @@ grill-with-docs 或 grill-me
 
 \begin{itemize}
   \item 工程流：读 \file{/home/hujie/.codex/skills/ask-matt/SKILL.md} 和 Matt 相关 skills。
-  \item 学术流：读 \file{academic-research-suite/SKILL.md}、\file{ask-research/SKILL.md}。
+  \item 学术流：读 \file{academic-research-suite/SKILL.md}、\file{ask-research/SKILL.md}、\file{research-pipeline/SKILL.md}。
   \item 研究拷问：读 \file{research-grill-me/SKILL.md}。
   \item subagent 流：读 \file{subagent-driven-development/SKILL.md}。
   \item 并行 agent：读 \file{dispatching-parallel-agents/SKILL.md}。
@@ -826,7 +942,7 @@ make pdf
 
 \section{本机 \skill{goal-entry} 对应实现}
 
-本节是全文最后一节，专门把前面的通用 Goal/Subagent 模型映射到本机实现。当前主入口是 \skill{goal-entry}。它是 router-only public entry，不把所有规则写在自己文件里，而是先用 resolver 分类，再路由到子 skill。
+本节是全文最后一节，专门把前面的通用 Goal/Subagent 模型映射到本机实现。当前主入口是 \skill{goal-entry}。它是 router-only public entry，不把所有规则写在自己文件里，而是先用 resolver 分类，再路由到子 skill。公开版本仓库见：\url{https://github.com/WhoJay0609/codex-goal-entry}。
 
 \subsection{本机实现备注}
 
@@ -878,12 +994,53 @@ goal-entry
 当请求需要先分类再决定是否创建 goal、绑定 active goal、规划、dispatch、初始化 backend artifact 或 closeout 时，可以直接点名：
 
 \begin{lstlisting}
-[$goal-entry](/home/hujie/.codex/skills/goal-entry/SKILL.md)
+[$goal-entry](https://github.com/WhoJay0609/codex-goal-entry)
 请先判断这是 plan-only 还是 execute_goal。
 如果需要执行，先给出 compact objective 和 stop conditions。
 \end{lstlisting}
 
 如果只是简单问答，不要点名 \skill{goal-entry}。如果只是想要一份计划，也不要让它创建 goal；让它走 \skill{goal-plan} 或 plan-only handoff。
+
+\subsection{\skill{goal-entry} 的具体使用例子}
+
+例子一：先判断是否需要创建 Goal。
+
+\begin{lstlisting}
+[$goal-entry]
+请先判断这是 plan-only 还是 execute_goal。
+任务：把 codex-usage-guide 的网页改成中文侧边栏文档站，
+并在完成后重新构建、推送、检查 GitHub Pages。
+
+如果需要执行，请给出 compact objective、validation 和 stop conditions。
+\end{lstlisting}
+
+这类请求不应该直接开干。正确流程是先由 resolver 判断 \skill{request\_mode}、\skill{goal\_entry\_tier}、\skill{goal\_action}，再决定是否进入 preflight 和 goal creation。
+
+例子二：明确只是计划。
+
+\begin{lstlisting}
+[$goal-entry]
+只规划，不执行。请给出把 goal-entry 拆成公开仓库的计划：
+范围、文件清单、隐私检查、验证命令、GitHub 发布步骤。
+\end{lstlisting}
+
+这个请求应当走 \skill{plan\_only} 或 handoff，不应该调用 \skill{create\_goal}。
+
+例子三：带验收的执行目标。
+
+\begin{lstlisting}
+[$goal-entry]
+执行：创建 goal-entry 的公开仓库，推送到 GitHub；
+然后更新 codex-usage-guide，在介绍 goal-entry 时链接新仓库。
+
+验收：
+- 新仓库公开可访问；
+- resolver quick_validate 通过；
+- codex-usage-guide 的 PDF 和 GitHub Pages 都更新；
+- 最终报告链接、提交 hash 和验证结果。
+\end{lstlisting}
+
+这个请求适合 \skill{execute\_goal}：它有跨仓库修改、公开发布、验证和 closeout，应该有明确 objective 和停止条件。
 
 \subsection{维护时读取的本机文件}
 

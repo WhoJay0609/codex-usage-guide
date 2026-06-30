@@ -22,9 +22,11 @@
 - **General Guidance Front Half**: the report structure that places reusable Codex work-model, Goal, subagent, `AGENTS.md`, and validation guidance before scenario-specific skill chapters.
 - **Scenario Skills Chapters**: the later report chapters that explain how engineering and academic skills apply after the generic method is understood.
 - **Local Goal Implementation Mapping**: the final report section that maps the generic Goal/Subagent model to the installed `goal-entry` router and its child skills.
+- **Standalone Goal Entry Repository**: the public `codex-goal-entry` repository that packages `goal-entry`, its resolver, architecture note, and standalone validator.
 - **Self-Written Skill Note**: the explicit warning that some mentioned skills are local, self-written, or locally maintained extensions rather than OpenAI official built-ins.
 - **Mermaid Figure Source**: the `figures/*.mmd` source files used to create visual flow diagrams for GitHub preview and PDF embedding.
 - **Matt Pocock Skills Flow**: engineering flow for idea sharpening, PRD/issue decomposition, implementation, and review.
+- **Research Pipeline**: end-to-end academic automation skill family for idea discovery, implementation, experiment deployment, auto-review-loop, narrative handoff, and optional paper writing.
 - **Research Dossier**: durable research-state document maintained by research workflows such as `research-grill-me`.
 - **Approval**: a user decision that permits an operation outside the current sandbox or normal write boundary.
 - **Verification**: the concrete checks Codex runs or reports before declaring a task complete.

@@ -420,6 +420,7 @@
         <li><a href="#goal">Goal 模式</a></li>
         <li><a href="#subagent">Subagent 模式</a></li>
         <li><a href="#agents">AGENTS.md</a></li>
+        <li><a href="#goal-entry">goal-entry 场景</a></li>
       </ul>
 
       <div class="nav-section">场景</div>
@@ -433,6 +434,7 @@
       <ul class="nav-list">
         <li><a class="muted-link" href="#repo">仓库文件</a></li>
         <li><a class="muted-link" href="src/main.tex">LaTeX 源文档</a></li>
+        <li><a class="muted-link" href="https://github.com/WhoJay0609/codex-goal-entry">goal-entry 仓库</a></li>
         <li><a class="muted-link" href="https://github.com/WhoJay0609/codex-usage-guide">GitHub 仓库</a></li>
       </ul>
     </aside>
@@ -464,6 +466,11 @@
             <h3>Subagent 路径</h3>
             <p>把独立调查和审查拆给 scoped agents，主线程保留整合责任。</p>
             <div class="tag-row"><span class="tag">并行</span><span class="tag">输出合同</span></div>
+          </a>
+          <a class="card card-link" href="#goal-entry">
+            <h3>goal-entry 场景</h3>
+            <p>把复杂请求先分类，再决定是否创建 Goal、绑定 active goal 或只做计划。</p>
+            <div class="tag-row"><span class="tag">router</span><span class="tag">公开仓库</span></div>
           </a>
         </div>
       </header>
@@ -618,6 +625,43 @@ Before claiming completion, report:
 - remaining risks</code></pre>
         </section>
 
+        <section class="section" id="goal-entry">
+          <div class="section-header">
+            <div>
+              <p class="section-kicker">Goal router</p>
+              <h2><code>goal-entry</code> 具体怎么用</h2>
+            </div>
+            <a class="jump" href="#top">回到顶部</a>
+          </div>
+          <p><code>goal-entry</code> 是本机 Goal 工作流的 router-only 入口。它不直接完成任务，而是先判断请求属于 <code>report_only</code>、<code>plan_only</code>、<code>execute_goal</code> 还是 <code>active_goal_bind</code>，再决定是否进入 preflight、objective、context、dispatch 和 closeout。</p>
+          <div class="cards">
+            <a class="card card-link" href="https://github.com/WhoJay0609/codex-goal-entry">
+              <h3>公开仓库</h3>
+              <p><code>codex-goal-entry</code> 已单独发布，包含 <code>SKILL.md</code>、resolver、架构说明和 standalone validator。</p>
+            </a>
+            <article class="card">
+              <h3>适合场景</h3>
+              <p>跨仓库发布、长流程执行、需要 readiness gate、需要 subagent 边界或需要 closeout 的任务。</p>
+            </article>
+            <article class="card">
+              <h3>不适合场景</h3>
+              <p>简单问答、单文件小改、纯 review、用户明确要求只讨论不执行。</p>
+            </article>
+          </div>
+          <pre><code>[$goal-entry]
+执行：创建 goal-entry 的公开仓库，推送到 GitHub；
+然后更新 codex-usage-guide，在介绍 goal-entry 时链接新仓库。
+
+验收：
+- 新仓库公开可访问；
+- resolver quick_validate 通过；
+- codex-usage-guide 的 PDF 和 GitHub Pages 都更新；
+- 最终报告链接、提交 hash 和验证结果。</code></pre>
+          <div class="callout ok">
+            <strong>使用原则：</strong>先分类，再执行。不要让 subagent 创建、更新或关闭 Goal；不要跳过 readiness gate。
+          </div>
+        </section>
+
         <section class="section" id="engineering">
           <div class="section-header">
             <div>
@@ -640,6 +684,11 @@ Before claiming completion, report:
               <p>把稳定想法拆成可实现、可 review、可验证的工作单元。</p>
             </article>
           </div>
+          <pre><code>[$grill-with-docs]
+仓库在 /home/hujie/paper/tools/codex-usage-guide。
+我要把指南改成 GitHub 可发布的中文文档站。
+请先读 README.md、CONTEXT.md、AGENTS.md，再追问设计边界；
+稳定术语写入 CONTEXT.md，重要结构决策写入 docs/adr/。</code></pre>
         </section>
 
         <section class="section" id="research">
@@ -663,6 +712,22 @@ Before claiming completion, report:
               <h3><code>research-grill-me</code></h3>
               <p>中文主导的论文强门槛流程，重点检查新颖性、实验和 claim 边界。</p>
             </article>
+            <article class="card">
+              <h3><code>research-pipeline</code></h3>
+              <p>从 idea discovery 到实现、实验、auto-review-loop、写作 handoff 的端到端研究流水线。</p>
+            </article>
+          </div>
+          <pre><code>[$research-pipeline]
+方向：长上下文 LLM 推理中的 KV cache pruning。
+AUTO_PROCEED: false
+HUMAN_CHECKPOINT: true
+REVIEWER_DIFFICULTY: hard
+AUTO_WRITE: false
+
+请先生成 idea-stage/IDEA_REPORT.md，列出 top ideas、closest work、
+pilot 信号和推荐理由。不要在我确认 idea 前进入 full experiment。</code></pre>
+          <div class="callout">
+            <strong>学术场景提醒：</strong><code>research-pipeline</code> 会消耗实验时间和 GPU 资源。首次使用建议关闭 <code>AUTO_PROCEED</code>，先人工确认 idea 再进入 full experiment。
           </div>
         </section>
 
@@ -694,6 +759,7 @@ Before claiming completion, report:
             <li><a href="docs/adr/0001-dual-track-chinese-latex-guide.md"><strong>ADR 0001</strong><br>文档结构和受众决策。</a></li>
             <li><a href="figures/beginner-quickstart.md"><strong>Quickstart Mermaid</strong><br>零基础流程图源说明。</a></li>
             <li><a href="figures/goal-subagent-flow.md"><strong>Goal/Subagent Mermaid</strong><br>组合流程图源说明。</a></li>
+            <li><a href="https://github.com/WhoJay0609/codex-goal-entry"><strong>codex-goal-entry</strong><br>独立公开的 goal-entry skill 仓库。</a></li>
             <li><a href="https://developers.openai.com/codex/app"><strong>OpenAI Codex app</strong><br>官方 Codex app 文档页面。</a></li>
           </ul>
           <pre><code>make pdf</code></pre>
