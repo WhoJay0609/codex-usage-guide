@@ -42,7 +42,13 @@ index.html
 如果 GitHub Pages 以仓库根目录发布，访问地址通常是：
 
 ```text
-https://<github-user>.github.io/codex-usage-guide/
+https://whojay0609.github.io/codex-usage-guide/
+```
+
+远程仓库：
+
+```text
+https://github.com/WhoJay0609/codex-usage-guide
 ```
 
 ## 环境要求
