@@ -7,17 +7,12 @@
 
 ## 内容结构
 
-网页按“通用方法优先，场景 skills 其次，最后映射本机实现”的顺序组织：
+网页已经从单页指南改为多页面文档站。结构按“概念先行，任务后置，本机扩展单独说明”的顺序组织：
 
-1. Codex app 与本地工作区的基本工作模型。
-2. Goal 怎么写，包括目标、范围、验收、验证、约束和停止条件。
-3. Subagent 怎么用，包括拆分、输出合同、并行边界和整合责任。
-4. `AGENTS.md` 怎么设置，让项目规则可复用。
-5. 日常任务请求、权限判断和完成证据。
-6. 零基础 quickstart 和 Mermaid 流程图，帮助读者先跑通最小闭环。
-7. 工程场景下的 Matt Pocock skills 流程。
-8. 学术场景下的 research skills 与 `research-pipeline` 全流程。
-9. 最后一节说明本机 `goal-entry` 如何实现前面的通用模型，并链接独立公开仓库。
+1. 概念页：`codex.html`、`permissions.html`、`agents-md.html`、`skills.html`、`mcp.html`、`subagents.html`、`goal.html`。
+2. 任务页：`desktop-cli.html`、`daily-workflow.html`、`engineering.html`、`research.html`、`automation.html`、`workflows.html`。
+3. 本机扩展页：`goal-entry.html`，说明本机 `goal-entry` 的架构、流程、目标能力和独立仓库链接。
+4. 资料页：`resources.html`，汇总 OpenAI 官方资料、开源仓库和本指南内部资料。
 
 ## 快速开始
 
@@ -47,7 +42,10 @@ https://github.com/WhoJay0609/codex-goal-entry
 
 ## 仓库文件
 
-- `index.html`: GitHub Pages 静态网页指南入口，也是当前主交付物。
+- `index.html`: GitHub Pages 静态网页指南入口。
+- `assets/site.css`: 全站共享视觉样式。
+- `assets/site.js`: 全站共享导航高亮和渐进式动画。
+- `*.html`: 多页面指南，每页可直接通过 GitHub Pages 访问。
 - `figures/*.mmd`: Mermaid 流程图源文件，可在 GitHub 上预览。
 - `figures/*.md`: Mermaid 图的 Markdown 包装文件。
 - `figures/*.png`: 已渲染图，用于网页展示。
@@ -66,4 +64,4 @@ https://github.com/WhoJay0609/codex-goal-entry
 
 ## 发布建议
 
-GitHub Pages 使用仓库根目录发布，`index.html` 是公开指南主入口。不要把生成目录或本地任务过程文档发布为主内容。
+GitHub Pages 使用仓库根目录发布，`index.html` 是公开指南主入口。站点采用普通静态 HTML/CSS/JS，不需要构建步骤。不要把生成目录或本地任务过程文档发布为主内容。

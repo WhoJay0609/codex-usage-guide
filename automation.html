@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>自动化</title><link rel="stylesheet" href="assets/site.css"></head>
+<body>
+  <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a><nav class="nav"><a data-nav href="index.html">首页</a><a data-nav href="desktop-cli.html">Desktop/CLI</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">自动化</a><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></nav></div></header>
+  <main><section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Task</p><h1>自动化</h1><p class="lead">当同类任务反复出现，再用 <code>codex exec</code>、GitHub integration 或 CI 脚本化。自动化前先固定权限和输出格式。</p></div></section>
+    <section class="section"><div class="bento"><article class="card span-4"><h3>codex exec</h3><p>适合非交互、结构化输出、批处理和 CI 辅助。</p></article><article class="card span-4"><h3>GitHub</h3><p>适合 PR review、issue/PR 评论触发和团队协作。</p></article><article class="card span-4"><h3>安全阀</h3><p>限制写入路径、网络、secret、失败策略和人工验收点。</p></article><article class="card span-12"><pre><code>codex exec "review this PR for missing tests and output JSONL"
+
+自动化前检查：
+- 是否需要网络或 secret
+- 是否能限制写入路径
+- 是否有结构化输出
+- 失败时是否停止</code></pre></article></div></section>
+  </main><footer class="footer"><p><strong>任务路径</strong></p><a class="button" href="goal-entry.html">下一页：goal-entry</a></footer><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script><script src="assets/site.js"></script>
+</body></html>

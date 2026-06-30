@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Skills</title><link rel="stylesheet" href="assets/site.css"></head>
+<body>
+  <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a><nav class="nav"><a data-nav href="index.html">首页</a><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a><a data-nav href="workflows.html">任务</a><a data-nav href="resources.html">资料</a></nav></div></header>
+  <main><section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Concept</p><h1>Skills</h1><p class="lead">Skill 是可复用的工作流说明。它告诉 Codex 什么时候触发、先读什么、输出什么、怎么验证。</p></div></section>
+    <div class="doc-layout"><aside class="side-nav"><strong>本页</strong><a href="#what">它是什么</a><a href="#when">什么时候用</a><a href="#examples">可复制示例</a></aside><article class="doc-content">
+      <section class="content-block" id="what"><p class="section-kicker">What</p><h2>它是什么</h2><p>Skills 适合沉淀重复流程，例如工程 grilling、学术 pipeline、部署检查、代码 review。公开指南里要区分官方能力和本机自写 skills。</p></section>
+      <section class="content-block" id="when"><p class="section-kicker">When</p><h2>什么时候用 / 不用</h2><p>当任务模式稳定、输入输出明确、需要多次复用时用 skill。一次性的想法、未定边界和临时偏好，不应该急着做成 skill。</p></section>
+      <section class="content-block" id="examples"><p class="section-kicker">Examples</p><h2>可复制示例</h2><pre><code>[$grill-with-docs]
+仓库：/path/to/repo
+目标：把功能 X 做成可发布版本。
+请先读 AGENTS.md、README、相关源码，再追问关键边界。</code></pre></section>
+    </article></div>
+  </main><footer class="footer"><p><strong>Codex 使用指南</strong></p><a class="button" href="mcp.html">下一页：MCP</a></footer><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script><script src="assets/site.js"></script>
+</body></html>

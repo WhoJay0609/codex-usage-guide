@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>学术 flow</title><link rel="stylesheet" href="assets/site.css"></head>
+<body>
+  <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a><nav class="nav"><a data-nav href="index.html">首页</a><a data-nav href="desktop-cli.html">Desktop/CLI</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">自动化</a><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></nav></div></header>
+  <main><section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Task</p><h1>学术 flow</h1><p class="lead">学术场景不要先写论文。先做研究 brief、文献和新颖性检查、实验设计、证据审查，再进入写作。</p></div></section>
+    <section class="section"><div class="steps"><article class="step"><h3>Research brief</h3><p>方向、目标会议、数据、baseline、预算、不能 claim 什么。</p></article><article class="step"><h3>强审 idea</h3><p><code>research-grill-me</code> 检查 closest work、贡献差异和实验可证伪性。</p></article><article class="step"><h3>Pipeline</h3><p><code>research-pipeline</code> 生成 <code>IDEA_REPORT.md</code>、实验和 <code>AUTO_REVIEW.md</code>。</p></article><article class="step"><h3>写作边界</h3><p>只引用已经落盘、可追溯的图表和日志。</p></article></div><pre><code>[$research-pipeline]
+方向：长上下文 LLM 推理中的 KV cache pruning。
+RESEARCH_BRIEF.md: 请先创建并让我确认。
+AUTO_PROCEED: false
+HUMAN_CHECKPOINT: true
+REVIEWER_DIFFICULTY: hard
+预算：最多 20 GPU-hours。</code></pre></section>
+  </main><footer class="footer"><p><strong>任务路径</strong></p><a class="button" href="automation.html">下一页：自动化</a></footer><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script><script src="assets/site.js"></script>
+</body></html>

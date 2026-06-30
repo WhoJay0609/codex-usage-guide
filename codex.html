@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Codex 是什么</title><link rel="stylesheet" href="assets/site.css"></head>
+<body>
+  <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a><nav class="nav"><a data-nav href="index.html">首页</a><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a><a data-nav href="workflows.html">任务</a><a data-nav href="resources.html">资料</a></nav></div></header>
+  <main>
+    <section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Concept</p><h1>Codex 是什么</h1><p class="lead">Codex 是面向软件工程任务的编码代理体系。你可以在 Desktop、CLI、IDE、Cloud 和 GitHub 集成里使用它，但每个入口适合的任务不同。</p></div></section>
+    <div class="doc-layout">
+      <aside class="side-nav"><strong>本页</strong><a href="#what">它是什么</a><a href="#when">什么时候用</a><a href="#examples">可复制示例</a></aside>
+      <article class="doc-content">
+        <section class="content-block" id="what"><p class="section-kicker">What</p><h2>它是什么</h2><p>Codex 不是单一聊天窗口，而是一组工作面：Desktop 适合可视化、多线程和本地仓库协作；CLI 适合终端、脚本和自动化；IDE 适合编辑器内上下文；Cloud/GitHub 适合 PR、issue 和远程任务。</p></section>
+        <section class="content-block" id="when"><p class="section-kicker">When</p><h2>什么时候用 / 不用</h2><ul class="mini-list"><li><strong>用 Desktop</strong><span>需要看 diff、页面、截图、浏览器和多线程进度。</span></li><li><strong>用 CLI</strong><span>需要脚本化、受控权限、MCP 或 <code>codex exec</code>。</span></li><li><strong>不用 Codex</strong><span>任务没有明确仓库、没有验收标准，或你不愿让代理读取相关上下文。</span></li></ul></section>
+        <section class="content-block" id="examples"><p class="section-kicker">Examples</p><h2>可复制示例</h2><pre><code>请先读取 AGENTS.md、README.md 和失败测试日志。
+目标：解释这个错误，并提出最小修复方案。
+约束：只读分析，不要改文件。</code></pre></section>
+      </article>
+    </div>
+  </main>
+  <footer class="footer"><p><strong>Codex 使用指南</strong></p><a class="button" href="permissions.html">下一页：权限</a></footer>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script><script src="assets/site.js"></script>
+</body>
+</html>

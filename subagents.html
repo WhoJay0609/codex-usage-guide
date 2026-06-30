@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Subagents</title><link rel="stylesheet" href="assets/site.css"></head>
+<body>
+  <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a><nav class="nav"><a data-nav href="index.html">首页</a><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a><a data-nav href="workflows.html">任务</a><a data-nav href="resources.html">资料</a></nav></div></header>
+  <main><section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Concept</p><h1>Subagents</h1><p class="lead">Subagent 的价值不是“看起来并行”，而是隔离上下文、分离职责、让主线程保持整合和最终判断。</p></div></section>
+    <div class="doc-layout"><aside class="side-nav"><strong>本页</strong><a href="#what">它是什么</a><a href="#when">什么时候用</a><a href="#examples">可复制示例</a></aside><article class="doc-content">
+      <section class="content-block" id="what"><p class="section-kicker">What</p><h2>它是什么</h2><p>Subagent 是被分配明确子任务的代理。它可以做只读调查、审查、并行测试或互不重叠的实现切片。</p></section>
+      <section class="content-block" id="when"><p class="section-kicker">When</p><h2>什么时候用 / 不用</h2><p>当任务可以独立拆分、输出合同明确、不会互相覆盖文件时使用。不要把需要主线程即时判断的关键路径交给 subagent。</p></section>
+      <section class="content-block" id="examples"><p class="section-kicker">Examples</p><h2>可复制示例</h2><pre><code>请用并行 subagents 审查当前分支。
+Agent 1: security risks，只读，不改文件。
+Agent 2: missing tests，只读，不改文件。
+Agent 3: maintainability，只读，不改文件。
+最后由主线程整合 findings。</code></pre></section>
+    </article></div>
+  </main><footer class="footer"><p><strong>Codex 使用指南</strong></p><a class="button" href="goal.html">下一页：Goal</a></footer><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script><script src="assets/site.js"></script>
+</body></html>
