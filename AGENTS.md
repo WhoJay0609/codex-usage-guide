@@ -41,7 +41,7 @@ structure changes materially.
 <!-- goal-context:path-index:start -->
 ## Path Index
 
-- Generated: 2026-06-30T10:17:26Z
+- Generated: 2026-06-30T11:14:38Z
 - Max depth: 4
 - Max items per section: 40
 

@@ -30,7 +30,7 @@
       <div class="hero-copy">
         <p class="hero-kicker">Tasks</p>
         <h1>任务路径总览</h1>
-        <p class="lead">先按你要完成的工作选择路线，再决定是否需要 Goal、subagent、skills 或自动化。任务页的重点是可执行流程，不是术语解释。</p>
+        <p class="lead">本指南默认你主要使用 Codex Desktop。先按桌面版任务闭环组织工作，再决定是否需要 Goal、subagent、skills 或自动化。任务页的重点是可执行流程，不是术语解释。</p>
       </div>
     </section>
 
@@ -40,13 +40,13 @@
           <p class="section-kicker">Route</p>
           <h2>先判断任务类型</h2>
         </div>
-        <p class="scrub-text">好的 Codex 请求不是“帮我做一下”，而是交代背景、目标、范围、验收、验证方式和不能触碰的边界。越是长任务，越应该把这些内容显式写出来。</p>
+        <p class="scrub-text">好的 Desktop 请求不是“帮我做一下”，而是交代你当前打开的页面或仓库、目标、范围、验收、验证方式和不能触碰的边界。越是长任务，越应该把这些内容显式写出来。</p>
       </div>
       <div class="steps">
-        <article class="step"><h3>选入口</h3><p>需要浏览器、截图、页面发布和多线程时用 Desktop；需要终端批处理、CI、MCP 或非交互时用 CLI。</p></article>
-        <article class="step"><h3>给上下文</h3><p>说明仓库路径、关键文件、已有失败日志、相关 issue/PR、目标读者和不可修改范围。</p></article>
+        <article class="step"><h3>开 Desktop 线程</h3><p>一个线程对应一个目标。把当前 URL、仓库路径、截图/评论、目标读者和不可修改范围放在开头。</p></article>
+        <article class="step"><h3>给上下文</h3><p>说明关键文件、已有失败日志、相关 issue/PR，并要求 Codex 先读 <code>AGENTS.md</code> 再行动。</p></article>
         <article class="step"><h3>定验收</h3><p>提前写出“完成意味着什么”：页面能访问、测试通过、diff 可审、结论有证据、没有改动禁区。</p></article>
-        <article class="step"><h3>收证据</h3><p>最终回答应包含改了什么、跑了什么、没跑什么、风险在哪里、远程链接或 commit 是什么。</p></article>
+        <article class="step"><h3>收证据</h3><p>最终回答应包含改了什么、审批了什么、跑了什么、没跑什么、风险在哪里、远程链接或 commit 是什么。</p></article>
       </div>
       <figure class="figure-card">
         <img src="figures/beginner-quickstart.png" alt="Codex 任务从输入、上下文、权限到验证的入门流程">
@@ -56,7 +56,7 @@
 
     <section class="section">
       <div class="bento">
-        <a class="source-card span-4" href="desktop-cli.html"><h3>Desktop / CLI</h3><p>先解决入口选择：交互式协作、终端执行、IDE 内编辑或远程任务。</p></a>
+        <a class="source-card span-4" href="desktop-cli.html"><h3>Codex Desktop</h3><p>先学桌面版线程、浏览器反馈、审批、diff review 和发布验证。</p></a>
         <a class="source-card span-4" href="daily-workflow.html"><h3>日常小任务</h3><p>读代码、解释错误、修 bug、跑测试、审查 diff，通常不需要 Goal。</p></a>
         <a class="source-card span-4" href="engineering.html"><h3>工程 flow</h3><p>复杂功能先 grill，再 PRD，再 issues，再实现和 review。</p></a>
         <a class="source-card span-4" href="research.html"><h3>学术 flow</h3><p>从 research brief 到文献、新颖性、实验、审稿和写作边界。</p></a>
@@ -70,7 +70,9 @@
         <p class="section-kicker">Prompt skeleton</p>
         <h2>通用任务模板</h2>
         <pre><code>背景：
-我在 /path/to/repo 做 [项目/论文/网页]，当前问题是 [具体现象]。
+我正在 Codex Desktop 里处理 [项目/论文/网页]。
+当前页面/仓库是：[URL 或 /path/to/repo]。
+当前问题是：[具体现象]。
 
 目标：
 请完成 [可验收结果]。
@@ -82,6 +84,7 @@
 要求：
 - 先读 AGENTS.md、README 和相关源码
 - 改动前说明你准备改哪里
+- 需要联网、启动服务或推送前先说明理由
 - 完成后运行最窄验证
 
 验收：
@@ -94,7 +97,7 @@
       <div class="content-block">
         <p class="section-kicker">Real example</p>
         <h2>真实实例：从一句反馈选择任务路径</h2>
-        <p>用户说“每个内容都加一个真实的实例”。这不是简单问答，也不是纯规划；它会修改多个页面、需要验证、需要发布，所以任务路径应当是：<a href="goal.html">Goal</a> 风格的执行任务，加上日常网页修改和 GitHub Pages 发布验证。</p>
+        <p>用户在 Codex Desktop 的浏览器里说“每个内容都加一个真实的实例”。这不是简单问答，也不是纯规划；它会修改多个页面、需要验证、需要发布，所以任务路径应当是：Desktop 主线程 + <a href="goal.html">Goal</a> 风格执行任务 + GitHub Pages 发布验证。</p>
         <pre><code>路径选择：
 1. goal-entry 路由和 preflight
 2. 读取 AGENTS.md、页面和相关 skill

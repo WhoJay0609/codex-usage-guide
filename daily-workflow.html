@@ -29,7 +29,7 @@
       <div class="hero-copy">
         <p class="hero-kicker">Task handbook</p>
         <h1>日常任务 workflow</h1>
-        <p class="lead">日常任务不是“小任务随便说”。你要把 Codex 当成会读仓库、会改文件、会跑命令、也可能误解边界的工程协作者。最稳的方式是：先给上下文，再限定范围，再要求验证，最后检查证据。</p>
+        <p class="lead">日常任务不是“小任务随便说”。在 Codex Desktop 里，你要把 Codex 当成会读仓库、会改文件、会跑命令、也可能误解边界的工程协作者。最稳的方式是：先开一个清晰线程，再给上下文，限定范围，审批必要操作，最后检查验证证据。</p>
       </div>
     </section>
 
@@ -56,6 +56,23 @@
     <section class="section">
       <div class="section-head">
         <div class="section-title">
+          <p class="section-kicker">Desktop routine</p>
+          <h2>在桌面版里实际怎么操作</h2>
+        </div>
+        <p>Desktop 的关键不是“聊天更方便”，而是你能把页面反馈、文件修改、终端验证和权限审批串成一个可追踪的任务线程。</p>
+      </div>
+      <div class="bento">
+        <article class="card span-4"><h3>把问题贴进线程</h3><p>包括当前 URL、截图描述、失败命令、目标读者、相关路径。不要只说“这里不对”。</p></article>
+        <article class="card span-4"><h3>要求先读规则</h3><p>让 Codex 先读 <code>AGENTS.md</code> 和目标文件，再说明准备改哪些地方。</p></article>
+        <article class="card span-4"><h3>逐个批准动作</h3><p>启动本地服务、联网查询、安装依赖、<code>git push</code> 都应先说明原因和影响范围。</p></article>
+        <article class="card span-6"><h3>用浏览器反馈迭代</h3><p>如果页面仍不对，把 in-app browser 当前 URL 和问题区域发回线程，让 Codex 针对同一个 diff 继续修。</p></article>
+        <article class="card span-6"><h3>最后看证据</h3><p>要求最终回答包含命令、页面抽样、commit、公开链接和未验证风险；没有证据就继续追问。</p></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">
           <p class="section-kicker">Common jobs</p>
           <h2>五类高频日常任务</h2>
         </div>
@@ -70,7 +87,8 @@
 失败命令：npm test -- checkout
 范围：只改 checkout 相关代码和测试。
 要求：先解释根因，再改最小 diff。</code></pre></article>
-        <article class="card span-4"><h3>修改网页或文档</h3><p>适合样式、内容、导航、README、指南页。要说明目标读者和验收方式，尤其是需要浏览器验证时。</p><pre><code>请更新 daily-workflow 页面。
+        <article class="card span-4"><h3>修改网页或文档</h3><p>适合样式、内容、导航、README、指南页。要说明目标读者和验收方式，尤其是需要浏览器验证时。</p><pre><code>我在 Codex Desktop 浏览器里看到 daily-workflow 页面内容太少。
+请更新 daily-workflow 页面。
 目标读者：第一次使用 Codex 的中文用户。
 验收：页面有完整流程、示例、检查清单。
 完成后本地静态服务抽样访问。</code></pre></article>
@@ -176,10 +194,10 @@
           <p class="section-kicker">Real example</p>
           <h2>真实实例：把短页面扩成日常任务手册</h2>
         </div>
-        <p>这次 <code>daily-workflow.html</code> 原本只有几十个词。用户指出“内容太少”，Codex 按日常任务闭环完成了读上下文、改页面、验证和发布。</p>
+        <p>这次 <code>daily-workflow.html</code> 原本只有几十个词。用户在 Desktop 浏览器里指出“内容太少”，Codex 按日常任务闭环完成了读上下文、改页面、验证和发布。</p>
       </div>
       <div class="bento">
-        <article class="card span-3"><h3>输入</h3><p>用户要求把指南定位成“中文 Codex 实战手册”，并让可选进阶内容也写详细。</p></article>
+        <article class="card span-3"><h3>输入</h3><p>用户给出当前页面和反馈，要求把指南定位成“中文 Codex 实战手册”，并让可选进阶内容也写详细。</p></article>
         <article class="card span-3"><h3>上下文</h3><p>Codex 读取 <code>AGENTS.md</code>、当前 HTML 页面、公开 Codex 文档和本地 skill 说明。</p></article>
         <article class="card span-3"><h3>执行</h3><p>重写日常任务页，加入五类高频任务、好坏 prompt、验收证据、常见失败和 closeout 模板。</p></article>
         <article class="card span-3"><h3>验证</h3><p>运行 <code>git diff --check</code>、本地静态服务和公开页面抽样，确认关键标题出现在 HTML 中。</p></article>
