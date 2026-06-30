@@ -29,45 +29,39 @@
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero home-hero">
       <div class="hero-copy">
         <p class="hero-kicker">Chinese Codex Practical Handbook</p>
-        <h1>从真实任务<span class="inline-image" aria-hidden="true"></span>学会使用 Codex</h1>
-        <p class="lead">这不是官方文档镜像，而是一份中文 Codex Desktop 实战手册。阅读顺序是：先学会在桌面版里开线程、给上下文、审批操作、看 diff 和验证结果，再理解权限、AGENTS.md、Skills、MCP、Subagents、Goal，最后进入工程、学术和自动化场景。</p>
+        <h1>从一个可验证小任务开始使用 Codex</h1>
+        <p class="lead">这不是官方文档镜像，而是一份中文 Codex Desktop 实战手册。先完成安装、打开仓库、跑通第一个只读任务，再进入日常协作、工程、学术、自动化和 Goal。</p>
         <div class="hero-actions">
-          <a class="button primary" href="desktop-cli.html">先学 Desktop 操作</a>
-          <a class="button" href="workflows.html">查看任务路径</a>
-          <a class="button" href="resources.html">查看资料来源</a>
+          <a class="button primary" href="install-desktop.html">第一次使用：安装和第一个任务</a>
+          <a class="button" href="desktop-cli.html">日常协作：Desktop 工作流</a>
+          <a class="button" href="workflows.html">进阶路线：Goal / Subagents / Skills</a>
         </div>
       </div>
-      <div class="hero-visual mermaid-card" aria-label="Codex Desktop 入门流程图">
-        <div class="mermaid">
-flowchart LR
-  A["安装 / 打开 Desktop"] --> B["开任务线程"]
-  B --> C["给 URL / 仓库 / 截图"]
-  C --> D["读 AGENTS.md"]
-  D --> E["小范围执行"]
-  E --> F["验证 / diff / 发布"]
-        </div>
+      <div class="hero-visual route-panel" aria-label="Codex 使用路径">
+        <a href="install-desktop.html"><span>01</span><strong>刚开始</strong><em>安装 Desktop，登录账号，完成第一个只读任务。</em></a>
+        <a href="desktop-cli.html"><span>02</span><strong>会打开 Desktop 了</strong><em>学习线程、浏览器反馈、审批、diff 和发布验证。</em></a>
+        <a href="daily-workflow.html"><span>03</span><strong>要处理真实任务</strong><em>读代码、改文档、修 bug、跑测试、审查 diff。</em></a>
+        <a href="workflows.html"><span>04</span><strong>任务变复杂</strong><em>进入 Goal、Subagents、Skills、MCP 和自动化。</em></a>
       </div>
     </section>
 
     <section class="section">
       <div class="section-head">
         <div class="section-title">
-          <p class="section-kicker">Concept pages</p>
-          <h2>概念页先打地基</h2>
+          <p class="section-kicker">Start here</p>
+          <h2>选择你的路径</h2>
         </div>
-        <p class="scrub-text">每个概念页都包含定义、边界、可复制 prompt 和真实实例。读者不只看术语解释，还能看到这些概念在一次真实 Codex 工作中如何落地。</p>
+        <p class="scrub-text">不要先背术语。先按你现在的状态选一条路线：零基础、日常协作、进阶系统化、或者维护这份指南。</p>
       </div>
       <div class="bento">
-        <a class="source-card span-4" href="codex.html"><h3>Codex 是什么</h3><p>Desktop、CLI、IDE、Cloud、GitHub integration 的工作面。</p></a>
-        <a class="source-card span-4" href="permissions.html"><h3>权限与安全</h3><p>sandbox、approval、network、auth 和 secret 边界。</p></a>
-        <a class="source-card span-4" href="agents-md.html"><h3>AGENTS.md</h3><p>项目规则、层级、测试命令和完成证据。</p></a>
-        <a class="source-card span-3" href="skills.html"><h3>Skills</h3><p>官方 skills 与本机扩展的边界。</p></a>
-        <a class="source-card span-3" href="mcp.html"><h3>MCP / Plugins</h3><p>外部工具连接和权限治理。</p></a>
-        <a class="source-card span-3" href="subagents.html"><h3>Subagents</h3><p>何时拆分、如何约束、如何收口。</p></a>
-        <a class="source-card span-3" href="goal.html"><h3>Goal</h3><p>目标、验收、验证、停止条件和 closeout。</p></a>
+        <a class="source-card span-6 priority-card" href="install-desktop.html"><h3>零基础：安装到第一个任务</h3><p>安装 Codex Desktop，打开仓库，先跑一个只读任务，学会看验证证据。</p></a>
+        <a class="source-card span-6 priority-card" href="desktop-cli.html"><h3>日常协作：桌面版工作流</h3><p>线程、上下文、浏览器反馈、权限审批、diff、提交和公开页面验证。</p></a>
+        <a class="source-card span-4" href="workflows.html"><h3>进阶用户：任务升级路线</h3><p>判断何时从日常任务升级到 Goal、subagent、skill 或自动化。</p></a>
+        <a class="source-card span-4" href="engineering.html"><h3>工程 / 学术场景</h3><p>从需求澄清到工程 flow，或从 research brief 到实验与写作边界。</p></a>
+        <a class="source-card span-4" href="resources.html"><h3>维护者：资料和发布边界</h3><p>README、AGENTS.md、local adaptation、发布验证和资料来源。</p></a>
       </div>
     </section>
 
@@ -75,9 +69,9 @@ flowchart LR
       <div class="section-head">
         <div class="section-title">
           <p class="section-kicker">Task pages</p>
-          <h2>任务页解决实际工作</h2>
+          <h2>任务主线优先</h2>
         </div>
-        <p>任务页按读者要完成的事情组织，不按术语组织。需要 Subagent 或 Goal 时，会在对应任务里自然解释。</p>
+        <p>任务页按“你要完成什么”组织。概念页保留在后面，作为遇到术语时的补课材料。</p>
       </div>
       <div class="bento">
         <a class="source-card span-4" href="install-desktop.html"><h3>安装 Codex Desktop</h3><p>官方入口、登录、打开仓库和第一个任务。</p></a>
@@ -87,6 +81,25 @@ flowchart LR
         <a class="source-card span-4" href="research.html"><h3>学术 flow</h3><p>idea -> 文献/新颖性 -> 实验 -> review -> 写作边界。</p></a>
         <a class="source-card span-4" href="automation.html"><h3>自动化</h3><p><code>codex exec</code>、GitHub、CI 和结构化输出。</p></a>
         <a class="source-card span-4" href="goal-entry.html"><h3>本机 goal-entry</h3><p>本机 Goal 路由器的架构、流程和发布边界。</p></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <p class="section-kicker">Concept map</p>
+          <h2>需要时再查概念</h2>
+        </div>
+        <p>这些页面解释为什么要这样做。新手不用一次读完；遇到权限、项目规则、工具扩展或长任务时再回来查。</p>
+      </div>
+      <div class="bento">
+        <a class="source-card span-4" href="codex.html"><h3>Codex 是什么</h3><p>Desktop、CLI、IDE、Cloud、GitHub integration 的工作面。</p></a>
+        <a class="source-card span-4" href="permissions.html"><h3>权限与安全</h3><p>sandbox、approval、network、auth 和 secret 边界。</p></a>
+        <a class="source-card span-4" href="agents-md.html"><h3>AGENTS.md</h3><p>项目规则、层级、测试命令和完成证据。</p></a>
+        <a class="source-card span-3" href="skills.html"><h3>Skills</h3><p>官方 skills 与本机扩展的边界。</p></a>
+        <a class="source-card span-3" href="mcp.html"><h3>MCP / Plugins</h3><p>外部工具连接和权限治理。</p></a>
+        <a class="source-card span-3" href="subagents.html"><h3>Subagents</h3><p>何时拆分、如何约束、如何收口。</p></a>
+        <a class="source-card span-3" href="goal.html"><h3>Goal</h3><p>目标、验收、验证、停止条件和 closeout。</p></a>
       </div>
     </section>
 
