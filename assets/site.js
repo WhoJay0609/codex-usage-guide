@@ -6,6 +6,23 @@
     }
   });
 
+  if (window.mermaid) {
+    mermaid.initialize({
+      startOnLoad: true,
+      securityLevel: "strict",
+      theme: "base",
+      themeVariables: {
+        fontFamily: 'Geist, ui-sans-serif, system-ui, "Noto Sans CJK SC", sans-serif',
+        primaryColor: "#fffaf0",
+        primaryTextColor: "#11110f",
+        primaryBorderColor: "#c44924",
+        lineColor: "#2458d8",
+        secondaryColor: "#f7f3ea",
+        tertiaryColor: "#fffaf0"
+      }
+    });
+  }
+
   if (!window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
 

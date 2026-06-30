@@ -14,7 +14,7 @@
         <a data-nav href="index.html">首页</a>
         <a data-nav href="codex.html">Codex</a>
         <a data-nav href="goal.html">Goal</a>
-        <a data-nav href="desktop-cli.html">Desktop/CLI</a>
+        <a data-nav href="desktop-cli.html">Desktop/CLI</a><a data-nav href="install-desktop.html">安装</a>
         <a data-nav href="daily-workflow.html">日常</a>
         <a data-nav href="engineering.html">工程</a>
         <a data-nav href="research.html">学术</a>
@@ -48,14 +48,24 @@
         <article class="step"><h3>定验收</h3><p>提前写出“完成意味着什么”：页面能访问、测试通过、diff 可审、结论有证据、没有改动禁区。</p></article>
         <article class="step"><h3>收证据</h3><p>最终回答应包含改了什么、审批了什么、跑了什么、没跑什么、风险在哪里、远程链接或 commit 是什么。</p></article>
       </div>
-      <figure class="figure-card">
-        <img src="figures/beginner-quickstart.png" alt="Codex 任务从输入、上下文、权限到验证的入门流程">
-        <figcaption>这张图对应本页的通用任务路线：先输入清楚，再读上下文，权限确认后执行，最后用验证证据收口。</figcaption>
+      <figure class="figure-card mermaid-card">
+        <div class="mermaid">
+flowchart TD
+  A["Desktop 线程输入"] --> B["读取 AGENTS.md / README"]
+  B --> C{"需要权限吗？"}
+  C -->|是| D["说明原因并等待审批"]
+  C -->|否| E["小范围执行"]
+  D --> E
+  E --> F["本地验证"]
+  F --> G["提交 / 推送 / 公开页面抽样"]
+        </div>
+        <figcaption>这张图现在直接内嵌在网页里，后续修改流程时只需要改 Mermaid 文本。</figcaption>
       </figure>
     </section>
 
     <section class="section">
       <div class="bento">
+        <a class="source-card span-4" href="install-desktop.html"><h3>安装 Desktop</h3><p>先完成安装、登录、打开仓库和第一个小任务。</p></a>
         <a class="source-card span-4" href="desktop-cli.html"><h3>Codex Desktop</h3><p>先学桌面版线程、浏览器反馈、审批、diff review 和发布验证。</p></a>
         <a class="source-card span-4" href="daily-workflow.html"><h3>日常小任务</h3><p>读代码、解释错误、修 bug、跑测试、审查 diff，通常不需要 Goal。</p></a>
         <a class="source-card span-4" href="engineering.html"><h3>工程 flow</h3><p>复杂功能先 grill，再 PRD，再 issues，再实现和 review。</p></a>
@@ -115,6 +125,7 @@
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
   <script src="assets/site.js"></script>
 </body>
 </html>

@@ -294,6 +294,23 @@ main {
   line-height: 1.6;
   text-align: center;
 }
+.mermaid-card {
+  overflow: hidden;
+}
+.mermaid {
+  display: grid;
+  justify-content: center;
+  width: 100%;
+  min-height: 280px;
+  padding: 8px;
+  border-radius: 6px;
+  background: #fffaf0;
+}
+.mermaid svg {
+  width: 100%;
+  max-width: 980px;
+  height: auto;
+}
 .route-strip {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -513,6 +530,12 @@ main {
   .button { width: 100%; }
   .hero-actions { width: 100%; }
   pre { font-size: 0.82rem; }
+  .mermaid {
+    min-height: 220px;
+    overflow-x: auto;
+    justify-content: start;
+  }
+  .mermaid svg { min-width: 620px; }
   .bento,
   .source-grid,
   .steps { grid-template-columns: 1fr; }

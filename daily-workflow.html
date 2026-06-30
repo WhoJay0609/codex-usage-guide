@@ -13,7 +13,7 @@
       <a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a>
       <nav class="nav">
         <a data-nav href="index.html">首页</a>
-        <a data-nav href="desktop-cli.html">Desktop/CLI</a>
+        <a data-nav href="desktop-cli.html">Desktop/CLI</a><a data-nav href="install-desktop.html">安装</a>
         <a data-nav href="daily-workflow.html">日常</a>
         <a data-nav href="engineering.html">工程</a>
         <a data-nav href="research.html">学术</a>
@@ -47,9 +47,16 @@
         <article class="step"><h3>小范围执行</h3><p>一次只解决一个可验证问题。改文件前应知道预计会改哪些文件，避免顺手重构和无关格式化。</p></article>
         <article class="step"><h3>验证和收口</h3><p>让 Codex 跑最窄测试或构建，解释结果；如果不能跑，要说明原因和剩余风险。</p></article>
       </div>
-      <figure class="figure-card">
-        <img src="figures/beginner-quickstart.png" alt="Codex 日常任务从输入、上下文、权限到验证收口的流程">
-        <figcaption>这张图对应日常任务闭环：任务输入、上下文读取、权限确认、执行、验证、收口。</figcaption>
+      <figure class="figure-card mermaid-card">
+        <div class="mermaid">
+flowchart LR
+  A["说清任务"] --> B["读上下文"]
+  B --> C["限定改动范围"]
+  C --> D["执行最小 diff"]
+  D --> E["运行最窄验证"]
+  E --> F["报告证据和风险"]
+        </div>
+        <figcaption>这张图对应日常任务闭环：任务输入、上下文读取、范围控制、执行、验证、收口。</figcaption>
       </figure>
     </section>
 
@@ -211,6 +218,7 @@
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
   <script src="assets/site.js"></script>
 </body>
 </html>

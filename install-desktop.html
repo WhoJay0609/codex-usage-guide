@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>安装 Codex Desktop</title>
+  <meta name="description" content="Codex Desktop 安装、登录、打开仓库和首次任务的中文操作指南。">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a>
+      <nav class="nav">
+        <a data-nav href="index.html">首页</a>
+        <a data-nav href="codex.html">Codex</a>
+        <a data-nav href="desktop-cli.html">Desktop</a>
+        <a data-nav href="install-desktop.html">安装</a>
+        <a data-nav href="daily-workflow.html">日常</a>
+        <a data-nav href="engineering.html">工程</a>
+        <a data-nav href="research.html">学术</a>
+        <a data-nav href="automation.html">自动化</a>
+        <a data-nav href="goal-entry.html">goal-entry</a>
+        <a data-nav href="resources.html">资料</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero compact">
+      <div class="hero-copy">
+        <p class="hero-kicker">Install</p>
+        <h1>安装 Codex Desktop</h1>
+        <p class="lead">安装页的目标不是替代官方文档，而是告诉你第一次打开桌面版以后怎么把账号、仓库、权限和第一个任务串起来。下载入口和平台要求以 OpenAI 官方 Codex App 页面为准。</p>
+        <div class="hero-actions">
+          <a class="button primary" href="https://developers.openai.com/codex/app">打开官方 Codex App 页面</a>
+          <a class="button" href="desktop-cli.html">查看桌面版操作</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <p class="section-kicker">Before install</p>
+          <h2>安装前先确认三件事</h2>
+        </div>
+        <p>不要从第三方下载器或不明链接安装。先确认你用的是官方入口、合适的账号，以及准备让 Codex 读取的本地仓库。</p>
+      </div>
+      <div class="bento">
+        <article class="card span-4"><h3>官方入口</h3><p>从 <a href="https://developers.openai.com/codex/app">developers.openai.com/codex/app</a> 进入，按官方页面当前展示的下载或打开方式安装。</p></article>
+        <article class="card span-4"><h3>账号和组织</h3><p>使用你实际工作的 OpenAI/ChatGPT 账号。团队项目要确认当前 workspace 或组织权限是否能访问 Codex。</p></article>
+        <article class="card span-4"><h3>仓库准备</h3><p>本地仓库最好已有 README、测试命令和 <code>AGENTS.md</code>。没有也能用，但 Codex 更容易猜错边界。</p></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <p class="section-kicker">Install flow</p>
+          <h2>安装到第一个任务</h2>
+        </div>
+        <p>下面是建议的首次使用顺序。你可以把它当作安装后的检查单。</p>
+      </div>
+      <figure class="figure-card mermaid-card">
+        <div class="mermaid">
+flowchart LR
+  A["打开官方 Codex App 页面"] --> B["按页面提示安装或打开 Desktop"]
+  B --> C["登录正确账号 / workspace"]
+  C --> D["打开本地仓库或任务线程"]
+  D --> E["让 Codex 先读 AGENTS.md"]
+  E --> F["执行一个小任务"]
+  F --> G["检查 diff / 终端验证 / 页面结果"]
+        </div>
+        <figcaption>首次使用不要直接给大任务。先用一个可验证的小任务确认账号、仓库、权限和验证闭环都正常。</figcaption>
+      </figure>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <p class="section-kicker">First task</p>
+          <h2>第一个任务怎么写</h2>
+        </div>
+        <p>第一个任务应该是只读或小改动任务，用来确认 Codex 能读仓库、能理解规则、能运行验证，而不是一上来让它重构整个项目。</p>
+      </div>
+      <div class="bento">
+        <article class="card span-6"><h3>只读入门</h3><pre><code>我刚安装 Codex Desktop，正在打开这个仓库：
+/path/to/repo
+
+请先只读分析：
+- 读取 AGENTS.md 和 README
+- 找到测试命令和主要入口
+- 解释这个仓库适合怎样让 Codex 协作
+
+不要改文件。</code></pre></article>
+        <article class="card span-6"><h3>小改动入门</h3><pre><code>请做一个小范围文档修改：
+- 先读 AGENTS.md
+- 只改 README 的安装说明
+- 改动前告诉我计划
+- 完成后运行最窄检查
+- 最终说明 diff 和未验证项</code></pre></article>
+        <article class="card span-12 dark-card"><h3>第一次不要这样写</h3><p>不要写“帮我优化整个项目”“你自己看着办”“把所有问题都修了”。这些请求范围太大，无法判断 Codex 是否真的理解了仓库和你的验收标准。</p></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <p class="section-kicker">Approvals</p>
+          <h2>看到权限请求时怎么判断</h2>
+        </div>
+        <p>Desktop 的一个优势是你能看到 Codex 为什么要申请某个动作。批准前重点看三点：动作是否必要、会影响哪里、完成后怎么验证。</p>
+      </div>
+      <div class="steps">
+        <article class="step"><h3>本地服务</h3><p>比如启动 <code>python3 -m http.server</code> 检查静态页面。通常合理，但要确认只绑定本机地址。</p></article>
+        <article class="step"><h3>联网查询</h3><p>比如读取官方文档或 GitHub Pages 状态。要求 Codex 说明来源和是否只读。</p></article>
+        <article class="step"><h3>安装依赖</h3><p>要确认依赖来源、版本和是否会改 lockfile。文档任务通常不应随便安装新依赖。</p></article>
+        <article class="step"><h3>Git push</h3><p>这是外部写操作。批准前应已经完成本地检查，并知道要推送哪个分支。</p></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="content-block">
+        <p class="section-kicker">Real example</p>
+        <h2>真实实例：本指南的 Desktop 安装页</h2>
+        <p>这次新增页面时，Codex 先用 <code>goal-entry</code> 确认任务是可执行网站更新，再读取仓库规则和页面结构。因为安装细节可能随官方页面变化，本页只给官方入口和稳定的首次使用流程，不硬编码第三方下载地址。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p><strong>安装 Codex Desktop</strong><br>安装后先跑通一个小任务，再进入完整 Desktop workflow。</p>
+    <a class="button" href="desktop-cli.html">下一页：桌面版怎么用</a>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script src="assets/site.js"></script>
+</body>
+</html>

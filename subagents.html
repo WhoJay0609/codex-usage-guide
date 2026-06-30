@@ -2,10 +2,19 @@
 <html lang="zh-CN">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Subagents</title><link rel="stylesheet" href="assets/site.css"></head>
 <body>
-  <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a><nav class="nav"><a data-nav href="index.html">首页</a><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a><a data-nav href="workflows.html">任务</a><a data-nav href="resources.html">资料</a></nav></div></header>
+  <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a><nav class="nav"><a data-nav href="index.html">首页</a><a data-nav href="codex.html">Codex</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a><a data-nav href="workflows.html">任务</a><a data-nav href="resources.html">资料</a></nav></div></header>
   <main><section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Concept</p><h1>Subagents</h1><p class="lead">Subagent 的价值不是“看起来并行”，而是隔离上下文、分离职责、让主线程保持整合和最终判断。</p></div></section>
     <div class="doc-layout"><aside class="side-nav"><strong>本页</strong><a href="#what">它是什么</a><a href="#when">什么时候用</a><a href="#examples">可复制示例</a></aside><article class="doc-content">
-      <section class="content-block" id="what"><p class="section-kicker">What</p><h2>它是什么</h2><p>Subagent 是被分配明确子任务的代理。它可以做只读调查、审查、并行测试或互不重叠的实现切片。</p><figure class="figure-card"><img src="figures/goal-subagent-flow.png" alt="Goal 生命周期中主线程和 subagent 的分工流程"><figcaption>Subagent 只负责边界清晰的子任务；主线程保留目标、取舍和最终验收。</figcaption></figure></section>
+      <section class="content-block" id="what"><p class="section-kicker">What</p><h2>它是什么</h2><p>Subagent 是被分配明确子任务的代理。它可以做只读调查、审查、并行测试或互不重叠的实现切片。</p><figure class="figure-card mermaid-card"><div class="mermaid">
+flowchart LR
+  A["主线程定义目标"] --> B["Agent A: 只读审查"]
+  A --> C["Agent B: 测试缺口"]
+  A --> D["Agent C: 文档/可维护性"]
+  B --> E["主线程整合"]
+  C --> E
+  D --> E
+  E --> F["统一验证和最终判断"]
+      </div><figcaption>Subagent 只负责边界清晰的子任务；主线程保留目标、取舍和最终验收。</figcaption></figure></section>
       <section class="content-block" id="when"><p class="section-kicker">When</p><h2>什么时候用 / 不用</h2><ul class="mini-list"><li><strong>适合</strong><span>只读审查、并行资料检索、互不重叠的测试、独立实现切片。</span></li><li><strong>不适合</strong><span>共享同一文件的高频编辑、需要实时产品判断、权限边界不清的外部操作。</span></li><li><strong>主线程责任</strong><span>整合结果、处理冲突、决定最终方案、给用户报告证据。</span></li></ul></section>
       <section class="content-block" id="examples"><p class="section-kicker">Examples</p><h2>可复制示例</h2><pre><code>请用并行 subagents 审查当前分支。
 Agent 1: security risks，只读，不改文件。
@@ -31,5 +40,6 @@ Agent C: 只读检查链接、图片、GitHub Pages 发布状态。
 - 选择要改的页面
 - 统一验证和发布</code></pre></section>
     </article></div>
-  </main><footer class="footer"><p><strong>Codex 使用指南</strong></p><a class="button" href="goal.html">下一页：Goal</a></footer><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script><script src="assets/site.js"></script>
+  </main><footer class="footer"><p><strong>Codex 使用指南</strong></p><a class="button" href="goal.html">下一页：Goal</a></footer><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script src="assets/site.js"></script>
 </body></html>

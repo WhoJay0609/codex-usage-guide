@@ -13,7 +13,7 @@
       <a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a>
       <nav class="nav">
         <a data-nav href="index.html">首页</a>
-        <a data-nav href="codex.html">Codex</a>
+        <a data-nav href="codex.html">Codex</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a>
         <a data-nav href="permissions.html">权限</a>
         <a data-nav href="agents-md.html">AGENTS.md</a>
         <a data-nav href="skills.html">Skills</a>
@@ -71,10 +71,10 @@
         <p>这些文件帮助维护者理解为什么这样组织内容，也能作为读者进一步学习的索引。</p>
       </div>
       <div class="bento">
+        <a class="source-card span-3" href="install-desktop.html"><h3>安装页</h3><p>Codex Desktop 安装、登录和首次任务。</p></a>
         <a class="source-card span-3" href="README.md"><h3>README</h3><p>仓库结构和发布方式。</p></a>
         <a class="source-card span-3" href="CONTEXT.md"><h3>CONTEXT</h3><p>术语表和概念边界。</p></a>
-        <a class="source-card span-3" href="figures/beginner-quickstart.md"><h3>入门流程图</h3><p>从任务输入到验收的最小闭环。</p></a>
-        <a class="source-card span-3" href="figures/goal-subagent-flow.md"><h3>Goal / Subagent 图</h3><p>长任务拆分和收口。</p></a>
+        <a class="source-card span-3" href="figures/beginner-quickstart.md"><h3>历史流程图</h3><p>旧版 PNG 图的 Mermaid 源文件仍保留。</p></a>
         <a class="source-card span-12 dark-card" href="https://github.com/WhoJay0609/codex-goal-entry"><h3>goal-entry 独立仓库</h3><p><code>goal-entry</code> 是本机维护的 Goal 路由示例，不是 OpenAI 官方内置功能。它展示如何把目标识别、preflight、dispatch 和 closeout 组织成可复用协议。</p></a>
       </div>
     </section>
@@ -100,6 +100,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
   <script src="assets/site.js"></script>
 </body>
 </html>

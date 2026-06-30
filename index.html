@@ -14,6 +14,8 @@
       <nav class="nav" aria-label="页面导航">
         <a data-nav href="index.html">首页</a>
         <a data-nav href="codex.html">Codex</a>
+        <a data-nav href="install-desktop.html">安装</a>
+        <a data-nav href="desktop-cli.html">Desktop</a>
         <a data-nav href="permissions.html">权限</a>
         <a data-nav href="agents-md.html">AGENTS.md</a>
         <a data-nav href="skills.html">Skills</a>
@@ -38,8 +40,15 @@
           <a class="button" href="resources.html">查看资料来源</a>
         </div>
       </div>
-      <div class="hero-visual" aria-label="Codex 入门流程图">
-        <img src="figures/beginner-quickstart.png" alt="从任务输入、上下文读取、权限确认到验证收口的 Codex 入门流程">
+      <div class="hero-visual mermaid-card" aria-label="Codex Desktop 入门流程图">
+        <div class="mermaid">
+flowchart LR
+  A["安装 / 打开 Desktop"] --> B["开任务线程"]
+  B --> C["给 URL / 仓库 / 截图"]
+  C --> D["读 AGENTS.md"]
+  D --> E["小范围执行"]
+  E --> F["验证 / diff / 发布"]
+        </div>
       </div>
     </section>
 
@@ -71,6 +80,7 @@
         <p>任务页按读者要完成的事情组织，不按术语组织。需要 Subagent 或 Goal 时，会在对应任务里自然解释。</p>
       </div>
       <div class="bento">
+        <a class="source-card span-4" href="install-desktop.html"><h3>安装 Codex Desktop</h3><p>官方入口、登录、打开仓库和第一个任务。</p></a>
         <a class="source-card span-4" href="desktop-cli.html"><h3>Codex Desktop 操作</h3><p>线程、浏览器反馈、权限审批、diff、发布验证。</p></a>
         <a class="source-card span-4" href="daily-workflow.html"><h3>日常小任务</h3><p>读代码、修 bug、跑测试、看 diff、报告风险。</p></a>
         <a class="source-card span-4" href="engineering.html"><h3>工程 flow</h3><p>grill -> PRD -> issues -> implementation -> review。</p></a>
@@ -104,6 +114,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
   <script src="assets/site.js"></script>
 </body>
 </html>
