@@ -21,6 +21,15 @@ Agent C: 查文档、命名和可维护性。
 Agent A: 只改 docs 页面，不碰 CSS。
 Agent B: 只改 CSS responsive，不碰内容。
 主线程最后统一跑静态检查和页面访问。</code></pre></article><article class="card span-6 dark-card"><h3>不推荐：共享核心文件</h3><p>不要让多个 subagent 同时改同一个状态管理文件、同一个数据库 schema、同一个 API contract。冲突成本高，主线程很难判断谁对。</p></article><article class="card span-6 dark-card"><h3>不推荐：外部写操作</h3><p>不要让 subagent 独立创建 release、改生产配置、推送分支或调用有副作用的 MCP。外部写操作应由主线程显式确认。</p></article></div></section>
+      <section class="content-block"><p class="section-kicker">Real example</p><h2>真实实例：如何拆这份手册的审查任务</h2><p>如果要用 subagents 审查这份手册，最合理的拆法是只读并行审查，而不是让多个代理同时改 HTML。比如一个代理检查新手可读性，一个代理检查 Goal/Subagent/Skills 的进阶准确性，一个代理检查链接和发布验证。主线程最后整合结论并决定改哪些页面。</p><pre><code>真实可用拆分：
+Agent A: 只读审查 daily-workflow 是否适合零基础用户。
+Agent B: 只读审查 Goal/Subagents/Skills 是否有边界和反例。
+Agent C: 只读检查链接、图片、GitHub Pages 发布状态。
+
+主线程：
+- 去重 findings
+- 选择要改的页面
+- 统一验证和发布</code></pre></section>
     </article></div>
   </main><footer class="footer"><p><strong>Codex 使用指南</strong></p><a class="button" href="goal.html">下一页：Goal</a></footer><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script><script src="assets/site.js"></script>
 </body></html>

@@ -82,6 +82,20 @@
         <article class="card span-6"><h3>不要拆</h3><ul class="mini-list"><li><strong>同一核心文件</strong><span>多个代理同时改状态管理、schema、API contract。</span></li><li><strong>架构判断</strong><span>模块边界、公开接口、迁移策略应由主线程整合。</span></li><li><strong>外部写入</strong><span>发布、推送、评论、生产配置不交给 subagent 独立执行。</span></li></ul></article>
       </div>
     </section>
+
+    <section class="section">
+      <div class="section-head"><div class="section-title"><p class="section-kicker">Real example</p><h2>真实实例：把这份指南扩成实战手册</h2></div><p>这次任务就是一个小型工程 flow：用户先指出内容太少，然后要求每个内容都有真实实例。Codex 没有直接“随便加文字”，而是读取项目规则、确认目标、分批修改页面、运行静态检查、提交推送并验证 Pages。</p></div>
+      <div class="bento">
+        <article class="card span-4"><h3>Grill 结果</h3><p>定位为“中文 Codex 实战手册”，不是官方文档镜像；进阶内容也要写详细。</p></article>
+        <article class="card span-4"><h3>实现切片</h3><p>先扩 <code>daily-workflow</code>，再扩 Goal/Subagents/Skills/AGENTS/MCP，最后补工程、学术、自动化和 goal-entry。</p></article>
+        <article class="card span-4"><h3>验收证据</h3><p><code>git diff --check</code>、本地链接检查、本地 HTTP 服务抽样、GitHub Pages built、公开 HTML 抽样。</p></article>
+        <article class="card span-12"><pre><code>真实工程任务模板：
+目标：给每个主要页面加入真实实例。
+范围：HTML 内容和必要样式；不维护 PDF。
+验证：本地静态站点 + 公开 Pages 抽样。
+交付：commit、push、Pages built。</code></pre></article>
+      </div>
+    </section>
   </main>
   <footer class="footer"><p><strong>任务路径</strong><br>工程 flow 的核心是小步、证据、可 review。</p><a class="button" href="research.html">下一页：学术 flow</a></footer>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>

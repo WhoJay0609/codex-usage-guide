@@ -169,6 +169,22 @@
         <article class="card span-4"><h3>任务变长了</h3><p>如果超过一个短回合、需要多个阶段或要发布，转入 <a href="goal.html">Goal</a>；如果能拆并行调查，再看 <a href="subagents.html">Subagents</a>。</p></article>
       </div>
     </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <p class="section-kicker">Real example</p>
+          <h2>真实实例：把短页面扩成日常任务手册</h2>
+        </div>
+        <p>这次 <code>daily-workflow.html</code> 原本只有几十个词。用户指出“内容太少”，Codex 按日常任务闭环完成了读上下文、改页面、验证和发布。</p>
+      </div>
+      <div class="bento">
+        <article class="card span-3"><h3>输入</h3><p>用户要求把指南定位成“中文 Codex 实战手册”，并让可选进阶内容也写详细。</p></article>
+        <article class="card span-3"><h3>上下文</h3><p>Codex 读取 <code>AGENTS.md</code>、当前 HTML 页面、公开 Codex 文档和本地 skill 说明。</p></article>
+        <article class="card span-3"><h3>执行</h3><p>重写日常任务页，加入五类高频任务、好坏 prompt、验收证据、常见失败和 closeout 模板。</p></article>
+        <article class="card span-3"><h3>验证</h3><p>运行 <code>git diff --check</code>、本地静态服务和公开页面抽样，确认关键标题出现在 HTML 中。</p></article>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">

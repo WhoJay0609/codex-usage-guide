@@ -37,3 +37,56 @@ The web page is the canonical public artifact.
 
 Update this section manually or with the local goal-context tooling if project
 structure changes materially.
+
+<!-- goal-context:path-index:start -->
+## Path Index
+
+- Generated: 2026-06-30T10:17:26Z
+- Max depth: 4
+- Max items per section: 40
+
+### Start Here
+
+- `.` - requested target path
+- `AGENTS.md` - agent instructions for this scope
+- `README.md` - project overview and setup notes
+- `Makefile` - project manifest or command/dependency entry
+
+### AGENTS Files
+
+- `AGENTS.md` - agent instructions for this scope
+
+### Workspace Units
+
+- `.` - workspace unit containing Makefile
+
+### Commands And Manifests
+
+- `Makefile` - project manifest or command/dependency entry
+
+### Source Roots
+
+- `assets` - contains source/config files
+
+### Docs
+
+- `README.md` - project overview and setup notes
+- `doc` - harness task workspace and durable task notes
+- `doc/findings.md` - harness task workspace and durable task notes
+- `doc/lessons.md` - harness task workspace and durable task notes
+- `doc/progress.md` - harness task workspace and durable task notes
+- `doc/task_issue.md` - harness task workspace and durable task notes
+- `doc/task_plan.md` - harness task workspace and durable task notes
+- `docs` - project documentation
+- `docs/adr` - project documentation
+- `docs/adr/0001-dual-track-chinese-latex-guide.md` - project documentation
+
+### Task Docs
+
+- `doc/task_plan.md` - required task process doc
+- `doc/progress.md` - required task process doc
+- `doc/findings.md` - required task process doc
+- `doc/task_issue.md` - required task process doc
+- `doc/lessons.md` - required task process doc
+
+<!-- goal-context:path-index:end -->

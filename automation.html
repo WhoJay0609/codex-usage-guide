@@ -73,6 +73,20 @@ Stop:
 - unsafe permission request</code></pre></article>
       </div>
     </section>
+
+    <section class="section">
+      <div class="section-head"><div class="section-title"><p class="section-kicker">Real example</p><h2>真实实例：自动检查网页链接和关键标题</h2></div><p>这份手册每次修改后，都可以把“本地链接检查 + 公开页面关键标题抽样”沉淀为自动化。它适合自动化，因为输入稳定、输出可验、失败能安全停止。</p></div>
+      <div class="bento">
+        <article class="card span-6"><h3>本地检查</h3><pre><code>检查所有本地 href/src：
+- 提取 *.html 中的 href 和 src
+- 忽略 http/https 外部链接
+- 对本地路径运行 test -e
+- 如果缺文件，立即失败</code></pre></article>
+        <article class="card span-6"><h3>公开页面抽样</h3><pre><code>curl -sL /daily-workflow.html | rg "五类高频日常任务"
+curl -sL /goal-entry.html | rg "架构和处理流程"
+curl -sL /automation.html | rg "自动化安全阀"</code></pre></article>
+      </div>
+    </section>
   </main>
   <footer class="footer"><p><strong>任务路径</strong><br>自动化是稳定流程的后一步，不是替代需求澄清的捷径。</p><a class="button" href="goal-entry.html">下一页：goal-entry</a></footer>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>

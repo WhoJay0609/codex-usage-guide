@@ -36,6 +36,11 @@ Output:
 - Findings first.
 - Then open questions.
 - Then verification gaps.</code></pre></section>
+      <section class="content-block"><p class="section-kicker">Real example</p><h2>真实实例：本次使用 goal-entry skill</h2><p>用户明确调用 <code>[$goal-entry]</code> 后，Codex 先读取 <code>goal-entry/SKILL.md</code>，再运行 resolver。中文请求一开始被 resolver 误判为 <code>report_only</code>，随后用等价英文执行意图重新路由，得到 <code>execute_goal</code> 和 <code>ready=true</code>，才继续修改网页。这说明 skill 的价值不只是“提示词更长”，而是强制执行路由、preflight 和停止条件。</p><pre><code>真实中间结果：
+request_mode: execute_goal
+goal_entry_tier: standard_superpowers
+readiness_gate: passed
+preflight ready: true</code></pre></section>
     </article></div>
   </main><footer class="footer"><p><strong>Codex 使用指南</strong></p><a class="button" href="mcp.html">下一页：MCP</a></footer><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script><script src="assets/site.js"></script>
 </body></html>

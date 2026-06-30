@@ -24,6 +24,14 @@
 - 是否需要本地复现
 
 如果权限不足或数据不完整，请停止并说明缺口。</code></pre></section>
+      <section class="content-block"><p class="section-kicker">Real example</p><h2>真实实例：只读核对 Pages 状态</h2><p>本指南每次推送后，Codex 用 GitHub API 查询 <code>codex-usage-guide</code> 的 Pages 状态，再用公开 URL 抓取关键章节标题。这是一个典型 MCP/GitHub 工具场景：需要外部实时状态，但只读即可完成，不需要创建 issue、评论或修改仓库设置。</p><pre><code>真实验证目标：
+- gh api repos/WhoJay0609/codex-usage-guide/pages
+- curl 公开页面 HTML
+
+验收证据：
+- Pages status: built
+- daily-workflow.html 包含“五类高频日常任务”
+- goal-entry.html 包含“架构和处理流程”</code></pre></section>
     </article></div>
   </main><footer class="footer"><p><strong>Codex 使用指南</strong></p><a class="button" href="subagents.html">下一页：Subagents</a></footer><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script><script src="assets/site.js"></script>
 </body></html>

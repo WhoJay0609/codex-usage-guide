@@ -31,6 +31,12 @@ Risk:
 Verification:
 - 成功后如何证明结果有效？</code></pre></section>
       <section class="content-block"><p class="section-kicker">Secrets</p><h2>Secret 和生产数据规则</h2><p>不要让 Codex 读取、复制、总结或提交 secret。即使只是“看一眼配置”，也要先确认文件是否可能包含 token、证书、cookie、数据库密码或生产数据。需要使用密钥时，优先让用户在受控环境中配置，不要把密钥写进聊天、网页或仓库。</p></section>
+      <section class="content-block"><p class="section-kicker">Real example</p><h2>真实实例：验证 GitHub Pages 发布</h2><p>这份手册发布后，Codex 需要确认线上页面是否已经更新。这个动作需要网络访问，但不需要写外部系统，所以适合申请只读网络权限：先查 Pages 状态，再用 <code>curl</code> 抓取公开 HTML 中的关键标题。</p><pre><code>申请权限理由：
+Action: gh api repos/WhoJay0609/codex-usage-guide/pages
+Reason: 确认 GitHub Pages 是否 built
+Scope: 只读 GitHub Pages 状态
+Risk: 无写入；失败时只报告无法验证
+Verification: 页面返回 built，公开 HTML 包含新章节标题</code></pre></section>
     </article></div>
   </main><footer class="footer"><p><strong>Codex 使用指南</strong></p><a class="button" href="agents-md.html">下一页：AGENTS.md</a></footer><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script><script src="assets/site.js"></script>
 </body></html>

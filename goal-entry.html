@@ -74,6 +74,22 @@
         <article class="card span-6"><h3>迁移建议</h3><p>迁移到其它机器时，先确认 skill 文件、resolver 脚本、子 skill、验证脚本和仓库路径是否存在，再使用同名 prompt。</p></article>
       </div>
     </section>
+
+    <section class="section">
+      <div class="section-head"><div class="section-title"><p class="section-kicker">Real example</p><h2>真实实例：本次 goal-entry 路由结果</h2></div><p>这次用户调用 <code>[$goal-entry]</code> 要求“每个内容都加一个真实实例”。中文请求第一次被 resolver 判成 <code>report_only</code>，说明本机路由器对中文执行意图还不够敏感；随后用等价英文执行请求重新路由，得到 <code>execute_goal</code> 和 <code>ready=true</code>，才开始修改页面。</p></div>
+      <div class="bento">
+        <article class="card span-6 dark-card"><h3>resolver 中间结果</h3><pre><code>request_mode: execute_goal
+goal_action: create_goal
+goal_entry_tier: standard_superpowers
+readiness_gate.status: passed
+subagent_execution_mode: superpowers_subagents</code></pre></article>
+        <article class="card span-6"><h3>preflight 中间结果</h3><pre><code>ready: true
+repo_bound: true
+context_required: true
+artifact_run_required: true
+blockers: []</code></pre></article>
+      </div>
+    </section>
   </main>
   <footer class="footer"><p><strong>本机扩展</strong><br>goal-entry 展示的是一套 Goal 入口设计模式。</p><a class="button" href="https://github.com/WhoJay0609/codex-goal-entry">查看公开仓库</a></footer>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
