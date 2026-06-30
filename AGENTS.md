@@ -2,9 +2,8 @@
 
 ## Repository Purpose
 
-This repository contains a Chinese-first LaTeX guide for using Codex. The guide
-must work as a GitHub-publishable usage-guide repository and as a local PDF
-source project.
+This repository contains a Chinese-first GitHub Pages guide for using Codex.
+The web page is the canonical public artifact.
 
 ## Editing Rules
 
@@ -16,23 +15,23 @@ source project.
   section of the guide.
 - Do not publish internal task process docs under `doc/`; they are local
   execution records.
+- Do not make PDF generation part of the default completion contract unless the
+  user explicitly asks for a PDF.
 
 ## Build And Verification
 
-- Build with `make pdf`.
-- The generated PDF is `build/codex-usage-guide.pdf`.
 - Before claiming completion, verify:
-  - `make pdf` succeeds.
-  - CJK fonts in the PDF have Unicode maps, for example with `pdffonts`.
-  - Chinese text can be extracted, for example with `pdftotext`.
-  - Important section placement still matches the intended reading flow.
+  - `index.html` contains the requested Chinese content and links.
+  - Important anchors referenced by the sidebar exist.
+  - GitHub Pages has been pushed and, when network access is available,
+    the published page returns the updated HTML.
 
 ## Documentation Boundaries
 
-- `README.md` is the GitHub landing page.
+- `index.html` is the GitHub Pages guide and canonical public artifact.
+- `README.md` is the repository landing page.
 - `CONTEXT.md` is the domain glossary.
 - `docs/adr/` stores durable documentation decisions.
-- `src/main.tex` is the canonical guide content.
 
 ## Path Index
 

@@ -11,6 +11,7 @@
 - **Beginner Quickstart Loop**: the smallest reliable Codex loop for zero-background users: open project, write a four-part request, let Codex read context, execute narrowly, verify, and review evidence.
 - **Advanced Track**: the path that emphasizes Goal design, subagent delegation contracts, `AGENTS.md` reuse, skills, and evidence-based closeout.
 - **GitHub Publication Boundary**: the repository stance that source files and documentation are published while generated build artifacts are ignored or released separately.
+- **Web-First Guide**: the current publication stance that `index.html` on GitHub Pages is the canonical public guide, while PDF generation is not part of the default workflow.
 - **Engineering Advanced Track**: the path grounded in the Matt Pocock skills flow: `ask-matt`, `grill-me`, `grill-with-docs`, `to-prd`, `to-issues`, `implement`, and review.
 - **Academic Automation Track**: the path grounded in installed research skills: `academic-research-suite`, `ask-research`, and `research-grill-me`.
 - **Skill**: a local instruction package with a `SKILL.md` entry point that changes how Codex should approach a class of tasks.
@@ -24,7 +25,7 @@
 - **Local Goal Implementation Mapping**: the final report section that maps the generic Goal/Subagent model to the installed `goal-entry` router and its child skills.
 - **Standalone Goal Entry Repository**: the public `codex-goal-entry` repository that packages `goal-entry`, its resolver, architecture note, and standalone validator.
 - **Self-Written Skill Note**: the explicit warning that some mentioned skills are local, self-written, or locally maintained extensions rather than OpenAI official built-ins.
-- **Mermaid Figure Source**: the `figures/*.mmd` source files used to create visual flow diagrams for GitHub preview and PDF embedding.
+- **Mermaid Figure Source**: the `figures/*.mmd` source files used to create visual flow diagrams for GitHub preview and web rendering.
 - **Matt Pocock Skills Flow**: engineering flow for idea sharpening, PRD/issue decomposition, implementation, and review.
 - **Research Pipeline**: end-to-end academic automation skill family for idea discovery, implementation, experiment deployment, auto-review-loop, narrative handoff, and optional paper writing.
 - **Research Dossier**: durable research-state document maintained by research workflows such as `research-grill-me`.
