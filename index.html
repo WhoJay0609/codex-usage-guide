@@ -420,11 +420,11 @@
         <li><a href="#goal">Goal 模式</a></li>
         <li><a href="#subagent">Subagent 模式</a></li>
         <li><a href="#agents">AGENTS.md</a></li>
-        <li><a href="#goal-entry">goal-entry 场景</a></li>
       </ul>
 
       <div class="nav-section">场景</div>
       <ul class="nav-list">
+        <li><a href="#goal-entry">goal-entry 场景</a></li>
         <li><a href="#engineering">工程 skills</a></li>
         <li><a href="#research">学术 skills</a></li>
         <li><a href="#local-skills">本机扩展备注</a></li>
@@ -628,26 +628,134 @@ Before claiming completion, report:
         <section class="section" id="goal-entry">
           <div class="section-header">
             <div>
-              <p class="section-kicker">Goal router</p>
-              <h2><code>goal-entry</code> 具体怎么用</h2>
+              <p class="section-kicker">Scenario · Goal router</p>
+              <h2>场景：用 <code>goal-entry</code> 启动复杂任务</h2>
             </div>
             <a class="jump" href="#top">回到顶部</a>
           </div>
-          <p><code>goal-entry</code> 是本机 Goal 工作流的 router-only 入口。它不直接完成任务，而是先判断请求属于 <code>report_only</code>、<code>plan_only</code>、<code>execute_goal</code> 还是 <code>active_goal_bind</code>，再决定是否进入 preflight、objective、context、dispatch 和 closeout。</p>
+          <p><code>goal-entry</code> 是本机维护的 Goal 工作流入口，不是 OpenAI 官方内置 skill。它的定位是 router-only：先把用户请求分类，再决定是否创建 Goal、绑定已有 Goal、只做计划、只做报告，或进入 repo-bound 的执行链路。这样做的核心价值是避免长任务一上来就误执行、误建 Goal、误派 subagent，或者跳过验收和 closeout。</p>
           <div class="cards">
             <a class="card card-link" href="https://github.com/WhoJay0609/codex-goal-entry">
               <h3>公开仓库</h3>
               <p><code>codex-goal-entry</code> 已单独发布，包含 <code>SKILL.md</code>、resolver、架构说明和 standalone validator。</p>
             </a>
             <article class="card">
-              <h3>适合场景</h3>
-              <p>跨仓库发布、长流程执行、需要 readiness gate、需要 subagent 边界或需要 closeout 的任务。</p>
+              <h3>使用时机</h3>
+              <p>跨仓库发布、长流程执行、多阶段研究、需要 readiness gate、需要 subagent 边界、需要 artifact 和 closeout 的任务。</p>
             </article>
             <article class="card">
-              <h3>不适合场景</h3>
-              <p>简单问答、单文件小改、纯 review、用户明确要求只讨论不执行。</p>
+              <h3>不该使用</h3>
+              <p>简单问答、单文件小改、纯 review、一次性命令、用户明确说“只讨论，不执行”的场景。</p>
             </article>
           </div>
+
+          <h3>架构：一个薄入口，多层内部合同</h3>
+          <p><code>goal-entry</code> 自己不承载全部策略。它只负责稳定入口和路由，真正的执行约束分散到 child skills 和脚本里，这样入口不会越来越重，也方便单独验证每一层。</p>
+          <div class="cards">
+            <article class="card">
+              <h3>Public entry</h3>
+              <p><code>goal-entry/SKILL.md</code> 是用户看到的唯一入口。旧的 <code>harness-agent-for-goal</code>、<code>harness-agent</code> 等仍保留兼容，但不再鼓励直接作为新入口。</p>
+            </article>
+            <article class="card">
+              <h3>Resolver</h3>
+              <p><code>scripts/resolve_goal_entry.py</code> 先产出 <code>request_mode</code>、<code>goal_entry_tier</code>、<code>goal_action</code>、dispatch level 和 readiness 状态。</p>
+            </article>
+            <article class="card">
+              <h3>Preflight gate</h3>
+              <p><code>goal-preflight</code> 在 <code>execute_goal</code> 或 <code>active_goal_bind</code> 前运行。未 ready 时停止，不创建 Goal，不编辑文件，不派 subagent。</p>
+            </article>
+            <article class="card">
+              <h3>Objective contract</h3>
+              <p><code>goal-objective</code> 负责把目标压成可执行合同：成功标准、验收标准、停止条件都要保留，且 compact objective 不能超过 4,000 字符。</p>
+            </article>
+            <article class="card">
+              <h3>Context contract</h3>
+              <p><code>goal-context</code> 负责 repo-bound 上下文，包括 <code>AGENTS.md</code> 指令链、路径索引、可编辑范围和必要 artifact 目录。</p>
+            </article>
+            <article class="card">
+              <h3>Dispatch &amp; closeout</h3>
+              <p><code>goal-dispatch</code>、<code>goal-team</code>、<code>goal-backend</code>、<code>goal-trace</code>、<code>goal-close</code> 负责团队、运行记录、证据和完成收口。</p>
+            </article>
+          </div>
+
+          <pre><code>用户请求
+  -> goal-entry/SKILL.md
+  -> resolve_goal_entry.py
+     -> report_only        只回答，不建 Goal
+     -> plan_only          只规划，读 goal-plan
+     -> execute_goal       先 preflight，再 objective/context/dispatch/backend
+     -> active_goal_bind   绑定已有 Goal，先 preflight，再继续执行
+  -> goal-preflight
+     -> ready=false        停止并报告 blockers
+     -> ready=true         才允许创建/绑定 Goal 和执行
+  -> goal-trace + goal-close
+     -> 用证据关闭，而不是只说“完成”</code></pre>
+
+          <h3>实际执行 flow</h3>
+          <div class="steps">
+            <article class="step">
+              <h3>Step 1: 分类请求</h3>
+              <p>先用 resolver 判断请求是 <code>report_only</code>、<code>plan_only</code>、<code>execute_goal</code> 还是 <code>active_goal_bind</code>。分类结果优先于手写判断。</p>
+            </article>
+            <article class="step">
+              <h3>Step 2: plan-only 只规划</h3>
+              <p>如果用户只是要方案、边界、问题确认或架构讨论，读取 <code>goal-plan</code>，不要创建 Goal，也不要开始改文件。</p>
+            </article>
+            <article class="step">
+              <h3>Step 3: 执行前 preflight</h3>
+              <p>执行类请求必须先跑 <code>goal-preflight</code>。常见 hard blockers：目标超过 4,000 字符、缺少 repo/path、上下文要求停止、readiness 未通过。</p>
+            </article>
+            <article class="step">
+              <h3>Step 4: 写完整 Goal</h3>
+              <p>Goal 里必须有 objective、scope、out of scope、success criteria、acceptance criteria、validation 和 stop conditions。</p>
+            </article>
+            <article class="step">
+              <h3>Step 5: 装载项目上下文</h3>
+              <p>repo-bound 任务读取 <code>AGENTS.md</code>、生成或使用路径索引、确认敏感文件和编辑边界，再决定是否需要 artifact run。</p>
+            </article>
+            <article class="step">
+              <h3>Step 6: 组建团队</h3>
+              <p>只有当任务能拆出独立工作时才派 subagent。subagent 不能调用 <code>get_goal</code>、<code>create_goal</code>、<code>update_goal</code>，也不能拿到 <code>goal-*</code> 协议 skill。</p>
+            </article>
+            <article class="step">
+              <h3>Step 7: 执行并留痕</h3>
+              <p>执行过程要产生 artifact、命令、日志、diff、测试或发布证据。复杂运行使用 backend/trace 记录，而不是只靠聊天总结。</p>
+            </article>
+            <article class="step">
+              <h3>Step 8: closeout</h3>
+              <p>结束前读取 <code>goal-trace</code> 和 <code>goal-close</code>，确认验收、验证、剩余风险、子进程清理和最终状态。</p>
+            </article>
+          </div>
+
+          <h3>希望达成的功能</h3>
+          <div class="cards">
+            <article class="card">
+              <h3>防止误执行</h3>
+              <p>用户只是要讨论时，不自动进入实现；用户要执行时，也先过 readiness gate。</p>
+            </article>
+            <article class="card">
+              <h3>防止空泛 Goal</h3>
+              <p>Goal 不只是标题，要包含成功标准、验收标准、验证命令、停止条件和范围边界。</p>
+            </article>
+            <article class="card">
+              <h3>让 subagent 可控</h3>
+              <p>主线程保留 Goal 权限和最终判断，subagent 只做明确范围内的调查、实现或验证。</p>
+            </article>
+            <article class="card">
+              <h3>让 repo 上下文稳定</h3>
+              <p>通过 <code>AGENTS.md</code>、路径索引和 artifact 约定，让 Codex 不靠猜测理解项目结构。</p>
+            </article>
+            <article class="card">
+              <h3>让完成可验证</h3>
+              <p>closeout 必须带证据：改动、测试、构建、日志、线上链接、失败项和剩余风险。</p>
+            </article>
+            <article class="card">
+              <h3>让 skill 可发布</h3>
+              <p>通过 standalone 仓库、validator 和架构文档，让其它用户能理解、安装和二次维护。</p>
+            </article>
+          </div>
+
+          <h3>可复制提示词</h3>
           <pre><code>[$goal-entry]
 执行：创建 goal-entry 的公开仓库，推送到 GitHub；
 然后更新 codex-usage-guide，在介绍 goal-entry 时链接新仓库。
@@ -657,6 +765,15 @@ Before claiming completion, report:
 - resolver quick_validate 通过；
 - codex-usage-guide 的 GitHub Pages 已更新；
 - 最终报告链接、提交 hash 和验证结果。</code></pre>
+          <pre><code>[$goal-entry]
+只做计划，不执行：
+我想把一个研究项目从 idea 推到 workshop submission。
+请先判断是否需要 Goal、需要哪些 artifact、哪些阶段必须人工确认。
+不要创建 Goal，不要改文件，先给我边界问题和推荐 flow。</code></pre>
+          <pre><code>[$goal-entry]
+绑定当前 active Goal 继续执行：
+目标不变。请先做 preflight，确认 repo/path、AGENTS.md、剩余任务和 stop conditions。
+如果 ready=false，直接报告 blockers；如果 ready=true，再继续下一步实现。</code></pre>
           <div class="callout ok">
             <strong>使用原则：</strong>先分类，再执行。不要让 subagent 创建、更新或关闭 Goal；不要跳过 readiness gate。
           </div>
