@@ -1,0 +1,23 @@
+# Beginner Quickstart
+
+This diagram shows the smallest reliable loop for a zero-background Codex user.
+
+```mermaid
+flowchart TD
+  open["Open Codex app<br/>select the project folder"]
+  ask["Write a four-part request<br/>goal / scope / constraints / validation"]
+  inspect["Codex reads context<br/>AGENTS.md, README, source files"]
+  act["Edit files or run commands<br/>inside the allowed workspace"]
+  verify["Verify the result<br/>tests, build, PDF, logs, screenshots"]
+  review["Review diff and evidence<br/>then continue or accept"]
+
+  open --> ask --> inspect --> act --> verify --> review
+  review -->|needs changes| inspect
+
+  classDef start fill:#E8F3FF,stroke:#2563EB,color:#111827;
+  classDef work fill:#F8FAFC,stroke:#64748B,color:#111827;
+  classDef verify fill:#ECFDF5,stroke:#059669,color:#111827;
+  class open,ask start;
+  class inspect,act,review work;
+  class verify verify;
+```

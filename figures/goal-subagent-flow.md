@@ -1,0 +1,34 @@
+# Goal And Subagent Flow
+
+This diagram shows how Goal lifecycle ownership and subagent delegation fit together.
+
+```mermaid
+flowchart TD
+  request["User request"]
+  triage{"Need long-lived<br/>tracked execution?"}
+  objective["Goal objective<br/>scope, success, validation, stop conditions"]
+  context["Context resolution<br/>AGENTS.md chain and task docs"]
+  delegate{"Independent<br/>subtasks exist?"}
+  subagents["Subagents<br/>narrow scope and output contract"]
+  mainwork["Main thread work<br/>single owner for decisions"]
+  integrate["Integration<br/>merge evidence, resolve conflicts"]
+  validate["Validation<br/>tests, build, artifacts, manual checks"]
+  closeout["Closeout<br/>what changed, evidence, residual risk"]
+
+  request --> triage
+  triage -->|yes| objective --> context --> delegate
+  triage -->|no| mainwork
+  delegate -->|yes| subagents --> integrate
+  delegate -->|no| mainwork --> integrate
+  integrate --> validate --> closeout
+  validate -->|failed| context
+
+  classDef decision fill:#FEF3C7,stroke:#D97706,color:#111827;
+  classDef goal fill:#E8F3FF,stroke:#2563EB,color:#111827;
+  classDef work fill:#F8FAFC,stroke:#64748B,color:#111827;
+  classDef done fill:#ECFDF5,stroke:#059669,color:#111827;
+  class triage,delegate decision;
+  class objective,context goal;
+  class request,subagents,mainwork,integrate work;
+  class validate,closeout done;
+```
