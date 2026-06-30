@@ -1,16 +1,16 @@
-# Codex Usage Guide
+# 中文 Codex 实战手册
 
-中文优先的 Codex GitHub Pages 使用指南仓库，面向两类读者：
+中文优先的 Codex GitHub Pages 实战手册仓库，面向两类读者：
 
-- 初学者：想知道如何把任务交给 Codex、如何写清楚目标、如何判断结果是否真的完成。
-- 进阶用户：想系统使用 Goal、subagent、`AGENTS.md`、本地 skills，并把 Codex 用成可验证的工程协作者。
+- 初学者：想知道如何把日常任务交给 Codex、如何写清楚目标、如何判断结果是否真的完成。
+- 进阶用户：想系统使用 Goal、subagent、`AGENTS.md`、skills、MCP 和自动化，并把 Codex 用成可验证的工程协作者。
 
 ## 内容结构
 
-网页已经从单页指南改为多页面文档站。结构按“概念先行，任务后置，本机扩展单独说明”的顺序组织：
+网页已经从单页指南改为多页面实战手册。结构按“任务主线优先，概念能力补充，本机扩展单独说明”的顺序组织：
 
-1. 概念页：`codex.html`、`permissions.html`、`agents-md.html`、`skills.html`、`mcp.html`、`subagents.html`、`goal.html`。
-2. 任务页：`desktop-cli.html`、`daily-workflow.html`、`engineering.html`、`research.html`、`automation.html`、`workflows.html`。
+1. 任务页：`daily-workflow.html`、`desktop-cli.html`、`engineering.html`、`research.html`、`automation.html`、`workflows.html`。
+2. 概念页：`codex.html`、`permissions.html`、`agents-md.html`、`skills.html`、`mcp.html`、`subagents.html`、`goal.html`。
 3. 本机扩展页：`goal-entry.html`，说明本机 `goal-entry` 的架构、流程、目标能力和独立仓库链接。
 4. 资料页：`resources.html`，汇总 OpenAI 官方资料、开源仓库和本指南内部资料。
 

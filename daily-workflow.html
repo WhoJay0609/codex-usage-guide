@@ -1,12 +1,182 @@
 <!doctype html>
 <html lang="zh-CN">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>日常小任务</title><link rel="stylesheet" href="assets/site.css"></head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>日常任务 workflow</title>
+  <meta name="description" content="中文 Codex 实战手册：日常读代码、修 bug、跑测试、看 diff 和验收结果的完整工作流。">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
 <body>
-  <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a><nav class="nav"><a data-nav href="index.html">首页</a><a data-nav href="desktop-cli.html">Desktop/CLI</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">自动化</a><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></nav></div></header>
-  <main><section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Task</p><h1>日常小任务</h1><p class="lead">日常任务的关键是小范围、强验证。先读上下文，再改最小 diff，最后用证据收口。</p></div></section>
-    <section class="section"><div class="steps"><article class="step"><h3>读上下文</h3><p>读取 <code>AGENTS.md</code>、README、相关源码、失败日志。</p></article><article class="step"><h3>写短计划</h3><p>说明将改哪些文件，不改哪些文件。</p></article><article class="step"><h3>执行小改</h3><p>保持 diff 聚焦，不做顺手重构。</p></article><article class="step"><h3>验证和报告</h3><p>跑最窄测试，报告结果和剩余风险。</p></article></div><pre><code>请修复这个失败测试。
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a>
+      <nav class="nav">
+        <a data-nav href="index.html">首页</a>
+        <a data-nav href="desktop-cli.html">Desktop/CLI</a>
+        <a data-nav href="daily-workflow.html">日常</a>
+        <a data-nav href="engineering.html">工程</a>
+        <a data-nav href="research.html">学术</a>
+        <a data-nav href="automation.html">自动化</a>
+        <a data-nav href="goal-entry.html">goal-entry</a>
+        <a data-nav href="resources.html">资料</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero compact">
+      <div class="hero-copy">
+        <p class="hero-kicker">Task handbook</p>
+        <h1>日常任务 workflow</h1>
+        <p class="lead">日常任务不是“小任务随便说”。你要把 Codex 当成会读仓库、会改文件、会跑命令、也可能误解边界的工程协作者。最稳的方式是：先给上下文，再限定范围，再要求验证，最后检查证据。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <p class="section-kicker">Core loop</p>
+          <h2>日常任务的最小可靠闭环</h2>
+        </div>
+        <p>这个闭环适用于解释错误、修失败测试、更新文档、调整页面、检查 PR 和清理小 bug。不要一上来就要求 Codex “全部优化一下”。</p>
+      </div>
+      <div class="steps">
+        <article class="step"><h3>说明任务</h3><p>写清当前现象、目标结果、相关路径和不想碰的范围。最好附上失败日志、截图、URL 或测试名。</p></article>
+        <article class="step"><h3>让 Codex 读上下文</h3><p>要求先读 <code>AGENTS.md</code>、README、相关源码、测试和日志。没有读上下文之前，不要让它直接大改。</p></article>
+        <article class="step"><h3>小范围执行</h3><p>一次只解决一个可验证问题。改文件前应知道预计会改哪些文件，避免顺手重构和无关格式化。</p></article>
+        <article class="step"><h3>验证和收口</h3><p>让 Codex 跑最窄测试或构建，解释结果；如果不能跑，要说明原因和剩余风险。</p></article>
+      </div>
+      <figure class="figure-card">
+        <img src="figures/beginner-quickstart.png" alt="Codex 日常任务从输入、上下文、权限到验证收口的流程">
+        <figcaption>这张图对应日常任务闭环：任务输入、上下文读取、权限确认、执行、验证、收口。</figcaption>
+      </figure>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <p class="section-kicker">Common jobs</p>
+          <h2>五类高频日常任务</h2>
+        </div>
+        <p>新手可以直接从这些模板开始。进阶用户可以把这些模板沉淀进 <code>AGENTS.md</code> 或 skill。</p>
+      </div>
+      <div class="bento">
+        <article class="card span-4"><h3>读代码并解释</h3><p>适合刚接手仓库、看不懂模块边界、需要快速建立 mental model。要求 Codex 引用真实文件和函数，不要泛泛解释。</p><pre><code>请只读分析这个仓库的登录流程。
+先读 AGENTS.md、README 和 auth 相关源码。
+输出：入口文件、核心函数、数据流、风险点。
+不要改文件。</code></pre></article>
+        <article class="card span-4"><h3>修失败测试</h3><p>适合已经有明确红灯的场景。给出测试命令和失败片段，让 Codex 先定位根因，再做最小修复。</p><pre><code>请修复这个失败测试。
+失败命令：npm test -- checkout
 范围：只改 checkout 相关代码和测试。
-要求：先读 AGENTS.md 和失败日志，再提出短计划。
-验证：运行 npm test -- checkout。</code></pre></section>
-  </main><footer class="footer"><p><strong>任务路径</strong></p><a class="button" href="engineering.html">下一页：工程 flow</a></footer><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script><script src="assets/site.js"></script>
-</body></html>
+要求：先解释根因，再改最小 diff。</code></pre></article>
+        <article class="card span-4"><h3>修改网页或文档</h3><p>适合样式、内容、导航、README、指南页。要说明目标读者和验收方式，尤其是需要浏览器验证时。</p><pre><code>请更新 daily-workflow 页面。
+目标读者：第一次使用 Codex 的中文用户。
+验收：页面有完整流程、示例、检查清单。
+完成后本地静态服务抽样访问。</code></pre></article>
+        <article class="card span-6"><h3>审查当前 diff</h3><p>让 Codex 站在 reviewer 视角查 bug、遗漏测试、破坏兼容和文档缺口。只读 review 时要明确“不改文件”。</p><pre><code>请 review 当前 git diff。
+重点：行为回归、缺失测试、权限/安全风险。
+输出：按严重程度排序的 findings。
+不要改文件。</code></pre></article>
+        <article class="card span-6"><h3>提交和发布</h3><p>适合你已经确认改动方向，想让 Codex 负责测试、commit、push、Pages 或 PR 状态确认。一定要要求最终链接和验证证据。</p><pre><code>请提交并推送这次网页修改。
+提交前：git diff --check，抽样访问关键页面。
+提交信息：Improve daily workflow guide
+推送后：确认 GitHub Pages built。</code></pre></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <p class="section-kicker">Prompt quality</p>
+          <h2>坏请求和好请求的差别</h2>
+        </div>
+        <p>Codex 的能力很大程度取决于任务边界。坏请求通常省略上下文、范围、验收和风险；好请求会让 Codex 先读、再判断、再小步执行。</p>
+      </div>
+      <div class="bento">
+        <article class="card span-6 dark-card"><h3>不要这样写</h3><pre><code>帮我优化一下这个项目。
+
+这个页面太丑了，改好看点。
+
+测试挂了，修一下。
+
+你自己看着办。</code></pre><p>这些请求的问题是目标不可验收，范围过大，容易导致 Codex 猜需求、乱改文件或给出空泛总结。</p></article>
+        <article class="card span-6"><h3>推荐这样写</h3><pre><code>请修复 checkout 流程里的失败测试。
+
+背景：
+- 当前分支新增了优惠券逻辑
+- 失败命令是 npm test -- checkout
+
+范围：
+- 可以改 checkout、coupon、对应测试
+- 不要改 payment provider 接口
+
+要求：
+- 先读 AGENTS.md 和失败日志
+- 改动前给 3 行短计划
+- 完成后运行最窄测试
+
+验收：
+- 测试通过
+- 最终说明改了什么、验证了什么、剩余风险</code></pre></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <p class="section-kicker">Evidence</p>
+          <h2>验收不是“看起来完成了”</h2>
+        </div>
+        <p>日常任务完成时，最终回答应该能让你判断是否真的可用。没有证据的“已完成”不算完成。</p>
+      </div>
+      <div class="bento">
+        <article class="card span-3"><h3>改动证据</h3><p>列出关键文件、关键行为变化、没有改哪些范围。不要只说“优化了代码”。</p></article>
+        <article class="card span-3"><h3>验证证据</h3><p>列出测试、构建、静态服务、页面访问、截图或线上状态。</p></article>
+        <article class="card span-3"><h3>风险证据</h3><p>说明没跑的测试、依赖的外部状态、可能的兼容影响。</p></article>
+        <article class="card span-3"><h3>交付证据</h3><p>给出 commit、PR、Pages URL、issue 链接或产物路径。</p></article>
+        <article class="card span-12"><h3>推荐 closeout 模板</h3><pre><code>完成情况：
+- 改了 [文件/模块]，实现了 [可观察行为]
+
+验证：
+- 运行了 [命令]，结果 [通过/失败/无法运行及原因]
+- 访问了 [URL/页面]，确认 [关键内容]
+
+风险：
+- 未验证 [范围]，原因是 [原因]
+- 需要你人工确认 [事项]
+
+交付：
+- commit: [hash]
+- 链接: [URL]</code></pre></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-title">
+          <p class="section-kicker">Failure modes</p>
+          <h2>常见失败和补救</h2>
+        </div>
+        <p>发现 Codex 偏离方向时，不要继续追加模糊要求。直接指出偏差，把任务拉回边界。</p>
+      </div>
+      <div class="bento">
+        <article class="card span-4"><h3>改动太散</h3><p>让 Codex 停下，列出当前 diff，解释每个文件为什么必要。无关改动应撤回或拆到后续任务。</p></article>
+        <article class="card span-4"><h3>没有读上下文</h3><p>要求它回到 <code>AGENTS.md</code>、README、相关代码和测试。不要让它基于猜测继续写。</p></article>
+        <article class="card span-4"><h3>验证跑不通</h3><p>区分代码失败、环境失败、依赖缺失和权限限制。最终报告里必须保留这个区别。</p></article>
+        <article class="card span-4"><h3>网页看起来不对</h3><p>要求本地服务或公开 URL 抽样访问；如果有浏览器工具，再用截图检查排版和文本溢出。</p></article>
+        <article class="card span-4"><h3>解释太空泛</h3><p>要求它引用文件路径、函数名、命令输出或页面 URL。没有引用就不能作为依据。</p></article>
+        <article class="card span-4"><h3>任务变长了</h3><p>如果超过一个短回合、需要多个阶段或要发布，转入 <a href="goal.html">Goal</a>；如果能拆并行调查，再看 <a href="subagents.html">Subagents</a>。</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p><strong>任务路径</strong><br>日常任务先练好小闭环，再进入工程 flow、Goal 和自动化。</p>
+    <a class="button" href="engineering.html">下一页：工程 flow</a>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="assets/site.js"></script>
+</body>
+</html>

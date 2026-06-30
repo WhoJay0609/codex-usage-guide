@@ -1,13 +1,91 @@
 <!doctype html>
 <html lang="zh-CN">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>工程 flow</title><link rel="stylesheet" href="assets/site.css"></head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>工程 flow</title>
+  <meta name="description" content="中文 Codex 实战手册：从工程 idea 到可合并变更的完整流程。">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
 <body>
   <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a><nav class="nav"><a data-nav href="index.html">首页</a><a data-nav href="desktop-cli.html">Desktop/CLI</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">自动化</a><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></nav></div></header>
-  <main><section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Task</p><h1>工程 flow</h1><p class="lead">工程场景从 idea 到可合并变更：先 grill，再 PRD，再 issues，再实现和 review。</p></div></section>
-    <section class="section"><div class="bento"><article class="card span-3"><h3>Route</h3><p><code>ask-matt</code> 判断走 grill、PRD、issues、implement 还是 review。</p></article><article class="card span-3"><h3>Grill</h3><p><code>grill-with-docs</code> 读取项目文档并追问边界。</p></article><article class="card span-3"><h3>PRD / Issues</h3><p>把稳定想法拆成可验证、可 review 的任务。</p></article><article class="card span-3"><h3>Implement</h3><p>一次只做一个 issue，跑最窄验证。</p></article><article class="card span-6 dark-card"><h3>一次工程任务的交付线</h3><ul class="mini-list"><li><strong>0. 读规则</strong><span>AGENTS.md、README、CONTEXT、相关 ADR。</span></li><li><strong>1. 定边界</strong><span>哪些模块能改，哪些接口不能动。</span></li><li><strong>2. 小步实现</strong><span>每次只合并一个可 review 的 diff。</span></li><li><strong>3. 证据收口</strong><span>测试、截图、构建、PR/check 状态。</span></li></ul></article><article class="card span-6"><h3>适合交给 subagent 的部分</h3><ul class="mini-list"><li><strong>只读审查</strong><span>安全、测试缺口、复杂度、文档缺口。</span></li><li><strong>并行验证</strong><span>不同平台、不同浏览器、不同配置。</span></li><li><strong>不要拆分</strong><span>同一文件高频编辑、核心架构取舍。</span></li></ul></article><article class="card span-12"><pre><code>[$grill-with-docs]
+  <main>
+    <section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Scenario handbook</p><h1>工程 flow</h1><p class="lead">工程场景的目标不是“让 Codex 写更多代码”，而是把一个模糊 idea 变成可验证、可 review、可合并的最小变更。先 grill，再定边界，再拆 issue，再实现，再 review。</p></div></section>
+
+    <section class="section">
+      <div class="section-head"><div class="section-title"><p class="section-kicker">Lifecycle</p><h2>从 idea 到可合并变更</h2></div><p>复杂工程任务不要直接进入实现。先把需求、边界、失败条件和验收证据问清楚。</p></div>
+      <div class="steps">
+        <article class="step"><h3>Idea intake</h3><p>用户提出模糊目标，例如“改一下权限系统”。Codex 先读文档和代码，判断这是讨论、规划还是执行任务。</p></article>
+        <article class="step"><h3>Grill 边界</h3><p>使用 <code>grill-with-docs</code> 读取 <code>AGENTS.md</code>、README、CONTEXT、ADR 和相关源码，追问会影响结构的关键问题。</p></article>
+        <article class="step"><h3>PRD / Issues</h3><p>把稳定结论拆成小任务。每个 issue 都应该有范围、验收、测试和不做什么。</p></article>
+        <article class="step"><h3>Implement</h3><p>一次只做一个 issue。先改最小 diff，再跑最窄测试，不把 refactor 和 feature 混在一起。</p></article>
+        <article class="step"><h3>Review</h3><p>让 Codex 站在 reviewer 角度查行为回归、测试缺口、权限风险、文档漂移。</p></article>
+        <article class="step"><h3>Ship</h3><p>提交、推送、PR 或发布后，用 check 状态、页面访问、日志或用户验收完成 closeout。</p></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div class="section-title"><p class="section-kicker">Skills flow</p><h2>工程 skills 怎么串起来</h2></div><p>不要把 skill 当魔法词。每个 skill 都应服务于工程阶段，而不是替代判断。</p></div>
+      <div class="bento">
+        <article class="card span-4"><h3><code>ask-matt</code></h3><p>用于路由：当前是 idea、PRD、issue、implement、review，还是需要回到 grilling。</p></article>
+        <article class="card span-4"><h3><code>grill-with-docs</code></h3><p>用于边界澄清：读项目文档和代码，追问会影响架构、接口、验收的关键问题。</p></article>
+        <article class="card span-4"><h3><code>grill-me</code></h3><p>用于强审设计：质疑方案是否过度、是否破坏边界、是否有更窄实现。</p></article>
+        <article class="card span-4"><h3>PRD / issue</h3><p>把已稳定的需求变成可执行工单。不要让实现任务继续承载开放问题。</p></article>
+        <article class="card span-4"><h3>Implement</h3><p>按 issue 做最小修改。每个实现回合都应能被测试或人工检查。</p></article>
+        <article class="card span-4"><h3>Review loop</h3><p>用只读 review 查风险，再修复高优先级问题。不要把 review 变成无边界重构。</p></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div class="section-title"><p class="section-kicker">Prompts</p><h2>可复制工程提示词</h2></div><p>下面这些模板覆盖从澄清到实现的主要阶段。</p></div>
+      <div class="bento">
+        <article class="card span-6"><h3>边界澄清</h3><pre><code>[$grill-with-docs]
 仓库：/path/to/repo
 目标：把功能 X 做成可发布版本。
-请先读 AGENTS.md、README、CONTEXT、相关源码。
-追问会影响结构的关键问题，稳定结论写入 CONTEXT.md 或 ADR。</code></pre></article></div></section>
-  </main><footer class="footer"><p><strong>任务路径</strong></p><a class="button" href="research.html">下一页：学术 flow</a></footer><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script><script src="assets/site.js"></script>
-</body></html>
+
+请先读：
+- AGENTS.md
+- README.md
+- CONTEXT.md
+- 相关源码和测试
+
+请追问会影响结构的关键问题：
+- 用户是谁？
+- 公开接口是否能变？
+- 兼容性要求是什么？
+- 验收证据是什么？
+
+不要开始实现，直到边界稳定。</code></pre></article>
+        <article class="card span-6"><h3>实现一个 issue</h3><pre><code>请实现 issue #12。
+
+范围：
+- 可以改 src/checkout 和 tests/checkout
+- 不要改 payment provider 接口
+
+要求：
+- 先读 AGENTS.md 和 issue 描述
+- 给 3 行短计划
+- 实现最小 diff
+- 运行 npm test -- checkout
+
+完成报告：
+- 改了什么
+- 验证结果
+- 风险和未完成项</code></pre></article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div class="section-title"><p class="section-kicker">Subagents</p><h2>工程任务什么时候拆给 subagent</h2></div><p>工程任务适合把“调查”和“验证”拆出去，但核心产品判断、架构取舍和最终合并应由主线程负责。</p></div>
+      <div class="bento">
+        <article class="card span-6 dark-card"><h3>适合拆</h3><ul class="mini-list"><li><strong>只读审查</strong><span>安全、测试缺口、文档漂移、性能风险。</span></li><li><strong>并行验证</strong><span>不同浏览器、不同测试包、不同配置。</span></li><li><strong>独立切片</strong><span>互不重叠文件，例如 docs 和 CSS 分开。</span></li></ul></article>
+        <article class="card span-6"><h3>不要拆</h3><ul class="mini-list"><li><strong>同一核心文件</strong><span>多个代理同时改状态管理、schema、API contract。</span></li><li><strong>架构判断</strong><span>模块边界、公开接口、迁移策略应由主线程整合。</span></li><li><strong>外部写入</strong><span>发布、推送、评论、生产配置不交给 subagent 独立执行。</span></li></ul></article>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><p><strong>任务路径</strong><br>工程 flow 的核心是小步、证据、可 review。</p><a class="button" href="research.html">下一页：学术 flow</a></footer>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="assets/site.js"></script>
+</body>
+</html>

@@ -12,6 +12,7 @@
 - **Advanced Track**: the path that emphasizes Goal design, subagent delegation contracts, `AGENTS.md` reuse, skills, and evidence-based closeout.
 - **GitHub Publication Boundary**: the repository stance that source files and documentation are published while generated build artifacts are ignored or released separately.
 - **Web-First Guide**: the current publication stance that `index.html` on GitHub Pages is the canonical public guide, while PDF generation is not part of the default workflow.
+- **Chinese Codex Practical Handbook**: the canonical product direction for this guide; it is a Chinese task-driven operating handbook for real Codex work, not a mirror translation of official docs.
 - **Engineering Advanced Track**: the path grounded in the Matt Pocock skills flow: `ask-matt`, `grill-me`, `grill-with-docs`, `to-prd`, `to-issues`, `implement`, and review.
 - **Academic Automation Track**: the path grounded in installed research skills: `academic-research-suite`, `ask-research`, and `research-grill-me`.
 - **Skill**: a local instruction package with a `SKILL.md` entry point that changes how Codex should approach a class of tasks.
