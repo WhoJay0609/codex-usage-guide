@@ -9,20 +9,29 @@
 </head>
 <body>
   <header class="topbar">
-    <div class="topbar-inner">
-      <a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a>
-      <nav class="nav">
-        <a data-nav href="index.html">首页</a>
-        <a data-nav href="desktop-cli.html">Desktop/CLI</a><a data-nav href="install-desktop.html">安装</a>
-        <a data-nav href="daily-workflow.html">日常</a>
-        <a data-nav href="engineering.html">工程</a>
-        <a data-nav href="research.html">学术</a>
-        <a data-nav href="automation.html">自动化</a>
-        <a data-nav href="goal-entry.html">goal-entry</a>
-        <a data-nav href="resources.html">资料</a>
-      </nav>
-    </div>
-  </header>
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a>
+    <nav class="nav">
+      <a data-nav href="index.html">首页</a>
+      <a data-nav href="codex.html">Codex</a>
+      <a data-nav href="install-desktop.html">安装</a>
+      <a data-nav href="desktop-cli.html">Desktop</a>
+      <a data-nav href="permissions.html">权限</a>
+      <a data-nav href="agents-md.html">AGENTS.md</a>
+      <a data-nav href="skills.html">Skills</a>
+      <a data-nav href="mcp.html">MCP</a>
+      <a data-nav href="subagents.html">Subagents</a>
+      <a data-nav href="goal.html">Goal</a>
+      <a data-nav href="workflows.html">任务</a>
+      <a data-nav href="daily-workflow.html">日常</a>
+      <a data-nav href="engineering.html">工程</a>
+      <a data-nav href="research.html">学术</a>
+      <a data-nav href="automation.html">自动化</a>
+      <a data-nav href="compound-engineering.html">Compound</a>
+      <a data-nav href="resources.html">资料</a>
+    </nav>
+  </div>
+</header>
 
   <main>
     <section class="hero compact">
@@ -204,10 +213,12 @@ flowchart LR
         <p>这次 <code>daily-workflow.html</code> 原本只有几十个词。用户在 Desktop 浏览器里指出“内容太少”，Codex 按日常任务闭环完成了读上下文、改页面、验证和发布。</p>
       </div>
       <div class="bento">
-        <article class="card span-3"><h3>输入</h3><p>用户给出当前页面和反馈，要求把指南定位成“中文 Codex 实战手册”，并让可选进阶内容也写详细。</p></article>
-        <article class="card span-3"><h3>上下文</h3><p>Codex 读取 <code>AGENTS.md</code>、当前 HTML 页面、公开 Codex 文档和本地 skill 说明。</p></article>
-        <article class="card span-3"><h3>执行</h3><p>重写日常任务页，加入五类高频任务、好坏 prompt、验收证据、常见失败和 closeout 模板。</p></article>
-        <article class="card span-3"><h3>验证</h3><p>运行 <code>git diff --check</code>、本地静态服务和公开页面抽样，确认关键标题出现在 HTML 中。</p></article>
+        <article class="card span-4"><h3>输入</h3><p>坏输入是“内容太少”；修复后应写清当前页面、目标读者、要补的任务类型和验收方式。</p></article>
+        <article class="card span-4"><h3>先读</h3><p><code>AGENTS.md</code>、当前 HTML、README、相关官方资料和本机 skill 边界。</p></article>
+        <article class="card span-4"><h3>应动文件</h3><p>日常任务页和必要导航；不顺手改无关样式或其它场景页。</p></article>
+        <article class="card span-4"><h3>验证</h3><p><code>make check</code>、<code>git diff --check</code>、关键标题抽样。</p></article>
+        <article class="card span-4"><h3>最终回答</h3><p>列出改了哪些任务、跑了哪些检查、哪些风险还需要人工判断。</p></article>
+        <article class="card span-4"><h3>失败停止</h3><p>页面结构不清、AGENTS 冲突、验证失败且没有窄修复时停止。</p></article>
       </div>
     </section>
   </main>

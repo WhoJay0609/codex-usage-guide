@@ -4,19 +4,42 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>自动化</title>
-  <meta name="description" content="中文 Codex 实战手册：codex exec、GitHub、CI、JSONL 输出和自动化安全边界。">
+  <meta name="description" content="中文 Codex Desktop 实战手册：Automations、后台 worktree、Triage inbox、结构化输出和自动化安全边界。">
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-  <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a><nav class="nav"><a data-nav href="index.html">首页</a><a data-nav href="desktop-cli.html">Desktop/CLI</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">自动化</a><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></nav></div></header>
+  <header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a>
+    <nav class="nav">
+      <a data-nav href="index.html">首页</a>
+      <a data-nav href="codex.html">Codex</a>
+      <a data-nav href="install-desktop.html">安装</a>
+      <a data-nav href="desktop-cli.html">Desktop</a>
+      <a data-nav href="permissions.html">权限</a>
+      <a data-nav href="agents-md.html">AGENTS.md</a>
+      <a data-nav href="skills.html">Skills</a>
+      <a data-nav href="mcp.html">MCP</a>
+      <a data-nav href="subagents.html">Subagents</a>
+      <a data-nav href="goal.html">Goal</a>
+      <a data-nav href="workflows.html">任务</a>
+      <a data-nav href="daily-workflow.html">日常</a>
+      <a data-nav href="engineering.html">工程</a>
+      <a data-nav href="research.html">学术</a>
+      <a data-nav href="automation.html">自动化</a>
+      <a data-nav href="compound-engineering.html">Compound</a>
+      <a data-nav href="resources.html">资料</a>
+    </nav>
+  </div>
+</header>
   <main>
     <section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Advanced task</p><h1>自动化</h1><p class="lead">自动化不是把 Codex 放开让它自己跑，而是把稳定任务封装成受控输入、受控权限、结构化输出和明确失败策略。适合自动化的任务，必须先能人工跑通。</p></div></section>
 
     <section class="section">
-      <div class="section-head"><div class="section-title"><p class="section-kicker">When</p><h2>什么时候值得自动化</h2></div><p>同一类任务反复出现，输入可以参数化，输出可以验证，失败能安全停止，这时才考虑 <code>codex exec</code>、GitHub integration 或 CI。</p></div>
+      <div class="section-head"><div class="section-title"><p class="section-kicker">When</p><h2>什么时候值得自动化</h2></div><p>同一类任务反复出现，输入可以参数化，输出可以验证，失败能安全停止，这时才考虑 Codex Desktop Automations。先人工跑通，再让后台任务按计划重复执行。</p></div>
       <div class="bento">
-        <article class="card span-4"><h3>适合 codex exec</h3><p>批量 review、生成结构化报告、检查文档漂移、分析日志、在 CI 前做风险扫描。</p></article>
-        <article class="card span-4"><h3>适合 GitHub</h3><p>PR review、issue triage、根据评论触发修复、检查 CI 失败原因、总结变更影响。</p></article>
+        <article class="card span-4"><h3>适合 Automations</h3><p>批量 review、生成结构化报告、检查文档漂移、分析日志、定期跑本地站点检查。</p></article>
+        <article class="card span-4"><h3>适合后台 worktree</h3><p>对 Git 仓库中的重复任务使用独立后台 worktree，避免直接污染未完成的本地工作区。</p></article>
         <article class="card span-4"><h3>适合本地脚本</h3><p>稳定输入输出的仓库任务，例如生成索引、检查链接、归档实验结果。</p></article>
         <article class="card span-6 dark-card"><h3>自动化前置条件</h3><ul class="mini-list"><li><strong>输入稳定</strong><span>同类任务重复出现，参数能结构化。</span></li><li><strong>输出可验</strong><span>JSONL、测试结果、PR comment 或文件产物。</span></li><li><strong>失败会停</strong><span>权限、网络、测试失败时必须停止并报告。</span></li></ul></article>
         <article class="card span-6"><h3>不该自动化的任务</h3><ul class="mini-list"><li><strong>需求未定</strong><span>还需要人判断产品方向或论文 claim。</span></li><li><strong>权限过宽</strong><span>需要生产 secret、外部写入或不可回滚操作。</span></li><li><strong>验证缺失</strong><span>没有测试、没有审查点、没有输出结构。</span></li></ul></article>
@@ -26,19 +49,22 @@
     <section class="section">
       <div class="section-head"><div class="section-title"><p class="section-kicker">Patterns</p><h2>三种实用自动化模式</h2></div><p>自动化的关键不是命令本身，而是输入、权限、输出和失败策略。</p></div>
       <div class="bento">
-        <article class="card span-4"><h3>只读审查</h3><pre><code>codex exec "Review this diff for missing tests.
+        <article class="card span-4"><h3>只读审查</h3><pre><code>Automation prompt:
+Review this diff for missing tests.
 Output JSONL with fields:
 severity, file, finding, evidence, recommendation.
-Do not edit files."</code></pre></article>
-        <article class="card span-4"><h3>CI 失败解释</h3><pre><code>codex exec "Read the CI log and explain root cause.
+Do not edit files.</code></pre></article>
+        <article class="card span-4"><h3>失败日志解释</h3><pre><code>Automation prompt:
+Read the latest failure log and explain root cause.
 Return:
 - failing command
 - likely cause
 - minimal fix
-- whether local reproduction is needed."</code></pre></article>
-        <article class="card span-4"><h3>文档漂移检查</h3><pre><code>codex exec "Compare README, AGENTS.md, and package scripts.
+- whether local reproduction is needed.</code></pre></article>
+        <article class="card span-4"><h3>文档漂移检查</h3><pre><code>Automation prompt:
+Compare README, AGENTS.md, and project scripts.
 Report stale commands, missing setup steps, and risky assumptions.
-Do not modify files."</code></pre></article>
+Do not modify files.</code></pre></article>
       </div>
     </section>
 
@@ -77,18 +103,16 @@ Stop:
     <section class="section">
       <div class="section-head"><div class="section-title"><p class="section-kicker">Real example</p><h2>真实实例：自动检查网页链接和关键标题</h2></div><p>这份手册每次修改后，都可以把“本地链接检查 + 公开页面关键标题抽样”沉淀为自动化。它适合自动化，因为输入稳定、输出可验、失败能安全停止。</p></div>
       <div class="bento">
-        <article class="card span-6"><h3>本地检查</h3><pre><code>检查所有本地 href/src：
-- 提取 *.html 中的 href 和 src
-- 忽略 http/https 外部链接
-- 对本地路径运行 test -e
-- 如果缺文件，立即失败</code></pre></article>
-        <article class="card span-6"><h3>公开页面抽样</h3><pre><code>curl -sL /daily-workflow.html | rg "五类高频日常任务"
-curl -sL /goal-entry.html | rg "架构和处理流程"
-curl -sL /automation.html | rg "自动化安全阀"</code></pre></article>
+        <article class="card span-4"><h3>输入</h3><p>坏输入是“每天帮我看一下”；修复后写清频率、项目、输出字段和停止条件。</p></article>
+        <article class="card span-4"><h3>先读</h3><p>README、AGENTS.md、验证脚本、最近失败日志和自动化权限设置。</p></article>
+        <article class="card span-4"><h3>应动文件</h3><p>自动化 prompt、检查脚本或报告路径；不直接改生产 secret 或外部系统。</p></article>
+        <article class="card span-4"><h3>验证</h3><p>先在普通 Desktop 线程手动跑通，再安排 Automations。</p></article>
+        <article class="card span-4"><h3>最终回答</h3><p>列出 findings、证据路径、是否需要人工处理和下一次运行条件。</p></article>
+        <article class="card span-4"><h3>失败停止</h3><p>权限不足、输入缺失、网络不可达、验证脚本失败时不要继续猜测。</p></article>
       </div>
     </section>
   </main>
-  <footer class="footer"><p><strong>任务路径</strong><br>自动化是稳定流程的后一步，不是替代需求澄清的捷径。</p><a class="button" href="goal-entry.html">下一页：goal-entry</a></footer>
+  <footer class="footer"><p><strong>任务路径</strong><br>自动化是稳定流程的后一步，不是替代需求澄清的捷径。</p><a class="button" href="compound-engineering.html">下一页：Compound</a></footer>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>

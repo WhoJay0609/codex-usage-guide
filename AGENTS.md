@@ -9,10 +9,10 @@ The web page is the canonical public artifact.
 
 - Keep the guide useful for both beginners and advanced Codex users.
 - Preserve exact English identifiers such as `Goal`, `subagent`, `AGENTS.md`,
-  `goal-entry`, `SKILL.md`, and command names.
+  `goal-entry`, `Compound Engineering`, `SKILL.md`, and command names.
 - Keep generic Goal/Subagent guidance before scenario-specific skills.
-- Keep local `goal-entry` implementation details only in the final mapping
-  section of the guide.
+- Keep local `goal-entry` implementation details short and clearly labeled as
+  self-developed, average-effectiveness local adaptation.
 - Do not publish internal task process docs under `doc/`; they are local
   execution records.
 - Do not make PDF generation part of the default completion contract unless the
@@ -21,6 +21,8 @@ The web page is the canonical public artifact.
 ## Build And Verification
 
 - Before claiming completion, verify:
+  - `make check` passes for local HTML links, anchors, shared navigation, and
+    required real-example coverage.
   - `index.html` contains the requested Chinese content and links.
   - Important anchors referenced by the sidebar exist.
   - GitHub Pages has been pushed and, when network access is available,
@@ -41,7 +43,7 @@ structure changes materially.
 <!-- goal-context:path-index:start -->
 ## Path Index
 
-- Generated: 2026-06-30T11:38:25Z
+- Generated: 2026-07-07T09:45:15Z
 - Max depth: 4
 - Max items per section: 40
 
@@ -67,6 +69,7 @@ structure changes materially.
 ### Source Roots
 
 - `assets` - contains source/config files
+- `scripts` - contains source/config files
 
 ### Docs
 
@@ -77,9 +80,6 @@ structure changes materially.
 - `doc/progress.md` - harness task workspace and durable task notes
 - `doc/task_issue.md` - harness task workspace and durable task notes
 - `doc/task_plan.md` - harness task workspace and durable task notes
-- `docs` - project documentation
-- `docs/adr` - project documentation
-- `docs/adr/0001-dual-track-chinese-latex-guide.md` - project documentation
 
 ### Task Docs
 

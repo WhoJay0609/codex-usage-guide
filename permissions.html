@@ -4,8 +4,17 @@
 <body>
   <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a><nav class="nav"><a data-nav href="index.html">首页</a><a data-nav href="codex.html">Codex</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a><a data-nav href="workflows.html">任务</a><a data-nav href="resources.html">资料</a></nav></div></header>
   <main><section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Concept</p><h1>权限与安全</h1><p class="lead">权限决定 Codex 能读什么、写什么、运行什么命令、能不能联网。授权前先确认必要性和回滚方式。</p></div></section>
-    <div class="doc-layout"><aside class="side-nav"><strong>本页</strong><a href="#what">它是什么</a><a href="#when">什么时候用</a><a href="#examples">可复制示例</a></aside><article class="doc-content">
+    <div class="doc-layout"><aside class="side-nav"><strong>本页</strong><a href="#what">它是什么</a><a href="#when">什么时候批准</a><a href="#examples">可复制示例</a><a href="#appendix">补充内容</a><a href="#real-example">真实实例</a></aside><article class="doc-content">
       <section class="content-block" id="what"><p class="section-kicker">What</p><h2>它是什么</h2><p>sandbox、approval、network、auth 和 secret 管理共同构成安全边界。默认应该用最小权限：能只读就不写，能限定工作区就不开放 full access。</p><div class="route-strip"><div class="route-pill"><strong>读文件</strong><span>通常允许，除非路径包含 secret 或生产数据。</span></div><div class="route-pill"><strong>写文件</strong><span>只写目标仓库和明确文件，避免顺手重构。</span></div><div class="route-pill"><strong>联网</strong><span>用于官方文档、依赖下载、GitHub Pages 验证。</span></div><div class="route-pill"><strong>执行</strong><span>优先最窄命令，危险命令必须解释回滚方式。</span></div></div></section>
+      <section class="content-block" id="desktop-levels"><p class="section-kicker">Desktop tiers</p><h2>Codex Desktop 权限等级一览</h2><p>桌面版的安全边界可拆为两部分：sandbox（能读写到什么）+ approval（何时要确认）。你可以用“越少权限越安全、越先验证”的顺序使用。</p>
+      <div class="bento">
+        <article class="card span-4"><h3>Read-only</h3><p><strong>sandbox：</strong>read-only<br><strong>approval：</strong>on-request/never（二选一）<br>用于只读审计、说明文档提取、代码结构梳理，不能改文件。</p></article>
+        <article class="card span-4"><h3>Workspace-write</h3><p><strong>sandbox：</strong>workspace-write<br><strong>approval：</strong>on-request/never/auto<br>用于日常开发：可改当前仓库内文件，超出工作区会触发审批。</p></article>
+        <article class="card span-4"><h3>Auto (建议默认)</h3><p>桌面端常见默认模式之一。可看可写，审批通常在高风险动作上触发，适合真实任务推进，但仍保留确认口径。</p></article>
+        <article class="card span-4"><h3>Auto-review</h3><p>在 workspace-write 上加一层审阅策略，适合较复杂修改。先跑自动评审，再决定是否落地，适合多文件改动。</p></article>
+        <article class="card span-4"><h3>Danger</h3><p><strong>模型建议：</strong>仅用于受控本机排障<br>例如 <code>dangerously-bypass-approvals-and-sandbox</code>，<strong>会失去审批与沙箱保护</strong>，不建议长期启用。</p></article>
+      </div>
+      <p>实操建议：从 <strong>Read-only on-request</strong> 验证需求，再升级到 <strong>Workspace-write on-request</strong>，最后才考虑持续运行危险模式。</p></section>
       <section class="content-block" id="when"><p class="section-kicker">When</p><h2>什么时候批准</h2><ul class="mini-list"><li><strong>批准</strong><span>安装依赖、访问 GitHub API、启动本地服务、验证线上页面，并且命令范围清楚。</span></li><li><strong>拒绝</strong><span>理由不清、路径过宽、可能触碰 secret、命令具有破坏性，或没有必要为了当前任务执行。</span></li><li><strong>要求说明</strong><span>让 Codex 说明为什么需要权限、会访问哪些路径、会改哪里、如何验证和如何停止。</span></li></ul></section>
       <section class="content-block" id="examples"><p class="section-kicker">Examples</p><h2>可复制示例</h2><pre><code>在运行任何需要网络或写权限的命令前，
 请先说明：
@@ -13,8 +22,9 @@
 2. 会读写哪些路径；
 3. 失败后如何恢复；
 4. 成功后如何验证。</code></pre></section>
-      <section class="content-block"><p class="section-kicker">Decision matrix</p><h2>审批决策矩阵</h2><div class="bento"><article class="card span-4"><h3>通常可以批准</h3><p>本地静态服务、只读 GitHub API、官方文档访问、安装项目依赖、运行项目测试。前提是命令范围清楚。</p></article><article class="card span-4"><h3>需要追问</h3><p>写入多个目录、访问外部服务、修改配置、下载大依赖、运行耗时任务。要求说明必要性、路径和停止条件。</p></article><article class="card span-4 dark-card"><h3>默认拒绝</h3><p>读取 secret、提交密钥、破坏性删除、生产写入、无回滚的迁移、理由不清的 full access。</p></article></div></section>
-      <section class="content-block"><p class="section-kicker">Approval prompt</p><h2>你可以这样要求 Codex 申请权限</h2><pre><code>需要提升权限时，请用这个格式说明：
+      <section class="content-block" id="appendix"><p class="section-kicker">Appendix</p><h2>补充内容</h2><ul class="mini-list"><li><strong><a href="#desktop-levels">桌面端权限等级</a></strong><span>从低权限到高权限的读写边界，优先从只读起步。</span></li><li><strong><a href="#matrix">审批决策矩阵</a></strong><span>快速判断哪些动作可批准、哪些动作需要追问或拒绝。</span></li><li><strong><a href="#approval-prompt">申请权限模板</a></strong><span>统一审批输出格式，降低误会和追问成本。</span></li><li><strong><a href="#secrets">Secret 与生产数据</a></strong><span>明确哪些文件、字段、密钥不能被读取或提及。</span></li></ul></section>
+      <section class="content-block" id="matrix"><p class="section-kicker">Decision matrix</p><h2>审批决策矩阵</h2><div class="bento"><article class="card span-4"><h3>通常可以批准</h3><p>本地静态服务、只读 GitHub API、官方文档访问、安装项目依赖、运行项目测试。前提是命令范围清楚。</p></article><article class="card span-4"><h3>需要追问</h3><p>写入多个目录、访问外部服务、修改配置、下载大依赖、运行耗时任务。要求说明必要性、路径和停止条件。</p></article><article class="card span-4 dark-card"><h3>默认拒绝</h3><p>读取 secret、提交密钥、破坏性删除、生产写入、无回滚的迁移、理由不清的 full access。</p></article></div></section>
+      <section class="content-block" id="approval-prompt"><p class="section-kicker">Approval prompt</p><h2>你可以这样要求 Codex 申请权限</h2><pre><code>需要提升权限时，请用这个格式说明：
 
 Action:
 - 你要运行什么命令？
@@ -30,8 +40,8 @@ Risk:
 
 Verification:
 - 成功后如何证明结果有效？</code></pre></section>
-      <section class="content-block"><p class="section-kicker">Secrets</p><h2>Secret 和生产数据规则</h2><p>不要让 Codex 读取、复制、总结或提交 secret。即使只是“看一眼配置”，也要先确认文件是否可能包含 token、证书、cookie、数据库密码或生产数据。需要使用密钥时，优先让用户在受控环境中配置，不要把密钥写进聊天、网页或仓库。</p></section>
-      <section class="content-block"><p class="section-kicker">Real example</p><h2>真实实例：验证 GitHub Pages 发布</h2><p>这份手册发布后，Codex 需要确认线上页面是否已经更新。这个动作需要网络访问，但不需要写外部系统，所以适合申请只读网络权限：先查 Pages 状态，再用 <code>curl</code> 抓取公开 HTML 中的关键标题。</p><pre><code>申请权限理由：
+      <section class="content-block" id="secrets"><p class="section-kicker">Secrets</p><h2>Secret 和生产数据规则</h2><p>不要让 Codex 读取、复制、总结或提交 secret。即使只是“看一眼配置”，也要先确认文件是否可能包含 token、证书、cookie、数据库密码或生产数据。需要使用密钥时，优先让用户在受控环境中配置，不要把密钥写进聊天、网页或仓库。</p></section>
+      <section class="content-block" id="real-example"><p class="section-kicker">Real example</p><h2>真实实例：验证 GitHub Pages 发布</h2><p>这份手册发布后，Codex 需要确认线上页面是否已经更新。这个动作需要网络访问，但不需要写外部系统，所以适合申请只读网络权限：先查 Pages 状态，再用 <code>curl</code> 抓取公开 HTML 中的关键标题。</p><pre><code>申请权限理由：
 Action: gh api repos/WhoJay0609/codex-usage-guide/pages
 Reason: 确认 GitHub Pages 是否 built
 Scope: 只读 GitHub Pages 状态

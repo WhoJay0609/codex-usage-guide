@@ -8,7 +8,30 @@
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-  <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a><nav class="nav"><a data-nav href="index.html">首页</a><a data-nav href="desktop-cli.html">Desktop/CLI</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">自动化</a><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></nav></div></header>
+  <header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a>
+    <nav class="nav">
+      <a data-nav href="index.html">首页</a>
+      <a data-nav href="codex.html">Codex</a>
+      <a data-nav href="install-desktop.html">安装</a>
+      <a data-nav href="desktop-cli.html">Desktop</a>
+      <a data-nav href="permissions.html">权限</a>
+      <a data-nav href="agents-md.html">AGENTS.md</a>
+      <a data-nav href="skills.html">Skills</a>
+      <a data-nav href="mcp.html">MCP</a>
+      <a data-nav href="subagents.html">Subagents</a>
+      <a data-nav href="goal.html">Goal</a>
+      <a data-nav href="workflows.html">任务</a>
+      <a data-nav href="daily-workflow.html">日常</a>
+      <a data-nav href="engineering.html">工程</a>
+      <a data-nav href="research.html">学术</a>
+      <a data-nav href="automation.html">自动化</a>
+      <a data-nav href="compound-engineering.html">Compound</a>
+      <a data-nav href="resources.html">资料</a>
+    </nav>
+  </div>
+</header>
   <main>
     <section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Scenario handbook</p><h1>学术 flow</h1><p class="lead">学术任务最容易犯的错是先写论文、后找证据。正确顺序是：研究 brief、文献和新颖性、实验计划、可复现实验、自动审稿、最后才写作。</p></div></section>
 
@@ -87,17 +110,12 @@ AUTO_WRITE: false
     <section class="section">
       <div class="section-head"><div class="section-title"><p class="section-kicker">Real example</p><h2>真实实例：长上下文 KV cache pruning idea</h2></div><p>一个可操作的学术任务不是“帮我写篇论文”，而是先让 Codex 建立研究 brief 和审稿边界。例如长上下文 LLM 推理中的 KV cache pruning，可以先做 closest work 和小规模实验计划，确认新颖性和 baseline 后再进入实验。</p></div>
       <div class="bento">
-        <article class="card span-4"><h3>输入</h3><p>方向、目标会议、数据、baseline、预算、不能 claim 的边界。</p></article>
-        <article class="card span-4"><h3>中间产物</h3><p><code>RESEARCH_BRIEF.md</code>、closest work 表、实验计划、<code>AUTO_REVIEW.md</code>。</p></article>
-        <article class="card span-4"><h3>退出条件</h3><p>至少一个可证伪实验设计清楚，claim 能对应实验或引用，预算可承受。</p></article>
-        <article class="card span-12"><pre><code>真实可执行 prompt：
-[$research-pipeline]
-方向：长上下文 LLM 推理中的 KV cache pruning。
-请先创建 RESEARCH_BRIEF.md，并等待我确认。
-AUTO_PROCEED: false
-HUMAN_CHECKPOINT: true
-REVIEWER_DIFFICULTY: hard
-预算：最多 20 GPU-hours。</code></pre></article>
+        <article class="card span-4"><h3>输入</h3><p>坏输入是“帮我写论文”；修复后给方向、数据、baseline、预算、不能 claim 的边界。</p></article>
+        <article class="card span-4"><h3>先读</h3><p>已有实验、相关论文、数据说明、目标会议标准和本机 research skill 说明。</p></article>
+        <article class="card span-4"><h3>应动文件</h3><p><code>RESEARCH_BRIEF.md</code>、closest work 表、实验计划；未确认前不写论文正文。</p></article>
+        <article class="card span-4"><h3>验证</h3><p>claim 是否有引用或实验支撑，baseline 是否明确，预算是否可执行。</p></article>
+        <article class="card span-4"><h3>最终回答</h3><p>给出证据边界、下一步实验、不可声称内容和需要人工确认的问题。</p></article>
+        <article class="card span-4"><h3>失败停止</h3><p>closest work 不清、实验不可复现、数据不可得或 claim 超出证据时停止。</p></article>
       </div>
     </section>
   </main>

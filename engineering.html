@@ -8,7 +8,30 @@
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-  <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a><nav class="nav"><a data-nav href="index.html">首页</a><a data-nav href="desktop-cli.html">Desktop/CLI</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">自动化</a><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></nav></div></header>
+  <header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a>
+    <nav class="nav">
+      <a data-nav href="index.html">首页</a>
+      <a data-nav href="codex.html">Codex</a>
+      <a data-nav href="install-desktop.html">安装</a>
+      <a data-nav href="desktop-cli.html">Desktop</a>
+      <a data-nav href="permissions.html">权限</a>
+      <a data-nav href="agents-md.html">AGENTS.md</a>
+      <a data-nav href="skills.html">Skills</a>
+      <a data-nav href="mcp.html">MCP</a>
+      <a data-nav href="subagents.html">Subagents</a>
+      <a data-nav href="goal.html">Goal</a>
+      <a data-nav href="workflows.html">任务</a>
+      <a data-nav href="daily-workflow.html">日常</a>
+      <a data-nav href="engineering.html">工程</a>
+      <a data-nav href="research.html">学术</a>
+      <a data-nav href="automation.html">自动化</a>
+      <a data-nav href="compound-engineering.html">Compound</a>
+      <a data-nav href="resources.html">资料</a>
+    </nav>
+  </div>
+</header>
   <main>
     <section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Scenario handbook</p><h1>工程 flow</h1><p class="lead">工程场景的目标不是“让 Codex 写更多代码”，而是把一个模糊 idea 变成可验证、可 review、可合并的最小变更。先 grill，再定边界，再拆 issue，再实现，再 review。</p></div></section>
 
@@ -86,14 +109,12 @@
     <section class="section">
       <div class="section-head"><div class="section-title"><p class="section-kicker">Real example</p><h2>真实实例：把这份指南扩成实战手册</h2></div><p>这次任务就是一个小型工程 flow：用户先指出内容太少，然后要求每个内容都有真实实例。Codex 没有直接“随便加文字”，而是读取项目规则、确认目标、分批修改页面、运行静态检查、提交推送并验证 Pages。</p></div>
       <div class="bento">
-        <article class="card span-4"><h3>Grill 结果</h3><p>定位为“中文 Codex 实战手册”，不是官方文档镜像；进阶内容也要写详细。</p></article>
-        <article class="card span-4"><h3>实现切片</h3><p>先扩 <code>daily-workflow</code>，再扩 Goal/Subagents/Skills/AGENTS/MCP，最后补工程、学术、自动化和 goal-entry。</p></article>
-        <article class="card span-4"><h3>验收证据</h3><p><code>git diff --check</code>、本地链接检查、本地 HTTP 服务抽样、GitHub Pages built、公开 HTML 抽样。</p></article>
-        <article class="card span-12"><pre><code>真实工程任务模板：
-目标：给每个主要页面加入真实实例。
-范围：HTML 内容和必要样式；不维护 PDF。
-验证：本地静态站点 + 公开 Pages 抽样。
-交付：commit、push、Pages built。</code></pre></article>
+        <article class="card span-4"><h3>输入</h3><p>坏输入是“帮我扩一下”；修复后写成目标、范围、读者、禁区和验收。</p></article>
+        <article class="card span-4"><h3>先读</h3><p>项目规则、目标页面、现有导航、验证脚本和发布说明。</p></article>
+        <article class="card span-4"><h3>应动文件</h3><p>HTML 内容、必要 CSS、验证脚本；不顺手改 CI/CD 或无关仓库。</p></article>
+        <article class="card span-4"><h3>验证</h3><p><code>make check</code>、空白检查、关键页面抽样和 diff review。</p></article>
+        <article class="card span-4"><h3>最终回答</h3><p>按文件汇总改动、验证结果、未跑项和可合并风险。</p></article>
+        <article class="card span-4"><h3>失败停止</h3><p>需求漂移、测试不可运行、写域变宽或出现无关 dirty 冲突时停止。</p></article>
       </div>
     </section>
   </main>

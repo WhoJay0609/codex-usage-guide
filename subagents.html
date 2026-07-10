@@ -4,8 +4,8 @@
 <body>
   <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a><nav class="nav"><a data-nav href="index.html">首页</a><a data-nav href="codex.html">Codex</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a><a data-nav href="workflows.html">任务</a><a data-nav href="resources.html">资料</a></nav></div></header>
   <main><section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Concept</p><h1>Subagents</h1><p class="lead">Subagent 的价值不是“看起来并行”，而是隔离上下文、分离职责、让主线程保持整合和最终判断。</p></div></section>
-    <div class="doc-layout"><aside class="side-nav"><strong>本页</strong><a href="#what">它是什么</a><a href="#when">什么时候用</a><a href="#examples">可复制示例</a></aside><article class="doc-content">
-      <section class="content-block" id="what"><p class="section-kicker">What</p><h2>它是什么</h2><p>Subagent 是被分配明确子任务的代理。它可以做只读调查、审查、并行测试或互不重叠的实现切片。</p><figure class="figure-card mermaid-card"><div class="mermaid">
+    <div class="doc-layout"><aside class="side-nav"><strong>本页</strong><a href="#what">它是什么</a><a href="#when">什么时候用</a><a href="#examples">可复制示例</a><a href="#real-example">真实实例</a></aside><article class="doc-content">
+    <section class="content-block" id="what"><p class="section-kicker">What</p><h2>它是什么</h2><p>Subagent 是被分配明确子任务的代理。它可以做只读调查、审查、并行测试或互不重叠的实现切片。</p><figure class="figure-card mermaid-card mermaid-large"><div class="mermaid">
 flowchart LR
   A["主线程定义目标"] --> B["Agent A: 只读审查"]
   A --> C["Agent B: 测试缺口"]
@@ -30,7 +30,7 @@ Agent C: 查文档、命名和可维护性。
 Agent A: 只改 docs 页面，不碰 CSS。
 Agent B: 只改 CSS responsive，不碰内容。
 主线程最后统一跑静态检查和页面访问。</code></pre></article><article class="card span-6 dark-card"><h3>不推荐：共享核心文件</h3><p>不要让多个 subagent 同时改同一个状态管理文件、同一个数据库 schema、同一个 API contract。冲突成本高，主线程很难判断谁对。</p></article><article class="card span-6 dark-card"><h3>不推荐：外部写操作</h3><p>不要让 subagent 独立创建 release、改生产配置、推送分支或调用有副作用的 MCP。外部写操作应由主线程显式确认。</p></article></div></section>
-      <section class="content-block"><p class="section-kicker">Real example</p><h2>真实实例：如何拆这份手册的审查任务</h2><p>如果要用 subagents 审查这份手册，最合理的拆法是只读并行审查，而不是让多个代理同时改 HTML。比如一个代理检查新手可读性，一个代理检查 Goal/Subagent/Skills 的进阶准确性，一个代理检查链接和发布验证。主线程最后整合结论并决定改哪些页面。</p><pre><code>真实可用拆分：
+      <section class="content-block" id="real-example"><p class="section-kicker">Real example</p><h2>真实实例：如何拆这份手册的审查任务</h2><p>如果要用 subagents 审查这份手册，最合理的拆法是只读并行审查，而不是让多个代理同时改 HTML。比如一个代理检查新手可读性，一个代理检查 Goal/Subagent/Skills 的进阶准确性，一个代理检查链接和发布验证。主线程最后整合结论并决定改哪些页面。</p><pre><code>真实可用拆分：
 Agent A: 只读审查 daily-workflow 是否适合零基础用户。
 Agent B: 只读审查 Goal/Subagents/Skills 是否有边界和反例。
 Agent C: 只读检查链接、图片、GitHub Pages 发布状态。

@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>高 stars skills 仓库介绍</title>
+  <meta name="description" content="中文 Codex 实战手册：面向 Codex Desktop 用户的高关注 skills 仓库选择、安装、使用示例和自动化边界。">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a>
+      <nav class="nav">
+        <a data-nav href="index.html">首页</a>
+        <a data-nav href="codex.html">Codex</a>
+        <a data-nav href="install-desktop.html">安装</a>
+        <a data-nav href="desktop-cli.html">Desktop</a>
+        <a data-nav href="permissions.html">权限</a>
+        <a data-nav href="agents-md.html">AGENTS.md</a>
+        <a data-nav href="skills.html">Skills</a>
+        <a data-nav href="mcp.html">MCP</a>
+        <a data-nav href="subagents.html">Subagents</a>
+        <a data-nav href="goal.html">Goal</a>
+        <a data-nav href="workflows.html">任务</a>
+        <a data-nav href="resources.html">资料</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero compact">
+      <div class="hero-copy">
+        <p class="hero-kicker">Skills repositories</p>
+        <h1>高 stars skills 仓库介绍</h1>
+        <p class="lead">这页不是实时排名表，而是 Codex Desktop 用户的选择页：按任务类型比较几个社区关注较高的 skills 仓库，看清它们的能力、安装或启用路径、第一条可复制 prompt 和使用边界。</p>
+        <div class="tier-badges">
+          <span class="tier-badge">第三方仓库：不是 OpenAI 官方功能</span>
+          <span class="tier-badge">不硬编码 star 数</span>
+          <span class="tier-badge">先普通用户，再高级自动化</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="doc-layout">
+      <aside class="side-nav">
+        <strong>本页</strong>
+        <a href="#what">怎么读</a>
+        <a href="#chooser">怎么选</a>
+        <a href="#compound">Compound Engineering</a>
+        <a href="#matt">mattpocock/skills</a>
+        <a href="#academic">academic-research-skills-codex</a>
+        <a href="#aris">ARIS</a>
+        <a href="#advanced">高级组合</a>
+        <a href="#boundaries">边界</a>
+        <a href="#real-example">真实实例</a>
+      </aside>
+
+      <article class="doc-content">
+        <section class="content-block" id="what">
+          <p class="section-kicker">What</p>
+          <h2>先按任务 fit 选仓库</h2>
+          <p>不要把所有 skills 仓库一次性塞进同一个请求。普通 Codex Desktop 用户先回答三个问题：我要做工程交付、工程思考、学术工作，还是长时间研究自动化？然后只选一个主仓库，最多加一个辅助仓库。</p>
+          <figure class="figure-card">
+            <img src="figures/high-stars-chooser.png" alt="小黑把任务纸条分拣到工程闭环、需求拷问、学术套件和自动科研四个托盘" loading="lazy" decoding="async" width="1672" height="941">
+            <figcaption>图片只帮助理解“先分拣任务”的动作；精确仓库名和安装方式以正文为准。</figcaption>
+          </figure>
+        </section>
+
+        <section class="content-block" id="chooser">
+          <p class="section-kicker">Chooser</p>
+          <h2>30 秒选择表</h2>
+          <div class="decision-table">
+            <div class="decision-row"><strong>多步骤工程功能 / 复杂 bug</strong><span>首选：Compound Engineering</span><span>辅助：<code>mattpocock/skills</code></span><span>要完整 brainstorm-plan-work-review 闭环时用 Compound；只想先拷问需求时用 Matt。</span></div>
+            <div class="decision-row"><strong>需求模糊 / 想被追问</strong><span>首选：<code>mattpocock/skills</code></span><span>辅助：Compound Engineering</span><span>先用 <code>/grill-with-docs</code> 或 <code>ask-matt</code> 收紧语言，再进入重流程。</span></div>
+            <div class="decision-row"><strong>文献 / 写作 / 审稿 / 实验计划</strong><span>首选：<code>academic-research-skills-codex</code></span><span>辅助：ARIS</span><span>想在 Codex 里用单个 suite 入口时选 ARS；需要更长流水线时再看 ARIS。</span></div>
+            <div class="decision-row"><strong>睡眠式研究自动化</strong><span>首选：ARIS</span><span>辅助：<code>academic-research-skills-codex</code></span><span>长时间研究、自动评审、研究 wiki 和实验监控适合 ARIS；普通学术任务先选 ARS。</span></div>
+            <div class="decision-row"><strong>完全不知道选哪个</strong><span>首选：<code>mattpocock/skills</code></span><span>辅助：Compound Engineering</span><span>先让任务变清楚，再决定是否需要完整工程流水线。</span></div>
+          </div>
+        </section>
+
+        <section class="content-block" id="compound">
+          <p class="section-kicker">Engineering workflow</p>
+          <h2>Compound Engineering</h2>
+          <p>EveryInc 的 Compound Engineering plugin 适合把工程任务组织成可复利的流程：brainstorm、plan、work、simplify、review、compound。它更像工程流程插件，不是一个单独的提示词集合。</p>
+          <div class="bento">
+            <article class="card span-4"><h3>能力</h3><p>用 <code>/ce-brainstorm</code>、<code>/ce-plan</code>、<code>/ce-work</code>、<code>/ce-simplify-code</code>、<code>/ce-code-review</code>、<code>/ce-compound</code> 串起长任务。</p></article>
+            <article class="card span-4"><h3>最适合</h3><p>多文件功能、复杂 bug、PR 前审查、长期维护同一仓库的工程知识。</p></article>
+            <article class="card span-4"><h3>安装路径</h3><p>Codex Desktop 里添加 custom marketplace，Source 填 <code>EveryInc/compound-engineering-plugin</code>，ref 填 <code>main</code>，安装 <code>compound-engineering</code> 后重启。</p></article>
+          </div>
+          <pre><code>[$compound-engineering:ce-brainstorm]
+目标：把这个产品改动先讨论清楚。
+仓库：当前 Codex Desktop 打开的仓库。
+边界：只讨论需求、风险和验收，不改文件。
+输出：给出 requirements-only 计划和下一步问题。</code></pre>
+          <ul class="mini-list">
+            <li><strong>使用边界</strong><span>需求还很粗时先 brainstorm；不要一行模糊目标直接交给 <code>/lfg</code>。</span></li>
+            <li><strong>仓库链接</strong><span><a href="https://github.com/EveryInc/compound-engineering-plugin">github.com/EveryInc/compound-engineering-plugin</a></span></li>
+          </ul>
+        </section>
+
+        <section class="content-block" id="matt">
+          <p class="section-kicker">Engineering discipline</p>
+          <h2>mattpocock/skills</h2>
+          <p><code>mattpocock/skills</code> 是一组小而可组合的工程 skills，强调 shared language、需求拷问、TDD、调试、架构改进和代码审查。它适合先把“我要做什么”问清楚，再决定是否进入更重的交付流程。</p>
+          <div class="bento">
+            <article class="card span-4"><h3>能力</h3><p><code>/grill-with-docs</code>、<code>/grill-me</code>、<code>/tdd</code>、<code>/diagnosing-bugs</code>、<code>/improve-codebase-architecture</code>、<code>/code-review</code> 等。</p></article>
+            <article class="card span-4"><h3>最适合</h3><p>需求不稳、术语混乱、想先被高质量追问，或者想把工程任务拆成 PRD / issues。</p></article>
+            <article class="card span-4"><h3>启用路径</h3><p>README 给出的路径是 <code>npx skills@latest add mattpocock/skills</code>，安装后运行 <code>/setup-matt-pocock-skills</code> 选择技能和项目偏好。</p></article>
+          </div>
+          <pre><code>[$grill-with-docs]
+仓库：当前 Codex Desktop 打开的仓库。
+目标：我想做一个新的导出功能。
+请先读 AGENTS.md、README 和相关源码，然后只追问会改变范围或验收的问题。
+不要开始实现。</code></pre>
+          <ul class="mini-list">
+            <li><strong>使用边界</strong><span>它不是全自动大框架。先用 setup 选择需要的 skills，再按任务调用，不要一次加载全部。</span></li>
+            <li><strong>仓库链接</strong><span><a href="https://github.com/mattpocock/skills">github.com/mattpocock/skills</a></span></li>
+          </ul>
+        </section>
+
+        <section class="content-block" id="academic">
+          <p class="section-kicker">Academic suite</p>
+          <h2>academic-research-skills-codex</h2>
+          <p><code>academic-research-skills-codex</code> 是 Academic Research Skills 的 Codex-native sibling distribution。仓库名是 <code>academic-research-skills-codex</code>，Codex skill path 是 <code>skills/academic-research-suite</code>，页面里简称 ARS。</p>
+          <figure class="figure-card">
+            <img src="figures/high-stars-engineering-research.png" alt="小黑在工程台和研究台之间分工，避免把所有 skills 混成一袋" loading="lazy" decoding="async" width="1672" height="941">
+            <figcaption>工程台和研究台要分开：代码交付看工程流程，文献、论文和实验看学术 suite。</figcaption>
+          </figure>
+          <div class="bento">
+            <article class="card span-4"><h3>能力</h3><p>一个 <code>academic-research-suite</code> 入口路由 deep research、paper writing、review、academic pipeline 和 experiment planning。</p></article>
+            <article class="card span-4"><h3>最适合</h3><p>文献综述、新颖性检查、论文草稿、审稿意见模拟、实验计划和结果到 claim 的边界整理。</p></article>
+            <article class="card span-4"><h3>安装路径</h3><p>按 README 用 skill-installer 指向 <code>academic-research-skills-codex</code> 仓库里的 <code>skills/academic-research-suite</code>。不要把 Claude Code 分发里的多个 skills 当成 Codex 安装路径。</p></article>
+          </div>
+          <pre><code>[$academic-research-suite]
+任务：为这个 AI/ML 论文想法做 deep research 和实验计划。
+主题：[你的方法一句话]
+边界：先输出研究问题、相关工作、可验证 novelty 和最小实验矩阵，不写论文正文。
+证据：列出需要人工确认的来源和假设。</code></pre>
+          <ul class="mini-list">
+            <li><strong>使用边界</strong><span>安装后应该只有一个 ARS entry。不要把 Claude Code 分发里的多个独立 skills 当成 Codex-native 安装结果。</span></li>
+            <li><strong>仓库链接</strong><span><a href="https://github.com/Imbad0202/academic-research-skills-codex">github.com/Imbad0202/academic-research-skills-codex</a></span></li>
+          </ul>
+        </section>
+
+        <section class="content-block" id="aris">
+          <p class="section-kicker">Autonomous research</p>
+          <h2>ARIS / auto-claude-code-research-in-sleep</h2>
+          <p>ARIS 更像一套“睡眠式科研”的方法论和工具集合，而不是单个 Codex skill。它强调计划、资料收集、写作或实验、反向评审、迭代和持久化，适合已经有清晰研究目标和验证边界的高级用户。</p>
+          <div class="bento">
+            <article class="card span-4"><h3>能力</h3><p>覆盖 idea discovery、literature、auto review loop、paper writing、experiment run、results analysis、experiment monitoring 等研究环节。</p></article>
+            <article class="card span-4"><h3>最适合</h3><p>长时间研究流水线、自动审稿循环、实验监控、研究知识库和多轮论文改进。</p></article>
+            <article class="card span-4"><h3>启用路径</h3><p>Codex 侧可参考仓库里的 <code>tools/install_aris_codex.sh</code> 和 <code>tools/smart_update_codex.sh</code>；主线说明仍以仓库 README 为准。</p></article>
+          </div>
+          <pre><code>[$auto-review-loop]
+目标：对我的论文方法和实验计划做一轮 adversarial review。
+输入：当前草稿路径、实验日志路径、需要保护的 claim。
+边界：只输出问题、证据缺口和下一轮实验建议；不要自动改论文或提交外部结果。</code></pre>
+          <ul class="mini-list">
+            <li><strong>使用边界</strong><span>长任务必须写清 objective、来源可信边界、验证证据和外部写操作审批。不要把“睡觉时自动科研”理解成无人监管。</span></li>
+            <li><strong>仓库链接</strong><span><a href="https://github.com/wanshuiyin/auto-claude-code-research-in-sleep">github.com/wanshuiyin/auto-claude-code-research-in-sleep</a></span></li>
+          </ul>
+        </section>
+
+        <section class="content-block" id="advanced">
+          <p class="section-kicker">Advanced</p>
+          <h2>高级用户：按阶段组合，不要一锅端</h2>
+          <p>组合这些仓库时，按阶段串联，而不是在一个 prompt 里同时要求所有 skills 工作。每一段都要有输入、停止条件和验证证据。</p>
+          <figure class="figure-card">
+            <img src="figures/high-stars-automation-loop.png" alt="小黑在夜间研究循环里盖检查点章，外部输出前有人工确认闸门" loading="lazy" decoding="async" width="1672" height="941">
+            <figcaption>自动化循环可以很长，但外部输出前仍要有人工确认和证据留存。</figcaption>
+          </figure>
+          <div class="decision-table">
+            <div class="decision-row"><strong>工程计划</strong><span>Compound Engineering</span><span><code>/ce-brainstorm</code>、<code>/ce-plan</code></span><span>产物：范围、U-ID、验证合同。</span></div>
+            <div class="decision-row"><strong>工程纪律</strong><span><code>mattpocock/skills</code></span><span><code>/grill-with-docs</code>、<code>/tdd</code>、<code>/code-review</code></span><span>产物：更清楚的需求语言、测试思路、审查问题。</span></div>
+            <div class="decision-row"><strong>学术工作</strong><span><code>academic-research-skills-codex</code></span><span><code>$academic-research-suite</code></span><span>产物：research brief、paper review、experiment plan。</span></div>
+            <div class="decision-row"><strong>自动研究</strong><span>ARIS</span><span>research pipeline / auto review loop</span><span>产物：长循环记录、反审结果、实验监控和人工审批点。</span></div>
+          </div>
+        </section>
+
+        <section class="content-block" id="boundaries">
+          <p class="section-kicker">Boundaries</p>
+          <h2>使用边界</h2>
+          <ul class="mini-list">
+            <li><strong>非官方</strong><span>这些第三方 skills 仓库不是 OpenAI 官方功能。涉及 Codex Desktop 能力边界时，以 OpenAI 官方文档为准。</span></li>
+            <li><strong>不写 star 数</strong><span>本页只说“高关注”或“高 stars”，不写具体数字；需要数字时应抓取 GitHub 数据并标日期。</span></li>
+            <li><strong>goal-entry 不列入</strong><span><code>goal-entry</code> 是本机自己开发的 local adaptation，效果一般，只在 <a href="goal-entry.html">goal-entry 页面</a>作为案例保留。</span></li>
+            <li><strong>长任务要可验收</strong><span>高级自动化仍要写 objective、范围、验证、停止条件、外部写操作审批和人工 closeout。</span></li>
+          </ul>
+        </section>
+
+        <section class="content-block" id="real-example">
+          <p class="section-kicker">Real example</p>
+          <h2>真实实例：这次页面怎么做</h2>
+          <div class="bento">
+            <article class="card span-4"><h3>输入</h3><p>用户要求把 Compound Engineering、Matt Pocock skills、ARS 和 ARIS 放在一页，说明能力、使用方式和示例，并生成小黑配图。</p></article>
+            <article class="card span-4"><h3>先读</h3><p>先读四个上游 README、本仓库页面模式、<code>scripts/check_site.py</code> 和 <code>ian-xiaohei-illustrations</code> 风格要求。</p></article>
+            <article class="card span-4"><h3>应动文件</h3><p><code>skills-repositories.html</code>、入口页、<code>README.md</code>、三张 <code>figures/high-stars-*.png</code> 和静态检查脚本。</p></article>
+            <article class="card span-4"><h3>验证</h3><p><code>make check</code> 检查 HTML、导航、锚点、文本和图片链接；再用 diff 检查是否误改全站顶栏。</p></article>
+            <article class="card span-4"><h3>最终回答</h3><p>报告新增页面、图片路径、静态验证结果、未做 PDF 以及是否还有未提交改动。</p></article>
+            <article class="card span-4"><h3>失败停止</h3><p>上游事实无法确认、图片无法保存、页面链接断裂、或实现必须把 <code>goal-entry</code> 放进高 stars 仓库列表。</p></article>
+          </div>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p><strong>高 stars skills 仓库介绍</strong><br>先按任务选择主仓库，再写可验证的 Codex Desktop prompt。</p>
+    <a class="button" href="skills.html">返回 Skills</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="assets/site.js"></script>
+</body>
+</html>
