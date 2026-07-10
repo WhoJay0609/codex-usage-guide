@@ -1,5 +1,7 @@
 build/
 doc/
+__pycache__/
+*.pyc
 *.aux
 *.fdb_latexmk
 *.fls

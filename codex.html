@@ -6,15 +6,15 @@
   <main>
     <section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Concept</p><h1>Codex 是什么</h1><p class="lead">Codex 是面向软件工程任务的编码代理体系。本手册默认从 Codex Desktop 入门，因为桌面版最适合把对话、仓库、浏览器反馈、权限审批和验证证据放在同一个任务线程里。</p></div></section>
     <div class="doc-layout">
-      <aside class="side-nav"><strong>本页</strong><a href="#what">它是什么</a><a href="#when">什么时候用</a><a href="#examples">可复制示例</a></aside>
+      <aside class="side-nav"><strong>本页</strong><a href="#what">它是什么</a><a href="#when">什么时候用</a><a href="#examples">可复制示例</a><a href="#real-example">真实实例</a></aside>
       <article class="doc-content">
-        <section class="content-block" id="what"><p class="section-kicker">What</p><h2>它是什么</h2><p>Codex 不是单一聊天窗口，而是一组工作面：Desktop 适合交互式本地仓库协作；CLI 适合终端、脚本和自动化；IDE 适合编辑器内上下文；Cloud/GitHub 适合 PR、issue 和远程任务。初学者先掌握 Desktop 小闭环，再学习 CLI 自动化会更稳。</p><div class="route-strip"><div class="route-pill"><strong>Desktop</strong><span>线程、仓库上下文、网页预览、截图反馈、审批、diff、发布验证。</span></div><div class="route-pill"><strong>CLI</strong><span>终端执行、<code>codex exec</code>、MCP、CI 前置检查。</span></div><div class="route-pill"><strong>IDE</strong><span>编辑器里的局部代码修改和上下文引用。</span></div><div class="route-pill"><strong>GitHub</strong><span>issue、PR、review comment 和远程协作。</span></div></div></section>
-        <section class="content-block" id="when"><p class="section-kicker">When</p><h2>什么时候用 / 不用</h2><ul class="mini-list"><li><strong>用 Desktop</strong><span>需要看 diff、页面、截图、浏览器和多线程进度。</span></li><li><strong>用 CLI</strong><span>需要脚本化、受控权限、MCP 或 <code>codex exec</code>。</span></li><li><strong>不用 Codex</strong><span>任务没有明确仓库、没有验收标准，或你不愿让代理读取相关上下文。</span></li></ul></section>
+        <section class="content-block" id="what"><p class="section-kicker">What</p><h2>它是什么</h2><p>本指南把 Codex 理解为一个以 Desktop 为主的本地工程协作工作面：你在桌面应用里选择项目、开启线程、让 Codex 读仓库上下文、在同一个任务里查看 diff、审批操作、使用内置终端验证、用 in-app browser 反馈页面问题，并在需要时把重复任务沉淀为 Automations。</p><div class="route-strip"><div class="route-pill"><strong>线程</strong><span>一个目标一个线程，保留上下文、审批、终端输出和最终证据。</span></div><div class="route-pill"><strong>Local / Worktree</strong><span>Local 直接改当前项目；Worktree 隔离试验和并行任务。</span></div><div class="route-pill"><strong>Browser + Git</strong><span>预览页面、评论反馈、审查 diff、提交、推送和创建 PR。</span></div><div class="route-pill"><strong>Automations</strong><span>把稳定重复任务放到 Desktop 后台运行，并在 Triage inbox 收结果。</span></div></div></section>
+        <section class="content-block" id="when"><p class="section-kicker">When</p><h2>什么时候用 / 不用</h2><ul class="mini-list"><li><strong>用 Desktop</strong><span>需要看 diff、页面、截图、浏览器、审批、终端验证和多线程进度。</span></li><li><strong>先用 Local</strong><span>小改动、文档、网页、测试修复和发布验证，优先在当前项目里完成。</span></li><li><strong>改用 Worktree</strong><span>试验性修改、并行任务、自动化后台任务，或不想碰当前工作区时使用。</span></li><li><strong>不用 Codex</strong><span>任务没有明确仓库、没有验收标准，或你不愿让代理读取相关上下文。</span></li></ul></section>
         <section class="content-block" id="examples"><p class="section-kicker">Examples</p><h2>可复制示例</h2><pre><code>我正在 Codex Desktop 里处理这个仓库。
 请先读取 AGENTS.md、README.md 和失败测试日志。
 目标：解释这个错误，并提出最小修复方案。
 约束：只读分析，不要改文件。</code></pre></section>
-        <section class="content-block"><p class="section-kicker">Real example</p><h2>真实实例：扩充这份网页手册</h2><p>这次维护 <code>codex-usage-guide</code> 时，Codex 同时用到了多个工作面：在 Desktop 里接收网页反馈，在本地仓库读取 <code>AGENTS.md</code> 和 HTML 文件，用终端运行静态链接检查和本地 HTTP 服务，再通过 Git 推送并确认 GitHub Pages 状态。这个例子说明 Codex 不是“问答机器人”，而是能围绕一个仓库完成读、改、验、发的工程协作者。</p><pre><code>真实任务输入：
+        <section class="content-block" id="real-example"><p class="section-kicker">Real example</p><h2>真实实例：扩充这份网页手册</h2><p>这次维护 <code>codex-usage-guide</code> 时，Codex 的主工作面是 Desktop：用户给出页面反馈，Codex 读取 <code>AGENTS.md</code> 和 HTML 文件，在内置终端运行静态链接检查，最后用 Git diff 和验证结果收口。这个例子说明 Codex Desktop 的价值不是“聊天”，而是把读、改、验、审查和发布证据放进一个可追踪线程。</p><pre><code>真实任务输入：
 请把中文 Codex 指南扩成实战手册。
 要求：
 - 每个主要页面都有真实实例

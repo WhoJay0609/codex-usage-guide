@@ -9,22 +9,29 @@
 </head>
 <body>
   <header class="topbar">
-    <div class="topbar-inner">
-      <a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a>
-      <nav class="nav">
-        <a data-nav href="index.html">首页</a>
-        <a data-nav href="codex.html">Codex</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a>
-        <a data-nav href="permissions.html">权限</a>
-        <a data-nav href="agents-md.html">AGENTS.md</a>
-        <a data-nav href="skills.html">Skills</a>
-        <a data-nav href="mcp.html">MCP</a>
-        <a data-nav href="subagents.html">Subagents</a>
-        <a data-nav href="goal.html">Goal</a>
-        <a data-nav href="workflows.html">任务</a>
-        <a data-nav href="resources.html">资料</a>
-      </nav>
-    </div>
-  </header>
+  <div class="topbar-inner">
+    <a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a>
+    <nav class="nav">
+      <a data-nav href="index.html">首页</a>
+      <a data-nav href="codex.html">Codex</a>
+      <a data-nav href="install-desktop.html">安装</a>
+      <a data-nav href="desktop-cli.html">Desktop</a>
+      <a data-nav href="permissions.html">权限</a>
+      <a data-nav href="agents-md.html">AGENTS.md</a>
+      <a data-nav href="skills.html">Skills</a>
+      <a data-nav href="mcp.html">MCP</a>
+      <a data-nav href="subagents.html">Subagents</a>
+      <a data-nav href="goal.html">Goal</a>
+      <a data-nav href="workflows.html">任务</a>
+      <a data-nav href="daily-workflow.html">日常</a>
+      <a data-nav href="engineering.html">工程</a>
+      <a data-nav href="research.html">学术</a>
+      <a data-nav href="automation.html">自动化</a>
+      <a data-nav href="compound-engineering.html">Compound</a>
+      <a data-nav href="resources.html">资料</a>
+    </nav>
+  </div>
+</header>
 
   <main>
     <section class="hero compact">
@@ -41,24 +48,24 @@
           <p class="section-kicker">Official docs</p>
           <h2>官方资料优先</h2>
         </div>
-        <p class="scrub-text">官方资料用于解释 Codex 的产品边界、权限模型、Desktop、CLI、AGENTS.md、Skills、subagents、GitHub integration 和自动化入口。本指南把 Desktop 作为主线，把 CLI 作为自动化和批处理补充。</p>
+        <p class="scrub-text">官方资料用于解释 Codex Desktop 的产品边界、权限模型、线程、Local/Worktree、in-app browser、Automations、AGENTS.md、Skills 和 subagents。本指南只保留 Desktop 读者主线。</p>
       </div>
       <div class="source-grid">
         <a class="source-card span-4" href="https://developers.openai.com/showcase/codex-101"><h3>Codex 101</h3><p>适合第一次建立整体认识。</p></a>
         <a class="source-card span-4" href="https://developers.openai.com/codex/learn/best-practices"><h3>Best practices</h3><p>理解如何写任务、给上下文和验收。</p></a>
         <a class="source-card span-4" href="https://developers.openai.com/codex/app"><h3>Codex Desktop</h3><p>本手册默认入口：线程、仓库协作、浏览器反馈和审批。</p></a>
-        <a class="source-card span-3" href="https://developers.openai.com/codex/cli"><h3>CLI</h3><p>终端、脚本化和本地执行。</p></a>
-        <a class="source-card span-3" href="https://developers.openai.com/codex/ide"><h3>IDE</h3><p>编辑器内使用 Codex。</p></a>
-        <a class="source-card span-3" href="https://developers.openai.com/codex/auth"><h3>Auth</h3><p>登录、API key 和身份边界。</p></a>
+        <a class="source-card span-3" href="https://developers.openai.com/codex/app/features"><h3>App features</h3><p>Local/Worktree、Git diff、内置终端和桌面操作能力。</p></a>
+        <a class="source-card span-3" href="https://developers.openai.com/codex/app/browser"><h3>In-app browser</h3><p>预览页面、添加视觉反馈、让 Codex 验证网页修复。</p></a>
+        <a class="source-card span-3" href="https://developers.openai.com/codex/app/automations"><h3>Automations</h3><p>后台定时任务、Triage inbox 和 worktree 隔离。</p></a>
         <a class="source-card span-3" href="https://developers.openai.com/codex/agent-approvals-security"><h3>Security</h3><p>approvals、sandbox 和安全模型。</p></a>
         <a class="source-card span-4" href="https://developers.openai.com/codex/concepts/customization"><h3>Customization</h3><p>把 Codex 调整为项目协作者。</p></a>
         <a class="source-card span-4" href="https://developers.openai.com/codex/guides/agents-md"><h3>AGENTS.md</h3><p>项目规则、层级和可复用上下文。</p></a>
         <a class="source-card span-4" href="https://developers.openai.com/codex/skills"><h3>Skills</h3><p>Codex skills 的官方入口。</p></a>
         <a class="source-card span-4" href="https://developers.openai.com/codex/concepts/subagents"><h3>Subagents</h3><p>任务拆分和多代理协作。</p></a>
         <a class="source-card span-4" href="https://developers.openai.com/codex/workflows"><h3>Workflows</h3><p>常见任务工作流。</p></a>
-        <a class="source-card span-4" href="https://developers.openai.com/codex/noninteractive"><h3>Non-interactive</h3><p><code>codex exec</code> 和自动化。</p></a>
+        <a class="source-card span-4" href="https://developers.openai.com/codex/app/worktrees"><h3>Worktrees</h3><p>用隔离工作区试验改动或运行后台任务。</p></a>
         <a class="source-card span-6" href="https://developers.openai.com/codex/integrations/github"><h3>GitHub integration</h3><p>issue、PR 和代码审查协作。</p></a>
-        <a class="source-card span-6" href="https://github.com/openai/codex"><h3>OpenAI Codex repo</h3><p>开源 CLI 仓库、配置和问题讨论。</p></a>
+        <a class="source-card span-6" href="https://developers.openai.com/codex/app/review"><h3>Review</h3><p>在 Desktop 里审查 diff、评论、暂存、提交和发起 PR。</p></a>
       </div>
     </section>
 
@@ -75,7 +82,9 @@
         <a class="source-card span-3" href="README.md"><h3>README</h3><p>仓库结构和发布方式。</p></a>
         <a class="source-card span-3" href="CONTEXT.md"><h3>CONTEXT</h3><p>术语表和概念边界。</p></a>
         <a class="source-card span-3" href="figures/beginner-quickstart.md"><h3>历史流程图</h3><p>旧版 PNG 图的 Mermaid 源文件仍保留。</p></a>
-        <a class="source-card span-12 dark-card" href="https://github.com/WhoJay0609/codex-goal-entry"><h3>goal-entry 独立仓库</h3><p><code>goal-entry</code> 是本机维护的 Goal 路由示例，不是 OpenAI 官方内置功能。它展示如何把目标识别、preflight、dispatch 和 closeout 组织成可复用协议。</p></a>
+        <a class="source-card span-6" href="skills-repositories.html"><h3>高 stars skills 仓库介绍</h3><p>按任务 fit 比较 Compound Engineering、<code>mattpocock/skills</code>、<code>academic-research-skills-codex</code> 和 ARIS；这是第三方仓库选择页，不是 OpenAI 官方功能清单。</p></a>
+        <a class="source-card span-6 dark-card" href="compound-engineering.html"><h3>Compound Engineering plugin</h3><p>EveryInc 插件仓库的 Codex Desktop 使用页，覆盖 custom marketplace 安装、<code>/ce-setup</code>、六步工程循环和 <code>/lfg</code> 边界。</p></a>
+        <a class="source-card span-6" href="goal-entry.html"><h3>goal-entry 本机实验</h3><p><code>goal-entry</code> 是自己开发的本机扩展，不是官方能力，实际效果一般；本指南只把它作为 local adaptation 案例保留。</p></a>
       </div>
     </section>
 
@@ -83,11 +92,12 @@
       <div class="content-block">
         <p class="section-kicker">Real example</p>
         <h2>真实实例：资料如何进入页面内容</h2>
-        <p>扩充这份手册时，官方资料用于确认产品边界，例如 Codex App、CLI、AGENTS.md、Skills、Subagents 和 non-interactive mode；本机资料用于解释本地扩展，例如 <code>goal-entry</code>。页面内容不会复制官方文档，而是把官方概念转成中文 Desktop 操作流程、真实 prompt 和验证清单。</p>
+        <p>扩充这份手册时，官方资料用于确认产品边界，例如 Codex App、Local/Worktree、in-app browser、Automations、AGENTS.md、Skills 和 Subagents；插件仓库用于解释第三方扩展，例如 Compound Engineering；本机资料只作为 local adaptation 案例，例如 <code>goal-entry</code>。页面内容不会复制官方文档，而是把资料转成中文 Desktop 操作流程、真实 prompt 和验证清单。</p>
         <pre><code>资料使用方式：
 - 官方文档：确认概念和安全边界
-- openai/codex 仓库：确认 CLI 和开源入口
-- 本机 SKILL.md：解释 local adaptation
+- Codex App 官方资料：确认 Desktop 功能和安全边界
+- 插件仓库：解释可迁移扩展
+- 本机 SKILL.md：只解释 local adaptation
 - 本仓库实例：展示真实任务如何跑完</code></pre>
       </div>
     </section>

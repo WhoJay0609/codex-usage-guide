@@ -75,6 +75,7 @@ p { margin: 0; }
   align-items: center;
   justify-content: space-between;
   gap: 18px;
+  min-width: 0;
   padding: 10px 12px 10px 18px;
 }
 .brand {
@@ -98,6 +99,7 @@ p { margin: 0; }
   justify-content: flex-end;
   flex-wrap: nowrap;
   gap: 2px;
+  min-width: 0;
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -364,15 +366,26 @@ main {
   display: grid;
   justify-content: center;
   width: 100%;
-  min-height: 280px;
-  padding: 8px;
+  min-height: 360px;
+  padding: 12px 8px;
   border-radius: 6px;
   background: #fffaf0;
 }
 .mermaid svg {
-  width: 100%;
-  max-width: 980px;
+  width: 100% !important;
+  max-width: 1180px;
+  min-width: 0;
   height: auto;
+}
+
+.mermaid-large .mermaid {
+  padding: 14px 0 8px;
+  justify-content: stretch;
+}
+
+.mermaid-large .mermaid svg {
+  width: 100% !important;
+  max-width: 1240px !important;
 }
 .route-strip {
   display: grid;
@@ -449,6 +462,48 @@ main {
 }
 .dark-card p,
 .dark-card code { color: rgba(255, 250, 240, 0.72); }
+
+.decision-table {
+  display: grid;
+  gap: 10px;
+}
+.decision-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.8fr) minmax(170px, 1fr) minmax(170px, 1fr) minmax(170px, 1fr);
+  gap: 12px;
+  align-items: start;
+  border: 1px solid rgba(17, 17, 15, 0.12);
+  border-radius: var(--radius);
+  background: rgba(255, 250, 240, 0.78);
+  padding: 14px;
+}
+.decision-row strong { color: var(--ink); }
+.decision-row span {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.tier-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.tier-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  border: 1px solid rgba(17, 17, 15, 0.14);
+  border-radius: 999px;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.68);
+  color: #3e3a33;
+  font-size: 0.82rem;
+  font-weight: 760;
+}
+.repair-card {
+  border-left: 4px solid var(--accent);
+}
 
 .mini-list {
   display: grid;
@@ -577,13 +632,18 @@ main {
 @media (max-width: 980px) {
   .topbar { position: static; border-radius: 18px; }
   .topbar-inner { align-items: flex-start; flex-direction: column; }
-  .nav { justify-content: flex-start; }
+  .nav {
+    justify-content: flex-start;
+    max-width: 100%;
+    width: 100%;
+  }
   .hero,
   .home-hero,
   .section-head,
   .footer,
   .doc-layout,
   .split-visual,
+  .decision-row,
   .route-strip { grid-template-columns: 1fr; }
   .hero { min-height: auto; padding-top: 68px; }
   .home-hero .hero-copy { justify-items: center; text-align: center; }
@@ -609,13 +669,24 @@ main {
   .button { width: 100%; }
   .hero-actions { width: 100%; }
   .route-panel a { grid-template-columns: 38px minmax(0, 1fr); }
-  pre { font-size: 0.82rem; }
+  pre {
+    max-width: 100%;
+    font-size: 0.82rem;
+  }
+  pre code {
+    display: block;
+    max-width: 100%;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
   .mermaid {
     min-height: 220px;
     overflow-x: auto;
     justify-content: start;
   }
-  .mermaid svg { min-width: 620px; }
+  .mermaid svg { min-width: 720px; }
+  .mermaid-large .mermaid { padding-bottom: 12px; }
   .bento,
   .source-grid,
   .steps { grid-template-columns: 1fr; }

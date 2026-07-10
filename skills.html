@@ -4,8 +4,8 @@
 <body>
   <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a><nav class="nav"><a data-nav href="index.html">首页</a><a data-nav href="codex.html">Codex</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a><a data-nav href="workflows.html">任务</a><a data-nav href="resources.html">资料</a></nav></div></header>
   <main><section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Concept</p><h1>Skills</h1><p class="lead">Skill 是可复用的工作流说明。它告诉 Codex 什么时候触发、先读什么、输出什么、怎么验证。</p></div></section>
-    <div class="doc-layout"><aside class="side-nav"><strong>本页</strong><a href="#what">它是什么</a><a href="#when">什么时候用</a><a href="#examples">可复制示例</a></aside><article class="doc-content">
-      <section class="content-block" id="what"><p class="section-kicker">What</p><h2>它是什么</h2><p>Skills 适合沉淀重复流程，例如工程 grilling、学术 pipeline、部署检查、代码 review。公开指南里要区分官方能力和本机自写 skills。</p><div class="route-strip"><div class="route-pill"><strong>触发条件</strong><span>什么时候必须使用，什么时候不该使用。</span></div><div class="route-pill"><strong>输入合同</strong><span>需要仓库、目标、范围、预算、人工 checkpoint。</span></div><div class="route-pill"><strong>执行步骤</strong><span>先读哪些文件，是否允许 subagent，如何验证。</span></div><div class="route-pill"><strong>输出合同</strong><span>产物、证据、风险、下一步和本地限制。</span></div></div></section>
+    <div class="doc-layout"><aside class="side-nav"><strong>本页</strong><a href="#what">它是什么</a><a href="#when">什么时候用</a><a href="#examples">可复制示例</a><a href="#real-example">真实实例</a></aside><article class="doc-content">
+      <section class="content-block" id="what"><p class="section-kicker">What</p><h2>它是什么</h2><p>Skills 适合沉淀重复流程，例如工程 grilling、学术 pipeline、部署检查、代码 review。公开指南里要区分官方能力、第三方仓库和本机自写 skills。想按任务比较几个高关注仓库时，看 <a href="skills-repositories.html">高 stars skills 仓库介绍</a>。</p><div class="route-strip"><div class="route-pill"><strong>触发条件</strong><span>什么时候必须使用，什么时候不该使用。</span></div><div class="route-pill"><strong>输入合同</strong><span>需要仓库、目标、范围、预算、人工 checkpoint。</span></div><div class="route-pill"><strong>执行步骤</strong><span>先读哪些文件，是否允许 subagent，如何验证。</span></div><div class="route-pill"><strong>输出合同</strong><span>产物、证据、风险、下一步和本地限制。</span></div></div></section>
       <section class="content-block" id="when"><p class="section-kicker">When</p><h2>什么时候用 / 不用</h2><p>当任务模式稳定、输入输出明确、需要多次复用时用 skill。一次性的想法、未定边界和临时偏好，不应该急着做成 skill；先用普通任务跑通，再把稳定流程沉淀。</p></section>
       <section class="content-block" id="examples"><p class="section-kicker">Examples</p><h2>可复制示例</h2><pre><code>[$grill-with-docs]
 仓库：/path/to/repo
@@ -43,11 +43,11 @@ Output:
 - Findings first.
 - Then open questions.
 - Then verification gaps.</code></pre></section>
-      <section class="content-block"><p class="section-kicker">Real example</p><h2>真实实例：本次使用 goal-entry skill</h2><p>用户明确调用 <code>[$goal-entry]</code> 后，Codex 先读取 <code>goal-entry/SKILL.md</code>，再运行 resolver。中文请求一开始被 resolver 误判为 <code>report_only</code>，随后用等价英文执行意图重新路由，得到 <code>execute_goal</code> 和 <code>ready=true</code>，才继续修改网页。这说明 skill 的价值不只是“提示词更长”，而是强制执行路由、preflight 和停止条件。</p><pre><code>真实中间结果：
-request_mode: execute_goal
-goal_entry_tier: standard_superpowers
-readiness_gate: passed
-preflight ready: true</code></pre></section>
+      <section class="content-block" id="real-example"><p class="section-kicker">Real example</p><h2>真实实例：区分插件和本机实验</h2><p>本次指南同时保留多个扩展入口：<a href="skills-repositories.html">高 stars skills 仓库介绍</a> 用来比较第三方 skills 仓库；<code>Compound Engineering</code> 是 EveryInc 的插件仓库，适合按官方仓库说明安装；<code>goal-entry</code> 是自己开发的本机 skill，实际效果一般，只适合作为 local adaptation 案例参考。读者迁移到新机器时，优先选择可复现的插件和官方机制。</p><pre><code>判断顺序：
+1. 官方 Codex 能力是否足够
+2. 是否有可安装插件，例如 Compound Engineering
+3. 是否有第三方 skills 仓库可复用
+4. 最后才参考本机自开发 skill</code></pre></section>
     </article></div>
   </main><footer class="footer"><p><strong>Codex 使用指南</strong></p><a class="button" href="mcp.html">下一页：MCP</a></footer><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
   <script src="assets/site.js"></script>

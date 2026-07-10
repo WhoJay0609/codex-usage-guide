@@ -4,7 +4,7 @@
 <body>
   <header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a><nav class="nav"><a data-nav href="index.html">首页</a><a data-nav href="codex.html">Codex</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a><a data-nav href="workflows.html">任务</a><a data-nav href="resources.html">资料</a></nav></div></header>
   <main><section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Concept</p><h1>AGENTS.md</h1><p class="lead">把重复出现的项目规则写进仓库，让 Codex 每次进入项目时都能读取稳定上下文。</p></div></section>
-    <div class="doc-layout"><aside class="side-nav"><strong>本页</strong><a href="#what">它是什么</a><a href="#when">什么时候用</a><a href="#examples">可复制示例</a></aside><article class="doc-content">
+    <div class="doc-layout"><aside class="side-nav"><strong>本页</strong><a href="#what">它是什么</a><a href="#when">什么时候用</a><a href="#examples">可复制示例</a><a href="#real-example">真实实例</a></aside><article class="doc-content">
       <section class="content-block" id="what"><p class="section-kicker">What</p><h2>它是什么</h2><p><code>AGENTS.md</code> 是给代理看的项目说明书。它适合写搜索方式、编辑规则、测试命令、敏感路径、完成报告格式和团队约定。</p><div class="route-strip"><div class="route-pill"><strong>开始读什么</strong><span>README、CONTEXT、架构文档、失败日志。</span></div><div class="route-pill"><strong>怎么改</strong><span>编辑边界、禁止重构、代码风格、命名约定。</span></div><div class="route-pill"><strong>怎么验</strong><span>最窄测试、构建命令、浏览器检查、截图要求。</span></div><div class="route-pill"><strong>怎么报告</strong><span>改动、验证、风险、未完成项、链接或 commit。</span></div></div></section>
       <section class="content-block" id="when"><p class="section-kicker">When</p><h2>什么时候用 / 不用</h2><p>当你连续两次纠正同一类行为，就该写入 <code>AGENTS.md</code>。不要把一次性任务要求、临时实验参数、个人口令、私有 token 或只对当前线程有效的决策写进去。</p></section>
       <section class="content-block" id="examples"><p class="section-kicker">Examples</p><h2>可复制示例</h2><pre><code>## Repository Expectations
@@ -25,7 +25,7 @@
 - 默认不要改 backend/public_api，除非用户明确要求。
 - 发现需求冲突时停止并报告，不要猜测。
 - 不要读取或提交 .env、certs/、private_data/。</code></pre></section>
-      <section class="content-block"><p class="section-kicker">Real example</p><h2>真实实例：本仓库 AGENTS.md 如何约束工作</h2><p><code>codex-usage-guide/AGENTS.md</code> 明确写着：网页是 canonical public artifact，不要把 PDF 作为默认完成合同，保留 <code>Goal</code>、<code>subagent</code>、<code>AGENTS.md</code>、<code>goal-entry</code> 这些英文标识。这让 Codex 在多次迭代中不会回到旧的 PDF 方向，也不会把内部 <code>doc/</code> 任务记录发布出去。</p><pre><code>真实效果：
+      <section class="content-block" id="real-example"><p class="section-kicker">Real example</p><h2>真实实例：本仓库 AGENTS.md 如何约束工作</h2><p><code>codex-usage-guide/AGENTS.md</code> 明确写着：网页是 canonical public artifact，不要把 PDF 作为默认完成合同，并保留 <code>Goal</code>、<code>subagent</code>、<code>AGENTS.md</code>、<code>SKILL.md</code> 这类英文标识。这让 Codex 在多次迭代中不会回到旧的 PDF 方向，也不会把内部 <code>doc/</code> 任务记录发布出去。</p><pre><code>真实效果：
 - 用户要求只做 GitHub Pages 时，不再维护 PDF
 - 修改页面时保留英文专有名词
 - 过程记录写在 doc/，但不纳入公开提交

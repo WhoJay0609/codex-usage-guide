@@ -21,7 +21,8 @@ and scenario-specific skills later:
 1. General Front Half: Codex work model, Goal objective writing, subagent usage, Goal/Subagent combination patterns, `AGENTS.md`, task phrasing, permissions, and verification.
 2. Engineering Scenario Track: mainly grounded in the installed Matt Pocock skills flow behind `ask-matt`, `grill-me`, and `grill-with-docs`.
 3. Academic Scenario Track: grounded in installed research skills such as `academic-research-suite`, `ask-research`, and `research-grill-me`.
-4. Local Goal Implementation Track: explain the concrete `goal-entry` router and its child skills only after the generic Goal/Subagent concepts are established.
+4. Extension Track: explain portable plugins such as Compound Engineering separately from self-developed local adaptations.
+5. Local Goal Implementation Track: keep `goal-entry` as a clearly labeled self-developed, average-effectiveness local experiment only after the generic Goal/Subagent concepts are established.
 5. Official Context: include Codex app background from official OpenAI documentation.
 6. Beginner Visual Aids: include Mermaid source files and rendered figures so zero-background readers can see the Codex task loop and the Goal/Subagent lifecycle before reading detailed prose.
 7. Local Skill Boundary: explicitly note which mentioned skills are local, self-written, or locally maintained extensions rather than OpenAI official built-ins.
