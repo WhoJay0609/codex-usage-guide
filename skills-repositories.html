@@ -47,6 +47,7 @@
         <strong>本页</strong>
         <a href="#what">怎么读</a>
         <a href="#chooser">怎么选</a>
+        <a href="#case-labels">案例标签</a>
         <a href="#compound">Compound Engineering</a>
         <a href="#matt">mattpocock/skills</a>
         <a href="#academic">academic-research-skills-codex</a>
@@ -79,6 +80,16 @@
           </div>
         </section>
 
+        <section class="content-block" id="case-labels">
+          <p class="section-kicker">Evidence labels</p>
+          <h2>先看案例证据等级</h2>
+          <div class="decision-table">
+            <div class="decision-row"><strong>历史案例</strong><span>有可核验的计划、Git、测试或公开产物</span><span>只主张证据覆盖的阶段</span><span>不能把局部使用扩写成完整交付</span></div>
+            <div class="decision-row"><strong>历史复合案例</strong><span>多个已核验片段重排成教学流程</span><span>必须标明组合性质</span><span>完整示例见 <a href="engineering.html#team-flow">团队协作规范</a></span></div>
+            <div class="decision-row"><strong>演示场景</strong><span>基于上游能力设计的可复制输入</span><span>帮助读者起步</span><span>不声称本项目已经执行</span></div>
+          </div>
+        </section>
+
         <section class="content-block" id="compound">
           <p class="section-kicker">Engineering workflow</p>
           <h2>Compound Engineering</h2>
@@ -97,6 +108,7 @@
             <li><strong>使用边界</strong><span>需求还很粗时先 brainstorm；不要一行模糊目标直接交给 <code>/lfg</code>。</span></li>
             <li><strong>仓库链接</strong><span><a href="https://github.com/EveryInc/compound-engineering-plugin">github.com/EveryInc/compound-engineering-plugin</a></span></li>
           </ul>
+          <article class="card" id="compound-case" data-case-type="historical" data-case-id="compound-guide-summary"><div class="tier-badges"><span class="tier-badge">历史案例</span></div><h3>案例：从需求到 PR #1</h3><p>本指南先确认单页范围与读者顺序，再在同一计划中补齐实施单元，通过 LFG 完成页面、图片、检查和 PR #1。重要恢复是收紧 staging，避免把忽略的过程记录带入公开提交。证据包括公开计划、提交、PR、<code>make check</code> 和默认分支合并；完整交付门禁见 <a href="engineering.html#team-flow">团队协作规范</a>。</p></article>
         </section>
 
         <section class="content-block" id="matt">
@@ -117,6 +129,7 @@
             <li><strong>使用边界</strong><span>它不是全自动大框架。先用 setup 选择需要的 skills，再按任务调用，不要一次加载全部。</span></li>
             <li><strong>仓库链接</strong><span><a href="https://github.com/mattpocock/skills">github.com/mattpocock/skills</a></span></li>
           </ul>
+          <article class="card" id="matt-case" data-case-type="historical" data-case-id="matt-context-grill"><div class="tier-badges"><span class="tier-badge">历史案例</span></div><h3>案例：先建立上下文，再 grill</h3><p>一次仓库任务先运行 setup 选择所需 skills，再读取 <code>AGENTS.md</code>、README、相关源码和 dirty 状态，只追问会改变范围或验收的问题。发现无关未提交文件后，明确把它们排除在写域之外，再形成计划。该证据只支持“上下文准备与需求澄清”，不声称自动完成实现、PR 或 merge。</p></article>
         </section>
 
         <section class="content-block" id="academic">
@@ -141,6 +154,7 @@
             <li><strong>使用边界</strong><span>安装后应该只有一个 ARS entry。不要把 Claude Code 分发里的多个独立 skills 当成 Codex-native 安装结果。</span></li>
             <li><strong>仓库链接</strong><span><a href="https://github.com/Imbad0202/academic-research-skills-codex">github.com/Imbad0202/academic-research-skills-codex</a></span></li>
           </ul>
+          <article class="card" id="ars-case" data-case-type="demo" data-case-id="academic-research-suite-demo"><div class="tier-badges"><span class="tier-badge">演示场景</span></div><h3>场景：先做 novelty 与最小实验矩阵</h3><p>输入一个方法想法和证据边界，让 suite 先返回研究问题、closest work、可证伪 novelty、最小实验与人工核验来源。来源不足或 baseline 不可复现时输出 blocked 研究回执，不进入论文正文。本项目没有该场景的执行记录，因此不标为历史案例。</p></article>
         </section>
 
         <section class="content-block" id="aris">
@@ -160,6 +174,7 @@
             <li><strong>使用边界</strong><span>长任务必须写清 objective、来源可信边界、验证证据和外部写操作审批。不要把“睡觉时自动科研”理解成无人监管。</span></li>
             <li><strong>仓库链接</strong><span><a href="https://github.com/wanshuiyin/auto-claude-code-research-in-sleep">github.com/wanshuiyin/auto-claude-code-research-in-sleep</a></span></li>
           </ul>
+          <article class="card" id="aris-case" data-case-type="demo" data-case-id="aris-sleep-research-demo"><div class="tier-badges"><span class="tier-badge">演示场景</span></div><h3>场景：夜间循环保留人工闸门</h3><p>把已确认的研究 brief、预算、停止条件和输出目录交给长循环，每轮只生成日志、证据缺口和下一轮建议；修改论文、提交结果或启动高成本实验前必须等待人工授权。本项目没有该场景的执行记录，因此不标为历史案例。</p></article>
         </section>
 
         <section class="content-block" id="advanced">
@@ -189,9 +204,10 @@
           </ul>
         </section>
 
-        <section class="content-block" id="real-example">
+        <section class="content-block" id="real-example" data-case-type="historical" data-case-id="skills-page-delivery">
           <p class="section-kicker">Real example</p>
-          <h2>真实实例：这次页面怎么做</h2>
+          <h2>真实实例：历史案例</h2>
+          <div class="tier-badges"><span class="tier-badge">历史案例</span><span class="tier-badge">公开仓库证据</span></div>
           <div class="bento">
             <article class="card span-4"><h3>输入</h3><p>用户要求把 Compound Engineering、Matt Pocock skills、ARS 和 ARIS 放在一页，说明能力、使用方式和示例，并生成小黑配图。</p></article>
             <article class="card span-4"><h3>先读</h3><p>先读四个上游 README、本仓库页面模式、<code>scripts/check_site.py</code> 和 <code>ian-xiaohei-illustrations</code> 风格要求。</p></article>

@@ -48,6 +48,7 @@
         <a href="#install">安装</a>
         <a href="#setup">初始化</a>
         <a href="#loop">核心循环</a>
+        <a href="#unified-plan">统一计划</a>
         <a href="#choose">怎么选 skill</a>
         <a href="#prompts">可复制输入</a>
         <a href="#safety">使用边界</a>
@@ -99,6 +100,17 @@
           </div>
         </section>
 
+        <section class="content-block" id="unified-plan">
+          <p class="section-kicker">Unified plan</p>
+          <h2>Product Contract 和实施计划写在同一份文档</h2>
+          <p><code>/ce-brainstorm</code> 先把用户、范围、验收、非目标和失败条件写成轻量 Product Contract；确认后，<code>/ce-plan</code> 在同一份计划中补充文件、依赖、U-ID、测试场景和 Definition of Done。不要另起一份 PRD 让两个事实源逐渐漂移。</p>
+          <div class="decision-table">
+            <div class="decision-row"><strong>Product Contract</strong><span>用户目标、范围、非目标、验收</span><span>由用户或产品负责人确认</span><span>未确认就回到 brainstorm</span></div>
+            <div class="decision-row"><strong>Implementation plan</strong><span>文件、依赖、U-ID、验证合同</span><span>由主线程补齐并审阅 readiness</span><span>不 ready 就继续规划</span></div>
+            <div class="decision-row"><strong>Issues / lanes</strong><span>从已确认计划派生，不另写需求</span><span>按依赖和不重叠写域执行</span><span>完整团队路径见 <a href="engineering.html#team-flow">团队协作规范</a></span></div>
+          </div>
+        </section>
+
         <section class="content-block" id="choose">
           <p class="section-kicker">Choose</p>
           <h2>常见情况选哪个 skill</h2>
@@ -137,16 +149,18 @@
           </ul>
         </section>
 
-        <section class="content-block" id="real-example">
+        <section class="content-block" id="real-example" data-case-type="historical" data-case-id="compound-guide-pr-1">
           <p class="section-kicker">Real example</p>
-          <h2>真实实例：把插件页加入这份指南</h2>
+          <h2>真实实例：历史案例</h2>
+          <div class="tier-badges"><span class="tier-badge">历史案例</span><span class="tier-badge">公开仓库证据</span></div>
+          <p>本指南的“高 stars skills 仓库介绍”经过 requirements-only brainstorm、同一份计划的实施补全、LFG 交付、PR #1、静态验证和默认分支合并。这里引用的是公开仓库记录，不把流程名称当成完成证据。</p>
           <div class="bento">
-            <article class="card span-4"><h3>输入</h3><p>用户要求移除旧本机扩展主题，并单独介绍 EveryInc 插件仓库的使用方式。</p></article>
-            <article class="card span-4"><h3>先读</h3><p>读取项目规则、现有导航、静态检查脚本，以及 EveryInc 仓库 README 的 Codex App 安装段。</p></article>
-            <article class="card span-4"><h3>应动文件</h3><p><code>compound-engineering.html</code>、导航入口、README、资料页、任务页和 <code>scripts/check_site.py</code>。</p></article>
-            <article class="card span-4"><h3>验证</h3><p><code>make check</code>、残留旧主题扫描、<code>git diff --check</code>。</p></article>
-            <article class="card span-4"><h3>最终回答</h3><p>报告页面替换、验证结果、未提交状态和未执行项。</p></article>
-            <article class="card span-4"><h3>失败停止</h3><p>官方仓库安装信息不可确认、站内链接断裂、验证失败且没有窄修复。</p></article>
+            <article class="card span-4"><h3>请求</h3><p>把四个第三方 skills 仓库放在一页，说明能力、使用方式、示例和边界，并配入一致插图。</p></article>
+            <article class="card span-4"><h3>先读与角色</h3><p>主线程读取项目规则、四个上游 README、页面模式和检查器；实现与审阅按不重叠写域分工，Git 集成留在主线程。</p></article>
+            <article class="card span-4"><h3>边界</h3><p>只发布普通读者优先、自动化读者其次的一页；本机 <code>goal-entry</code> 不冒充外部高关注仓库，内部过程文档不提交。</p></article>
+            <article class="card span-4"><h3>验证证据</h3><p><code>make check</code>、图片和锚点检查、diff review；提交 <code>44643ae</code> 经 PR #1 合并为 <code>55d11e7</code>。</p></article>
+            <article class="card span-4"><h3>重要恢复与结果</h3><p>发布前收紧 staging，排除忽略的过程记录；PR 合并到该仓库实际默认分支 <code>master</code>，随后抽样公开页面。</p></article>
+            <article class="card span-4"><h3>失败停止</h3><p>上游事实无法确认、图片缺失、链接或检查失败、脱敏边界变化，或没有明确 push/PR 授权时停止。</p></article>
           </div>
         </section>
       </article>
