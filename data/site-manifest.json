@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "site": {
+    "title": "Codex 使用指南",
+    "base_url": "https://whojay0609.github.io/codex-usage-guide/",
+    "language": "zh-CN"
+  },
+  "navigation": [
+    {"label": "开始", "pages": ["index.html", "install-desktop.html", "desktop-cli.html"]},
+    {"label": "基础概念", "pages": ["codex.html", "permissions.html", "agents-md.html", "skills.html", "mcp.html", "subagents.html", "goal.html"]},
+    {"label": "任务路径", "pages": ["workflows.html", "daily-workflow.html", "engineering.html", "research.html", "automation.html"]},
+    {"label": "扩展与资料", "pages": ["compound-engineering.html", "skills-repositories.html", "goal-entry.html", "resources.html"]}
+  ],
+  "pages": [
+    {"path": "index.html", "title": "中文 Codex 实战手册", "nav_label": "首页", "description": "从一个可验证的小任务开始使用 Codex Desktop。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
+    {"path": "install-desktop.html", "title": "安装 Codex Desktop", "nav_label": "安装", "description": "安装、登录并完成第一个 Codex Desktop 任务。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
+    {"path": "desktop-cli.html", "title": "Codex Desktop 操作手册", "nav_label": "Desktop", "description": "线程、审批、diff 与发布验证的 Desktop 主流程。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
+    {"path": "codex.html", "title": "Codex 是什么", "nav_label": "Codex", "description": "理解 Codex Desktop 的工作面与适用边界。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
+    {"path": "permissions.html", "title": "权限与安全", "nav_label": "权限", "description": "理解 sandbox、approval、network 与 secret 边界。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
+    {"path": "agents-md.html", "title": "AGENTS.md", "nav_label": "AGENTS.md", "description": "为 Codex 写清项目规则、边界和验证命令。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
+    {"path": "skills.html", "title": "Skills", "nav_label": "Skills", "description": "选择和使用 Codex skills。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
+    {"path": "mcp.html", "title": "MCP / Plugins", "nav_label": "MCP", "description": "连接外部工具并管理其权限。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
+    {"path": "subagents.html", "title": "Subagents", "nav_label": "Subagents", "description": "拆分、约束和收口 subagent 工作。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
+    {"path": "goal.html", "title": "Goal", "nav_label": "Goal", "description": "用 Goal 管理长任务的目标、验收与停止条件。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
+    {"path": "workflows.html", "title": "任务路径", "nav_label": "任务", "description": "根据任务复杂度选择合适的 Codex 工作流。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
+    {"path": "daily-workflow.html", "title": "日常任务 workflow", "nav_label": "日常", "description": "完成解释、修复、测试和审查等日常任务。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
+    {"path": "engineering.html", "title": "工程 flow", "nav_label": "工程", "description": "从需求澄清到验证发布的工程任务路径。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
+    {"path": "research.html", "title": "学术 flow", "nav_label": "学术", "description": "从研究问题到实验和写作的学术任务路径。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
+    {"path": "automation.html", "title": "自动化", "nav_label": "自动化", "description": "把稳定重复任务交给 Codex Desktop Automations。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
+    {"path": "compound-engineering.html", "title": "Compound Engineering", "nav_label": "Compound", "description": "在 Codex Desktop 中使用 Compound Engineering plugin。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
+    {"path": "skills-repositories.html", "title": "高 stars skills 仓库介绍", "nav_label": "Skills 仓库", "description": "比较常用第三方 skills 仓库并选择合适入口。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
+    {"path": "goal-entry.html", "title": "goal-entry", "nav_label": "goal-entry", "description": "了解本机自开发 goal-entry 的用途和限制。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
+    {"path": "resources.html", "title": "资料地图", "nav_label": "资料", "description": "查找 Codex Desktop 官方资料与本指南维护边界。", "modified": "2026-07-11", "facts_verified": "2026-07-11"}
+  ]
+}
