@@ -8,28 +8,14 @@
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a>
-      <nav class="nav">
-        <a data-nav href="index.html">首页</a>
-        <a data-nav href="codex.html">Codex</a>
-        <a data-nav href="install-desktop.html">安装</a>
-        <a data-nav href="desktop-cli.html">Desktop</a>
-        <a data-nav href="permissions.html">权限</a>
-        <a data-nav href="agents-md.html">AGENTS.md</a>
-        <a data-nav href="skills.html">Skills</a>
-        <a data-nav href="mcp.html">MCP</a>
-        <a data-nav href="subagents.html">Subagents</a>
-        <a data-nav href="goal.html">Goal</a>
-        <a data-nav href="workflows.html">任务</a>
-        <a data-nav href="compound-engineering.html">Compound</a>
-        <a data-nav href="resources.html">资料</a>
-      </nav>
-    </div>
-  </header>
+  <!-- guide:header:start -->
+<header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><span class="search-status">全站搜索将在下一阶段启用</span><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header>
+<!-- guide:header:end -->
 
-  <main>
+  <!-- guide:shell-open:start -->
+<div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html">首页</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">自动化</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html">Compound</a><a data-nav href="skills-repositories.html">Skills 仓库</a><a data-nav href="goal-entry.html" aria-current="page">goal-entry</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>goal-entry</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-07-11">2026-07-11</time></span><span>事实核验：<time datetime="2026-07-11">2026-07-11</time></span></div>
+<!-- guide:shell-open:end -->
+<main>
     <section class="hero compact">
       <div class="hero-copy">
         <p class="hero-kicker">Local experiment</p>
@@ -39,19 +25,12 @@
     </section>
 
     <div class="doc-layout">
-      <aside class="side-nav">
-        <strong>本页</strong>
-        <a href="#what">定位</a>
-        <a href="#limits">限制</a>
-        <a href="#when">什么时候用</a>
-        <a href="#examples">可复制示例</a>
-        <a href="#real-example">真实实例</a>
-      </aside>
+
 
       <article class="doc-content">
         <section class="content-block" id="what">
           <p class="section-kicker">Positioning</p>
-          <h2>定位：自开发本机扩展</h2>
+          <h2 id="heading-goal-entry-1">定位：自开发本机扩展</h2>
           <p><code>goal-entry</code> 的设计目标是先判断请求属于讨论、计划、执行还是绑定已有 goal，再决定是否进入 preflight 和 closeout。它的价值主要在于把“不要误执行、不要跳过验证”写成固定规程。</p>
           <div class="tier-badges">
             <span class="tier-badge">本机自开发</span>
@@ -62,7 +41,7 @@
 
         <section class="content-block" id="limits">
           <p class="section-kicker">Limits</p>
-          <h2>为什么说效果一般</h2>
+          <h2 id="heading-goal-entry-2">为什么说效果一般</h2>
           <ul class="mini-list">
             <li><strong>提示词依赖高</strong><span>用户如果同时写“只讨论”和“执行修改”，仍需要人工判断外层意图。</span></li>
             <li><strong>流程偏重</strong><span>小任务用它会显得啰嗦，普通 Desktop 线程通常更快。</span></li>
@@ -73,7 +52,7 @@
 
         <section class="content-block" id="when">
           <p class="section-kicker">When</p>
-          <h2>什么时候可以用</h2>
+          <h2 id="heading-goal-entry-3">什么时候可以用</h2>
           <div class="decision-table">
             <div class="decision-row"><strong>可用</strong><span>跨多文件、需要目标闭环</span><span>风险：流程偏重</span><span>证据：objective、validation、closeout</span></div>
             <div class="decision-row"><strong>少用</strong><span>单文件小改、普通问答</span><span>风险：浪费时间</span><span>替代：直接用 Codex Desktop 线程</span></div>
@@ -83,7 +62,7 @@
 
         <section class="content-block" id="examples">
           <p class="section-kicker">Examples</p>
-          <h2>可复制示例</h2>
+          <h2 id="heading-goal-entry-4">可复制示例</h2>
           <pre><code>[$goal-entry]
 只判断路线，不改文件。
 请说明这个请求应该讨论、计划还是执行，并列出停止条件。</code></pre>
@@ -95,12 +74,15 @@
 
         <section class="content-block" id="real-example">
           <p class="section-kicker">Real example</p>
-          <h2>真实实例：本指南如何标注它</h2>
+          <h2 id="heading-goal-entry-5">真实实例：本指南如何标注它</h2>
           <p>这次用户要求保留 <code>goal-entry</code> 介绍，但必须说明它是自己开发的，而且效果一般。因此本页不再把它写成默认推荐流程，只保留来源、限制、适用场景和失败边界。复杂工程流程优先看 <a href="compound-engineering.html">Compound Engineering plugin</a>。</p>
         </section>
       </article>
     </div>
   </main>
+<!-- guide:shell-close:start -->
+<nav class="page-sequence" aria-label="前后页"><a rel="prev" href="skills-repositories.html">← Skills 仓库</a><a rel="next" href="resources.html">资料 →</a></nav></div><aside class="page-toc" aria-label="本页目录"><details open><summary>本页目录</summary><nav><a class="toc-h2" href="#what">定位：自开发本机扩展</a><a class="toc-h2" href="#limits">为什么说效果一般</a><a class="toc-h2" href="#when">什么时候可以用</a><a class="toc-h2" href="#examples">可复制示例</a><a class="toc-h2" href="#real-example">真实实例：本指南如何标注它</a></nav></details></aside></div>
+<!-- guide:shell-close:end -->
 
   <footer class="footer">
     <p><strong>本机实验</strong><br>goal-entry 可以参考，但不要把它当作官方标准路径。</p>

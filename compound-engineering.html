@@ -8,31 +8,13 @@
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-  <header class="topbar">
-  <div class="topbar-inner">
-    <a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a>
-    <nav class="nav">
-      <a data-nav href="index.html">首页</a>
-      <a data-nav href="codex.html">Codex</a>
-      <a data-nav href="install-desktop.html">安装</a>
-      <a data-nav href="desktop-cli.html">Desktop</a>
-      <a data-nav href="permissions.html">权限</a>
-      <a data-nav href="agents-md.html">AGENTS.md</a>
-      <a data-nav href="skills.html">Skills</a>
-      <a data-nav href="mcp.html">MCP</a>
-      <a data-nav href="subagents.html">Subagents</a>
-      <a data-nav href="goal.html">Goal</a>
-      <a data-nav href="workflows.html">任务</a>
-      <a data-nav href="daily-workflow.html">日常</a>
-      <a data-nav href="engineering.html">工程</a>
-      <a data-nav href="research.html">学术</a>
-      <a data-nav href="automation.html">自动化</a>
-      <a data-nav href="compound-engineering.html">Compound</a>
-      <a data-nav href="resources.html">资料</a>
-    </nav>
-  </div>
-</header>
-  <main>
+  <!-- guide:header:start -->
+<header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><span class="search-status">全站搜索将在下一阶段启用</span><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header>
+<!-- guide:header:end -->
+  <!-- guide:shell-open:start -->
+<div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html">首页</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">自动化</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html" aria-current="page">Compound</a><a data-nav href="skills-repositories.html">Skills 仓库</a><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>Compound</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-07-11">2026-07-11</time></span><span>事实核验：<time datetime="2026-07-11">2026-07-11</time></span></div>
+<!-- guide:shell-open:end -->
+<main>
     <section class="hero compact">
       <div class="hero-copy">
         <p class="hero-kicker">Plugin workflow</p>
@@ -42,23 +24,12 @@
     </section>
 
     <div class="doc-layout">
-      <aside class="side-nav">
-        <strong>本页</strong>
-        <a href="#what">它是什么</a>
-        <a href="#install">安装</a>
-        <a href="#setup">初始化</a>
-        <a href="#loop">核心循环</a>
-        <a href="#unified-plan">统一计划</a>
-        <a href="#choose">怎么选 skill</a>
-        <a href="#prompts">可复制输入</a>
-        <a href="#safety">使用边界</a>
-        <a href="#real-example">真实实例</a>
-      </aside>
+
 
       <article class="doc-content">
         <section class="content-block" id="what">
           <p class="section-kicker">What</p>
-          <h2>它是什么</h2>
+          <h2 id="heading-compound-engineering-1">它是什么</h2>
           <p>这个仓库提供 Compound Engineering 插件：用一组 <code>/ce-*</code> skills 把工程任务从“随手改”变成“先澄清、再计划、再执行、再审查、再沉淀”。在 Codex Desktop 里，它适合多步骤功能、复杂 bug、PR 前审查和团队知识复用。</p>
           <div class="tier-badges">
             <span class="tier-badge">官方来源：EveryInc GitHub repo</span>
@@ -69,7 +40,7 @@
 
         <section class="content-block" id="install">
           <p class="section-kicker">Install</p>
-          <h2>在 Codex Desktop 里安装</h2>
+          <h2 id="heading-compound-engineering-2">在 Codex Desktop 里安装</h2>
           <ol class="mini-list">
             <li><strong>打开 Plugins</strong><span>在 Codex Desktop 侧边栏进入 Plugins。</span></li>
             <li><strong>添加 marketplace</strong><span>选择 Add / Add plugin marketplace。</span></li>
@@ -81,7 +52,7 @@
 
         <section class="content-block" id="setup">
           <p class="section-kicker">Setup</p>
-          <h2>第一次进入项目后先跑什么</h2>
+          <h2 id="heading-compound-engineering-3">第一次进入项目后先跑什么</h2>
           <p>安装后，在目标仓库的新线程里先运行 <code>/ce-setup</code>。它会检查 repo-local 配置、可用工具和本机设置，适合确认插件已经加载，并避免把机器配置误写进仓库。</p>
           <pre><code>/ce-setup</code></pre>
           <p>如果项目方向还不清楚，再用 <code>/ce-strategy</code> 建立或维护 <code>STRATEGY.md</code>；如果只是一个明确任务，不要为了流程完整而强行创建策略文件。</p>
@@ -89,7 +60,7 @@
 
         <section class="content-block" id="loop">
           <p class="section-kicker">Core loop</p>
-          <h2>核心六步怎么用</h2>
+          <h2 id="heading-compound-engineering-4">核心六步怎么用</h2>
           <div class="decision-table">
             <div class="decision-row"><strong>1. /ce-brainstorm</strong><span>澄清需求，只产出需求级计划</span><span>不要直接写代码</span><span>证据：范围、用户目标、验收</span></div>
             <div class="decision-row"><strong>2. /ce-plan</strong><span>把需求转成实现计划</span><span>不要把风险藏进执行阶段</span><span>证据：文件、步骤、验证</span></div>
@@ -102,7 +73,7 @@
 
         <section class="content-block" id="unified-plan">
           <p class="section-kicker">Unified plan</p>
-          <h2>Product Contract 和实施计划写在同一份文档</h2>
+          <h2 id="heading-compound-engineering-5">Product Contract 和实施计划写在同一份文档</h2>
           <p><code>/ce-brainstorm</code> 先把用户、范围、验收、非目标和失败条件写成轻量 Product Contract；确认后，<code>/ce-plan</code> 在同一份计划中补充文件、依赖、U-ID、测试场景和 Definition of Done。不要另起一份 PRD 让两个事实源逐渐漂移。</p>
           <div class="decision-table">
             <div class="decision-row"><strong>Product Contract</strong><span>用户目标、范围、非目标、验收</span><span>由用户或产品负责人确认</span><span>未确认就回到 brainstorm</span></div>
@@ -113,19 +84,19 @@
 
         <section class="content-block" id="choose">
           <p class="section-kicker">Choose</p>
-          <h2>常见情况选哪个 skill</h2>
+          <h2 id="heading-compound-engineering-6">常见情况选哪个 skill</h2>
           <div class="bento">
-            <article class="card span-4"><h3>还不知道做什么</h3><p>用 <code>/ce-ideate</code>，让它从代码、问题和候选方向里筛出值得进入 brainstorm 的任务。</p></article>
-            <article class="card span-4"><h3>这是 bug</h3><p>用 <code>/ce-debug</code>，先复现和定位根因，再修复和准备审查。</p></article>
-            <article class="card span-4"><h3>在评估外部方案</h3><p>用 <code>/ce-pov</code>，给出项目上下文里的采用、拒绝或 spike 判断。</p></article>
-            <article class="card span-6"><h3>刚做完一批代码</h3><p>用 <code>/ce-simplify-code</code> 后再 review，避免把临时实现直接推给审查。</p></article>
-            <article class="card span-6 dark-card"><h3>想全自动交付</h3><p><code>/lfg</code> 只适合需求已经澄清、分支/PR/验证/推送边界明确的任务；一行粗需求不要直接交给它。</p></article>
+            <article class="card span-4"><h3 id="heading-compound-engineering-7">还不知道做什么</h3><p>用 <code>/ce-ideate</code>，让它从代码、问题和候选方向里筛出值得进入 brainstorm 的任务。</p></article>
+            <article class="card span-4"><h3 id="heading-compound-engineering-8">这是 bug</h3><p>用 <code>/ce-debug</code>，先复现和定位根因，再修复和准备审查。</p></article>
+            <article class="card span-4"><h3 id="heading-compound-engineering-9">在评估外部方案</h3><p>用 <code>/ce-pov</code>，给出项目上下文里的采用、拒绝或 spike 判断。</p></article>
+            <article class="card span-6"><h3 id="heading-compound-engineering-10">刚做完一批代码</h3><p>用 <code>/ce-simplify-code</code> 后再 review，避免把临时实现直接推给审查。</p></article>
+            <article class="card span-6 dark-card"><h3 id="heading-compound-engineering-11">想全自动交付</h3><p><code>/lfg</code> 只适合需求已经澄清、分支/PR/验证/推送边界明确的任务；一行粗需求不要直接交给它。</p></article>
           </div>
         </section>
 
         <section class="content-block" id="prompts">
           <p class="section-kicker">Prompts</p>
-          <h2>可复制输入</h2>
+          <h2 id="heading-compound-engineering-12">可复制输入</h2>
           <pre><code>/ce-brainstorm
 目标：让后台任务重试更安全。
 背景：现在重复 webhook 偶尔创建重复记录。
@@ -140,7 +111,7 @@
 
         <section class="content-block" id="safety">
           <p class="section-kicker">Boundaries</p>
-          <h2>使用边界</h2>
+          <h2 id="heading-compound-engineering-13">使用边界</h2>
           <ul class="mini-list">
             <li><strong>先读项目规则</strong><span>让 Codex 读取 <code>AGENTS.md</code>、README 和相关源码，再进入 CE 流程。</span></li>
             <li><strong>写清楚验收</strong><span>每个长流程都要有测试、构建、页面检查、PR check 或人工验收标准。</span></li>
@@ -151,21 +122,24 @@
 
         <section class="content-block" id="real-example" data-case-type="historical" data-case-id="compound-guide-pr-1">
           <p class="section-kicker">Real example</p>
-          <h2>真实实例：历史案例</h2>
+          <h2 id="heading-compound-engineering-14">真实实例：历史案例</h2>
           <div class="tier-badges"><span class="tier-badge">历史案例</span><span class="tier-badge">公开仓库证据</span></div>
           <p>本指南的“高 stars skills 仓库介绍”经过 requirements-only brainstorm、同一份计划的实施补全、LFG 交付、PR #1、静态验证和默认分支合并。这里引用的是公开仓库记录，不把流程名称当成完成证据。</p>
           <div class="bento">
-            <article class="card span-4"><h3>请求</h3><p>把四个第三方 skills 仓库放在一页，说明能力、使用方式、示例和边界，并配入一致插图。</p></article>
-            <article class="card span-4"><h3>先读与角色</h3><p>主线程读取项目规则、四个上游 README、页面模式和检查器；实现与审阅按不重叠写域分工，Git 集成留在主线程。</p></article>
-            <article class="card span-4"><h3>边界</h3><p>只发布普通读者优先、自动化读者其次的一页；本机 <code>goal-entry</code> 不冒充外部高关注仓库，内部过程文档不提交。</p></article>
-            <article class="card span-4"><h3>验证证据</h3><p><code>make check</code>、图片和锚点检查、diff review；提交 <code>44643ae</code> 经 PR #1 合并为 <code>55d11e7</code>。</p></article>
-            <article class="card span-4"><h3>重要恢复与结果</h3><p>发布前收紧 staging，排除忽略的过程记录；PR 合并到该仓库实际默认分支 <code>master</code>，随后抽样公开页面。</p></article>
-            <article class="card span-4"><h3>失败停止</h3><p>上游事实无法确认、图片缺失、链接或检查失败、脱敏边界变化，或没有明确 push/PR 授权时停止。</p></article>
+            <article class="card span-4"><h3 id="heading-compound-engineering-15">请求</h3><p>把四个第三方 skills 仓库放在一页，说明能力、使用方式、示例和边界，并配入一致插图。</p></article>
+            <article class="card span-4"><h3 id="heading-compound-engineering-16">先读与角色</h3><p>主线程读取项目规则、四个上游 README、页面模式和检查器；实现与审阅按不重叠写域分工，Git 集成留在主线程。</p></article>
+            <article class="card span-4"><h3 id="heading-compound-engineering-17">边界</h3><p>只发布普通读者优先、自动化读者其次的一页；本机 <code>goal-entry</code> 不冒充外部高关注仓库，内部过程文档不提交。</p></article>
+            <article class="card span-4"><h3 id="heading-compound-engineering-18">验证证据</h3><p><code>make check</code>、图片和锚点检查、diff review；提交 <code>44643ae</code> 经 PR #1 合并为 <code>55d11e7</code>。</p></article>
+            <article class="card span-4"><h3 id="heading-compound-engineering-19">重要恢复与结果</h3><p>发布前收紧 staging，排除忽略的过程记录；PR 合并到该仓库实际默认分支 <code>master</code>，随后抽样公开页面。</p></article>
+            <article class="card span-4"><h3 id="heading-compound-engineering-20">失败停止</h3><p>上游事实无法确认、图片缺失、链接或检查失败、脱敏边界变化，或没有明确 push/PR 授权时停止。</p></article>
           </div>
         </section>
       </article>
     </div>
   </main>
+<!-- guide:shell-close:start -->
+<nav class="page-sequence" aria-label="前后页"><a rel="prev" href="automation.html">← 自动化</a><a rel="next" href="skills-repositories.html">Skills 仓库 →</a></nav></div><aside class="page-toc" aria-label="本页目录"><details open><summary>本页目录</summary><nav><a class="toc-h2" href="#what">它是什么</a><a class="toc-h2" href="#install">在 Codex Desktop 里安装</a><a class="toc-h2" href="#setup">第一次进入项目后先跑什么</a><a class="toc-h2" href="#loop">核心六步怎么用</a><a class="toc-h2" href="#unified-plan">Product Contract 和实施计划写在同一份文档</a><a class="toc-h2" href="#choose">常见情况选哪个 skill</a><a class="toc-h3" href="#choose">还不知道做什么</a><a class="toc-h3" href="#choose">这是 bug</a><a class="toc-h3" href="#choose">在评估外部方案</a><a class="toc-h3" href="#choose">刚做完一批代码</a><a class="toc-h3" href="#choose">想全自动交付</a><a class="toc-h2" href="#prompts">可复制输入</a><a class="toc-h2" href="#safety">使用边界</a><a class="toc-h2" href="#real-example">真实实例：历史案例</a><a class="toc-h3" href="#real-example">请求</a><a class="toc-h3" href="#real-example">先读与角色</a><a class="toc-h3" href="#real-example">边界</a><a class="toc-h3" href="#real-example">验证证据</a><a class="toc-h3" href="#real-example">重要恢复与结果</a><a class="toc-h3" href="#real-example">失败停止</a></nav></details></aside></div>
+<!-- guide:shell-close:end -->
   <footer class="footer"><p><strong>Compound Engineering</strong><br>先用 Desktop 跑小闭环，再把复杂工程任务交给插件流程。</p><a class="button" href="https://github.com/EveryInc/compound-engineering-plugin">查看仓库</a></footer>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
