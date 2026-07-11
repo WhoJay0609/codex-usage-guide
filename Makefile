@@ -7,6 +7,7 @@ PDF = $(OUTDIR)/codex-usage-guide.pdf
 .PHONY: check pdf clean
 
 check:
+	$(PYTHON) -m unittest discover -s tests
 	$(PYTHON) scripts/check_site.py
 
 pdf:

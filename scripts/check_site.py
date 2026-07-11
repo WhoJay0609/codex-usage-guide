@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import sys
+from collections import Counter
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urldefrag, urlparse
@@ -77,12 +78,43 @@ REQUIRED_IMAGES = {
         "figures/high-stars-automation-loop.png",
     },
 }
+LOOP_STAGES = [
+    ("choose", "task-entry"),
+    ("practice", "bounded-practice"),
+    ("evidence", "acceptance-evidence"),
+    ("recover", "recovery"),
+    ("receipt", "task-receipt"),
+]
+CASE_LABELS = {
+    "historical": "历史案例",
+    "composite": "历史复合案例",
+    "demo": "演示场景",
+}
+VOID_TAGS = {
+    "area", "base", "br", "col", "embed", "hr", "img", "input", "link",
+    "meta", "param", "source", "track", "wbr",
+}
+REQUIRED_BACKLINKS = {
+    "workflows.html": {"engineering.html#team-flow"},
+    "subagents.html": {"engineering.html#issue-lanes", "engineering.html#team-case"},
+    "goal.html": {"engineering.html#team-case"},
+    "agents-md.html": {"engineering.html#team-case"},
+    "compound-engineering.html": {"engineering.html#team-flow"},
+    "skills-repositories.html": {"engineering.html#team-flow"},
+    "engineering.html": {
+        "workflows.html#task-entry",
+        "subagents.html#worktree-subagent",
+        "goal.html#real-example",
+        "agents-md.html#real-example",
+    },
+}
 
 
 class PageParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
         self.ids: set[str] = set()
+        self.id_counts: Counter[str] = Counter()
         self.hrefs: list[str] = []
         self.images: list[str] = []
         self.stylesheets: list[str] = []
@@ -95,13 +127,32 @@ class PageParser(HTMLParser):
         self._current_nav_href: str | None = None
         self._text_chunks: dict[str, list[str]] = {"title": [], "h1": []}
         self._visible_chunks: list[str] = []
+        self.loop_stages: list[tuple[str, str]] = []
+        self.cases: list[dict[str, str]] = []
+        self._case_stack: list[dict[str, object]] = []
+        self._depth = 0
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         attr = {key: value or "" for key, value in attrs}
+        if tag not in VOID_TAGS:
+            self._depth += 1
         if tag in {"script", "style"}:
             self._ignored_depth += 1
         if "id" in attr:
             self.ids.add(attr["id"])
+            self.id_counts[attr["id"]] += 1
+        if "data-loop-stage" in attr:
+            self.loop_stages.append((attr["data-loop-stage"], attr.get("id", "")))
+        if "data-case-type" in attr:
+            self._case_stack.append(
+                {
+                    "tag": tag,
+                    "type": attr["data-case-type"],
+                    "id": attr.get("id", ""),
+                    "text": [],
+                    "depth": self._depth,
+                }
+            )
         if tag == "a" and attr.get("href"):
             href = attr["href"]
             self.hrefs.append(href)
@@ -119,12 +170,27 @@ class PageParser(HTMLParser):
             self._current_tag = tag
 
     def handle_endtag(self, tag: str) -> None:
+        if (
+            self._case_stack
+            and self._case_stack[-1]["tag"] == tag
+            and self._case_stack[-1]["depth"] == self._depth
+        ):
+            case = self._case_stack.pop()
+            self.cases.append(
+                {
+                    "type": str(case["type"]),
+                    "id": str(case["id"]),
+                    "text": " ".join(case["text"]),
+                }
+            )
         if tag in {"script", "style"} and self._ignored_depth:
             self._ignored_depth -= 1
         if tag == self._current_tag:
             self._current_tag = None
         if tag == "a":
             self._current_nav_href = None
+        if tag not in VOID_TAGS and self._depth:
+            self._depth -= 1
 
     def handle_data(self, data: str) -> None:
         if self._ignored_depth:
@@ -132,6 +198,8 @@ class PageParser(HTMLParser):
         stripped = data.strip()
         if stripped:
             self._visible_chunks.append(stripped)
+            for case in self._case_stack:
+                case["text"].append(stripped)
             if self._current_nav_href:
                 self.nav_text.setdefault(self._current_nav_href, []).append(stripped)
         if self._current_tag:
@@ -178,10 +246,123 @@ def check_local_link(source: Path, href: str, pages: dict[str, PageParser]) -> l
     return []
 
 
+def validate_semantic_contracts(pages: dict[str, PageParser]) -> list[str]:
+    errors: list[str] = []
+
+    for rel, parser in pages.items():
+        for case in parser._case_stack:
+            case_id = f"#{case['id']}" if case["id"] else "without id"
+            errors.append(f"{rel}: unclosed case container {case_id}")
+        for identifier, count in parser.id_counts.items():
+            if count > 1:
+                errors.append(f"{rel}: duplicate id #{identifier} appears {count} times")
+
+    workflow_stages: list[tuple[str, str]] = []
+    for rel, parser in pages.items():
+        if rel == "workflows.html":
+            workflow_stages.extend(parser.loop_stages)
+        elif parser.loop_stages:
+            errors.append(f"{rel}: loop stage belongs on workflows.html")
+
+    if "workflows.html" in pages:
+        expected_names = [stage for stage, _ in LOOP_STAGES]
+        actual_names = [stage for stage, _ in workflow_stages]
+        for stage, anchor in LOOP_STAGES:
+            count = actual_names.count(stage)
+            if count == 0:
+                errors.append(f"workflows.html: missing loop stage: {stage}")
+            elif count > 1:
+                errors.append(f"workflows.html: duplicate loop stage: {stage}")
+            for actual_stage, actual_anchor in workflow_stages:
+                if actual_stage == stage and actual_anchor != anchor:
+                    errors.append(
+                        f"workflows.html: loop stage {stage} must use anchor #{anchor}"
+                    )
+        if actual_names != expected_names:
+            errors.append("workflows.html: loop stages must appear in canonical order")
+
+    for rel, parser in pages.items():
+        for case in parser.cases:
+            case_type = case["type"]
+            case_id = f"#{case['id']}" if case["id"] else "without id"
+            if case_type not in CASE_LABELS:
+                errors.append(f"{rel}: unknown case type: {case_type}")
+                continue
+            label = CASE_LABELS[case_type]
+            if label not in case["text"]:
+                errors.append(f"{rel}: case {case_id} must visibly include {label}")
+
+    for rel, required in REQUIRED_BACKLINKS.items():
+        if rel not in pages:
+            continue
+        missing = required - set(pages[rel].hrefs)
+        for href in sorted(missing):
+            errors.append(f"{rel}: missing required backlink: {href}")
+
+    return errors
+
+
+def validate_case_index(pages: dict[str, PageParser], index_text: str) -> list[str]:
+    errors: list[str] = []
+    rows: dict[str, list[str]] = {}
+    case_ids: set[str] = set()
+    for line in index_text.splitlines():
+        if not line.startswith("|"):
+            continue
+        cells = [cell.strip().strip("`") for cell in line.strip().strip("|").split("|")]
+        if len(cells) != 8 or cells[0] == "Case ID" or set(cells[0]) == {"-"}:
+            continue
+        case_id, anchor, case_label, _, review_status, freshness, role, _ = cells
+        if case_id in case_ids:
+            errors.append(f"evidence index: duplicate Case ID: {case_id}")
+        case_ids.add(case_id)
+        if anchor in rows:
+            errors.append(f"evidence index: duplicate page anchor: {anchor}")
+        rows[anchor] = cells
+        for field_name, value in {
+            "Case ID": case_id,
+            "page anchor": anchor,
+            "type": case_label,
+            "review status": review_status,
+            "freshness": freshness,
+            "responsible role": role,
+        }.items():
+            if not value:
+                errors.append(f"evidence index: {anchor or case_id} missing {field_name}")
+
+    actual_anchors: set[str] = set()
+    for rel, parser in pages.items():
+        for case in parser.cases:
+            if not case["id"]:
+                errors.append(f"{rel}: indexed case is missing an id")
+                continue
+            anchor = f"{rel}#{case['id']}"
+            actual_anchors.add(anchor)
+            if anchor not in rows:
+                errors.append(f"{rel}: case #{case['id']} missing from evidence index")
+                continue
+            expected_label = CASE_LABELS.get(case["type"])
+            if expected_label is None:
+                continue
+            if rows[anchor][2] != expected_label:
+                errors.append(
+                    f"{rel}: case #{case['id']} index type must be {expected_label}"
+                )
+    for anchor in sorted(set(rows) - actual_anchors):
+        if ".html#" in anchor:
+            errors.append(f"evidence index: orphan page anchor: {anchor}")
+    return errors
+
+
 def main() -> int:
     html_paths = sorted(ROOT.glob("*.html"))
     pages = {path.relative_to(ROOT).as_posix(): parse_page(path) for path in html_paths}
-    errors: list[str] = []
+    errors = validate_semantic_contracts(pages)
+    evidence_index = ROOT / "docs" / "case-evidence-index.md"
+    if evidence_index.exists():
+        errors.extend(validate_case_index(pages, evidence_index.read_text(encoding="utf-8")))
+    else:
+        errors.append("docs/case-evidence-index.md: missing case evidence index")
 
     for rel, parser in pages.items():
         if not parser.text("title"):
