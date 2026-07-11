@@ -60,7 +60,7 @@ Repaired:
 3. 同一任务内只把互斥写域交给不同 subagent；共享文件保持串行。
 4. 每个 subagent 在 wait point 返回文件和证据，不执行 Git 操作。
 5. 主线程更新依赖、检查真实 diff、统一验证和集成。</code></pre></article></div></section>
-      <section class="content-block" id="real-example" data-case-type="composite"><p class="section-kicker">Real example</p><h2>真实实例：历史复合案例</h2><div class="tier-badges"><span class="tier-badge">历史复合案例</span><span class="tier-badge">完整案例的 Worktree 摘录</span></div><p><strong>请求：</strong>在保留主工作区既有修改的前提下，让执行者完成互不重叠的文档切片。<strong>角色：</strong>主线程选择 base、登记隔离目录、整合 Git；subagent 只修改被分配页面并返回证据；独立 reviewer 只读检查合同与 diff。</p><pre><code>写域：按互不重叠的页面组分配；共享契约和校验逻辑保持串行。
+      <section class="content-block" id="real-example" data-case-type="composite" data-case-id="worktree-composite-excerpt"><p class="section-kicker">Real example</p><h2>真实实例：历史复合案例</h2><div class="tier-badges"><span class="tier-badge">历史复合案例</span><span class="tier-badge">完整案例的 Worktree 摘录</span></div><p><strong>请求：</strong>在保留主工作区既有修改的前提下，让执行者完成互不重叠的文档切片。<strong>角色：</strong>主线程选择 base、登记隔离目录、整合 Git；subagent 只修改被分配页面并返回证据；独立 reviewer 只读检查合同与 diff。</p><pre><code>写域：按互不重叠的页面组分配；共享契约和校验逻辑保持串行。
 验证证据：changed files、局部检查、真实 diff、主线程全站检查。
 重要恢复：主 checkout 有无关 dirty 修改时不清理或覆盖，改用隔离写域。
 教学规则：只有依赖、review、验证和授权满足后，主线程才可集成。

@@ -7,10 +7,12 @@ import sys
 from collections import Counter
 from html.parser import HTMLParser
 from pathlib import Path
+import re
 from urllib.parse import urldefrag, urlparse
 
 
 ROOT = Path(__file__).resolve().parents[1]
+IGNORED_HTML_DIRS = {".git", ".worktrees", "build", "node_modules"}
 CORE_NAV = {
     "index.html",
     "codex.html",
@@ -108,6 +110,9 @@ REQUIRED_BACKLINKS = {
         "agents-md.html#real-example",
     },
 }
+CASE_ANCHOR_RE = re.compile(
+    r"^(?P<page>[A-Za-z0-9_./-]+\.html)#(?P<fragment>[A-Za-z][A-Za-z0-9_.:-]*)$"
+)
 
 
 class PageParser(HTMLParser):
@@ -115,6 +120,7 @@ class PageParser(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.ids: set[str] = set()
         self.id_counts: Counter[str] = Counter()
+        self.duplicate_attributes: list[tuple[str, str]] = []
         self.hrefs: list[str] = []
         self.images: list[str] = []
         self.stylesheets: list[str] = []
@@ -133,6 +139,10 @@ class PageParser(HTMLParser):
         self._depth = 0
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        attribute_counts = Counter(key for key, _ in attrs)
+        self.duplicate_attributes.extend(
+            (tag, key) for key, count in attribute_counts.items() if count > 1
+        )
         attr = {key: value or "" for key, value in attrs}
         if tag not in VOID_TAGS:
             self._depth += 1
@@ -149,6 +159,7 @@ class PageParser(HTMLParser):
                     "tag": tag,
                     "type": attr["data-case-type"],
                     "id": attr.get("id", ""),
+                    "case_id": attr.get("data-case-id", ""),
                     "text": [],
                     "depth": self._depth,
                 }
@@ -180,6 +191,7 @@ class PageParser(HTMLParser):
                 {
                     "type": str(case["type"]),
                     "id": str(case["id"]),
+                    "case_id": str(case["case_id"]),
                     "text": " ".join(case["text"]),
                 }
             )
@@ -248,8 +260,11 @@ def check_local_link(source: Path, href: str, pages: dict[str, PageParser]) -> l
 
 def validate_semantic_contracts(pages: dict[str, PageParser]) -> list[str]:
     errors: list[str] = []
+    seen_case_ids: dict[str, str] = {}
 
     for rel, parser in pages.items():
+        for tag, attribute in parser.duplicate_attributes:
+            errors.append(f"{rel}: duplicate {attribute} attribute on <{tag}>")
         for case in parser._case_stack:
             case_id = f"#{case['id']}" if case["id"] else "without id"
             errors.append(f"{rel}: unclosed case container {case_id}")
@@ -285,6 +300,16 @@ def validate_semantic_contracts(pages: dict[str, PageParser]) -> list[str]:
         for case in parser.cases:
             case_type = case["type"]
             case_id = f"#{case['id']}" if case["id"] else "without id"
+            stable_case_id = case["case_id"]
+            if not stable_case_id:
+                errors.append(f"{rel}: case {case_id} missing data-case-id")
+            elif stable_case_id in seen_case_ids:
+                errors.append(
+                    f"{rel}: duplicate data-case-id {stable_case_id}; "
+                    f"first used by {seen_case_ids[stable_case_id]}"
+                )
+            else:
+                seen_case_ids[stable_case_id] = f"{rel}{case_id}"
             if case_type not in CASE_LABELS:
                 errors.append(f"{rel}: unknown case type: {case_type}")
                 continue
@@ -310,7 +335,11 @@ def validate_case_index(pages: dict[str, PageParser], index_text: str) -> list[s
         if not line.startswith("|"):
             continue
         cells = [cell.strip().strip("`") for cell in line.strip().strip("|").split("|")]
-        if len(cells) != 8 or cells[0] == "Case ID" or set(cells[0]) == {"-"}:
+        first_cell = cells[0] if cells else ""
+        if first_cell == "Case ID" or (first_cell and set(first_cell) == {"-"}):
+            continue
+        if len(cells) != 8:
+            errors.append(f"evidence index: malformed row has {len(cells)} columns: {line}")
             continue
         case_id, anchor, case_label, _, review_status, freshness, role, _ = cells
         if case_id in case_ids:
@@ -319,6 +348,8 @@ def validate_case_index(pages: dict[str, PageParser], index_text: str) -> list[s
         if anchor in rows:
             errors.append(f"evidence index: duplicate page anchor: {anchor}")
         rows[anchor] = cells
+        if not CASE_ANCHOR_RE.fullmatch(anchor):
+            errors.append(f"evidence index: invalid page anchor: {anchor}")
         for field_name, value in {
             "Case ID": case_id,
             "page anchor": anchor,
@@ -341,6 +372,10 @@ def validate_case_index(pages: dict[str, PageParser], index_text: str) -> list[s
             if anchor not in rows:
                 errors.append(f"{rel}: case #{case['id']} missing from evidence index")
                 continue
+            if rows[anchor][0] != case["case_id"]:
+                errors.append(
+                    f"{rel}: case #{case['id']} index Case ID must be {case['case_id']}"
+                )
             expected_label = CASE_LABELS.get(case["type"])
             if expected_label is None:
                 continue
@@ -349,15 +384,38 @@ def validate_case_index(pages: dict[str, PageParser], index_text: str) -> list[s
                     f"{rel}: case #{case['id']} index type must be {expected_label}"
                 )
     for anchor in sorted(set(rows) - actual_anchors):
-        if ".html#" in anchor:
+        if CASE_ANCHOR_RE.fullmatch(anchor):
             errors.append(f"evidence index: orphan page anchor: {anchor}")
     return errors
 
 
+def validate_required_pages(pages: dict[str, PageParser]) -> list[str]:
+    errors: list[str] = []
+    for rel in sorted(CONCEPT_PAGES):
+        if rel not in pages:
+            errors.append(f"{rel}: missing required concept page")
+            continue
+        missing = {"what", "when", "examples", "real-example"} - pages[rel].ids
+        if missing:
+            errors.append(f"{rel}: concept page missing anchors: {', '.join(sorted(missing))}")
+    for rel in sorted(TASK_PAGES):
+        if rel not in pages:
+            errors.append(f"{rel}: missing required task/resource page")
+            continue
+        if "真实实例" not in pages[rel].source_text:
+            errors.append(f"{rel}: task/resource page should include a 真实实例 section")
+    return errors
+
+
 def main() -> int:
-    html_paths = sorted(ROOT.glob("*.html"))
+    html_paths = sorted(
+        path
+        for path in ROOT.rglob("*.html")
+        if not (set(path.relative_to(ROOT).parts) & IGNORED_HTML_DIRS)
+    )
     pages = {path.relative_to(ROOT).as_posix(): parse_page(path) for path in html_paths}
     errors = validate_semantic_contracts(pages)
+    errors.extend(validate_required_pages(pages))
     evidence_index = ROOT / "docs" / "case-evidence-index.md"
     if evidence_index.exists():
         errors.extend(validate_case_index(pages, evidence_index.read_text(encoding="utf-8")))
@@ -369,6 +427,12 @@ def main() -> int:
             errors.append(f"{rel}: missing non-empty <title>")
         if not parser.text("h1"):
             errors.append(f"{rel}: missing non-empty <h1>")
+        if "/" in rel:
+            for href in parser.hrefs:
+                errors.extend(check_local_link(ROOT / rel, href, pages))
+            for src in parser.images:
+                errors.extend(check_local_link(ROOT / rel, src, pages))
+            continue
         if "assets/site.css" not in parser.stylesheets:
             errors.append(f"{rel}: missing shared stylesheet assets/site.css")
         if "assets/site.js" not in parser.scripts:
@@ -393,14 +457,6 @@ def main() -> int:
         missing_images = REQUIRED_IMAGES.get(rel, set()) - set(parser.images)
         if missing_images:
             errors.append(f"{rel}: missing required images: {', '.join(sorted(missing_images))}")
-
-    for rel in sorted(CONCEPT_PAGES):
-        missing = {"what", "when", "examples", "real-example"} - pages[rel].ids
-        if missing:
-            errors.append(f"{rel}: concept page missing anchors: {', '.join(sorted(missing))}")
-    for rel in sorted(TASK_PAGES):
-        if "真实实例" not in pages[rel].source_text:
-            errors.append(f"{rel}: task/resource page should include a 真实实例 section")
 
     if errors:
         print("Site check failed:")
