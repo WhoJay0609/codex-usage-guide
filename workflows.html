@@ -39,7 +39,7 @@
 <main>
     <section class="hero compact">
       <div class="hero-copy">
-        <p class="hero-kicker">ä»»å¡</p>
+        <p class="hero-kicker">任务</p>
         <h1>任务路径总览</h1>
         <p class="lead">本指南默认你主要使用 Codex Desktop。先按桌面版任务闭环组织工作，再决定是否需要 Goal、subagent、skills 或自动化。任务页的重点是可执行流程，不是术语解释。</p>
       </div>
@@ -48,7 +48,7 @@
     <section class="section" id="task-entry" data-loop-stage="choose">
       <div class="section-head">
         <div class="section-title">
-          <p class="section-kicker">1 / éæ©</p>
+          <p class="section-kicker">1 / 选择</p>
           <span class="fragment-alias" id="heading-workflows-1" data-canonical-fragment="先选工作面-再写任务" aria-hidden="true"></span><h2 id="先选工作面-再写任务">先选工作面，再写任务<a class="heading-permalink" data-heading-permalink data-search-exclude href="#先选工作面-再写任务" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
         <p class="scrub-text">先按范围、风险和协作人数选入口。短小、低风险、单文件任务直接进入五阶段循环，不需要 Issue 或 Worktree；多文件、高风险或多人写入任务升级到 <a href="engineering.html#team-flow">团队工程流程</a>。</p>
@@ -74,7 +74,7 @@
 
     <section class="section" id="bounded-practice" data-loop-stage="practice">
       <div class="section-head">
-        <div class="section-title"><p class="section-kicker">2 / å®è·µ</p><span class="fragment-alias" id="heading-workflows-10" data-canonical-fragment="同一任务-小步练到可验收" aria-hidden="true"></span><h2 id="同一任务-小步练到可验收">同一任务，小步练到可验收<a class="heading-permalink" data-heading-permalink data-search-exclude href="#同一任务-小步练到可验收" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2></div>
+        <div class="section-title"><p class="section-kicker">2 / 实践</p><span class="fragment-alias" id="heading-workflows-10" data-canonical-fragment="同一任务-小步练到可验收" aria-hidden="true"></span><h2 id="同一任务-小步练到可验收">同一任务，小步练到可验收<a class="heading-permalink" data-heading-permalink data-search-exclude href="#同一任务-小步练到可验收" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2></div>
         <p>prompt ladder 只逐步补齐同一个真实任务的上下文、边界和验收，不另换一个更容易的假任务。每一步只做当前最小改动，完成后立即检查 diff 与局部行为。</p>
       </div>
       <div class="steps">
@@ -94,7 +94,7 @@ make check 通过；桌面和 390px 页面无溢出。
 失败时保留错误并进入 blocked receipt。</code></pre><p>同一个任务现在有可复核的 done / blocked 条件。</p></article>
       </div>
       <div class="content-block">
-        <p class="section-kicker">Prompt éª¨æ¶</p>
+        <p class="section-kicker">Prompt 骨架</p>
         <span class="fragment-alias" id="heading-workflows-18" data-canonical-fragment="统一案例模板" aria-hidden="true"></span><h2 id="统一案例模板">统一案例模板<a class="heading-permalink" data-heading-permalink data-search-exclude href="#统一案例模板" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         <pre><code>背景：
 我正在 Codex Desktop 里处理 [项目/论文/网页]。
@@ -119,7 +119,7 @@ make check 通过；桌面和 390px 页面无溢出。
 - 最终报告列出改动、验证、风险和未完成项</code></pre>
       </div>
       <div class="section-head">
-        <div class="section-title"><p class="section-kicker">åä¾</p><span class="fragment-alias" id="heading-workflows-19" data-canonical-fragment="坏-prompt-怎么修" aria-hidden="true"></span><h2 id="坏-prompt-怎么修">坏 prompt 怎么修<a class="heading-permalink" data-heading-permalink data-search-exclude href="#坏-prompt-怎么修" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2></div>
+        <div class="section-title"><p class="section-kicker">反例</p><span class="fragment-alias" id="heading-workflows-19" data-canonical-fragment="坏-prompt-怎么修" aria-hidden="true"></span><h2 id="坏-prompt-怎么修">坏 prompt 怎么修<a class="heading-permalink" data-heading-permalink data-search-exclude href="#坏-prompt-怎么修" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2></div>
         <p>反例的价值是暴露缺失边界。每次修 prompt，都补齐范围、验收、验证和停止条件。</p>
       </div>
       <div class="bento">
@@ -131,7 +131,7 @@ make check 通过；桌面和 390px 页面无溢出。
 
     <section class="section" id="acceptance-evidence" data-loop-stage="evidence">
       <div class="section-head">
-        <div class="section-title"><p class="section-kicker">3 / è¯æ®</p><span class="fragment-alias" id="heading-workflows-23" data-canonical-fragment="证据通过-才算-accepted" aria-hidden="true"></span><h2 id="证据通过-才算-accepted">证据通过，才算 accepted<a class="heading-permalink" data-heading-permalink data-search-exclude href="#证据通过-才算-accepted" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2></div>
+        <div class="section-title"><p class="section-kicker">3 / 证据</p><span class="fragment-alias" id="heading-workflows-23" data-canonical-fragment="证据通过-才算-accepted" aria-hidden="true"></span><h2 id="证据通过-才算-accepted">证据通过，才算 accepted<a class="heading-permalink" data-heading-permalink data-search-exclude href="#证据通过-才算-accepted" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2></div>
         <p>实现摘要不是验收证据。先按任务合同收集对应类别的证据，再由用户、reviewer 或既定自动门判定 <code>accepted</code>；未 accepted 的任务不能进入 done。</p>
       </div>
       <div class="decision-table">
@@ -148,7 +148,7 @@ make check 通过；桌面和 390px 页面无溢出。
 
     <section class="section" id="recovery" data-loop-stage="recover">
       <div class="section-head">
-        <div class="section-title"><p class="section-kicker">4 / æ¢å¤</p><span class="fragment-alias" id="heading-workflows-26" data-canonical-fragment="先分类失败-再决定回路" aria-hidden="true"></span><h2 id="先分类失败-再决定回路">先分类失败，再决定回路<a class="heading-permalink" data-heading-permalink data-search-exclude href="#先分类失败-再决定回路" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2></div>
+        <div class="section-title"><p class="section-kicker">4 / 恢复</p><span class="fragment-alias" id="heading-workflows-26" data-canonical-fragment="先分类失败-再决定回路" aria-hidden="true"></span><h2 id="先分类失败-再决定回路">先分类失败，再决定回路<a class="heading-permalink" data-heading-permalink data-search-exclude href="#先分类失败-再决定回路" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2></div>
         <p>验证失败先保留原命令、错误和已确认事实，再区分实现问题与外部 blocker。恢复动作必须仍服务于原任务合同。</p>
       </div>
       <div class="decision-table">
@@ -163,7 +163,7 @@ make check 通过；桌面和 390px 页面无溢出。
 
     <section class="section" id="task-receipt" data-loop-stage="receipt">
       <div class="section-head">
-        <div class="section-title"><p class="section-kicker">5 / åæ§</p><span class="fragment-alias" id="heading-workflows-27" data-canonical-fragment="用两种终态收口" aria-hidden="true"></span><h2 id="用两种终态收口">用两种终态收口<a class="heading-permalink" data-heading-permalink data-search-exclude href="#用两种终态收口" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2></div>
+        <div class="section-title"><p class="section-kicker">5 / 回执</p><span class="fragment-alias" id="heading-workflows-27" data-canonical-fragment="用两种终态收口" aria-hidden="true"></span><h2 id="用两种终态收口">用两种终态收口<a class="heading-permalink" data-heading-permalink data-search-exclude href="#用两种终态收口" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2></div>
         <p>receipt 只能是 <code>done</code> 或 <code>blocked</code>。两者都必须列出 changed scope、<code>behavior_changed</code>、验证证据、风险或阻塞，以及明确下一步。</p>
       </div>
       <div class="bento">
@@ -171,7 +171,7 @@ make check 通过；桌面和 390px 页面无溢出。
         <article class="card span-6 dark-card"><span class="fragment-alias" id="heading-workflows-29" data-canonical-fragment="blocked-receipt" aria-hidden="true"></span><h3 id="blocked-receipt">Blocked receipt<a class="heading-permalink" data-heading-permalink data-search-exclude href="#blocked-receipt" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p><strong>changed scope：</strong>已完成与未完成边界；<strong>behavior_changed：</strong>当前是否已有行为变化；<strong>验证证据：</strong>已通过与无法执行项；<strong>阻塞：</strong>权限、依赖、来源或产品决定；<strong>下一步：</strong>责任人和解锁条件。</p></article>
       </div>
       <div class="content-block">
-        <p class="section-kicker">çå®å®ä¾</p>
+        <p class="section-kicker">真实实例</p>
         <span class="fragment-alias" id="heading-workflows-30" data-canonical-fragment="真实实例-从一句反馈选择任务路径" aria-hidden="true"></span><h2 id="真实实例-从一句反馈选择任务路径">真实实例：从一句反馈选择任务路径<a class="heading-permalink" data-heading-permalink data-search-exclude href="#真实实例-从一句反馈选择任务路径" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         <p>用户在 Codex Desktop 的浏览器里说“每个内容都加一个真实的实例”。它会修改多个页面、需要发布且可能多人写入，因此从 choose 阶段升级到 <a href="engineering.html#team-flow">团队工程流程</a>，但仍沿用同一份验收合同直到 receipt。</p>
         <div class="bento">

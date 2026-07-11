@@ -1,5 +1,5 @@
 window.GUIDE_SITE_DATA = {
-  "build_id": "37e004e6c3e0",
+  "build_id": "24a4e96265ef",
   "changelog": [
     {
       "category": "structure",

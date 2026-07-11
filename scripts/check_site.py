@@ -703,6 +703,8 @@ def main() -> int:
         if "assets/site.js" not in parser.scripts:
             errors.append(f"{rel}: missing shared script assets/site.js")
         visible_text = parser.visible_text()
+        if re.search(r"[ÃÂ]|[æçåäéèï][\u0080-\u00bf]", visible_text):
+            errors.append(f"{rel}: probable UTF-8 mojibake remains in visible text")
         for phrase in sorted(FORBIDDEN_VISIBLE_TEXT):
             if phrase in visible_text:
                 errors.append(f"{rel}: forbidden Desktop-first wording remains visible: {phrase}")

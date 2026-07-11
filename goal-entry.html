@@ -39,7 +39,7 @@
 <main>
     <section class="hero compact">
       <div class="hero-copy">
-        <p class="hero-kicker">æ¬å°å®éª</p>
+        <p class="hero-kicker">本地实验</p>
         <h1>goal-entry</h1>
         <p class="lead"><code>goal-entry</code> 是本机自己开发的 Goal 路由扩展，不是 OpenAI 官方功能，也不是这份指南推荐的默认入口。它能帮助把复杂请求先分类再执行，但实际效果一般，适合作为本地实验和维护案例参考。</p>
       </div>
@@ -50,7 +50,7 @@
 
       <article class="doc-content">
         <section class="content-block" id="what">
-          <p class="section-kicker">å®ä½</p>
+          <p class="section-kicker">定位</p>
           <span class="fragment-alias" id="heading-goal-entry-1" data-canonical-fragment="定位-自开发本机扩展" aria-hidden="true"></span><h2 id="定位-自开发本机扩展">定位：自开发本机扩展<a class="heading-permalink" data-heading-permalink data-search-exclude href="#定位-自开发本机扩展" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <p><code>goal-entry</code> 的设计目标是先判断请求属于讨论、计划、执行还是绑定已有 goal，再决定是否进入 preflight 和 closeout。它的价值主要在于把“不要误执行、不要跳过验证”写成固定规程。</p>
           <div class="tier-badges">
@@ -61,7 +61,7 @@
         </section>
 
         <section class="content-block" id="limits">
-          <p class="section-kicker">éå¶</p>
+          <p class="section-kicker">限制</p>
           <span class="fragment-alias" id="heading-goal-entry-2" data-canonical-fragment="为什么说效果一般" aria-hidden="true"></span><h2 id="为什么说效果一般">为什么说效果一般<a class="heading-permalink" data-heading-permalink data-search-exclude href="#为什么说效果一般" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <ul class="mini-list">
             <li><strong>提示词依赖高</strong><span>用户如果同时写“只讨论”和“执行修改”，仍需要人工判断外层意图。</span></li>
@@ -72,7 +72,7 @@
         </section>
 
         <section class="content-block" id="when">
-          <p class="section-kicker">ä½æ¶ä½¿ç¨</p>
+          <p class="section-kicker">何时使用</p>
           <span class="fragment-alias" id="heading-goal-entry-3" data-canonical-fragment="什么时候可以用" aria-hidden="true"></span><h2 id="什么时候可以用">什么时候可以用<a class="heading-permalink" data-heading-permalink data-search-exclude href="#什么时候可以用" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <div class="decision-table">
             <div class="decision-row"><strong>可用</strong><span>跨多文件、需要目标闭环</span><span>风险：流程偏重</span><span>证据：objective、validation、closeout</span></div>
@@ -82,7 +82,7 @@
         </section>
 
         <section class="content-block" id="examples">
-          <p class="section-kicker">ç¤ºä¾</p>
+          <p class="section-kicker">示例</p>
           <span class="fragment-alias" id="heading-goal-entry-4" data-canonical-fragment="可复制示例" aria-hidden="true"></span><h2 id="可复制示例">可复制示例<a class="heading-permalink" data-heading-permalink data-search-exclude href="#可复制示例" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <pre><code>[$goal-entry]
 只判断路线，不改文件。
@@ -94,7 +94,7 @@
         </section>
 
         <section class="content-block" id="real-example">
-          <p class="section-kicker">çå®å®ä¾</p>
+          <p class="section-kicker">真实实例</p>
           <span class="fragment-alias" id="heading-goal-entry-5" data-canonical-fragment="真实实例-本指南如何标注它" aria-hidden="true"></span><h2 id="真实实例-本指南如何标注它">真实实例：本指南如何标注它<a class="heading-permalink" data-heading-permalink data-search-exclude href="#真实实例-本指南如何标注它" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <p>这次用户要求保留 <code>goal-entry</code> 介绍，但必须说明它是自己开发的，而且效果一般。因此本页不再把它写成默认推荐流程，只保留来源、限制、适用场景和失败边界。复杂工程流程优先看 <a href="compound-engineering.html">Compound Engineering plugin</a>。</p>
         </section>
