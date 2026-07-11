@@ -79,9 +79,13 @@ def load_site_model(root: Path) -> SiteModel:
         "title": _required_text(site_raw.get("title"), "site.title"),
         "base_url": _required_text(site_raw.get("base_url"), "site.base_url"),
         "language": _required_text(site_raw.get("language"), "site.language"),
+        "social_preview": _required_text(site_raw.get("social_preview"), "site.social_preview"),
     }
-    if urlparse(site["base_url"]).scheme not in {"http", "https"} or not site["base_url"].endswith("/"):
-        raise SiteModelError("site.base_url must be an absolute HTTP(S) URL ending in /")
+    if urlparse(site["base_url"]).scheme != "https" or not site["base_url"].endswith("/"):
+        raise SiteModelError("site.base_url must be an absolute HTTPS URL ending in /")
+    preview = Path(site["social_preview"])
+    if preview.is_absolute() or ".." in preview.parts or preview.suffix.lower() != ".png":
+        raise SiteModelError("site.social_preview must be a root-relative PNG path")
 
     pages_raw = manifest.get("pages")
     if not isinstance(pages_raw, list) or not pages_raw:

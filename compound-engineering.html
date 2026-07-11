@@ -4,12 +4,34 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Compound Engineering</title>
-  <meta name="description" content="中文 Codex 实战手册：EveryInc Compound Engineering plugin 在 Codex Desktop 中的安装、设置和使用方式。">
+  <!-- guide:theme-bootstrap:start -->
+<script src="assets/theme.js"></script>
+<!-- guide:theme-bootstrap:end -->
   <link rel="stylesheet" href="assets/site.css">
+  <!-- guide:metadata:start -->
+<meta name="description" content="在 Codex Desktop 中使用 Compound Engineering plugin。">
+<meta name="guide-build" content="c913ce4a5bfc">
+<link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/compound-engineering.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="Codex 使用指南">
+<meta property="og:title" content="Compound Engineering">
+<meta property="og:description" content="在 Codex Desktop 中使用 Compound Engineering plugin。">
+<meta property="og:url" content="https://whojay0609.github.io/codex-usage-guide/compound-engineering.html">
+<meta property="og:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Codex 使用指南">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Compound Engineering">
+<meta name="twitter:description" content="在 Codex Desktop 中使用 Compound Engineering plugin。">
+<meta name="twitter:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
+<meta name="twitter:image:alt" content="Codex 使用指南">
+<!-- guide:metadata:end -->
 </head>
 <body>
   <!-- guide:header:start -->
-<header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><span class="search-status">全站搜索将在下一阶段启用</span><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header>
+<script src="assets/site-data.js"></script><script src="assets/search-index.js"></script><header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><label class="theme-control"><span class="sr-only">主题</span><select class="theme-select" aria-label="主题"><option value="system">跟随系统</option><option value="light">浅色</option><option value="dark">深色</option></select></label><span class="theme-status sr-only" aria-live="polite"></span><button class="search-trigger" type="button" aria-haspopup="dialog" aria-controls="site-search-dialog">搜索</button><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header><dialog class="search-dialog" id="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title"><div class="search-dialog-panel"><div class="search-dialog-head"><p class="search-title" id="site-search-title">搜索全站</p><button class="search-close" type="button" aria-label="关闭搜索">关闭</button></div><label class="search-label" for="site-search-input">搜索标题、正文和可复用 prompt</label><input class="search-input" id="site-search-input" type="search" role="combobox" autocomplete="off" aria-autocomplete="list" aria-controls="site-search-results" aria-describedby="site-search-status" aria-expanded="false"><p class="search-message" id="site-search-status" aria-live="polite">输入关键词开始搜索。</p><ul class="search-results" id="site-search-results" role="listbox" aria-label="搜索结果"></ul></div></dialog>
 <!-- guide:header:end -->
   <!-- guide:shell-open:start -->
 <div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html">首页</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">自动化</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html" aria-current="page">Compound</a><a data-nav href="skills-repositories.html">Skills 仓库</a><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>Compound</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-07-11">2026-07-11</time></span><span>事实核验：<time datetime="2026-07-11">2026-07-11</time></span></div>
@@ -17,7 +39,7 @@
 <main>
     <section class="hero compact">
       <div class="hero-copy">
-        <p class="hero-kicker">Plugin workflow</p>
+        <p class="hero-kicker">插件工作流</p>
         <h1>Compound Engineering plugin</h1>
         <p class="lead">EveryInc 的 Compound Engineering plugin 是一组工程流程 skills。它不替代 Codex Desktop 的线程、权限、diff 和验证，而是把需求澄清、计划、执行、简化、审查、知识沉淀组织成一条可重复的工作流。</p>
       </div>
@@ -28,8 +50,8 @@
 
       <article class="doc-content">
         <section class="content-block" id="what">
-          <p class="section-kicker">What</p>
-          <h2 id="heading-compound-engineering-1">它是什么</h2>
+          <p class="section-kicker">是什么</p>
+          <span class="fragment-alias" id="heading-compound-engineering-1" data-canonical-fragment="它是什么" aria-hidden="true"></span><h2 id="它是什么">它是什么<a class="heading-permalink" data-heading-permalink data-search-exclude href="#它是什么" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <p>这个仓库提供 Compound Engineering 插件：用一组 <code>/ce-*</code> skills 把工程任务从“随手改”变成“先澄清、再计划、再执行、再审查、再沉淀”。在 Codex Desktop 里，它适合多步骤功能、复杂 bug、PR 前审查和团队知识复用。</p>
           <div class="tier-badges">
             <span class="tier-badge">官方来源：EveryInc GitHub repo</span>
@@ -39,28 +61,28 @@
         </section>
 
         <section class="content-block" id="install">
-          <p class="section-kicker">Install</p>
-          <h2 id="heading-compound-engineering-2">在 Codex Desktop 里安装</h2>
+          <p class="section-kicker">安装</p>
+          <span class="fragment-alias" id="heading-compound-engineering-2" data-canonical-fragment="在-codex-desktop-里安装" aria-hidden="true"></span><h2 id="在-codex-desktop-里安装">在 Codex Desktop 里安装<a class="heading-permalink" data-heading-permalink data-search-exclude href="#在-codex-desktop-里安装" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <ol class="mini-list">
             <li><strong>打开 Plugins</strong><span>在 Codex Desktop 侧边栏进入 Plugins。</span></li>
             <li><strong>添加 marketplace</strong><span>选择 Add / Add plugin marketplace。</span></li>
             <li><strong>填写来源</strong><span>Source 填 <code>EveryInc/compound-engineering-plugin</code>，Git ref 填 <code>main</code>，Sparse paths 留空。</span></li>
             <li><strong>安装并重启</strong><span>添加后选择 Compound Engineering，安装 <code>compound-engineering</code>，然后重启 Codex。</span></li>
           </ol>
-          <p>仓库入口：<a href="https://github.com/EveryInc/compound-engineering-plugin">everyinc/compound-engineering-plugin</a>。</p>
+          <p>仓库入口：<a href="https://github.com/EveryInc/compound-engineering-plugin" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>everyinc/compound-engineering-plugin</a>。</p>
         </section>
 
         <section class="content-block" id="setup">
-          <p class="section-kicker">Setup</p>
-          <h2 id="heading-compound-engineering-3">第一次进入项目后先跑什么</h2>
+          <p class="section-kicker">设置</p>
+          <span class="fragment-alias" id="heading-compound-engineering-3" data-canonical-fragment="第一次进入项目后先跑什么" aria-hidden="true"></span><h2 id="第一次进入项目后先跑什么">第一次进入项目后先跑什么<a class="heading-permalink" data-heading-permalink data-search-exclude href="#第一次进入项目后先跑什么" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <p>安装后，在目标仓库的新线程里先运行 <code>/ce-setup</code>。它会检查 repo-local 配置、可用工具和本机设置，适合确认插件已经加载，并避免把机器配置误写进仓库。</p>
           <pre><code>/ce-setup</code></pre>
           <p>如果项目方向还不清楚，再用 <code>/ce-strategy</code> 建立或维护 <code>STRATEGY.md</code>；如果只是一个明确任务，不要为了流程完整而强行创建策略文件。</p>
         </section>
 
         <section class="content-block" id="loop">
-          <p class="section-kicker">Core loop</p>
-          <h2 id="heading-compound-engineering-4">核心六步怎么用</h2>
+          <p class="section-kicker">核心循环</p>
+          <span class="fragment-alias" id="heading-compound-engineering-4" data-canonical-fragment="核心六步怎么用" aria-hidden="true"></span><h2 id="核心六步怎么用">核心六步怎么用<a class="heading-permalink" data-heading-permalink data-search-exclude href="#核心六步怎么用" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <div class="decision-table">
             <div class="decision-row"><strong>1. /ce-brainstorm</strong><span>澄清需求，只产出需求级计划</span><span>不要直接写代码</span><span>证据：范围、用户目标、验收</span></div>
             <div class="decision-row"><strong>2. /ce-plan</strong><span>把需求转成实现计划</span><span>不要把风险藏进执行阶段</span><span>证据：文件、步骤、验证</span></div>
@@ -72,8 +94,8 @@
         </section>
 
         <section class="content-block" id="unified-plan">
-          <p class="section-kicker">Unified plan</p>
-          <h2 id="heading-compound-engineering-5">Product Contract 和实施计划写在同一份文档</h2>
+          <p class="section-kicker">统一计划</p>
+          <span class="fragment-alias" id="heading-compound-engineering-5" data-canonical-fragment="product-contract-和实施计划写在同一份文档" aria-hidden="true"></span><h2 id="product-contract-和实施计划写在同一份文档">Product Contract 和实施计划写在同一份文档<a class="heading-permalink" data-heading-permalink data-search-exclude href="#product-contract-和实施计划写在同一份文档" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <p><code>/ce-brainstorm</code> 先把用户、范围、验收、非目标和失败条件写成轻量 Product Contract；确认后，<code>/ce-plan</code> 在同一份计划中补充文件、依赖、U-ID、测试场景和 Definition of Done。不要另起一份 PRD 让两个事实源逐渐漂移。</p>
           <div class="decision-table">
             <div class="decision-row"><strong>Product Contract</strong><span>用户目标、范围、非目标、验收</span><span>由用户或产品负责人确认</span><span>未确认就回到 brainstorm</span></div>
@@ -83,20 +105,20 @@
         </section>
 
         <section class="content-block" id="choose">
-          <p class="section-kicker">Choose</p>
-          <h2 id="heading-compound-engineering-6">常见情况选哪个 skill</h2>
+          <p class="section-kicker">选择</p>
+          <span class="fragment-alias" id="heading-compound-engineering-6" data-canonical-fragment="常见情况选哪个-skill" aria-hidden="true"></span><h2 id="常见情况选哪个-skill">常见情况选哪个 skill<a class="heading-permalink" data-heading-permalink data-search-exclude href="#常见情况选哪个-skill" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <div class="bento">
-            <article class="card span-4"><h3 id="heading-compound-engineering-7">还不知道做什么</h3><p>用 <code>/ce-ideate</code>，让它从代码、问题和候选方向里筛出值得进入 brainstorm 的任务。</p></article>
-            <article class="card span-4"><h3 id="heading-compound-engineering-8">这是 bug</h3><p>用 <code>/ce-debug</code>，先复现和定位根因，再修复和准备审查。</p></article>
-            <article class="card span-4"><h3 id="heading-compound-engineering-9">在评估外部方案</h3><p>用 <code>/ce-pov</code>，给出项目上下文里的采用、拒绝或 spike 判断。</p></article>
-            <article class="card span-6"><h3 id="heading-compound-engineering-10">刚做完一批代码</h3><p>用 <code>/ce-simplify-code</code> 后再 review，避免把临时实现直接推给审查。</p></article>
-            <article class="card span-6 dark-card"><h3 id="heading-compound-engineering-11">想全自动交付</h3><p><code>/lfg</code> 只适合需求已经澄清、分支/PR/验证/推送边界明确的任务；一行粗需求不要直接交给它。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-compound-engineering-7" data-canonical-fragment="还不知道做什么" aria-hidden="true"></span><h3 id="还不知道做什么">还不知道做什么<a class="heading-permalink" data-heading-permalink data-search-exclude href="#还不知道做什么" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>用 <code>/ce-ideate</code>，让它从代码、问题和候选方向里筛出值得进入 brainstorm 的任务。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-compound-engineering-8" data-canonical-fragment="这是-bug" aria-hidden="true"></span><h3 id="这是-bug">这是 bug<a class="heading-permalink" data-heading-permalink data-search-exclude href="#这是-bug" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>用 <code>/ce-debug</code>，先复现和定位根因，再修复和准备审查。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-compound-engineering-9" data-canonical-fragment="在评估外部方案" aria-hidden="true"></span><h3 id="在评估外部方案">在评估外部方案<a class="heading-permalink" data-heading-permalink data-search-exclude href="#在评估外部方案" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>用 <code>/ce-pov</code>，给出项目上下文里的采用、拒绝或 spike 判断。</p></article>
+            <article class="card span-6"><span class="fragment-alias" id="heading-compound-engineering-10" data-canonical-fragment="刚做完一批代码" aria-hidden="true"></span><h3 id="刚做完一批代码">刚做完一批代码<a class="heading-permalink" data-heading-permalink data-search-exclude href="#刚做完一批代码" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>用 <code>/ce-simplify-code</code> 后再 review，避免把临时实现直接推给审查。</p></article>
+            <article class="card span-6 dark-card"><span class="fragment-alias" id="heading-compound-engineering-11" data-canonical-fragment="想全自动交付" aria-hidden="true"></span><h3 id="想全自动交付">想全自动交付<a class="heading-permalink" data-heading-permalink data-search-exclude href="#想全自动交付" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p><code>/lfg</code> 只适合需求已经澄清、分支/PR/验证/推送边界明确的任务；一行粗需求不要直接交给它。</p></article>
           </div>
         </section>
 
         <section class="content-block" id="prompts">
-          <p class="section-kicker">Prompts</p>
-          <h2 id="heading-compound-engineering-12">可复制输入</h2>
+          <p class="section-kicker">提示词（Prompts）</p>
+          <span class="fragment-alias" id="heading-compound-engineering-12" data-canonical-fragment="可复制输入" aria-hidden="true"></span><h2 id="可复制输入">可复制输入<a class="heading-permalink" data-heading-permalink data-search-exclude href="#可复制输入" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <pre><code>/ce-brainstorm
 目标：让后台任务重试更安全。
 背景：现在重复 webhook 偶尔创建重复记录。
@@ -110,8 +132,8 @@
         </section>
 
         <section class="content-block" id="safety">
-          <p class="section-kicker">Boundaries</p>
-          <h2 id="heading-compound-engineering-13">使用边界</h2>
+          <p class="section-kicker">边界</p>
+          <span class="fragment-alias" id="heading-compound-engineering-13" data-canonical-fragment="使用边界" aria-hidden="true"></span><h2 id="使用边界">使用边界<a class="heading-permalink" data-heading-permalink data-search-exclude href="#使用边界" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <ul class="mini-list">
             <li><strong>先读项目规则</strong><span>让 Codex 读取 <code>AGENTS.md</code>、README 和相关源码，再进入 CE 流程。</span></li>
             <li><strong>写清楚验收</strong><span>每个长流程都要有测试、构建、页面检查、PR check 或人工验收标准。</span></li>
@@ -121,29 +143,28 @@
         </section>
 
         <section class="content-block" id="real-example" data-case-type="historical" data-case-id="compound-guide-pr-1">
-          <p class="section-kicker">Real example</p>
-          <h2 id="heading-compound-engineering-14">真实实例：历史案例</h2>
+          <p class="section-kicker">真实实例</p>
+          <span class="fragment-alias" id="heading-compound-engineering-14" data-canonical-fragment="真实实例-历史案例" aria-hidden="true"></span><h2 id="真实实例-历史案例">真实实例：历史案例<a class="heading-permalink" data-heading-permalink data-search-exclude href="#真实实例-历史案例" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <div class="tier-badges"><span class="tier-badge">历史案例</span><span class="tier-badge">公开仓库证据</span></div>
           <p>本指南的“高 stars skills 仓库介绍”经过 requirements-only brainstorm、同一份计划的实施补全、LFG 交付、PR #1、静态验证和默认分支合并。这里引用的是公开仓库记录，不把流程名称当成完成证据。</p>
           <div class="bento">
-            <article class="card span-4"><h3 id="heading-compound-engineering-15">请求</h3><p>把四个第三方 skills 仓库放在一页，说明能力、使用方式、示例和边界，并配入一致插图。</p></article>
-            <article class="card span-4"><h3 id="heading-compound-engineering-16">先读与角色</h3><p>主线程读取项目规则、四个上游 README、页面模式和检查器；实现与审阅按不重叠写域分工，Git 集成留在主线程。</p></article>
-            <article class="card span-4"><h3 id="heading-compound-engineering-17">边界</h3><p>只发布普通读者优先、自动化读者其次的一页；本机 <code>goal-entry</code> 不冒充外部高关注仓库，内部过程文档不提交。</p></article>
-            <article class="card span-4"><h3 id="heading-compound-engineering-18">验证证据</h3><p><code>make check</code>、图片和锚点检查、diff review；提交 <code>44643ae</code> 经 PR #1 合并为 <code>55d11e7</code>。</p></article>
-            <article class="card span-4"><h3 id="heading-compound-engineering-19">重要恢复与结果</h3><p>发布前收紧 staging，排除忽略的过程记录；PR 合并到该仓库实际默认分支 <code>master</code>，随后抽样公开页面。</p></article>
-            <article class="card span-4"><h3 id="heading-compound-engineering-20">失败停止</h3><p>上游事实无法确认、图片缺失、链接或检查失败、脱敏边界变化，或没有明确 push/PR 授权时停止。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-compound-engineering-15" data-canonical-fragment="请求" aria-hidden="true"></span><h3 id="请求">请求<a class="heading-permalink" data-heading-permalink data-search-exclude href="#请求" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>把四个第三方 skills 仓库放在一页，说明能力、使用方式、示例和边界，并配入一致插图。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-compound-engineering-16" data-canonical-fragment="先读与角色" aria-hidden="true"></span><h3 id="先读与角色">先读与角色<a class="heading-permalink" data-heading-permalink data-search-exclude href="#先读与角色" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>主线程读取项目规则、四个上游 README、页面模式和检查器；实现与审阅按不重叠写域分工，Git 集成留在主线程。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-compound-engineering-17" data-canonical-fragment="边界" aria-hidden="true"></span><h3 id="边界">边界<a class="heading-permalink" data-heading-permalink data-search-exclude href="#边界" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>只发布普通读者优先、自动化读者其次的一页；本机 <code>goal-entry</code> 不冒充外部高关注仓库，内部过程文档不提交。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-compound-engineering-18" data-canonical-fragment="验证证据" aria-hidden="true"></span><h3 id="验证证据">验证证据<a class="heading-permalink" data-heading-permalink data-search-exclude href="#验证证据" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p><code>make check</code>、图片和锚点检查、diff review；提交 <code>44643ae</code> 经 PR #1 合并为 <code>55d11e7</code>。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-compound-engineering-19" data-canonical-fragment="重要恢复与结果" aria-hidden="true"></span><h3 id="重要恢复与结果">重要恢复与结果<a class="heading-permalink" data-heading-permalink data-search-exclude href="#重要恢复与结果" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>发布前收紧 staging，排除忽略的过程记录；PR 合并到该仓库实际默认分支 <code>master</code>，随后抽样公开页面。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-compound-engineering-20" data-canonical-fragment="失败停止" aria-hidden="true"></span><h3 id="失败停止">失败停止<a class="heading-permalink" data-heading-permalink data-search-exclude href="#失败停止" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>上游事实无法确认、图片缺失、链接或检查失败、脱敏边界变化，或没有明确 push/PR 授权时停止。</p></article>
           </div>
         </section>
       </article>
     </div>
   </main>
 <!-- guide:shell-close:start -->
-<nav class="page-sequence" aria-label="前后页"><a rel="prev" href="automation.html">← 自动化</a><a rel="next" href="skills-repositories.html">Skills 仓库 →</a></nav></div><aside class="page-toc" aria-label="本页目录"><details open><summary>本页目录</summary><nav><a class="toc-h2" href="#what">它是什么</a><a class="toc-h2" href="#install">在 Codex Desktop 里安装</a><a class="toc-h2" href="#setup">第一次进入项目后先跑什么</a><a class="toc-h2" href="#loop">核心六步怎么用</a><a class="toc-h2" href="#unified-plan">Product Contract 和实施计划写在同一份文档</a><a class="toc-h2" href="#choose">常见情况选哪个 skill</a><a class="toc-h3" href="#choose">还不知道做什么</a><a class="toc-h3" href="#choose">这是 bug</a><a class="toc-h3" href="#choose">在评估外部方案</a><a class="toc-h3" href="#choose">刚做完一批代码</a><a class="toc-h3" href="#choose">想全自动交付</a><a class="toc-h2" href="#prompts">可复制输入</a><a class="toc-h2" href="#safety">使用边界</a><a class="toc-h2" href="#real-example">真实实例：历史案例</a><a class="toc-h3" href="#real-example">请求</a><a class="toc-h3" href="#real-example">先读与角色</a><a class="toc-h3" href="#real-example">边界</a><a class="toc-h3" href="#real-example">验证证据</a><a class="toc-h3" href="#real-example">重要恢复与结果</a><a class="toc-h3" href="#real-example">失败停止</a></nav></details></aside></div>
+<nav class="page-sequence" aria-label="前后页"><a rel="prev" href="automation.html">← 自动化</a><a rel="next" href="skills-repositories.html">Skills 仓库 →</a></nav></div><aside class="page-toc" aria-label="本页目录"><details open><summary>本页目录</summary><nav><a class="toc-h2" href="#它是什么">它是什么</a><a class="toc-h2" href="#在-codex-desktop-里安装">在 Codex Desktop 里安装</a><a class="toc-h2" href="#第一次进入项目后先跑什么">第一次进入项目后先跑什么</a><a class="toc-h2" href="#核心六步怎么用">核心六步怎么用</a><a class="toc-h2" href="#product-contract-和实施计划写在同一份文档">Product Contract 和实施计划写在同一份文档</a><a class="toc-h2" href="#常见情况选哪个-skill">常见情况选哪个 skill</a><a class="toc-h3" href="#还不知道做什么">还不知道做什么</a><a class="toc-h3" href="#这是-bug">这是 bug</a><a class="toc-h3" href="#在评估外部方案">在评估外部方案</a><a class="toc-h3" href="#刚做完一批代码">刚做完一批代码</a><a class="toc-h3" href="#想全自动交付">想全自动交付</a><a class="toc-h2" href="#可复制输入">可复制输入</a><a class="toc-h2" href="#使用边界">使用边界</a><a class="toc-h2" href="#真实实例-历史案例">真实实例：历史案例</a><a class="toc-h3" href="#请求">请求</a><a class="toc-h3" href="#先读与角色">先读与角色</a><a class="toc-h3" href="#边界">边界</a><a class="toc-h3" href="#验证证据">验证证据</a><a class="toc-h3" href="#重要恢复与结果">重要恢复与结果</a><a class="toc-h3" href="#失败停止">失败停止</a></nav></details></aside></div>
 <!-- guide:shell-close:end -->
-  <footer class="footer"><p><strong>Compound Engineering</strong><br>先用 Desktop 跑小闭环，再把复杂工程任务交给插件流程。</p><a class="button" href="https://github.com/EveryInc/compound-engineering-plugin">查看仓库</a></footer>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="assets/site.js"></script>
+  <footer class="footer"><p><strong>Compound Engineering</strong><br>先用 Desktop 跑小闭环，再把复杂工程任务交给插件流程。</p><a href="https://github.com/EveryInc/compound-engineering-plugin" class="button external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>查看仓库</a></footer>
+  <!-- guide:runtime:start -->
+<script src="assets/site.js"></script>
+<!-- guide:runtime:end -->
 </body>
 </html>

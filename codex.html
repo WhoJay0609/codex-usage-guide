@@ -1,25 +1,48 @@
 <!doctype html>
 <html lang="zh-CN">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Codex 是什么</title><link rel="stylesheet" href="assets/site.css"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Codex 是什么</title><!-- guide:theme-bootstrap:start -->
+<script src="assets/theme.js"></script>
+<!-- guide:theme-bootstrap:end -->
+  <link rel="stylesheet" href="assets/site.css">  <!-- guide:metadata:start -->
+<meta name="description" content="理解 Codex Desktop 的工作面与适用边界。">
+<meta name="guide-build" content="c913ce4a5bfc">
+<link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/codex.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="Codex 使用指南">
+<meta property="og:title" content="Codex 是什么">
+<meta property="og:description" content="理解 Codex Desktop 的工作面与适用边界。">
+<meta property="og:url" content="https://whojay0609.github.io/codex-usage-guide/codex.html">
+<meta property="og:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Codex 使用指南">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Codex 是什么">
+<meta name="twitter:description" content="理解 Codex Desktop 的工作面与适用边界。">
+<meta name="twitter:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
+<meta name="twitter:image:alt" content="Codex 使用指南">
+<!-- guide:metadata:end -->
+</head>
 <body>
   <!-- guide:header:start -->
-<header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><span class="search-status">全站搜索将在下一阶段启用</span><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header>
+<script src="assets/site-data.js"></script><script src="assets/search-index.js"></script><header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><label class="theme-control"><span class="sr-only">主题</span><select class="theme-select" aria-label="主题"><option value="system">跟随系统</option><option value="light">浅色</option><option value="dark">深色</option></select></label><span class="theme-status sr-only" aria-live="polite"></span><button class="search-trigger" type="button" aria-haspopup="dialog" aria-controls="site-search-dialog">搜索</button><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header><dialog class="search-dialog" id="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title"><div class="search-dialog-panel"><div class="search-dialog-head"><p class="search-title" id="site-search-title">搜索全站</p><button class="search-close" type="button" aria-label="关闭搜索">关闭</button></div><label class="search-label" for="site-search-input">搜索标题、正文和可复用 prompt</label><input class="search-input" id="site-search-input" type="search" role="combobox" autocomplete="off" aria-autocomplete="list" aria-controls="site-search-results" aria-describedby="site-search-status" aria-expanded="false"><p class="search-message" id="site-search-status" aria-live="polite">输入关键词开始搜索。</p><ul class="search-results" id="site-search-results" role="listbox" aria-label="搜索结果"></ul></div></dialog>
 <!-- guide:header:end -->
   <!-- guide:shell-open:start -->
 <div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html">首页</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html" aria-current="page">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">自动化</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html">Compound</a><a data-nav href="skills-repositories.html">Skills 仓库</a><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>Codex</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-07-11">2026-07-11</time></span><span>事实核验：<time datetime="2026-07-11">2026-07-11</time></span></div>
 <!-- guide:shell-open:end -->
 <main>
-    <section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Concept</p><h1>Codex 是什么</h1><p class="lead">Codex 是面向软件工程任务的编码代理体系。本手册默认从 Codex Desktop 入门，因为桌面版最适合把对话、仓库、浏览器反馈、权限审批和验证证据放在同一个任务线程里。</p></div></section>
+    <section class="hero compact"><div class="hero-copy"><p class="hero-kicker">概念</p><h1>Codex 是什么</h1><p class="lead">Codex 是面向软件工程任务的编码代理体系。本手册默认从 Codex Desktop 入门，因为桌面版最适合把对话、仓库、浏览器反馈、权限审批和验证证据放在同一个任务线程里。</p></div></section>
     <div class="doc-layout">
 
       <article class="doc-content">
-        <section class="content-block" id="what"><p class="section-kicker">What</p><h2 id="heading-codex-1">它是什么</h2><p>本指南把 Codex 理解为一个以 Desktop 为主的本地工程协作工作面：你在桌面应用里选择项目、开启线程、让 Codex 读仓库上下文、在同一个任务里查看 diff、审批操作、使用内置终端验证、用 in-app browser 反馈页面问题，并在需要时把重复任务沉淀为 Automations。</p><div class="route-strip"><div class="route-pill"><strong>线程</strong><span>一个目标一个线程，保留上下文、审批、终端输出和最终证据。</span></div><div class="route-pill"><strong>Local / Worktree</strong><span>Local 直接改当前项目；Worktree 隔离试验和并行任务。</span></div><div class="route-pill"><strong>Browser + Git</strong><span>预览页面、评论反馈、审查 diff、提交、推送和创建 PR。</span></div><div class="route-pill"><strong>Automations</strong><span>把稳定重复任务放到 Desktop 后台运行，并在 Triage inbox 收结果。</span></div></div></section>
-        <section class="content-block" id="when"><p class="section-kicker">When</p><h2 id="heading-codex-2">什么时候用 / 不用</h2><ul class="mini-list"><li><strong>用 Desktop</strong><span>需要看 diff、页面、截图、浏览器、审批、终端验证和多线程进度。</span></li><li><strong>先用 Local</strong><span>小改动、文档、网页、测试修复和发布验证，优先在当前项目里完成。</span></li><li><strong>改用 Worktree</strong><span>试验性修改、并行任务、自动化后台任务，或不想碰当前工作区时使用。</span></li><li><strong>不用 Codex</strong><span>任务没有明确仓库、没有验收标准，或你不愿让代理读取相关上下文。</span></li></ul></section>
-        <section class="content-block" id="examples"><p class="section-kicker">Examples</p><h2 id="heading-codex-3">可复制示例</h2><pre><code>我正在 Codex Desktop 里处理这个仓库。
+        <section class="content-block" id="what"><p class="section-kicker">是什么</p><span class="fragment-alias" id="heading-codex-1" data-canonical-fragment="它是什么" aria-hidden="true"></span><h2 id="它是什么">它是什么<a class="heading-permalink" data-heading-permalink data-search-exclude href="#它是什么" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2><p>本指南把 Codex 理解为一个以 Desktop 为主的本地工程协作工作面：你在桌面应用里选择项目、开启线程、让 Codex 读仓库上下文、在同一个任务里查看 diff、审批操作、使用内置终端验证、用 in-app browser 反馈页面问题，并在需要时把重复任务沉淀为 Automations。</p><div class="route-strip"><div class="route-pill"><strong>线程</strong><span>一个目标一个线程，保留上下文、审批、终端输出和最终证据。</span></div><div class="route-pill"><strong>Local / Worktree</strong><span>Local 直接改当前项目；Worktree 隔离试验和并行任务。</span></div><div class="route-pill"><strong>Browser + Git</strong><span>预览页面、评论反馈、审查 diff、提交、推送和创建 PR。</span></div><div class="route-pill"><strong>Automations</strong><span>把稳定重复任务放到 Desktop 后台运行，并在 Triage inbox 收结果。</span></div></div></section>
+        <section class="content-block" id="when"><p class="section-kicker">何时使用</p><span class="fragment-alias" id="heading-codex-2" data-canonical-fragment="什么时候用-不用" aria-hidden="true"></span><h2 id="什么时候用-不用">什么时候用 / 不用<a class="heading-permalink" data-heading-permalink data-search-exclude href="#什么时候用-不用" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2><ul class="mini-list"><li><strong>用 Desktop</strong><span>需要看 diff、页面、截图、浏览器、审批、终端验证和多线程进度。</span></li><li><strong>先用 Local</strong><span>小改动、文档、网页、测试修复和发布验证，优先在当前项目里完成。</span></li><li><strong>改用 Worktree</strong><span>试验性修改、并行任务、自动化后台任务，或不想碰当前工作区时使用。</span></li><li><strong>不用 Codex</strong><span>任务没有明确仓库、没有验收标准，或你不愿让代理读取相关上下文。</span></li></ul></section>
+        <section class="content-block" id="examples"><p class="section-kicker">示例</p><span class="fragment-alias" id="heading-codex-3" data-canonical-fragment="可复制示例" aria-hidden="true"></span><h2 id="可复制示例">可复制示例<a class="heading-permalink" data-heading-permalink data-search-exclude href="#可复制示例" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2><pre><code>我正在 Codex Desktop 里处理这个仓库。
 请先读取 AGENTS.md、README.md 和失败测试日志。
 目标：解释这个错误，并提出最小修复方案。
 约束：只读分析，不要改文件。</code></pre></section>
-        <section class="content-block" id="real-example"><p class="section-kicker">Real example</p><h2 id="heading-codex-4">真实实例：扩充这份网页手册</h2><p>这次维护 <code>codex-usage-guide</code> 时，Codex 的主工作面是 Desktop：用户给出页面反馈，Codex 读取 <code>AGENTS.md</code> 和 HTML 文件，在内置终端运行静态链接检查，最后用 Git diff 和验证结果收口。这个例子说明 Codex Desktop 的价值不是“聊天”，而是把读、改、验、审查和发布证据放进一个可追踪线程。</p><pre><code>真实任务输入：
+        <section class="content-block" id="real-example"><p class="section-kicker">真实实例</p><span class="fragment-alias" id="heading-codex-4" data-canonical-fragment="真实实例-扩充这份网页手册" aria-hidden="true"></span><h2 id="真实实例-扩充这份网页手册">真实实例：扩充这份网页手册<a class="heading-permalink" data-heading-permalink data-search-exclude href="#真实实例-扩充这份网页手册" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2><p>这次维护 <code>codex-usage-guide</code> 时，Codex 的主工作面是 Desktop：用户给出页面反馈，Codex 读取 <code>AGENTS.md</code> 和 HTML 文件，在内置终端运行静态链接检查，最后用 Git diff 和验证结果收口。这个例子说明 Codex Desktop 的价值不是“聊天”，而是把读、改、验、审查和发布证据放进一个可追踪线程。</p><pre><code>真实任务输入：
 请把中文 Codex 指南扩成实战手册。
 要求：
 - 每个主要页面都有真实实例
@@ -29,10 +52,11 @@
     </div>
   </main>
 <!-- guide:shell-close:start -->
-<nav class="page-sequence" aria-label="前后页"><a rel="prev" href="desktop-cli.html">← Desktop</a><a rel="next" href="permissions.html">权限 →</a></nav></div><aside class="page-toc" aria-label="本页目录"><details open><summary>本页目录</summary><nav><a class="toc-h2" href="#what">它是什么</a><a class="toc-h2" href="#when">什么时候用 / 不用</a><a class="toc-h2" href="#examples">可复制示例</a><a class="toc-h2" href="#real-example">真实实例：扩充这份网页手册</a></nav></details></aside></div>
+<nav class="page-sequence" aria-label="前后页"><a rel="prev" href="desktop-cli.html">← Desktop</a><a rel="next" href="permissions.html">权限 →</a></nav></div><aside class="page-toc" aria-label="本页目录"><details open><summary>本页目录</summary><nav><a class="toc-h2" href="#它是什么">它是什么</a><a class="toc-h2" href="#什么时候用-不用">什么时候用 / 不用</a><a class="toc-h2" href="#可复制示例">可复制示例</a><a class="toc-h2" href="#真实实例-扩充这份网页手册">真实实例：扩充这份网页手册</a></nav></details></aside></div>
 <!-- guide:shell-close:end -->
   <footer class="footer"><p><strong>Codex 使用指南</strong></p><a class="button" href="permissions.html">下一页：权限</a></footer>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  <script src="assets/site.js"></script>
+  <!-- guide:runtime:start -->
+<script src="assets/site.js"></script>
+<!-- guide:runtime:end -->
 </body>
 </html>
