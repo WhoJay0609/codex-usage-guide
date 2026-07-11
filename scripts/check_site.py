@@ -10,6 +10,13 @@ from pathlib import Path
 import re
 from urllib.parse import urldefrag, urlparse
 
+try:
+    from .build_site import generate
+    from .site_model import SiteModelError
+except ImportError:  # Direct script execution.
+    from build_site import generate
+    from site_model import SiteModelError
+
 
 ROOT = Path(__file__).resolve().parents[1]
 IGNORED_HTML_DIRS = {".git", ".worktrees", "build", "node_modules"}
@@ -421,6 +428,14 @@ def main() -> int:
         errors.extend(validate_case_index(pages, evidence_index.read_text(encoding="utf-8")))
     else:
         errors.append("docs/case-evidence-index.md: missing case evidence index")
+
+    try:
+        stale_assets = generate(ROOT, check=True)
+    except SiteModelError as error:
+        errors.append(f"site data invalid: {error}")
+        stale_assets = []
+    for path in stale_assets:
+        errors.append(f"generated asset is stale: {path}")
 
     for rel, parser in pages.items():
         if not parser.text("title"):

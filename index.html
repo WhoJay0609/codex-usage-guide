@@ -8,27 +8,14 @@
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-  <header class="topbar" aria-label="主导航">
-    <div class="topbar-inner">
-      <a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a>
-      <nav class="nav" aria-label="页面导航">
-        <a data-nav href="index.html">首页</a>
-        <a data-nav href="codex.html">Codex</a>
-        <a data-nav href="install-desktop.html">安装</a>
-        <a data-nav href="desktop-cli.html">Desktop</a>
-        <a data-nav href="permissions.html">权限</a>
-        <a data-nav href="agents-md.html">AGENTS.md</a>
-        <a data-nav href="skills.html">Skills</a>
-        <a data-nav href="mcp.html">MCP</a>
-        <a data-nav href="subagents.html">Subagents</a>
-        <a data-nav href="goal.html">Goal</a>
-        <a data-nav href="workflows.html">任务</a>
-        <a data-nav href="resources.html">资料</a>
-      </nav>
-    </div>
-  </header>
+  <!-- guide:header:start -->
+<header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><span class="search-status">全站搜索将在下一阶段启用</span><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header>
+<!-- guide:header:end -->
 
-  <main>
+  <!-- guide:shell-open:start -->
+<div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html" aria-current="page">首页</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">自动化</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html">Compound</a><a data-nav href="skills-repositories.html">Skills 仓库</a><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>首页</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-07-11">2026-07-11</time></span><span>事实核验：<time datetime="2026-07-11">2026-07-11</time></span></div>
+<!-- guide:shell-open:end -->
+<main>
     <section class="hero home-hero">
       <div class="hero-copy">
         <p class="hero-kicker">Chinese Codex Practical Handbook</p>
@@ -52,17 +39,17 @@
       <div class="section-head">
         <div class="section-title">
           <p class="section-kicker">Start here</p>
-          <h2>选择你的路径</h2>
+          <h2 id="heading-index-1">选择你的路径</h2>
         </div>
         <p class="scrub-text">不要先背术语。先按你现在的状态选一条路线：零基础、日常协作、长任务、周期任务，或者维护这份指南。</p>
       </div>
       <div class="bento">
-        <a class="source-card span-6 priority-card" href="install-desktop.html"><h3>零基础：安装到第一个任务</h3><p>安装 Codex Desktop，打开仓库，先跑一个只读任务，学会看验证证据。</p></a>
-        <a class="source-card span-6 priority-card" href="desktop-cli.html"><h3>日常协作：桌面版工作流</h3><p>线程、上下文、浏览器反馈、权限审批、diff、提交和公开页面验证。</p></a>
-        <a class="source-card span-4" href="workflows.html"><h3>进阶用户：任务升级路线</h3><p>判断何时从日常任务升级到 Goal、subagent、skill 或自动化。</p></a>
-        <a class="source-card span-4" href="skills-repositories.html"><h3>Skills 仓库怎么选</h3><p>比较 Compound Engineering、Matt Pocock skills、ARS 和 ARIS，按任务选择主仓库。</p></a>
-        <a class="source-card span-4" href="engineering.html"><h3>工程 / 学术场景</h3><p>从需求澄清到工程 flow，或从 research brief 到实验与写作边界。</p></a>
-        <a class="source-card span-4" href="resources.html"><h3>维护者：资料和发布边界</h3><p>README、AGENTS.md、local adaptation、发布验证和资料来源。</p></a>
+        <a class="source-card span-6 priority-card" href="install-desktop.html"><h3 id="heading-index-2">零基础：安装到第一个任务</h3><p>安装 Codex Desktop，打开仓库，先跑一个只读任务，学会看验证证据。</p></a>
+        <a class="source-card span-6 priority-card" href="desktop-cli.html"><h3 id="heading-index-3">日常协作：桌面版工作流</h3><p>线程、上下文、浏览器反馈、权限审批、diff、提交和公开页面验证。</p></a>
+        <a class="source-card span-4" href="workflows.html"><h3 id="heading-index-4">进阶用户：任务升级路线</h3><p>判断何时从日常任务升级到 Goal、subagent、skill 或自动化。</p></a>
+        <a class="source-card span-4" href="skills-repositories.html"><h3 id="heading-index-5">Skills 仓库怎么选</h3><p>比较 Compound Engineering、Matt Pocock skills、ARS 和 ARIS，按任务选择主仓库。</p></a>
+        <a class="source-card span-4" href="engineering.html"><h3 id="heading-index-6">工程 / 学术场景</h3><p>从需求澄清到工程 flow，或从 research brief 到实验与写作边界。</p></a>
+        <a class="source-card span-4" href="resources.html"><h3 id="heading-index-7">维护者：资料和发布边界</h3><p>README、AGENTS.md、local adaptation、发布验证和资料来源。</p></a>
       </div>
     </section>
 
@@ -70,7 +57,7 @@
       <div class="section-head">
         <div class="section-title">
           <p class="section-kicker">Decision table</p>
-          <h2>30 秒选择入口</h2>
+          <h2 id="heading-index-8">30 秒选择入口</h2>
         </div>
         <p>先选工作面，再看页面。读者不需要知道所有术语，只要知道当前任务最适合放在哪个入口，以及完成后拿什么证据验收。</p>
       </div>
@@ -91,18 +78,18 @@
       <div class="section-head">
         <div class="section-title">
           <p class="section-kicker">Concept map</p>
-          <h2>需要时再查概念</h2>
+          <h2 id="heading-index-9">需要时再查概念</h2>
         </div>
         <p>这些页面解释为什么要这样做。新手不用一次读完；遇到权限、项目规则、工具扩展或长任务时再回来查。</p>
       </div>
       <div class="bento">
-        <a class="source-card span-4" href="codex.html"><h3>Codex 是什么</h3><p>以 Codex Desktop 为主：线程、Local/Worktree、浏览器、Git、终端和自动化。</p></a>
-        <a class="source-card span-4" href="permissions.html"><h3>权限与安全</h3><p>sandbox、approval、network、auth 和 secret 边界。</p></a>
-        <a class="source-card span-4" href="agents-md.html"><h3>AGENTS.md</h3><p>项目规则、层级、测试命令和完成证据。</p></a>
-        <a class="source-card span-3" href="skills.html"><h3>Skills</h3><p>官方 skills 与本机扩展的边界。</p></a>
-        <a class="source-card span-3" href="mcp.html"><h3>MCP / Plugins</h3><p>外部工具连接和权限治理。</p></a>
-        <a class="source-card span-3" href="subagents.html"><h3>Subagents</h3><p>何时拆分、如何约束、如何收口。</p></a>
-        <a class="source-card span-3" href="goal.html"><h3>Goal</h3><p>目标、验收、验证、停止条件和 closeout。</p></a>
+        <a class="source-card span-4" href="codex.html"><h3 id="heading-index-10">Codex 是什么</h3><p>以 Codex Desktop 为主：线程、Local/Worktree、浏览器、Git、终端和自动化。</p></a>
+        <a class="source-card span-4" href="permissions.html"><h3 id="heading-index-11">权限与安全</h3><p>sandbox、approval、network、auth 和 secret 边界。</p></a>
+        <a class="source-card span-4" href="agents-md.html"><h3 id="heading-index-12">AGENTS.md</h3><p>项目规则、层级、测试命令和完成证据。</p></a>
+        <a class="source-card span-3" href="skills.html"><h3 id="heading-index-13">Skills</h3><p>官方 skills 与本机扩展的边界。</p></a>
+        <a class="source-card span-3" href="mcp.html"><h3 id="heading-index-14">MCP / Plugins</h3><p>外部工具连接和权限治理。</p></a>
+        <a class="source-card span-3" href="subagents.html"><h3 id="heading-index-15">Subagents</h3><p>何时拆分、如何约束、如何收口。</p></a>
+        <a class="source-card span-3" href="goal.html"><h3 id="heading-index-16">Goal</h3><p>目标、验收、验证、停止条件和 closeout。</p></a>
       </div>
     </section>
 
@@ -110,19 +97,22 @@
       <div class="section-head">
         <div class="section-title">
           <p class="section-kicker">Real examples</p>
-          <h2>每页都有真实实例</h2>
+          <h2 id="heading-index-17">每页都有真实实例</h2>
         </div>
         <p>本指南用 <code>codex-usage-guide</code> 自身的 Desktop 维护过程作为主线：从浏览器反馈、插件资料核对、页面编辑、本地验证，到 GitHub Pages 发布。</p>
       </div>
       <div class="bento">
-        <a class="source-card span-3" href="daily-workflow.html"><h3>日常实例</h3><p>把短页面扩成日常任务手册。</p></a>
-        <a class="source-card span-3" href="compound-engineering.html"><h3>插件实例</h3><p>展示 Compound Engineering 在 Codex Desktop 里的安装和使用路径。</p></a>
-        <a class="source-card span-3" href="skills-repositories.html"><h3>Skills 仓库实例</h3><p>把几个高关注 skills 仓库整理成一页选择表和可复制 prompt。</p></a>
-        <a class="source-card span-3" href="permissions.html"><h3>权限实例</h3><p>只读验证 GitHub Pages 发布状态。</p></a>
-        <a class="source-card span-3" href="automation.html"><h3>自动化实例</h3><p>自动检查链接和公开页面关键标题。</p></a>
+        <a class="source-card span-3" href="daily-workflow.html"><h3 id="heading-index-18">日常实例</h3><p>把短页面扩成日常任务手册。</p></a>
+        <a class="source-card span-3" href="compound-engineering.html"><h3 id="heading-index-19">插件实例</h3><p>展示 Compound Engineering 在 Codex Desktop 里的安装和使用路径。</p></a>
+        <a class="source-card span-3" href="skills-repositories.html"><h3 id="heading-index-20">Skills 仓库实例</h3><p>把几个高关注 skills 仓库整理成一页选择表和可复制 prompt。</p></a>
+        <a class="source-card span-3" href="permissions.html"><h3 id="heading-index-21">权限实例</h3><p>只读验证 GitHub Pages 发布状态。</p></a>
+        <a class="source-card span-3" href="automation.html"><h3 id="heading-index-22">自动化实例</h3><p>自动检查链接和公开页面关键标题。</p></a>
       </div>
     </section>
   </main>
+<!-- guide:shell-close:start -->
+<nav class="page-sequence" aria-label="前后页"><a rel="next" href="install-desktop.html">安装 →</a></nav></div><aside class="page-toc" aria-label="本页目录"><details open><summary>本页目录</summary><nav><a class="toc-h2" href="#heading-index-1">选择你的路径</a><a class="toc-h3" href="#heading-index-2">零基础：安装到第一个任务</a><a class="toc-h3" href="#heading-index-3">日常协作：桌面版工作流</a><a class="toc-h3" href="#heading-index-4">进阶用户：任务升级路线</a><a class="toc-h3" href="#heading-index-5">Skills 仓库怎么选</a><a class="toc-h3" href="#heading-index-6">工程 / 学术场景</a><a class="toc-h3" href="#heading-index-7">维护者：资料和发布边界</a><a class="toc-h2" href="#heading-index-8">30 秒选择入口</a><a class="toc-h2" href="#heading-index-9">需要时再查概念</a><a class="toc-h3" href="#heading-index-10">Codex 是什么</a><a class="toc-h3" href="#heading-index-11">权限与安全</a><a class="toc-h3" href="#heading-index-12">AGENTS.md</a><a class="toc-h3" href="#heading-index-13">Skills</a><a class="toc-h3" href="#heading-index-14">MCP / Plugins</a><a class="toc-h3" href="#heading-index-15">Subagents</a><a class="toc-h3" href="#heading-index-16">Goal</a><a class="toc-h2" href="#heading-index-17">每页都有真实实例</a><a class="toc-h3" href="#heading-index-18">日常实例</a><a class="toc-h3" href="#heading-index-19">插件实例</a><a class="toc-h3" href="#heading-index-20">Skills 仓库实例</a><a class="toc-h3" href="#heading-index-21">权限实例</a><a class="toc-h3" href="#heading-index-22">自动化实例</a></nav></details></aside></div>
+<!-- guide:shell-close:end -->
 
   <footer class="footer">
     <p><strong>Codex 使用指南</strong><br>多页面 GitHub Pages 文档站，官方资料优先，完成证据优先。</p>

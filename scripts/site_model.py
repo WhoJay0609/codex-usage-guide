@@ -1,0 +1,159 @@
+#!/usr/bin/env python3
+"""Load and validate the static guide's source-of-truth data."""
+
+from __future__ import annotations
+
+import json
+from dataclasses import dataclass
+from datetime import date
+from pathlib import Path
+from typing import Any
+from urllib.parse import urldefrag, urlparse
+
+
+class SiteModelError(ValueError):
+    """Raised when source data cannot describe a deterministic site."""
+
+
+@dataclass(frozen=True)
+class Page:
+    path: str
+    title: str
+    nav_label: str
+    description: str
+    modified: str
+    facts_verified: str
+
+
+@dataclass(frozen=True)
+class NavigationGroup:
+    label: str
+    pages: tuple[str, ...]
+
+
+@dataclass(frozen=True)
+class SiteModel:
+    root: Path
+    site: dict[str, str]
+    pages: tuple[Page, ...]
+    navigation: tuple[NavigationGroup, ...]
+    changelog: tuple[dict[str, str], ...]
+
+
+def _read_json(path: Path) -> dict[str, Any]:
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        raise SiteModelError(f"cannot read {path}: {error}") from error
+    if not isinstance(data, dict):
+        raise SiteModelError(f"{path} must contain a JSON object")
+    return data
+
+
+def _required_text(value: Any, field: str) -> str:
+    if not isinstance(value, str) or not value.strip():
+        raise SiteModelError(f"{field} must be a non-empty string")
+    return value.strip()
+
+
+def _iso_date(value: Any, field: str) -> str:
+    text = _required_text(value, field)
+    try:
+        date.fromisoformat(text)
+    except ValueError as error:
+        raise SiteModelError(f"{field} must use YYYY-MM-DD: {text}") from error
+    return text
+
+
+def load_site_model(root: Path) -> SiteModel:
+    root = root.resolve()
+    manifest = _read_json(root / "data/site-manifest.json")
+    changelog_data = _read_json(root / "data/changelog.json")
+    if manifest.get("schema_version") != 1 or changelog_data.get("schema_version") != 1:
+        raise SiteModelError("site data schema_version must be 1")
+
+    site_raw = manifest.get("site")
+    if not isinstance(site_raw, dict):
+        raise SiteModelError("site must be an object")
+    site = {
+        "title": _required_text(site_raw.get("title"), "site.title"),
+        "base_url": _required_text(site_raw.get("base_url"), "site.base_url"),
+        "language": _required_text(site_raw.get("language"), "site.language"),
+    }
+    if urlparse(site["base_url"]).scheme not in {"http", "https"} or not site["base_url"].endswith("/"):
+        raise SiteModelError("site.base_url must be an absolute HTTP(S) URL ending in /")
+
+    pages_raw = manifest.get("pages")
+    if not isinstance(pages_raw, list) or not pages_raw:
+        raise SiteModelError("pages must be a non-empty list")
+    pages: list[Page] = []
+    page_paths: set[str] = set()
+    for index, item in enumerate(pages_raw):
+        if not isinstance(item, dict):
+            raise SiteModelError(f"pages[{index}] must be an object")
+        page = Page(
+            path=_required_text(item.get("path"), f"pages[{index}].path"),
+            title=_required_text(item.get("title"), f"pages[{index}].title"),
+            nav_label=_required_text(item.get("nav_label"), f"pages[{index}].nav_label"),
+            description=_required_text(item.get("description"), f"pages[{index}].description"),
+            modified=_iso_date(item.get("modified"), f"pages[{index}].modified"),
+            facts_verified=_iso_date(item.get("facts_verified"), f"pages[{index}].facts_verified"),
+        )
+        if page.path in page_paths:
+            raise SiteModelError(f"duplicate page path: {page.path}")
+        if Path(page.path).name != page.path or not page.path.endswith(".html"):
+            raise SiteModelError(f"page path must be a root HTML file: {page.path}")
+        page_paths.add(page.path)
+        pages.append(page)
+
+    actual_pages = {path.name for path in root.glob("*.html")}
+    if page_paths != actual_pages:
+        missing = sorted(actual_pages - page_paths)
+        unknown = sorted(page_paths - actual_pages)
+        raise SiteModelError(f"manifest page coverage mismatch; missing={missing}, unknown={unknown}")
+
+    navigation_raw = manifest.get("navigation")
+    if not isinstance(navigation_raw, list) or not navigation_raw:
+        raise SiteModelError("navigation must be a non-empty list")
+    navigation: list[NavigationGroup] = []
+    nav_pages: set[str] = set()
+    for index, item in enumerate(navigation_raw):
+        if not isinstance(item, dict) or not isinstance(item.get("pages"), list):
+            raise SiteModelError(f"navigation[{index}] must contain a pages list")
+        group_pages: list[str] = []
+        for raw_path in item["pages"]:
+            path = _required_text(raw_path, f"navigation[{index}].pages")
+            if path in nav_pages:
+                raise SiteModelError(f"duplicate navigation page: {path}")
+            if path not in page_paths:
+                raise SiteModelError(f"unknown navigation page: {path}")
+            nav_pages.add(path)
+            group_pages.append(path)
+        navigation.append(NavigationGroup(_required_text(item.get("label"), f"navigation[{index}].label"), tuple(group_pages)))
+    if nav_pages != page_paths:
+        raise SiteModelError(f"navigation does not cover pages: {sorted(page_paths - nav_pages)}")
+
+    entries_raw = changelog_data.get("entries")
+    if not isinstance(entries_raw, list):
+        raise SiteModelError("changelog entries must be a list")
+    changelog: list[dict[str, str]] = []
+    previous_date: str | None = None
+    for index, item in enumerate(entries_raw):
+        if not isinstance(item, dict):
+            raise SiteModelError(f"changelog entries[{index}] must be an object")
+        entry = {
+            "date": _iso_date(item.get("date"), f"changelog.entries[{index}].date"),
+            "category": _required_text(item.get("category"), f"changelog.entries[{index}].category"),
+            "title": _required_text(item.get("title"), f"changelog.entries[{index}].title"),
+            "summary": _required_text(item.get("summary"), f"changelog.entries[{index}].summary"),
+            "target": _required_text(item.get("target"), f"changelog.entries[{index}].target"),
+        }
+        target_path, _ = urldefrag(entry["target"])
+        if target_path not in page_paths:
+            raise SiteModelError(f"changelog entry has unknown target: {entry['target']}")
+        if previous_date is not None and entry["date"] > previous_date:
+            raise SiteModelError("changelog entries must be newest first")
+        previous_date = entry["date"]
+        changelog.append(entry)
+
+    return SiteModel(root, site, tuple(pages), tuple(navigation), tuple(changelog))
