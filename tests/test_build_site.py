@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import tempfile
 import unittest
 from pathlib import Path
@@ -71,7 +72,6 @@ class SiteModelTests(unittest.TestCase):
         model = load_site_model(ROOT)
         page = next(page for page in model.pages if page.path == "index.html")
         rendered = render_page(model, page, (ROOT / page.path).read_text(encoding="utf-8"))
-        import re
         headings = re.findall(r"<h[23]\b([^>]*)>", rendered)
         self.assertTrue(headings)
         self.assertTrue(all(re.search(r'\bid="[^"]+"', attrs) for attrs in headings))
@@ -93,13 +93,48 @@ class SiteModelTests(unittest.TestCase):
         )
         self.assertEqual(render_page(model, page, rendered), rendered)
 
+    def test_theme_bootstrap_precedes_css_and_runtime_is_page_scoped(self) -> None:
+        model = load_site_model(ROOT)
+        mermaid_page = next(page for page in model.pages if page.path == "install-desktop.html")
+        plain_page = next(page for page in model.pages if page.path == "permissions.html")
+        mermaid_rendered = render_page(model, mermaid_page, (ROOT / mermaid_page.path).read_text(encoding="utf-8"))
+        plain_rendered = render_page(model, plain_page, (ROOT / plain_page.path).read_text(encoding="utf-8"))
+        self.assertLess(mermaid_rendered.index('src="assets/theme.js"'), mermaid_rendered.index('href="assets/site.css"'))
+        self.assertIn('class="theme-select"', mermaid_rendered)
+        self.assertIn('mermaid@11.14.0/dist/mermaid.min.js', mermaid_rendered)
+        self.assertIn('integrity="sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk"', mermaid_rendered)
+        self.assertIn('crossorigin="anonymous"', mermaid_rendered)
+        self.assertNotIn("gsap", mermaid_rendered.lower())
+        self.assertNotIn("mermaid.min.js", plain_rendered)
+        self.assertEqual(render_page(model, mermaid_page, mermaid_rendered), mermaid_rendered)
+
+    def test_only_cross_origin_http_links_receive_safe_visible_external_semantics(self) -> None:
+        model = load_site_model(ROOT)
+        page = next(page for page in model.pages if page.path == "permissions.html")
+        source = (ROOT / page.path).read_text(encoding="utf-8")
+        source = source.replace(
+            "</main>",
+            '<p><a id="outside" href="https://example.com/docs">外部</a>'
+            '<a id="same" href="https://whojay0609.github.io/codex-usage-guide/index.html">站内绝对</a>'
+            '<a id="mail" href="mailto:test@example.com">邮件</a></p></main>',
+        )
+        rendered = render_page(model, page, source)
+        outside = re.search(r'<a id="outside"([^>]*)>(.*?)</a>', rendered).group(0)
+        self.assertIn('target="_blank"', outside)
+        self.assertIn('rel="noopener noreferrer"', outside)
+        self.assertIn('referrerpolicy="no-referrer"', outside)
+        self.assertIn('class="external-link-indicator"', outside)
+        self.assertNotIn('target="_blank"', re.search(r'<a id="same"[^>]*>.*?</a>', rendered).group(0))
+        self.assertNotIn('target="_blank"', re.search(r'<a id="mail"[^>]*>.*?</a>', rendered).group(0))
+
     def test_canonical_heading_preserves_legacy_and_structural_fragments(self) -> None:
         model = load_site_model(ROOT)
         page = next(page for page in model.pages if page.path == "permissions.html")
         source = (
+            '<html><head><link rel="stylesheet" href="assets/site.css"></head><body>'
             '<header class="topbar"></header><main><section id="matrix">'
             '<h2 id="heading-permissions-1">审批决策矩阵</h2><p>解释正文</p>'
-            '</section></main>'
+            '</section></main><script src="assets/site.js"></script></body></html>'
         )
         registry = {
             "permissions.html": {

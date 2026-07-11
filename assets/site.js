@@ -1,5 +1,84 @@
 (function () {
   document.documentElement.classList.add("js");
+  var themeSelect = document.querySelector(".theme-select");
+  var themeStatus = document.querySelector(".theme-status");
+  var mermaidSources = new WeakMap();
+
+  function resolvedTheme() {
+    var override = document.documentElement.getAttribute("data-theme");
+    if (override === "light" || override === "dark") return override;
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+
+  function mermaidOptions() {
+    var dark = resolvedTheme() === "dark";
+    return {
+      startOnLoad: false,
+      securityLevel: "strict",
+      theme: "base",
+      themeVariables: dark ? {
+        fontFamily: 'ui-sans-serif, system-ui, "Noto Sans CJK SC", sans-serif',
+        primaryColor: "#24272c", primaryTextColor: "#f5f1e8",
+        primaryBorderColor: "#ff9a75", lineColor: "#8fb0ff",
+        secondaryColor: "#1c1f23", tertiaryColor: "#24272c"
+      } : {
+        fontFamily: 'ui-sans-serif, system-ui, "Noto Sans CJK SC", sans-serif',
+        primaryColor: "#fffaf0", primaryTextColor: "#11110f",
+        primaryBorderColor: "#c44924", lineColor: "#2458d8",
+        secondaryColor: "#f7f3ea", tertiaryColor: "#fffaf0"
+      }
+    };
+  }
+
+  function showMermaidFailure(element, source) {
+    element.removeAttribute("data-processed");
+    element.setAttribute("data-mermaid-failed", "true");
+    element.textContent = source;
+    var status = element.parentElement && element.parentElement.querySelector(".diagram-status");
+    if (!status && element.parentElement) {
+      status = document.createElement("p");
+      status.className = "diagram-status";
+      status.setAttribute("role", "status");
+      element.parentElement.insertBefore(status, element);
+    }
+    if (status) status.textContent = "图表脚本不可用；以下保留可复制的文字源。";
+  }
+
+  function renderMermaid() {
+    var nodes = Array.from(document.querySelectorAll(".mermaid"));
+    if (!nodes.length) return Promise.resolve();
+    nodes.forEach(function (element) {
+      if (!mermaidSources.has(element)) mermaidSources.set(element, element.textContent.trim());
+      element.removeAttribute("data-mermaid-failed");
+      element.removeAttribute("data-processed");
+      element.textContent = mermaidSources.get(element);
+      var status = element.parentElement && element.parentElement.querySelector(".diagram-status");
+      if (status) status.remove();
+    });
+    if (!window.mermaid || typeof window.mermaid.run !== "function") {
+      nodes.forEach(function (element) { showMermaidFailure(element, mermaidSources.get(element)); });
+      return Promise.resolve();
+    }
+    window.mermaid.initialize(mermaidOptions());
+    return Promise.resolve(window.mermaid.run({ nodes: nodes })).catch(function () {
+      nodes.forEach(function (element) { showMermaidFailure(element, mermaidSources.get(element)); });
+    });
+  }
+
+  if (themeSelect && window.GUIDE_THEME) {
+    themeSelect.value = window.GUIDE_THEME.read();
+    themeSelect.addEventListener("change", function () {
+      var saved = window.GUIDE_THEME.set(themeSelect.value);
+      if (themeStatus) themeStatus.textContent = saved ? "主题偏好已保存。" : "主题已应用，但未保存。";
+      renderMermaid();
+    });
+    if (window.matchMedia) {
+      var systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+      systemTheme.addEventListener("change", function () {
+        if (themeSelect.value === "system") renderMermaid();
+      });
+    }
+  }
   var path = window.location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll("[data-nav]").forEach(function (link) {
     if (link.getAttribute("href") === path) {
@@ -249,55 +328,5 @@
     });
   }
 
-  if (window.mermaid) {
-    mermaid.initialize({
-      startOnLoad: true,
-      securityLevel: "strict",
-      theme: "base",
-      themeVariables: {
-        fontFamily: 'Geist, ui-sans-serif, system-ui, "Noto Sans CJK SC", sans-serif',
-        primaryColor: "#fffaf0",
-        primaryTextColor: "#11110f",
-        primaryBorderColor: "#c44924",
-        lineColor: "#2458d8",
-        secondaryColor: "#f7f3ea",
-        tertiaryColor: "#fffaf0"
-      }
-    });
-  }
-
-  if (!window.gsap || !window.ScrollTrigger) return;
-  gsap.registerPlugin(ScrollTrigger);
-
-  document.querySelectorAll(".scrub-text").forEach(function (element) {
-    var words = element.textContent.trim().split(/\s+/);
-    element.innerHTML = words.map(function (word) {
-      return '<span class="reveal-word">' + word + '</span>';
-    }).join(" ");
-    gsap.to(element.querySelectorAll(".reveal-word"), {
-      opacity: 1,
-      stagger: 0.035,
-      ease: "none",
-      scrollTrigger: {
-        trigger: element,
-        start: "top 78%",
-        end: "bottom 42%",
-        scrub: true
-      }
-    });
-  });
-
-  gsap.utils.toArray(".card, .source-card, .content-block").forEach(function (element) {
-    gsap.fromTo(element, { opacity: 0, y: 24, scale: 0.99 }, {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      duration: 0.65,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: element,
-        start: "top 90%"
-      }
-    });
-  });
+  renderMermaid();
 })();

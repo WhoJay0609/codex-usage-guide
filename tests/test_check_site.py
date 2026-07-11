@@ -12,6 +12,7 @@ from check_site import (  # noqa: E402
     check_local_link,
     validate_case_index,
     validate_fragment_registry,
+    validate_presentation_contracts,
     validate_interaction_contracts,
     validate_required_pages,
     validate_semantic_contracts,
@@ -26,6 +27,20 @@ def parse(markup: str) -> PageParser:
 
 
 class SemanticContractTests(unittest.TestCase):
+    def test_presentation_contract_rejects_late_theme_unsafe_external_and_global_mermaid(self) -> None:
+        markup = (
+            '<link rel="stylesheet" href="assets/site.css"><script src="assets/theme.js"></script>'
+            '<select class="theme-select"></select><main>'
+            '<a href="https://example.com">外部</a></main>'
+            '<script src="https://cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script>'
+        )
+        errors = validate_presentation_contracts(
+            {"sample.html": parse(markup)}, {"sample.html"}, "https://guide.example/"
+        )
+        self.assertTrue(any("theme bootstrap" in error for error in errors), errors)
+        self.assertTrue(any("unsafe cross-origin" in error for error in errors), errors)
+        self.assertTrue(any("Mermaid runtime" in error for error in errors), errors)
+
     def test_interaction_contract_requires_search_and_matching_permalinks(self) -> None:
         pages = {
             "sample.html": parse(

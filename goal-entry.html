@@ -5,11 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>goal-entry</title>
   <meta name="description" content="中文 Codex 实战手册：本机自开发 goal-entry 扩展的定位、限制和使用边界。">
+  <!-- guide:theme-bootstrap:start -->
+<script src="assets/theme.js"></script>
+<!-- guide:theme-bootstrap:end -->
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
   <!-- guide:header:start -->
-<script src="assets/site-data.js"></script><script src="assets/search-index.js"></script><header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><button class="search-trigger" type="button" aria-haspopup="dialog" aria-controls="site-search-dialog">搜索</button><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header><dialog class="search-dialog" id="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title"><div class="search-dialog-panel"><div class="search-dialog-head"><p class="search-title" id="site-search-title">搜索全站</p><button class="search-close" type="button" aria-label="关闭搜索">关闭</button></div><label class="search-label" for="site-search-input">搜索标题、正文和可复用 prompt</label><input class="search-input" id="site-search-input" type="search" role="combobox" autocomplete="off" aria-autocomplete="list" aria-controls="site-search-results" aria-describedby="site-search-status" aria-expanded="false"><p class="search-message" id="site-search-status" aria-live="polite">输入关键词开始搜索。</p><ul class="search-results" id="site-search-results" role="listbox" aria-label="搜索结果"></ul></div></dialog>
+<script src="assets/site-data.js"></script><script src="assets/search-index.js"></script><header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><label class="theme-control"><span class="sr-only">主题</span><select class="theme-select" aria-label="主题"><option value="system">跟随系统</option><option value="light">浅色</option><option value="dark">深色</option></select></label><span class="theme-status sr-only" aria-live="polite"></span><button class="search-trigger" type="button" aria-haspopup="dialog" aria-controls="site-search-dialog">搜索</button><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header><dialog class="search-dialog" id="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title"><div class="search-dialog-panel"><div class="search-dialog-head"><p class="search-title" id="site-search-title">搜索全站</p><button class="search-close" type="button" aria-label="关闭搜索">关闭</button></div><label class="search-label" for="site-search-input">搜索标题、正文和可复用 prompt</label><input class="search-input" id="site-search-input" type="search" role="combobox" autocomplete="off" aria-autocomplete="list" aria-controls="site-search-results" aria-describedby="site-search-status" aria-expanded="false"><p class="search-message" id="site-search-status" aria-live="polite">输入关键词开始搜索。</p><ul class="search-results" id="site-search-results" role="listbox" aria-label="搜索结果"></ul></div></dialog>
 <!-- guide:header:end -->
 
   <!-- guide:shell-open:start -->
@@ -88,9 +91,8 @@
     <p><strong>本机实验</strong><br>goal-entry 可以参考，但不要把它当作官方标准路径。</p>
     <a class="button" href="compound-engineering.html">查看 Compound Engineering</a>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  <script src="assets/site.js"></script>
+  <!-- guide:runtime:start -->
+<script src="assets/site.js"></script>
+<!-- guide:runtime:end -->
 </body>
 </html>

@@ -11,10 +11,10 @@ import re
 from urllib.parse import urldefrag, urlparse
 
 try:
-    from .build_site import generate, load_heading_fragments
+    from .build_site import MERMAID_INTEGRITY, MERMAID_SRC, generate, load_heading_fragments
     from .site_model import SiteModelError
 except ImportError:  # Direct script execution.
-    from build_site import generate, load_heading_fragments
+    from build_site import MERMAID_INTEGRITY, MERMAID_SRC, generate, load_heading_fragments
     from site_model import SiteModelError
 
 
@@ -129,6 +129,7 @@ class PageParser(HTMLParser):
         self.id_counts: Counter[str] = Counter()
         self.duplicate_attributes: list[tuple[str, str]] = []
         self.hrefs: list[str] = []
+        self.anchors: list[dict[str, str]] = []
         self.images: list[str] = []
         self.stylesheets: list[str] = []
         self.scripts: list[str] = []
@@ -198,6 +199,7 @@ class PageParser(HTMLParser):
         if tag == "a" and attr.get("href"):
             href = attr["href"]
             self.hrefs.append(href)
+            self.anchors.append(attr)
             href_without_fragment = urldefrag(href)[0]
             if "data-nav" in attr:
                 self.nav_links.add(href_without_fragment)
@@ -387,6 +389,54 @@ def validate_fragment_registry(
     return errors
 
 
+def validate_presentation_contracts(
+    pages: dict[str, PageParser], public_pages: set[str], base_url: str
+) -> list[str]:
+    errors: list[str] = []
+    base = urlparse(base_url)
+    base_origin = (base.scheme.lower(), base.hostname or "", base.port)
+    mermaid_tag = (
+        f'<script src="{MERMAID_SRC}" integrity="{MERMAID_INTEGRITY}" '
+        'crossorigin="anonymous" referrerpolicy="no-referrer"></script>'
+    )
+    for rel in sorted(public_pages):
+        parser = pages.get(rel)
+        if parser is None:
+            continue
+        source = parser.source_text
+        theme_position = source.find('src="assets/theme.js"')
+        css_position = source.find('href="assets/site.css"')
+        if theme_position < 0 or css_position < 0 or theme_position > css_position:
+            errors.append(f"{rel}: theme bootstrap must load before shared CSS")
+        if 'class="theme-select"' not in source:
+            errors.append(f"{rel}: missing generated theme select")
+        if "gsap" in source.lower():
+            errors.append(f"{rel}: GSAP must not remain on the reading path")
+        has_diagram = bool(re.search(r'class=["\'][^"\']*\bmermaid\b', source))
+        has_mermaid_runtime = bool(re.search(r'<script\b[^>]*mermaid[^>]*\.min\.js', source, re.IGNORECASE))
+        if (has_diagram and mermaid_tag not in source) or (not has_diagram and has_mermaid_runtime):
+            errors.append(f"{rel}: Mermaid runtime must be exact, pinned, and diagram-scoped")
+        external_count = 0
+        for anchor in parser.anchors:
+            target = urlparse(anchor["href"])
+            if target.scheme.lower() not in {"http", "https"}:
+                continue
+            if (target.scheme.lower(), target.hostname or "", target.port) == base_origin:
+                continue
+            external_count += 1
+            classes = anchor.get("class", "").split()
+            if (
+                "external-link" not in classes
+                or anchor.get("target") != "_blank"
+                or anchor.get("rel") != "noopener noreferrer"
+                or anchor.get("referrerpolicy") != "no-referrer"
+            ):
+                errors.append(f"{rel}: unsafe cross-origin link: {anchor['href']}")
+        if source.count('class="external-link-indicator"') != external_count:
+            errors.append(f"{rel}: external-link indicators must match cross-origin HTTP(S) links")
+    return errors
+
+
 def validate_interaction_contracts(pages: dict[str, PageParser]) -> list[str]:
     errors: list[str] = []
     for rel, parser in pages.items():
@@ -505,7 +555,15 @@ def main() -> int:
     errors = validate_semantic_contracts(pages)
     errors.extend(validate_interaction_contracts(pages))
     try:
-        errors.extend(validate_fragment_registry(pages, load_heading_fragments(ROOT)))
+        registry = load_heading_fragments(ROOT)
+        errors.extend(validate_fragment_registry(pages, registry))
+        errors.extend(
+            validate_presentation_contracts(
+                pages,
+                set(registry),
+                "https://whojay0609.github.io/codex-usage-guide/",
+            )
+        )
     except (OSError, ValueError) as error:
         errors.append(f"heading fragment registry invalid: {error}")
     errors.extend(validate_required_pages(pages))

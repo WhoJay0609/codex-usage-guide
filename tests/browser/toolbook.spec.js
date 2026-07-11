@@ -86,3 +86,27 @@ test('exposes a focusable canonical permalink for every reader heading', async (
   await links.first().focus();
   await expect(links.first()).toBeFocused();
 });
+
+test('persists manual theme choices and survives storage failure', async ({ page }) => {
+  await page.goto('/index.html');
+  await page.locator('.theme-select').selectOption('dark');
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  await page.reload();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  await page.evaluate(() => {
+    Object.defineProperty(window, 'localStorage', { configurable: true, get() { throw new Error('denied'); } });
+  });
+  await page.locator('.theme-select').selectOption('light');
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+  await expect(page.locator('.theme-status')).toContainText('未保存');
+});
+
+test('marks only cross-origin HTTP links as external', async ({ page }) => {
+  await page.goto('/permissions.html');
+  const external = page.locator('main a.external-link').first();
+  await expect(external).toHaveAttribute('target', '_blank');
+  await expect(external).toHaveAttribute('rel', 'noopener noreferrer');
+  await expect(external).toHaveAttribute('referrerpolicy', 'no-referrer');
+  await expect(external.locator('.external-link-indicator')).toHaveText('↗');
+  await expect(page.locator('a[href^="mailto:"]')).not.toHaveClass(/external-link/);
+});

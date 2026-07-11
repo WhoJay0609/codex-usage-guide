@@ -11,6 +11,7 @@ import re
 import sys
 from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import urlparse
 
 try:
     from .site_model import Page, SiteModel, load_site_model
@@ -117,6 +118,17 @@ PERMALINK_RE = re.compile(
     r'<a\s+class=["\']heading-permalink["\'][^>]*data-heading-permalink[^>]*>.*?</a>',
     re.IGNORECASE | re.DOTALL,
 )
+EXTERNAL_INDICATOR_RE = re.compile(
+    r'<span\s+class=["\']external-link-indicator["\'][^>]*>.*?</span>'
+    r'(?:<span\s+class=["\']sr-only["\'][^>]*>.*?</span>)?',
+    re.IGNORECASE | re.DOTALL,
+)
+RUNTIME_SCRIPT_RE = re.compile(
+    r'\s*<script\b[^>]*src=["\'](?:https://cdn\.jsdelivr\.net/npm/(?:gsap|mermaid)[^"\']*|assets/site\.js)["\'][^>]*></script>',
+    re.IGNORECASE,
+)
+MERMAID_SRC = "https://cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"
+MERMAID_INTEGRITY = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk"
 
 
 def _assign_heading_ids(
@@ -195,6 +207,86 @@ def _add_heading_permalinks(source: str) -> str:
     )
 
 
+def _set_attribute(attrs: str, name: str, value: str) -> str:
+    pattern = re.compile(rf'\s+{re.escape(name)}\s*=\s*["\'][^"\']*["\']', re.IGNORECASE)
+    attrs = pattern.sub("", attrs)
+    return f'{attrs} {name}="{html.escape(value, quote=True)}"'
+
+
+def _decorate_external_links(source: str, base_url: str) -> str:
+    base = urlparse(base_url)
+    base_origin = (base.scheme.lower(), base.hostname or "", base.port)
+    source = EXTERNAL_INDICATOR_RE.sub("", source)
+
+    def decorate(match: re.Match[str]) -> str:
+        attrs, body = match.groups()
+        href_match = re.search(r'\bhref\s*=\s*["\']([^"\']+)["\']', attrs, re.IGNORECASE)
+        if not href_match:
+            return match.group(0)
+        target = urlparse(html.unescape(href_match.group(1)))
+        if target.scheme.lower() not in {"http", "https"}:
+            return match.group(0)
+        target_origin = (target.scheme.lower(), target.hostname or "", target.port)
+        if target_origin == base_origin:
+            return match.group(0)
+        class_match = re.search(r'\bclass\s*=\s*["\']([^"\']*)["\']', attrs, re.IGNORECASE)
+        classes = class_match.group(1).split() if class_match else []
+        if "external-link" not in classes:
+            classes.append("external-link")
+        attrs = _set_attribute(attrs, "class", " ".join(classes))
+        attrs = _set_attribute(attrs, "target", "_blank")
+        attrs = _set_attribute(attrs, "rel", "noopener noreferrer")
+        attrs = _set_attribute(attrs, "referrerpolicy", "no-referrer")
+        indicator = (
+            '<span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span>'
+            '<span class="sr-only" data-search-exclude>（外部链接）</span>'
+        )
+        return f"<a{attrs}>{indicator}{body}</a>"
+
+    return re.sub(r"<a(\b[^>]*)>(.*?)</a>", decorate, source, flags=re.IGNORECASE | re.DOTALL)
+
+
+def _render_head_and_runtime(source: str) -> str:
+    theme = '<script src="assets/theme.js"></script>'
+    if _markers("theme-bootstrap")[0] in source:
+        source = _replace_named(source, "theme-bootstrap", theme)
+    else:
+        source, count = re.subn(
+            r'(?=<link\s+rel=["\']stylesheet["\']\s+href=["\']assets/site\.css["\'])',
+            _block("theme-bootstrap", theme) + "\n  ",
+            source,
+            count=1,
+            flags=re.IGNORECASE,
+        )
+        if count != 1:
+            raise ValueError("expected shared stylesheet in <head>")
+
+    main_match = re.search(r"<main\b.*?</main>", source, flags=re.IGNORECASE | re.DOTALL)
+    has_mermaid = bool(main_match and re.search(r'class=["\'][^"\']*\bmermaid\b', main_match.group(0)))
+    runtime_parts = []
+    if has_mermaid:
+        runtime_parts.append(
+            f'<script src="{MERMAID_SRC}" integrity="{MERMAID_INTEGRITY}" '
+            'crossorigin="anonymous" referrerpolicy="no-referrer"></script>'
+        )
+    runtime_parts.append('<script src="assets/site.js"></script>')
+    runtime = "\n".join(runtime_parts)
+    if _markers("runtime")[0] in source:
+        source = _replace_named(source, "runtime", runtime)
+    else:
+        source = RUNTIME_SCRIPT_RE.sub("", source)
+        source, count = re.subn(
+            r"(?=</body>)",
+            "  " + _block("runtime", runtime) + "\n",
+            source,
+            count=1,
+            flags=re.IGNORECASE,
+        )
+        if count != 1:
+            raise ValueError("expected closing </body>")
+    return source
+
+
 def _headings(source: str) -> list[dict[str, str]]:
     parser = HeadingParser()
     parser.feed(source)
@@ -217,6 +309,7 @@ def render_page(
         registry_path = model.root / "data/heading-fragments.json"
         fragment_registry = load_heading_fragments(model.root) if registry_path.exists() else None
     entries = fragment_registry.get(page.path) if fragment_registry is not None else None
+    source = _decorate_external_links(source, model.site["base_url"])
     source = _add_heading_permalinks(_assign_heading_ids(source, page, entries))
     page_map = {item.path: item for item in model.pages}
     flat_order = [path for group in model.navigation for path in group.pages]
@@ -252,7 +345,12 @@ def render_page(
         '<script src="assets/site-data.js"></script><script src="assets/search-index.js"></script>'
         '<header class="topbar"><div class="topbar-inner">'
         '<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a>'
-        '<div class="topbar-actions"><button class="search-trigger" type="button" '
+        '<div class="topbar-actions"><label class="theme-control"><span class="sr-only">主题</span>'
+        '<select class="theme-select" aria-label="主题">'
+        '<option value="system">跟随系统</option><option value="light">浅色</option>'
+        '<option value="dark">深色</option></select></label>'
+        '<span class="theme-status sr-only" aria-live="polite"></span>'
+        '<button class="search-trigger" type="button" '
         'aria-haspopup="dialog" aria-controls="site-search-dialog">搜索</button>'
         '<button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div>'
         '</div></header>'
@@ -295,7 +393,7 @@ def render_page(
             raise ValueError(f"{page.path}: expected one main region")
         before, after = source.rsplit("</main>", 1)
         source = before + "</main>\n" + _block("shell-close", shell_close) + after
-    return source
+    return _render_head_and_runtime(source)
 
 
 class HeadingParser(HTMLParser):
