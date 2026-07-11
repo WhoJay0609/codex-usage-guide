@@ -7,7 +7,7 @@
   function resolvedTheme() {
     var override = document.documentElement.getAttribute("data-theme");
     if (override === "light" || override === "dark") return override;
-    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    return "light";
   }
 
   function mermaidOptions() {
@@ -72,12 +72,6 @@
       if (themeStatus) themeStatus.textContent = saved ? "主题偏好已保存。" : "主题已应用，但未保存。";
       renderMermaid();
     });
-    if (window.matchMedia) {
-      var systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
-      systemTheme.addEventListener("change", function () {
-        if (themeSelect.value === "system") renderMermaid();
-      });
-    }
   }
   var path = window.location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll("[data-nav]").forEach(function (link) {

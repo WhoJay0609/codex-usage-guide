@@ -8,7 +8,7 @@
   },
   "navigation": [
     {"label": "开始", "pages": ["index.html", "install-desktop.html", "desktop-cli.html"]},
-    {"label": "基础概念", "pages": ["codex.html", "permissions.html", "agents-md.html", "skills.html", "mcp.html", "subagents.html", "goal.html"]},
+    {"label": "基础概念", "pages": ["codex.html", "permissions.html", "agents-md.html", "skills.html", "mcp.html", "worktrees.html", "subagents.html", "goal.html"]},
     {"label": "任务路径", "pages": ["workflows.html", "daily-workflow.html", "engineering.html", "research.html", "automation.html"]},
     {"label": "扩展与资料", "pages": ["compound-engineering.html", "skills-repositories.html", "goal-entry.html", "resources.html"]}
   ],
@@ -21,6 +21,7 @@
     {"path": "agents-md.html", "title": "AGENTS.md", "nav_label": "AGENTS.md", "description": "为 Codex 写清项目规则、边界和验证命令。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
     {"path": "skills.html", "title": "Skills", "nav_label": "Skills", "description": "选择和使用 Codex skills。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
     {"path": "mcp.html", "title": "MCP / Plugins", "nav_label": "MCP", "description": "连接外部工具并管理其权限。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
+    {"path": "worktrees.html", "title": "Worktrees", "nav_label": "Worktrees", "description": "在 Codex Desktop 中用 Worktree 隔离并行任务，并安全地在 Local 与 Worktree 间交接。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
     {"path": "subagents.html", "title": "Subagents", "nav_label": "Subagents", "description": "拆分、约束和收口 subagent 工作。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
     {"path": "goal.html", "title": "Goal", "nav_label": "Goal", "description": "用 Goal 管理长任务的目标、验收与停止条件。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
     {"path": "workflows.html", "title": "任务路径", "nav_label": "任务", "description": "根据任务复杂度选择合适的 Codex 工作流。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},

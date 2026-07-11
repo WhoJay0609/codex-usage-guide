@@ -130,6 +130,12 @@ RUNTIME_SCRIPT_RE = re.compile(
 MERMAID_SRC = "https://cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"
 MERMAID_INTEGRITY = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk"
 BUILD_PLACEHOLDER = "__GUIDE_BUILD__"
+SKILL_REPOSITORY_NAV = (
+    ("compound-engineering", "Compound Engineering"),
+    ("mattpocock-skills", "Matt Pocock skills"),
+    ("academic-research-skills-codex", "ARS"),
+    ("aris-auto-claude-code-research-in-sleep", "ARIS"),
+)
 
 
 def _assign_heading_ids(
@@ -187,10 +193,24 @@ def _assign_heading_ids(
 
 
 def _add_heading_permalinks(source: str) -> str:
+    anchor_depth = 0
+    previous_end = 0
+
+    def advance_anchor_depth(segment: str) -> None:
+        nonlocal anchor_depth
+        for tag in re.finditer(r"<(/?)a\b[^>]*>", segment, flags=re.IGNORECASE):
+            if tag.group(1):
+                anchor_depth = max(0, anchor_depth - 1)
+            elif not tag.group(0).rstrip().endswith("/>"):
+                anchor_depth += 1
+
     def add_permalink(match: re.Match[str]) -> str:
+        nonlocal previous_end
+        advance_anchor_depth(source[previous_end:match.start()])
+        previous_end = match.end()
         level, attrs, body = match.groups()
         id_match = re.search(r'\bid\s*=\s*["\']([^"\']+)["\']', attrs)
-        if not id_match:
+        if not id_match or anchor_depth:
             return match.group(0)
         fragment = id_match.group(1)
         permalink = (
@@ -262,6 +282,7 @@ def _render_metadata(source: str, model: SiteModel, page: Page) -> str:
     metadata = (
         f'<meta name="description" content="{values["description"]}">\n'
         f'<meta name="guide-build" content="{BUILD_PLACEHOLDER}">\n'
+        '<link rel="icon" href="favicon.svg" type="image/svg+xml">\n'
         f'<link rel="canonical" href="{values["canonical"]}">\n'
         '<meta property="og:type" content="website">\n'
         f'<meta property="og:locale" content="{values["locale"]}">\n'
@@ -379,6 +400,19 @@ def render_page(
         for path in group.pages:
             target = page_map[path]
             current = ' aria-current="page"' if path == page.path else ""
+            if path == "skills-repositories.html":
+                repository_links = "".join(
+                    f'<a href="{html.escape(path)}#{html.escape(fragment)}">{html.escape(label)}</a>'
+                    for fragment, label in SKILL_REPOSITORY_NAV
+                )
+                open_attribute = " open" if path == page.path else ""
+                links.append(
+                    f'<details class="global-nav-disclosure"{open_attribute}>'
+                    f'<summary>{html.escape(target.nav_label)}</summary>'
+                    f'<a data-nav href="{html.escape(path)}"{current}>全部仓库</a>'
+                    f'{repository_links}</details>'
+                )
+                continue
             links.append(f'<a data-nav href="{html.escape(path)}"{current}>{html.escape(target.nav_label)}</a>')
         nav_groups.append(f'<section class="global-nav-group"><strong>{html.escape(group.label)}</strong>{"".join(links)}</section>')
     global_nav = '<aside class="global-nav" id="global-nav" aria-label="全站导航">' + "".join(nav_groups) + "</aside>"
@@ -388,7 +422,7 @@ def render_page(
         if not heading["id"]:
             continue
         toc_links.append(f'<a class="toc-{heading["level"]}" href="#{html.escape(heading["id"])}">{html.escape(heading["text"])}</a>')
-    toc = '<aside class="page-toc" aria-label="本页目录"><details open><summary>本页目录</summary><nav>' + "".join(toc_links) + "</nav></details></aside>"
+    toc = '<aside class="page-toc" aria-label="本页目录"><details><summary>本页目录</summary><nav>' + "".join(toc_links) + "</nav></details></aside>"
 
     previous_link = ""
     next_link = ""
@@ -404,8 +438,8 @@ def render_page(
         '<header class="topbar"><div class="topbar-inner">'
         '<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a>'
         '<div class="topbar-actions"><label class="theme-control"><span class="sr-only">主题</span>'
-        '<select class="theme-select" aria-label="主题">'
-        '<option value="system">跟随系统</option><option value="light">浅色</option>'
+        '<select class="theme-select" id="theme-select" name="theme" aria-label="主题">'
+        '<option value="light" selected>浅色</option>'
         '<option value="dark">深色</option></select></label>'
         '<span class="theme-status sr-only" aria-live="polite"></span>'
         '<button class="search-trigger" type="button" '
@@ -429,9 +463,9 @@ def render_page(
         '<div class="toolbook-shell">' + global_nav + '<div class="toolbook-main">'
         f'<nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>{html.escape(page.nav_label)}</span></nav>'
         f'<div class="page-freshness"><span>页面更新：<time datetime="{page.modified}">{page.modified}</time></span>'
-        f'<span>事实核验：<time datetime="{page.facts_verified}">{page.facts_verified}</time></span></div>'
+        f'<span>事实核验：<time datetime="{page.facts_verified}">{page.facts_verified}</time></span></div>{toc}'
     )
-    shell_close = f'<nav class="page-sequence" aria-label="前后页">{previous_link}{next_link}</nav></div>{toc}</div>'
+    shell_close = f'<nav class="page-sequence" aria-label="前后页">{previous_link}{next_link}</nav></div></div>'
 
     header_pattern = re.compile(r'<header\s+class=["\']topbar["\'].*?</header>', re.DOTALL)
     if _markers("header")[0] in source:

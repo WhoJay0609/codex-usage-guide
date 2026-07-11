@@ -1,11 +1,11 @@
 window.GUIDE_SITE_DATA = {
   "asset_fingerprints": {
-    "assets/site.css": "6c101b5e9b979f3fc43de6b7ee6336e8423f508031b04bd188abdcde4151fa9c",
-    "assets/site.js": "c0e08ab2a6510c0a204e331bb9ce67b23b04832357a456b33091ea6345bf1e4a",
-    "assets/theme.js": "5f43877b14508575ef4cb002c71855631077e790754275260f7e46ae73ef234d",
+    "assets/site.css": "132e5d125ec87551ebfe50f1633fa7b40544a876b49606b264ec8b681023a502",
+    "assets/site.js": "f5af47d23d67aee7907457616354c046fabd16ff08b2f3a65b8b0c034c2dcda1",
+    "assets/theme.js": "187420686654f8c1c58df32a0687d4a0d11e6e0707b8696d5f077774982d766a",
     "figures/social-preview.png": "e0ee23ae3b99a8507b4aa423c530289468f1db067d1e7041e4afcefb5fe3ac58"
   },
-  "build_id": "c913ce4a5bfc",
+  "build_id": "a8683ed4c1d0",
   "changelog": [
     {
       "category": "structure",
@@ -76,7 +76,7 @@ window.GUIDE_SITE_DATA = {
       "它是什么",
       "在-codex-desktop-里安装",
       "第一次进入项目后先跑什么",
-      "核心六步怎么用",
+      "核心七步怎么用",
       "product-contract-和实施计划写在同一份文档",
       "常见情况选哪个-skill",
       "还不知道做什么",
@@ -415,8 +415,6 @@ window.GUIDE_SITE_DATA = {
       "什么时候用-不用",
       "可复制示例",
       "worktree-subagent-目录隔离和责任隔离",
-      "不是安全沙箱",
-      "恢复与-blocked-receipt",
       "subagent-任务合同",
       "输入",
       "输出",
@@ -466,6 +464,23 @@ window.GUIDE_SITE_DATA = {
       "4.-validation-evidence",
       "5.-final-report",
       "6.-failure-stop"
+    ],
+    "worktrees.html": [
+      "worktree-是什么",
+      "什么时候用-不用",
+      "在-desktop-中创建",
+      "选择-worktree",
+      "选择起始分支",
+      "提交独立任务",
+      "决定继续位置",
+      "local-worktree-与-handoff",
+      "分支和文件边界",
+      "同一分支不能多处-checkout",
+      "ignored-文件与-worktreeinclude",
+      "恢复与清理",
+      "worktree-与-subagent-的区别",
+      "可复制示例",
+      "真实实例-并行页面修复"
     ]
   },
   "navigation": [
@@ -485,6 +500,7 @@ window.GUIDE_SITE_DATA = {
         "agents-md.html",
         "skills.html",
         "mcp.html",
+        "worktrees.html",
         "subagents.html",
         "goal.html"
       ]
@@ -573,6 +589,14 @@ window.GUIDE_SITE_DATA = {
       "nav_label": "MCP",
       "path": "mcp.html",
       "title": "MCP / Plugins"
+    },
+    {
+      "description": "在 Codex Desktop 中用 Worktree 隔离并行任务，并安全地在 Local 与 Worktree 间交接。",
+      "facts_verified": "2026-07-11",
+      "modified": "2026-07-11",
+      "nav_label": "Worktrees",
+      "path": "worktrees.html",
+      "title": "Worktrees"
     },
     {
       "description": "拆分、约束和收口 subagent 工作。",
