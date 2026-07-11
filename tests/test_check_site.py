@@ -14,6 +14,7 @@ from check_site import (  # noqa: E402
     validate_fragment_registry,
     validate_presentation_contracts,
     validate_interaction_contracts,
+    validate_metadata_contracts,
     validate_required_pages,
     validate_semantic_contracts,
 )
@@ -27,6 +28,23 @@ def parse(markup: str) -> PageParser:
 
 
 class SemanticContractTests(unittest.TestCase):
+    def test_metadata_contract_rejects_missing_social_head_and_generic_kicker(self) -> None:
+        pages = {
+            "sample.html": parse(
+                '<html><head><title>示例</title><meta name="description" content="描述"></head>'
+                '<body><main><p class="section-kicker">Examples</p><h1>示例</h1></main></body></html>'
+            )
+        }
+        manifest_pages = {"sample.html": {"title": "示例", "description": "描述"}}
+        errors = validate_metadata_contracts(
+            pages,
+            manifest_pages,
+            "https://example.test/",
+            "figures/social-preview.png",
+        )
+        self.assertTrue(any("missing canonical metadata" in error for error in errors), errors)
+        self.assertTrue(any("generic kicker must be Chinese-first" in error for error in errors), errors)
+
     def test_presentation_contract_rejects_late_theme_unsafe_external_and_global_mermaid(self) -> None:
         markup = (
             '<link rel="stylesheet" href="assets/site.css"><script src="assets/theme.js"></script>'

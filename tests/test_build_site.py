@@ -34,7 +34,7 @@ class SiteModelTests(unittest.TestCase):
             (root / "index.html").write_text("<title>x</title><h1>x</h1>", encoding="utf-8")
             manifest = {
                 "schema_version": 1,
-                "site": {"title": "x", "base_url": "https://example.test/", "language": "zh-CN"},
+                "site": {"title": "x", "base_url": "https://example.test/", "language": "zh-CN", "social_preview": "figures/social-preview.png"},
                 "navigation": [{"label": "a", "pages": ["index.html", "index.html"]}],
                 "pages": [{"path": "index.html", "title": "x", "nav_label": "x", "description": "x", "modified": "2026-07-11", "facts_verified": "2026-07-11"}],
             }
@@ -107,6 +107,21 @@ class SiteModelTests(unittest.TestCase):
         self.assertNotIn("gsap", mermaid_rendered.lower())
         self.assertNotIn("mermaid.min.js", plain_rendered)
         self.assertEqual(render_page(model, mermaid_page, mermaid_rendered), mermaid_rendered)
+
+    def test_manifest_metadata_generates_complete_same_origin_social_head(self) -> None:
+        model = load_site_model(ROOT)
+        page = next(page for page in model.pages if page.path == "permissions.html")
+        rendered = render_page(model, page, (ROOT / page.path).read_text(encoding="utf-8"))
+        canonical = "https://whojay0609.github.io/codex-usage-guide/permissions.html"
+        preview = "https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png"
+        self.assertIn(f'<link rel="canonical" href="{canonical}">', rendered)
+        self.assertIn('<meta name="description" content="理解 sandbox、approval、network 与 secret 边界。">', rendered)
+        self.assertIn('<meta property="og:title" content="权限与安全">', rendered)
+        self.assertIn(f'<meta property="og:url" content="{canonical}">', rendered)
+        self.assertIn(f'<meta property="og:image" content="{preview}">', rendered)
+        self.assertIn('<meta name="twitter:card" content="summary_large_image">', rendered)
+        self.assertIn(f'<meta name="twitter:image" content="{preview}">', rendered)
+        self.assertEqual(render_page(model, page, rendered), rendered)
 
     def test_only_cross_origin_http_links_receive_safe_visible_external_semantics(self) -> None:
         model = load_site_model(ROOT)

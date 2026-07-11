@@ -11,7 +11,7 @@ import re
 import sys
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
 
 try:
     from .site_model import Page, SiteModel, load_site_model
@@ -246,7 +246,63 @@ def _decorate_external_links(source: str, base_url: str) -> str:
     return re.sub(r"<a(\b[^>]*)>(.*?)</a>", decorate, source, flags=re.IGNORECASE | re.DOTALL)
 
 
-def _render_head_and_runtime(source: str) -> str:
+def _render_metadata(source: str, model: SiteModel, page: Page) -> str:
+    canonical = urljoin(model.site["base_url"], page.path)
+    preview = urljoin(model.site["base_url"], model.site["social_preview"])
+    locale = model.site["language"].replace("-", "_")
+    values = {
+        "title": html.escape(page.title, quote=True),
+        "description": html.escape(page.description, quote=True),
+        "canonical": html.escape(canonical, quote=True),
+        "preview": html.escape(preview, quote=True),
+        "site": html.escape(model.site["title"], quote=True),
+        "locale": html.escape(locale, quote=True),
+    }
+    metadata = (
+        f'<meta name="description" content="{values["description"]}">\n'
+        f'<link rel="canonical" href="{values["canonical"]}">\n'
+        '<meta property="og:type" content="website">\n'
+        f'<meta property="og:locale" content="{values["locale"]}">\n'
+        f'<meta property="og:site_name" content="{values["site"]}">\n'
+        f'<meta property="og:title" content="{values["title"]}">\n'
+        f'<meta property="og:description" content="{values["description"]}">\n'
+        f'<meta property="og:url" content="{values["canonical"]}">\n'
+        f'<meta property="og:image" content="{values["preview"]}">\n'
+        '<meta property="og:image:width" content="1200">\n'
+        '<meta property="og:image:height" content="630">\n'
+        f'<meta property="og:image:alt" content="{values["site"]}">\n'
+        '<meta name="twitter:card" content="summary_large_image">\n'
+        f'<meta name="twitter:title" content="{values["title"]}">\n'
+        f'<meta name="twitter:description" content="{values["description"]}">\n'
+        f'<meta name="twitter:image" content="{values["preview"]}">\n'
+        f'<meta name="twitter:image:alt" content="{values["site"]}">'
+    )
+    description_pattern = re.compile(
+        r'\s*<meta\s+name=["\']description["\']\s+content=["\'][^"\']*["\']\s*/?>',
+        re.IGNORECASE,
+    )
+    if _markers("metadata")[0] in source:
+        start, end = _markers("metadata")
+        before, remainder = source.split(start, 1)
+        _, after = remainder.split(end, 1)
+        before = description_pattern.sub("", before)
+        after = description_pattern.sub("", after)
+        return before + _block("metadata", metadata) + after
+    source = description_pattern.sub("", source)
+    source, count = re.subn(
+        r"(?=</head>)",
+        "  " + _block("metadata", metadata) + "\n",
+        source,
+        count=1,
+        flags=re.IGNORECASE,
+    )
+    if count != 1:
+        raise ValueError(f"{page.path}: expected closing </head>")
+    return source
+
+
+def _render_head_and_runtime(source: str, model: SiteModel, page: Page) -> str:
+    source = _render_metadata(source, model, page)
     theme = '<script src="assets/theme.js"></script>'
     if _markers("theme-bootstrap")[0] in source:
         source = _replace_named(source, "theme-bootstrap", theme)
@@ -393,7 +449,7 @@ def render_page(
             raise ValueError(f"{page.path}: expected one main region")
         before, after = source.rsplit("</main>", 1)
         source = before + "</main>\n" + _block("shell-close", shell_close) + after
-    return _render_head_and_runtime(source)
+    return _render_head_and_runtime(source, model, page)
 
 
 class HeadingParser(HTMLParser):

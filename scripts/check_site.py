@@ -4,18 +4,19 @@
 from __future__ import annotations
 
 import sys
+import struct
 from collections import Counter
 from html.parser import HTMLParser
 from pathlib import Path
 import re
-from urllib.parse import urldefrag, urlparse
+from urllib.parse import urldefrag, urljoin, urlparse
 
 try:
     from .build_site import MERMAID_INTEGRITY, MERMAID_SRC, generate, load_heading_fragments
-    from .site_model import SiteModelError
+    from .site_model import SiteModelError, load_site_model
 except ImportError:  # Direct script execution.
     from build_site import MERMAID_INTEGRITY, MERMAID_SRC, generate, load_heading_fragments
-    from site_model import SiteModelError
+    from site_model import SiteModelError, load_site_model
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -120,6 +121,21 @@ REQUIRED_BACKLINKS = {
 CASE_ANCHOR_RE = re.compile(
     r"^(?P<page>[A-Za-z0-9_./-]+\.html)#(?P<fragment>[A-Za-z][A-Za-z0-9_.:-]*)$"
 )
+GENERIC_KICKER_LABELS = {
+    "Academic suite", "Advanced", "Advanced task", "Anatomy", "Anti-patterns", "Appendix",
+    "Approval prompt", "Approvals", "Artifacts", "Autonomous research", "Before install",
+    "Boundaries", "Checklist", "Choose", "Chooser", "Common jobs", "Concept", "Concept map",
+    "Core loop", "Counterexamples", "Decision matrix", "Decision table", "Delegation contract",
+    "Design", "Desktop routine", "Desktop tiers", "Engineering discipline", "Engineering workflow",
+    "Evidence", "Evidence labels", "Examples", "Failure modes", "First task", "Gates", "Hierarchy",
+    "Hot MCP", "Independent review", "Install", "Install flow", "Issue lanes", "Lifecycle", "Limits",
+    "Local experiment", "Local guides", "Official docs", "Operations", "Patterns", "Pipeline",
+    "Playbook", "Plugin workflow", "Positioning", "Preflight", "Prompt", "Prompt patterns",
+    "Prompt quality", "Prompt skeleton", "Prompts", "Real example", "Real examples", "Resources",
+    "Safety", "Scenario handbook", "Secrets", "Setup", "Skills repositories", "Start here",
+    "Task handbook", "Tasks", "Team engineering", "Team flow", "Template", "Two-layer isolation",
+    "Unified plan", "Use cases", "What", "When",
+}
 
 
 class PageParser(HTMLParser):
@@ -130,6 +146,9 @@ class PageParser(HTMLParser):
         self.duplicate_attributes: list[tuple[str, str]] = []
         self.hrefs: list[str] = []
         self.anchors: list[dict[str, str]] = []
+        self.links: list[dict[str, str]] = []
+        self.metas: list[dict[str, str]] = []
+        self.kickers: list[str] = []
         self.images: list[str] = []
         self.stylesheets: list[str] = []
         self.scripts: list[str] = []
@@ -153,6 +172,7 @@ class PageParser(HTMLParser):
         self._case_stack: list[dict[str, object]] = []
         self._depth = 0
         self._current_heading_id = ""
+        self._current_kicker: list[str] | None = None
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         attribute_counts = Counter(key for key, _ in attrs)
@@ -171,6 +191,8 @@ class PageParser(HTMLParser):
             self.heading_ids.append(attr.get("id", ""))
             self._current_heading_id = attr.get("id", "")
         classes = set(attr.get("class", "").split())
+        if tag == "p" and classes & {"hero-kicker", "section-kicker"}:
+            self._current_kicker = []
         if "search-trigger" in classes:
             self.search_triggers += 1
         if tag == "dialog" and attr.get("id") == "site-search-dialog" and attr.get("role") == "dialog":
@@ -206,6 +228,10 @@ class PageParser(HTMLParser):
                 self._current_nav_href = href_without_fragment
         if tag == "link" and attr.get("rel") == "stylesheet" and attr.get("href"):
             self.stylesheets.append(attr["href"])
+        if tag == "link":
+            self.links.append(attr)
+        if tag == "meta":
+            self.metas.append(attr)
         if tag == "img" and attr.get("src"):
             self.images.append(attr["src"])
         if tag == "script" and attr.get("src"):
@@ -236,6 +262,9 @@ class PageParser(HTMLParser):
             self._current_nav_href = None
         if tag in {"h2", "h3"}:
             self._current_heading_id = ""
+        if tag == "p" and self._current_kicker is not None:
+            self.kickers.append(" ".join("".join(self._current_kicker).split()))
+            self._current_kicker = None
         if tag not in VOID_TAGS and self._depth:
             self._depth -= 1
 
@@ -251,6 +280,8 @@ class PageParser(HTMLParser):
                 self.nav_text.setdefault(self._current_nav_href, []).append(stripped)
         if self._current_tag:
             self._text_chunks[self._current_tag].append(data)
+        if self._current_kicker is not None:
+            self._current_kicker.append(data)
 
     def text(self, tag: str) -> str:
         return " ".join(chunk.strip() for chunk in self._text_chunks[tag]).strip()
@@ -437,6 +468,68 @@ def validate_presentation_contracts(
     return errors
 
 
+def _meta_value(parser: PageParser, key: str, value: str) -> list[str]:
+    return [item.get("content", "") for item in parser.metas if item.get(key) == value]
+
+
+def validate_metadata_contracts(
+    pages: dict[str, PageParser],
+    manifest_pages: dict[str, dict[str, str]],
+    base_url: str,
+    preview_path: str,
+) -> list[str]:
+    errors: list[str] = []
+    base = urlparse(base_url)
+    preview = urljoin(base_url, preview_path)
+    for rel, item in manifest_pages.items():
+        parser = pages.get(rel)
+        if parser is None:
+            continue
+        canonical = urljoin(base_url, rel)
+        canonical_links = [link.get("href", "") for link in parser.links if link.get("rel") == "canonical"]
+        if canonical_links != [canonical]:
+            errors.append(f"{rel}: missing canonical metadata for {canonical}")
+        expected = {
+            ("name", "description"): item["description"],
+            ("property", "og:type"): "website",
+            ("property", "og:site_name"): "Codex 使用指南",
+            ("property", "og:title"): item["title"],
+            ("property", "og:description"): item["description"],
+            ("property", "og:url"): canonical,
+            ("property", "og:image"): preview,
+            ("property", "og:image:width"): "1200",
+            ("property", "og:image:height"): "630",
+            ("name", "twitter:card"): "summary_large_image",
+            ("name", "twitter:title"): item["title"],
+            ("name", "twitter:description"): item["description"],
+            ("name", "twitter:image"): preview,
+        }
+        for (key, name), value in expected.items():
+            if _meta_value(parser, key, name) != [value]:
+                errors.append(f"{rel}: metadata {name} must equal manifest value")
+        for url in (canonical, preview):
+            target = urlparse(url)
+            if target.scheme != "https" or (target.scheme, target.netloc) != (base.scheme, base.netloc):
+                errors.append(f"{rel}: metadata URL must be same-origin HTTPS: {url}")
+        for kicker in parser.kickers:
+            if kicker in GENERIC_KICKER_LABELS:
+                errors.append(f"{rel}: generic kicker must be Chinese-first: {kicker}")
+    return errors
+
+
+def validate_social_preview(path: Path) -> list[str]:
+    if not path.exists():
+        return [f"{path.name}: missing social preview image"]
+    data = path.read_bytes()
+    if len(data) < 24 or data[:8] != b"\x89PNG\r\n\x1a\n":
+        return [f"{path.name}: social preview must be PNG"]
+    errors: list[str] = []
+    width, height = struct.unpack(">II", data[16:24])
+    if (width, height) != (1200, 630):
+        errors.append(f"{path.name}: social preview must be 1200x630, got {width}x{height}")
+    return errors
+
+
 def validate_interaction_contracts(pages: dict[str, PageParser]) -> list[str]:
     errors: list[str] = []
     for rel, parser in pages.items():
@@ -555,15 +648,28 @@ def main() -> int:
     errors = validate_semantic_contracts(pages)
     errors.extend(validate_interaction_contracts(pages))
     try:
+        model = load_site_model(ROOT)
         registry = load_heading_fragments(ROOT)
         errors.extend(validate_fragment_registry(pages, registry))
         errors.extend(
             validate_presentation_contracts(
                 pages,
                 set(registry),
-                "https://whojay0609.github.io/codex-usage-guide/",
+                model.site["base_url"],
             )
         )
+        errors.extend(
+            validate_metadata_contracts(
+                pages,
+                {
+                    page.path: {"title": page.title, "description": page.description}
+                    for page in model.pages
+                },
+                model.site["base_url"],
+                model.site["social_preview"],
+            )
+        )
+        errors.extend(validate_social_preview(ROOT / model.site["social_preview"]))
     except (OSError, ValueError) as error:
         errors.append(f"heading fragment registry invalid: {error}")
     errors.extend(validate_required_pages(pages))
@@ -616,6 +722,9 @@ def main() -> int:
         missing_images = REQUIRED_IMAGES.get(rel, set()) - set(parser.images)
         if missing_images:
             errors.append(f"{rel}: missing required images: {', '.join(sorted(missing_images))}")
+
+    if "Geist" in (ROOT / "assets/site.css").read_text(encoding="utf-8"):
+        errors.append("assets/site.css: unavailable Geist font claim remains")
 
     if errors:
         print("Site check failed:")

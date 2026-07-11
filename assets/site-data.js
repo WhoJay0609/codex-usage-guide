@@ -1,5 +1,5 @@
 window.GUIDE_SITE_DATA = {
-  "build_id": "5cc93b1e4874",
+  "build_id": "37e004e6c3e0",
   "changelog": [
     {
       "category": "structure",
@@ -660,6 +660,7 @@ window.GUIDE_SITE_DATA = {
   "site": {
     "base_url": "https://whojay0609.github.io/codex-usage-guide/",
     "language": "zh-CN",
+    "social_preview": "figures/social-preview.png",
     "title": "Codex 使用指南"
   }
 };

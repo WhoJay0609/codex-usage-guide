@@ -4,11 +4,29 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Compound Engineering</title>
-  <meta name="description" content="中文 Codex 实战手册：EveryInc Compound Engineering plugin 在 Codex Desktop 中的安装、设置和使用方式。">
   <!-- guide:theme-bootstrap:start -->
 <script src="assets/theme.js"></script>
 <!-- guide:theme-bootstrap:end -->
   <link rel="stylesheet" href="assets/site.css">
+  <!-- guide:metadata:start -->
+<meta name="description" content="在 Codex Desktop 中使用 Compound Engineering plugin。">
+<link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/compound-engineering.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="Codex 使用指南">
+<meta property="og:title" content="Compound Engineering">
+<meta property="og:description" content="在 Codex Desktop 中使用 Compound Engineering plugin。">
+<meta property="og:url" content="https://whojay0609.github.io/codex-usage-guide/compound-engineering.html">
+<meta property="og:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Codex 使用指南">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Compound Engineering">
+<meta name="twitter:description" content="在 Codex Desktop 中使用 Compound Engineering plugin。">
+<meta name="twitter:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
+<meta name="twitter:image:alt" content="Codex 使用指南">
+<!-- guide:metadata:end -->
 </head>
 <body>
   <!-- guide:header:start -->
@@ -20,7 +38,7 @@
 <main>
     <section class="hero compact">
       <div class="hero-copy">
-        <p class="hero-kicker">Plugin workflow</p>
+        <p class="hero-kicker">æä»¶å·¥ä½æµ</p>
         <h1>Compound Engineering plugin</h1>
         <p class="lead">EveryInc 的 Compound Engineering plugin 是一组工程流程 skills。它不替代 Codex Desktop 的线程、权限、diff 和验证，而是把需求澄清、计划、执行、简化、审查、知识沉淀组织成一条可重复的工作流。</p>
       </div>
@@ -31,7 +49,7 @@
 
       <article class="doc-content">
         <section class="content-block" id="what">
-          <p class="section-kicker">What</p>
+          <p class="section-kicker">æ¯ä»ä¹</p>
           <span class="fragment-alias" id="heading-compound-engineering-1" data-canonical-fragment="它是什么" aria-hidden="true"></span><h2 id="它是什么">它是什么<a class="heading-permalink" data-heading-permalink data-search-exclude href="#它是什么" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <p>这个仓库提供 Compound Engineering 插件：用一组 <code>/ce-*</code> skills 把工程任务从“随手改”变成“先澄清、再计划、再执行、再审查、再沉淀”。在 Codex Desktop 里，它适合多步骤功能、复杂 bug、PR 前审查和团队知识复用。</p>
           <div class="tier-badges">
@@ -42,7 +60,7 @@
         </section>
 
         <section class="content-block" id="install">
-          <p class="section-kicker">Install</p>
+          <p class="section-kicker">å®è£</p>
           <span class="fragment-alias" id="heading-compound-engineering-2" data-canonical-fragment="在-codex-desktop-里安装" aria-hidden="true"></span><h2 id="在-codex-desktop-里安装">在 Codex Desktop 里安装<a class="heading-permalink" data-heading-permalink data-search-exclude href="#在-codex-desktop-里安装" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <ol class="mini-list">
             <li><strong>打开 Plugins</strong><span>在 Codex Desktop 侧边栏进入 Plugins。</span></li>
@@ -54,7 +72,7 @@
         </section>
 
         <section class="content-block" id="setup">
-          <p class="section-kicker">Setup</p>
+          <p class="section-kicker">è®¾ç½®</p>
           <span class="fragment-alias" id="heading-compound-engineering-3" data-canonical-fragment="第一次进入项目后先跑什么" aria-hidden="true"></span><h2 id="第一次进入项目后先跑什么">第一次进入项目后先跑什么<a class="heading-permalink" data-heading-permalink data-search-exclude href="#第一次进入项目后先跑什么" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <p>安装后，在目标仓库的新线程里先运行 <code>/ce-setup</code>。它会检查 repo-local 配置、可用工具和本机设置，适合确认插件已经加载，并避免把机器配置误写进仓库。</p>
           <pre><code>/ce-setup</code></pre>
@@ -62,7 +80,7 @@
         </section>
 
         <section class="content-block" id="loop">
-          <p class="section-kicker">Core loop</p>
+          <p class="section-kicker">æ ¸å¿å¾ªç¯</p>
           <span class="fragment-alias" id="heading-compound-engineering-4" data-canonical-fragment="核心六步怎么用" aria-hidden="true"></span><h2 id="核心六步怎么用">核心六步怎么用<a class="heading-permalink" data-heading-permalink data-search-exclude href="#核心六步怎么用" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <div class="decision-table">
             <div class="decision-row"><strong>1. /ce-brainstorm</strong><span>澄清需求，只产出需求级计划</span><span>不要直接写代码</span><span>证据：范围、用户目标、验收</span></div>
@@ -75,7 +93,7 @@
         </section>
 
         <section class="content-block" id="unified-plan">
-          <p class="section-kicker">Unified plan</p>
+          <p class="section-kicker">ç»ä¸è®¡å</p>
           <span class="fragment-alias" id="heading-compound-engineering-5" data-canonical-fragment="product-contract-和实施计划写在同一份文档" aria-hidden="true"></span><h2 id="product-contract-和实施计划写在同一份文档">Product Contract 和实施计划写在同一份文档<a class="heading-permalink" data-heading-permalink data-search-exclude href="#product-contract-和实施计划写在同一份文档" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <p><code>/ce-brainstorm</code> 先把用户、范围、验收、非目标和失败条件写成轻量 Product Contract；确认后，<code>/ce-plan</code> 在同一份计划中补充文件、依赖、U-ID、测试场景和 Definition of Done。不要另起一份 PRD 让两个事实源逐渐漂移。</p>
           <div class="decision-table">
@@ -86,7 +104,7 @@
         </section>
 
         <section class="content-block" id="choose">
-          <p class="section-kicker">Choose</p>
+          <p class="section-kicker">éæ©</p>
           <span class="fragment-alias" id="heading-compound-engineering-6" data-canonical-fragment="常见情况选哪个-skill" aria-hidden="true"></span><h2 id="常见情况选哪个-skill">常见情况选哪个 skill<a class="heading-permalink" data-heading-permalink data-search-exclude href="#常见情况选哪个-skill" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <div class="bento">
             <article class="card span-4"><span class="fragment-alias" id="heading-compound-engineering-7" data-canonical-fragment="还不知道做什么" aria-hidden="true"></span><h3 id="还不知道做什么">还不知道做什么<a class="heading-permalink" data-heading-permalink data-search-exclude href="#还不知道做什么" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>用 <code>/ce-ideate</code>，让它从代码、问题和候选方向里筛出值得进入 brainstorm 的任务。</p></article>
@@ -98,7 +116,7 @@
         </section>
 
         <section class="content-block" id="prompts">
-          <p class="section-kicker">Prompts</p>
+          <p class="section-kicker">æç¤ºè¯ï¼Promptsï¼</p>
           <span class="fragment-alias" id="heading-compound-engineering-12" data-canonical-fragment="可复制输入" aria-hidden="true"></span><h2 id="可复制输入">可复制输入<a class="heading-permalink" data-heading-permalink data-search-exclude href="#可复制输入" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <pre><code>/ce-brainstorm
 目标：让后台任务重试更安全。
@@ -113,7 +131,7 @@
         </section>
 
         <section class="content-block" id="safety">
-          <p class="section-kicker">Boundaries</p>
+          <p class="section-kicker">è¾¹ç</p>
           <span class="fragment-alias" id="heading-compound-engineering-13" data-canonical-fragment="使用边界" aria-hidden="true"></span><h2 id="使用边界">使用边界<a class="heading-permalink" data-heading-permalink data-search-exclude href="#使用边界" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <ul class="mini-list">
             <li><strong>先读项目规则</strong><span>让 Codex 读取 <code>AGENTS.md</code>、README 和相关源码，再进入 CE 流程。</span></li>
@@ -124,7 +142,7 @@
         </section>
 
         <section class="content-block" id="real-example" data-case-type="historical" data-case-id="compound-guide-pr-1">
-          <p class="section-kicker">Real example</p>
+          <p class="section-kicker">çå®å®ä¾</p>
           <span class="fragment-alias" id="heading-compound-engineering-14" data-canonical-fragment="真实实例-历史案例" aria-hidden="true"></span><h2 id="真实实例-历史案例">真实实例：历史案例<a class="heading-permalink" data-heading-permalink data-search-exclude href="#真实实例-历史案例" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <div class="tier-badges"><span class="tier-badge">历史案例</span><span class="tier-badge">公开仓库证据</span></div>
           <p>本指南的“高 stars skills 仓库介绍”经过 requirements-only brainstorm、同一份计划的实施补全、LFG 交付、PR #1、静态验证和默认分支合并。这里引用的是公开仓库记录，不把流程名称当成完成证据。</p>

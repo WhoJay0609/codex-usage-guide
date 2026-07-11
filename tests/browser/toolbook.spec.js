@@ -8,6 +8,15 @@ test('serves the static guide without an application runtime', async ({ page }) 
   await expect(page.locator('.global-nav [aria-current="page"]')).toHaveCount(1);
 });
 
+test('exposes complete social metadata from the page manifest', async ({ page }) => {
+  await page.goto('/permissions.html');
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://whojay0609.github.io/codex-usage-guide/permissions.html');
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', '理解 sandbox、approval、network 与 secret 边界。');
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', '权限与安全');
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png');
+  await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute('content', 'summary_large_image');
+});
+
 test('keeps article content readable without horizontal overflow', async ({ page }) => {
   await page.goto('/permissions.html');
   await expect(page.locator('h1')).toHaveText('权限与安全');
