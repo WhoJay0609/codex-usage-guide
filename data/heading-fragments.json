@@ -308,9 +308,10 @@
         ]
       },
       "heading-compound-engineering-4": {
-        "canonical": "核心六步怎么用",
+        "canonical": "核心七步怎么用",
         "legacy": [
-          "heading-compound-engineering-4"
+          "heading-compound-engineering-4",
+          "核心六步怎么用"
         ]
       },
       "heading-compound-engineering-5": {
@@ -2183,18 +2184,6 @@
           "heading-subagents-4"
         ]
       },
-      "heading-subagents-5": {
-        "canonical": "不是安全沙箱",
-        "legacy": [
-          "heading-subagents-5"
-        ]
-      },
-      "heading-subagents-6": {
-        "canonical": "恢复与-blocked-receipt",
-        "legacy": [
-          "heading-subagents-6"
-        ]
-      },
       "heading-subagents-7": {
         "canonical": "subagent-任务合同",
         "legacy": [
@@ -2211,6 +2200,98 @@
         "canonical": "输出",
         "legacy": [
           "heading-subagents-9"
+        ]
+      }
+    },
+    "worktrees.html": {
+      "heading-worktrees-1": {
+        "canonical": "worktree-是什么",
+        "legacy": [
+          "heading-worktrees-1"
+        ]
+      },
+      "heading-worktrees-10": {
+        "canonical": "同一分支不能多处-checkout",
+        "legacy": [
+          "heading-worktrees-10"
+        ]
+      },
+      "heading-worktrees-11": {
+        "canonical": "ignored-文件与-worktreeinclude",
+        "legacy": [
+          "heading-worktrees-11"
+        ]
+      },
+      "heading-worktrees-12": {
+        "canonical": "恢复与清理",
+        "legacy": [
+          "heading-worktrees-12"
+        ]
+      },
+      "heading-worktrees-13": {
+        "canonical": "worktree-与-subagent-的区别",
+        "legacy": [
+          "heading-worktrees-13"
+        ]
+      },
+      "heading-worktrees-14": {
+        "canonical": "可复制示例",
+        "legacy": [
+          "heading-worktrees-14"
+        ]
+      },
+      "heading-worktrees-15": {
+        "canonical": "真实实例-并行页面修复",
+        "legacy": [
+          "heading-worktrees-15"
+        ]
+      },
+      "heading-worktrees-2": {
+        "canonical": "什么时候用-不用",
+        "legacy": [
+          "heading-worktrees-2"
+        ]
+      },
+      "heading-worktrees-3": {
+        "canonical": "在-desktop-中创建",
+        "legacy": [
+          "heading-worktrees-3"
+        ]
+      },
+      "heading-worktrees-4": {
+        "canonical": "选择-worktree",
+        "legacy": [
+          "heading-worktrees-4"
+        ]
+      },
+      "heading-worktrees-5": {
+        "canonical": "选择起始分支",
+        "legacy": [
+          "heading-worktrees-5"
+        ]
+      },
+      "heading-worktrees-6": {
+        "canonical": "提交独立任务",
+        "legacy": [
+          "heading-worktrees-6"
+        ]
+      },
+      "heading-worktrees-7": {
+        "canonical": "决定继续位置",
+        "legacy": [
+          "heading-worktrees-7"
+        ]
+      },
+      "heading-worktrees-8": {
+        "canonical": "local-worktree-与-handoff",
+        "legacy": [
+          "heading-worktrees-8"
+        ]
+      },
+      "heading-worktrees-9": {
+        "canonical": "分支和文件边界",
+        "legacy": [
+          "heading-worktrees-9"
         ]
       }
     },

@@ -4,7 +4,7 @@ test('serves the static guide without an application runtime', async ({ page }) 
   await page.goto('/index.html');
   await expect(page).toHaveTitle('中文 Codex 实战手册');
   await expect(page.locator('h1')).toContainText('可验证小任务');
-  await expect(page.locator('.global-nav [data-nav]')).toHaveCount(19);
+  await expect(page.locator('.global-nav [data-nav]')).toHaveCount(20);
   await expect(page.locator('.global-nav [aria-current="page"]')).toHaveCount(1);
 });
 
@@ -24,16 +24,26 @@ test('keeps article content readable without horizontal overflow', async ({ page
   expect(overflow).toBeFalsy();
 });
 
-test('uses three columns on desktop', async ({ page }) => {
+test('uses a compact table-of-contents above the article on desktop', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/goal.html');
   const columns = await page.locator('.toolbook-shell').evaluate((element) => getComputedStyle(element).gridTemplateColumns.split(' ').length);
-  expect(columns).toBe(3);
+  expect(columns).toBe(2);
   await expect(page.locator('.global-nav')).toBeVisible();
   await expect(page.locator('.page-toc')).toBeVisible();
+  const toc = page.locator('.page-toc details');
+  await expect(toc).not.toHaveAttribute('open', '');
+  await expect(page.locator('.page-toc nav')).toBeHidden();
+  await page.locator('.page-toc summary').click();
+  await expect(page.locator('.page-toc nav')).toBeVisible();
+  const positions = await page.evaluate(() => ({
+    toc: document.querySelector('.page-toc').getBoundingClientRect().top,
+    article: document.querySelector('.toolbook-main > main').getBoundingClientRect().top,
+  }));
+  expect(positions.toc).toBeLessThan(positions.article);
 });
 
-test('opens mobile navigation and places the page toc before the article', async ({ page }) => {
+test('opens mobile navigation and keeps the page toc before the article', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/permissions.html');
   await expect(page.locator('.global-nav')).toBeHidden();
@@ -42,8 +52,53 @@ test('opens mobile navigation and places the page toc before the article', async
   await expect(page.locator('.menu-toggle')).toHaveAttribute('aria-expanded', 'true');
   await page.keyboard.press('Escape');
   await expect(page.locator('.menu-toggle')).toBeFocused();
-  const positions = await page.evaluate(() => ({ toc: document.querySelector('.page-toc').getBoundingClientRect().top, article: document.querySelector('.toolbook-main').getBoundingClientRect().top }));
+  const positions = await page.evaluate(() => ({
+    toc: document.querySelector('.page-toc').getBoundingClientRect().top,
+    article: document.querySelector('.toolbook-main > main').getBoundingClientRect().top,
+  }));
   expect(positions.toc).toBeLessThan(positions.article);
+});
+
+test('keeps the home headline compact and expands individual skill repositories', async ({ page }) => {
+  await page.setViewportSize({ width: 1144, height: 994 });
+  await page.goto('/index.html');
+  const headlineSize = await page.locator('.home-hero h1').evaluate((element) => Number.parseFloat(getComputedStyle(element).fontSize));
+  expect(headlineSize).toBeLessThan(60);
+
+  const repositoryNav = page.locator('.global-nav-disclosure');
+  await expect(repositoryNav).not.toHaveAttribute('open', '');
+  await repositoryNav.locator('summary').click();
+  await expect(repositoryNav).toHaveAttribute('open', '');
+  await expect(repositoryNav.locator('a[href="skills-repositories.html#compound-engineering"]')).toBeVisible();
+  await expect(repositoryNav.locator('a[href="skills-repositories.html#mattpocock-skills"]')).toBeVisible();
+  await expect(repositoryNav.locator('a[href="skills-repositories.html#academic-research-skills-codex"]')).toBeVisible();
+  await expect(repositoryNav.locator('a[href="skills-repositories.html#aris-auto-claude-code-research-in-sleep"]')).toBeVisible();
+});
+
+test('introduces Worktrees on a standalone page and keeps Subagents focused', async ({ page }) => {
+  await page.goto('/worktrees.html');
+  await expect(page.locator('h1')).toHaveText('Worktrees');
+  await expect(page.locator('.global-nav a[href="worktrees.html"]')).toHaveAttribute('aria-current', 'page');
+  await expect(page.locator('#desktop-start')).toContainText('detached HEAD');
+  await expect(page.locator('#handoff')).toContainText('Hand off');
+  await expect(page.locator('#safety')).toContainText('.worktreeinclude');
+
+  await page.goto('/subagents.html');
+  const relationship = page.locator('#worktree-subagent');
+  await expect(relationship).toContainText('Worktree 与 Subagent 如何配合');
+  await expect(relationship.locator('.mermaid')).toHaveCount(0);
+  await expect(relationship.locator('a[href="worktrees.html#relationship"]')).toBeVisible();
+});
+
+test('starts the Compound Engineering core loop with Ideate', async ({ page }) => {
+  await page.goto('/compound-engineering.html');
+  await expect(page.locator('#loop h2')).toHaveText('核心七步怎么用#');
+  const steps = page.locator('#loop .decision-row strong');
+  await expect(steps).toHaveCount(7);
+  await expect(steps.nth(0)).toHaveText('1. /ce-ideate');
+  await expect(steps.nth(1)).toHaveText('2. /ce-brainstorm');
+  await expect(steps.nth(6)).toHaveText('7. /ce-compound');
+  await expect(page.locator('#核心六步怎么用')).toHaveCount(1);
 });
 
 test('searches canonical sections with an accessible modal', async ({ page }) => {
@@ -86,7 +141,7 @@ test('copies exact prompt text and reports clipboard failure truthfully', async 
   await expect(block.locator('.copy-button')).toHaveText('复制');
 });
 
-test('exposes a focusable canonical permalink for every reader heading', async ({ page }) => {
+test('exposes a focusable canonical permalink for standalone reader headings', async ({ page }) => {
   await page.goto('/permissions.html');
   const headings = page.locator('main h2, main h3');
   const links = page.locator('main [data-heading-permalink]');
@@ -96,8 +151,31 @@ test('exposes a focusable canonical permalink for every reader heading', async (
   await expect(links.first()).toBeFocused();
 });
 
-test('persists manual theme choices and survives storage failure', async ({ page }) => {
+test('keeps source-card content inside its link instead of nesting links', async ({ page }) => {
   await page.goto('/index.html');
+  const card = page.locator('a.source-card[href="install-desktop.html"]');
+  await expect(card).toHaveCount(1);
+  await expect(card.locator('h3')).toContainText('零基础：安装到第一个任务');
+  await expect(card.locator('p')).toContainText('安装 Codex Desktop');
+  const geometry = await card.evaluate((element) => {
+    const box = element.getBoundingClientRect();
+    const heading = element.querySelector('h3').getBoundingClientRect();
+    const paragraph = element.querySelector('p').getBoundingClientRect();
+    return { box, heading, paragraph };
+  });
+  expect(geometry.heading.left).toBeGreaterThanOrEqual(geometry.box.left);
+  expect(geometry.heading.right).toBeLessThanOrEqual(geometry.box.right);
+  expect(geometry.paragraph.left).toBeGreaterThanOrEqual(geometry.box.left);
+  expect(geometry.paragraph.right).toBeLessThanOrEqual(geometry.box.right);
+});
+
+test('defaults to light, persists manual theme choices, and survives storage failure', async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'dark' });
+  await page.goto('/index.html');
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'light');
+  await expect(page.locator('.theme-select')).toHaveValue('light');
+  await expect(page.locator('.theme-select option')).toHaveCount(2);
+  await expect(page.locator('.theme-select option[value="system"]')).toHaveCount(0);
   await page.locator('.theme-select').selectOption('dark');
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   await page.reload();

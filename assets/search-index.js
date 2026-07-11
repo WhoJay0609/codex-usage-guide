@@ -78,7 +78,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "index.html",
       "prompts": [],
       "section": "30 秒选择入口",
-      "text": "先选工作面，再看页面。读者不需要知道所有术语，只要知道当前任务最适合放在哪个入口，以及完成后拿什么证据验收。 改网页首选：Desktop + in-app browser避免：只用口头描述问题证据：页面预览、截图/评论、make check 修测试首选：Desktop 线程 + integrated terminal避免：让模型凭猜测改代码证据：失败日志、最窄测试、diff review 长任务首选：Goal / subagent / skills避免：单轮聊天里混多个目标证据：objective、validation、closeout 周期任务首选：Codex Desktop Automations避免：手工重复提醒证据：Triage findings、run 记录、后台 worktree 官方事实：OpenAI Codex docs 插件扩展：Compound Engineering / local skills 经验建议：本指南工作流沉淀 概念地图",
+      "text": "先选工作面，再看页面。读者不需要知道所有术语，只要知道当前任务最适合放在哪个入口，以及完成后拿什么证据验收。 改网页首选：Desktop + in-app browser避免：只用口头描述问题证据：页面预览、截图/评论、make check 修测试首选：Desktop 线程 + integrated terminal避免：让模型凭猜测改代码证据：失败日志、最窄测试、diff review 长任务首选：Goal / subagent / skills避免：单轮聊天里混多个目标证据：objective、validation、closeout 周期任务首选：Automations避免：手工重复提醒证据：任务发现、run 记录、后台 worktree 官方事实：OpenAI Codex docs 插件扩展：Compound Engineering / local skills 经验建议：本指南工作流沉淀 概念地图",
       "title": "中文 Codex 实战手册"
     },
     {
@@ -594,7 +594,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "codex.html",
       "prompts": [],
       "section": "它是什么",
-      "text": "本指南把 Codex 理解为一个以 Desktop 为主的本地工程协作工作面：你在桌面应用里选择项目、开启线程、让 Codex 读仓库上下文、在同一个任务里查看 diff、审批操作、使用内置终端验证、用 in-app browser 反馈页面问题，并在需要时把重复任务沉淀为 Automations。线程一个目标一个线程，保留上下文、审批、终端输出和最终证据。Local / WorktreeLocal 直接改当前项目；Worktree 隔离试验和并行任务。Browser + Git预览页面、评论反馈、审查 diff、提交、推送和创建 PR。Automations把稳定重复任务放到 Desktop 后台运行，并在 Triage inbox 收结果。 何时使用",
+      "text": "本指南把 Codex 理解为一个以 Desktop 为主的本地工程协作工作面：你在桌面应用里选择项目、开启线程、让 Codex 读仓库上下文、在同一个任务里查看 diff、审批操作、使用内置终端验证、用 in-app browser 反馈页面问题，并在需要时把重复任务沉淀为 Automations。线程一个目标一个线程，保留上下文、审批、终端输出和最终证据。Local / WorktreeLocal 直接改当前项目；Worktree 隔离试验和并行任务。Browser + Git预览页面、评论反馈、审查 diff、提交、推送和创建 PR。Automations把稳定重复任务放到 Desktop 后台运行，并在 任务收件箱 收结果。 何时使用",
       "title": "Codex 是什么"
     },
     {
@@ -933,10 +933,10 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h2",
       "page": "skills.html",
       "prompts": [
-        "[$grill-with-docs]\n仓库：/path/to/repo\n目标：把功能 X 做成可发布版本。\n请先读 AGENTS.md、README、相关源码，再追问关键边界。"
+        "$grill-with-docs\n仓库：/path/to/repo\n目标：把功能 X 做成可发布版本。\n请先读 AGENTS.md、README、相关源码，再追问关键边界。"
       ],
       "section": "可复制示例",
-      "text": "[$grill-with-docs] 仓库：/path/to/repo 目标：把功能 X 做成可发布版本。 请先读 AGENTS.md、README、相关源码，再追问关键边界。 结构解剖",
+      "text": "$grill-with-docs 仓库：/path/to/repo 目标：把功能 X 做成可发布版本。 请先读 AGENTS.md、README、相关源码，再追问关键边界。 结构解剖",
       "title": "Skills"
     },
     {
@@ -1267,11 +1267,159 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h2",
       "page": "mcp.html",
       "prompts": [
-        "真实验证目标：\n- gh api repos/WhoJay0609/codex-usage-guide/pages\n- curl 公开页面 HTML\n\n验收证据：\n- Pages status: built\n- daily-workflow.html 包含“五类高频日常任务”\n- compound-engineering.html 包含“核心六步怎么用”"
+        "真实验证目标：\n- gh api repos/WhoJay0609/codex-usage-guide/pages\n- curl 公开页面 HTML\n\n验收证据：\n- Pages status: built\n- daily-workflow.html 包含“五类高频日常任务”\n- compound-engineering.html 包含“核心七步怎么用”，且第 1 步为 /ce-ideate"
       ],
       "section": "真实实例：只读核对 Pages 状态",
-      "text": "本指南每次推送后，Codex 用 GitHub API 查询 codex-usage-guide 的 Pages 状态，再用公开 URL 抓取关键章节标题。这是一个典型 MCP/GitHub 工具场景：需要外部实时状态，但只读即可完成，不需要创建 issue、评论或修改仓库设置。真实验证目标： - gh api repos/WhoJay0609/codex-usage-guide/pages - curl 公开页面 HTML 验收证据： - Pages status: built - daily-workflow.html 包含“五类高频日常任务” - compound-engineering.html 包含“核心六步怎么用”",
+      "text": "本指南每次推送后，Codex 用 GitHub API 查询 codex-usage-guide 的 Pages 状态，再用公开 URL 抓取关键章节标题。这是一个典型 MCP/GitHub 工具场景：需要外部实时状态，但只读即可完成，不需要创建 issue、评论或修改仓库设置。真实验证目标： - gh api repos/WhoJay0609/codex-usage-guide/pages - curl 公开页面 HTML 验收证据： - Pages status: built - daily-workflow.html 包含“五类高频日常任务” - compound-engineering.html 包含“核心七步怎么用”，且第 1 步为 /ce-ideate",
       "title": "MCP / Plugins"
+    },
+    {
+      "fragment": "",
+      "level": "page",
+      "page": "worktrees.html",
+      "prompts": [],
+      "section": "",
+      "text": "在 Codex Desktop 中用 Worktree 隔离并行任务，并安全地在 Local 与 Worktree 间交接。",
+      "title": "Worktrees"
+    },
+    {
+      "fragment": "worktree-是什么",
+      "level": "h2",
+      "page": "worktrees.html",
+      "prompts": [],
+      "section": "Worktree 是什么",
+      "text": "Worktree 是同一个 Git 仓库的另一份 checkout。每个 Worktree 有独立的文件目录、索引和工作状态，但共享 commits、branches 等 Git 元数据。它适合隔离并行任务，不是虚拟机，也不是安全沙箱。 flowchart TD A[\"同一个 Git 仓库\"] --> B[\"Local: 前台工作区\"] A --> C[\"Worktree A: 独立任务\"] A --> D[\"Worktree B: 独立任务\"] C --> E[\"Create branch here / PR\"] D --> F[\"Hand off 到 Local\"] 文件目录彼此独立，Git 历史与分支元数据仍属于同一个仓库。官方事实：Codex Desktop 使用 Git worktrees 支持同一项目中的独立任务，并提供 Local 与 Worktree 之间的 Handoff。完整产品行为见 OpenAI Worktrees。 何时使用",
+      "title": "Worktrees"
+    },
+    {
+      "fragment": "什么时候用-不用",
+      "level": "h2",
+      "page": "worktrees.html",
+      "prompts": [],
+      "section": "什么时候用 / 不用",
+      "text": "适合并行功能、试验性改动、后台任务，或 Local 已有未完成修改时。优先 Local单文件小修、需要复用当前开发服务器、只能启动一个应用实例，或必须频繁人工调试时。不要并行多个任务会修改同一 schema、共享 contract 或同一核心文件时，先拆依赖再创建 Worktree。前置条件项目必须位于 Git 仓库中；非 Git 项目不能创建 Worktree。 Desktop 操作",
+      "title": "Worktrees"
+    },
+    {
+      "fragment": "在-desktop-中创建",
+      "level": "h2",
+      "page": "worktrees.html",
+      "prompts": [],
+      "section": "在 Desktop 中创建",
+      "text": "",
+      "title": "Worktrees"
+    },
+    {
+      "fragment": "选择-worktree",
+      "level": "h3",
+      "page": "worktrees.html",
+      "prompts": [],
+      "section": "1. 选择 Worktree",
+      "text": "新建任务时，在输入框下方选择 Worktree。如项目配置了 Local environment，可同时选择环境来运行 setup scripts。",
+      "title": "Worktrees"
+    },
+    {
+      "fragment": "选择起始分支",
+      "level": "h3",
+      "page": "worktrees.html",
+      "prompts": [],
+      "section": "2. 选择起始分支",
+      "text": "选择 main / master、功能分支，或当前含未提交修改的分支。Codex 以所选分支的 HEAD 为基线，并可把选中的本地未提交修改应用到新 Worktree。",
+      "title": "Worktrees"
+    },
+    {
+      "fragment": "提交独立任务",
+      "level": "h3",
+      "page": "worktrees.html",
+      "prompts": [],
+      "section": "3. 提交独立任务",
+      "text": "写清目标、允许修改的文件、禁止触碰的范围和验证命令。Codex 创建 managed Worktree；默认处于 detached HEAD，不会先污染分支列表。",
+      "title": "Worktrees"
+    },
+    {
+      "fragment": "决定继续位置",
+      "level": "h3",
+      "page": "worktrees.html",
+      "prompts": [],
+      "section": "4. 决定继续位置",
+      "text": "验证环境完整时可继续留在 Worktree；需要日常 IDE、现有服务器或人工联调时，通过 Hand off 移回 Local。 交接",
+      "title": "Worktrees"
+    },
+    {
+      "fragment": "local-worktree-与-handoff",
+      "level": "h2",
+      "page": "worktrees.html",
+      "prompts": [],
+      "section": "Local、Worktree 与 Handoff",
+      "text": "留在 Worktree点击 Create branch here在该目录验证、commit、push 和创建 PR该分支不能同时在 Local checkout回到 Local点击 Hand offCodex 处理两个 checkout 间必要的 Git 操作适合复用 IDE、服务器和本地调试状态再回 Worktree再次使用 Hand off任务回到原先关联的 Worktree继续保留该任务的后台环境 边界",
+      "title": "Worktrees"
+    },
+    {
+      "fragment": "分支和文件边界",
+      "level": "h2",
+      "page": "worktrees.html",
+      "prompts": [],
+      "section": "分支和文件边界",
+      "text": "",
+      "title": "Worktrees"
+    },
+    {
+      "fragment": "同一分支不能多处-checkout",
+      "level": "h3",
+      "page": "worktrees.html",
+      "prompts": [],
+      "section": "同一分支不能多处 checkout",
+      "text": "Git 不允许同一分支同时被多个 Worktree checkout。若准备在 Local 接管，不要手动抢占该分支；优先使用 Handoff，或先让原 Worktree 切到其他分支。",
+      "title": "Worktrees"
+    },
+    {
+      "fragment": "ignored-文件与-worktreeinclude",
+      "level": "h3",
+      "page": "worktrees.html",
+      "prompts": [
+        "# .worktreeinclude\n.env.local\nconfig/local.json"
+      ],
+      "section": "Ignored 文件与 .worktreeinclude",
+      "text": "被 .gitignore 忽略的文件不会自然出现在新 checkout。Codex managed Worktree 可通过仓库根目录的 .worktreeinclude 复制必要文件；只列运行所需项，并谨慎对待 .env、密钥和本地配置。# .worktreeinclude .env.local config/local.json不是安全沙箱：Worktree 仍可能共享 credentials、Git 元数据、后台进程、端口、数据库和外部服务。目录隔离不能替代权限控制、互斥写域或服务级隔离。 生命周期",
+      "title": "Worktrees"
+    },
+    {
+      "fragment": "恢复与清理",
+      "level": "h2",
+      "page": "worktrees.html",
+      "prompts": [],
+      "section": "恢复与清理",
+      "text": "Managed Worktree通常服务于单个任务，适合轻量、可回收的后台工作。Permanent Worktree从项目菜单创建为长期项目，不会因归档关联任务而自动删除。自动清理Codex 默认保留最近 15 个 managed Worktrees；可在 Settings → Worktrees 调整数量或关闭自动删除。恢复删除 managed Worktree 前会保存快照；以后打开关联任务时可以恢复。Worktree 会复制仓库文件、依赖和构建缓存，磁盘占用可能很快增长。任务结束后确认分支、PR、验证证据和未提交改动都已妥善保存，再归档或清理。 协作关系",
+      "title": "Worktrees"
+    },
+    {
+      "fragment": "worktree-与-subagent-的区别",
+      "level": "h2",
+      "page": "worktrees.html",
+      "prompts": [],
+      "section": "Worktree 与 Subagent 的区别",
+      "text": "Worktree隔离目录与 Git 状态一个任务拥有独立 checkout不自动定义谁可以改什么Subagent隔离上下文、责任与写域一个代理只处理明确子任务不自动获得独立 Worktree组合使用Worktree 负责环境隔离Subagent 负责执行边界主线程负责依赖、冲突和最终集成Subagent 的委派合同、推荐拆法和收口规则见 Subagents；按依赖建立并行 lane 的方法见 Issue lanes。 可复制",
+      "title": "Worktrees"
+    },
+    {
+      "fragment": "可复制示例",
+      "level": "h2",
+      "page": "worktrees.html",
+      "prompts": [
+        "请在独立 Worktree 中完成这个任务，不要影响当前 Local 工作区。\n\nBase: 当前 main 的最新提交。\nGoal: 修复首页卡片布局并补浏览器回归测试。\nWritable scope: index.html、assets/site.css、对应测试。\nForbidden: 其他页面、远程 push、合并主分支。\nValidation: 静态检查 + desktop/mobile 浏览器测试。\nHandoff: 完成后返回 changed files、测试证据和未验证项；\n需要复用 Local 开发服务器时先停止并建议 Hand off。"
+      ],
+      "section": "可复制示例",
+      "text": "请在独立 Worktree 中完成这个任务，不要影响当前 Local 工作区。 Base: 当前 main 的最新提交。 Goal: 修复首页卡片布局并补浏览器回归测试。 Writable scope: index.html、assets/site.css、对应测试。 Forbidden: 其他页面、远程 push、合并主分支。 Validation: 静态检查 + desktop/mobile 浏览器测试。 Handoff: 完成后返回 changed files、测试证据和未验证项； 需要复用 Local 开发服务器时先停止并建议 Hand off。 真实实例",
+      "title": "Worktrees"
+    },
+    {
+      "fragment": "真实实例-并行页面修复",
+      "level": "h2",
+      "page": "worktrees.html",
+      "prompts": [],
+      "section": "真实实例：并行页面修复",
+      "text": "场景：Local 正在修改主题控件，同时另一项任务需要重写 Worktree 文档页。两项改动依赖不同文件，可以把文档任务放到独立 Worktree，保留 Local 的未提交主题修改。开始从包含主题改动所需基线的分支创建 Worktree明确只改文档页、manifest 和测试共享生成器若有重叠则保持串行验证在 Worktree 内运行页面生成和浏览器测试记录真实 diff 与未验证项不触碰 Local 的工作状态收口需要独立 PR 时 Create branch here需要复用 Local 预览环境时 Hand off最终由主线程处理集成与冲突",
+      "title": "Worktrees"
     },
     {
       "fragment": "",
@@ -1308,7 +1456,7 @@ window.GUIDE_SEARCH_INDEX = {
         "请用并行 subagents 审查当前分支。\nAgent 1: security risks，只读，不改文件。\nAgent 2: missing tests，只读，不改文件。\nAgent 3: maintainability，只读，不改文件。\n最后由主线程整合 findings。"
       ],
       "section": "可复制示例",
-      "text": "请用并行 subagents 审查当前分支。 Agent 1: security risks，只读，不改文件。 Agent 2: missing tests，只读，不改文件。 Agent 3: maintainability，只读，不改文件。 最后由主线程整合 findings。 两层隔离",
+      "text": "请用并行 subagents 审查当前分支。 Agent 1: security risks，只读，不改文件。 Agent 2: missing tests，只读，不改文件。 Agent 3: maintainability，只读，不改文件。 最后由主线程整合 findings。 协作关系",
       "title": "Subagents"
     },
     {
@@ -1316,26 +1464,8 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h2",
       "page": "subagents.html",
       "prompts": [],
-      "section": "Worktree × subagent：目录隔离和责任隔离",
-      "text": "Worktree 为同一 Git 仓库提供独立 checkout 与工作目录；subagent 为同一任务提供独立上下文、职责和写域。两层解决的问题不同：Worktree 不会自动阻止逻辑冲突，subagent 也不等于拥有自己的 Worktree。共享 contract 或同一文件仍应串行，依赖分组见 Issue lanes。 flowchart TD A[\"主线程选择 base 与依赖组\"] --> B[\"Worktree A: 独立 checkout\"] A --> C[\"Worktree B: 独立 checkout\"] B --> D[\"Subagent A: 明确写域\"] C --> E[\"Subagent B: 明确写域\"] D --> F[\"返回文件与验证证据\"] E --> F F --> G[\"主线程集成 PR / cleanup\"] Worktree 隔离 checkout，subagent 隔离责任；主线程保留 Git 集成、冲突判断和最终验收。官方事实：Codex Desktop 的 Worktree、起始分支与 Handoff 行为见 OpenAI Worktrees；代理职责与配置见 OpenAI Subagents。本页的写域、等待点和主线程集成方式属于经验建议。开始主线程选择最新且正确的起始 branch/base登记依赖、写域和磁盘条件同一 branch 不能同时被两个 Worktree checkout执行Codex Desktop managed Worktree 可能处于 detached HEADsubagent 只改被分配文件并运行局部验证不创建 branch/Worktree，不 commit、push 或 merge交接需要保留该 checkout 时选择 Create branch here需要主线程接管时选择 Hand off返回 changed files、证据和未验证项集成主线程更新 base、检查真实 diff、创建 PR依赖合并后下游重跑验证验证完成后清理已结束 lane",
-      "title": "Subagents"
-    },
-    {
-      "fragment": "不是安全沙箱",
-      "level": "h3",
-      "page": "subagents.html",
-      "prompts": [],
-      "section": "不是安全沙箱",
-      "text": "Worktree 不隔离 credentials、共享 Git metadata、后台 processes、ports、external services 或 ignored config。setup 脚本和 .worktreeinclude 复制本地配置时会扩大暴露面，必须先审查。",
-      "title": "Subagents"
-    },
-    {
-      "fragment": "恢复与-blocked-receipt",
-      "level": "h3",
-      "page": "subagents.html",
-      "prompts": [],
-      "section": "恢复与 blocked receipt",
-      "text": "base stale 时先更新基线再重验；same-branch checkout、abandoned lane、依赖缺失或磁盘不足时不要复用未知目录。可安全恢复则重建 lane；否则记录已验事实、blocker、解锁条件和下一条验证。 委派契约",
+      "section": "Worktree 与 Subagent 如何配合",
+      "text": "Worktree 隔离 Git checkout 和工作目录；Subagent 隔离上下文、职责和写域。两者可以组合，但不能互相替代：独立目录不会自动消除逻辑冲突，独立代理也不一定拥有自己的 Worktree。 Worktree解决目录与 Git 状态干扰适合并行试验和后台任务仍共享仓库元数据与外部资源Subagent解决上下文与责任边界适合只读审查或互斥写域主线程保留整合与最终判断 单独阅读 Worktrees 指南 共享 contract、同一文件或强依赖任务仍应串行；并行拆分方式见 Issue lanes。 委派契约",
       "title": "Subagents"
     },
     {
@@ -1655,7 +1785,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "workflows.html",
       "prompts": [],
       "section": "自动化",
-      "text": "把稳定重复任务放进 Codex Desktop Automations，并用后台 worktree 隔离改动。",
+      "text": "把稳定重复任务放进 Automations，并用后台 worktree 隔离改动。",
       "title": "任务路径"
     },
     {
@@ -2329,7 +2459,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "engineering.html",
       "prompts": [],
       "section": "从 Idea 到 task receipt",
-      "text": "先把产品问题变成合同，再把同一份合同逐层细化。需要任务入口、长目标、代理分工或指令层级时，分别参考 任务路径、Goal、Subagents 与 AGENTS.md。 flowchart TD A[\"Idea\"] --> B[\"Matt-style grill\"] B --> C[\"ce-brainstorm Product Contract\"] C --> D[\"ce-plan 统一实施计划\"] D --> E[\"Issues 与依赖图\"] E --> F[\"Worktrees / subagents\"] F --> G[\"PR + 独立 review + CI\"] G --> H[\"经授权合并主分支\"] H --> I[\"主分支 / 公开页面验证\"] I --> J[\"task receipt\"] C -->|驳回| B D -->|not ready| D E -->|依赖或写域重叠| E G -->|验证失败 / changes / CI red| F H -->|未授权| K[\"blocked receipt\"] I -->|失败| K 团队协作主流程及失败回路。图形不可用时，紧邻下方的文字版提供完全等价的顺序与门禁。 1. Idea → grill先读证据并做 Matt-style grill开放问题不能带入实现Product Contract 驳回就回到 grill 2. Contract → plance-brainstorm 固化 Product Contractce-plan 细化同一份统一实施计划plan 不 ready 就留在 plan 3. Issues → lanes建立依赖图和互斥写域Worktree / subagent 只接明确 lane依赖或写域重叠就回 issue slicing 4. PR → review提交 PR、独立 review、运行 CIreviewer 记录合同、diff、disposition验证失败、changes 或 CI red 回 implementation 5. Merge → receipt获得授权后合并主分支更新基线并验证主分支/公开页面未授权或最终验证失败，输出 blocked receipt A2 / A3 / A4",
+      "text": "先把产品问题变成合同，再把同一份合同逐层细化。需要任务入口、长目标、Worktree 隔离、代理分工或指令层级时，分别参考 任务路径、Goal、Worktrees、Subagents 与 AGENTS.md。 flowchart TD A[\"Idea\"] --> B[\"Matt-style grill\"] B --> C[\"ce-brainstorm Product Contract\"] C --> D[\"ce-plan 统一实施计划\"] D --> E[\"Issues 与依赖图\"] E --> F[\"Worktrees / subagents\"] F --> G[\"PR + 独立 review + CI\"] G --> H[\"经授权合并主分支\"] H --> I[\"主分支 / 公开页面验证\"] I --> J[\"task receipt\"] C -->|驳回| B D -->|not ready| D E -->|依赖或写域重叠| E G -->|验证失败 / changes / CI red| F H -->|未授权| K[\"blocked receipt\"] I -->|失败| K 团队协作主流程及失败回路。图形不可用时，紧邻下方的文字版提供完全等价的顺序与门禁。 1. Idea → grill先读证据并做 Matt-style grill开放问题不能带入实现Product Contract 驳回就回到 grill 2. Contract → plance-brainstorm 固化 Product Contractce-plan 细化同一份统一实施计划plan 不 ready 就留在 plan 3. Issues → lanes建立依赖图和互斥写域Worktree / subagent 只接明确 lane依赖或写域重叠就回 issue slicing 4. PR → review提交 PR、独立 review、运行 CIreviewer 记录合同、diff、disposition验证失败、changes 或 CI red 回 implementation 5. Merge → receipt获得授权后合并主分支更新基线并验证主分支/公开页面未授权或最终验证失败，输出 blocked receipt A2 / A3 / A4",
       "title": "工程 flow"
     },
     {
@@ -2735,10 +2865,10 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h3",
       "page": "research.html",
       "prompts": [
-        "[$research-pipeline]\n方向：长上下文 LLM 推理中的 KV cache pruning。\n\n请先创建 RESEARCH_BRIEF.md，并等待我确认。\nAUTO_PROCEED: false\nHUMAN_CHECKPOINT: true\nREVIEWER_DIFFICULTY: hard\nAUTO_WRITE: false\n\n预算：\n- 最多 20 GPU-hours\n- 不允许下载未知大数据集\n\n输出：\n- closest work 表\n- 可证伪实验计划\n- claim 边界"
+        "$research-pipeline\n方向：长上下文 LLM 推理中的 KV cache pruning。\n\n请先创建 RESEARCH_BRIEF.md，并等待我确认。\nAUTO_PROCEED: false\nHUMAN_CHECKPOINT: true\nREVIEWER_DIFFICULTY: hard\nAUTO_WRITE: false\n\n预算：\n- 最多 20 GPU-hours\n- 不允许下载未知大数据集\n\n输出：\n- closest work 表\n- 可证伪实验计划\n- claim 边界"
       ],
       "section": "启动 research-pipeline",
-      "text": "[$research-pipeline] 方向：长上下文 LLM 推理中的 KV cache pruning。 请先创建 RESEARCH_BRIEF.md，并等待我确认。 AUTO_PROCEED: false HUMAN_CHECKPOINT: true REVIEWER_DIFFICULTY: hard AUTO_WRITE: false 预算： - 最多 20 GPU-hours - 不允许下载未知大数据集 输出： - closest work 表 - 可证伪实验计划 - claim 边界",
+      "text": "$research-pipeline 方向：长上下文 LLM 推理中的 KV cache pruning。 请先创建 RESEARCH_BRIEF.md，并等待我确认。 AUTO_PROCEED: false HUMAN_CHECKPOINT: true REVIEWER_DIFFICULTY: hard AUTO_WRITE: false 预算： - 最多 20 GPU-hours - 不允许下载未知大数据集 输出： - closest work 表 - 可证伪实验计划 - claim 边界",
       "title": "学术 flow"
     },
     {
@@ -2884,7 +3014,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "automation.html",
       "prompts": [],
       "section": "什么时候值得自动化",
-      "text": "同一类任务反复出现，输入可以参数化，输出可以验证，失败能安全停止，这时才考虑 Codex Desktop Automations。先人工跑通，再让后台任务按计划重复执行。",
+      "text": "同一类任务反复出现，输入可以参数化，输出可以验证，失败能安全停止，这时才考虑 Automations。先人工跑通，再让后台任务按计划重复执行。",
       "title": "自动化"
     },
     {
@@ -3123,12 +3253,12 @@ window.GUIDE_SEARCH_INDEX = {
       "title": "Compound Engineering"
     },
     {
-      "fragment": "核心六步怎么用",
+      "fragment": "核心七步怎么用",
       "level": "h2",
       "page": "compound-engineering.html",
       "prompts": [],
-      "section": "核心六步怎么用",
-      "text": "1. /ce-brainstorm澄清需求，只产出需求级计划不要直接写代码证据：范围、用户目标、验收 2. /ce-plan把需求转成实现计划不要把风险藏进执行阶段证据：文件、步骤、验证 3. /ce-work按计划执行实现不要扩大写域证据：diff、测试、日志 4. /ce-simplify-code收紧刚写出的代码不要提前抽象证据：更小 diff、更清楚路径 5. /ce-code-review按计划审查实现不要只看样式问题证据：风险、缺测、修复项 6. /ce-compound把经验写入可复用文档不要记录一次性噪声证据：docs/solutions/ 里的结论 统一计划",
+      "section": "核心七步怎么用",
+      "text": "1. /ce-ideate发现并筛选值得探索的方向不要过早收敛成方案证据：候选、basis、淘汰理由 2. /ce-brainstorm把选中方向澄清为需求不要直接写代码证据：范围、用户目标、验收 3. /ce-plan把需求转成实现计划不要把风险藏进执行阶段证据：文件、步骤、验证 4. /ce-work按计划执行实现不要扩大写域证据：diff、测试、日志 5. /ce-simplify-code收紧刚写出的代码不要提前抽象证据：更小 diff、更清楚路径 6. /ce-code-review按计划审查实现不要只看样式问题证据：风险、缺测、修复项 7. /ce-compound把经验写入可复用文档不要记录一次性噪声证据：docs/solutions/ 里的结论 统一计划",
       "title": "Compound Engineering"
     },
     {
@@ -3137,7 +3267,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "compound-engineering.html",
       "prompts": [],
       "section": "Product Contract 和实施计划写在同一份文档",
-      "text": "/ce-brainstorm 先把用户、范围、验收、非目标和失败条件写成轻量 Product Contract；确认后，/ce-plan 在同一份计划中补充文件、依赖、U-ID、测试场景和 Definition of Done。不要另起一份 PRD 让两个事实源逐渐漂移。 Product Contract用户目标、范围、非目标、验收由用户或产品负责人确认未确认就回到 brainstorm Implementation plan文件、依赖、U-ID、验证合同由主线程补齐并审阅 readiness不 ready 就继续规划 Issues / lanes从已确认计划派生，不另写需求按依赖和不重叠写域执行完整团队路径见 团队协作规范 选择",
+      "text": "/ce-ideate 先产出有依据的候选方向；选中 survivor 后，/ce-brainstorm 把用户、范围、验收、非目标和失败条件写成轻量 Product Contract；确认后，/ce-plan 在同一份计划中补充文件、依赖、U-ID、测试场景和 Definition of Done。不要另起一份 PRD 让两个事实源逐渐漂移。 Product Contract用户目标、范围、非目标、验收由用户或产品负责人确认未确认就回到 brainstorm Implementation plan文件、依赖、U-ID、验证合同由主线程补齐并审阅 readiness不 ready 就继续规划 Issues / lanes从已确认计划派生，不另写需求按依赖和不重叠写域执行完整团队路径见 团队协作规范 选择",
       "title": "Compound Engineering"
     },
     {
@@ -3199,12 +3329,13 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h2",
       "page": "compound-engineering.html",
       "prompts": [
+        "/ce-ideate\n主题：后台任务可靠性。\n目标：从代码、历史问题和外部先例中筛选值得继续探索的方向。\n要求：给每个入选方向标明 basis、代价和淘汰其他候选的理由。",
         "/ce-brainstorm\n目标：让后台任务重试更安全。\n背景：现在重复 webhook 偶尔创建重复记录。\n边界：先只讨论需求和验收，不改代码。",
         "/ce-plan\n基于刚才的 brainstorm 输出，生成实现计划。\n要求：列出要读的文件、最小修改点、验证命令和停止条件。",
         "/ce-debug\n结账 webhook 偶尔重复创建 invoice。\n请先复现或定位根因；没有证据时不要猜测修复。"
       ],
       "section": "可复制输入",
-      "text": "/ce-brainstorm 目标：让后台任务重试更安全。 背景：现在重复 webhook 偶尔创建重复记录。 边界：先只讨论需求和验收，不改代码。 /ce-plan 基于刚才的 brainstorm 输出，生成实现计划。 要求：列出要读的文件、最小修改点、验证命令和停止条件。 /ce-debug 结账 webhook 偶尔重复创建 invoice。 请先复现或定位根因；没有证据时不要猜测修复。 边界",
+      "text": "/ce-ideate 主题：后台任务可靠性。 目标：从代码、历史问题和外部先例中筛选值得继续探索的方向。 要求：给每个入选方向标明 basis、代价和淘汰其他候选的理由。 /ce-brainstorm 目标：让后台任务重试更安全。 背景：现在重复 webhook 偶尔创建重复记录。 边界：先只讨论需求和验收，不改代码。 /ce-plan 基于刚才的 brainstorm 输出，生成实现计划。 要求：列出要读的文件、最小修改点、验证命令和停止条件。 /ce-debug 结账 webhook 偶尔重复创建 invoice。 请先复现或定位根因；没有证据时不要猜测修复。 边界",
       "title": "Compound Engineering"
     },
     {
@@ -3347,10 +3478,10 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h3",
       "page": "skills-repositories.html",
       "prompts": [
-        "[$compound-engineering:ce-brainstorm]\n目标：把这个产品改动先讨论清楚。\n仓库：当前 Codex Desktop 打开的仓库。\n边界：只讨论需求、风险和验收，不改文件。\n输出：给出 requirements-only 计划和下一步问题。"
+        "$compound-engineering:ce-brainstorm\n目标：把这个产品改动先讨论清楚。\n仓库：当前 Codex Desktop 打开的仓库。\n边界：只讨论需求、风险和验收，不改文件。\n输出：给出 requirements-only 计划和下一步问题。"
       ],
       "section": "安装路径",
-      "text": "Codex Desktop 里添加 custom marketplace，Source 填 EveryInc/compound-engineering-plugin，ref 填 main，安装 compound-engineering 后重启。 [$compound-engineering:ce-brainstorm] 目标：把这个产品改动先讨论清楚。 仓库：当前 Codex Desktop 打开的仓库。 边界：只讨论需求、风险和验收，不改文件。 输出：给出 requirements-only 计划和下一步问题。 使用边界需求还很粗时先 brainstorm；不要一行模糊目标直接交给 /lfg。 仓库链接github.com/EveryInc/compound-engineering-plugin 历史案例",
+      "text": "Codex Desktop 里添加 custom marketplace，Source 填 EveryInc/compound-engineering-plugin，ref 填 main，安装 compound-engineering 后重启。 $compound-engineering:ce-brainstorm 目标：把这个产品改动先讨论清楚。 仓库：当前 Codex Desktop 打开的仓库。 边界：只讨论需求、风险和验收，不改文件。 输出：给出 requirements-only 计划和下一步问题。 使用边界需求还很粗时先 brainstorm；不要一行模糊目标直接交给 /lfg。 仓库链接github.com/EveryInc/compound-engineering-plugin 历史案例",
       "title": "高 stars skills 仓库介绍"
     },
     {
@@ -3394,10 +3525,10 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h3",
       "page": "skills-repositories.html",
       "prompts": [
-        "[$grill-with-docs]\n仓库：当前 Codex Desktop 打开的仓库。\n目标：我想做一个新的导出功能。\n请先读 AGENTS.md、README 和相关源码，然后只追问会改变范围或验收的问题。\n不要开始实现。"
+        "$grill-with-docs\n仓库：当前 Codex Desktop 打开的仓库。\n目标：我想做一个新的导出功能。\n请先读 AGENTS.md、README 和相关源码，然后只追问会改变范围或验收的问题。\n不要开始实现。"
       ],
       "section": "启用路径",
-      "text": "README 给出的路径是 npx skills@latest add mattpocock/skills，安装后运行 /setup-matt-pocock-skills 选择技能和项目偏好。 [$grill-with-docs] 仓库：当前 Codex Desktop 打开的仓库。 目标：我想做一个新的导出功能。 请先读 AGENTS.md、README 和相关源码，然后只追问会改变范围或验收的问题。 不要开始实现。 使用边界它不是全自动大框架。先用 setup 选择需要的 skills，再按任务调用，不要一次加载全部。 仓库链接github.com/mattpocock/skills 历史案例",
+      "text": "README 给出的路径是 npx skills@latest add mattpocock/skills，安装后运行 /setup-matt-pocock-skills 选择技能和项目偏好。 $grill-with-docs 仓库：当前 Codex Desktop 打开的仓库。 目标：我想做一个新的导出功能。 请先读 AGENTS.md、README 和相关源码，然后只追问会改变范围或验收的问题。 不要开始实现。 使用边界它不是全自动大框架。先用 setup 选择需要的 skills，再按任务调用，不要一次加载全部。 仓库链接github.com/mattpocock/skills 历史案例",
       "title": "高 stars skills 仓库介绍"
     },
     {
@@ -3441,10 +3572,10 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h3",
       "page": "skills-repositories.html",
       "prompts": [
-        "[$academic-research-suite]\n任务：为这个 AI/ML 论文想法做 deep research 和实验计划。\n主题：[你的方法一句话]\n边界：先输出研究问题、相关工作、可验证 novelty 和最小实验矩阵，不写论文正文。\n证据：列出需要人工确认的来源和假设。"
+        "$academic-research-suite\n任务：为这个 AI/ML 论文想法做 deep research 和实验计划。\n主题：[你的方法一句话]\n边界：先输出研究问题、相关工作、可验证 novelty 和最小实验矩阵，不写论文正文。\n证据：列出需要人工确认的来源和假设。"
       ],
       "section": "安装路径",
-      "text": "按 README 用 skill-installer 指向 academic-research-skills-codex 仓库里的 skills/academic-research-suite。不要把 Claude Code 分发里的多个 skills 当成 Codex 安装路径。 [$academic-research-suite] 任务：为这个 AI/ML 论文想法做 deep research 和实验计划。 主题：[你的方法一句话] 边界：先输出研究问题、相关工作、可验证 novelty 和最小实验矩阵，不写论文正文。 证据：列出需要人工确认的来源和假设。 使用边界安装后应该只有一个 ARS entry。不要把 Claude Code 分发里的多个独立 skills 当成 Codex-native 安装结果。 仓库链接github.com/Imbad0202/academic-research-skills-codex 演示场景",
+      "text": "按 README 用 skill-installer 指向 academic-research-skills-codex 仓库里的 skills/academic-research-suite。不要把 Claude Code 分发里的多个 skills 当成 Codex 安装路径。 $academic-research-suite 任务：为这个 AI/ML 论文想法做 deep research 和实验计划。 主题：[你的方法一句话] 边界：先输出研究问题、相关工作、可验证 novelty 和最小实验矩阵，不写论文正文。 证据：列出需要人工确认的来源和假设。 使用边界安装后应该只有一个 ARS entry。不要把 Claude Code 分发里的多个独立 skills 当成 Codex-native 安装结果。 仓库链接github.com/Imbad0202/academic-research-skills-codex 演示场景",
       "title": "高 stars skills 仓库介绍"
     },
     {
@@ -3488,10 +3619,10 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h3",
       "page": "skills-repositories.html",
       "prompts": [
-        "[$auto-review-loop]\n目标：对我的论文方法和实验计划做一轮 adversarial review。\n输入：当前草稿路径、实验日志路径、需要保护的 claim。\n边界：只输出问题、证据缺口和下一轮实验建议；不要自动改论文或提交外部结果。"
+        "$auto-review-loop\n目标：对我的论文方法和实验计划做一轮 adversarial review。\n输入：当前草稿路径、实验日志路径、需要保护的 claim。\n边界：只输出问题、证据缺口和下一轮实验建议；不要自动改论文或提交外部结果。"
       ],
       "section": "启用路径",
-      "text": "Codex 侧可参考仓库里的 tools/install_aris_codex.sh 和 tools/smart_update_codex.sh；主线说明仍以仓库 README 为准。 [$auto-review-loop] 目标：对我的论文方法和实验计划做一轮 adversarial review。 输入：当前草稿路径、实验日志路径、需要保护的 claim。 边界：只输出问题、证据缺口和下一轮实验建议；不要自动改论文或提交外部结果。 使用边界长任务必须写清 objective、来源可信边界、验证证据和外部写操作审批。不要把“睡觉时自动科研”理解成无人监管。 仓库链接github.com/wanshuiyin/auto-claude-code-research-in-sleep 演示场景",
+      "text": "Codex 侧可参考仓库里的 tools/install_aris_codex.sh 和 tools/smart_update_codex.sh；主线说明仍以仓库 README 为准。 $auto-review-loop 目标：对我的论文方法和实验计划做一轮 adversarial review。 输入：当前草稿路径、实验日志路径、需要保护的 claim。 边界：只输出问题、证据缺口和下一轮实验建议；不要自动改论文或提交外部结果。 使用边界长任务必须写清 objective、来源可信边界、验证证据和外部写操作审批。不要把“睡觉时自动科研”理解成无人监管。 仓库链接github.com/wanshuiyin/auto-claude-code-research-in-sleep 演示场景",
       "title": "高 stars skills 仓库介绍"
     },
     {
@@ -3625,11 +3756,11 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h2",
       "page": "goal-entry.html",
       "prompts": [
-        "[$goal-entry]\n只判断路线，不改文件。\n请说明这个请求应该讨论、计划还是执行，并列出停止条件。",
-        "[$goal-entry]\n执行：修改 codex-usage-guide 的两个页面。\n范围：只改 HTML 和验证脚本。\n验收：make check 通过，并扫描旧词残留。"
+        "$goal-entry\n只判断路线，不改文件。\n请说明这个请求应该讨论、计划还是执行，并列出停止条件。",
+        "$goal-entry\n执行：修改 codex-usage-guide 的两个页面。\n范围：只改 HTML 和验证脚本。\n验收：make check 通过，并扫描旧词残留。"
       ],
       "section": "可复制示例",
-      "text": "[$goal-entry] 只判断路线，不改文件。 请说明这个请求应该讨论、计划还是执行，并列出停止条件。 [$goal-entry] 执行：修改 codex-usage-guide 的两个页面。 范围：只改 HTML 和验证脚本。 验收：make check 通过，并扫描旧词残留。 真实实例",
+      "text": "$goal-entry 只判断路线，不改文件。 请说明这个请求应该讨论、计划还是执行，并列出停止条件。 $goal-entry 执行：修改 codex-usage-guide 的两个页面。 范围：只改 HTML 和验证脚本。 验收：make check 通过，并扫描旧词残留。 真实实例",
       "title": "goal-entry"
     },
     {
@@ -3710,7 +3841,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "resources.html",
       "prompts": [],
       "section": "Automations",
-      "text": "后台定时任务、Triage inbox 和 worktree 隔离。",
+      "text": "后台定时任务、任务收件箱 和 worktree 隔离。",
       "title": "资料地图"
     },
     {

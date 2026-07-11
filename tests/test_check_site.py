@@ -13,6 +13,7 @@ from check_site import (  # noqa: E402
     validate_case_index,
     validate_fragment_registry,
     validate_presentation_contracts,
+    validate_product_accuracy_contracts,
     validate_interaction_contracts,
     manifest_html_paths,
     validate_metadata_contracts,
@@ -29,6 +30,30 @@ def parse(markup: str) -> PageParser:
 
 
 class SemanticContractTests(unittest.TestCase):
+    def test_product_accuracy_contract_rejects_obsolete_scheduled_task_terminology(self) -> None:
+        pages = {
+            "automation.html": parse("<main>Triage inbox</main>"),
+        }
+
+        errors = validate_product_accuracy_contracts(pages)
+
+        self.assertTrue(
+            any("obsolete Scheduled tasks terminology" in error for error in errors),
+            errors,
+        )
+
+    def test_product_accuracy_contract_accepts_current_product_terminology(self) -> None:
+        pages = {
+            "permissions.html": parse(
+                "<main>Ask for approval Approve for me Full access "
+                "Custom (config.toml)</main>"
+            ),
+            "automation.html": parse("<main>Automations</main>"),
+            "skills.html": parse("<main>Use $goal-entry for goal work.</main>"),
+        }
+
+        self.assertEqual(validate_product_accuracy_contracts(pages), [])
+
     def test_manifest_html_paths_excludes_nested_docs_html(self) -> None:
         with TemporaryDirectory() as directory:
             root = Path(directory)
@@ -82,6 +107,20 @@ class SemanticContractTests(unittest.TestCase):
         }
         errors = validate_interaction_contracts(pages)
         self.assertTrue(any("permalink for #canonical must target #canonical" in error for error in errors), errors)
+
+    def test_interaction_contract_allows_stable_headings_inside_link_cards(self) -> None:
+        pages = {
+            "sample.html": parse(
+                '<script src="assets/site-data.js"></script>'
+                '<script src="assets/search-index.js"></script>'
+                '<button class="search-trigger"></button>'
+                '<dialog id="site-search-dialog" role="dialog"></dialog>'
+                '<input id="site-search-input" role="combobox">'
+                '<ul id="site-search-results" role="listbox"></ul>'
+                '<main><a class="source-card" href="next.html"><h3 id="card">Title</h3><p>Summary</p></a></main>'
+            )
+        }
+        self.assertEqual(validate_interaction_contracts(pages), [])
 
     def test_fragment_registry_requires_canonical_heading_and_legacy_alias(self) -> None:
         pages = {

@@ -30,6 +30,7 @@ CORE_NAV = {
     "agents-md.html",
     "skills.html",
     "mcp.html",
+    "worktrees.html",
     "subagents.html",
     "goal.html",
     "workflows.html",
@@ -43,16 +44,16 @@ REQUIRED_TEXT = {
     "daily-workflow.html": ["真实实例", "失败停止"],
     "engineering.html": ["真实实例", "失败停止"],
     "research.html": ["真实实例", "失败停止"],
-    "automation.html": ["Codex Desktop Automations", "后台 worktree", "失败停止"],
+    "automation.html": ["Automations", "后台 worktree", "失败停止"],
     "workflows.html": ["先选工作面", "统一案例模板", "坏 prompt 怎么修"],
-    "compound-engineering.html": ["Compound Engineering plugin", "在 Codex Desktop 里安装", "核心六步怎么用", "失败停止"],
+    "worktrees.html": ["Codex Desktop", "Handoff", "detached HEAD", ".worktreeinclude", "不是安全沙箱"],
+    "compound-engineering.html": ["Compound Engineering plugin", "在 Codex Desktop 里安装", "核心七步怎么用", "1. /ce-ideate", "失败停止"],
     "skills-repositories.html": ["高 stars skills 仓库介绍", "Codex Desktop", "Compound Engineering", "mattpocock/skills", "academic-research-skills-codex", "skills/academic-research-suite", "ARIS", "不是 OpenAI 官方功能", "goal-entry 不列入", "效果一般", "真实实例"],
     "goal-entry.html": ["本机自己开发", "效果一般", "非官方", "真实实例"],
     "resources.html": ["Codex Desktop", "本指南只保留 Desktop 读者主线"],
 }
 FORBIDDEN_VISIBLE_TEXT = {
     "Desktop/CLI",
-    "Codex CLI",
     "codex exec",
     "CLI 入门",
     "命令行优先",
@@ -65,6 +66,7 @@ CONCEPT_PAGES = {
     "agents-md.html",
     "skills.html",
     "mcp.html",
+    "worktrees.html",
     "subagents.html",
     "goal.html",
 }
@@ -106,13 +108,15 @@ VOID_TAGS = {
 }
 REQUIRED_BACKLINKS = {
     "workflows.html": {"engineering.html#team-flow"},
-    "subagents.html": {"engineering.html#issue-lanes", "engineering.html#team-case"},
+    "worktrees.html": {"subagents.html#worktree-subagent", "engineering.html#issue-lanes"},
+    "subagents.html": {"worktrees.html#relationship", "engineering.html#issue-lanes", "engineering.html#team-case"},
     "goal.html": {"engineering.html#team-case"},
     "agents-md.html": {"engineering.html#team-case"},
     "compound-engineering.html": {"engineering.html#team-flow"},
     "skills-repositories.html": {"engineering.html#team-flow"},
     "engineering.html": {
         "workflows.html#task-entry",
+        "worktrees.html#desktop-start",
         "subagents.html#worktree-subagent",
         "goal.html#real-example",
         "agents-md.html#real-example",
@@ -162,6 +166,7 @@ class PageParser(HTMLParser):
         self._visible_chunks: list[str] = []
         self.loop_stages: list[tuple[str, str]] = []
         self.heading_ids: list[str] = []
+        self.linked_heading_ids: set[str] = set()
         self.heading_permalinks: list[tuple[str, str]] = []
         self.search_triggers = 0
         self.search_dialogs = 0
@@ -171,6 +176,7 @@ class PageParser(HTMLParser):
         self.cases: list[dict[str, str]] = []
         self._case_stack: list[dict[str, object]] = []
         self._depth = 0
+        self._anchor_depth = 0
         self._current_heading_id = ""
         self._current_kicker: list[str] | None = None
 
@@ -188,8 +194,11 @@ class PageParser(HTMLParser):
             self.ids.add(attr["id"])
             self.id_counts[attr["id"]] += 1
         if tag in {"h2", "h3"}:
-            self.heading_ids.append(attr.get("id", ""))
-            self._current_heading_id = attr.get("id", "")
+            heading_id = attr.get("id", "")
+            self.heading_ids.append(heading_id)
+            self._current_heading_id = heading_id
+            if self._anchor_depth and heading_id:
+                self.linked_heading_ids.add(heading_id)
         classes = set(attr.get("class", "").split())
         if tag == "p" and classes & {"hero-kicker", "section-kicker"}:
             self._current_kicker = []
@@ -219,6 +228,7 @@ class PageParser(HTMLParser):
                 }
             )
         if tag == "a" and attr.get("href"):
+            self._anchor_depth += 1
             href = attr["href"]
             self.hrefs.append(href)
             self.anchors.append(attr)
@@ -259,6 +269,7 @@ class PageParser(HTMLParser):
         if tag == self._current_tag:
             self._current_tag = None
         if tag == "a":
+            self._anchor_depth = max(0, self._anchor_depth - 1)
             self._current_nav_href = None
         if tag in {"h2", "h3"}:
             self._current_heading_id = ""
@@ -397,6 +408,31 @@ def validate_semantic_contracts(pages: dict[str, PageParser]) -> list[str]:
     return errors
 
 
+def validate_product_accuracy_contracts(pages: dict[str, PageParser]) -> list[str]:
+    errors: list[str] = []
+    permissions = pages.get("permissions.html")
+    if permissions is not None:
+        visible_text = permissions.visible_text()
+        for mode in (
+            "Ask for approval",
+            "Approve for me",
+            "Full access",
+            "Custom (config.toml)",
+        ):
+            if mode not in visible_text:
+                errors.append(
+                    f"permissions.html: permission modes missing visible label: {mode}"
+                )
+
+    for rel, parser in pages.items():
+        visible_text = parser.visible_text()
+        if "Triage inbox" in visible_text or "Codex Desktop Automations" in visible_text:
+            errors.append(f"{rel}: obsolete Scheduled tasks terminology remains visible")
+        if re.search(r"\[\$[A-Za-z0-9_-]+\]", parser.source_text):
+            errors.append(f"{rel}: invalid skill mention syntax")
+    return errors
+
+
 def validate_fragment_registry(
     pages: dict[str, PageParser],
     registry: dict[str, dict[str, dict[str, object]]],
@@ -445,6 +481,10 @@ def validate_presentation_contracts(
             errors.append(f"{rel}: theme bootstrap must load before shared CSS")
         if 'class="theme-select"' not in source:
             errors.append(f"{rel}: missing generated theme select")
+        if '<option value="system">' in source:
+            errors.append(f"{rel}: theme select must not expose a system option")
+        if '<option value="light" selected>浅色</option>' not in source:
+            errors.append(f"{rel}: light theme must be the generated default")
         if "gsap" in source.lower():
             errors.append(f"{rel}: GSAP must not remain on the reading path")
         has_diagram = bool(re.search(r'class=["\'][^"\']*\bmermaid\b', source))
@@ -555,6 +595,10 @@ def validate_interaction_contracts(pages: dict[str, PageParser]) -> list[str]:
             by_heading.setdefault(heading, []).append(href)
         for heading in parser.heading_ids:
             links = by_heading.get(heading, [])
+            if heading in parser.linked_heading_ids:
+                if links:
+                    errors.append(f"{rel}: linked heading #{heading} must not contain a nested permalink")
+                continue
             if len(links) != 1:
                 errors.append(f"{rel}: heading #{heading} must have exactly one permalink")
             elif links[0] != f"#{heading}":
@@ -651,6 +695,7 @@ def main() -> int:
     html_paths = manifest_html_paths(ROOT, [page.path for page in model.pages])
     pages = {path.relative_to(ROOT).as_posix(): parse_page(path) for path in html_paths}
     errors = validate_semantic_contracts(pages)
+    errors.extend(validate_product_accuracy_contracts(pages))
     errors.extend(validate_interaction_contracts(pages))
     try:
         registry = load_heading_fragments(ROOT)

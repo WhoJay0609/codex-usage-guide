@@ -26,7 +26,7 @@ class SiteModelTests(unittest.TestCase):
     def test_live_manifest_covers_every_root_page(self) -> None:
         model = load_site_model(ROOT)
         self.assertEqual(sorted(page.path for page in model.pages), sorted(path.name for path in ROOT.glob("*.html")))
-        self.assertEqual(len(model.pages), 19)
+        self.assertEqual(len(model.pages), 20)
 
     def test_manifest_rejects_duplicate_navigation_membership(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -65,8 +65,22 @@ class SiteModelTests(unittest.TestCase):
         self.assertIn('class="global-nav"', rendered)
         self.assertIn('class="page-toc"', rendered)
         self.assertIn('href="#matrix"', rendered)
+        self.assertIn('<details><summary>本页目录</summary>', rendered)
+        self.assertNotIn('<details open><summary>本页目录</summary>', rendered)
+        self.assertLess(rendered.index('class="page-toc"'), rendered.index('<main'))
         self.assertNotIn('class="side-nav"', rendered)
         self.assertEqual(rendered.count('aria-current="page"'), 1)
+
+    def test_skills_repository_navigation_lists_each_repository_on_demand(self) -> None:
+        model = load_site_model(ROOT)
+        page = next(page for page in model.pages if page.path == "skills-repositories.html")
+        rendered = render_page(model, page, (ROOT / page.path).read_text(encoding="utf-8"))
+        self.assertIn('<details class="global-nav-disclosure" open>', rendered)
+        self.assertIn('<summary>Skills 仓库</summary>', rendered)
+        self.assertIn('href="skills-repositories.html#compound-engineering"', rendered)
+        self.assertIn('href="skills-repositories.html#mattpocock-skills"', rendered)
+        self.assertIn('href="skills-repositories.html#academic-research-skills-codex"', rendered)
+        self.assertIn('href="skills-repositories.html#aris-auto-claude-code-research-in-sleep"', rendered)
 
     def test_toolbook_shell_assigns_ids_to_every_reader_heading(self) -> None:
         model = load_site_model(ROOT)
@@ -75,6 +89,20 @@ class SiteModelTests(unittest.TestCase):
         headings = re.findall(r"<h[23]\b([^>]*)>", rendered)
         self.assertTrue(headings)
         self.assertTrue(all(re.search(r'\bid="[^"]+"', attrs) for attrs in headings))
+
+    def test_source_card_headings_keep_ids_without_nested_permalinks(self) -> None:
+        model = load_site_model(ROOT)
+        page = next(page for page in model.pages if page.path == "index.html")
+        rendered = render_page(model, page, (ROOT / page.path).read_text(encoding="utf-8"))
+        source_card = re.search(
+            r'<a\b[^>]*class="[^"]*source-card[^"]*"[^>]*>.*?</a>',
+            rendered,
+            flags=re.DOTALL,
+        )
+        self.assertIsNotNone(source_card)
+        assert source_card is not None
+        self.assertRegex(source_card.group(0), r'<h3\b[^>]*\bid="[^"]+"')
+        self.assertNotIn("data-heading-permalink", source_card.group(0))
 
     def test_toolbook_shell_generates_search_dialog_and_heading_permalinks(self) -> None:
         model = load_site_model(ROOT)
@@ -100,7 +128,10 @@ class SiteModelTests(unittest.TestCase):
         mermaid_rendered = render_page(model, mermaid_page, (ROOT / mermaid_page.path).read_text(encoding="utf-8"))
         plain_rendered = render_page(model, plain_page, (ROOT / plain_page.path).read_text(encoding="utf-8"))
         self.assertLess(mermaid_rendered.index('src="assets/theme.js"'), mermaid_rendered.index('href="assets/site.css"'))
-        self.assertIn('class="theme-select"', mermaid_rendered)
+        self.assertIn('class="theme-select" id="theme-select" name="theme"', mermaid_rendered)
+        self.assertIn('<option value="light" selected>浅色</option>', mermaid_rendered)
+        self.assertNotIn('<option value="system">', mermaid_rendered)
+        self.assertIn('<link rel="icon" href="favicon.svg" type="image/svg+xml">', plain_rendered)
         self.assertIn('mermaid@11.14.0/dist/mermaid.min.js', mermaid_rendered)
         self.assertIn('integrity="sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk"', mermaid_rendered)
         self.assertIn('crossorigin="anonymous"', mermaid_rendered)

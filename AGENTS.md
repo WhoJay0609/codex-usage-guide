@@ -59,7 +59,7 @@ structure changes materially.
 <!-- goal-context:path-index:start -->
 ## Path Index
 
-- Generated: 2026-07-07T09:45:15Z
+- Generated: 2026-07-11T13:00:09Z
 - Max depth: 4
 - Max items per section: 40
 
@@ -69,6 +69,7 @@ structure changes materially.
 - `AGENTS.md` - agent instructions for this scope
 - `README.md` - project overview and setup notes
 - `Makefile` - project manifest or command/dependency entry
+- `package.json` - project manifest or command/dependency entry
 
 ### AGENTS Files
 
@@ -81,11 +82,23 @@ structure changes materially.
 ### Commands And Manifests
 
 - `Makefile` - project manifest or command/dependency entry
+- `package.json` - project manifest or command/dependency entry
 
 ### Source Roots
 
+- `.` - contains source/config files
 - `assets` - contains source/config files
 - `scripts` - contains source/config files
+- `tests` - contains source/config files
+- `tests/browser` - contains source/config files
+
+### Tests
+
+- `tests` - test directory
+- `tests/test_build_site.py` - test file
+- `tests/test_check_site.py` - test file
+- `tests/test_published_site.py` - test file
+- `tests/browser/toolbook.spec.js` - test file
 
 ### Docs
 
@@ -96,6 +109,19 @@ structure changes materially.
 - `doc/progress.md` - harness task workspace and durable task notes
 - `doc/task_issue.md` - harness task workspace and durable task notes
 - `doc/task_plan.md` - harness task workspace and durable task notes
+- `docs` - project documentation
+- `docs/case-evidence-index.md` - project documentation
+- `docs/adr` - project documentation
+- `docs/adr/0001-dual-track-chinese-latex-guide.md` - project documentation
+- `docs/ideation` - project documentation
+- `docs/ideation/2026-07-10-codex-desktop-guide-effectiveness-ideation.html` - project documentation
+- `docs/plans` - project documentation
+- `docs/plans/2026-07-07-001-docs-high-stars-skills-repos-plan.md` - project documentation
+- `docs/plans/2026-07-10-002-docs-evidence-task-loop-worktree-subagents-plan.md` - project documentation
+- `docs/plans/2026-07-11-003-docs-guide-toolbook-upgrade-plan.md` - project documentation
+- `docs/plans/2026-07-11-004-docs-guide-remaining-experience-gaps-plan.md` - project documentation
+- `docs/reader-checks` - project documentation
+- `docs/reader-checks/remaining-experience-script.md` - project documentation
 
 ### Task Docs
 
