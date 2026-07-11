@@ -4,16 +4,39 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Codex Desktop 操作手册</title>
-  <meta name="description" content="面向 Codex Desktop 的中文操作手册：线程、仓库上下文、浏览器反馈、权限审批、diff review 和发布验证。">
+  <!-- guide:theme-bootstrap:start -->
+<script src="assets/theme.js"></script>
+<!-- guide:theme-bootstrap:end -->
   <link rel="stylesheet" href="assets/site.css">
+  <!-- guide:metadata:start -->
+<meta name="description" content="线程、审批、diff 与发布验证的 Desktop 主流程。">
+<meta name="guide-build" content="6bb0bb663fb1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/desktop-cli.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="Codex 使用指南">
+<meta property="og:title" content="Codex Desktop 操作手册">
+<meta property="og:description" content="线程、审批、diff 与发布验证的 Desktop 主流程。">
+<meta property="og:url" content="https://whojay0609.github.io/codex-usage-guide/desktop-cli.html">
+<meta property="og:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Codex 使用指南">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Codex Desktop 操作手册">
+<meta name="twitter:description" content="线程、审批、diff 与发布验证的 Desktop 主流程。">
+<meta name="twitter:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
+<meta name="twitter:image:alt" content="Codex 使用指南">
+<!-- guide:metadata:end -->
 </head>
 <body>
   <!-- guide:header:start -->
-<header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><span class="search-status">全站搜索将在下一阶段启用</span><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header>
+<script src="assets/site-data.js"></script><script src="assets/search-index.js"></script><header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><label class="theme-control"><span class="sr-only">主题</span><select class="theme-select" id="theme-select" name="theme" aria-label="主题"><option value="light" selected>浅色</option><option value="dark">深色</option></select></label><span class="theme-status sr-only" aria-live="polite"></span><button class="search-trigger" type="button" aria-haspopup="dialog" aria-controls="site-search-dialog">搜索</button><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header><dialog class="search-dialog" id="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title"><div class="search-dialog-panel"><div class="search-dialog-head"><p class="search-title" id="site-search-title">搜索全站</p><button class="search-close" type="button" aria-label="关闭搜索">关闭</button></div><label class="search-label" for="site-search-input">搜索标题、正文和可复用 prompt</label><input class="search-input" id="site-search-input" type="search" role="combobox" autocomplete="off" aria-autocomplete="list" aria-controls="site-search-results" aria-describedby="site-search-status" aria-expanded="false"><p class="search-message" id="site-search-status" aria-live="polite">输入关键词开始搜索。</p><ul class="search-results" id="site-search-results" role="listbox" aria-label="搜索结果"></ul></div></dialog>
 <!-- guide:header:end -->
 
   <!-- guide:shell-open:start -->
-<div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html">首页</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html" aria-current="page">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">自动化</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html">Compound</a><a data-nav href="skills-repositories.html">Skills 仓库</a><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>Desktop</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-07-11">2026-07-11</time></span><span>事实核验：<time datetime="2026-07-11">2026-07-11</time></span></div>
+<div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html">首页</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html" aria-current="page">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="worktrees.html">Worktrees</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">自动化</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html">Compound</a><details class="global-nav-disclosure"><summary>Skills 仓库</summary><a data-nav href="skills-repositories.html">全部仓库</a><a href="skills-repositories.html#compound-engineering">Compound Engineering</a><a href="skills-repositories.html#mattpocock-skills">Matt Pocock skills</a><a href="skills-repositories.html#academic-research-skills-codex">ARS</a><a href="skills-repositories.html#aris-auto-claude-code-research-in-sleep">ARIS</a></details><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>Desktop</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-07-11">2026-07-11</time></span><span>事实核验：<time datetime="2026-07-11">2026-07-11</time></span></div><aside class="page-toc" aria-label="本页目录"><details><summary>本页目录</summary><nav><a class="toc-h2" href="#什么时候优先用-desktop">什么时候优先用 Desktop</a><a class="toc-h3" href="#页面和视觉反馈">页面和视觉反馈</a><a class="toc-h3" href="#本地仓库协作">本地仓库协作</a><a class="toc-h3" href="#需要你审批的操作">需要你审批的操作</a><a class="toc-h3" href="#沉淀为-automations-的场景">沉淀为 Automations 的场景</a><a class="toc-h3" href="#不要混用得太乱">不要混用得太乱</a><a class="toc-h2" href="#desktop-里的六个常用操作">Desktop 里的六个常用操作</a><a class="toc-h3" href="#1.-打开任务线程">1. 打开任务线程</a><a class="toc-h3" href="#2.-让-codex-读上下文">2. 让 Codex 读上下文</a><a class="toc-h3" href="#3.-用浏览器反馈定位问题">3. 用浏览器反馈定位问题</a><a class="toc-h3" href="#4.-审批有副作用动作">4. 审批有副作用动作</a><a class="toc-h3" href="#5.-看-diff-和验证结果">5. 看 diff 和验证结果</a><a class="toc-h3" href="#6.-发布后抽样确认">6. 发布后抽样确认</a><a class="toc-h2" href="#desktop-first-prompt-模板">Desktop-first prompt 模板</a><a class="toc-h3" href="#网页反馈">网页反馈</a><a class="toc-h3" href="#代码修复">代码修复</a><a class="toc-h3" href="#需要联网或推送">需要联网或推送</a><a class="toc-h3" href="#线程收口">线程收口</a><a class="toc-h2" href="#真实实例-本页这次怎么改">真实实例：本页这次怎么改</a><a class="toc-h3" href="#输入">输入</a><a class="toc-h3" href="#执行">执行</a><a class="toc-h3" href="#验证">验证</a><a class="toc-h3" href="#交付">交付</a></nav></details></aside>
 <!-- guide:shell-open:end -->
 <main>
     <section class="hero compact">
@@ -27,48 +50,48 @@
     <section class="section">
       <div class="section-head">
         <div class="section-title">
-          <p class="section-kicker">When</p>
-          <h2 id="heading-desktop-cli-1">什么时候优先用 Desktop</h2>
+          <p class="section-kicker">何时使用</p>
+          <span class="fragment-alias" id="heading-desktop-cli-1" data-canonical-fragment="什么时候优先用-desktop" aria-hidden="true"></span><h2 id="什么时候优先用-desktop">什么时候优先用 Desktop<a class="heading-permalink" data-heading-permalink data-search-exclude href="#什么时候优先用-desktop" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
         <p>如果任务需要你边看结果边调整，或者需要 Codex 解释它正在做什么，Desktop 应该是默认入口。重复任务也先在 Desktop 跑通，再沉淀为 Automations。</p>
       </div>
       <div class="bento">
-        <article class="card span-4 dark-card"><h3 id="heading-desktop-cli-2">页面和视觉反馈</h3><p>网页、PDF、截图、排版、交互状态、GitHub Pages 发布效果，适合放在 Desktop 里迭代。</p></article>
-        <article class="card span-4"><h3 id="heading-desktop-cli-3">本地仓库协作</h3><p>让 Codex 读 <code>AGENTS.md</code>、源码、测试、diff，再通过 Desktop 内置终端运行验证命令。</p></article>
-        <article class="card span-4"><h3 id="heading-desktop-cli-4">需要你审批的操作</h3><p>安装依赖、联网查询、启动本地服务、推送 Git，都可以在 Desktop 里看到原因后再批准。</p></article>
-        <article class="card span-6"><h3 id="heading-desktop-cli-5">沉淀为 Automations 的场景</h3><p>批量审查、周期检查、文档漂移、链接检查和固定报告，先在 Desktop 线程跑通，再放进 Automations 后台执行。</p></article>
-        <article class="card span-6"><h3 id="heading-desktop-cli-6">不要混用得太乱</h3><p>同一个任务建议有一个主线程负责判断。不要在多个 Desktop 线程里同时改同一批文件，除非写范围严格隔离。</p></article>
+        <article class="card span-4 dark-card"><span class="fragment-alias" id="heading-desktop-cli-2" data-canonical-fragment="页面和视觉反馈" aria-hidden="true"></span><h3 id="页面和视觉反馈">页面和视觉反馈<a class="heading-permalink" data-heading-permalink data-search-exclude href="#页面和视觉反馈" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>网页、PDF、截图、排版、交互状态、GitHub Pages 发布效果，适合放在 Desktop 里迭代。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-desktop-cli-3" data-canonical-fragment="本地仓库协作" aria-hidden="true"></span><h3 id="本地仓库协作">本地仓库协作<a class="heading-permalink" data-heading-permalink data-search-exclude href="#本地仓库协作" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>让 Codex 读 <code>AGENTS.md</code>、源码、测试、diff，再通过 Desktop 内置终端运行验证命令。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-desktop-cli-4" data-canonical-fragment="需要你审批的操作" aria-hidden="true"></span><h3 id="需要你审批的操作">需要你审批的操作<a class="heading-permalink" data-heading-permalink data-search-exclude href="#需要你审批的操作" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>安装依赖、联网查询、启动本地服务、推送 Git，都可以在 Desktop 里看到原因后再批准。</p></article>
+        <article class="card span-6"><span class="fragment-alias" id="heading-desktop-cli-5" data-canonical-fragment="沉淀为-automations-的场景" aria-hidden="true"></span><h3 id="沉淀为-automations-的场景">沉淀为 Automations 的场景<a class="heading-permalink" data-heading-permalink data-search-exclude href="#沉淀为-automations-的场景" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>批量审查、周期检查、文档漂移、链接检查和固定报告，先在 Desktop 线程跑通，再放进 Automations 后台执行。</p></article>
+        <article class="card span-6"><span class="fragment-alias" id="heading-desktop-cli-6" data-canonical-fragment="不要混用得太乱" aria-hidden="true"></span><h3 id="不要混用得太乱">不要混用得太乱<a class="heading-permalink" data-heading-permalink data-search-exclude href="#不要混用得太乱" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>同一个任务建议有一个主线程负责判断。不要在多个 Desktop 线程里同时改同一批文件，除非写范围严格隔离。</p></article>
       </div>
     </section>
 
     <section class="section">
       <div class="section-head">
         <div class="section-title">
-          <p class="section-kicker">Operations</p>
-          <h2 id="heading-desktop-cli-7">Desktop 里的六个常用操作</h2>
+          <p class="section-kicker">操作</p>
+          <span class="fragment-alias" id="heading-desktop-cli-7" data-canonical-fragment="desktop-里的六个常用操作" aria-hidden="true"></span><h2 id="desktop-里的六个常用操作">Desktop 里的六个常用操作<a class="heading-permalink" data-heading-permalink data-search-exclude href="#desktop-里的六个常用操作" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
         <p>零基础用户不需要先背概念。按下面六步走，基本能覆盖网页、文档、小型代码修改和发布验证。</p>
       </div>
       <div class="steps">
-        <article class="step"><h3 id="heading-desktop-cli-8">1. 打开任务线程</h3><p>一个线程只放一个目标。开头写清仓库路径、页面 URL、当前问题、验收标准和禁区。</p></article>
-        <article class="step"><h3 id="heading-desktop-cli-9">2. 让 Codex 读上下文</h3><p>要求先读 <code>AGENTS.md</code>、README、相关页面或源码。复杂任务再让它跑 <code>rg</code> 找入口。</p></article>
-        <article class="step"><h3 id="heading-desktop-cli-10">3. 用浏览器反馈定位问题</h3><p>如果你在 in-app browser 里看到页面不对，把当前 URL、区域截图或评论直接发给 Codex。</p></article>
-        <article class="step"><h3 id="heading-desktop-cli-11">4. 审批有副作用动作</h3><p>遇到联网、启动服务、推送、安装依赖等请求，先看 Codex 给出的理由，再决定是否批准。</p></article>
-        <article class="step"><h3 id="heading-desktop-cli-12">5. 看 diff 和验证结果</h3><p>让 Codex 报告改了哪些文件、跑了哪些命令、哪些页面或测试已经通过。</p></article>
-        <article class="step"><h3 id="heading-desktop-cli-13">6. 发布后抽样确认</h3><p>如果是 GitHub Pages 或 PR，要求 Codex 等状态完成后抽样公开 URL，而不是只说“已 push”。</p></article>
+        <article class="step"><span class="fragment-alias" id="heading-desktop-cli-8" data-canonical-fragment="1.-打开任务线程" aria-hidden="true"></span><h3 id="1.-打开任务线程">1. 打开任务线程<a class="heading-permalink" data-heading-permalink data-search-exclude href="#1.-打开任务线程" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>一个线程只放一个目标。开头写清仓库路径、页面 URL、当前问题、验收标准和禁区。</p></article>
+        <article class="step"><span class="fragment-alias" id="heading-desktop-cli-9" data-canonical-fragment="2.-让-codex-读上下文" aria-hidden="true"></span><h3 id="2.-让-codex-读上下文">2. 让 Codex 读上下文<a class="heading-permalink" data-heading-permalink data-search-exclude href="#2.-让-codex-读上下文" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>要求先读 <code>AGENTS.md</code>、README、相关页面或源码。复杂任务再让它跑 <code>rg</code> 找入口。</p></article>
+        <article class="step"><span class="fragment-alias" id="heading-desktop-cli-10" data-canonical-fragment="3.-用浏览器反馈定位问题" aria-hidden="true"></span><h3 id="3.-用浏览器反馈定位问题">3. 用浏览器反馈定位问题<a class="heading-permalink" data-heading-permalink data-search-exclude href="#3.-用浏览器反馈定位问题" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>如果你在 in-app browser 里看到页面不对，把当前 URL、区域截图或评论直接发给 Codex。</p></article>
+        <article class="step"><span class="fragment-alias" id="heading-desktop-cli-11" data-canonical-fragment="4.-审批有副作用动作" aria-hidden="true"></span><h3 id="4.-审批有副作用动作">4. 审批有副作用动作<a class="heading-permalink" data-heading-permalink data-search-exclude href="#4.-审批有副作用动作" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>遇到联网、启动服务、推送、安装依赖等请求，先看 Codex 给出的理由，再决定是否批准。</p></article>
+        <article class="step"><span class="fragment-alias" id="heading-desktop-cli-12" data-canonical-fragment="5.-看-diff-和验证结果" aria-hidden="true"></span><h3 id="5.-看-diff-和验证结果">5. 看 diff 和验证结果<a class="heading-permalink" data-heading-permalink data-search-exclude href="#5.-看-diff-和验证结果" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>让 Codex 报告改了哪些文件、跑了哪些命令、哪些页面或测试已经通过。</p></article>
+        <article class="step"><span class="fragment-alias" id="heading-desktop-cli-13" data-canonical-fragment="6.-发布后抽样确认" aria-hidden="true"></span><h3 id="6.-发布后抽样确认">6. 发布后抽样确认<a class="heading-permalink" data-heading-permalink data-search-exclude href="#6.-发布后抽样确认" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>如果是 GitHub Pages 或 PR，要求 Codex 等状态完成后抽样公开 URL，而不是只说“已 push”。</p></article>
       </div>
     </section>
 
     <section class="section">
       <div class="section-head">
         <div class="section-title">
-          <p class="section-kicker">Prompt patterns</p>
-          <h2 id="heading-desktop-cli-14">Desktop-first prompt 模板</h2>
+          <p class="section-kicker">Prompt 模式</p>
+          <span class="fragment-alias" id="heading-desktop-cli-14" data-canonical-fragment="desktop-first-prompt-模板" aria-hidden="true"></span><h2 id="desktop-first-prompt-模板">Desktop-first prompt 模板<a class="heading-permalink" data-heading-permalink data-search-exclude href="#desktop-first-prompt-模板" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
         <p>Desktop 任务的 prompt 应该包含“你正在看的界面”和“希望 Codex 如何验证”。这比只说“改一下网页”稳定得多。</p>
       </div>
       <div class="bento">
-        <article class="card span-6"><h3 id="heading-desktop-cli-15">网页反馈</h3><pre><code>我在 Codex Desktop 的浏览器里打开：
+        <article class="card span-6"><span class="fragment-alias" id="heading-desktop-cli-15" data-canonical-fragment="网页反馈" aria-hidden="true"></span><h3 id="网页反馈">网页反馈<a class="heading-permalink" data-heading-permalink data-search-exclude href="#网页反馈" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><pre><code>我在 Codex Desktop 的浏览器里打开：
 https://example.github.io/project/page.html
 
 问题：
@@ -78,7 +101,7 @@ https://example.github.io/project/page.html
 请先读 AGENTS.md 和相关 HTML。
 只改网页内容，不改视觉风格。
 完成后本地抽样访问，再推送并验证公开 URL。</code></pre></article>
-        <article class="card span-6"><h3 id="heading-desktop-cli-16">代码修复</h3><pre><code>我在 Desktop 里处理这个仓库：
+        <article class="card span-6"><span class="fragment-alias" id="heading-desktop-cli-16" data-canonical-fragment="代码修复" aria-hidden="true"></span><h3 id="代码修复">代码修复<a class="heading-permalink" data-heading-permalink data-search-exclude href="#代码修复" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><pre><code>我在 Desktop 里处理这个仓库：
 /path/to/repo
 
 现象：
@@ -89,14 +112,14 @@ https://example.github.io/project/page.html
 - 改动前说明根因
 - 只改 checkout 相关文件
 - 完成后运行最窄测试并报告 diff</code></pre></article>
-        <article class="card span-6"><h3 id="heading-desktop-cli-17">需要联网或推送</h3><pre><code>如果需要联网、启动本地服务或 git push，
+        <article class="card span-6"><span class="fragment-alias" id="heading-desktop-cli-17" data-canonical-fragment="需要联网或推送" aria-hidden="true"></span><h3 id="需要联网或推送">需要联网或推送<a class="heading-permalink" data-heading-permalink data-search-exclude href="#需要联网或推送" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><pre><code>如果需要联网、启动本地服务或 git push，
 请先说明：
 - 为什么需要这个权限
 - 会访问或写入哪里
 - 成功后如何验证
 
 不要在没有说明的情况下执行外部写操作。</code></pre></article>
-        <article class="card span-6 dark-card"><h3 id="heading-desktop-cli-18">线程收口</h3><pre><code>最终请按这个格式回答：
+        <article class="card span-6 dark-card"><span class="fragment-alias" id="heading-desktop-cli-18" data-canonical-fragment="线程收口" aria-hidden="true"></span><h3 id="线程收口">线程收口<a class="heading-permalink" data-heading-permalink data-search-exclude href="#线程收口" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><pre><code>最终请按这个格式回答：
 改动：
 - [文件] [变化]
 
@@ -115,30 +138,29 @@ https://example.github.io/project/page.html
     <section class="section">
       <div class="section-head">
         <div class="section-title">
-          <p class="section-kicker">Real example</p>
-          <h2 id="heading-desktop-cli-19">真实实例：本页这次怎么改</h2>
+          <p class="section-kicker">真实实例</p>
+          <span class="fragment-alias" id="heading-desktop-cli-19" data-canonical-fragment="真实实例-本页这次怎么改" aria-hidden="true"></span><h2 id="真实实例-本页这次怎么改">真实实例：本页这次怎么改<a class="heading-permalink" data-heading-permalink data-search-exclude href="#真实实例-本页这次怎么改" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
         <p>用户在 Desktop 浏览器里打开 <code>workflows.html</code>，要求“主要面向 Codex Desktop，把桌面版操作加进去”。这是典型 Desktop 任务：用户给出页面上下文，Codex 读仓库规则和页面，修改 HTML，运行检查，推送后验证公开站点。</p>
       </div>
       <div class="bento">
-        <article class="card span-3"><h3 id="heading-desktop-cli-20">输入</h3><p>当前 URL、用户反馈、项目规则和目标是 Desktop-first。</p></article>
-        <article class="card span-3"><h3 id="heading-desktop-cli-21">执行</h3><p>重写本页，补充线程、浏览器反馈、审批、diff、发布验证等操作。</p></article>
-        <article class="card span-3"><h3 id="heading-desktop-cli-22">验证</h3><p><code>git diff --check</code>、站内链接检查、本地或公开 HTML 关键标题抽样。</p></article>
-        <article class="card span-3"><h3 id="heading-desktop-cli-23">交付</h3><p>提交、推送，并确认 GitHub Pages 状态和线上页面内容。</p></article>
+        <article class="card span-3"><span class="fragment-alias" id="heading-desktop-cli-20" data-canonical-fragment="输入" aria-hidden="true"></span><h3 id="输入">输入<a class="heading-permalink" data-heading-permalink data-search-exclude href="#输入" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>当前 URL、用户反馈、项目规则和目标是 Desktop-first。</p></article>
+        <article class="card span-3"><span class="fragment-alias" id="heading-desktop-cli-21" data-canonical-fragment="执行" aria-hidden="true"></span><h3 id="执行">执行<a class="heading-permalink" data-heading-permalink data-search-exclude href="#执行" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>重写本页，补充线程、浏览器反馈、审批、diff、发布验证等操作。</p></article>
+        <article class="card span-3"><span class="fragment-alias" id="heading-desktop-cli-22" data-canonical-fragment="验证" aria-hidden="true"></span><h3 id="验证">验证<a class="heading-permalink" data-heading-permalink data-search-exclude href="#验证" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p><code>git diff --check</code>、站内链接检查、本地或公开 HTML 关键标题抽样。</p></article>
+        <article class="card span-3"><span class="fragment-alias" id="heading-desktop-cli-23" data-canonical-fragment="交付" aria-hidden="true"></span><h3 id="交付">交付<a class="heading-permalink" data-heading-permalink data-search-exclude href="#交付" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>提交、推送，并确认 GitHub Pages 状态和线上页面内容。</p></article>
       </div>
     </section>
   </main>
 <!-- guide:shell-close:start -->
-<nav class="page-sequence" aria-label="前后页"><a rel="prev" href="install-desktop.html">← 安装</a><a rel="next" href="codex.html">Codex →</a></nav></div><aside class="page-toc" aria-label="本页目录"><details open><summary>本页目录</summary><nav><a class="toc-h2" href="#heading-desktop-cli-1">什么时候优先用 Desktop</a><a class="toc-h3" href="#heading-desktop-cli-2">页面和视觉反馈</a><a class="toc-h3" href="#heading-desktop-cli-3">本地仓库协作</a><a class="toc-h3" href="#heading-desktop-cli-4">需要你审批的操作</a><a class="toc-h3" href="#heading-desktop-cli-5">沉淀为 Automations 的场景</a><a class="toc-h3" href="#heading-desktop-cli-6">不要混用得太乱</a><a class="toc-h2" href="#heading-desktop-cli-7">Desktop 里的六个常用操作</a><a class="toc-h3" href="#heading-desktop-cli-8">1. 打开任务线程</a><a class="toc-h3" href="#heading-desktop-cli-9">2. 让 Codex 读上下文</a><a class="toc-h3" href="#heading-desktop-cli-10">3. 用浏览器反馈定位问题</a><a class="toc-h3" href="#heading-desktop-cli-11">4. 审批有副作用动作</a><a class="toc-h3" href="#heading-desktop-cli-12">5. 看 diff 和验证结果</a><a class="toc-h3" href="#heading-desktop-cli-13">6. 发布后抽样确认</a><a class="toc-h2" href="#heading-desktop-cli-14">Desktop-first prompt 模板</a><a class="toc-h3" href="#heading-desktop-cli-15">网页反馈</a><a class="toc-h3" href="#heading-desktop-cli-16">代码修复</a><a class="toc-h3" href="#heading-desktop-cli-17">需要联网或推送</a><a class="toc-h3" href="#heading-desktop-cli-18">线程收口</a><a class="toc-h2" href="#heading-desktop-cli-19">真实实例：本页这次怎么改</a><a class="toc-h3" href="#heading-desktop-cli-20">输入</a><a class="toc-h3" href="#heading-desktop-cli-21">执行</a><a class="toc-h3" href="#heading-desktop-cli-22">验证</a><a class="toc-h3" href="#heading-desktop-cli-23">交付</a></nav></details></aside></div>
+<nav class="page-sequence" aria-label="前后页"><a rel="prev" href="install-desktop.html">← 安装</a><a rel="next" href="codex.html">Codex →</a></nav></div></div>
 <!-- guide:shell-close:end -->
 
   <footer class="footer">
     <p><strong>Codex Desktop</strong><br>先把 Desktop 小闭环跑通，再进入日常任务、工程 flow 和 Goal。</p>
     <a class="button" href="daily-workflow.html">下一页：日常任务</a>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  <script src="assets/site.js"></script>
+  <!-- guide:runtime:start -->
+<script src="assets/site.js"></script>
+<!-- guide:runtime:end -->
 </body>
 </html>

@@ -4,47 +4,70 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>学术 flow</title>
-  <meta name="description" content="中文 Codex 实战手册：research-pipeline、文献、新颖性、实验和论文写作边界。">
+  <!-- guide:theme-bootstrap:start -->
+<script src="assets/theme.js"></script>
+<!-- guide:theme-bootstrap:end -->
   <link rel="stylesheet" href="assets/site.css">
+  <!-- guide:metadata:start -->
+<meta name="description" content="从研究问题到实验和写作的学术任务路径。">
+<meta name="guide-build" content="6bb0bb663fb1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/research.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="Codex 使用指南">
+<meta property="og:title" content="学术 flow">
+<meta property="og:description" content="从研究问题到实验和写作的学术任务路径。">
+<meta property="og:url" content="https://whojay0609.github.io/codex-usage-guide/research.html">
+<meta property="og:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Codex 使用指南">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="学术 flow">
+<meta name="twitter:description" content="从研究问题到实验和写作的学术任务路径。">
+<meta name="twitter:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
+<meta name="twitter:image:alt" content="Codex 使用指南">
+<!-- guide:metadata:end -->
 </head>
 <body>
   <!-- guide:header:start -->
-<header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><span class="search-status">全站搜索将在下一阶段启用</span><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header>
+<script src="assets/site-data.js"></script><script src="assets/search-index.js"></script><header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><label class="theme-control"><span class="sr-only">主题</span><select class="theme-select" id="theme-select" name="theme" aria-label="主题"><option value="light" selected>浅色</option><option value="dark">深色</option></select></label><span class="theme-status sr-only" aria-live="polite"></span><button class="search-trigger" type="button" aria-haspopup="dialog" aria-controls="site-search-dialog">搜索</button><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header><dialog class="search-dialog" id="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title"><div class="search-dialog-panel"><div class="search-dialog-head"><p class="search-title" id="site-search-title">搜索全站</p><button class="search-close" type="button" aria-label="关闭搜索">关闭</button></div><label class="search-label" for="site-search-input">搜索标题、正文和可复用 prompt</label><input class="search-input" id="site-search-input" type="search" role="combobox" autocomplete="off" aria-autocomplete="list" aria-controls="site-search-results" aria-describedby="site-search-status" aria-expanded="false"><p class="search-message" id="site-search-status" aria-live="polite">输入关键词开始搜索。</p><ul class="search-results" id="site-search-results" role="listbox" aria-label="搜索结果"></ul></div></dialog>
 <!-- guide:header:end -->
   <!-- guide:shell-open:start -->
-<div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html">首页</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html" aria-current="page">学术</a><a data-nav href="automation.html">自动化</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html">Compound</a><a data-nav href="skills-repositories.html">Skills 仓库</a><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>学术</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-07-11">2026-07-11</time></span><span>事实核验：<time datetime="2026-07-11">2026-07-11</time></span></div>
+<div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html">首页</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="worktrees.html">Worktrees</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html" aria-current="page">学术</a><a data-nav href="automation.html">自动化</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html">Compound</a><details class="global-nav-disclosure"><summary>Skills 仓库</summary><a data-nav href="skills-repositories.html">全部仓库</a><a href="skills-repositories.html#compound-engineering">Compound Engineering</a><a href="skills-repositories.html#mattpocock-skills">Matt Pocock skills</a><a href="skills-repositories.html#academic-research-skills-codex">ARS</a><a href="skills-repositories.html#aris-auto-claude-code-research-in-sleep">ARIS</a></details><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>学术</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-07-11">2026-07-11</time></span><span>事实核验：<time datetime="2026-07-11">2026-07-11</time></span></div><aside class="page-toc" aria-label="本页目录"><details><summary>本页目录</summary><nav><a class="toc-h2" href="#从-idea-到可审查证据">从 idea 到可审查证据</a><a class="toc-h3" href="#research-brief">Research brief</a><a class="toc-h3" href="#closest-work">Closest work</a><a class="toc-h3" href="#novelty-gate">Novelty gate</a><a class="toc-h3" href="#experiment-plan">Experiment plan</a><a class="toc-h3" href="#auto-review">Auto review</a><a class="toc-h3" href="#writing-boundary">Writing boundary</a><a class="toc-h2" href="#每个阶段应该产出什么">每个阶段应该产出什么</a><a class="toc-h3" href="#research_brief.md">RESEARCH_BRIEF.md</a><a class="toc-h3" href="#idea_report.md">IDEA_REPORT.md</a><a class="toc-h3" href="#实验日志">实验日志</a><a class="toc-h3" href="#auto_review.md">AUTO_REVIEW.md</a><a class="toc-h3" href="#图表索引">图表索引</a><a class="toc-h3" href="#claim-ledger">Claim ledger</a><a class="toc-h2" href="#可复制学术提示词">可复制学术提示词</a><a class="toc-h3" href="#启动-research-pipeline">启动 research-pipeline</a><a class="toc-h3" href="#严格审稿">严格审稿</a><a class="toc-h2" href="#进入和退出条件">进入和退出条件</a><a class="toc-h3" href="#进入条件">进入条件</a><a class="toc-h3" href="#推进条件">推进条件</a><a class="toc-h3" href="#退出条件">退出条件</a><a class="toc-h3" href="#stop-conditions">Stop conditions</a><a class="toc-h3" href="#写作前检查">写作前检查</a><a class="toc-h2" href="#真实实例-长上下文-kv-cache-pruning-idea">真实实例：长上下文 KV cache pruning idea</a><a class="toc-h3" href="#输入">输入</a><a class="toc-h3" href="#先读">先读</a><a class="toc-h3" href="#应动文件">应动文件</a><a class="toc-h3" href="#验证">验证</a><a class="toc-h3" href="#最终回答">最终回答</a><a class="toc-h3" href="#失败停止">失败停止</a></nav></details></aside>
 <!-- guide:shell-open:end -->
 <main>
-    <section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Scenario handbook</p><h1>学术 flow</h1><p class="lead">学术任务最容易犯的错是先写论文、后找证据。正确顺序是：研究 brief、文献和新颖性、实验计划、可复现实验、自动审稿、最后才写作。</p></div></section>
+    <section class="hero compact"><div class="hero-copy"><p class="hero-kicker">场景手册</p><h1>学术 flow</h1><p class="lead">学术任务最容易犯的错是先写论文、后找证据。正确顺序是：研究 brief、文献和新颖性、实验计划、可复现实验、自动审稿、最后才写作。</p></div></section>
 
     <section class="section">
-      <div class="section-head"><div class="section-title"><p class="section-kicker">Pipeline</p><h2 id="heading-research-1">从 idea 到可审查证据</h2></div><p>学术自动化要保护 claim 边界：没有实验或引用支撑的说法不能进入论文。</p></div>
+      <div class="section-head"><div class="section-title"><p class="section-kicker">流水线</p><span class="fragment-alias" id="heading-research-1" data-canonical-fragment="从-idea-到可审查证据" aria-hidden="true"></span><h2 id="从-idea-到可审查证据">从 idea 到可审查证据<a class="heading-permalink" data-heading-permalink data-search-exclude href="#从-idea-到可审查证据" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2></div><p>学术自动化要保护 claim 边界：没有实验或引用支撑的说法不能进入论文。</p></div>
       <div class="steps">
-        <article class="step"><h3 id="heading-research-2">Research brief</h3><p>写清研究问题、目标会议、数据、baseline、预算、预期贡献、不能 claim 什么。</p></article>
-        <article class="step"><h3 id="heading-research-3">Closest work</h3><p>先找最接近工作，不是先找支持自己的论文。明确差异点和可能被 reviewer 攻击的地方。</p></article>
-        <article class="step"><h3 id="heading-research-4">Novelty gate</h3><p>如果贡献只是已有方法换场景，要降级目标；如果缺少可证伪实验，要先补实验设计。</p></article>
-        <article class="step"><h3 id="heading-research-5">Experiment plan</h3><p>定义数据集、baseline、metric、预算、失败标准、日志路径和复现实验命令。</p></article>
-        <article class="step"><h3 id="heading-research-6">Auto review</h3><p>让 Codex 以 reviewer 角度检查 novelty、evidence、ablation、claim、writing risk。</p></article>
-        <article class="step"><h3 id="heading-research-7">Writing boundary</h3><p>只写已经有证据支撑的结论。负结果和失败实验也要记录，避免 narrative 失真。</p></article>
+        <article class="step"><span class="fragment-alias" id="heading-research-2" data-canonical-fragment="research-brief" aria-hidden="true"></span><h3 id="research-brief">Research brief<a class="heading-permalink" data-heading-permalink data-search-exclude href="#research-brief" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>写清研究问题、目标会议、数据、baseline、预算、预期贡献、不能 claim 什么。</p></article>
+        <article class="step"><span class="fragment-alias" id="heading-research-3" data-canonical-fragment="closest-work" aria-hidden="true"></span><h3 id="closest-work">Closest work<a class="heading-permalink" data-heading-permalink data-search-exclude href="#closest-work" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>先找最接近工作，不是先找支持自己的论文。明确差异点和可能被 reviewer 攻击的地方。</p></article>
+        <article class="step"><span class="fragment-alias" id="heading-research-4" data-canonical-fragment="novelty-gate" aria-hidden="true"></span><h3 id="novelty-gate">Novelty gate<a class="heading-permalink" data-heading-permalink data-search-exclude href="#novelty-gate" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>如果贡献只是已有方法换场景，要降级目标；如果缺少可证伪实验，要先补实验设计。</p></article>
+        <article class="step"><span class="fragment-alias" id="heading-research-5" data-canonical-fragment="experiment-plan" aria-hidden="true"></span><h3 id="experiment-plan">Experiment plan<a class="heading-permalink" data-heading-permalink data-search-exclude href="#experiment-plan" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>定义数据集、baseline、metric、预算、失败标准、日志路径和复现实验命令。</p></article>
+        <article class="step"><span class="fragment-alias" id="heading-research-6" data-canonical-fragment="auto-review" aria-hidden="true"></span><h3 id="auto-review">Auto review<a class="heading-permalink" data-heading-permalink data-search-exclude href="#auto-review" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>让 Codex 以 reviewer 角度检查 novelty、evidence、ablation、claim、writing risk。</p></article>
+        <article class="step"><span class="fragment-alias" id="heading-research-7" data-canonical-fragment="writing-boundary" aria-hidden="true"></span><h3 id="writing-boundary">Writing boundary<a class="heading-permalink" data-heading-permalink data-search-exclude href="#writing-boundary" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>只写已经有证据支撑的结论。负结果和失败实验也要记录，避免 narrative 失真。</p></article>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-head"><div class="section-title"><p class="section-kicker">Artifacts</p><h2 id="heading-research-8">每个阶段应该产出什么</h2></div><p>学术 flow 的产物比聊天记录重要。没有落盘产物，后续写作和审稿都无法追溯。</p></div>
+      <div class="section-head"><div class="section-title"><p class="section-kicker">产物</p><span class="fragment-alias" id="heading-research-8" data-canonical-fragment="每个阶段应该产出什么" aria-hidden="true"></span><h2 id="每个阶段应该产出什么">每个阶段应该产出什么<a class="heading-permalink" data-heading-permalink data-search-exclude href="#每个阶段应该产出什么" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2></div><p>学术 flow 的产物比聊天记录重要。没有落盘产物，后续写作和审稿都无法追溯。</p></div>
       <div class="bento">
-        <article class="card span-4"><h3 id="heading-research-9"><code>RESEARCH_BRIEF.md</code></h3><p>研究问题、目标 venue、假设、数据、baseline、预算、人工 checkpoint。</p></article>
-        <article class="card span-4"><h3 id="heading-research-10"><code>IDEA_REPORT.md</code></h3><p>问题重要性、closest work、差异、风险、可证伪实验。</p></article>
-        <article class="card span-4"><h3 id="heading-research-11">实验日志</h3><p>命令、配置、commit、GPU、数据版本、失败原因、结果表。</p></article>
-        <article class="card span-4"><h3 id="heading-research-12"><code>AUTO_REVIEW.md</code></h3><p>以严格 reviewer 视角列 novelty、实验、写作和 claim 缺口。</p></article>
-        <article class="card span-4"><h3 id="heading-research-13">图表索引</h3><p>每个图表对应数据来源、脚本、日志和可复现路径。</p></article>
-        <article class="card span-4"><h3 id="heading-research-14">Claim ledger</h3><p>每个论文 claim 对应引用或实验；没有证据的 claim 要删除或降级。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-research-9" data-canonical-fragment="research_brief.md" aria-hidden="true"></span><h3 id="research_brief.md"><code>RESEARCH_BRIEF.md</code><a class="heading-permalink" data-heading-permalink data-search-exclude href="#research_brief.md" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>研究问题、目标 venue、假设、数据、baseline、预算、人工 checkpoint。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-research-10" data-canonical-fragment="idea_report.md" aria-hidden="true"></span><h3 id="idea_report.md"><code>IDEA_REPORT.md</code><a class="heading-permalink" data-heading-permalink data-search-exclude href="#idea_report.md" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>问题重要性、closest work、差异、风险、可证伪实验。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-research-11" data-canonical-fragment="实验日志" aria-hidden="true"></span><h3 id="实验日志">实验日志<a class="heading-permalink" data-heading-permalink data-search-exclude href="#实验日志" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>命令、配置、commit、GPU、数据版本、失败原因、结果表。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-research-12" data-canonical-fragment="auto_review.md" aria-hidden="true"></span><h3 id="auto_review.md"><code>AUTO_REVIEW.md</code><a class="heading-permalink" data-heading-permalink data-search-exclude href="#auto_review.md" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>以严格 reviewer 视角列 novelty、实验、写作和 claim 缺口。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-research-13" data-canonical-fragment="图表索引" aria-hidden="true"></span><h3 id="图表索引">图表索引<a class="heading-permalink" data-heading-permalink data-search-exclude href="#图表索引" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>每个图表对应数据来源、脚本、日志和可复现路径。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-research-14" data-canonical-fragment="claim-ledger" aria-hidden="true"></span><h3 id="claim-ledger">Claim ledger<a class="heading-permalink" data-heading-permalink data-search-exclude href="#claim-ledger" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>每个论文 claim 对应引用或实验；没有证据的 claim 要删除或降级。</p></article>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-head"><div class="section-title"><p class="section-kicker">Prompts</p><h2 id="heading-research-15">可复制学术提示词</h2></div><p>第一次使用建议保守：不要自动推进实验，不要自动写论文，先让 Codex 建 brief 和审查边界。</p></div>
+      <div class="section-head"><div class="section-title"><p class="section-kicker">提示词（Prompts）</p><span class="fragment-alias" id="heading-research-15" data-canonical-fragment="可复制学术提示词" aria-hidden="true"></span><h2 id="可复制学术提示词">可复制学术提示词<a class="heading-permalink" data-heading-permalink data-search-exclude href="#可复制学术提示词" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2></div><p>第一次使用建议保守：不要自动推进实验，不要自动写论文，先让 Codex 建 brief 和审查边界。</p></div>
       <div class="bento">
-        <article class="card span-6"><h3 id="heading-research-16">启动 research-pipeline</h3><pre><code>[$research-pipeline]
+        <article class="card span-6"><span class="fragment-alias" id="heading-research-16" data-canonical-fragment="启动-research-pipeline" aria-hidden="true"></span><h3 id="启动-research-pipeline">启动 research-pipeline<a class="heading-permalink" data-heading-permalink data-search-exclude href="#启动-research-pipeline" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><pre><code>$research-pipeline
 方向：长上下文 LLM 推理中的 KV cache pruning。
 
 请先创建 RESEARCH_BRIEF.md，并等待我确认。
@@ -61,7 +84,7 @@ AUTO_WRITE: false
 - closest work 表
 - 可证伪实验计划
 - claim 边界</code></pre></article>
-        <article class="card span-6"><h3 id="heading-research-17">严格审稿</h3><pre><code>请以强 reviewer 视角审查当前 idea。
+        <article class="card span-6"><span class="fragment-alias" id="heading-research-17" data-canonical-fragment="严格审稿" aria-hidden="true"></span><h3 id="严格审稿">严格审稿<a class="heading-permalink" data-heading-permalink data-search-exclude href="#严格审稿" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><pre><code>请以强 reviewer 视角审查当前 idea。
 
 重点：
 - 最近似工作是什么？
@@ -79,35 +102,34 @@ AUTO_WRITE: false
     </section>
 
     <section class="section">
-      <div class="section-head"><div class="section-title"><p class="section-kicker">Gates</p><h2 id="heading-research-18">进入和退出条件</h2></div><p>学术自动化一定要有 gate，否则会把一个弱 idea 包装成看起来完整的论文。</p></div>
+      <div class="section-head"><div class="section-title"><p class="section-kicker">门禁</p><span class="fragment-alias" id="heading-research-18" data-canonical-fragment="进入和退出条件" aria-hidden="true"></span><h2 id="进入和退出条件">进入和退出条件<a class="heading-permalink" data-heading-permalink data-search-exclude href="#进入和退出条件" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2></div><p>学术自动化一定要有 gate，否则会把一个弱 idea 包装成看起来完整的论文。</p></div>
       <div class="bento">
-        <article class="card span-4"><h3 id="heading-research-19">进入条件</h3><p>已经能说清研究问题、目标读者、数据来源、baseline、预算和失败标准。不满足时先做 idea grilling。</p></article>
-        <article class="card span-4"><h3 id="heading-research-20">推进条件</h3><p>closest work 已查，核心差异明确，有至少一个能证伪的实验，预算可承受。</p></article>
-        <article class="card span-4"><h3 id="heading-research-21">退出条件</h3><p>claim 都能对应实验或引用；负结果被记录；不能证明的说法被删掉或降级。</p></article>
-        <article class="card span-6 dark-card"><h3 id="heading-research-22">Stop conditions</h3><ul class="mini-list"><li><strong>新颖性不足</strong><span>closest work 已经覆盖核心贡献。</span></li><li><strong>baseline 不可复现</strong><span>无法建立公平比较。</span></li><li><strong>预算不足</strong><span>实验无法在给定 GPU/时间内完成。</span></li></ul></article>
-        <article class="card span-6"><h3 id="heading-research-23">写作前检查</h3><ul class="mini-list"><li><strong>每个 claim 有证据</strong><span>引用、实验、图表或日志路径。</span></li><li><strong>图表可复现</strong><span>脚本和数据版本可追溯。</span></li><li><strong>负结果可解释</strong><span>不要删除失败实验的痕迹。</span></li></ul></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-research-19" data-canonical-fragment="进入条件" aria-hidden="true"></span><h3 id="进入条件">进入条件<a class="heading-permalink" data-heading-permalink data-search-exclude href="#进入条件" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>已经能说清研究问题、目标读者、数据来源、baseline、预算和失败标准。不满足时先做 idea grilling。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-research-20" data-canonical-fragment="推进条件" aria-hidden="true"></span><h3 id="推进条件">推进条件<a class="heading-permalink" data-heading-permalink data-search-exclude href="#推进条件" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>closest work 已查，核心差异明确，有至少一个能证伪的实验，预算可承受。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-research-21" data-canonical-fragment="退出条件" aria-hidden="true"></span><h3 id="退出条件">退出条件<a class="heading-permalink" data-heading-permalink data-search-exclude href="#退出条件" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>claim 都能对应实验或引用；负结果被记录；不能证明的说法被删掉或降级。</p></article>
+        <article class="card span-6 dark-card"><span class="fragment-alias" id="heading-research-22" data-canonical-fragment="stop-conditions" aria-hidden="true"></span><h3 id="stop-conditions">Stop conditions<a class="heading-permalink" data-heading-permalink data-search-exclude href="#stop-conditions" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><ul class="mini-list"><li><strong>新颖性不足</strong><span>closest work 已经覆盖核心贡献。</span></li><li><strong>baseline 不可复现</strong><span>无法建立公平比较。</span></li><li><strong>预算不足</strong><span>实验无法在给定 GPU/时间内完成。</span></li></ul></article>
+        <article class="card span-6"><span class="fragment-alias" id="heading-research-23" data-canonical-fragment="写作前检查" aria-hidden="true"></span><h3 id="写作前检查">写作前检查<a class="heading-permalink" data-heading-permalink data-search-exclude href="#写作前检查" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><ul class="mini-list"><li><strong>每个 claim 有证据</strong><span>引用、实验、图表或日志路径。</span></li><li><strong>图表可复现</strong><span>脚本和数据版本可追溯。</span></li><li><strong>负结果可解释</strong><span>不要删除失败实验的痕迹。</span></li></ul></article>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-head"><div class="section-title"><p class="section-kicker">Real example</p><h2 id="heading-research-24">真实实例：长上下文 KV cache pruning idea</h2></div><p>一个可操作的学术任务不是“帮我写篇论文”，而是先让 Codex 建立研究 brief 和审稿边界。例如长上下文 LLM 推理中的 KV cache pruning，可以先做 closest work 和小规模实验计划，确认新颖性和 baseline 后再进入实验。</p></div>
+      <div class="section-head"><div class="section-title"><p class="section-kicker">真实实例</p><span class="fragment-alias" id="heading-research-24" data-canonical-fragment="真实实例-长上下文-kv-cache-pruning-idea" aria-hidden="true"></span><h2 id="真实实例-长上下文-kv-cache-pruning-idea">真实实例：长上下文 KV cache pruning idea<a class="heading-permalink" data-heading-permalink data-search-exclude href="#真实实例-长上下文-kv-cache-pruning-idea" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2></div><p>一个可操作的学术任务不是“帮我写篇论文”，而是先让 Codex 建立研究 brief 和审稿边界。例如长上下文 LLM 推理中的 KV cache pruning，可以先做 closest work 和小规模实验计划，确认新颖性和 baseline 后再进入实验。</p></div>
       <div class="bento">
-        <article class="card span-4"><h3 id="heading-research-25">输入</h3><p>坏输入是“帮我写论文”；修复后给方向、数据、baseline、预算、不能 claim 的边界。</p></article>
-        <article class="card span-4"><h3 id="heading-research-26">先读</h3><p>已有实验、相关论文、数据说明、目标会议标准和本机 research skill 说明。</p></article>
-        <article class="card span-4"><h3 id="heading-research-27">应动文件</h3><p><code>RESEARCH_BRIEF.md</code>、closest work 表、实验计划；未确认前不写论文正文。</p></article>
-        <article class="card span-4"><h3 id="heading-research-28">验证</h3><p>claim 是否有引用或实验支撑，baseline 是否明确，预算是否可执行。</p></article>
-        <article class="card span-4"><h3 id="heading-research-29">最终回答</h3><p>给出证据边界、下一步实验、不可声称内容和需要人工确认的问题。</p></article>
-        <article class="card span-4"><h3 id="heading-research-30">失败停止</h3><p>closest work 不清、实验不可复现、数据不可得或 claim 超出证据时停止。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-research-25" data-canonical-fragment="输入" aria-hidden="true"></span><h3 id="输入">输入<a class="heading-permalink" data-heading-permalink data-search-exclude href="#输入" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>坏输入是“帮我写论文”；修复后给方向、数据、baseline、预算、不能 claim 的边界。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-research-26" data-canonical-fragment="先读" aria-hidden="true"></span><h3 id="先读">先读<a class="heading-permalink" data-heading-permalink data-search-exclude href="#先读" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>已有实验、相关论文、数据说明、目标会议标准和本机 research skill 说明。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-research-27" data-canonical-fragment="应动文件" aria-hidden="true"></span><h3 id="应动文件">应动文件<a class="heading-permalink" data-heading-permalink data-search-exclude href="#应动文件" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p><code>RESEARCH_BRIEF.md</code>、closest work 表、实验计划；未确认前不写论文正文。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-research-28" data-canonical-fragment="验证" aria-hidden="true"></span><h3 id="验证">验证<a class="heading-permalink" data-heading-permalink data-search-exclude href="#验证" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>claim 是否有引用或实验支撑，baseline 是否明确，预算是否可执行。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-research-29" data-canonical-fragment="最终回答" aria-hidden="true"></span><h3 id="最终回答">最终回答<a class="heading-permalink" data-heading-permalink data-search-exclude href="#最终回答" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>给出证据边界、下一步实验、不可声称内容和需要人工确认的问题。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-research-30" data-canonical-fragment="失败停止" aria-hidden="true"></span><h3 id="失败停止">失败停止<a class="heading-permalink" data-heading-permalink data-search-exclude href="#失败停止" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>closest work 不清、实验不可复现、数据不可得或 claim 超出证据时停止。</p></article>
       </div>
     </section>
   </main>
 <!-- guide:shell-close:start -->
-<nav class="page-sequence" aria-label="前后页"><a rel="prev" href="engineering.html">← 工程</a><a rel="next" href="automation.html">自动化 →</a></nav></div><aside class="page-toc" aria-label="本页目录"><details open><summary>本页目录</summary><nav><a class="toc-h2" href="#heading-research-1">从 idea 到可审查证据</a><a class="toc-h3" href="#heading-research-2">Research brief</a><a class="toc-h3" href="#heading-research-3">Closest work</a><a class="toc-h3" href="#heading-research-4">Novelty gate</a><a class="toc-h3" href="#heading-research-5">Experiment plan</a><a class="toc-h3" href="#heading-research-6">Auto review</a><a class="toc-h3" href="#heading-research-7">Writing boundary</a><a class="toc-h2" href="#heading-research-8">每个阶段应该产出什么</a><a class="toc-h3" href="#heading-research-9">RESEARCH_BRIEF.md</a><a class="toc-h3" href="#heading-research-10">IDEA_REPORT.md</a><a class="toc-h3" href="#heading-research-11">实验日志</a><a class="toc-h3" href="#heading-research-12">AUTO_REVIEW.md</a><a class="toc-h3" href="#heading-research-13">图表索引</a><a class="toc-h3" href="#heading-research-14">Claim ledger</a><a class="toc-h2" href="#heading-research-15">可复制学术提示词</a><a class="toc-h3" href="#heading-research-16">启动 research-pipeline</a><a class="toc-h3" href="#heading-research-17">严格审稿</a><a class="toc-h2" href="#heading-research-18">进入和退出条件</a><a class="toc-h3" href="#heading-research-19">进入条件</a><a class="toc-h3" href="#heading-research-20">推进条件</a><a class="toc-h3" href="#heading-research-21">退出条件</a><a class="toc-h3" href="#heading-research-22">Stop conditions</a><a class="toc-h3" href="#heading-research-23">写作前检查</a><a class="toc-h2" href="#heading-research-24">真实实例：长上下文 KV cache pruning idea</a><a class="toc-h3" href="#heading-research-25">输入</a><a class="toc-h3" href="#heading-research-26">先读</a><a class="toc-h3" href="#heading-research-27">应动文件</a><a class="toc-h3" href="#heading-research-28">验证</a><a class="toc-h3" href="#heading-research-29">最终回答</a><a class="toc-h3" href="#heading-research-30">失败停止</a></nav></details></aside></div>
+<nav class="page-sequence" aria-label="前后页"><a rel="prev" href="engineering.html">← 工程</a><a rel="next" href="automation.html">自动化 →</a></nav></div></div>
 <!-- guide:shell-close:end -->
   <footer class="footer"><p><strong>任务路径</strong><br>学术 flow 以证据和 claim 边界为核心。</p><a class="button" href="automation.html">下一页：自动化</a></footer>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-  <script src="assets/site.js"></script>
+  <!-- guide:runtime:start -->
+<script src="assets/site.js"></script>
+<!-- guide:runtime:end -->
 </body>
 </html>

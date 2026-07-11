@@ -1,0 +1,2518 @@
+{
+  "pages": {
+    "agents-md.html": {
+      "heading-agents-md-1": {
+        "canonical": "它是什么",
+        "legacy": [
+          "heading-agents-md-1"
+        ]
+      },
+      "heading-agents-md-10": {
+        "canonical": "真实实例-历史复合案例",
+        "legacy": [
+          "heading-agents-md-10"
+        ]
+      },
+      "heading-agents-md-2": {
+        "canonical": "什么时候用-不用",
+        "legacy": [
+          "heading-agents-md-2"
+        ]
+      },
+      "heading-agents-md-3": {
+        "canonical": "可复制示例",
+        "legacy": [
+          "heading-agents-md-3"
+        ]
+      },
+      "heading-agents-md-4": {
+        "canonical": "如何设计-agents.md-层级",
+        "legacy": [
+          "heading-agents-md-4"
+        ]
+      },
+      "heading-agents-md-5": {
+        "canonical": "根目录",
+        "legacy": [
+          "heading-agents-md-5"
+        ]
+      },
+      "heading-agents-md-6": {
+        "canonical": "子目录",
+        "legacy": [
+          "heading-agents-md-6"
+        ]
+      },
+      "heading-agents-md-7": {
+        "canonical": "当前任务",
+        "legacy": [
+          "heading-agents-md-7"
+        ]
+      },
+      "heading-agents-md-8": {
+        "canonical": "写-agents.md-的检查清单",
+        "legacy": [
+          "heading-agents-md-8"
+        ]
+      },
+      "heading-agents-md-9": {
+        "canonical": "不要把这些写进-agents.md",
+        "legacy": [
+          "heading-agents-md-9"
+        ]
+      }
+    },
+    "automation.html": {
+      "heading-automation-1": {
+        "canonical": "什么时候值得自动化",
+        "legacy": [
+          "heading-automation-1"
+        ]
+      },
+      "heading-automation-10": {
+        "canonical": "文档漂移检查",
+        "legacy": [
+          "heading-automation-10"
+        ]
+      },
+      "heading-automation-11": {
+        "canonical": "自动化安全阀",
+        "legacy": [
+          "heading-automation-11"
+        ]
+      },
+      "heading-automation-12": {
+        "canonical": "最小权限",
+        "legacy": [
+          "heading-automation-12"
+        ]
+      },
+      "heading-automation-13": {
+        "canonical": "结构化输出",
+        "legacy": [
+          "heading-automation-13"
+        ]
+      },
+      "heading-automation-14": {
+        "canonical": "人工-checkpoint",
+        "legacy": [
+          "heading-automation-14"
+        ]
+      },
+      "heading-automation-15": {
+        "canonical": "失败即停止",
+        "legacy": [
+          "heading-automation-15"
+        ]
+      },
+      "heading-automation-16": {
+        "canonical": "真实实例-自动检查网页链接和关键标题",
+        "legacy": [
+          "heading-automation-16"
+        ]
+      },
+      "heading-automation-17": {
+        "canonical": "输入",
+        "legacy": [
+          "heading-automation-17"
+        ]
+      },
+      "heading-automation-18": {
+        "canonical": "先读",
+        "legacy": [
+          "heading-automation-18"
+        ]
+      },
+      "heading-automation-19": {
+        "canonical": "应动文件",
+        "legacy": [
+          "heading-automation-19"
+        ]
+      },
+      "heading-automation-2": {
+        "canonical": "适合-automations",
+        "legacy": [
+          "heading-automation-2"
+        ]
+      },
+      "heading-automation-20": {
+        "canonical": "验证",
+        "legacy": [
+          "heading-automation-20"
+        ]
+      },
+      "heading-automation-21": {
+        "canonical": "最终回答",
+        "legacy": [
+          "heading-automation-21"
+        ]
+      },
+      "heading-automation-22": {
+        "canonical": "失败停止",
+        "legacy": [
+          "heading-automation-22"
+        ]
+      },
+      "heading-automation-3": {
+        "canonical": "适合后台-worktree",
+        "legacy": [
+          "heading-automation-3"
+        ]
+      },
+      "heading-automation-4": {
+        "canonical": "适合本地脚本",
+        "legacy": [
+          "heading-automation-4"
+        ]
+      },
+      "heading-automation-5": {
+        "canonical": "自动化前置条件",
+        "legacy": [
+          "heading-automation-5"
+        ]
+      },
+      "heading-automation-6": {
+        "canonical": "不该自动化的任务",
+        "legacy": [
+          "heading-automation-6"
+        ]
+      },
+      "heading-automation-7": {
+        "canonical": "三种实用自动化模式",
+        "legacy": [
+          "heading-automation-7"
+        ]
+      },
+      "heading-automation-8": {
+        "canonical": "只读审查",
+        "legacy": [
+          "heading-automation-8"
+        ]
+      },
+      "heading-automation-9": {
+        "canonical": "失败日志解释",
+        "legacy": [
+          "heading-automation-9"
+        ]
+      }
+    },
+    "codex.html": {
+      "heading-codex-1": {
+        "canonical": "它是什么",
+        "legacy": [
+          "heading-codex-1"
+        ]
+      },
+      "heading-codex-2": {
+        "canonical": "什么时候用-不用",
+        "legacy": [
+          "heading-codex-2"
+        ]
+      },
+      "heading-codex-3": {
+        "canonical": "可复制示例",
+        "legacy": [
+          "heading-codex-3"
+        ]
+      },
+      "heading-codex-4": {
+        "canonical": "真实实例-扩充这份网页手册",
+        "legacy": [
+          "heading-codex-4"
+        ]
+      }
+    },
+    "compound-engineering.html": {
+      "heading-compound-engineering-1": {
+        "canonical": "它是什么",
+        "legacy": [
+          "heading-compound-engineering-1"
+        ]
+      },
+      "heading-compound-engineering-10": {
+        "canonical": "刚做完一批代码",
+        "legacy": [
+          "heading-compound-engineering-10"
+        ]
+      },
+      "heading-compound-engineering-11": {
+        "canonical": "想全自动交付",
+        "legacy": [
+          "heading-compound-engineering-11"
+        ]
+      },
+      "heading-compound-engineering-12": {
+        "canonical": "可复制输入",
+        "legacy": [
+          "heading-compound-engineering-12"
+        ]
+      },
+      "heading-compound-engineering-13": {
+        "canonical": "使用边界",
+        "legacy": [
+          "heading-compound-engineering-13"
+        ]
+      },
+      "heading-compound-engineering-14": {
+        "canonical": "真实实例-历史案例",
+        "legacy": [
+          "heading-compound-engineering-14"
+        ]
+      },
+      "heading-compound-engineering-15": {
+        "canonical": "请求",
+        "legacy": [
+          "heading-compound-engineering-15"
+        ]
+      },
+      "heading-compound-engineering-16": {
+        "canonical": "先读与角色",
+        "legacy": [
+          "heading-compound-engineering-16"
+        ]
+      },
+      "heading-compound-engineering-17": {
+        "canonical": "边界",
+        "legacy": [
+          "heading-compound-engineering-17"
+        ]
+      },
+      "heading-compound-engineering-18": {
+        "canonical": "验证证据",
+        "legacy": [
+          "heading-compound-engineering-18"
+        ]
+      },
+      "heading-compound-engineering-19": {
+        "canonical": "重要恢复与结果",
+        "legacy": [
+          "heading-compound-engineering-19"
+        ]
+      },
+      "heading-compound-engineering-2": {
+        "canonical": "在-codex-desktop-里安装",
+        "legacy": [
+          "heading-compound-engineering-2"
+        ]
+      },
+      "heading-compound-engineering-20": {
+        "canonical": "失败停止",
+        "legacy": [
+          "heading-compound-engineering-20"
+        ]
+      },
+      "heading-compound-engineering-3": {
+        "canonical": "第一次进入项目后先跑什么",
+        "legacy": [
+          "heading-compound-engineering-3"
+        ]
+      },
+      "heading-compound-engineering-4": {
+        "canonical": "核心七步怎么用",
+        "legacy": [
+          "heading-compound-engineering-4",
+          "核心六步怎么用"
+        ]
+      },
+      "heading-compound-engineering-5": {
+        "canonical": "product-contract-和实施计划写在同一份文档",
+        "legacy": [
+          "heading-compound-engineering-5"
+        ]
+      },
+      "heading-compound-engineering-6": {
+        "canonical": "常见情况选哪个-skill",
+        "legacy": [
+          "heading-compound-engineering-6"
+        ]
+      },
+      "heading-compound-engineering-7": {
+        "canonical": "还不知道做什么",
+        "legacy": [
+          "heading-compound-engineering-7"
+        ]
+      },
+      "heading-compound-engineering-8": {
+        "canonical": "这是-bug",
+        "legacy": [
+          "heading-compound-engineering-8"
+        ]
+      },
+      "heading-compound-engineering-9": {
+        "canonical": "在评估外部方案",
+        "legacy": [
+          "heading-compound-engineering-9"
+        ]
+      }
+    },
+    "daily-workflow.html": {
+      "heading-daily-workflow-1": {
+        "canonical": "日常任务的最小可靠闭环",
+        "legacy": [
+          "heading-daily-workflow-1"
+        ]
+      },
+      "heading-daily-workflow-10": {
+        "canonical": "用浏览器反馈迭代",
+        "legacy": [
+          "heading-daily-workflow-10"
+        ]
+      },
+      "heading-daily-workflow-11": {
+        "canonical": "最后看证据",
+        "legacy": [
+          "heading-daily-workflow-11"
+        ]
+      },
+      "heading-daily-workflow-12": {
+        "canonical": "五类高频日常任务",
+        "legacy": [
+          "heading-daily-workflow-12"
+        ]
+      },
+      "heading-daily-workflow-13": {
+        "canonical": "读代码并解释",
+        "legacy": [
+          "heading-daily-workflow-13"
+        ]
+      },
+      "heading-daily-workflow-14": {
+        "canonical": "修失败测试",
+        "legacy": [
+          "heading-daily-workflow-14"
+        ]
+      },
+      "heading-daily-workflow-15": {
+        "canonical": "修改网页或文档",
+        "legacy": [
+          "heading-daily-workflow-15"
+        ]
+      },
+      "heading-daily-workflow-16": {
+        "canonical": "审查当前-diff",
+        "legacy": [
+          "heading-daily-workflow-16"
+        ]
+      },
+      "heading-daily-workflow-17": {
+        "canonical": "提交和发布",
+        "legacy": [
+          "heading-daily-workflow-17"
+        ]
+      },
+      "heading-daily-workflow-18": {
+        "canonical": "坏请求和好请求的差别",
+        "legacy": [
+          "heading-daily-workflow-18"
+        ]
+      },
+      "heading-daily-workflow-19": {
+        "canonical": "不要这样写",
+        "legacy": [
+          "heading-daily-workflow-19"
+        ]
+      },
+      "heading-daily-workflow-2": {
+        "canonical": "说明任务",
+        "legacy": [
+          "heading-daily-workflow-2"
+        ]
+      },
+      "heading-daily-workflow-20": {
+        "canonical": "推荐这样写",
+        "legacy": [
+          "heading-daily-workflow-20"
+        ]
+      },
+      "heading-daily-workflow-21": {
+        "canonical": "验收不是-看起来完成了",
+        "legacy": [
+          "heading-daily-workflow-21"
+        ]
+      },
+      "heading-daily-workflow-22": {
+        "canonical": "改动证据",
+        "legacy": [
+          "heading-daily-workflow-22"
+        ]
+      },
+      "heading-daily-workflow-23": {
+        "canonical": "验证证据",
+        "legacy": [
+          "heading-daily-workflow-23"
+        ]
+      },
+      "heading-daily-workflow-24": {
+        "canonical": "风险证据",
+        "legacy": [
+          "heading-daily-workflow-24"
+        ]
+      },
+      "heading-daily-workflow-25": {
+        "canonical": "交付证据",
+        "legacy": [
+          "heading-daily-workflow-25"
+        ]
+      },
+      "heading-daily-workflow-26": {
+        "canonical": "推荐-closeout-模板",
+        "legacy": [
+          "heading-daily-workflow-26"
+        ]
+      },
+      "heading-daily-workflow-27": {
+        "canonical": "常见失败和补救",
+        "legacy": [
+          "heading-daily-workflow-27"
+        ]
+      },
+      "heading-daily-workflow-28": {
+        "canonical": "改动太散",
+        "legacy": [
+          "heading-daily-workflow-28"
+        ]
+      },
+      "heading-daily-workflow-29": {
+        "canonical": "没有读上下文",
+        "legacy": [
+          "heading-daily-workflow-29"
+        ]
+      },
+      "heading-daily-workflow-3": {
+        "canonical": "让-codex-读上下文",
+        "legacy": [
+          "heading-daily-workflow-3"
+        ]
+      },
+      "heading-daily-workflow-30": {
+        "canonical": "验证跑不通",
+        "legacy": [
+          "heading-daily-workflow-30"
+        ]
+      },
+      "heading-daily-workflow-31": {
+        "canonical": "网页看起来不对",
+        "legacy": [
+          "heading-daily-workflow-31"
+        ]
+      },
+      "heading-daily-workflow-32": {
+        "canonical": "解释太空泛",
+        "legacy": [
+          "heading-daily-workflow-32"
+        ]
+      },
+      "heading-daily-workflow-33": {
+        "canonical": "任务变长了",
+        "legacy": [
+          "heading-daily-workflow-33"
+        ]
+      },
+      "heading-daily-workflow-34": {
+        "canonical": "真实实例-把短页面扩成日常任务手册",
+        "legacy": [
+          "heading-daily-workflow-34"
+        ]
+      },
+      "heading-daily-workflow-35": {
+        "canonical": "输入",
+        "legacy": [
+          "heading-daily-workflow-35"
+        ]
+      },
+      "heading-daily-workflow-36": {
+        "canonical": "先读",
+        "legacy": [
+          "heading-daily-workflow-36"
+        ]
+      },
+      "heading-daily-workflow-37": {
+        "canonical": "应动文件",
+        "legacy": [
+          "heading-daily-workflow-37"
+        ]
+      },
+      "heading-daily-workflow-38": {
+        "canonical": "验证",
+        "legacy": [
+          "heading-daily-workflow-38"
+        ]
+      },
+      "heading-daily-workflow-39": {
+        "canonical": "最终回答",
+        "legacy": [
+          "heading-daily-workflow-39"
+        ]
+      },
+      "heading-daily-workflow-4": {
+        "canonical": "小范围执行",
+        "legacy": [
+          "heading-daily-workflow-4"
+        ]
+      },
+      "heading-daily-workflow-40": {
+        "canonical": "失败停止",
+        "legacy": [
+          "heading-daily-workflow-40"
+        ]
+      },
+      "heading-daily-workflow-5": {
+        "canonical": "验证和收口",
+        "legacy": [
+          "heading-daily-workflow-5"
+        ]
+      },
+      "heading-daily-workflow-6": {
+        "canonical": "在桌面版里实际怎么操作",
+        "legacy": [
+          "heading-daily-workflow-6"
+        ]
+      },
+      "heading-daily-workflow-7": {
+        "canonical": "把问题贴进线程",
+        "legacy": [
+          "heading-daily-workflow-7"
+        ]
+      },
+      "heading-daily-workflow-8": {
+        "canonical": "要求先读规则",
+        "legacy": [
+          "heading-daily-workflow-8"
+        ]
+      },
+      "heading-daily-workflow-9": {
+        "canonical": "逐个批准动作",
+        "legacy": [
+          "heading-daily-workflow-9"
+        ]
+      }
+    },
+    "desktop-cli.html": {
+      "heading-desktop-cli-1": {
+        "canonical": "什么时候优先用-desktop",
+        "legacy": [
+          "heading-desktop-cli-1"
+        ]
+      },
+      "heading-desktop-cli-10": {
+        "canonical": "3.-用浏览器反馈定位问题",
+        "legacy": [
+          "heading-desktop-cli-10"
+        ]
+      },
+      "heading-desktop-cli-11": {
+        "canonical": "4.-审批有副作用动作",
+        "legacy": [
+          "heading-desktop-cli-11"
+        ]
+      },
+      "heading-desktop-cli-12": {
+        "canonical": "5.-看-diff-和验证结果",
+        "legacy": [
+          "heading-desktop-cli-12"
+        ]
+      },
+      "heading-desktop-cli-13": {
+        "canonical": "6.-发布后抽样确认",
+        "legacy": [
+          "heading-desktop-cli-13"
+        ]
+      },
+      "heading-desktop-cli-14": {
+        "canonical": "desktop-first-prompt-模板",
+        "legacy": [
+          "heading-desktop-cli-14"
+        ]
+      },
+      "heading-desktop-cli-15": {
+        "canonical": "网页反馈",
+        "legacy": [
+          "heading-desktop-cli-15"
+        ]
+      },
+      "heading-desktop-cli-16": {
+        "canonical": "代码修复",
+        "legacy": [
+          "heading-desktop-cli-16"
+        ]
+      },
+      "heading-desktop-cli-17": {
+        "canonical": "需要联网或推送",
+        "legacy": [
+          "heading-desktop-cli-17"
+        ]
+      },
+      "heading-desktop-cli-18": {
+        "canonical": "线程收口",
+        "legacy": [
+          "heading-desktop-cli-18"
+        ]
+      },
+      "heading-desktop-cli-19": {
+        "canonical": "真实实例-本页这次怎么改",
+        "legacy": [
+          "heading-desktop-cli-19"
+        ]
+      },
+      "heading-desktop-cli-2": {
+        "canonical": "页面和视觉反馈",
+        "legacy": [
+          "heading-desktop-cli-2"
+        ]
+      },
+      "heading-desktop-cli-20": {
+        "canonical": "输入",
+        "legacy": [
+          "heading-desktop-cli-20"
+        ]
+      },
+      "heading-desktop-cli-21": {
+        "canonical": "执行",
+        "legacy": [
+          "heading-desktop-cli-21"
+        ]
+      },
+      "heading-desktop-cli-22": {
+        "canonical": "验证",
+        "legacy": [
+          "heading-desktop-cli-22"
+        ]
+      },
+      "heading-desktop-cli-23": {
+        "canonical": "交付",
+        "legacy": [
+          "heading-desktop-cli-23"
+        ]
+      },
+      "heading-desktop-cli-3": {
+        "canonical": "本地仓库协作",
+        "legacy": [
+          "heading-desktop-cli-3"
+        ]
+      },
+      "heading-desktop-cli-4": {
+        "canonical": "需要你审批的操作",
+        "legacy": [
+          "heading-desktop-cli-4"
+        ]
+      },
+      "heading-desktop-cli-5": {
+        "canonical": "沉淀为-automations-的场景",
+        "legacy": [
+          "heading-desktop-cli-5"
+        ]
+      },
+      "heading-desktop-cli-6": {
+        "canonical": "不要混用得太乱",
+        "legacy": [
+          "heading-desktop-cli-6"
+        ]
+      },
+      "heading-desktop-cli-7": {
+        "canonical": "desktop-里的六个常用操作",
+        "legacy": [
+          "heading-desktop-cli-7"
+        ]
+      },
+      "heading-desktop-cli-8": {
+        "canonical": "1.-打开任务线程",
+        "legacy": [
+          "heading-desktop-cli-8"
+        ]
+      },
+      "heading-desktop-cli-9": {
+        "canonical": "2.-让-codex-读上下文",
+        "legacy": [
+          "heading-desktop-cli-9"
+        ]
+      }
+    },
+    "engineering.html": {
+      "heading-engineering-1": {
+        "canonical": "从-idea-到-task-receipt",
+        "legacy": [
+          "heading-engineering-1"
+        ]
+      },
+      "heading-engineering-10": {
+        "canonical": "独立-lanes-并行",
+        "legacy": [
+          "heading-engineering-10"
+        ]
+      },
+      "heading-engineering-11": {
+        "canonical": "更新基线",
+        "legacy": [
+          "heading-engineering-11"
+        ]
+      },
+      "heading-engineering-12": {
+        "canonical": "集成门",
+        "legacy": [
+          "heading-engineering-12"
+        ]
+      },
+      "heading-engineering-13": {
+        "canonical": "可并行示例",
+        "legacy": [
+          "heading-engineering-13"
+        ]
+      },
+      "heading-engineering-14": {
+        "canonical": "失败停止",
+        "legacy": [
+          "heading-engineering-14"
+        ]
+      },
+      "heading-engineering-15": {
+        "canonical": "独立-reviewer-合同",
+        "legacy": [
+          "heading-engineering-15"
+        ]
+      },
+      "heading-engineering-16": {
+        "canonical": "真实实例-历史复合案例",
+        "legacy": [
+          "heading-engineering-16"
+        ]
+      },
+      "heading-engineering-17": {
+        "canonical": "请求",
+        "legacy": [
+          "heading-engineering-17"
+        ]
+      },
+      "heading-engineering-18": {
+        "canonical": "先读",
+        "legacy": [
+          "heading-engineering-18"
+        ]
+      },
+      "heading-engineering-19": {
+        "canonical": "角色",
+        "legacy": [
+          "heading-engineering-19"
+        ]
+      },
+      "heading-engineering-2": {
+        "canonical": "双层角色与权限",
+        "legacy": [
+          "heading-engineering-2"
+        ]
+      },
+      "heading-engineering-20": {
+        "canonical": "边界-文件",
+        "legacy": [
+          "heading-engineering-20"
+        ]
+      },
+      "heading-engineering-21": {
+        "canonical": "脏主保护",
+        "legacy": [
+          "heading-engineering-21"
+        ]
+      },
+      "heading-engineering-22": {
+        "canonical": "完整-goal",
+        "legacy": [
+          "heading-engineering-22"
+        ]
+      },
+      "heading-engineering-23": {
+        "canonical": "分工",
+        "legacy": [
+          "heading-engineering-23"
+        ]
+      },
+      "heading-engineering-24": {
+        "canonical": "验证证据",
+        "legacy": [
+          "heading-engineering-24"
+        ]
+      },
+      "heading-engineering-25": {
+        "canonical": "独立-review",
+        "legacy": [
+          "heading-engineering-25"
+        ]
+      },
+      "heading-engineering-26": {
+        "canonical": "重要恢复",
+        "legacy": [
+          "heading-engineering-26"
+        ]
+      },
+      "heading-engineering-27": {
+        "canonical": "结果-receipt",
+        "legacy": [
+          "heading-engineering-27"
+        ]
+      },
+      "heading-engineering-28": {
+        "canonical": "失败停止-2",
+        "legacy": [
+          "heading-engineering-28"
+        ]
+      },
+      "heading-engineering-29": {
+        "canonical": "来源分类",
+        "legacy": [
+          "heading-engineering-29"
+        ]
+      },
+      "heading-engineering-3": {
+        "canonical": "a2-用户-产品负责人",
+        "legacy": [
+          "heading-engineering-3"
+        ]
+      },
+      "heading-engineering-4": {
+        "canonical": "a3-主线程-编排者",
+        "legacy": [
+          "heading-engineering-4"
+        ]
+      },
+      "heading-engineering-5": {
+        "canonical": "a4-subagent-独立-reviewer",
+        "legacy": [
+          "heading-engineering-5"
+        ]
+      },
+      "heading-engineering-6": {
+        "canonical": "外部写入-grant",
+        "legacy": [
+          "heading-engineering-6"
+        ]
+      },
+      "heading-engineering-7": {
+        "canonical": "自动失效",
+        "legacy": [
+          "heading-engineering-7"
+        ]
+      },
+      "heading-engineering-8": {
+        "canonical": "按依赖和写域组织并行",
+        "legacy": [
+          "heading-engineering-8"
+        ]
+      },
+      "heading-engineering-9": {
+        "canonical": "contract-lane-串行",
+        "legacy": [
+          "heading-engineering-9"
+        ]
+      }
+    },
+    "goal-entry.html": {
+      "heading-goal-entry-1": {
+        "canonical": "定位-自开发本机扩展",
+        "legacy": [
+          "heading-goal-entry-1"
+        ]
+      },
+      "heading-goal-entry-2": {
+        "canonical": "为什么说效果一般",
+        "legacy": [
+          "heading-goal-entry-2"
+        ]
+      },
+      "heading-goal-entry-3": {
+        "canonical": "什么时候可以用",
+        "legacy": [
+          "heading-goal-entry-3"
+        ]
+      },
+      "heading-goal-entry-4": {
+        "canonical": "可复制示例",
+        "legacy": [
+          "heading-goal-entry-4"
+        ]
+      },
+      "heading-goal-entry-5": {
+        "canonical": "真实实例-本指南如何标注它",
+        "legacy": [
+          "heading-goal-entry-5"
+        ]
+      }
+    },
+    "goal.html": {
+      "heading-goal-1": {
+        "canonical": "它是什么",
+        "legacy": [
+          "heading-goal-1"
+        ]
+      },
+      "heading-goal-10": {
+        "canonical": "stop-conditions",
+        "legacy": [
+          "heading-goal-10"
+        ]
+      },
+      "heading-goal-11": {
+        "canonical": "三种常见-goal-模板",
+        "legacy": [
+          "heading-goal-11"
+        ]
+      },
+      "heading-goal-12": {
+        "canonical": "真实实例-历史复合案例",
+        "legacy": [
+          "heading-goal-12"
+        ]
+      },
+      "heading-goal-13": {
+        "canonical": "验证与重要恢复",
+        "legacy": [
+          "heading-goal-13"
+        ]
+      },
+      "heading-goal-14": {
+        "canonical": "结果与回执",
+        "legacy": [
+          "heading-goal-14"
+        ]
+      },
+      "heading-goal-2": {
+        "canonical": "什么时候用-不用",
+        "legacy": [
+          "heading-goal-2"
+        ]
+      },
+      "heading-goal-3": {
+        "canonical": "可复制示例",
+        "legacy": [
+          "heading-goal-3"
+        ]
+      },
+      "heading-goal-4": {
+        "canonical": "一个好-goal-必须包含什么",
+        "legacy": [
+          "heading-goal-4"
+        ]
+      },
+      "heading-goal-5": {
+        "canonical": "objective",
+        "legacy": [
+          "heading-goal-5"
+        ]
+      },
+      "heading-goal-6": {
+        "canonical": "scope",
+        "legacy": [
+          "heading-goal-6"
+        ]
+      },
+      "heading-goal-7": {
+        "canonical": "acceptance",
+        "legacy": [
+          "heading-goal-7"
+        ]
+      },
+      "heading-goal-8": {
+        "canonical": "validation",
+        "legacy": [
+          "heading-goal-8"
+        ]
+      },
+      "heading-goal-9": {
+        "canonical": "artifacts",
+        "legacy": [
+          "heading-goal-9"
+        ]
+      }
+    },
+    "index.html": {
+      "heading-index-1": {
+        "canonical": "选择你的路径",
+        "legacy": [
+          "heading-index-1"
+        ]
+      },
+      "heading-index-10": {
+        "canonical": "codex-是什么",
+        "legacy": [
+          "heading-index-10"
+        ]
+      },
+      "heading-index-11": {
+        "canonical": "权限与安全",
+        "legacy": [
+          "heading-index-11"
+        ]
+      },
+      "heading-index-12": {
+        "canonical": "agents.md",
+        "legacy": [
+          "heading-index-12"
+        ]
+      },
+      "heading-index-13": {
+        "canonical": "skills",
+        "legacy": [
+          "heading-index-13"
+        ]
+      },
+      "heading-index-14": {
+        "canonical": "mcp-plugins",
+        "legacy": [
+          "heading-index-14"
+        ]
+      },
+      "heading-index-15": {
+        "canonical": "subagents",
+        "legacy": [
+          "heading-index-15"
+        ]
+      },
+      "heading-index-16": {
+        "canonical": "goal",
+        "legacy": [
+          "heading-index-16"
+        ]
+      },
+      "heading-index-17": {
+        "canonical": "每页都有真实实例",
+        "legacy": [
+          "heading-index-17"
+        ]
+      },
+      "heading-index-18": {
+        "canonical": "日常实例",
+        "legacy": [
+          "heading-index-18"
+        ]
+      },
+      "heading-index-19": {
+        "canonical": "插件实例",
+        "legacy": [
+          "heading-index-19"
+        ]
+      },
+      "heading-index-2": {
+        "canonical": "零基础-安装到第一个任务",
+        "legacy": [
+          "heading-index-2"
+        ]
+      },
+      "heading-index-20": {
+        "canonical": "skills-仓库实例",
+        "legacy": [
+          "heading-index-20"
+        ]
+      },
+      "heading-index-21": {
+        "canonical": "权限实例",
+        "legacy": [
+          "heading-index-21"
+        ]
+      },
+      "heading-index-22": {
+        "canonical": "自动化实例",
+        "legacy": [
+          "heading-index-22"
+        ]
+      },
+      "heading-index-3": {
+        "canonical": "日常协作-桌面版工作流",
+        "legacy": [
+          "heading-index-3"
+        ]
+      },
+      "heading-index-4": {
+        "canonical": "进阶用户-任务升级路线",
+        "legacy": [
+          "heading-index-4"
+        ]
+      },
+      "heading-index-5": {
+        "canonical": "skills-仓库怎么选",
+        "legacy": [
+          "heading-index-5"
+        ]
+      },
+      "heading-index-6": {
+        "canonical": "工程-学术场景",
+        "legacy": [
+          "heading-index-6"
+        ]
+      },
+      "heading-index-7": {
+        "canonical": "维护者-资料和发布边界",
+        "legacy": [
+          "heading-index-7"
+        ]
+      },
+      "heading-index-8": {
+        "canonical": "30-秒选择入口",
+        "legacy": [
+          "heading-index-8"
+        ]
+      },
+      "heading-index-9": {
+        "canonical": "需要时再查概念",
+        "legacy": [
+          "heading-index-9"
+        ]
+      }
+    },
+    "install-desktop.html": {
+      "heading-install-desktop-1": {
+        "canonical": "安装前先确认三件事",
+        "legacy": [
+          "heading-install-desktop-1"
+        ]
+      },
+      "heading-install-desktop-10": {
+        "canonical": "看到权限请求时怎么判断",
+        "legacy": [
+          "heading-install-desktop-10"
+        ]
+      },
+      "heading-install-desktop-11": {
+        "canonical": "本地服务",
+        "legacy": [
+          "heading-install-desktop-11"
+        ]
+      },
+      "heading-install-desktop-12": {
+        "canonical": "联网查询",
+        "legacy": [
+          "heading-install-desktop-12"
+        ]
+      },
+      "heading-install-desktop-13": {
+        "canonical": "安装依赖",
+        "legacy": [
+          "heading-install-desktop-13"
+        ]
+      },
+      "heading-install-desktop-14": {
+        "canonical": "git-push",
+        "legacy": [
+          "heading-install-desktop-14"
+        ]
+      },
+      "heading-install-desktop-15": {
+        "canonical": "真实实例-本指南的-desktop-安装页",
+        "legacy": [
+          "heading-install-desktop-15"
+        ]
+      },
+      "heading-install-desktop-2": {
+        "canonical": "官方入口",
+        "legacy": [
+          "heading-install-desktop-2"
+        ]
+      },
+      "heading-install-desktop-3": {
+        "canonical": "账号和组织",
+        "legacy": [
+          "heading-install-desktop-3"
+        ]
+      },
+      "heading-install-desktop-4": {
+        "canonical": "仓库准备",
+        "legacy": [
+          "heading-install-desktop-4"
+        ]
+      },
+      "heading-install-desktop-5": {
+        "canonical": "安装到第一个任务",
+        "legacy": [
+          "heading-install-desktop-5"
+        ]
+      },
+      "heading-install-desktop-6": {
+        "canonical": "第一个任务怎么写",
+        "legacy": [
+          "heading-install-desktop-6"
+        ]
+      },
+      "heading-install-desktop-7": {
+        "canonical": "只读入门",
+        "legacy": [
+          "heading-install-desktop-7"
+        ]
+      },
+      "heading-install-desktop-8": {
+        "canonical": "小改动入门",
+        "legacy": [
+          "heading-install-desktop-8"
+        ]
+      },
+      "heading-install-desktop-9": {
+        "canonical": "第一次不要这样写",
+        "legacy": [
+          "heading-install-desktop-9"
+        ]
+      }
+    },
+    "mcp.html": {
+      "heading-mcp-1": {
+        "canonical": "它是什么",
+        "legacy": [
+          "heading-mcp-1"
+        ]
+      },
+      "heading-mcp-10": {
+        "canonical": "设计与协作工具",
+        "legacy": [
+          "heading-mcp-10"
+        ]
+      },
+      "heading-mcp-11": {
+        "canonical": "命令与执行接口",
+        "legacy": [
+          "heading-mcp-11"
+        ]
+      },
+      "heading-mcp-12": {
+        "canonical": "热点功能怎么选",
+        "legacy": [
+          "heading-mcp-12"
+        ]
+      },
+      "heading-mcp-13": {
+        "canonical": "你要写代码但不想查网页",
+        "legacy": [
+          "heading-mcp-13"
+        ]
+      },
+      "heading-mcp-14": {
+        "canonical": "你要做研究复核",
+        "legacy": [
+          "heading-mcp-14"
+        ]
+      },
+      "heading-mcp-15": {
+        "canonical": "你要修复部署问题",
+        "legacy": [
+          "heading-mcp-15"
+        ]
+      },
+      "heading-mcp-16": {
+        "canonical": "最容易踩雷的误区",
+        "legacy": [
+          "heading-mcp-16"
+        ]
+      },
+      "heading-mcp-17": {
+        "canonical": "mcp-适合解决什么问题",
+        "legacy": [
+          "heading-mcp-17"
+        ]
+      },
+      "heading-mcp-18": {
+        "canonical": "github",
+        "legacy": [
+          "heading-mcp-18"
+        ]
+      },
+      "heading-mcp-19": {
+        "canonical": "设计工具",
+        "legacy": [
+          "heading-mcp-19"
+        ]
+      },
+      "heading-mcp-2": {
+        "canonical": "什么时候用-不用",
+        "legacy": [
+          "heading-mcp-2"
+        ]
+      },
+      "heading-mcp-20": {
+        "canonical": "数据和文档",
+        "legacy": [
+          "heading-mcp-20"
+        ]
+      },
+      "heading-mcp-21": {
+        "canonical": "使用-mcp-前的-5-个问题",
+        "legacy": [
+          "heading-mcp-21"
+        ]
+      },
+      "heading-mcp-22": {
+        "canonical": "mcp-安全调用模板",
+        "legacy": [
+          "heading-mcp-22"
+        ]
+      },
+      "heading-mcp-23": {
+        "canonical": "真实实例-只读核对-pages-状态",
+        "legacy": [
+          "heading-mcp-23"
+        ]
+      },
+      "heading-mcp-3": {
+        "canonical": "可复制示例",
+        "legacy": [
+          "heading-mcp-3"
+        ]
+      },
+      "heading-mcp-4": {
+        "canonical": "补充内容",
+        "legacy": [
+          "heading-mcp-4"
+        ]
+      },
+      "heading-mcp-5": {
+        "canonical": "最近较火的-mcp-能力",
+        "legacy": [
+          "heading-mcp-5"
+        ]
+      },
+      "heading-mcp-6": {
+        "canonical": "github-全链路",
+        "legacy": [
+          "heading-mcp-6"
+        ]
+      },
+      "heading-mcp-7": {
+        "canonical": "浏览器自动化-playwright",
+        "legacy": [
+          "heading-mcp-7"
+        ]
+      },
+      "heading-mcp-8": {
+        "canonical": "搜索与情报聚合",
+        "legacy": [
+          "heading-mcp-8"
+        ]
+      },
+      "heading-mcp-9": {
+        "canonical": "数据库与知识库查询",
+        "legacy": [
+          "heading-mcp-9"
+        ]
+      }
+    },
+    "permissions.html": {
+      "heading-permissions-1": {
+        "canonical": "它是什么",
+        "legacy": [
+          "heading-permissions-1"
+        ]
+      },
+      "heading-permissions-10": {
+        "canonical": "补充内容",
+        "legacy": [
+          "heading-permissions-10"
+        ]
+      },
+      "heading-permissions-11": {
+        "canonical": "审批决策矩阵",
+        "legacy": [
+          "heading-permissions-11"
+        ]
+      },
+      "heading-permissions-12": {
+        "canonical": "通常可以批准",
+        "legacy": [
+          "heading-permissions-12"
+        ]
+      },
+      "heading-permissions-13": {
+        "canonical": "需要追问",
+        "legacy": [
+          "heading-permissions-13"
+        ]
+      },
+      "heading-permissions-14": {
+        "canonical": "默认拒绝",
+        "legacy": [
+          "heading-permissions-14"
+        ]
+      },
+      "heading-permissions-15": {
+        "canonical": "你可以这样要求-codex-申请权限",
+        "legacy": [
+          "heading-permissions-15"
+        ]
+      },
+      "heading-permissions-16": {
+        "canonical": "secret-和生产数据规则",
+        "legacy": [
+          "heading-permissions-16"
+        ]
+      },
+      "heading-permissions-17": {
+        "canonical": "真实实例-验证-github-pages-发布",
+        "legacy": [
+          "heading-permissions-17"
+        ]
+      },
+      "heading-permissions-2": {
+        "canonical": "codex-desktop-权限等级一览",
+        "legacy": [
+          "heading-permissions-2"
+        ]
+      },
+      "heading-permissions-3": {
+        "canonical": "read-only",
+        "legacy": [
+          "heading-permissions-3"
+        ]
+      },
+      "heading-permissions-4": {
+        "canonical": "workspace-write",
+        "legacy": [
+          "heading-permissions-4"
+        ]
+      },
+      "heading-permissions-5": {
+        "canonical": "auto-建议默认",
+        "legacy": [
+          "heading-permissions-5"
+        ]
+      },
+      "heading-permissions-6": {
+        "canonical": "auto-review",
+        "legacy": [
+          "heading-permissions-6"
+        ]
+      },
+      "heading-permissions-7": {
+        "canonical": "danger",
+        "legacy": [
+          "heading-permissions-7"
+        ]
+      },
+      "heading-permissions-8": {
+        "canonical": "什么时候批准",
+        "legacy": [
+          "heading-permissions-8"
+        ]
+      },
+      "heading-permissions-9": {
+        "canonical": "可复制示例",
+        "legacy": [
+          "heading-permissions-9"
+        ]
+      }
+    },
+    "research.html": {
+      "heading-research-1": {
+        "canonical": "从-idea-到可审查证据",
+        "legacy": [
+          "heading-research-1"
+        ]
+      },
+      "heading-research-10": {
+        "canonical": "idea_report.md",
+        "legacy": [
+          "heading-research-10"
+        ]
+      },
+      "heading-research-11": {
+        "canonical": "实验日志",
+        "legacy": [
+          "heading-research-11"
+        ]
+      },
+      "heading-research-12": {
+        "canonical": "auto_review.md",
+        "legacy": [
+          "heading-research-12"
+        ]
+      },
+      "heading-research-13": {
+        "canonical": "图表索引",
+        "legacy": [
+          "heading-research-13"
+        ]
+      },
+      "heading-research-14": {
+        "canonical": "claim-ledger",
+        "legacy": [
+          "heading-research-14"
+        ]
+      },
+      "heading-research-15": {
+        "canonical": "可复制学术提示词",
+        "legacy": [
+          "heading-research-15"
+        ]
+      },
+      "heading-research-16": {
+        "canonical": "启动-research-pipeline",
+        "legacy": [
+          "heading-research-16"
+        ]
+      },
+      "heading-research-17": {
+        "canonical": "严格审稿",
+        "legacy": [
+          "heading-research-17"
+        ]
+      },
+      "heading-research-18": {
+        "canonical": "进入和退出条件",
+        "legacy": [
+          "heading-research-18"
+        ]
+      },
+      "heading-research-19": {
+        "canonical": "进入条件",
+        "legacy": [
+          "heading-research-19"
+        ]
+      },
+      "heading-research-2": {
+        "canonical": "research-brief",
+        "legacy": [
+          "heading-research-2"
+        ]
+      },
+      "heading-research-20": {
+        "canonical": "推进条件",
+        "legacy": [
+          "heading-research-20"
+        ]
+      },
+      "heading-research-21": {
+        "canonical": "退出条件",
+        "legacy": [
+          "heading-research-21"
+        ]
+      },
+      "heading-research-22": {
+        "canonical": "stop-conditions",
+        "legacy": [
+          "heading-research-22"
+        ]
+      },
+      "heading-research-23": {
+        "canonical": "写作前检查",
+        "legacy": [
+          "heading-research-23"
+        ]
+      },
+      "heading-research-24": {
+        "canonical": "真实实例-长上下文-kv-cache-pruning-idea",
+        "legacy": [
+          "heading-research-24"
+        ]
+      },
+      "heading-research-25": {
+        "canonical": "输入",
+        "legacy": [
+          "heading-research-25"
+        ]
+      },
+      "heading-research-26": {
+        "canonical": "先读",
+        "legacy": [
+          "heading-research-26"
+        ]
+      },
+      "heading-research-27": {
+        "canonical": "应动文件",
+        "legacy": [
+          "heading-research-27"
+        ]
+      },
+      "heading-research-28": {
+        "canonical": "验证",
+        "legacy": [
+          "heading-research-28"
+        ]
+      },
+      "heading-research-29": {
+        "canonical": "最终回答",
+        "legacy": [
+          "heading-research-29"
+        ]
+      },
+      "heading-research-3": {
+        "canonical": "closest-work",
+        "legacy": [
+          "heading-research-3"
+        ]
+      },
+      "heading-research-30": {
+        "canonical": "失败停止",
+        "legacy": [
+          "heading-research-30"
+        ]
+      },
+      "heading-research-4": {
+        "canonical": "novelty-gate",
+        "legacy": [
+          "heading-research-4"
+        ]
+      },
+      "heading-research-5": {
+        "canonical": "experiment-plan",
+        "legacy": [
+          "heading-research-5"
+        ]
+      },
+      "heading-research-6": {
+        "canonical": "auto-review",
+        "legacy": [
+          "heading-research-6"
+        ]
+      },
+      "heading-research-7": {
+        "canonical": "writing-boundary",
+        "legacy": [
+          "heading-research-7"
+        ]
+      },
+      "heading-research-8": {
+        "canonical": "每个阶段应该产出什么",
+        "legacy": [
+          "heading-research-8"
+        ]
+      },
+      "heading-research-9": {
+        "canonical": "research_brief.md",
+        "legacy": [
+          "heading-research-9"
+        ]
+      }
+    },
+    "resources.html": {
+      "heading-resources-1": {
+        "canonical": "官方资料优先",
+        "legacy": [
+          "heading-resources-1"
+        ]
+      },
+      "heading-resources-10": {
+        "canonical": "agents.md",
+        "legacy": [
+          "heading-resources-10"
+        ]
+      },
+      "heading-resources-11": {
+        "canonical": "skills",
+        "legacy": [
+          "heading-resources-11"
+        ]
+      },
+      "heading-resources-12": {
+        "canonical": "subagents",
+        "legacy": [
+          "heading-resources-12"
+        ]
+      },
+      "heading-resources-13": {
+        "canonical": "workflows",
+        "legacy": [
+          "heading-resources-13"
+        ]
+      },
+      "heading-resources-14": {
+        "canonical": "worktrees",
+        "legacy": [
+          "heading-resources-14"
+        ]
+      },
+      "heading-resources-15": {
+        "canonical": "github-integration",
+        "legacy": [
+          "heading-resources-15"
+        ]
+      },
+      "heading-resources-16": {
+        "canonical": "review",
+        "legacy": [
+          "heading-resources-16"
+        ]
+      },
+      "heading-resources-17": {
+        "canonical": "本指南内部资料",
+        "legacy": [
+          "heading-resources-17"
+        ]
+      },
+      "heading-resources-18": {
+        "canonical": "安装页",
+        "legacy": [
+          "heading-resources-18"
+        ]
+      },
+      "heading-resources-19": {
+        "canonical": "readme",
+        "legacy": [
+          "heading-resources-19"
+        ]
+      },
+      "heading-resources-2": {
+        "canonical": "codex-101",
+        "legacy": [
+          "heading-resources-2"
+        ]
+      },
+      "heading-resources-20": {
+        "canonical": "context",
+        "legacy": [
+          "heading-resources-20"
+        ]
+      },
+      "heading-resources-21": {
+        "canonical": "历史流程图",
+        "legacy": [
+          "heading-resources-21"
+        ]
+      },
+      "heading-resources-22": {
+        "canonical": "高-stars-skills-仓库介绍",
+        "legacy": [
+          "heading-resources-22"
+        ]
+      },
+      "heading-resources-23": {
+        "canonical": "compound-engineering-plugin",
+        "legacy": [
+          "heading-resources-23"
+        ]
+      },
+      "heading-resources-24": {
+        "canonical": "goal-entry-本机实验",
+        "legacy": [
+          "heading-resources-24"
+        ]
+      },
+      "heading-resources-25": {
+        "canonical": "真实实例-资料如何进入页面内容",
+        "legacy": [
+          "heading-resources-25"
+        ]
+      },
+      "heading-resources-3": {
+        "canonical": "best-practices",
+        "legacy": [
+          "heading-resources-3"
+        ]
+      },
+      "heading-resources-4": {
+        "canonical": "codex-desktop",
+        "legacy": [
+          "heading-resources-4"
+        ]
+      },
+      "heading-resources-5": {
+        "canonical": "app-features",
+        "legacy": [
+          "heading-resources-5"
+        ]
+      },
+      "heading-resources-6": {
+        "canonical": "in-app-browser",
+        "legacy": [
+          "heading-resources-6"
+        ]
+      },
+      "heading-resources-7": {
+        "canonical": "automations",
+        "legacy": [
+          "heading-resources-7"
+        ]
+      },
+      "heading-resources-8": {
+        "canonical": "security",
+        "legacy": [
+          "heading-resources-8"
+        ]
+      },
+      "heading-resources-9": {
+        "canonical": "customization",
+        "legacy": [
+          "heading-resources-9"
+        ]
+      }
+    },
+    "skills-repositories.html": {
+      "heading-skills-repositories-1": {
+        "canonical": "先按任务-fit-选仓库",
+        "legacy": [
+          "heading-skills-repositories-1"
+        ]
+      },
+      "heading-skills-repositories-10": {
+        "canonical": "能力-2",
+        "legacy": [
+          "heading-skills-repositories-10"
+        ]
+      },
+      "heading-skills-repositories-11": {
+        "canonical": "最适合-2",
+        "legacy": [
+          "heading-skills-repositories-11"
+        ]
+      },
+      "heading-skills-repositories-12": {
+        "canonical": "启用路径",
+        "legacy": [
+          "heading-skills-repositories-12"
+        ]
+      },
+      "heading-skills-repositories-13": {
+        "canonical": "案例-先建立上下文-再-grill",
+        "legacy": [
+          "heading-skills-repositories-13"
+        ]
+      },
+      "heading-skills-repositories-14": {
+        "canonical": "academic-research-skills-codex",
+        "legacy": [
+          "heading-skills-repositories-14"
+        ]
+      },
+      "heading-skills-repositories-15": {
+        "canonical": "能力-3",
+        "legacy": [
+          "heading-skills-repositories-15"
+        ]
+      },
+      "heading-skills-repositories-16": {
+        "canonical": "最适合-3",
+        "legacy": [
+          "heading-skills-repositories-16"
+        ]
+      },
+      "heading-skills-repositories-17": {
+        "canonical": "安装路径-2",
+        "legacy": [
+          "heading-skills-repositories-17"
+        ]
+      },
+      "heading-skills-repositories-18": {
+        "canonical": "场景-先做-novelty-与最小实验矩阵",
+        "legacy": [
+          "heading-skills-repositories-18"
+        ]
+      },
+      "heading-skills-repositories-19": {
+        "canonical": "aris-auto-claude-code-research-in-sleep",
+        "legacy": [
+          "heading-skills-repositories-19"
+        ]
+      },
+      "heading-skills-repositories-2": {
+        "canonical": "30-秒选择表",
+        "legacy": [
+          "heading-skills-repositories-2"
+        ]
+      },
+      "heading-skills-repositories-20": {
+        "canonical": "能力-4",
+        "legacy": [
+          "heading-skills-repositories-20"
+        ]
+      },
+      "heading-skills-repositories-21": {
+        "canonical": "最适合-4",
+        "legacy": [
+          "heading-skills-repositories-21"
+        ]
+      },
+      "heading-skills-repositories-22": {
+        "canonical": "启用路径-2",
+        "legacy": [
+          "heading-skills-repositories-22"
+        ]
+      },
+      "heading-skills-repositories-23": {
+        "canonical": "场景-夜间循环保留人工闸门",
+        "legacy": [
+          "heading-skills-repositories-23"
+        ]
+      },
+      "heading-skills-repositories-24": {
+        "canonical": "高级用户-按阶段组合-不要一锅端",
+        "legacy": [
+          "heading-skills-repositories-24"
+        ]
+      },
+      "heading-skills-repositories-25": {
+        "canonical": "使用边界",
+        "legacy": [
+          "heading-skills-repositories-25"
+        ]
+      },
+      "heading-skills-repositories-26": {
+        "canonical": "真实实例-历史案例",
+        "legacy": [
+          "heading-skills-repositories-26"
+        ]
+      },
+      "heading-skills-repositories-27": {
+        "canonical": "输入",
+        "legacy": [
+          "heading-skills-repositories-27"
+        ]
+      },
+      "heading-skills-repositories-28": {
+        "canonical": "先读",
+        "legacy": [
+          "heading-skills-repositories-28"
+        ]
+      },
+      "heading-skills-repositories-29": {
+        "canonical": "应动文件",
+        "legacy": [
+          "heading-skills-repositories-29"
+        ]
+      },
+      "heading-skills-repositories-3": {
+        "canonical": "先看案例证据等级",
+        "legacy": [
+          "heading-skills-repositories-3"
+        ]
+      },
+      "heading-skills-repositories-30": {
+        "canonical": "验证",
+        "legacy": [
+          "heading-skills-repositories-30"
+        ]
+      },
+      "heading-skills-repositories-31": {
+        "canonical": "最终回答",
+        "legacy": [
+          "heading-skills-repositories-31"
+        ]
+      },
+      "heading-skills-repositories-32": {
+        "canonical": "失败停止",
+        "legacy": [
+          "heading-skills-repositories-32"
+        ]
+      },
+      "heading-skills-repositories-4": {
+        "canonical": "compound-engineering",
+        "legacy": [
+          "heading-skills-repositories-4"
+        ]
+      },
+      "heading-skills-repositories-5": {
+        "canonical": "能力",
+        "legacy": [
+          "heading-skills-repositories-5"
+        ]
+      },
+      "heading-skills-repositories-6": {
+        "canonical": "最适合",
+        "legacy": [
+          "heading-skills-repositories-6"
+        ]
+      },
+      "heading-skills-repositories-7": {
+        "canonical": "安装路径",
+        "legacy": [
+          "heading-skills-repositories-7"
+        ]
+      },
+      "heading-skills-repositories-8": {
+        "canonical": "案例-从需求到-pr-1",
+        "legacy": [
+          "heading-skills-repositories-8"
+        ]
+      },
+      "heading-skills-repositories-9": {
+        "canonical": "mattpocock-skills",
+        "legacy": [
+          "heading-skills-repositories-9"
+        ]
+      }
+    },
+    "skills.html": {
+      "heading-skills-1": {
+        "canonical": "它是什么",
+        "legacy": [
+          "heading-skills-1"
+        ]
+      },
+      "heading-skills-10": {
+        "canonical": "先手写-prompt",
+        "legacy": [
+          "heading-skills-10"
+        ]
+      },
+      "heading-skills-11": {
+        "canonical": "提取稳定步骤",
+        "legacy": [
+          "heading-skills-11"
+        ]
+      },
+      "heading-skills-12": {
+        "canonical": "加入验证",
+        "legacy": [
+          "heading-skills-12"
+        ]
+      },
+      "heading-skills-13": {
+        "canonical": "维护版本",
+        "legacy": [
+          "heading-skills-13"
+        ]
+      },
+      "heading-skills-14": {
+        "canonical": "一个实用-skill-模板",
+        "legacy": [
+          "heading-skills-14"
+        ]
+      },
+      "heading-skills-15": {
+        "canonical": "真实实例-区分插件和本机实验",
+        "legacy": [
+          "heading-skills-15"
+        ]
+      },
+      "heading-skills-2": {
+        "canonical": "什么时候用-不用",
+        "legacy": [
+          "heading-skills-2"
+        ]
+      },
+      "heading-skills-3": {
+        "canonical": "可复制示例",
+        "legacy": [
+          "heading-skills-3"
+        ]
+      },
+      "heading-skills-4": {
+        "canonical": "skill-应该沉淀什么",
+        "legacy": [
+          "heading-skills-4"
+        ]
+      },
+      "heading-skills-5": {
+        "canonical": "触发条件",
+        "legacy": [
+          "heading-skills-5"
+        ]
+      },
+      "heading-skills-6": {
+        "canonical": "上下文读取",
+        "legacy": [
+          "heading-skills-6"
+        ]
+      },
+      "heading-skills-7": {
+        "canonical": "执行流程",
+        "legacy": [
+          "heading-skills-7"
+        ]
+      },
+      "heading-skills-8": {
+        "canonical": "输出合同",
+        "legacy": [
+          "heading-skills-8"
+        ]
+      },
+      "heading-skills-9": {
+        "canonical": "从-prompt-到-skill-的生命周期",
+        "legacy": [
+          "heading-skills-9"
+        ]
+      }
+    },
+    "subagents.html": {
+      "heading-subagents-1": {
+        "canonical": "它是什么",
+        "legacy": [
+          "heading-subagents-1"
+        ]
+      },
+      "heading-subagents-10": {
+        "canonical": "整合",
+        "legacy": [
+          "heading-subagents-10"
+        ]
+      },
+      "heading-subagents-11": {
+        "canonical": "推荐和不推荐的拆法",
+        "legacy": [
+          "heading-subagents-11"
+        ]
+      },
+      "heading-subagents-12": {
+        "canonical": "推荐-并行只读审查",
+        "legacy": [
+          "heading-subagents-12"
+        ]
+      },
+      "heading-subagents-13": {
+        "canonical": "推荐-互不重叠实现",
+        "legacy": [
+          "heading-subagents-13"
+        ]
+      },
+      "heading-subagents-14": {
+        "canonical": "不推荐-共享核心文件",
+        "legacy": [
+          "heading-subagents-14"
+        ]
+      },
+      "heading-subagents-15": {
+        "canonical": "不推荐-外部写操作",
+        "legacy": [
+          "heading-subagents-15"
+        ]
+      },
+      "heading-subagents-16": {
+        "canonical": "bad-split-repaired-split",
+        "legacy": [
+          "heading-subagents-16"
+        ]
+      },
+      "heading-subagents-17": {
+        "canonical": "真实实例-历史复合案例",
+        "legacy": [
+          "heading-subagents-17"
+        ]
+      },
+      "heading-subagents-2": {
+        "canonical": "什么时候用-不用",
+        "legacy": [
+          "heading-subagents-2"
+        ]
+      },
+      "heading-subagents-3": {
+        "canonical": "可复制示例",
+        "legacy": [
+          "heading-subagents-3"
+        ]
+      },
+      "heading-subagents-4": {
+        "canonical": "worktree-subagent-目录隔离和责任隔离",
+        "legacy": [
+          "heading-subagents-4"
+        ]
+      },
+      "heading-subagents-7": {
+        "canonical": "subagent-任务合同",
+        "legacy": [
+          "heading-subagents-7"
+        ]
+      },
+      "heading-subagents-8": {
+        "canonical": "输入",
+        "legacy": [
+          "heading-subagents-8"
+        ]
+      },
+      "heading-subagents-9": {
+        "canonical": "输出",
+        "legacy": [
+          "heading-subagents-9"
+        ]
+      }
+    },
+    "worktrees.html": {
+      "heading-worktrees-1": {
+        "canonical": "worktree-是什么",
+        "legacy": [
+          "heading-worktrees-1"
+        ]
+      },
+      "heading-worktrees-10": {
+        "canonical": "同一分支不能多处-checkout",
+        "legacy": [
+          "heading-worktrees-10"
+        ]
+      },
+      "heading-worktrees-11": {
+        "canonical": "ignored-文件与-worktreeinclude",
+        "legacy": [
+          "heading-worktrees-11"
+        ]
+      },
+      "heading-worktrees-12": {
+        "canonical": "恢复与清理",
+        "legacy": [
+          "heading-worktrees-12"
+        ]
+      },
+      "heading-worktrees-13": {
+        "canonical": "worktree-与-subagent-的区别",
+        "legacy": [
+          "heading-worktrees-13"
+        ]
+      },
+      "heading-worktrees-14": {
+        "canonical": "可复制示例",
+        "legacy": [
+          "heading-worktrees-14"
+        ]
+      },
+      "heading-worktrees-15": {
+        "canonical": "真实实例-并行页面修复",
+        "legacy": [
+          "heading-worktrees-15"
+        ]
+      },
+      "heading-worktrees-2": {
+        "canonical": "什么时候用-不用",
+        "legacy": [
+          "heading-worktrees-2"
+        ]
+      },
+      "heading-worktrees-3": {
+        "canonical": "在-desktop-中创建",
+        "legacy": [
+          "heading-worktrees-3"
+        ]
+      },
+      "heading-worktrees-4": {
+        "canonical": "选择-worktree",
+        "legacy": [
+          "heading-worktrees-4"
+        ]
+      },
+      "heading-worktrees-5": {
+        "canonical": "选择起始分支",
+        "legacy": [
+          "heading-worktrees-5"
+        ]
+      },
+      "heading-worktrees-6": {
+        "canonical": "提交独立任务",
+        "legacy": [
+          "heading-worktrees-6"
+        ]
+      },
+      "heading-worktrees-7": {
+        "canonical": "决定继续位置",
+        "legacy": [
+          "heading-worktrees-7"
+        ]
+      },
+      "heading-worktrees-8": {
+        "canonical": "local-worktree-与-handoff",
+        "legacy": [
+          "heading-worktrees-8"
+        ]
+      },
+      "heading-worktrees-9": {
+        "canonical": "分支和文件边界",
+        "legacy": [
+          "heading-worktrees-9"
+        ]
+      }
+    },
+    "workflows.html": {
+      "heading-workflows-1": {
+        "canonical": "先选工作面-再写任务",
+        "legacy": [
+          "heading-workflows-1"
+        ]
+      },
+      "heading-workflows-10": {
+        "canonical": "同一任务-小步练到可验收",
+        "legacy": [
+          "heading-workflows-10"
+        ]
+      },
+      "heading-workflows-11": {
+        "canonical": "1.-现象",
+        "legacy": [
+          "heading-workflows-11"
+        ]
+      },
+      "heading-workflows-12": {
+        "canonical": "2.-合同",
+        "legacy": [
+          "heading-workflows-12"
+        ]
+      },
+      "heading-workflows-13": {
+        "canonical": "3.-最小执行",
+        "legacy": [
+          "heading-workflows-13"
+        ]
+      },
+      "heading-workflows-14": {
+        "canonical": "4.-验收请求",
+        "legacy": [
+          "heading-workflows-14"
+        ]
+      },
+      "heading-workflows-15": {
+        "canonical": "v1-只有愿望",
+        "legacy": [
+          "heading-workflows-15"
+        ]
+      },
+      "heading-workflows-16": {
+        "canonical": "v2-补上下文与边界",
+        "legacy": [
+          "heading-workflows-16"
+        ]
+      },
+      "heading-workflows-17": {
+        "canonical": "v3-补验收证据",
+        "legacy": [
+          "heading-workflows-17"
+        ]
+      },
+      "heading-workflows-18": {
+        "canonical": "统一案例模板",
+        "legacy": [
+          "heading-workflows-18"
+        ]
+      },
+      "heading-workflows-19": {
+        "canonical": "坏-prompt-怎么修",
+        "legacy": [
+          "heading-workflows-19"
+        ]
+      },
+      "heading-workflows-2": {
+        "canonical": "安装-desktop",
+        "legacy": [
+          "heading-workflows-2"
+        ]
+      },
+      "heading-workflows-20": {
+        "canonical": "帮我优化项目",
+        "legacy": [
+          "heading-workflows-20"
+        ]
+      },
+      "heading-workflows-21": {
+        "canonical": "直接推送",
+        "legacy": [
+          "heading-workflows-21"
+        ]
+      },
+      "heading-workflows-22": {
+        "canonical": "开-subagent-并行做",
+        "legacy": [
+          "heading-workflows-22"
+        ]
+      },
+      "heading-workflows-23": {
+        "canonical": "证据通过-才算-accepted",
+        "legacy": [
+          "heading-workflows-23"
+        ]
+      },
+      "heading-workflows-24": {
+        "canonical": "accepted",
+        "legacy": [
+          "heading-workflows-24"
+        ]
+      },
+      "heading-workflows-25": {
+        "canonical": "not-accepted",
+        "legacy": [
+          "heading-workflows-25"
+        ]
+      },
+      "heading-workflows-26": {
+        "canonical": "先分类失败-再决定回路",
+        "legacy": [
+          "heading-workflows-26"
+        ]
+      },
+      "heading-workflows-27": {
+        "canonical": "用两种终态收口",
+        "legacy": [
+          "heading-workflows-27"
+        ]
+      },
+      "heading-workflows-28": {
+        "canonical": "done-receipt",
+        "legacy": [
+          "heading-workflows-28"
+        ]
+      },
+      "heading-workflows-29": {
+        "canonical": "blocked-receipt",
+        "legacy": [
+          "heading-workflows-29"
+        ]
+      },
+      "heading-workflows-3": {
+        "canonical": "codex-desktop",
+        "legacy": [
+          "heading-workflows-3"
+        ]
+      },
+      "heading-workflows-30": {
+        "canonical": "真实实例-从一句反馈选择任务路径",
+        "legacy": [
+          "heading-workflows-30"
+        ]
+      },
+      "heading-workflows-31": {
+        "canonical": "1.-request",
+        "legacy": [
+          "heading-workflows-31"
+        ]
+      },
+      "heading-workflows-32": {
+        "canonical": "2.-context-to-inspect",
+        "legacy": [
+          "heading-workflows-32"
+        ]
+      },
+      "heading-workflows-33": {
+        "canonical": "3.-allowed-change",
+        "legacy": [
+          "heading-workflows-33"
+        ]
+      },
+      "heading-workflows-34": {
+        "canonical": "4.-validation-evidence",
+        "legacy": [
+          "heading-workflows-34"
+        ]
+      },
+      "heading-workflows-35": {
+        "canonical": "5.-final-report",
+        "legacy": [
+          "heading-workflows-35"
+        ]
+      },
+      "heading-workflows-36": {
+        "canonical": "6.-failure-stop",
+        "legacy": [
+          "heading-workflows-36"
+        ]
+      },
+      "heading-workflows-4": {
+        "canonical": "日常小任务",
+        "legacy": [
+          "heading-workflows-4"
+        ]
+      },
+      "heading-workflows-5": {
+        "canonical": "工程-flow",
+        "legacy": [
+          "heading-workflows-5"
+        ]
+      },
+      "heading-workflows-6": {
+        "canonical": "学术-flow",
+        "legacy": [
+          "heading-workflows-6"
+        ]
+      },
+      "heading-workflows-7": {
+        "canonical": "自动化",
+        "legacy": [
+          "heading-workflows-7"
+        ]
+      },
+      "heading-workflows-8": {
+        "canonical": "skills-仓库选择",
+        "legacy": [
+          "heading-workflows-8"
+        ]
+      },
+      "heading-workflows-9": {
+        "canonical": "compound-engineering",
+        "legacy": [
+          "heading-workflows-9"
+        ]
+      }
+    }
+  },
+  "schema_version": 1
+}
