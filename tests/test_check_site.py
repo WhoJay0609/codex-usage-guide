@@ -11,6 +11,12 @@ from check_site import (  # noqa: E402
     PageParser,
     check_local_link,
     validate_case_index,
+    validate_fragment_registry,
+    validate_presentation_contracts,
+    validate_product_accuracy_contracts,
+    validate_interaction_contracts,
+    manifest_html_paths,
+    validate_metadata_contracts,
     validate_required_pages,
     validate_semantic_contracts,
 )
@@ -24,6 +30,114 @@ def parse(markup: str) -> PageParser:
 
 
 class SemanticContractTests(unittest.TestCase):
+    def test_product_accuracy_contract_rejects_obsolete_scheduled_task_terminology(self) -> None:
+        pages = {
+            "automation.html": parse("<main>Triage inbox</main>"),
+        }
+
+        errors = validate_product_accuracy_contracts(pages)
+
+        self.assertTrue(
+            any("obsolete Scheduled tasks terminology" in error for error in errors),
+            errors,
+        )
+
+    def test_product_accuracy_contract_accepts_current_product_terminology(self) -> None:
+        pages = {
+            "permissions.html": parse(
+                "<main>Ask for approval Approve for me Full access "
+                "Custom (config.toml)</main>"
+            ),
+            "automation.html": parse("<main>Automations</main>"),
+            "skills.html": parse("<main>Use $goal-entry for goal work.</main>"),
+        }
+
+        self.assertEqual(validate_product_accuracy_contracts(pages), [])
+
+    def test_manifest_html_paths_excludes_nested_docs_html(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "index.html").write_text("public", encoding="utf-8")
+            (root / "docs").mkdir()
+            (root / "docs/ideation.html").write_text("internal", encoding="utf-8")
+            self.assertEqual(manifest_html_paths(root, ["index.html"]), [root / "index.html"])
+
+    def test_metadata_contract_rejects_missing_social_head_and_generic_kicker(self) -> None:
+        pages = {
+            "sample.html": parse(
+                '<html><head><title>示例</title><meta name="description" content="描述"></head>'
+                '<body><main><p class="section-kicker">Examples</p><h1>示例</h1></main></body></html>'
+            )
+        }
+        manifest_pages = {"sample.html": {"title": "示例", "description": "描述"}}
+        errors = validate_metadata_contracts(
+            pages,
+            manifest_pages,
+            "https://example.test/",
+            "figures/social-preview.png",
+        )
+        self.assertTrue(any("missing canonical metadata" in error for error in errors), errors)
+        self.assertTrue(any("generic kicker must be Chinese-first" in error for error in errors), errors)
+
+    def test_presentation_contract_rejects_late_theme_unsafe_external_and_global_mermaid(self) -> None:
+        markup = (
+            '<link rel="stylesheet" href="assets/site.css"><script src="assets/theme.js"></script>'
+            '<select class="theme-select"></select><main>'
+            '<a href="https://example.com">外部</a></main>'
+            '<script src="https://cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"></script>'
+        )
+        errors = validate_presentation_contracts(
+            {"sample.html": parse(markup)}, {"sample.html"}, "https://guide.example/"
+        )
+        self.assertTrue(any("theme bootstrap" in error for error in errors), errors)
+        self.assertTrue(any("unsafe cross-origin" in error for error in errors), errors)
+        self.assertTrue(any("Mermaid runtime" in error for error in errors), errors)
+
+    def test_interaction_contract_requires_search_and_matching_permalinks(self) -> None:
+        pages = {
+            "sample.html": parse(
+                '<script src="assets/site-data.js"></script>'
+                '<script src="assets/search-index.js"></script>'
+                '<button class="search-trigger"></button>'
+                '<dialog id="site-search-dialog" role="dialog"></dialog>'
+                '<input id="site-search-input" role="combobox">'
+                '<ul id="site-search-results" role="listbox"></ul>'
+                '<main><h2 id="canonical">Title<a data-heading-permalink href="#wrong">#</a></h2></main>'
+            )
+        }
+        errors = validate_interaction_contracts(pages)
+        self.assertTrue(any("permalink for #canonical must target #canonical" in error for error in errors), errors)
+
+    def test_interaction_contract_allows_stable_headings_inside_link_cards(self) -> None:
+        pages = {
+            "sample.html": parse(
+                '<script src="assets/site-data.js"></script>'
+                '<script src="assets/search-index.js"></script>'
+                '<button class="search-trigger"></button>'
+                '<dialog id="site-search-dialog" role="dialog"></dialog>'
+                '<input id="site-search-input" role="combobox">'
+                '<ul id="site-search-results" role="listbox"></ul>'
+                '<main><a class="source-card" href="next.html"><h3 id="card">Title</h3><p>Summary</p></a></main>'
+            )
+        }
+        self.assertEqual(validate_interaction_contracts(pages), [])
+
+    def test_fragment_registry_requires_canonical_heading_and_legacy_alias(self) -> None:
+        pages = {
+            "sample.html": parse(
+                '<main><span class="fragment-alias" id="old" '
+                'data-canonical-fragment="wrong" aria-hidden="true"></span>'
+                '<h2 id="canonical">标题</h2></main>'
+            )
+        }
+        registry = {
+            "sample.html": {
+                "old": {"canonical": "canonical", "legacy": ["old"]}
+            }
+        }
+        errors = validate_fragment_registry(pages, registry)
+        self.assertTrue(any("legacy fragment #old must alias #canonical" in error for error in errors), errors)
+
     def test_duplicate_id_is_reported(self) -> None:
         pages = {"sample.html": parse('<main id="same"><section id="same"></section></main>')}
         errors = validate_semantic_contracts(pages)

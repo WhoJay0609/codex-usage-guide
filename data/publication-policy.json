@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "search": {
+    "excluded_tags": [
+      "script",
+      "style",
+      "template",
+      "noscript"
+    ],
+    "excluded_attributes": [
+      "hidden",
+      "aria-hidden",
+      "data-search-exclude"
+    ],
+    "excluded_classes": [
+      "fragment-alias"
+    ]
+  },
+  "sensitive_patterns": [
+    {
+      "name": "macOS user path",
+      "pattern": "/Users/[^\\s<]+"
+    },
+    {
+      "name": "Linux home path",
+      "pattern": "/home/[^\\s<]+"
+    },
+    {
+      "name": "OpenAI-style secret",
+      "pattern": "\\bsk-[A-Za-z0-9_-]{16,}\\b"
+    },
+    {
+      "name": "GitHub personal token",
+      "pattern": "\\bgh[pousr]_[A-Za-z0-9]{20,}\\b"
+    },
+    {
+      "name": "private key material",
+      "pattern": "-----BEGIN (?:RSA |OPENSSH |EC )?PRIVATE KEY-----"
+    }
+  ]
+}

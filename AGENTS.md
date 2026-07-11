@@ -28,6 +28,22 @@ The web page is the canonical public artifact.
   - GitHub Pages has been pushed and, when network access is available,
     the published page returns the updated HTML.
 
+### Maintainer Commands
+
+- `make generate` updates sentinel-owned root-page blocks and generated assets.
+- `make check-fast` checks deterministic generation plus the manifest-scoped 19-page static contract.
+- `make check` adds the Python unit suite.
+- `make test-browser` runs Playwright interaction and responsive checks.
+- `make check-release-local` runs local automated release gates; it does not satisfy human privacy or reader checks.
+- `make check-published` is post-deployment and network-dependent. Record `not run` before deployment or when the public site is unavailable; never convert that state to pass.
+
+### Generated And Authored Boundaries
+
+- `data/site-manifest.json`, `data/heading-fragments.json`, and `data/publication-policy.json` are reviewed sources of truth.
+- `assets/site-data.js`, `assets/search-index.js`, root-page `guide:*` blocks, canonical heading IDs, legacy alias elements, permalink controls, and normalized external-link attributes are generated. Change their source and run `make generate`; do not hand-edit them.
+- Article prose, prompts, case evidence, captions, and narrowly scoped evidence sections outside generated blocks are authored content. Generator changes must preserve those bytes except for the explicitly registered narrow transformations above.
+- Real Desktop screenshots remain an external-input gate. Do not create an approval record, claim privacy sign-off, or publish substitutes until the exact committed derivative has received independent original-resolution review.
+
 ## Documentation Boundaries
 
 - `index.html` is the GitHub Pages guide and canonical public artifact.
@@ -43,7 +59,7 @@ structure changes materially.
 <!-- goal-context:path-index:start -->
 ## Path Index
 
-- Generated: 2026-07-07T09:45:15Z
+- Generated: 2026-07-11T13:00:09Z
 - Max depth: 4
 - Max items per section: 40
 
@@ -53,6 +69,7 @@ structure changes materially.
 - `AGENTS.md` - agent instructions for this scope
 - `README.md` - project overview and setup notes
 - `Makefile` - project manifest or command/dependency entry
+- `package.json` - project manifest or command/dependency entry
 
 ### AGENTS Files
 
@@ -65,11 +82,23 @@ structure changes materially.
 ### Commands And Manifests
 
 - `Makefile` - project manifest or command/dependency entry
+- `package.json` - project manifest or command/dependency entry
 
 ### Source Roots
 
+- `.` - contains source/config files
 - `assets` - contains source/config files
 - `scripts` - contains source/config files
+- `tests` - contains source/config files
+- `tests/browser` - contains source/config files
+
+### Tests
+
+- `tests` - test directory
+- `tests/test_build_site.py` - test file
+- `tests/test_check_site.py` - test file
+- `tests/test_published_site.py` - test file
+- `tests/browser/toolbook.spec.js` - test file
 
 ### Docs
 
@@ -80,6 +109,19 @@ structure changes materially.
 - `doc/progress.md` - harness task workspace and durable task notes
 - `doc/task_issue.md` - harness task workspace and durable task notes
 - `doc/task_plan.md` - harness task workspace and durable task notes
+- `docs` - project documentation
+- `docs/case-evidence-index.md` - project documentation
+- `docs/adr` - project documentation
+- `docs/adr/0001-dual-track-chinese-latex-guide.md` - project documentation
+- `docs/ideation` - project documentation
+- `docs/ideation/2026-07-10-codex-desktop-guide-effectiveness-ideation.html` - project documentation
+- `docs/plans` - project documentation
+- `docs/plans/2026-07-07-001-docs-high-stars-skills-repos-plan.md` - project documentation
+- `docs/plans/2026-07-10-002-docs-evidence-task-loop-worktree-subagents-plan.md` - project documentation
+- `docs/plans/2026-07-11-003-docs-guide-toolbook-upgrade-plan.md` - project documentation
+- `docs/plans/2026-07-11-004-docs-guide-remaining-experience-gaps-plan.md` - project documentation
+- `docs/reader-checks` - project documentation
+- `docs/reader-checks/remaining-experience-script.md` - project documentation
 
 ### Task Docs
 
