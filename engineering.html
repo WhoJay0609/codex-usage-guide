@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>工程 flow</title>
-  <meta name="description" content="中文 Codex 实战手册：从工程 idea 到可合并变更的完整流程。">
+  <title>团队协作规范</title>
+  <meta name="description" content="中文 Codex 团队协作规范：从 Product Contract、统一计划和 issue lanes 到独立 review、授权合并与 task receipt。">
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
@@ -15,95 +15,140 @@
 <div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html">首页</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html" aria-current="page">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">自动化</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html">Compound</a><a data-nav href="skills-repositories.html">Skills 仓库</a><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>工程</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-07-11">2026-07-11</time></span><span>事实核验：<time datetime="2026-07-11">2026-07-11</time></span></div>
 <!-- guide:shell-open:end -->
 <main>
-    <section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Scenario handbook</p><h1>工程 flow</h1><p class="lead">工程场景的目标不是“让 Codex 写更多代码”，而是把一个模糊 idea 变成可验证、可 review、可合并的最小变更。先 grill，再定边界，再拆 issue，再实现，再 review。</p></div></section>
+    <section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Team engineering</p><h1>团队协作规范</h1><p class="lead">以 Codex Desktop 主线程为协作中枢：产品负责人批准合同，编排者维护统一计划，subagent 在隔离写域执行，独立 reviewer 只按验收合同审查。复杂任务走完整闭环；短小、低风险、单写域任务可以直接执行最窄验证，不必机械套用全流程。</p></div></section>
 
-    <section class="section">
-      <div class="section-head"><div class="section-title"><p class="section-kicker">Lifecycle</p><h2 id="heading-engineering-1">从 idea 到可合并变更</h2></div><p>复杂工程任务不要直接进入实现。先把需求、边界、失败条件和验收证据问清楚。</p></div>
+    <section class="section" id="team-flow">
+      <div class="section-head"><div class="section-title"><p class="section-kicker">Team flow</p><h2 id="heading-engineering-1">从 Idea 到 task receipt</h2></div><p>先把产品问题变成合同，再把同一份合同逐层细化。需要任务入口、长目标、代理分工或指令层级时，分别参考 <a href="workflows.html#task-entry">任务路径</a>、<a href="goal.html#real-example">Goal</a>、<a href="subagents.html#worktree-subagent">Subagents</a> 与 <a href="agents-md.html#real-example">AGENTS.md</a>。</p></div>
+      <figure class="figure-card mermaid-card">
+        <div class="mermaid">
+flowchart TD
+  A["Idea"] --> B["Matt-style grill"]
+  B --> C["ce-brainstorm Product Contract"]
+  C --> D["ce-plan 统一实施计划"]
+  D --> E["Issues 与依赖图"]
+  E --> F["Worktrees / subagents"]
+  F --> G["PR + 独立 review + CI"]
+  G --> H["经授权合并主分支"]
+  H --> I["主分支 / 公开页面验证"]
+  I --> J["task receipt"]
+  C -->|驳回| B
+  D -->|not ready| D
+  E -->|依赖或写域重叠| E
+  G -->|验证失败 / changes / CI red| F
+  H -->|未授权| K["blocked receipt"]
+  I -->|失败| K
+        </div>
+        <figcaption>团队协作主流程及失败回路。图形不可用时，紧邻下方的文字版提供完全等价的顺序与门禁。</figcaption>
+      </figure>
+      <div class="decision-table" aria-label="团队协作流程文字等价版">
+        <div class="decision-row"><strong>1. Idea → grill</strong><span>先读证据并做 Matt-style grill</span><span>开放问题不能带入实现</span><span>Product Contract 驳回就回到 grill</span></div>
+        <div class="decision-row"><strong>2. Contract → plan</strong><span><code>ce-brainstorm</code> 固化 Product Contract</span><span><code>ce-plan</code> 细化同一份统一实施计划</span><span>plan 不 ready 就留在 plan</span></div>
+        <div class="decision-row"><strong>3. Issues → lanes</strong><span>建立依赖图和互斥写域</span><span>Worktree / subagent 只接明确 lane</span><span>依赖或写域重叠就回 issue slicing</span></div>
+        <div class="decision-row"><strong>4. PR → review</strong><span>提交 PR、独立 review、运行 CI</span><span>reviewer 记录合同、diff、disposition</span><span>验证失败、changes 或 CI red 回 implementation</span></div>
+        <div class="decision-row"><strong>5. Merge → receipt</strong><span>获得授权后合并主分支</span><span>更新基线并验证主分支/公开页面</span><span>未授权或最终验证失败，输出 blocked receipt</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="roles-authority">
+      <div class="section-head"><div class="section-title"><p class="section-kicker">A2 / A3 / A4</p><h2 id="heading-engineering-2">双层角色与权限</h2></div><p>第一层定义责任，第二层定义动作权限。A3 负责整合，但不能替代 A2 的产品批准；A4 提供独立证据，不能越过写域或自行发布。</p></div>
+      <div class="bento">
+        <article class="card span-4 dark-card"><h3 id="heading-engineering-3">A2 用户 / 产品负责人</h3><p>拥有产品意图、Product Contract、范围变化和最终合并授权；验收 receipt，并决定 blocked 项如何处理。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-4">A3 主线程 / 编排者</h3><p>维护唯一合同与统一计划，切 issue、分配写域、集成结果、处理 review disposition，并向 A2 报告可审计证据。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-5">A4 subagent / 独立 reviewer</h3><p>在被分配的只读或隔离写域内工作。reviewer 必须未参与实现，且不共享被审 lane 的写域。</p></article>
+      </div>
+      <div class="decision-table" aria-label="A2 A3 A4 动作权限表">
+        <div class="decision-row"><strong>动作</strong><span>A2 用户 / 产品负责人</span><span>A3 主线程 / 编排者</span><span>A4 subagent / reviewer</span></div>
+        <div class="decision-row"><strong>Product Contract 批准</strong><span>批准、驳回或收窄</span><span>基于 grill 起草并维护版本</span><span>只提供证据与风险</span></div>
+        <div class="decision-row"><strong>计划 readiness</strong><span>确认产品验收口径</span><span>补齐依赖、写域和验证后判定</span><span>独立检查缺口，不自行放行</span></div>
+        <div class="decision-row"><strong>Issue</strong><span>定优先级与产品边界</span><span>创建、切片、维护依赖图</span><span>只执行被分配 issue</span></div>
+        <div class="decision-row"><strong>Worktree / branch</strong><span>批准超出既定合同的隔离需求</span><span>按 lane 创建、登记、回收</span><span>不得自行创建或切换</span></div>
+        <div class="decision-row"><strong>扩范围</strong><span>批准新版合同</span><span>停止当前 lane 并申请变更</span><span>停止并上报，不擅自扩写域</span></div>
+        <div class="decision-row"><strong>commit / push</strong><span>对外 push 需明确 grant</span><span>可按合同 commit；push 仅在 grant 内</span><span>禁止 commit/push，只返回文件与验证证据</span></div>
+        <div class="decision-row"><strong>PR</strong><span>授予目标仓库与 base 范围</span><span>在有效 grant 内创建/更新</span><span>不创建或更新 PR</span></div>
+        <div class="decision-row"><strong>review resolution</strong><span>裁决产品分歧</span><span>逐项记录接受、修复或有据拒绝</span><span>独立 reviewer 只给 disposition 建议</span></div>
+        <div class="decision-row"><strong>merge</strong><span>逐次明确授权</span><span>仅在授权、review、CI 都满足时执行</span><span>禁止合并</span></div>
+        <div class="decision-row"><strong>receipt</strong><span>验收或要求补证</span><span>签发 done / blocked receipt</span><span>提交本 lane 的证据与未验证项</span></div>
+      </div>
+      <div class="bento">
+        <article class="card span-6"><h3 id="heading-engineering-6">外部写入 grant</h3><p>push、PR、评论、发布、merge 等外部写入必须使用有明确 <strong>scope</strong>、目标 <strong>base</strong>、允许动作和到期条件的 grant；默认不会跨任务继承。</p></article>
+        <article class="card span-6 dark-card"><h3 id="heading-engineering-7">自动失效</h3><p>scope、base、review 结论或 redaction 要求发生变化，原 grant 立即失效。A3 必须停下，重新展示影响并向 A2 申请授权。</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="issue-lanes">
+      <div class="section-head"><div class="section-title"><p class="section-kicker">Issue lanes</p><h2 id="heading-engineering-8">按依赖和写域组织并行</h2></div><p>并行不是多开线程，而是先证明依赖允许并行、写域互不重叠、集成点可验证。</p></div>
       <div class="steps">
-        <article class="step"><h3 id="heading-engineering-2">Idea intake</h3><p>用户提出模糊目标，例如“改一下权限系统”。Codex 先读文档和代码，判断这是讨论、规划还是执行任务。</p></article>
-        <article class="step"><h3 id="heading-engineering-3">Grill 边界</h3><p>使用 <code>grill-with-docs</code> 读取 <code>AGENTS.md</code>、README、CONTEXT、ADR 和相关源码，追问会影响结构的关键问题。</p></article>
-        <article class="step"><h3 id="heading-engineering-4">PRD / Issues</h3><p>把稳定结论拆成小任务。每个 issue 都应该有范围、验收、测试和不做什么。</p></article>
-        <article class="step"><h3 id="heading-engineering-5">Implement</h3><p>一次只做一个 issue。先改最小 diff，再跑最窄测试，不把 refactor 和 feature 混在一起。</p></article>
-        <article class="step"><h3 id="heading-engineering-6">Review</h3><p>让 Codex 站在 reviewer 角度查行为回归、测试缺口、权限风险、文档漂移。</p></article>
-        <article class="step"><h3 id="heading-engineering-7">Ship</h3><p>提交、推送、PR 或发布后，用 check 状态、页面访问、日志或用户验收完成 closeout。</p></article>
+        <article class="step"><h3 id="heading-engineering-9">Contract lane 串行</h3><p>schema、公开接口、共同数据模型等 contract 变更先完成并合并；所有下游都依赖这一基线。</p></article>
+        <article class="step"><h3 id="heading-engineering-10">独立 lanes 并行</h3><p>在 contract 稳定后，互不重叠的 docs、frontend、test 可以进入不同 Worktree / subagent 并行执行。</p></article>
+        <article class="step"><h3 id="heading-engineering-11">更新基线</h3><p>上游合并后，下游先更新 base，核对 diff 是否仍属于原 scope，再重跑本 lane 验证。</p></article>
+        <article class="step"><h3 id="heading-engineering-12">集成门</h3><p>只有依赖满足、写域无重叠、验证和 review 通过的 lane 才能进入 PR 合并候选。</p></article>
+      </div>
+      <div class="bento">
+        <article class="card span-6"><h3 id="heading-engineering-13">可并行示例</h3><p><code>contract</code> 先串行；其合并后，<code>docs</code>、<code>frontend</code>、<code>test</code> 各自拥有不重叠文件集合，可同时推进。</p></article>
+        <article class="card span-6 dark-card"><h3 id="heading-engineering-14">失败停止</h3><p>测试失败回 implementation；写域重叠或依赖不清回 issue slicing；依赖暂不可满足则回退该 lane，或输出带 blocker、已验事实和解锁条件的 blocked receipt。</p></article>
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-head"><div class="section-title"><p class="section-kicker">Skills flow</p><h2 id="heading-engineering-8">工程 skills 怎么串起来</h2></div><p>不要把 skill 当魔法词。每个 skill 都应服务于工程阶段，而不是替代判断。</p></div>
-      <div class="bento">
-        <article class="card span-4"><h3 id="heading-engineering-9"><code>ask-matt</code></h3><p>用于路由：当前是 idea、PRD、issue、implement、review，还是需要回到 grilling。</p></article>
-        <article class="card span-4"><h3 id="heading-engineering-10"><code>grill-with-docs</code></h3><p>用于边界澄清：读项目文档和代码，追问会影响架构、接口、验收的关键问题。</p></article>
-        <article class="card span-4"><h3 id="heading-engineering-11"><code>grill-me</code></h3><p>用于强审设计：质疑方案是否过度、是否破坏边界、是否有更窄实现。</p></article>
-        <article class="card span-4"><h3 id="heading-engineering-12">PRD / issue</h3><p>把已稳定的需求变成可执行工单。不要让实现任务继续承载开放问题。</p></article>
-        <article class="card span-4"><h3 id="heading-engineering-13">Implement</h3><p>按 issue 做最小修改。每个实现回合都应能被测试或人工检查。</p></article>
-        <article class="card span-4"><h3 id="heading-engineering-14">Review loop</h3><p>用只读 review 查风险，再修复高优先级问题。不要把 review 变成无边界重构。</p></article>
+    <section class="section" id="independent-review">
+      <div class="section-head"><div class="section-title"><p class="section-kicker">Independent review</p><h2 id="heading-engineering-15">独立 reviewer 合同</h2></div><p>独立 reviewer 必须没有实现该 lane，也不共享该 lane 的写域。其任务是验证约定，不是接管实现。</p></div>
+      <div class="decision-table">
+        <div class="decision-row"><strong>Acceptance contract</strong><span>记录要满足的行为、边界和验证</span><span>固定 review 使用的 base / head</span><span>合同变化即重新审查</span></div>
+        <div class="decision-row"><strong>Diff</strong><span>检查实际 diff 和生成产物</span><span>核对无越界文件、无隐藏副作用</span><span>不只依赖实现者摘要</span></div>
+        <div class="decision-row"><strong>Disposition</strong><span><code>approve</code> / <code>changes requested</code> / <code>blocked</code></span><span>每项 finding 有证据和严重度</span><span>A3 逐项记录 resolution</span></div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-head"><div class="section-title"><p class="section-kicker">Prompts</p><h2 id="heading-engineering-15">可复制工程提示词</h2></div><p>下面这些模板覆盖从澄清到实现的主要阶段。</p></div>
+    <section class="section" id="team-case" data-case-type="composite" data-case-id="team-delivery-composite">
+      <div class="section-head"><div class="section-title"><p class="section-kicker">Real example</p><h2 id="heading-engineering-16">真实实例：历史复合案例</h2><div class="tier-badges"><span class="tier-badge">历史复合案例</span><span class="tier-badge">中等脱敏</span></div></div><p>以下案例由多个可核验片段组成，用来展示完整协作合同；它不声称来自一次连续执行。内容保留工程证据类别，但不包含私人姓名、机器路径、主机或业务代码。</p></div>
       <div class="bento">
-        <article class="card span-6"><h3 id="heading-engineering-16">边界澄清</h3><pre><code>[$grill-with-docs]
-仓库：/path/to/repo
-目标：把功能 X 做成可发布版本。
-
-请先读：
-- AGENTS.md
-- README.md
-- CONTEXT.md
-- 相关源码和测试
-
-请追问会影响结构的关键问题：
-- 用户是谁？
-- 公开接口是否能变？
-- 兼容性要求是什么？
-- 验收证据是什么？
-
-不要开始实现，直到边界稳定。</code></pre></article>
-        <article class="card span-6"><h3 id="heading-engineering-17">实现一个 issue</h3><pre><code>请实现 issue #12。
-
-范围：
-- 可以改 src/checkout 和 tests/checkout
-- 不要改 payment provider 接口
-
-要求：
-- 先读 AGENTS.md 和 issue 描述
-- 给 3 行短计划
-- 实现最小 diff
-- 运行 npm test -- checkout
-
-完成报告：
-- 改了什么
-- 验证结果
-- 风险和未完成项</code></pre></article>
+        <article class="card span-6"><h3 id="heading-engineering-17">请求</h3><p>在 Codex Desktop 中把团队工程规范做成可公开验证的指南页；保持导航和视觉模式，保护既有修改，只改批准的页面，并在授权后才发布。</p></article>
+        <article class="card span-6"><h3 id="heading-engineering-18">先读</h3><p>按层级读取全局、仓库根目录、目标目录的 <code>AGENTS.md</code>，再读 README、目标 HTML、共享样式、验证脚本与生成上下文；最近规则优先，生成上下文只作索引并检查漂移。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-19">角色</h3><p>A2 批准 Product Contract 与 merge；A3 维护统一计划和依赖图；A4 分别承担隔离实现、只读验证和独立 review。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-20">边界 / 文件</h3><p>写域仅含目标指南页。共享 CSS、脚本、导航结构、生成上下文和敏感路径均为只读；证书、环境文件与本地凭据不读取、不回显。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-21">脏主保护</h3><p>预检发现主工作区已有未提交修改，因此不清理、不覆盖、不借用该写域；实现转入登记过的隔离 Worktree，并保留原工作区状态证据。</p></article>
       </div>
-    </section>
+      <div class="content-block">
+        <p class="section-kicker">Complete Goal</p>
+        <h2 id="heading-engineering-22">完整 Goal</h2>
+        <pre><code>Objective:
+建立中文优先、Codex Desktop 优先的团队协作规范主页面，并可在主分支公开验证。
 
-    <section class="section">
-      <div class="section-head"><div class="section-title"><p class="section-kicker">Subagents</p><h2 id="heading-engineering-18">工程任务什么时候拆给 subagent</h2></div><p>工程任务适合把“调查”和“验证”拆出去，但核心产品判断、架构取舍和最终合并应由主线程负责。</p></div>
-      <div class="bento">
-        <article class="card span-6 dark-card"><h3 id="heading-engineering-19">适合拆</h3><ul class="mini-list"><li><strong>只读审查</strong><span>安全、测试缺口、文档漂移、性能风险。</span></li><li><strong>并行验证</strong><span>不同浏览器、不同测试包、不同配置。</span></li><li><strong>独立切片</strong><span>互不重叠文件，例如 docs 和 CSS 分开。</span></li></ul></article>
-        <article class="card span-6"><h3 id="heading-engineering-20">不要拆</h3><ul class="mini-list"><li><strong>同一核心文件</strong><span>多个代理同时改状态管理、schema、API contract。</span></li><li><strong>架构判断</strong><span>模块边界、公开接口、迁移策略应由主线程整合。</span></li><li><strong>外部写入</strong><span>发布、推送、评论、生产配置不交给 subagent 独立执行。</span></li></ul></article>
+Scope:
+- Include: 目标指南页内容、现有组件内的流程图与表格
+- Exclude: 公共导航结构、共享 CSS/JS、生成上下文、敏感路径、既有脏修改
+
+Acceptance:
+- 团队流程、A2/A3/A4 权限、issue lanes、独立 review、历史复合案例齐全
+- 所有失败门与授权边界可见，短小低风险任务有轻量路径
+
+Validation:
+- 静态站点检查通过
+- diff 仅含目标页
+- Mermaid 有邻接文字等价版；无 Mermaid 时仍可读
+- PR review 与 CI 通过；合并后复验主分支和公开页面
+
+Artifacts:
+- 目标页面、PR、独立 review 记录、CI 结果、done 或 blocked task receipt
+
+Stop Conditions:
+- Product Contract 未批准、计划不 ready、写域重叠、敏感路径风险
+- 验证失败、review changes、CI red、merge 未授权或主分支验证失败</code></pre>
       </div>
-    </section>
-
-    <section class="section">
-      <div class="section-head"><div class="section-title"><p class="section-kicker">Real example</p><h2 id="heading-engineering-21">真实实例：把这份指南扩成实战手册</h2></div><p>这次任务就是一个小型工程 flow：用户先指出内容太少，然后要求每个内容都有真实实例。Codex 没有直接“随便加文字”，而是读取项目规则、确认目标、分批修改页面、运行静态检查、提交推送并验证 Pages。</p></div>
       <div class="bento">
-        <article class="card span-4"><h3 id="heading-engineering-22">输入</h3><p>坏输入是“帮我扩一下”；修复后写成目标、范围、读者、禁区和验收。</p></article>
-        <article class="card span-4"><h3 id="heading-engineering-23">先读</h3><p>项目规则、目标页面、现有导航、验证脚本和发布说明。</p></article>
-        <article class="card span-4"><h3 id="heading-engineering-24">应动文件</h3><p>HTML 内容、必要 CSS、验证脚本；不顺手改 CI/CD 或无关仓库。</p></article>
-        <article class="card span-4"><h3 id="heading-engineering-25">验证</h3><p><code>make check</code>、空白检查、关键页面抽样和 diff review。</p></article>
-        <article class="card span-4"><h3 id="heading-engineering-26">最终回答</h3><p>按文件汇总改动、验证结果、未跑项和可合并风险。</p></article>
-        <article class="card span-4"><h3 id="heading-engineering-27">失败停止</h3><p>需求漂移、测试不可运行、写域变宽或出现无关 dirty 冲突时停止。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-23">分工</h3><p>contract lane 先串行；合并后 docs、frontend、test 按不重叠写域并行。每个下游更新 base 后重跑验证，A3 只整合已满足依赖的结果。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-24">验证证据</h3><p>记录目标锚点、静态检查输出、仅目标页的 diff、无脚本渲染时的文字可读性、独立 reviewer disposition、PR checks 与合并后页面抽样。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-25">独立 review</h3><p>reviewer 未参与实现且无该 lane 写权限；固定 acceptance contract 与 diff，逐项给出 approve、changes requested 或 blocked，并记录 resolution。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-26">重要恢复</h3><p>历史片段证明主工作区既有修改必须保留。教学组合中的恢复规则是：若下游 base 过期，就停下更新基线、复核 scope 并重跑验证；仍失败则回 implementation，不把这一条件分支冒充已发生事件。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-27">结果 / receipt</h3><p>公开记录支持 PR、验证与默认分支合并已完成。教学组合另明确授权规则：push/创建 PR 的 grant 不覆盖 merge；只有在 review 与 CI 通过后展示最终证据并取得独立 merge 授权，才可合并和签发 receipt。</p></article>
+        <article class="card span-4 dark-card"><h3 id="heading-engineering-28">失败停止</h3><p>任何合同驳回、计划缺口、依赖阻塞、越界写入、敏感信息风险、review changes、CI red、未授权 merge 或最终验证失败都停止；无法立即恢复时给 blocked receipt。</p></article>
+        <article class="card span-12"><h3 id="heading-engineering-29">来源分类</h3><p><strong>可核验仓库片段：</strong>指令层级、生成上下文、dirty 检出、diff 与测试日志。<strong>可核验协作片段：</strong>issue 依赖、Worktree 登记、review disposition、PR/CI/merge 状态。<strong>教学性组合：</strong>为说明端到端合同而重排这些片段；不表示它们发生在同一任务或同一时间线上。</p></article>
       </div>
     </section>
   </main>
 <!-- guide:shell-close:start -->
-<nav class="page-sequence" aria-label="前后页"><a rel="prev" href="daily-workflow.html">← 日常</a><a rel="next" href="research.html">学术 →</a></nav></div><aside class="page-toc" aria-label="本页目录"><details open><summary>本页目录</summary><nav><a class="toc-h2" href="#heading-engineering-1">从 idea 到可合并变更</a><a class="toc-h3" href="#heading-engineering-2">Idea intake</a><a class="toc-h3" href="#heading-engineering-3">Grill 边界</a><a class="toc-h3" href="#heading-engineering-4">PRD / Issues</a><a class="toc-h3" href="#heading-engineering-5">Implement</a><a class="toc-h3" href="#heading-engineering-6">Review</a><a class="toc-h3" href="#heading-engineering-7">Ship</a><a class="toc-h2" href="#heading-engineering-8">工程 skills 怎么串起来</a><a class="toc-h3" href="#heading-engineering-9">ask-matt</a><a class="toc-h3" href="#heading-engineering-10">grill-with-docs</a><a class="toc-h3" href="#heading-engineering-11">grill-me</a><a class="toc-h3" href="#heading-engineering-12">PRD / issue</a><a class="toc-h3" href="#heading-engineering-13">Implement</a><a class="toc-h3" href="#heading-engineering-14">Review loop</a><a class="toc-h2" href="#heading-engineering-15">可复制工程提示词</a><a class="toc-h3" href="#heading-engineering-16">边界澄清</a><a class="toc-h3" href="#heading-engineering-17">实现一个 issue</a><a class="toc-h2" href="#heading-engineering-18">工程任务什么时候拆给 subagent</a><a class="toc-h3" href="#heading-engineering-19">适合拆</a><a class="toc-h3" href="#heading-engineering-20">不要拆</a><a class="toc-h2" href="#heading-engineering-21">真实实例：把这份指南扩成实战手册</a><a class="toc-h3" href="#heading-engineering-22">输入</a><a class="toc-h3" href="#heading-engineering-23">先读</a><a class="toc-h3" href="#heading-engineering-24">应动文件</a><a class="toc-h3" href="#heading-engineering-25">验证</a><a class="toc-h3" href="#heading-engineering-26">最终回答</a><a class="toc-h3" href="#heading-engineering-27">失败停止</a></nav></details></aside></div>
+<nav class="page-sequence" aria-label="前后页"><a rel="prev" href="daily-workflow.html">← 日常</a><a rel="next" href="research.html">学术 →</a></nav></div><aside class="page-toc" aria-label="本页目录"><details open><summary>本页目录</summary><nav><a class="toc-h2" href="#team-flow">从 Idea 到 task receipt</a><a class="toc-h2" href="#roles-authority">双层角色与权限</a><a class="toc-h3" href="#roles-authority">A2 用户 / 产品负责人</a><a class="toc-h3" href="#roles-authority">A3 主线程 / 编排者</a><a class="toc-h3" href="#roles-authority">A4 subagent / 独立 reviewer</a><a class="toc-h3" href="#roles-authority">外部写入 grant</a><a class="toc-h3" href="#roles-authority">自动失效</a><a class="toc-h2" href="#issue-lanes">按依赖和写域组织并行</a><a class="toc-h3" href="#issue-lanes">Contract lane 串行</a><a class="toc-h3" href="#issue-lanes">独立 lanes 并行</a><a class="toc-h3" href="#issue-lanes">更新基线</a><a class="toc-h3" href="#issue-lanes">集成门</a><a class="toc-h3" href="#issue-lanes">可并行示例</a><a class="toc-h3" href="#issue-lanes">失败停止</a><a class="toc-h2" href="#independent-review">独立 reviewer 合同</a><a class="toc-h2" href="#team-case">真实实例：历史复合案例</a><a class="toc-h3" href="#team-case">请求</a><a class="toc-h3" href="#team-case">先读</a><a class="toc-h3" href="#team-case">角色</a><a class="toc-h3" href="#team-case">边界 / 文件</a><a class="toc-h3" href="#team-case">脏主保护</a><a class="toc-h2" href="#team-case">完整 Goal</a><a class="toc-h3" href="#team-case">分工</a><a class="toc-h3" href="#team-case">验证证据</a><a class="toc-h3" href="#team-case">独立 review</a><a class="toc-h3" href="#team-case">重要恢复</a><a class="toc-h3" href="#team-case">结果 / receipt</a><a class="toc-h3" href="#team-case">失败停止</a><a class="toc-h3" href="#team-case">来源分类</a></nav></details></aside></div>
 <!-- guide:shell-close:end -->
-  <footer class="footer"><p><strong>任务路径</strong><br>工程 flow 的核心是小步、证据、可 review。</p><a class="button" href="research.html">下一页：学术 flow</a></footer>
+  <footer class="footer"><p><strong>团队协作规范</strong><br>同一份合同、隔离写域、独立 review、授权合并、证据回执。</p><a class="button" href="research.html">下一页：学术 flow</a></footer>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>

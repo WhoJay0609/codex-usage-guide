@@ -26,28 +26,54 @@ Agent 1: security risks，只读，不改文件。
 Agent 2: missing tests，只读，不改文件。
 Agent 3: maintainability，只读，不改文件。
 最后由主线程整合 findings。</code></pre></section>
-      <section class="content-block"><p class="section-kicker">Delegation contract</p><h2 id="heading-subagents-4">Subagent 任务合同</h2><p>Subagent 最常见的失败是边界不清：多个代理同时改同一批文件，或者把需要主线程判断的产品决策交出去。给 subagent 的任务应当像小型工单。</p><div class="bento"><article class="card span-4"><h3 id="heading-subagents-5">输入</h3><p>给仓库路径、问题背景、只读或可写范围、必须读取的文件、禁止触碰的路径。</p></article><article class="card span-4"><h3 id="heading-subagents-6">输出</h3><p>要求固定格式：findings、证据、风险级别、建议修复、未验证项。不要只让它“看看”。</p></article><article class="card span-4"><h3 id="heading-subagents-7">整合</h3><p>主线程负责去重、冲突处理、最终判断和用户报告。Subagent 的结论不是自动真理。</p></article></div></section>
-      <section class="content-block"><p class="section-kicker">Patterns</p><h2 id="heading-subagents-8">推荐和不推荐的拆法</h2><div class="bento"><article class="card span-6"><h3 id="heading-subagents-9">推荐：并行只读审查</h3><pre><code>请并行审查当前分支，但不要改文件。
+      <section class="content-block" id="worktree-subagent"><p class="section-kicker">Two-layer isolation</p><h2 id="heading-subagents-4">Worktree × subagent：目录隔离和责任隔离</h2><p><strong>Worktree</strong> 为同一 Git 仓库提供独立 checkout 与工作目录；<strong>subagent</strong> 为同一任务提供独立上下文、职责和写域。两层解决的问题不同：Worktree 不会自动阻止逻辑冲突，subagent 也不等于拥有自己的 Worktree。共享 contract 或同一文件仍应串行，依赖分组见 <a href="engineering.html#issue-lanes">Issue lanes</a>。</p><figure class="figure-card mermaid-card"><div class="mermaid">
+flowchart TD
+  A["主线程选择 base 与依赖组"] --> B["Worktree A: 独立 checkout"]
+  A --> C["Worktree B: 独立 checkout"]
+  B --> D["Subagent A: 明确写域"]
+  C --> E["Subagent B: 明确写域"]
+  D --> F["返回文件与验证证据"]
+  E --> F
+  F --> G["主线程集成 PR / cleanup"]
+      </div><figcaption>Worktree 隔离 checkout，subagent 隔离责任；主线程保留 Git 集成、冲突判断和最终验收。</figcaption></figure><p><strong>官方事实：</strong>Codex Desktop 的 Worktree、起始分支与 Handoff 行为见 <a href="https://learn.chatgpt.com/docs/environments/git-worktrees">OpenAI Worktrees</a>；代理职责与配置见 <a href="https://developers.openai.com/codex/concepts/subagents">OpenAI Subagents</a>。本页的写域、等待点和主线程集成方式属于经验建议。</p><div class="decision-table" aria-label="Worktree 与 subagent 两层隔离文字说明"><div class="decision-row"><strong>开始</strong><span>主线程选择最新且正确的起始 branch/base</span><span>登记依赖、写域和磁盘条件</span><span>同一 branch 不能同时被两个 Worktree checkout</span></div><div class="decision-row"><strong>执行</strong><span>Codex Desktop managed Worktree 可能处于 detached HEAD</span><span>subagent 只改被分配文件并运行局部验证</span><span>不创建 branch/Worktree，不 commit、push 或 merge</span></div><div class="decision-row"><strong>交接</strong><span>需要保留该 checkout 时选择 <code>Create branch here</code></span><span>需要主线程接管时选择 <code>Hand off</code></span><span>返回 changed files、证据和未验证项</span></div><div class="decision-row"><strong>集成</strong><span>主线程更新 base、检查真实 diff、创建 PR</span><span>依赖合并后下游重跑验证</span><span>验证完成后清理已结束 lane</span></div></div><div class="bento"><article class="card span-6 dark-card"><h3 id="heading-subagents-5">不是安全沙箱</h3><p>Worktree 不隔离 credentials、共享 Git metadata、后台 processes、ports、external services 或 ignored config。setup 脚本和 <code>.worktreeinclude</code> 复制本地配置时会扩大暴露面，必须先审查。</p></article><article class="card span-6"><h3 id="heading-subagents-6">恢复与 blocked receipt</h3><p>base stale 时先更新基线再重验；same-branch checkout、abandoned lane、依赖缺失或磁盘不足时不要复用未知目录。可安全恢复则重建 lane；否则记录已验事实、blocker、解锁条件和下一条验证。</p></article></div></section>
+      <section class="content-block"><p class="section-kicker">Delegation contract</p><h2 id="heading-subagents-7">Subagent 任务合同</h2><p>Subagent 最常见的失败是边界不清：多个代理同时改同一批文件，或者把需要主线程判断的产品决策交出去。给 subagent 的任务应当像小型工单。</p><div class="bento"><article class="card span-4"><h3 id="heading-subagents-8">输入</h3><p>给仓库路径、问题背景、只读或可写范围、必须读取的文件、禁止触碰的路径。</p></article><article class="card span-4"><h3 id="heading-subagents-9">输出</h3><p>要求固定格式：findings、证据、风险级别、建议修复、未验证项。不要只让它“看看”。</p></article><article class="card span-4"><h3 id="heading-subagents-10">整合</h3><p>主线程负责去重、冲突处理、最终判断和用户报告。Subagent 的结论不是自动真理。</p></article></div></section>
+      <section class="content-block"><p class="section-kicker">Patterns</p><h2 id="heading-subagents-11">推荐和不推荐的拆法</h2><div class="bento"><article class="card span-6"><h3 id="heading-subagents-12">推荐：并行只读审查</h3><pre><code>请并行审查当前分支，但不要改文件。
 Agent A: 查安全和权限风险。
 Agent B: 查测试缺口和回归风险。
 Agent C: 查文档、命名和可维护性。
-每个 agent 返回：finding、证据文件、严重程度、建议。</code></pre></article><article class="card span-6"><h3 id="heading-subagents-10">推荐：互不重叠实现</h3><pre><code>请把任务拆给两个 subagents。
-Agent A: 只改 docs 页面，不碰 CSS。
-Agent B: 只改 CSS responsive，不碰内容。
-主线程最后统一跑静态检查和页面访问。</code></pre></article><article class="card span-6 dark-card"><h3 id="heading-subagents-11">不推荐：共享核心文件</h3><p>不要让多个 subagent 同时改同一个状态管理文件、同一个数据库 schema、同一个 API contract。冲突成本高，主线程很难判断谁对。</p></article><article class="card span-6 dark-card"><h3 id="heading-subagents-12">不推荐：外部写操作</h3><p>不要让 subagent 独立创建 release、改生产配置、推送分支或调用有副作用的 MCP。外部写操作应由主线程显式确认。</p></article></div></section>
-      <section class="content-block" id="real-example"><p class="section-kicker">Real example</p><h2 id="heading-subagents-13">真实实例：如何拆这份手册的审查任务</h2><p>如果要用 subagents 审查这份手册，最合理的拆法是只读并行审查，而不是让多个代理同时改 HTML。比如一个代理检查新手可读性，一个代理检查 Goal/Subagent/Skills 的进阶准确性，一个代理检查链接和发布验证。主线程最后整合结论并决定改哪些页面。</p><pre><code>真实可用拆分：
-Agent A: 只读审查 daily-workflow 是否适合零基础用户。
-Agent B: 只读审查 Goal/Subagents/Skills 是否有边界和反例。
-Agent C: 只读检查链接、图片、GitHub Pages 发布状态。
+每个 agent 返回：finding、证据文件、严重程度、建议。</code></pre></article><article class="card span-6"><h3 id="heading-subagents-13">推荐：互不重叠实现</h3><pre><code>Agent A
+Goal: 补齐一页指南的案例标签。
+Writable scope: 只改 docs-page.html。
+Forbidden: CSS、导航、Git 操作、其他页面。
+Required output: changed files、局部检查、未验证项。
+Wait point: 共享锚点未由主线程确认时停止。
 
-主线程：
-- 去重 findings
-- 选择要改的页面
-- 统一验证和发布</code></pre></section>
+Agent B
+Goal: 为语义校验器增加负向测试。
+Writable scope: 只改 tests/test_check_site.py。
+Forbidden: 生产校验器、HTML、Git 操作。
+Required output: red evidence、测试结果、缺口。
+Wait point: parser contract 变化时停止。
+
+Integration owner: 主线程；等待两者返回后检查真实 diff，
+按依赖顺序集成并统一运行 make check。</code></pre></article><article class="card span-6 dark-card"><h3 id="heading-subagents-14">不推荐：共享核心文件</h3><p>不要让多个 subagent 同时改同一个状态管理文件、同一个数据库 schema、同一个 API contract。冲突成本高，主线程很难判断谁对。</p></article><article class="card span-6 dark-card"><h3 id="heading-subagents-15">不推荐：外部写操作</h3><p>不要让 subagent 独立创建 release、改生产配置、推送分支或调用有副作用的 MCP。外部写操作应由主线程显式确认。</p></article><article class="card span-12"><h3 id="heading-subagents-16">Bad split → repaired split</h3><pre><code>Bad:
+三个 subagents 同时修改共享 schema、同一页面和校验器，然后各自提交。
+
+Repaired:
+1. 共享 schema / API contract 由主线程串行完成并验证。
+2. 不同任务使用独立 Worktree，避免干扰 Local checkout。
+3. 同一任务内只把互斥写域交给不同 subagent；共享文件保持串行。
+4. 每个 subagent 在 wait point 返回文件和证据，不执行 Git 操作。
+5. 主线程更新依赖、检查真实 diff、统一验证和集成。</code></pre></article></div></section>
+      <section class="content-block" id="real-example" data-case-type="composite" data-case-id="worktree-composite-excerpt"><p class="section-kicker">Real example</p><h2 id="heading-subagents-17">真实实例：历史复合案例</h2><div class="tier-badges"><span class="tier-badge">历史复合案例</span><span class="tier-badge">完整案例的 Worktree 摘录</span></div><p><strong>请求：</strong>在保留主工作区既有修改的前提下，让执行者完成互不重叠的文档切片。<strong>角色：</strong>主线程选择 base、登记隔离目录、整合 Git；subagent 只修改被分配页面并返回证据；独立 reviewer 只读检查合同与 diff。</p><pre><code>写域：按互不重叠的页面组分配；共享契约和校验逻辑保持串行。
+验证证据：changed files、局部检查、真实 diff、主线程全站检查。
+重要恢复：主 checkout 有无关 dirty 修改时不清理或覆盖，改用隔离写域。
+教学规则：只有依赖、review、验证和授权满足后，主线程才可集成。
+停止条件：写域重叠、基线过期、依赖/资源不足或外部写入未授权。</code></pre><p>这些是已核验边界与条件式教学规则的组合，不表示具体 lane 拓扑或每一步发生在同一次任务。完整的请求、Goal、授权、PR 与 receipt 见 <a href="engineering.html#team-case">团队协作历史复合案例</a>。</p></section>
     </article></div>
   </main>
 <!-- guide:shell-close:start -->
-<nav class="page-sequence" aria-label="前后页"><a rel="prev" href="mcp.html">← MCP</a><a rel="next" href="goal.html">Goal →</a></nav></div><aside class="page-toc" aria-label="本页目录"><details open><summary>本页目录</summary><nav><a class="toc-h2" href="#what">它是什么</a><a class="toc-h2" href="#when">什么时候用 / 不用</a><a class="toc-h2" href="#examples">可复制示例</a><a class="toc-h2" href="#heading-subagents-4">Subagent 任务合同</a><a class="toc-h3" href="#heading-subagents-5">输入</a><a class="toc-h3" href="#heading-subagents-6">输出</a><a class="toc-h3" href="#heading-subagents-7">整合</a><a class="toc-h2" href="#heading-subagents-8">推荐和不推荐的拆法</a><a class="toc-h3" href="#heading-subagents-9">推荐：并行只读审查</a><a class="toc-h3" href="#heading-subagents-10">推荐：互不重叠实现</a><a class="toc-h3" href="#heading-subagents-11">不推荐：共享核心文件</a><a class="toc-h3" href="#heading-subagents-12">不推荐：外部写操作</a><a class="toc-h2" href="#real-example">真实实例：如何拆这份手册的审查任务</a></nav></details></aside></div>
+<nav class="page-sequence" aria-label="前后页"><a rel="prev" href="mcp.html">← MCP</a><a rel="next" href="goal.html">Goal →</a></nav></div><aside class="page-toc" aria-label="本页目录"><details open><summary>本页目录</summary><nav><a class="toc-h2" href="#what">它是什么</a><a class="toc-h2" href="#when">什么时候用 / 不用</a><a class="toc-h2" href="#examples">可复制示例</a><a class="toc-h2" href="#worktree-subagent">Worktree × subagent：目录隔离和责任隔离</a><a class="toc-h3" href="#worktree-subagent">不是安全沙箱</a><a class="toc-h3" href="#worktree-subagent">恢复与 blocked receipt</a><a class="toc-h2" href="#heading-subagents-7">Subagent 任务合同</a><a class="toc-h3" href="#heading-subagents-8">输入</a><a class="toc-h3" href="#heading-subagents-9">输出</a><a class="toc-h3" href="#heading-subagents-10">整合</a><a class="toc-h2" href="#heading-subagents-11">推荐和不推荐的拆法</a><a class="toc-h3" href="#heading-subagents-12">推荐：并行只读审查</a><a class="toc-h3" href="#heading-subagents-13">推荐：互不重叠实现</a><a class="toc-h3" href="#heading-subagents-14">不推荐：共享核心文件</a><a class="toc-h3" href="#heading-subagents-15">不推荐：外部写操作</a><a class="toc-h3" href="#heading-subagents-16">Bad split → repaired split</a><a class="toc-h2" href="#real-example">真实实例：历史复合案例</a></nav></details></aside></div>
 <!-- guide:shell-close:end --><footer class="footer"><p><strong>Codex 使用指南</strong></p><a class="button" href="goal.html">下一页：Goal</a></footer><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script><script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
   <script src="assets/site.js"></script>
 </body></html>

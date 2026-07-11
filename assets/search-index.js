@@ -674,8 +674,8 @@ window.GUIDE_SEARCH_INDEX = [
   {
     "fragment": "real-example",
     "page": "agents-md.html",
-    "section": "真实实例：本仓库 AGENTS.md 如何约束工作",
-    "text": "真实实例：本仓库 AGENTS.md 如何约束工作",
+    "section": "真实实例：历史复合案例",
+    "text": "真实实例：历史复合案例",
     "title": "AGENTS.md"
   },
   {
@@ -987,73 +987,101 @@ window.GUIDE_SEARCH_INDEX = [
     "title": "Subagents"
   },
   {
-    "fragment": "heading-subagents-4",
+    "fragment": "worktree-subagent",
+    "page": "subagents.html",
+    "section": "Worktree × subagent：目录隔离和责任隔离",
+    "text": "Worktree × subagent：目录隔离和责任隔离",
+    "title": "Subagents"
+  },
+  {
+    "fragment": "worktree-subagent",
+    "page": "subagents.html",
+    "section": "不是安全沙箱",
+    "text": "不是安全沙箱",
+    "title": "Subagents"
+  },
+  {
+    "fragment": "worktree-subagent",
+    "page": "subagents.html",
+    "section": "恢复与 blocked receipt",
+    "text": "恢复与 blocked receipt",
+    "title": "Subagents"
+  },
+  {
+    "fragment": "heading-subagents-7",
     "page": "subagents.html",
     "section": "Subagent 任务合同",
     "text": "Subagent 任务合同",
     "title": "Subagents"
   },
   {
-    "fragment": "heading-subagents-5",
+    "fragment": "heading-subagents-8",
     "page": "subagents.html",
     "section": "输入",
     "text": "输入",
     "title": "Subagents"
   },
   {
-    "fragment": "heading-subagents-6",
+    "fragment": "heading-subagents-9",
     "page": "subagents.html",
     "section": "输出",
     "text": "输出",
     "title": "Subagents"
   },
   {
-    "fragment": "heading-subagents-7",
+    "fragment": "heading-subagents-10",
     "page": "subagents.html",
     "section": "整合",
     "text": "整合",
     "title": "Subagents"
   },
   {
-    "fragment": "heading-subagents-8",
+    "fragment": "heading-subagents-11",
     "page": "subagents.html",
     "section": "推荐和不推荐的拆法",
     "text": "推荐和不推荐的拆法",
     "title": "Subagents"
   },
   {
-    "fragment": "heading-subagents-9",
+    "fragment": "heading-subagents-12",
     "page": "subagents.html",
     "section": "推荐：并行只读审查",
     "text": "推荐：并行只读审查",
     "title": "Subagents"
   },
   {
-    "fragment": "heading-subagents-10",
+    "fragment": "heading-subagents-13",
     "page": "subagents.html",
     "section": "推荐：互不重叠实现",
     "text": "推荐：互不重叠实现",
     "title": "Subagents"
   },
   {
-    "fragment": "heading-subagents-11",
+    "fragment": "heading-subagents-14",
     "page": "subagents.html",
     "section": "不推荐：共享核心文件",
     "text": "不推荐：共享核心文件",
     "title": "Subagents"
   },
   {
-    "fragment": "heading-subagents-12",
+    "fragment": "heading-subagents-15",
     "page": "subagents.html",
     "section": "不推荐：外部写操作",
     "text": "不推荐：外部写操作",
     "title": "Subagents"
   },
   {
+    "fragment": "heading-subagents-16",
+    "page": "subagents.html",
+    "section": "Bad split → repaired split",
+    "text": "Bad split → repaired split",
+    "title": "Subagents"
+  },
+  {
     "fragment": "real-example",
     "page": "subagents.html",
-    "section": "真实实例：如何拆这份手册的审查任务",
-    "text": "真实实例：如何拆这份手册的审查任务",
+    "section": "真实实例：历史复合案例",
+    "text": "真实实例：历史复合案例",
     "title": "Subagents"
   },
   {
@@ -1143,8 +1171,22 @@ window.GUIDE_SEARCH_INDEX = [
   {
     "fragment": "real-example",
     "page": "goal.html",
-    "section": "真实实例：本次页面扩充的 Goal 合同",
-    "text": "真实实例：本次页面扩充的 Goal 合同",
+    "section": "真实实例：历史复合案例",
+    "text": "真实实例：历史复合案例",
+    "title": "Goal"
+  },
+  {
+    "fragment": "real-example",
+    "page": "goal.html",
+    "section": "验证与重要恢复",
+    "text": "验证与重要恢复",
+    "title": "Goal"
+  },
+  {
+    "fragment": "real-example",
+    "page": "goal.html",
+    "section": "结果与回执",
+    "text": "结果与回执",
     "title": "Goal"
   },
   {
@@ -1155,108 +1197,255 @@ window.GUIDE_SEARCH_INDEX = [
     "title": "任务路径"
   },
   {
-    "fragment": "heading-workflows-1",
+    "fragment": "task-entry",
     "page": "workflows.html",
     "section": "先选工作面，再写任务",
     "text": "先选工作面，再写任务",
     "title": "任务路径"
   },
   {
-    "fragment": "heading-workflows-2",
+    "fragment": "task-entry",
     "page": "workflows.html",
     "section": "安装 Desktop",
     "text": "安装 Desktop",
     "title": "任务路径"
   },
   {
-    "fragment": "heading-workflows-3",
+    "fragment": "task-entry",
     "page": "workflows.html",
     "section": "Codex Desktop",
     "text": "Codex Desktop",
     "title": "任务路径"
   },
   {
-    "fragment": "heading-workflows-4",
+    "fragment": "task-entry",
     "page": "workflows.html",
     "section": "日常小任务",
     "text": "日常小任务",
     "title": "任务路径"
   },
   {
-    "fragment": "heading-workflows-5",
+    "fragment": "task-entry",
     "page": "workflows.html",
     "section": "工程 flow",
     "text": "工程 flow",
     "title": "任务路径"
   },
   {
-    "fragment": "heading-workflows-6",
+    "fragment": "task-entry",
     "page": "workflows.html",
     "section": "学术 flow",
     "text": "学术 flow",
     "title": "任务路径"
   },
   {
-    "fragment": "heading-workflows-7",
+    "fragment": "task-entry",
     "page": "workflows.html",
     "section": "自动化",
     "text": "自动化",
     "title": "任务路径"
   },
   {
-    "fragment": "heading-workflows-8",
+    "fragment": "task-entry",
     "page": "workflows.html",
     "section": "Skills 仓库选择",
     "text": "Skills 仓库选择",
     "title": "任务路径"
   },
   {
-    "fragment": "heading-workflows-9",
+    "fragment": "task-entry",
     "page": "workflows.html",
     "section": "Compound Engineering",
     "text": "Compound Engineering",
     "title": "任务路径"
   },
   {
-    "fragment": "heading-workflows-10",
+    "fragment": "bounded-practice",
+    "page": "workflows.html",
+    "section": "同一任务，小步练到可验收",
+    "text": "同一任务，小步练到可验收",
+    "title": "任务路径"
+  },
+  {
+    "fragment": "bounded-practice",
+    "page": "workflows.html",
+    "section": "1. 现象",
+    "text": "1. 现象",
+    "title": "任务路径"
+  },
+  {
+    "fragment": "bounded-practice",
+    "page": "workflows.html",
+    "section": "2. 合同",
+    "text": "2. 合同",
+    "title": "任务路径"
+  },
+  {
+    "fragment": "bounded-practice",
+    "page": "workflows.html",
+    "section": "3. 最小执行",
+    "text": "3. 最小执行",
+    "title": "任务路径"
+  },
+  {
+    "fragment": "bounded-practice",
+    "page": "workflows.html",
+    "section": "4. 验收请求",
+    "text": "4. 验收请求",
+    "title": "任务路径"
+  },
+  {
+    "fragment": "bounded-practice",
+    "page": "workflows.html",
+    "section": "V1：只有愿望",
+    "text": "V1：只有愿望",
+    "title": "任务路径"
+  },
+  {
+    "fragment": "bounded-practice",
+    "page": "workflows.html",
+    "section": "V2：补上下文与边界",
+    "text": "V2：补上下文与边界",
+    "title": "任务路径"
+  },
+  {
+    "fragment": "bounded-practice",
+    "page": "workflows.html",
+    "section": "V3：补验收证据",
+    "text": "V3：补验收证据",
+    "title": "任务路径"
+  },
+  {
+    "fragment": "bounded-practice",
     "page": "workflows.html",
     "section": "统一案例模板",
     "text": "统一案例模板",
     "title": "任务路径"
   },
   {
-    "fragment": "heading-workflows-11",
+    "fragment": "bounded-practice",
     "page": "workflows.html",
     "section": "坏 prompt 怎么修",
     "text": "坏 prompt 怎么修",
     "title": "任务路径"
   },
   {
-    "fragment": "heading-workflows-12",
+    "fragment": "bounded-practice",
     "page": "workflows.html",
     "section": "“帮我优化项目”",
     "text": "“帮我优化项目”",
     "title": "任务路径"
   },
   {
-    "fragment": "heading-workflows-13",
+    "fragment": "bounded-practice",
     "page": "workflows.html",
     "section": "“直接推送”",
     "text": "“直接推送”",
     "title": "任务路径"
   },
   {
-    "fragment": "heading-workflows-14",
+    "fragment": "bounded-practice",
     "page": "workflows.html",
     "section": "“开 subagent 并行做”",
     "text": "“开 subagent 并行做”",
     "title": "任务路径"
   },
   {
-    "fragment": "heading-workflows-15",
+    "fragment": "acceptance-evidence",
+    "page": "workflows.html",
+    "section": "证据通过，才算 accepted",
+    "text": "证据通过，才算 accepted",
+    "title": "任务路径"
+  },
+  {
+    "fragment": "acceptance-evidence",
+    "page": "workflows.html",
+    "section": "Accepted",
+    "text": "Accepted",
+    "title": "任务路径"
+  },
+  {
+    "fragment": "acceptance-evidence",
+    "page": "workflows.html",
+    "section": "Not accepted",
+    "text": "Not accepted",
+    "title": "任务路径"
+  },
+  {
+    "fragment": "recovery",
+    "page": "workflows.html",
+    "section": "先分类失败，再决定回路",
+    "text": "先分类失败，再决定回路",
+    "title": "任务路径"
+  },
+  {
+    "fragment": "task-receipt",
+    "page": "workflows.html",
+    "section": "用两种终态收口",
+    "text": "用两种终态收口",
+    "title": "任务路径"
+  },
+  {
+    "fragment": "task-receipt",
+    "page": "workflows.html",
+    "section": "Done receipt",
+    "text": "Done receipt",
+    "title": "任务路径"
+  },
+  {
+    "fragment": "task-receipt",
+    "page": "workflows.html",
+    "section": "Blocked receipt",
+    "text": "Blocked receipt",
+    "title": "任务路径"
+  },
+  {
+    "fragment": "task-receipt",
     "page": "workflows.html",
     "section": "真实实例：从一句反馈选择任务路径",
     "text": "真实实例：从一句反馈选择任务路径",
+    "title": "任务路径"
+  },
+  {
+    "fragment": "task-receipt",
+    "page": "workflows.html",
+    "section": "1. Request",
+    "text": "1. Request",
+    "title": "任务路径"
+  },
+  {
+    "fragment": "task-receipt",
+    "page": "workflows.html",
+    "section": "2. Context to inspect",
+    "text": "2. Context to inspect",
+    "title": "任务路径"
+  },
+  {
+    "fragment": "task-receipt",
+    "page": "workflows.html",
+    "section": "3. Allowed change",
+    "text": "3. Allowed change",
+    "title": "任务路径"
+  },
+  {
+    "fragment": "task-receipt",
+    "page": "workflows.html",
+    "section": "4. Validation evidence",
+    "text": "4. Validation evidence",
+    "title": "任务路径"
+  },
+  {
+    "fragment": "task-receipt",
+    "page": "workflows.html",
+    "section": "5. Final report",
+    "text": "5. Final report",
+    "title": "任务路径"
+  },
+  {
+    "fragment": "task-receipt",
+    "page": "workflows.html",
+    "section": "6. Failure stop",
+    "text": "6. Failure stop",
     "title": "任务路径"
   },
   {
@@ -1554,192 +1743,206 @@ window.GUIDE_SEARCH_INDEX = [
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-1",
+    "fragment": "team-flow",
     "page": "engineering.html",
-    "section": "从 idea 到可合并变更",
-    "text": "从 idea 到可合并变更",
+    "section": "从 Idea 到 task receipt",
+    "text": "从 Idea 到 task receipt",
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-2",
+    "fragment": "roles-authority",
     "page": "engineering.html",
-    "section": "Idea intake",
-    "text": "Idea intake",
+    "section": "双层角色与权限",
+    "text": "双层角色与权限",
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-3",
+    "fragment": "roles-authority",
     "page": "engineering.html",
-    "section": "Grill 边界",
-    "text": "Grill 边界",
+    "section": "A2 用户 / 产品负责人",
+    "text": "A2 用户 / 产品负责人",
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-4",
+    "fragment": "roles-authority",
     "page": "engineering.html",
-    "section": "PRD / Issues",
-    "text": "PRD / Issues",
+    "section": "A3 主线程 / 编排者",
+    "text": "A3 主线程 / 编排者",
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-5",
+    "fragment": "roles-authority",
     "page": "engineering.html",
-    "section": "Implement",
-    "text": "Implement",
+    "section": "A4 subagent / 独立 reviewer",
+    "text": "A4 subagent / 独立 reviewer",
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-6",
+    "fragment": "roles-authority",
     "page": "engineering.html",
-    "section": "Review",
-    "text": "Review",
+    "section": "外部写入 grant",
+    "text": "外部写入 grant",
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-7",
+    "fragment": "roles-authority",
     "page": "engineering.html",
-    "section": "Ship",
-    "text": "Ship",
+    "section": "自动失效",
+    "text": "自动失效",
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-8",
+    "fragment": "issue-lanes",
     "page": "engineering.html",
-    "section": "工程 skills 怎么串起来",
-    "text": "工程 skills 怎么串起来",
+    "section": "按依赖和写域组织并行",
+    "text": "按依赖和写域组织并行",
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-9",
+    "fragment": "issue-lanes",
     "page": "engineering.html",
-    "section": "ask-matt",
-    "text": "ask-matt",
+    "section": "Contract lane 串行",
+    "text": "Contract lane 串行",
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-10",
+    "fragment": "issue-lanes",
     "page": "engineering.html",
-    "section": "grill-with-docs",
-    "text": "grill-with-docs",
+    "section": "独立 lanes 并行",
+    "text": "独立 lanes 并行",
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-11",
+    "fragment": "issue-lanes",
     "page": "engineering.html",
-    "section": "grill-me",
-    "text": "grill-me",
+    "section": "更新基线",
+    "text": "更新基线",
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-12",
+    "fragment": "issue-lanes",
     "page": "engineering.html",
-    "section": "PRD / issue",
-    "text": "PRD / issue",
+    "section": "集成门",
+    "text": "集成门",
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-13",
+    "fragment": "issue-lanes",
     "page": "engineering.html",
-    "section": "Implement",
-    "text": "Implement",
+    "section": "可并行示例",
+    "text": "可并行示例",
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-14",
+    "fragment": "issue-lanes",
     "page": "engineering.html",
-    "section": "Review loop",
-    "text": "Review loop",
+    "section": "失败停止",
+    "text": "失败停止",
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-15",
+    "fragment": "independent-review",
     "page": "engineering.html",
-    "section": "可复制工程提示词",
-    "text": "可复制工程提示词",
+    "section": "独立 reviewer 合同",
+    "text": "独立 reviewer 合同",
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-16",
+    "fragment": "team-case",
     "page": "engineering.html",
-    "section": "边界澄清",
-    "text": "边界澄清",
+    "section": "真实实例：历史复合案例",
+    "text": "真实实例：历史复合案例",
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-17",
+    "fragment": "team-case",
     "page": "engineering.html",
-    "section": "实现一个 issue",
-    "text": "实现一个 issue",
+    "section": "请求",
+    "text": "请求",
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-18",
-    "page": "engineering.html",
-    "section": "工程任务什么时候拆给 subagent",
-    "text": "工程任务什么时候拆给 subagent",
-    "title": "工程 flow"
-  },
-  {
-    "fragment": "heading-engineering-19",
-    "page": "engineering.html",
-    "section": "适合拆",
-    "text": "适合拆",
-    "title": "工程 flow"
-  },
-  {
-    "fragment": "heading-engineering-20",
-    "page": "engineering.html",
-    "section": "不要拆",
-    "text": "不要拆",
-    "title": "工程 flow"
-  },
-  {
-    "fragment": "heading-engineering-21",
-    "page": "engineering.html",
-    "section": "真实实例：把这份指南扩成实战手册",
-    "text": "真实实例：把这份指南扩成实战手册",
-    "title": "工程 flow"
-  },
-  {
-    "fragment": "heading-engineering-22",
-    "page": "engineering.html",
-    "section": "输入",
-    "text": "输入",
-    "title": "工程 flow"
-  },
-  {
-    "fragment": "heading-engineering-23",
+    "fragment": "team-case",
     "page": "engineering.html",
     "section": "先读",
     "text": "先读",
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-24",
+    "fragment": "team-case",
     "page": "engineering.html",
-    "section": "应动文件",
-    "text": "应动文件",
+    "section": "角色",
+    "text": "角色",
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-25",
+    "fragment": "team-case",
     "page": "engineering.html",
-    "section": "验证",
-    "text": "验证",
+    "section": "边界 / 文件",
+    "text": "边界 / 文件",
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-26",
+    "fragment": "team-case",
     "page": "engineering.html",
-    "section": "最终回答",
-    "text": "最终回答",
+    "section": "脏主保护",
+    "text": "脏主保护",
     "title": "工程 flow"
   },
   {
-    "fragment": "heading-engineering-27",
+    "fragment": "team-case",
+    "page": "engineering.html",
+    "section": "完整 Goal",
+    "text": "完整 Goal",
+    "title": "工程 flow"
+  },
+  {
+    "fragment": "team-case",
+    "page": "engineering.html",
+    "section": "分工",
+    "text": "分工",
+    "title": "工程 flow"
+  },
+  {
+    "fragment": "team-case",
+    "page": "engineering.html",
+    "section": "验证证据",
+    "text": "验证证据",
+    "title": "工程 flow"
+  },
+  {
+    "fragment": "team-case",
+    "page": "engineering.html",
+    "section": "独立 review",
+    "text": "独立 review",
+    "title": "工程 flow"
+  },
+  {
+    "fragment": "team-case",
+    "page": "engineering.html",
+    "section": "重要恢复",
+    "text": "重要恢复",
+    "title": "工程 flow"
+  },
+  {
+    "fragment": "team-case",
+    "page": "engineering.html",
+    "section": "结果 / receipt",
+    "text": "结果 / receipt",
+    "title": "工程 flow"
+  },
+  {
+    "fragment": "team-case",
     "page": "engineering.html",
     "section": "失败停止",
     "text": "失败停止",
+    "title": "工程 flow"
+  },
+  {
+    "fragment": "team-case",
+    "page": "engineering.html",
+    "section": "来源分类",
+    "text": "来源分类",
     "title": "工程 flow"
   },
   {
@@ -2156,6 +2359,13 @@ window.GUIDE_SEARCH_INDEX = [
     "title": "Compound Engineering"
   },
   {
+    "fragment": "unified-plan",
+    "page": "compound-engineering.html",
+    "section": "Product Contract 和实施计划写在同一份文档",
+    "text": "Product Contract 和实施计划写在同一份文档",
+    "title": "Compound Engineering"
+  },
+  {
     "fragment": "choose",
     "page": "compound-engineering.html",
     "section": "常见情况选哪个 skill",
@@ -2214,43 +2424,43 @@ window.GUIDE_SEARCH_INDEX = [
   {
     "fragment": "real-example",
     "page": "compound-engineering.html",
-    "section": "真实实例：把插件页加入这份指南",
-    "text": "真实实例：把插件页加入这份指南",
+    "section": "真实实例：历史案例",
+    "text": "真实实例：历史案例",
     "title": "Compound Engineering"
   },
   {
     "fragment": "real-example",
     "page": "compound-engineering.html",
-    "section": "输入",
-    "text": "输入",
+    "section": "请求",
+    "text": "请求",
     "title": "Compound Engineering"
   },
   {
     "fragment": "real-example",
     "page": "compound-engineering.html",
-    "section": "先读",
-    "text": "先读",
+    "section": "先读与角色",
+    "text": "先读与角色",
     "title": "Compound Engineering"
   },
   {
     "fragment": "real-example",
     "page": "compound-engineering.html",
-    "section": "应动文件",
-    "text": "应动文件",
+    "section": "边界",
+    "text": "边界",
     "title": "Compound Engineering"
   },
   {
     "fragment": "real-example",
     "page": "compound-engineering.html",
-    "section": "验证",
-    "text": "验证",
+    "section": "验证证据",
+    "text": "验证证据",
     "title": "Compound Engineering"
   },
   {
     "fragment": "real-example",
     "page": "compound-engineering.html",
-    "section": "最终回答",
-    "text": "最终回答",
+    "section": "重要恢复与结果",
+    "text": "重要恢复与结果",
     "title": "Compound Engineering"
   },
   {
@@ -2282,6 +2492,13 @@ window.GUIDE_SEARCH_INDEX = [
     "title": "高 stars skills 仓库介绍"
   },
   {
+    "fragment": "case-labels",
+    "page": "skills-repositories.html",
+    "section": "先看案例证据等级",
+    "text": "先看案例证据等级",
+    "title": "高 stars skills 仓库介绍"
+  },
+  {
     "fragment": "compound",
     "page": "skills-repositories.html",
     "section": "Compound Engineering",
@@ -2307,6 +2524,13 @@ window.GUIDE_SEARCH_INDEX = [
     "page": "skills-repositories.html",
     "section": "安装路径",
     "text": "安装路径",
+    "title": "高 stars skills 仓库介绍"
+  },
+  {
+    "fragment": "compound",
+    "page": "skills-repositories.html",
+    "section": "案例：从需求到 PR #1",
+    "text": "案例：从需求到 PR #1",
     "title": "高 stars skills 仓库介绍"
   },
   {
@@ -2338,6 +2562,13 @@ window.GUIDE_SEARCH_INDEX = [
     "title": "高 stars skills 仓库介绍"
   },
   {
+    "fragment": "matt",
+    "page": "skills-repositories.html",
+    "section": "案例：先建立上下文，再 grill",
+    "text": "案例：先建立上下文，再 grill",
+    "title": "高 stars skills 仓库介绍"
+  },
+  {
     "fragment": "academic",
     "page": "skills-repositories.html",
     "section": "academic-research-skills-codex",
@@ -2363,6 +2594,13 @@ window.GUIDE_SEARCH_INDEX = [
     "page": "skills-repositories.html",
     "section": "安装路径",
     "text": "安装路径",
+    "title": "高 stars skills 仓库介绍"
+  },
+  {
+    "fragment": "academic",
+    "page": "skills-repositories.html",
+    "section": "场景：先做 novelty 与最小实验矩阵",
+    "text": "场景：先做 novelty 与最小实验矩阵",
     "title": "高 stars skills 仓库介绍"
   },
   {
@@ -2394,6 +2632,13 @@ window.GUIDE_SEARCH_INDEX = [
     "title": "高 stars skills 仓库介绍"
   },
   {
+    "fragment": "aris",
+    "page": "skills-repositories.html",
+    "section": "场景：夜间循环保留人工闸门",
+    "text": "场景：夜间循环保留人工闸门",
+    "title": "高 stars skills 仓库介绍"
+  },
+  {
     "fragment": "advanced",
     "page": "skills-repositories.html",
     "section": "高级用户：按阶段组合，不要一锅端",
@@ -2410,8 +2655,8 @@ window.GUIDE_SEARCH_INDEX = [
   {
     "fragment": "real-example",
     "page": "skills-repositories.html",
-    "section": "真实实例：这次页面怎么做",
-    "text": "真实实例：这次页面怎么做",
+    "section": "真实实例：历史案例",
+    "text": "真实实例：历史案例",
     "title": "高 stars skills 仓库介绍"
   },
   {

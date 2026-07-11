@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ideation: 提升 Codex Desktop 指南的有效性</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f5f7f8;
+      --surface: #ffffff;
+      --surface-2: #eef3f2;
+      --text: #18201f;
+      --muted: #52605d;
+      --line: #cbd5d2;
+      --accent: #b43b2f;
+      --accent-soft: #f8e7e3;
+      --accent-text: #742219;
+      --teal: #0d6d68;
+      --teal-soft: #dcefed;
+      --teal-text: #084d49;
+      --gold: #8a5a10;
+      --gold-soft: #f7ecd3;
+      --gold-text: #65400b;
+      --code: #ecf0ef;
+      --shadow: 0 12px 34px rgba(26, 43, 39, 0.08);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111716;
+        --surface: #19201f;
+        --surface-2: #202a28;
+        --text: #edf3f1;
+        --muted: #b6c2bf;
+        --line: #3a4845;
+        --accent: #ef8d7f;
+        --accent-soft: #482925;
+        --accent-text: #ffd8d2;
+        --teal: #79c9c2;
+        --teal-soft: #173c39;
+        --teal-text: #c8f4ef;
+        --gold: #e7bd6c;
+        --gold-soft: #40351f;
+        --gold-text: #ffe5ad;
+        --code: #252f2d;
+        --shadow: 0 14px 40px rgba(0, 0, 0, 0.24);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+      font-size: 16px;
+      line-height: 1.72;
+      letter-spacing: 0;
+    }
+    a { color: var(--teal); text-underline-offset: 0.18em; }
+    a:hover { text-decoration-thickness: 2px; }
+    code {
+      background: var(--code);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 0.08rem 0.32rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.9em;
+      overflow-wrap: anywhere;
+    }
+    strong { color: inherit; }
+
+    .page {
+      width: min(94vw, 960px);
+      margin: 0 auto;
+      padding: 3.5rem 0 4rem;
+    }
+    .header {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(1.5rem, 4vw, 2.75rem);
+      box-shadow: var(--shadow);
+    }
+    .eyebrow {
+      margin: 0 0 0.5rem;
+      color: var(--accent);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { line-height: 1.28; letter-spacing: 0; }
+    h1 { margin: 0; font-size: clamp(2rem, 5vw, 3.2rem); max-width: 18ch; }
+    h2 { margin: 0 0 1rem; font-size: clamp(1.45rem, 3vw, 2rem); }
+    h3 { margin: 0; font-size: 1.28rem; }
+    p { max-width: 72ch; }
+    .lede { color: var(--muted); font-size: 1.08rem; margin: 1rem 0 0; }
+
+    .metadata, .stats, .idea-meta {
+      display: grid;
+      gap: 0.7rem;
+    }
+    .metadata {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin: 1.5rem 0 0;
+    }
+    .metadata div, .idea-meta div {
+      min-width: 0;
+      background: var(--surface-2);
+      border-radius: 6px;
+      padding: 0.7rem 0.85rem;
+    }
+    dt {
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    dd { margin: 0.18rem 0 0; overflow-wrap: anywhere; }
+
+    .stats {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 1rem;
+    }
+    .stat {
+      background: var(--teal-soft);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0.8rem;
+    }
+    .stat strong { display: block; color: var(--teal-text); font-size: 1.35rem; }
+    .stat span { color: var(--teal-text); font-size: 0.8rem; }
+
+    .toc {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin: 1.25rem 0 0;
+    }
+    .toc a, .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.35rem 0.7rem;
+      background: var(--surface);
+      color: var(--text);
+      font-size: 0.84rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .toc a:hover { background: var(--teal-soft); color: var(--teal-text); }
+
+    section { margin-top: 3rem; scroll-margin-top: 1rem; }
+    .section-intro { color: var(--muted); margin-top: -0.35rem; }
+    .callout {
+      background: var(--gold-soft);
+      color: var(--gold-text);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+      margin: 1rem 0;
+    }
+
+    .axis-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.65rem;
+    }
+    .axis {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface);
+      padding: 0.85rem;
+      min-width: 0;
+    }
+    .axis span { display: block; color: var(--muted); font-size: 0.78rem; }
+    .axis strong { display: block; margin-top: 0.2rem; font-size: 0.94rem; }
+
+    .idea-index {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.55rem;
+      margin: 1rem 0 1.5rem;
+      padding: 0;
+      list-style: none;
+    }
+    .idea-index a {
+      display: block;
+      height: 100%;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface);
+      padding: 0.7rem 0.85rem;
+      text-decoration: none;
+    }
+    .idea-index a:hover { background: var(--surface-2); }
+
+    .idea-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: clamp(1.15rem, 3vw, 1.8rem);
+      margin: 1rem 0;
+      box-shadow: var(--shadow);
+      scroll-margin-top: 1rem;
+    }
+    .idea-head {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+    .rank {
+      flex: 0 0 auto;
+      min-width: 2.5rem;
+      border-radius: 6px;
+      background: var(--accent-soft);
+      color: var(--accent-text);
+      padding: 0.35rem 0.55rem;
+      text-align: center;
+      font-weight: 900;
+    }
+    .idea-title { flex: 1; min-width: 0; }
+    .idea-title p { margin: 0.35rem 0 0; color: var(--muted); }
+    .idea-meta {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin: 1rem 0;
+    }
+    .field-label {
+      color: var(--muted);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .field { margin: 0.95rem 0 0; }
+    .field p { margin: 0.25rem 0 0; }
+    .downside {
+      background: var(--gold-soft);
+      color: var(--gold-text);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0.8rem 0.9rem;
+    }
+
+    .diagram {
+      margin: 1.1rem 0;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface-2);
+      padding: 0.8rem;
+    }
+    .diagram svg { display: block; width: 100%; min-width: 680px; height: auto; }
+    .diagram figcaption { color: var(--muted); font-size: 0.82rem; margin-top: 0.55rem; }
+
+    pre {
+      max-width: 100%;
+      overflow-x: auto;
+      background: var(--code);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0.9rem;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+    pre code { padding: 0; border: 0; background: transparent; white-space: inherit; }
+    .steps { padding-left: 1.3rem; }
+    .steps li { margin: 0.45rem 0; }
+
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+    table { width: 100%; border-collapse: collapse; min-width: 760px; background: var(--surface); }
+    th, td { padding: 0.72rem 0.8rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: var(--surface-2); font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; }
+    tr:last-child td { border-bottom: 0; }
+    .verdict-merge { color: var(--teal-text); font-weight: 800; }
+    .verdict-weak { color: var(--gold-text); font-weight: 800; }
+    .verdict-refuted { color: var(--accent-text); font-weight: 800; }
+
+    .references { columns: 2; column-gap: 2rem; padding-left: 1.2rem; }
+    .references li { break-inside: avoid; margin-bottom: 0.55rem; }
+    .composition-signal {
+      margin-top: 3rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 760px) {
+      .page { width: min(92vw, 960px); padding-top: 1.2rem; }
+      .metadata, .stats, .idea-meta, .idea-index, .axis-grid { grid-template-columns: 1fr; }
+      .idea-head { flex-direction: column; }
+      .references { columns: 1; }
+      h1 { max-width: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <p class="eyebrow">Compound Engineering · Ideation</p>
+      <h1>提升 Codex Desktop 指南的有效性</h1>
+      <p class="lede">这份报告不建议继续堆页面，而是把指南从“内容完整”整理成“读者能选对入口、完成真实任务、从失败中恢复，并能证明自己学会”。</p>
+
+      <dl class="metadata">
+        <div><dt>Date</dt><dd><time datetime="2026-07-10">2026-07-10</time></dd></div>
+        <div><dt>Topic</dt><dd><code>codex-desktop-guide-effectiveness</code></dd></div>
+        <div><dt>Focus</dt><dd>进一步提升指南的有效性和指导性，明确应该如何整理。</dd></div>
+        <div><dt>Mode</dt><dd><code>repo-grounded</code></dd></div>
+      </dl>
+
+      <div class="stats" aria-label="Ideation summary">
+        <div class="stat"><strong>33</strong><span>raw candidates</span></div>
+        <div class="stat"><strong>2</strong><span>combined directions</span></div>
+        <div class="stat"><strong>5</strong><span>topic axes</span></div>
+        <div class="stat"><strong>31</strong><span>cut or merged</span></div>
+      </div>
+
+      <nav class="toc" aria-label="Document navigation">
+        <a href="#grounding-context">Grounding Context</a>
+        <a href="#topic-axes">Topic Axes</a>
+        <a href="#ranked-ideas">Ranked Ideas</a>
+        <a href="#rejection-summary">Rejection Summary</a>
+        <a href="#references">References</a>
+      </nav>
+    </header>
+
+    <section id="grounding-context">
+      <p class="eyebrow">Why change the organizing principle</p>
+      <h2>Grounding Context</h2>
+      <p>当前指南已经有 19 个 HTML 页面，首页按读者状态和任务类型分流，任务页普遍包含可复制 prompt、验证、停止条件和真实实例；<code>make check</code> 也能验证 HTML、站内链接、锚点、导航、图片和关键文本。这些基础意味着下一阶段不应再以“新增页面”作为成功标准。</p>
+      <p>仓库证据显示，真正的缺口集中在五处：读者不知道何时从普通 Desktop 任务升级；读完后没有可观察的掌握标准；失败时常只有“停止”而缺少恢复路径；产品与第三方事实没有统一保鲜机制；维护者也不知道读者是否真的完成了任务。新增检查还发现，指南虽提到 Worktree 和 subagent，却没有解释两者在多个代理同时修改代码时承担的不同隔离责任。</p>
+      <p>外部研究同样支持这个判断：任务优先导航优于概念目录；最小化教学应让读者立刻完成真实任务，并把错误识别与恢复纳入教程；成熟文档系统会测试链接与内容契约；服务型指南应以完成率和首次阻塞点衡量效果。</p>
+      <div class="callout"><strong>核心判断：</strong>这份指南现在缺的不是更多知识，而是一个把“入口、练习、证据、恢复、反馈”串起来的学习合同。</div>
+    </section>
+
+    <section id="topic-axes">
+      <p class="eyebrow">The surface map</p>
+      <h2>Topic Axes</h2>
+      <div class="axis-grid">
+        <div class="axis"><span>Axis 1</span><strong>任务发现与进阶</strong></div>
+        <div class="axis"><span>Axis 2</span><strong>练习与掌握证据</strong></div>
+        <div class="axis"><span>Axis 3</span><strong>安全执行、恢复与隔离</strong></div>
+        <div class="axis"><span>Axis 4</span><strong>事实保鲜与第三方信任</strong></div>
+        <div class="axis"><span>Axis 5</span><strong>反馈与效果度量</strong></div>
+      </div>
+    </section>
+
+    <section id="ranked-ideas">
+      <p class="eyebrow">Two combined directions worth discussing</p>
+      <h2>Ranked Ideas</h2>
+      <p class="section-intro">用户选择合并原有方向，因此第一条吸收任务护照、阶梯练习、恢复卡、事实供应链和完成基准的优点；第二条补齐 Worktree 与多个写入型 subagent 的隔离方法。两条都可以单独进入 <code>ce-brainstorm</code>。</p>
+
+      <ol class="idea-index">
+        <li><a href="#idea-1">1. 证据驱动任务闭环：把五个方向整理成一条读者主线</a></li>
+        <li><a href="#idea-2">2. Worktree × subagent：两层隔离的并行写入方法</a></li>
+      </ol>
+
+      <article class="idea-card" id="idea-1">
+        <div class="idea-head">
+          <span class="rank">1</span>
+          <div class="idea-title">
+            <h3>Idea 1. 证据驱动任务闭环：把五个方向整理成一条读者主线</h3>
+            <p>用“选择、练习、验收/恢复、事实治理、反馈”统一任务页，而不是继续扩张页面。</p>
+          </div>
+        </div>
+        <dl class="idea-meta">
+          <div><dt>Axis</dt><dd>任务发现与进阶</dd></div>
+          <div><dt>Confidence</dt><dd>94%</dd></div>
+          <div><dt>Complexity</dt><dd>Medium</dd></div>
+        </dl>
+        <div class="field"><span class="field-label">Description</span><p>只让任务页承担完整闭环：先用任务长度、写入范围、外部状态、验证证据和重复度选择入口；再通过 2-3 个同题阶梯练习修正 prompt；完成时检查实际证据，失败时进入共享恢复卡；涉及产品或第三方事实时读取可核验来源；最后用隐私保守的任务回执记录是否完成和首次阻塞。概念页和参考页继续保持轻量，不强制复制整套闭环。</p></div>
+        <div class="field"><span class="field-label">Basis</span><p><strong>direct:</strong> 指南已经分别拥有任务分流、反例 prompt、closeout、停止条件和来源分层，但这些能力散落在不同页面，尚未形成统一读者合同。<strong>external:</strong> TaskNavigator、Minimalist Instruction、Diátaxis、GitLab 文档测试和 GOV.UK completion guidance 分别支持任务优先、错误恢复、渐进披露、事实验证和任务完成度量。</p></div>
+        <div class="field"><span class="field-label">Rationale</span><p>它吸收原五个方向的优点，同时避免把四套新机制强制塞进每一页。主线任务页负责“做成”，概念页负责“解释”，维护层负责“事实仍然有效”。</p></div>
+        <figure class="diagram">
+          <svg viewBox="0 0 900 280" role="img" aria-labelledby="loop-title loop-desc">
+            <title id="loop-title">证据驱动任务闭环</title>
+            <desc id="loop-desc">读者依次选择入口、完成阶梯练习、提交验收证据或进入恢复分支、形成任务回执；事实供应链为整个闭环提供来源和保鲜支持。</desc>
+            <defs>
+              <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#0d6d68"></path>
+              </marker>
+            </defs>
+            <g font-family="Inter, system-ui, sans-serif" font-size="15" fill="currentColor">
+              <rect x="20" y="48" width="142" height="72" rx="6" fill="var(--teal-soft)" stroke="var(--line)"></rect>
+              <text x="91" y="79" text-anchor="middle">1. 选择入口</text>
+              <text x="91" y="101" text-anchor="middle" font-size="13">任务护照</text>
+              <path d="M162 84 H196" stroke="#0d6d68" stroke-width="2" marker-end="url(#arrow)"></path>
+              <rect x="204" y="48" width="142" height="72" rx="6" fill="var(--surface)" stroke="var(--line)"></rect>
+              <text x="275" y="79" text-anchor="middle">2. 阶梯练习</text>
+              <text x="275" y="101" text-anchor="middle" font-size="13">Prompt Delta</text>
+              <path d="M346 84 H380" stroke="#0d6d68" stroke-width="2" marker-end="url(#arrow)"></path>
+              <rect x="388" y="48" width="142" height="72" rx="6" fill="var(--surface)" stroke="var(--line)"></rect>
+              <text x="459" y="79" text-anchor="middle">3. 验收证据</text>
+              <text x="459" y="101" text-anchor="middle" font-size="13">diff / test / URL</text>
+              <path d="M530 84 H564" stroke="#0d6d68" stroke-width="2" marker-end="url(#arrow)"></path>
+              <rect x="572" y="48" width="142" height="72" rx="6" fill="var(--gold-soft)" stroke="var(--line)"></rect>
+              <text x="643" y="79" text-anchor="middle">4. 失败恢复</text>
+              <text x="643" y="101" text-anchor="middle" font-size="13">恢复卡 / 人工边界</text>
+              <path d="M714 84 H748" stroke="#0d6d68" stroke-width="2" marker-end="url(#arrow)"></path>
+              <rect x="756" y="48" width="124" height="72" rx="6" fill="var(--accent-soft)" stroke="var(--line)"></rect>
+              <text x="818" y="79" text-anchor="middle">5. 任务回执</text>
+              <text x="818" y="101" text-anchor="middle" font-size="13">完成 / 阻塞</text>
+
+              <rect x="122" y="174" width="656" height="66" rx="6" fill="var(--teal-soft)" stroke="var(--line)"></rect>
+              <text x="450" y="202" text-anchor="middle">维护层：事实供应链</text>
+              <text x="450" y="225" text-anchor="middle" font-size="13">官方 / 第三方 / local adaptation · 来源 · 适用界面 · 最后核验 · 失效入口</text>
+            </g>
+          </svg>
+          <figcaption>概念图：任务页承载读者闭环，事实供应链作为维护层支撑整个流程；概念页和参考页不必复制全部环节。</figcaption>
+        </figure>
+        <div class="downside"><span class="field-label">Downsides</span><br>如果一次性把五个环节完整铺到所有页面，会重新制造内容膨胀。应只在核心任务页呈现完整闭环，并允许分阶段验证每个环节是否有效。</div>
+      </article>
+
+      <article class="idea-card" id="idea-2">
+        <div class="idea-head"><span class="rank">2</span><div class="idea-title"><h3>Idea 2. Worktree × subagent：两层隔离的并行写入方法</h3><p>Worktree 隔离任务 checkout，subagent 隔离职责；两者不能互相替代。</p></div></div>
+        <dl class="idea-meta"><div><dt>Axis</dt><dd>安全执行、恢复与隔离</dd></div><div><dt>Confidence</dt><dd>93%</dd></div><div><dt>Complexity</dt><dd>Medium</dd></div></dl>
+        <div class="field"><span class="field-label">Description</span><p>Worktree 的作用是让多个独立 Codex 任务各自在单独的 Git checkout 中工作，不干扰 Local 或其它任务；subagent 的作用是把同一任务拆成有边界的子工作。不要假设同一任务中的每个 subagent 自动拥有独立 worktree：若它们在同一任务中并行写代码，仍要按“同一工作区可能冲突”设计，明确互不重叠的文件所有权、等待点和主线程集成责任。</p></div>
+        <div class="field"><span class="field-label">Basis</span><p><strong>external:</strong> OpenAI 官方 Worktrees 文档说明 Worktree 为同一项目中的独立任务提供不同 checkout，并支持从 Worktree 创建分支或 Hand off 到 Local；官方 Subagents 文档同时提醒，并行写入型工作流可能产生冲突和协调开销。<strong>direct:</strong> 当前指南已经要求 subagent 的写域互不重叠，但尚未把这一规则与 Worktree 的任务级隔离连起来。</p></div>
+        <div class="field"><span class="field-label">Rationale</span><p>这能纠正常见误解：“用了 Worktree，多个代理就不会冲突。”真正安全的模型是两层：不同任务之间用 Worktree 隔离 checkout；同一任务内部用文件所有权隔离 subagent 写域，主线程负责合并、测试和最终 Git 操作。</p></div>
+        <div class="field"><span class="field-label">How to use</span>
+          <ol class="steps">
+            <li>确认项目是 Git 仓库；在 Codex Desktop 新任务的 composer 下选择 <strong>Worktree</strong>。</li>
+            <li>选择起始分支。Codex 默认基于该分支创建 detached HEAD 的 managed worktree。</li>
+            <li>在 prompt 中列出每个 subagent 的目标、可写文件、禁止路径、输出合同和等待点；共享核心文件、schema 或 API contract 时改为串行。</li>
+            <li>要求所有 subagent 完成后，由主线程检查 diff、处理冲突并运行统一测试；subagent 不独立 commit、push 或发布。</li>
+            <li>验证完成后，在 Worktree 中使用 <strong>Create branch here</strong> 提交并开 PR，或使用 <strong>Hand off</strong> 把任务和代码带回 Local。</li>
+            <li>同一 branch 不能同时 checkout 在两个 worktree。需要在 Local 使用该 branch 时，优先 Hand off，不要强行重复 checkout。</li>
+          </ol>
+          <pre><code>请在当前 Worktree 中并行使用 3 个 subagents：
+Agent A：只修改 frontend/，完成界面实现。
+Agent B：只修改 tests/，补行为测试。
+Agent C：只读审查接口和冲突风险，不改文件。
+
+约束：
+- 写域不得重叠，不修改共享 schema 和 API contract
+- subagents 不创建 branch/worktree，不 commit、不 push
+- 等待全部返回后，由主线程整合 diff、运行测试并报告冲突</code></pre>
+        </div>
+        <div class="downside"><span class="field-label">Downsides</span><br>每个 Worktree 都有完整文件、副本依赖和缓存，会占用磁盘；多个任务如果修改同一核心设计，最终仍会发生语义冲突。重叠写域应串行处理，不能用更多 Worktree 掩盖架构协调问题。</div>
+      </article>
+    </section>
+
+    <section id="rejection-summary">
+      <p class="eyebrow">Many ideas in, two combined directions out</p>
+      <h2>Rejection Summary</h2>
+      <p class="section-intro">以下记录保留了明确淘汰理由。标记为“合并”的候选不是丢失，而是其有效部分已进入更强的 surviving idea。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>Considered idea</th><th>Verdict</th><th>Reason</th></tr></thead>
+          <tbody>
+            <tr><td>S1</td><td>任务护照</td><td class="verdict-merge">Merged</td><td>作为证据驱动任务闭环的入口选择环节。</td></tr>
+            <tr><td>S2</td><td>同题阶梯练习</td><td class="verdict-merge">Merged</td><td>作为证据驱动任务闭环的练习环节。</td></tr>
+            <tr><td>S3</td><td>恢复卡</td><td class="verdict-merge">Merged</td><td>作为证据驱动任务闭环的失败分支。</td></tr>
+            <tr><td>S4</td><td>事实供应链</td><td class="verdict-merge">Merged</td><td>作为跨任务页的维护与来源层。</td></tr>
+            <tr><td>S5</td><td>最小任务完成基准</td><td class="verdict-merge">Merged</td><td>作为闭环是否有效的反馈方式。</td></tr>
+            <tr><td>1</td><td>Codex 驾照包装</td><td class="verdict-weak">Weak</td><td>能力状态成立，但驾照式游戏化没有额外证据；核心已进入任务护照。</td></tr>
+            <tr><td>3</td><td>同题四档</td><td class="verdict-merge">Merged</td><td>升级逻辑进入任务护照和同题阶梯练习。</td></tr>
+            <tr><td>4</td><td>升级判例库</td><td class="verdict-merge">Merged</td><td>适合作为任务护照的校准材料，不独立成方向。</td></tr>
+            <tr><td>5</td><td>卡点反向导航</td><td class="verdict-weak">Weak</td><td>缺少真实跨页导航失败证据，且与恢复卡重叠。</td></tr>
+            <tr><td>6</td><td>19 页硬上限</td><td class="verdict-refuted">Refuted</td><td>19 是当前数量，不是有依据的产品约束。</td></tr>
+            <tr><td>7</td><td>OSCE 技能站</td><td class="verdict-weak">Weak</td><td>练习缺口真实，但临床考试框架投入过重；简化进入阶梯练习。</td></tr>
+            <tr><td>8</td><td>读者证据账本</td><td class="verdict-weak">Weak</td><td>增加读者管理负担，现有 closeout 字段足以承担掌握证据。</td></tr>
+            <tr><td>9</td><td>同题双轨</td><td class="verdict-merge">Merged</td><td>成为同题阶梯练习的核心结构。</td></tr>
+            <tr><td>10</td><td>Prompt Delta</td><td class="verdict-merge">Merged</td><td>成为同题阶梯练习的第一步。</td></tr>
+            <tr><td>11</td><td>反向验收盲评</td><td class="verdict-weak">Weak</td><td>练习价值存在，但盲评机制无必要，可作为单个练习变体。</td></tr>
+            <tr><td>12</td><td>单一全站基准任务</td><td class="verdict-weak">Weak</td><td>Skill 依赖重复，Automation 依赖稳定周期，单任务会扭曲能力边界。</td></tr>
+            <tr><td>13</td><td>Skill 晋升证</td><td class="verdict-weak">Weak</td><td>现有页面已讲重复与验证，证书只增加仪式。</td></tr>
+            <tr><td>14</td><td>失败恢复第二主线</td><td class="verdict-weak">Weak</td><td>方向正确但范围过大，压缩为共享恢复卡。</td></tr>
+            <tr><td>15</td><td>应急检查单</td><td class="verdict-merge">Merged</td><td>检查单结构进入恢复卡。</td></tr>
+            <tr><td>16</td><td>失败收据</td><td class="verdict-weak">Weak</td><td>与现有停止条件及恢复卡高度重叠。</td></tr>
+            <tr><td>18</td><td>成功/失败同等教学预算</td><td class="verdict-refuted">Refuted</td><td>没有证据支持固定 1:1，且会破坏紧凑性。</td></tr>
+            <tr><td>20</td><td>每条事实护照或铭牌</td><td class="verdict-weak">Weak</td><td>逐条视觉组件成本高，治理字段比包装更重要。</td></tr>
+            <tr><td>21</td><td>可撤销信任合约</td><td class="verdict-merge">Merged</td><td>第三方退出与降级字段进入事实供应链。</td></tr>
+            <tr><td>22</td><td>先卸载再安装</td><td class="verdict-refuted">Refuted</td><td>需要先说明退出路径，不代表执行顺序应先卸载。</td></tr>
+            <tr><td>23</td><td>所有事实强制时间戳</td><td class="verdict-refuted">Refuted</td><td>稳定教学原则不应被当成漂移产品事实。</td></tr>
+            <tr><td>25</td><td>任务结果仪器</td><td class="verdict-weak">Weak</td><td>只是任务回执的抽象重述。</td></tr>
+            <tr><td>26</td><td>内容淘汰线</td><td class="verdict-weak">Weak</td><td>尚无结果数据支撑淘汰，且会误伤参考页。</td></tr>
+            <tr><td>28</td><td>全路径可验收任务单元</td><td class="verdict-weak">Weak</td><td>一次引入四套机制，超出当前证据支持的最小改动。</td></tr>
+            <tr><td>29</td><td>一题贯穿所有能力</td><td class="verdict-weak">Weak</td><td>无法自然覆盖 Skill 的重复性与 Automation 的周期性。</td></tr>
+            <tr><td>31</td><td>卡点闭环与自动反馈</td><td class="verdict-weak">Weak</td><td>假设了当前不存在的埋点系统，且与恢复卡重叠。</td></tr>
+            <tr><td>32</td><td>每页内容适任门槛</td><td class="verdict-refuted">Refuted</td><td>概念页和参考页不必承担完整任务、证据和恢复链。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="references">
+      <p class="eyebrow">Evidence used to qualify ideas</p>
+      <h2>References</h2>
+      <ul class="references">
+        <li><a href="https://github.com/WhoJay0609/codex-usage-guide/blob/master/index.html">Guide homepage</a> — 当前读者路径和任务入口。</li>
+        <li><a href="https://github.com/WhoJay0609/codex-usage-guide/blob/master/daily-workflow.html">Daily workflow</a> — prompt、验证、closeout 与失败分类。</li>
+        <li><a href="https://github.com/WhoJay0609/codex-usage-guide/blob/master/scripts/check_site.py">Static site checker</a> — 当前结构性质量门禁。</li>
+        <li><a href="https://github.com/WhoJay0609/codex-usage-guide/blob/master/skills-repositories.html">Skills repositories guide</a> — 第三方与 local adaptation 边界。</li>
+        <li><a href="https://learn.chatgpt.com/docs/glossary">OpenAI Codex Glossary</a> — 官方术语与界面范围。</li>
+        <li><a href="https://learn.chatgpt.com/docs/environments/git-worktrees">OpenAI Worktrees</a> — Desktop Worktree、Handoff、branch 限制与清理边界。</li>
+        <li><a href="https://developers.openai.com/codex/concepts/subagents">OpenAI Subagents</a> — 并行职责、写入冲突、权限继承与主线程整合。</li>
+        <li><a href="https://diataxis.fr/">Diátaxis</a> — 教程、操作指南、参考和解释的分工。</li>
+        <li><a href="https://ink.library.smu.edu.sg/sis_research/8787/">TaskNavigator</a> — 任务导向开发者文档研究。</li>
+        <li><a href="https://www.microsoft.com/en-us/research/publication/field-study-api-learning-obstacles/">Microsoft API learning study</a> — 场景、意图、示例与理解障碍。</li>
+        <li><a href="https://research.ibm.com/publications/the-minimal-manual">IBM Minimal Manual</a> — 真实任务与最小化教学。</li>
+        <li><a href="https://docs.gitlab.com/development/documentation/testing/">GitLab documentation testing</a> — 文档即代码和持续验证。</li>
+        <li><a href="https://www.w3.org/TR/WCAG22/">WCAG 2.2</a> — 标题、语言和一致导航的可访问性要求。</li>
+        <li><a href="https://www.gov.uk/service-manual/measuring-success/measuring-the-success-of-your-service">GOV.UK measuring success</a> — 任务完成和可用性基准。</li>
+      </ul>
+    </section>
+
+    <footer class="composition-signal">Composed 2026-07-10T20:50:00+08:00 by <code>ce-ideate</code> from the user prompt context for the Codex Desktop guide.</footer>
+  </main>
+</body>
+</html>
