@@ -7,154 +7,154 @@ window.GUIDE_SEARCH_INDEX = [
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-1",
     "page": "index.html",
     "section": "选择你的路径",
     "text": "选择你的路径",
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-2",
     "page": "index.html",
     "section": "零基础：安装到第一个任务",
     "text": "零基础：安装到第一个任务",
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-3",
     "page": "index.html",
     "section": "日常协作：桌面版工作流",
     "text": "日常协作：桌面版工作流",
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-4",
     "page": "index.html",
     "section": "进阶用户：任务升级路线",
     "text": "进阶用户：任务升级路线",
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-5",
     "page": "index.html",
     "section": "Skills 仓库怎么选",
     "text": "Skills 仓库怎么选",
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-6",
     "page": "index.html",
     "section": "工程 / 学术场景",
     "text": "工程 / 学术场景",
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-7",
     "page": "index.html",
     "section": "维护者：资料和发布边界",
     "text": "维护者：资料和发布边界",
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-8",
     "page": "index.html",
     "section": "30 秒选择入口",
     "text": "30 秒选择入口",
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-9",
     "page": "index.html",
     "section": "需要时再查概念",
     "text": "需要时再查概念",
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-10",
     "page": "index.html",
     "section": "Codex 是什么",
     "text": "Codex 是什么",
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-11",
     "page": "index.html",
     "section": "权限与安全",
     "text": "权限与安全",
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-12",
     "page": "index.html",
     "section": "AGENTS.md",
     "text": "AGENTS.md",
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-13",
     "page": "index.html",
     "section": "Skills",
     "text": "Skills",
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-14",
     "page": "index.html",
     "section": "MCP / Plugins",
     "text": "MCP / Plugins",
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-15",
     "page": "index.html",
     "section": "Subagents",
     "text": "Subagents",
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-16",
     "page": "index.html",
     "section": "Goal",
     "text": "Goal",
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-17",
     "page": "index.html",
     "section": "每页都有真实实例",
     "text": "每页都有真实实例",
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-18",
     "page": "index.html",
     "section": "日常实例",
     "text": "日常实例",
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-19",
     "page": "index.html",
     "section": "插件实例",
     "text": "插件实例",
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-20",
     "page": "index.html",
     "section": "Skills 仓库实例",
     "text": "Skills 仓库实例",
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-21",
     "page": "index.html",
     "section": "权限实例",
     "text": "权限实例",
     "title": "中文 Codex 实战手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-index-22",
     "page": "index.html",
     "section": "自动化实例",
     "text": "自动化实例",
@@ -168,105 +168,105 @@ window.GUIDE_SEARCH_INDEX = [
     "title": "安装 Codex Desktop"
   },
   {
-    "fragment": "",
+    "fragment": "heading-install-desktop-1",
     "page": "install-desktop.html",
     "section": "安装前先确认三件事",
     "text": "安装前先确认三件事",
     "title": "安装 Codex Desktop"
   },
   {
-    "fragment": "",
+    "fragment": "heading-install-desktop-2",
     "page": "install-desktop.html",
     "section": "官方入口",
     "text": "官方入口",
     "title": "安装 Codex Desktop"
   },
   {
-    "fragment": "",
+    "fragment": "heading-install-desktop-3",
     "page": "install-desktop.html",
     "section": "账号和组织",
     "text": "账号和组织",
     "title": "安装 Codex Desktop"
   },
   {
-    "fragment": "",
+    "fragment": "heading-install-desktop-4",
     "page": "install-desktop.html",
     "section": "仓库准备",
     "text": "仓库准备",
     "title": "安装 Codex Desktop"
   },
   {
-    "fragment": "",
+    "fragment": "heading-install-desktop-5",
     "page": "install-desktop.html",
     "section": "安装到第一个任务",
     "text": "安装到第一个任务",
     "title": "安装 Codex Desktop"
   },
   {
-    "fragment": "",
+    "fragment": "heading-install-desktop-6",
     "page": "install-desktop.html",
     "section": "第一个任务怎么写",
     "text": "第一个任务怎么写",
     "title": "安装 Codex Desktop"
   },
   {
-    "fragment": "",
+    "fragment": "heading-install-desktop-7",
     "page": "install-desktop.html",
     "section": "只读入门",
     "text": "只读入门",
     "title": "安装 Codex Desktop"
   },
   {
-    "fragment": "",
+    "fragment": "heading-install-desktop-8",
     "page": "install-desktop.html",
     "section": "小改动入门",
     "text": "小改动入门",
     "title": "安装 Codex Desktop"
   },
   {
-    "fragment": "",
+    "fragment": "heading-install-desktop-9",
     "page": "install-desktop.html",
     "section": "第一次不要这样写",
     "text": "第一次不要这样写",
     "title": "安装 Codex Desktop"
   },
   {
-    "fragment": "",
+    "fragment": "heading-install-desktop-10",
     "page": "install-desktop.html",
     "section": "看到权限请求时怎么判断",
     "text": "看到权限请求时怎么判断",
     "title": "安装 Codex Desktop"
   },
   {
-    "fragment": "",
+    "fragment": "heading-install-desktop-11",
     "page": "install-desktop.html",
     "section": "本地服务",
     "text": "本地服务",
     "title": "安装 Codex Desktop"
   },
   {
-    "fragment": "",
+    "fragment": "heading-install-desktop-12",
     "page": "install-desktop.html",
     "section": "联网查询",
     "text": "联网查询",
     "title": "安装 Codex Desktop"
   },
   {
-    "fragment": "",
+    "fragment": "heading-install-desktop-13",
     "page": "install-desktop.html",
     "section": "安装依赖",
     "text": "安装依赖",
     "title": "安装 Codex Desktop"
   },
   {
-    "fragment": "",
+    "fragment": "heading-install-desktop-14",
     "page": "install-desktop.html",
     "section": "Git push",
     "text": "Git push",
     "title": "安装 Codex Desktop"
   },
   {
-    "fragment": "",
+    "fragment": "heading-install-desktop-15",
     "page": "install-desktop.html",
     "section": "真实实例：本指南的 Desktop 安装页",
     "text": "真实实例：本指南的 Desktop 安装页",
@@ -280,161 +280,161 @@ window.GUIDE_SEARCH_INDEX = [
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-1",
     "page": "desktop-cli.html",
     "section": "什么时候优先用 Desktop",
     "text": "什么时候优先用 Desktop",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-2",
     "page": "desktop-cli.html",
     "section": "页面和视觉反馈",
     "text": "页面和视觉反馈",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-3",
     "page": "desktop-cli.html",
     "section": "本地仓库协作",
     "text": "本地仓库协作",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-4",
     "page": "desktop-cli.html",
     "section": "需要你审批的操作",
     "text": "需要你审批的操作",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-5",
     "page": "desktop-cli.html",
     "section": "沉淀为 Automations 的场景",
     "text": "沉淀为 Automations 的场景",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-6",
     "page": "desktop-cli.html",
     "section": "不要混用得太乱",
     "text": "不要混用得太乱",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-7",
     "page": "desktop-cli.html",
     "section": "Desktop 里的六个常用操作",
     "text": "Desktop 里的六个常用操作",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-8",
     "page": "desktop-cli.html",
     "section": "1. 打开任务线程",
     "text": "1. 打开任务线程",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-9",
     "page": "desktop-cli.html",
     "section": "2. 让 Codex 读上下文",
     "text": "2. 让 Codex 读上下文",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-10",
     "page": "desktop-cli.html",
     "section": "3. 用浏览器反馈定位问题",
     "text": "3. 用浏览器反馈定位问题",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-11",
     "page": "desktop-cli.html",
     "section": "4. 审批有副作用动作",
     "text": "4. 审批有副作用动作",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-12",
     "page": "desktop-cli.html",
     "section": "5. 看 diff 和验证结果",
     "text": "5. 看 diff 和验证结果",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-13",
     "page": "desktop-cli.html",
     "section": "6. 发布后抽样确认",
     "text": "6. 发布后抽样确认",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-14",
     "page": "desktop-cli.html",
     "section": "Desktop-first prompt 模板",
     "text": "Desktop-first prompt 模板",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-15",
     "page": "desktop-cli.html",
     "section": "网页反馈",
     "text": "网页反馈",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-16",
     "page": "desktop-cli.html",
     "section": "代码修复",
     "text": "代码修复",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-17",
     "page": "desktop-cli.html",
     "section": "需要联网或推送",
     "text": "需要联网或推送",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-18",
     "page": "desktop-cli.html",
     "section": "线程收口",
     "text": "线程收口",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-19",
     "page": "desktop-cli.html",
     "section": "真实实例：本页这次怎么改",
     "text": "真实实例：本页这次怎么改",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-20",
     "page": "desktop-cli.html",
     "section": "输入",
     "text": "输入",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-21",
     "page": "desktop-cli.html",
     "section": "执行",
     "text": "执行",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-22",
     "page": "desktop-cli.html",
     "section": "验证",
     "text": "验证",
     "title": "Codex Desktop 操作手册"
   },
   {
-    "fragment": "",
+    "fragment": "heading-desktop-cli-23",
     "page": "desktop-cli.html",
     "section": "交付",
     "text": "交付",
@@ -630,42 +630,42 @@ window.GUIDE_SEARCH_INDEX = [
     "title": "AGENTS.md"
   },
   {
-    "fragment": "",
+    "fragment": "heading-agents-md-4",
     "page": "agents-md.html",
     "section": "如何设计 AGENTS.md 层级",
     "text": "如何设计 AGENTS.md 层级",
     "title": "AGENTS.md"
   },
   {
-    "fragment": "",
+    "fragment": "heading-agents-md-5",
     "page": "agents-md.html",
     "section": "根目录",
     "text": "根目录",
     "title": "AGENTS.md"
   },
   {
-    "fragment": "",
+    "fragment": "heading-agents-md-6",
     "page": "agents-md.html",
     "section": "子目录",
     "text": "子目录",
     "title": "AGENTS.md"
   },
   {
-    "fragment": "",
+    "fragment": "heading-agents-md-7",
     "page": "agents-md.html",
     "section": "当前任务",
     "text": "当前任务",
     "title": "AGENTS.md"
   },
   {
-    "fragment": "",
+    "fragment": "heading-agents-md-8",
     "page": "agents-md.html",
     "section": "写 AGENTS.md 的检查清单",
     "text": "写 AGENTS.md 的检查清单",
     "title": "AGENTS.md"
   },
   {
-    "fragment": "",
+    "fragment": "heading-agents-md-9",
     "page": "agents-md.html",
     "section": "不要把这些写进 AGENTS.md",
     "text": "不要把这些写进 AGENTS.md",
@@ -707,77 +707,77 @@ window.GUIDE_SEARCH_INDEX = [
     "title": "Skills"
   },
   {
-    "fragment": "",
+    "fragment": "heading-skills-4",
     "page": "skills.html",
     "section": "Skill 应该沉淀什么",
     "text": "Skill 应该沉淀什么",
     "title": "Skills"
   },
   {
-    "fragment": "",
+    "fragment": "heading-skills-5",
     "page": "skills.html",
     "section": "触发条件",
     "text": "触发条件",
     "title": "Skills"
   },
   {
-    "fragment": "",
+    "fragment": "heading-skills-6",
     "page": "skills.html",
     "section": "上下文读取",
     "text": "上下文读取",
     "title": "Skills"
   },
   {
-    "fragment": "",
+    "fragment": "heading-skills-7",
     "page": "skills.html",
     "section": "执行流程",
     "text": "执行流程",
     "title": "Skills"
   },
   {
-    "fragment": "",
+    "fragment": "heading-skills-8",
     "page": "skills.html",
     "section": "输出合同",
     "text": "输出合同",
     "title": "Skills"
   },
   {
-    "fragment": "",
+    "fragment": "heading-skills-9",
     "page": "skills.html",
     "section": "从 prompt 到 skill 的生命周期",
     "text": "从 prompt 到 skill 的生命周期",
     "title": "Skills"
   },
   {
-    "fragment": "",
+    "fragment": "heading-skills-10",
     "page": "skills.html",
     "section": "先手写 prompt",
     "text": "先手写 prompt",
     "title": "Skills"
   },
   {
-    "fragment": "",
+    "fragment": "heading-skills-11",
     "page": "skills.html",
     "section": "提取稳定步骤",
     "text": "提取稳定步骤",
     "title": "Skills"
   },
   {
-    "fragment": "",
+    "fragment": "heading-skills-12",
     "page": "skills.html",
     "section": "加入验证",
     "text": "加入验证",
     "title": "Skills"
   },
   {
-    "fragment": "",
+    "fragment": "heading-skills-13",
     "page": "skills.html",
     "section": "维护版本",
     "text": "维护版本",
     "title": "Skills"
   },
   {
-    "fragment": "",
+    "fragment": "heading-skills-14",
     "page": "skills.html",
     "section": "一个实用 Skill 模板",
     "text": "一个实用 Skill 模板",
@@ -987,63 +987,63 @@ window.GUIDE_SEARCH_INDEX = [
     "title": "Subagents"
   },
   {
-    "fragment": "",
+    "fragment": "heading-subagents-4",
     "page": "subagents.html",
     "section": "Subagent 任务合同",
     "text": "Subagent 任务合同",
     "title": "Subagents"
   },
   {
-    "fragment": "",
+    "fragment": "heading-subagents-5",
     "page": "subagents.html",
     "section": "输入",
     "text": "输入",
     "title": "Subagents"
   },
   {
-    "fragment": "",
+    "fragment": "heading-subagents-6",
     "page": "subagents.html",
     "section": "输出",
     "text": "输出",
     "title": "Subagents"
   },
   {
-    "fragment": "",
+    "fragment": "heading-subagents-7",
     "page": "subagents.html",
     "section": "整合",
     "text": "整合",
     "title": "Subagents"
   },
   {
-    "fragment": "",
+    "fragment": "heading-subagents-8",
     "page": "subagents.html",
     "section": "推荐和不推荐的拆法",
     "text": "推荐和不推荐的拆法",
     "title": "Subagents"
   },
   {
-    "fragment": "",
+    "fragment": "heading-subagents-9",
     "page": "subagents.html",
     "section": "推荐：并行只读审查",
     "text": "推荐：并行只读审查",
     "title": "Subagents"
   },
   {
-    "fragment": "",
+    "fragment": "heading-subagents-10",
     "page": "subagents.html",
     "section": "推荐：互不重叠实现",
     "text": "推荐：互不重叠实现",
     "title": "Subagents"
   },
   {
-    "fragment": "",
+    "fragment": "heading-subagents-11",
     "page": "subagents.html",
     "section": "不推荐：共享核心文件",
     "text": "不推荐：共享核心文件",
     "title": "Subagents"
   },
   {
-    "fragment": "",
+    "fragment": "heading-subagents-12",
     "page": "subagents.html",
     "section": "不推荐：外部写操作",
     "text": "不推荐：外部写操作",
@@ -1085,56 +1085,56 @@ window.GUIDE_SEARCH_INDEX = [
     "title": "Goal"
   },
   {
-    "fragment": "",
+    "fragment": "heading-goal-4",
     "page": "goal.html",
     "section": "一个好 Goal 必须包含什么",
     "text": "一个好 Goal 必须包含什么",
     "title": "Goal"
   },
   {
-    "fragment": "",
+    "fragment": "heading-goal-5",
     "page": "goal.html",
     "section": "Objective",
     "text": "Objective",
     "title": "Goal"
   },
   {
-    "fragment": "",
+    "fragment": "heading-goal-6",
     "page": "goal.html",
     "section": "Scope",
     "text": "Scope",
     "title": "Goal"
   },
   {
-    "fragment": "",
+    "fragment": "heading-goal-7",
     "page": "goal.html",
     "section": "Acceptance",
     "text": "Acceptance",
     "title": "Goal"
   },
   {
-    "fragment": "",
+    "fragment": "heading-goal-8",
     "page": "goal.html",
     "section": "Validation",
     "text": "Validation",
     "title": "Goal"
   },
   {
-    "fragment": "",
+    "fragment": "heading-goal-9",
     "page": "goal.html",
     "section": "Artifacts",
     "text": "Artifacts",
     "title": "Goal"
   },
   {
-    "fragment": "",
+    "fragment": "heading-goal-10",
     "page": "goal.html",
     "section": "Stop Conditions",
     "text": "Stop Conditions",
     "title": "Goal"
   },
   {
-    "fragment": "",
+    "fragment": "heading-goal-11",
     "page": "goal.html",
     "section": "三种常见 Goal 模板",
     "text": "三种常见 Goal 模板",
@@ -1155,105 +1155,105 @@ window.GUIDE_SEARCH_INDEX = [
     "title": "任务路径"
   },
   {
-    "fragment": "",
+    "fragment": "heading-workflows-1",
     "page": "workflows.html",
     "section": "先选工作面，再写任务",
     "text": "先选工作面，再写任务",
     "title": "任务路径"
   },
   {
-    "fragment": "",
+    "fragment": "heading-workflows-2",
     "page": "workflows.html",
     "section": "安装 Desktop",
     "text": "安装 Desktop",
     "title": "任务路径"
   },
   {
-    "fragment": "",
+    "fragment": "heading-workflows-3",
     "page": "workflows.html",
     "section": "Codex Desktop",
     "text": "Codex Desktop",
     "title": "任务路径"
   },
   {
-    "fragment": "",
+    "fragment": "heading-workflows-4",
     "page": "workflows.html",
     "section": "日常小任务",
     "text": "日常小任务",
     "title": "任务路径"
   },
   {
-    "fragment": "",
+    "fragment": "heading-workflows-5",
     "page": "workflows.html",
     "section": "工程 flow",
     "text": "工程 flow",
     "title": "任务路径"
   },
   {
-    "fragment": "",
+    "fragment": "heading-workflows-6",
     "page": "workflows.html",
     "section": "学术 flow",
     "text": "学术 flow",
     "title": "任务路径"
   },
   {
-    "fragment": "",
+    "fragment": "heading-workflows-7",
     "page": "workflows.html",
     "section": "自动化",
     "text": "自动化",
     "title": "任务路径"
   },
   {
-    "fragment": "",
+    "fragment": "heading-workflows-8",
     "page": "workflows.html",
     "section": "Skills 仓库选择",
     "text": "Skills 仓库选择",
     "title": "任务路径"
   },
   {
-    "fragment": "",
+    "fragment": "heading-workflows-9",
     "page": "workflows.html",
     "section": "Compound Engineering",
     "text": "Compound Engineering",
     "title": "任务路径"
   },
   {
-    "fragment": "",
+    "fragment": "heading-workflows-10",
     "page": "workflows.html",
     "section": "统一案例模板",
     "text": "统一案例模板",
     "title": "任务路径"
   },
   {
-    "fragment": "",
+    "fragment": "heading-workflows-11",
     "page": "workflows.html",
     "section": "坏 prompt 怎么修",
     "text": "坏 prompt 怎么修",
     "title": "任务路径"
   },
   {
-    "fragment": "",
+    "fragment": "heading-workflows-12",
     "page": "workflows.html",
     "section": "“帮我优化项目”",
     "text": "“帮我优化项目”",
     "title": "任务路径"
   },
   {
-    "fragment": "",
+    "fragment": "heading-workflows-13",
     "page": "workflows.html",
     "section": "“直接推送”",
     "text": "“直接推送”",
     "title": "任务路径"
   },
   {
-    "fragment": "",
+    "fragment": "heading-workflows-14",
     "page": "workflows.html",
     "section": "“开 subagent 并行做”",
     "text": "“开 subagent 并行做”",
     "title": "任务路径"
   },
   {
-    "fragment": "",
+    "fragment": "heading-workflows-15",
     "page": "workflows.html",
     "section": "真实实例：从一句反馈选择任务路径",
     "text": "真实实例：从一句反馈选择任务路径",
@@ -1267,280 +1267,280 @@ window.GUIDE_SEARCH_INDEX = [
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-1",
     "page": "daily-workflow.html",
     "section": "日常任务的最小可靠闭环",
     "text": "日常任务的最小可靠闭环",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-2",
     "page": "daily-workflow.html",
     "section": "说明任务",
     "text": "说明任务",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-3",
     "page": "daily-workflow.html",
     "section": "让 Codex 读上下文",
     "text": "让 Codex 读上下文",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-4",
     "page": "daily-workflow.html",
     "section": "小范围执行",
     "text": "小范围执行",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-5",
     "page": "daily-workflow.html",
     "section": "验证和收口",
     "text": "验证和收口",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-6",
     "page": "daily-workflow.html",
     "section": "在桌面版里实际怎么操作",
     "text": "在桌面版里实际怎么操作",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-7",
     "page": "daily-workflow.html",
     "section": "把问题贴进线程",
     "text": "把问题贴进线程",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-8",
     "page": "daily-workflow.html",
     "section": "要求先读规则",
     "text": "要求先读规则",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-9",
     "page": "daily-workflow.html",
     "section": "逐个批准动作",
     "text": "逐个批准动作",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-10",
     "page": "daily-workflow.html",
     "section": "用浏览器反馈迭代",
     "text": "用浏览器反馈迭代",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-11",
     "page": "daily-workflow.html",
     "section": "最后看证据",
     "text": "最后看证据",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-12",
     "page": "daily-workflow.html",
     "section": "五类高频日常任务",
     "text": "五类高频日常任务",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-13",
     "page": "daily-workflow.html",
     "section": "读代码并解释",
     "text": "读代码并解释",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-14",
     "page": "daily-workflow.html",
     "section": "修失败测试",
     "text": "修失败测试",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-15",
     "page": "daily-workflow.html",
     "section": "修改网页或文档",
     "text": "修改网页或文档",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-16",
     "page": "daily-workflow.html",
     "section": "审查当前 diff",
     "text": "审查当前 diff",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-17",
     "page": "daily-workflow.html",
     "section": "提交和发布",
     "text": "提交和发布",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-18",
     "page": "daily-workflow.html",
     "section": "坏请求和好请求的差别",
     "text": "坏请求和好请求的差别",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-19",
     "page": "daily-workflow.html",
     "section": "不要这样写",
     "text": "不要这样写",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-20",
     "page": "daily-workflow.html",
     "section": "推荐这样写",
     "text": "推荐这样写",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-21",
     "page": "daily-workflow.html",
     "section": "验收不是“看起来完成了”",
     "text": "验收不是“看起来完成了”",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-22",
     "page": "daily-workflow.html",
     "section": "改动证据",
     "text": "改动证据",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-23",
     "page": "daily-workflow.html",
     "section": "验证证据",
     "text": "验证证据",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-24",
     "page": "daily-workflow.html",
     "section": "风险证据",
     "text": "风险证据",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-25",
     "page": "daily-workflow.html",
     "section": "交付证据",
     "text": "交付证据",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-26",
     "page": "daily-workflow.html",
     "section": "推荐 closeout 模板",
     "text": "推荐 closeout 模板",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-27",
     "page": "daily-workflow.html",
     "section": "常见失败和补救",
     "text": "常见失败和补救",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-28",
     "page": "daily-workflow.html",
     "section": "改动太散",
     "text": "改动太散",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-29",
     "page": "daily-workflow.html",
     "section": "没有读上下文",
     "text": "没有读上下文",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-30",
     "page": "daily-workflow.html",
     "section": "验证跑不通",
     "text": "验证跑不通",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-31",
     "page": "daily-workflow.html",
     "section": "网页看起来不对",
     "text": "网页看起来不对",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-32",
     "page": "daily-workflow.html",
     "section": "解释太空泛",
     "text": "解释太空泛",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-33",
     "page": "daily-workflow.html",
     "section": "任务变长了",
     "text": "任务变长了",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-34",
     "page": "daily-workflow.html",
     "section": "真实实例：把短页面扩成日常任务手册",
     "text": "真实实例：把短页面扩成日常任务手册",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-35",
     "page": "daily-workflow.html",
     "section": "输入",
     "text": "输入",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-36",
     "page": "daily-workflow.html",
     "section": "先读",
     "text": "先读",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-37",
     "page": "daily-workflow.html",
     "section": "应动文件",
     "text": "应动文件",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-38",
     "page": "daily-workflow.html",
     "section": "验证",
     "text": "验证",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-39",
     "page": "daily-workflow.html",
     "section": "最终回答",
     "text": "最终回答",
     "title": "日常任务 workflow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-daily-workflow-40",
     "page": "daily-workflow.html",
     "section": "失败停止",
     "text": "失败停止",
@@ -1554,189 +1554,189 @@ window.GUIDE_SEARCH_INDEX = [
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-1",
     "page": "engineering.html",
     "section": "从 idea 到可合并变更",
     "text": "从 idea 到可合并变更",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-2",
     "page": "engineering.html",
     "section": "Idea intake",
     "text": "Idea intake",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-3",
     "page": "engineering.html",
     "section": "Grill 边界",
     "text": "Grill 边界",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-4",
     "page": "engineering.html",
     "section": "PRD / Issues",
     "text": "PRD / Issues",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-5",
     "page": "engineering.html",
     "section": "Implement",
     "text": "Implement",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-6",
     "page": "engineering.html",
     "section": "Review",
     "text": "Review",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-7",
     "page": "engineering.html",
     "section": "Ship",
     "text": "Ship",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-8",
     "page": "engineering.html",
     "section": "工程 skills 怎么串起来",
     "text": "工程 skills 怎么串起来",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-9",
     "page": "engineering.html",
     "section": "ask-matt",
     "text": "ask-matt",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-10",
     "page": "engineering.html",
     "section": "grill-with-docs",
     "text": "grill-with-docs",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-11",
     "page": "engineering.html",
     "section": "grill-me",
     "text": "grill-me",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-12",
     "page": "engineering.html",
     "section": "PRD / issue",
     "text": "PRD / issue",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-13",
     "page": "engineering.html",
     "section": "Implement",
     "text": "Implement",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-14",
     "page": "engineering.html",
     "section": "Review loop",
     "text": "Review loop",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-15",
     "page": "engineering.html",
     "section": "可复制工程提示词",
     "text": "可复制工程提示词",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-16",
     "page": "engineering.html",
     "section": "边界澄清",
     "text": "边界澄清",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-17",
     "page": "engineering.html",
     "section": "实现一个 issue",
     "text": "实现一个 issue",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-18",
     "page": "engineering.html",
     "section": "工程任务什么时候拆给 subagent",
     "text": "工程任务什么时候拆给 subagent",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-19",
     "page": "engineering.html",
     "section": "适合拆",
     "text": "适合拆",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-20",
     "page": "engineering.html",
     "section": "不要拆",
     "text": "不要拆",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-21",
     "page": "engineering.html",
     "section": "真实实例：把这份指南扩成实战手册",
     "text": "真实实例：把这份指南扩成实战手册",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-22",
     "page": "engineering.html",
     "section": "输入",
     "text": "输入",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-23",
     "page": "engineering.html",
     "section": "先读",
     "text": "先读",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-24",
     "page": "engineering.html",
     "section": "应动文件",
     "text": "应动文件",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-25",
     "page": "engineering.html",
     "section": "验证",
     "text": "验证",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-26",
     "page": "engineering.html",
     "section": "最终回答",
     "text": "最终回答",
     "title": "工程 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-engineering-27",
     "page": "engineering.html",
     "section": "失败停止",
     "text": "失败停止",
@@ -1750,210 +1750,210 @@ window.GUIDE_SEARCH_INDEX = [
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-1",
     "page": "research.html",
     "section": "从 idea 到可审查证据",
     "text": "从 idea 到可审查证据",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-2",
     "page": "research.html",
     "section": "Research brief",
     "text": "Research brief",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-3",
     "page": "research.html",
     "section": "Closest work",
     "text": "Closest work",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-4",
     "page": "research.html",
     "section": "Novelty gate",
     "text": "Novelty gate",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-5",
     "page": "research.html",
     "section": "Experiment plan",
     "text": "Experiment plan",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-6",
     "page": "research.html",
     "section": "Auto review",
     "text": "Auto review",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-7",
     "page": "research.html",
     "section": "Writing boundary",
     "text": "Writing boundary",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-8",
     "page": "research.html",
     "section": "每个阶段应该产出什么",
     "text": "每个阶段应该产出什么",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-9",
     "page": "research.html",
     "section": "RESEARCH_BRIEF.md",
     "text": "RESEARCH_BRIEF.md",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-10",
     "page": "research.html",
     "section": "IDEA_REPORT.md",
     "text": "IDEA_REPORT.md",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-11",
     "page": "research.html",
     "section": "实验日志",
     "text": "实验日志",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-12",
     "page": "research.html",
     "section": "AUTO_REVIEW.md",
     "text": "AUTO_REVIEW.md",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-13",
     "page": "research.html",
     "section": "图表索引",
     "text": "图表索引",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-14",
     "page": "research.html",
     "section": "Claim ledger",
     "text": "Claim ledger",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-15",
     "page": "research.html",
     "section": "可复制学术提示词",
     "text": "可复制学术提示词",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-16",
     "page": "research.html",
     "section": "启动 research-pipeline",
     "text": "启动 research-pipeline",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-17",
     "page": "research.html",
     "section": "严格审稿",
     "text": "严格审稿",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-18",
     "page": "research.html",
     "section": "进入和退出条件",
     "text": "进入和退出条件",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-19",
     "page": "research.html",
     "section": "进入条件",
     "text": "进入条件",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-20",
     "page": "research.html",
     "section": "推进条件",
     "text": "推进条件",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-21",
     "page": "research.html",
     "section": "退出条件",
     "text": "退出条件",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-22",
     "page": "research.html",
     "section": "Stop conditions",
     "text": "Stop conditions",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-23",
     "page": "research.html",
     "section": "写作前检查",
     "text": "写作前检查",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-24",
     "page": "research.html",
     "section": "真实实例：长上下文 KV cache pruning idea",
     "text": "真实实例：长上下文 KV cache pruning idea",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-25",
     "page": "research.html",
     "section": "输入",
     "text": "输入",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-26",
     "page": "research.html",
     "section": "先读",
     "text": "先读",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-27",
     "page": "research.html",
     "section": "应动文件",
     "text": "应动文件",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-28",
     "page": "research.html",
     "section": "验证",
     "text": "验证",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-29",
     "page": "research.html",
     "section": "最终回答",
     "text": "最终回答",
     "title": "学术 flow"
   },
   {
-    "fragment": "",
+    "fragment": "heading-research-30",
     "page": "research.html",
     "section": "失败停止",
     "text": "失败停止",
@@ -1967,154 +1967,154 @@ window.GUIDE_SEARCH_INDEX = [
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-1",
     "page": "automation.html",
     "section": "什么时候值得自动化",
     "text": "什么时候值得自动化",
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-2",
     "page": "automation.html",
     "section": "适合 Automations",
     "text": "适合 Automations",
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-3",
     "page": "automation.html",
     "section": "适合后台 worktree",
     "text": "适合后台 worktree",
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-4",
     "page": "automation.html",
     "section": "适合本地脚本",
     "text": "适合本地脚本",
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-5",
     "page": "automation.html",
     "section": "自动化前置条件",
     "text": "自动化前置条件",
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-6",
     "page": "automation.html",
     "section": "不该自动化的任务",
     "text": "不该自动化的任务",
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-7",
     "page": "automation.html",
     "section": "三种实用自动化模式",
     "text": "三种实用自动化模式",
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-8",
     "page": "automation.html",
     "section": "只读审查",
     "text": "只读审查",
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-9",
     "page": "automation.html",
     "section": "失败日志解释",
     "text": "失败日志解释",
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-10",
     "page": "automation.html",
     "section": "文档漂移检查",
     "text": "文档漂移检查",
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-11",
     "page": "automation.html",
     "section": "自动化安全阀",
     "text": "自动化安全阀",
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-12",
     "page": "automation.html",
     "section": "最小权限",
     "text": "最小权限",
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-13",
     "page": "automation.html",
     "section": "结构化输出",
     "text": "结构化输出",
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-14",
     "page": "automation.html",
     "section": "人工 checkpoint",
     "text": "人工 checkpoint",
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-15",
     "page": "automation.html",
     "section": "失败即停止",
     "text": "失败即停止",
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-16",
     "page": "automation.html",
     "section": "真实实例：自动检查网页链接和关键标题",
     "text": "真实实例：自动检查网页链接和关键标题",
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-17",
     "page": "automation.html",
     "section": "输入",
     "text": "输入",
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-18",
     "page": "automation.html",
     "section": "先读",
     "text": "先读",
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-19",
     "page": "automation.html",
     "section": "应动文件",
     "text": "应动文件",
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-20",
     "page": "automation.html",
     "section": "验证",
     "text": "验证",
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-21",
     "page": "automation.html",
     "section": "最终回答",
     "text": "最终回答",
     "title": "自动化"
   },
   {
-    "fragment": "",
+    "fragment": "heading-automation-22",
     "page": "automation.html",
     "section": "失败停止",
     "text": "失败停止",
@@ -2506,175 +2506,175 @@ window.GUIDE_SEARCH_INDEX = [
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-1",
     "page": "resources.html",
     "section": "官方资料优先",
     "text": "官方资料优先",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-2",
     "page": "resources.html",
     "section": "Codex 101",
     "text": "Codex 101",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-3",
     "page": "resources.html",
     "section": "Best practices",
     "text": "Best practices",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-4",
     "page": "resources.html",
     "section": "Codex Desktop",
     "text": "Codex Desktop",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-5",
     "page": "resources.html",
     "section": "App features",
     "text": "App features",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-6",
     "page": "resources.html",
     "section": "In-app browser",
     "text": "In-app browser",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-7",
     "page": "resources.html",
     "section": "Automations",
     "text": "Automations",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-8",
     "page": "resources.html",
     "section": "Security",
     "text": "Security",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-9",
     "page": "resources.html",
     "section": "Customization",
     "text": "Customization",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-10",
     "page": "resources.html",
     "section": "AGENTS.md",
     "text": "AGENTS.md",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-11",
     "page": "resources.html",
     "section": "Skills",
     "text": "Skills",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-12",
     "page": "resources.html",
     "section": "Subagents",
     "text": "Subagents",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-13",
     "page": "resources.html",
     "section": "Workflows",
     "text": "Workflows",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-14",
     "page": "resources.html",
     "section": "Worktrees",
     "text": "Worktrees",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-15",
     "page": "resources.html",
     "section": "GitHub integration",
     "text": "GitHub integration",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-16",
     "page": "resources.html",
     "section": "Review",
     "text": "Review",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-17",
     "page": "resources.html",
     "section": "本指南内部资料",
     "text": "本指南内部资料",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-18",
     "page": "resources.html",
     "section": "安装页",
     "text": "安装页",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-19",
     "page": "resources.html",
     "section": "README",
     "text": "README",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-20",
     "page": "resources.html",
     "section": "CONTEXT",
     "text": "CONTEXT",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-21",
     "page": "resources.html",
     "section": "历史流程图",
     "text": "历史流程图",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-22",
     "page": "resources.html",
     "section": "高 stars skills 仓库介绍",
     "text": "高 stars skills 仓库介绍",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-23",
     "page": "resources.html",
     "section": "Compound Engineering plugin",
     "text": "Compound Engineering plugin",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-24",
     "page": "resources.html",
     "section": "goal-entry 本机实验",
     "text": "goal-entry 本机实验",
     "title": "资料地图"
   },
   {
-    "fragment": "",
+    "fragment": "heading-resources-25",
     "page": "resources.html",
     "section": "真实实例：资料如何进入页面内容",
     "text": "真实实例：资料如何进入页面内容",

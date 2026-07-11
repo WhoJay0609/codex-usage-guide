@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scripts.build_site import GENERATED_END, GENERATED_START, replace_generated_block
+from scripts.build_site import GENERATED_END, GENERATED_START, render_page, replace_generated_block
 from scripts.site_model import SiteModelError, load_site_model
 
 
@@ -44,6 +44,28 @@ class SiteModelTests(unittest.TestCase):
     def test_generated_block_requires_exactly_one_sentinel_pair(self) -> None:
         with self.assertRaisesRegex(ValueError, "exactly one"):
             replace_generated_block("authored only", "new")
+
+    def test_toolbook_shell_is_static_complete_and_idempotent(self) -> None:
+        model = load_site_model(ROOT)
+        page = next(page for page in model.pages if page.path == "permissions.html")
+        source = (ROOT / page.path).read_text(encoding="utf-8")
+        rendered = render_page(model, page, source)
+        self.assertEqual(render_page(model, page, rendered), rendered)
+        self.assertIn('class="toolbook-shell"', rendered)
+        self.assertIn('class="global-nav"', rendered)
+        self.assertIn('class="page-toc"', rendered)
+        self.assertIn('href="#matrix"', rendered)
+        self.assertNotIn('class="side-nav"', rendered)
+        self.assertEqual(rendered.count('aria-current="page"'), 1)
+
+    def test_toolbook_shell_assigns_ids_to_every_reader_heading(self) -> None:
+        model = load_site_model(ROOT)
+        page = next(page for page in model.pages if page.path == "index.html")
+        rendered = render_page(model, page, (ROOT / page.path).read_text(encoding="utf-8"))
+        import re
+        headings = re.findall(r"<h[23]\b([^>]*)>", rendered)
+        self.assertTrue(headings)
+        self.assertTrue(all(re.search(r'\bid="[^"]+"', attrs) for attrs in headings))
 
 
 if __name__ == "__main__":

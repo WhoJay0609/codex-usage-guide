@@ -1,10 +1,56 @@
 (function () {
+  document.documentElement.classList.add("js");
   var path = window.location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll("[data-nav]").forEach(function (link) {
     if (link.getAttribute("href") === path) {
       link.setAttribute("aria-current", "page");
     }
   });
+
+  var menuButton = document.querySelector(".menu-toggle");
+  var globalNav = document.querySelector(".global-nav");
+  function closeMenu() {
+    document.body.classList.remove("nav-open");
+    if (menuButton) menuButton.setAttribute("aria-expanded", "false");
+  }
+  if (menuButton && globalNav) {
+    menuButton.addEventListener("click", function () {
+      var open = document.body.classList.toggle("nav-open");
+      menuButton.setAttribute("aria-expanded", String(open));
+      if (open) {
+        var firstLink = globalNav.querySelector("a");
+        if (firstLink) firstLink.focus();
+      }
+    });
+    globalNav.addEventListener("click", function (event) {
+      if (event.target.closest("a")) closeMenu();
+    });
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && document.body.classList.contains("nav-open")) {
+        closeMenu();
+        menuButton.focus();
+      }
+    });
+  }
+
+  var tocLinks = Array.from(document.querySelectorAll(".page-toc a[href^='#']"));
+  if ("IntersectionObserver" in window && tocLinks.length) {
+    var tocById = new Map(tocLinks.map(function (link) {
+      return [decodeURIComponent(link.hash.slice(1)), link];
+    }));
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        tocLinks.forEach(function (link) { link.removeAttribute("aria-current"); });
+        var link = tocById.get(entry.target.id);
+        if (link) link.setAttribute("aria-current", "location");
+      });
+    }, { rootMargin: "-18% 0px -70%" });
+    tocById.forEach(function (_, id) {
+      var target = document.getElementById(id);
+      if (target) observer.observe(target);
+    });
+  }
 
   if (window.mermaid) {
     mermaid.initialize({

@@ -8,61 +8,43 @@
   <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-  <header class="topbar">
-  <div class="topbar-inner">
-    <a class="brand" href="index.html"><span class="brand-mark"></span><span>Codex 使用指南</span></a>
-    <nav class="nav">
-      <a data-nav href="index.html">首页</a>
-      <a data-nav href="codex.html">Codex</a>
-      <a data-nav href="install-desktop.html">安装</a>
-      <a data-nav href="desktop-cli.html">Desktop</a>
-      <a data-nav href="permissions.html">权限</a>
-      <a data-nav href="agents-md.html">AGENTS.md</a>
-      <a data-nav href="skills.html">Skills</a>
-      <a data-nav href="mcp.html">MCP</a>
-      <a data-nav href="subagents.html">Subagents</a>
-      <a data-nav href="goal.html">Goal</a>
-      <a data-nav href="workflows.html">任务</a>
-      <a data-nav href="daily-workflow.html">日常</a>
-      <a data-nav href="engineering.html">工程</a>
-      <a data-nav href="research.html">学术</a>
-      <a data-nav href="automation.html">自动化</a>
-      <a data-nav href="compound-engineering.html">Compound</a>
-      <a data-nav href="resources.html">资料</a>
-    </nav>
-  </div>
-</header>
-  <main>
+  <!-- guide:header:start -->
+<header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><span class="search-status">全站搜索将在下一阶段启用</span><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header>
+<!-- guide:header:end -->
+  <!-- guide:shell-open:start -->
+<div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html">首页</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html" aria-current="page">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">自动化</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html">Compound</a><a data-nav href="skills-repositories.html">Skills 仓库</a><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>工程</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-07-11">2026-07-11</time></span><span>事实核验：<time datetime="2026-07-11">2026-07-11</time></span></div>
+<!-- guide:shell-open:end -->
+<main>
     <section class="hero compact"><div class="hero-copy"><p class="hero-kicker">Scenario handbook</p><h1>工程 flow</h1><p class="lead">工程场景的目标不是“让 Codex 写更多代码”，而是把一个模糊 idea 变成可验证、可 review、可合并的最小变更。先 grill，再定边界，再拆 issue，再实现，再 review。</p></div></section>
 
     <section class="section">
-      <div class="section-head"><div class="section-title"><p class="section-kicker">Lifecycle</p><h2>从 idea 到可合并变更</h2></div><p>复杂工程任务不要直接进入实现。先把需求、边界、失败条件和验收证据问清楚。</p></div>
+      <div class="section-head"><div class="section-title"><p class="section-kicker">Lifecycle</p><h2 id="heading-engineering-1">从 idea 到可合并变更</h2></div><p>复杂工程任务不要直接进入实现。先把需求、边界、失败条件和验收证据问清楚。</p></div>
       <div class="steps">
-        <article class="step"><h3>Idea intake</h3><p>用户提出模糊目标，例如“改一下权限系统”。Codex 先读文档和代码，判断这是讨论、规划还是执行任务。</p></article>
-        <article class="step"><h3>Grill 边界</h3><p>使用 <code>grill-with-docs</code> 读取 <code>AGENTS.md</code>、README、CONTEXT、ADR 和相关源码，追问会影响结构的关键问题。</p></article>
-        <article class="step"><h3>PRD / Issues</h3><p>把稳定结论拆成小任务。每个 issue 都应该有范围、验收、测试和不做什么。</p></article>
-        <article class="step"><h3>Implement</h3><p>一次只做一个 issue。先改最小 diff，再跑最窄测试，不把 refactor 和 feature 混在一起。</p></article>
-        <article class="step"><h3>Review</h3><p>让 Codex 站在 reviewer 角度查行为回归、测试缺口、权限风险、文档漂移。</p></article>
-        <article class="step"><h3>Ship</h3><p>提交、推送、PR 或发布后，用 check 状态、页面访问、日志或用户验收完成 closeout。</p></article>
+        <article class="step"><h3 id="heading-engineering-2">Idea intake</h3><p>用户提出模糊目标，例如“改一下权限系统”。Codex 先读文档和代码，判断这是讨论、规划还是执行任务。</p></article>
+        <article class="step"><h3 id="heading-engineering-3">Grill 边界</h3><p>使用 <code>grill-with-docs</code> 读取 <code>AGENTS.md</code>、README、CONTEXT、ADR 和相关源码，追问会影响结构的关键问题。</p></article>
+        <article class="step"><h3 id="heading-engineering-4">PRD / Issues</h3><p>把稳定结论拆成小任务。每个 issue 都应该有范围、验收、测试和不做什么。</p></article>
+        <article class="step"><h3 id="heading-engineering-5">Implement</h3><p>一次只做一个 issue。先改最小 diff，再跑最窄测试，不把 refactor 和 feature 混在一起。</p></article>
+        <article class="step"><h3 id="heading-engineering-6">Review</h3><p>让 Codex 站在 reviewer 角度查行为回归、测试缺口、权限风险、文档漂移。</p></article>
+        <article class="step"><h3 id="heading-engineering-7">Ship</h3><p>提交、推送、PR 或发布后，用 check 状态、页面访问、日志或用户验收完成 closeout。</p></article>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-head"><div class="section-title"><p class="section-kicker">Skills flow</p><h2>工程 skills 怎么串起来</h2></div><p>不要把 skill 当魔法词。每个 skill 都应服务于工程阶段，而不是替代判断。</p></div>
+      <div class="section-head"><div class="section-title"><p class="section-kicker">Skills flow</p><h2 id="heading-engineering-8">工程 skills 怎么串起来</h2></div><p>不要把 skill 当魔法词。每个 skill 都应服务于工程阶段，而不是替代判断。</p></div>
       <div class="bento">
-        <article class="card span-4"><h3><code>ask-matt</code></h3><p>用于路由：当前是 idea、PRD、issue、implement、review，还是需要回到 grilling。</p></article>
-        <article class="card span-4"><h3><code>grill-with-docs</code></h3><p>用于边界澄清：读项目文档和代码，追问会影响架构、接口、验收的关键问题。</p></article>
-        <article class="card span-4"><h3><code>grill-me</code></h3><p>用于强审设计：质疑方案是否过度、是否破坏边界、是否有更窄实现。</p></article>
-        <article class="card span-4"><h3>PRD / issue</h3><p>把已稳定的需求变成可执行工单。不要让实现任务继续承载开放问题。</p></article>
-        <article class="card span-4"><h3>Implement</h3><p>按 issue 做最小修改。每个实现回合都应能被测试或人工检查。</p></article>
-        <article class="card span-4"><h3>Review loop</h3><p>用只读 review 查风险，再修复高优先级问题。不要把 review 变成无边界重构。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-9"><code>ask-matt</code></h3><p>用于路由：当前是 idea、PRD、issue、implement、review，还是需要回到 grilling。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-10"><code>grill-with-docs</code></h3><p>用于边界澄清：读项目文档和代码，追问会影响架构、接口、验收的关键问题。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-11"><code>grill-me</code></h3><p>用于强审设计：质疑方案是否过度、是否破坏边界、是否有更窄实现。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-12">PRD / issue</h3><p>把已稳定的需求变成可执行工单。不要让实现任务继续承载开放问题。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-13">Implement</h3><p>按 issue 做最小修改。每个实现回合都应能被测试或人工检查。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-14">Review loop</h3><p>用只读 review 查风险，再修复高优先级问题。不要把 review 变成无边界重构。</p></article>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-head"><div class="section-title"><p class="section-kicker">Prompts</p><h2>可复制工程提示词</h2></div><p>下面这些模板覆盖从澄清到实现的主要阶段。</p></div>
+      <div class="section-head"><div class="section-title"><p class="section-kicker">Prompts</p><h2 id="heading-engineering-15">可复制工程提示词</h2></div><p>下面这些模板覆盖从澄清到实现的主要阶段。</p></div>
       <div class="bento">
-        <article class="card span-6"><h3>边界澄清</h3><pre><code>[$grill-with-docs]
+        <article class="card span-6"><h3 id="heading-engineering-16">边界澄清</h3><pre><code>[$grill-with-docs]
 仓库：/path/to/repo
 目标：把功能 X 做成可发布版本。
 
@@ -79,7 +61,7 @@
 - 验收证据是什么？
 
 不要开始实现，直到边界稳定。</code></pre></article>
-        <article class="card span-6"><h3>实现一个 issue</h3><pre><code>请实现 issue #12。
+        <article class="card span-6"><h3 id="heading-engineering-17">实现一个 issue</h3><pre><code>请实现 issue #12。
 
 范围：
 - 可以改 src/checkout 和 tests/checkout
@@ -99,25 +81,28 @@
     </section>
 
     <section class="section">
-      <div class="section-head"><div class="section-title"><p class="section-kicker">Subagents</p><h2>工程任务什么时候拆给 subagent</h2></div><p>工程任务适合把“调查”和“验证”拆出去，但核心产品判断、架构取舍和最终合并应由主线程负责。</p></div>
+      <div class="section-head"><div class="section-title"><p class="section-kicker">Subagents</p><h2 id="heading-engineering-18">工程任务什么时候拆给 subagent</h2></div><p>工程任务适合把“调查”和“验证”拆出去，但核心产品判断、架构取舍和最终合并应由主线程负责。</p></div>
       <div class="bento">
-        <article class="card span-6 dark-card"><h3>适合拆</h3><ul class="mini-list"><li><strong>只读审查</strong><span>安全、测试缺口、文档漂移、性能风险。</span></li><li><strong>并行验证</strong><span>不同浏览器、不同测试包、不同配置。</span></li><li><strong>独立切片</strong><span>互不重叠文件，例如 docs 和 CSS 分开。</span></li></ul></article>
-        <article class="card span-6"><h3>不要拆</h3><ul class="mini-list"><li><strong>同一核心文件</strong><span>多个代理同时改状态管理、schema、API contract。</span></li><li><strong>架构判断</strong><span>模块边界、公开接口、迁移策略应由主线程整合。</span></li><li><strong>外部写入</strong><span>发布、推送、评论、生产配置不交给 subagent 独立执行。</span></li></ul></article>
+        <article class="card span-6 dark-card"><h3 id="heading-engineering-19">适合拆</h3><ul class="mini-list"><li><strong>只读审查</strong><span>安全、测试缺口、文档漂移、性能风险。</span></li><li><strong>并行验证</strong><span>不同浏览器、不同测试包、不同配置。</span></li><li><strong>独立切片</strong><span>互不重叠文件，例如 docs 和 CSS 分开。</span></li></ul></article>
+        <article class="card span-6"><h3 id="heading-engineering-20">不要拆</h3><ul class="mini-list"><li><strong>同一核心文件</strong><span>多个代理同时改状态管理、schema、API contract。</span></li><li><strong>架构判断</strong><span>模块边界、公开接口、迁移策略应由主线程整合。</span></li><li><strong>外部写入</strong><span>发布、推送、评论、生产配置不交给 subagent 独立执行。</span></li></ul></article>
       </div>
     </section>
 
     <section class="section">
-      <div class="section-head"><div class="section-title"><p class="section-kicker">Real example</p><h2>真实实例：把这份指南扩成实战手册</h2></div><p>这次任务就是一个小型工程 flow：用户先指出内容太少，然后要求每个内容都有真实实例。Codex 没有直接“随便加文字”，而是读取项目规则、确认目标、分批修改页面、运行静态检查、提交推送并验证 Pages。</p></div>
+      <div class="section-head"><div class="section-title"><p class="section-kicker">Real example</p><h2 id="heading-engineering-21">真实实例：把这份指南扩成实战手册</h2></div><p>这次任务就是一个小型工程 flow：用户先指出内容太少，然后要求每个内容都有真实实例。Codex 没有直接“随便加文字”，而是读取项目规则、确认目标、分批修改页面、运行静态检查、提交推送并验证 Pages。</p></div>
       <div class="bento">
-        <article class="card span-4"><h3>输入</h3><p>坏输入是“帮我扩一下”；修复后写成目标、范围、读者、禁区和验收。</p></article>
-        <article class="card span-4"><h3>先读</h3><p>项目规则、目标页面、现有导航、验证脚本和发布说明。</p></article>
-        <article class="card span-4"><h3>应动文件</h3><p>HTML 内容、必要 CSS、验证脚本；不顺手改 CI/CD 或无关仓库。</p></article>
-        <article class="card span-4"><h3>验证</h3><p><code>make check</code>、空白检查、关键页面抽样和 diff review。</p></article>
-        <article class="card span-4"><h3>最终回答</h3><p>按文件汇总改动、验证结果、未跑项和可合并风险。</p></article>
-        <article class="card span-4"><h3>失败停止</h3><p>需求漂移、测试不可运行、写域变宽或出现无关 dirty 冲突时停止。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-22">输入</h3><p>坏输入是“帮我扩一下”；修复后写成目标、范围、读者、禁区和验收。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-23">先读</h3><p>项目规则、目标页面、现有导航、验证脚本和发布说明。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-24">应动文件</h3><p>HTML 内容、必要 CSS、验证脚本；不顺手改 CI/CD 或无关仓库。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-25">验证</h3><p><code>make check</code>、空白检查、关键页面抽样和 diff review。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-26">最终回答</h3><p>按文件汇总改动、验证结果、未跑项和可合并风险。</p></article>
+        <article class="card span-4"><h3 id="heading-engineering-27">失败停止</h3><p>需求漂移、测试不可运行、写域变宽或出现无关 dirty 冲突时停止。</p></article>
       </div>
     </section>
   </main>
+<!-- guide:shell-close:start -->
+<nav class="page-sequence" aria-label="前后页"><a rel="prev" href="daily-workflow.html">← 日常</a><a rel="next" href="research.html">学术 →</a></nav></div><aside class="page-toc" aria-label="本页目录"><details open><summary>本页目录</summary><nav><a class="toc-h2" href="#heading-engineering-1">从 idea 到可合并变更</a><a class="toc-h3" href="#heading-engineering-2">Idea intake</a><a class="toc-h3" href="#heading-engineering-3">Grill 边界</a><a class="toc-h3" href="#heading-engineering-4">PRD / Issues</a><a class="toc-h3" href="#heading-engineering-5">Implement</a><a class="toc-h3" href="#heading-engineering-6">Review</a><a class="toc-h3" href="#heading-engineering-7">Ship</a><a class="toc-h2" href="#heading-engineering-8">工程 skills 怎么串起来</a><a class="toc-h3" href="#heading-engineering-9">ask-matt</a><a class="toc-h3" href="#heading-engineering-10">grill-with-docs</a><a class="toc-h3" href="#heading-engineering-11">grill-me</a><a class="toc-h3" href="#heading-engineering-12">PRD / issue</a><a class="toc-h3" href="#heading-engineering-13">Implement</a><a class="toc-h3" href="#heading-engineering-14">Review loop</a><a class="toc-h2" href="#heading-engineering-15">可复制工程提示词</a><a class="toc-h3" href="#heading-engineering-16">边界澄清</a><a class="toc-h3" href="#heading-engineering-17">实现一个 issue</a><a class="toc-h2" href="#heading-engineering-18">工程任务什么时候拆给 subagent</a><a class="toc-h3" href="#heading-engineering-19">适合拆</a><a class="toc-h3" href="#heading-engineering-20">不要拆</a><a class="toc-h2" href="#heading-engineering-21">真实实例：把这份指南扩成实战手册</a><a class="toc-h3" href="#heading-engineering-22">输入</a><a class="toc-h3" href="#heading-engineering-23">先读</a><a class="toc-h3" href="#heading-engineering-24">应动文件</a><a class="toc-h3" href="#heading-engineering-25">验证</a><a class="toc-h3" href="#heading-engineering-26">最终回答</a><a class="toc-h3" href="#heading-engineering-27">失败停止</a></nav></details></aside></div>
+<!-- guide:shell-close:end -->
   <footer class="footer"><p><strong>任务路径</strong><br>工程 flow 的核心是小步、证据、可 review。</p><a class="button" href="research.html">下一页：学术 flow</a></footer>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
