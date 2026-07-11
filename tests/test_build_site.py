@@ -5,7 +5,16 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scripts.build_site import GENERATED_END, GENERATED_START, render_page, replace_generated_block
+from scripts.build_site import (
+    GENERATED_END,
+    GENERATED_START,
+    build_publication_graph,
+    extract_search_records,
+    load_heading_fragments,
+    load_publication_policy,
+    render_page,
+    replace_generated_block,
+)
 from scripts.site_model import SiteModelError, load_site_model
 
 
@@ -66,6 +75,65 @@ class SiteModelTests(unittest.TestCase):
         headings = re.findall(r"<h[23]\b([^>]*)>", rendered)
         self.assertTrue(headings)
         self.assertTrue(all(re.search(r'\bid="[^"]+"', attrs) for attrs in headings))
+
+    def test_canonical_heading_preserves_legacy_and_structural_fragments(self) -> None:
+        model = load_site_model(ROOT)
+        page = next(page for page in model.pages if page.path == "permissions.html")
+        source = (
+            '<header class="topbar"></header><main><section id="matrix">'
+            '<h2 id="heading-permissions-1">审批决策矩阵</h2><p>解释正文</p>'
+            '</section></main>'
+        )
+        registry = {
+            "permissions.html": {
+                "heading-permissions-1": {"canonical": "审批决策矩阵", "legacy": ["heading-permissions-1"]}
+            }
+        }
+        rendered = render_page(model, page, source, registry)
+        self.assertIn('<section id="matrix">', rendered)
+        self.assertIn('id="审批决策矩阵"', rendered)
+        self.assertIn('class="fragment-alias" id="heading-permissions-1"', rendered)
+        self.assertIn('href="#审批决策矩阵"', rendered)
+        self.assertEqual(render_page(model, page, rendered, registry), rendered)
+
+    def test_section_search_records_include_prose_and_exact_prompt_but_exclude_private_content(self) -> None:
+        source = (
+            '<main><section><h2 id="stable">标题 <code>AGENTS.md</code></h2>'
+            '<p>解释正文。</p><pre><code>第一行\n第二行</code></pre>'
+            '<p hidden>隐藏秘密</p><aside data-search-exclude>内部账本</aside>'
+            '<script>private()</script></section></main><footer>页脚</footer>'
+        )
+        policy = {
+            "search": {
+                "excluded_tags": ["script", "style", "template", "noscript"],
+                "excluded_attributes": ["hidden", "data-search-exclude"],
+                "excluded_classes": ["fragment-alias"],
+            },
+            "sensitive_patterns": [],
+        }
+        records = extract_search_records("sample.html", "示例", "描述", source, policy)
+        self.assertEqual(records[0]["fragment"], "")
+        section = records[1]
+        self.assertEqual(section["fragment"], "stable")
+        self.assertEqual(section["section"], "标题 AGENTS.md")
+        self.assertIn("解释正文", section["text"])
+        self.assertIn("第一行 第二行", section["text"])
+        self.assertEqual(section["prompts"], ["第一行\n第二行"])
+        self.assertNotIn("隐藏秘密", section["text"])
+        self.assertNotIn("内部账本", section["text"])
+        self.assertNotIn("页脚", section["text"])
+
+    def test_publication_graph_derives_payloads_from_rendered_pages(self) -> None:
+        model = load_site_model(ROOT)
+        pages, payloads = build_publication_graph(
+            model,
+            load_heading_fragments(ROOT),
+            load_publication_policy(ROOT),
+        )
+        permissions = pages["permissions.html"]
+        self.assertIn('href="#审批决策矩阵"', permissions)
+        self.assertIn('"schema_version": 1', payloads["assets/search-index.js"])
+        self.assertIn('"records"', payloads["assets/search-index.js"])
 
 
 if __name__ == "__main__":

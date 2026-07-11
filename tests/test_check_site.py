@@ -11,6 +11,7 @@ from check_site import (  # noqa: E402
     PageParser,
     check_local_link,
     validate_case_index,
+    validate_fragment_registry,
     validate_required_pages,
     validate_semantic_contracts,
 )
@@ -24,6 +25,22 @@ def parse(markup: str) -> PageParser:
 
 
 class SemanticContractTests(unittest.TestCase):
+    def test_fragment_registry_requires_canonical_heading_and_legacy_alias(self) -> None:
+        pages = {
+            "sample.html": parse(
+                '<main><span class="fragment-alias" id="old" '
+                'data-canonical-fragment="wrong" aria-hidden="true"></span>'
+                '<h2 id="canonical">标题</h2></main>'
+            )
+        }
+        registry = {
+            "sample.html": {
+                "old": {"canonical": "canonical", "legacy": ["old"]}
+            }
+        }
+        errors = validate_fragment_registry(pages, registry)
+        self.assertTrue(any("legacy fragment #old must alias #canonical" in error for error in errors), errors)
+
     def test_duplicate_id_is_reported(self) -> None:
         pages = {"sample.html": parse('<main id="same"><section id="same"></section></main>')}
         errors = validate_semantic_contracts(pages)

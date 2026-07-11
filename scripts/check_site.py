@@ -11,10 +11,10 @@ import re
 from urllib.parse import urldefrag, urlparse
 
 try:
-    from .build_site import generate
+    from .build_site import generate, load_heading_fragments
     from .site_model import SiteModelError
 except ImportError:  # Direct script execution.
-    from build_site import generate
+    from build_site import generate, load_heading_fragments
     from site_model import SiteModelError
 
 
@@ -141,6 +141,8 @@ class PageParser(HTMLParser):
         self._text_chunks: dict[str, list[str]] = {"title": [], "h1": []}
         self._visible_chunks: list[str] = []
         self.loop_stages: list[tuple[str, str]] = []
+        self.heading_ids: list[str] = []
+        self.fragment_aliases: dict[str, str] = {}
         self.cases: list[dict[str, str]] = []
         self._case_stack: list[dict[str, object]] = []
         self._depth = 0
@@ -158,6 +160,10 @@ class PageParser(HTMLParser):
         if "id" in attr:
             self.ids.add(attr["id"])
             self.id_counts[attr["id"]] += 1
+        if tag in {"h2", "h3"}:
+            self.heading_ids.append(attr.get("id", ""))
+        if "fragment-alias" in attr.get("class", "").split():
+            self.fragment_aliases[attr.get("id", "")] = attr.get("data-canonical-fragment", "")
         if "data-loop-stage" in attr:
             self.loop_stages.append((attr["data-loop-stage"], attr.get("id", "")))
         if "data-case-type" in attr:
@@ -334,6 +340,33 @@ def validate_semantic_contracts(pages: dict[str, PageParser]) -> list[str]:
     return errors
 
 
+def validate_fragment_registry(
+    pages: dict[str, PageParser],
+    registry: dict[str, dict[str, dict[str, object]]],
+) -> list[str]:
+    errors: list[str] = []
+    for rel, entries in registry.items():
+        parser = pages.get(rel)
+        if parser is None:
+            errors.append(f"fragment registry references missing page: {rel}")
+            continue
+        expected = {str(entry["canonical"]) for entry in entries.values()}
+        actual = set(parser.heading_ids)
+        for fragment in sorted(expected - actual):
+            errors.append(f"{rel}: missing canonical heading #{fragment}")
+        for fragment in sorted(actual - expected):
+            errors.append(f"{rel}: unregistered canonical heading #{fragment}")
+        for entry in entries.values():
+            canonical = str(entry["canonical"])
+            for legacy in entry["legacy"]:
+                legacy = str(legacy)
+                if legacy == canonical:
+                    continue
+                if parser.fragment_aliases.get(legacy) != canonical:
+                    errors.append(f"{rel}: legacy fragment #{legacy} must alias #{canonical}")
+    return errors
+
+
 def validate_case_index(pages: dict[str, PageParser], index_text: str) -> list[str]:
     errors: list[str] = []
     rows: dict[str, list[str]] = {}
@@ -422,6 +455,10 @@ def main() -> int:
     )
     pages = {path.relative_to(ROOT).as_posix(): parse_page(path) for path in html_paths}
     errors = validate_semantic_contracts(pages)
+    try:
+        errors.extend(validate_fragment_registry(pages, load_heading_fragments(ROOT)))
+    except (OSError, ValueError) as error:
+        errors.append(f"heading fragment registry invalid: {error}")
     errors.extend(validate_required_pages(pages))
     evidence_index = ROOT / "docs" / "case-evidence-index.md"
     if evidence_index.exists():

@@ -48,22 +48,123 @@ def _replace_named(source: str, name: str, content: str) -> str:
     return pattern.sub(_block(name, content), source)
 
 
-def _assign_heading_ids(source: str, page: Page) -> str:
+def _read_json(path: Path) -> dict[str, object]:
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise ValueError(f"{path} must contain a JSON object")
+    return data
+
+
+def load_heading_fragments(root: Path) -> dict[str, dict[str, dict[str, object]]]:
+    path = root / "data/heading-fragments.json"
+    data = _read_json(path)
+    if data.get("schema_version") != 1 or not isinstance(data.get("pages"), dict):
+        raise ValueError(f"{path}: expected schema_version 1 and pages object")
+    pages = data["pages"]
+    assert isinstance(pages, dict)
+    normalized: dict[str, dict[str, dict[str, object]]] = {}
+    for page, raw_entries in pages.items():
+        if not isinstance(page, str) or not isinstance(raw_entries, dict):
+            raise ValueError(f"{path}: invalid page fragment registry")
+        entries: dict[str, dict[str, object]] = {}
+        canonicals: set[str] = set()
+        for identity, raw_entry in raw_entries.items():
+            if not isinstance(identity, str) or not isinstance(raw_entry, dict):
+                raise ValueError(f"{path}: invalid fragment entry for {page}")
+            canonical = raw_entry.get("canonical")
+            legacy = raw_entry.get("legacy", [])
+            if not isinstance(canonical, str) or not canonical or not isinstance(legacy, list):
+                raise ValueError(f"{path}: invalid fragment entry {page}#{identity}")
+            if canonical in canonicals:
+                raise ValueError(f"{path}: duplicate canonical fragment {page}#{canonical}")
+            if any(not isinstance(value, str) or not value for value in legacy):
+                raise ValueError(f"{path}: invalid legacy fragment {page}#{identity}")
+            canonicals.add(canonical)
+            entries[identity] = {"canonical": canonical, "legacy": list(dict.fromkeys(legacy))}
+        normalized[page] = entries
+    return normalized
+
+
+def load_publication_policy(root: Path) -> dict[str, object]:
+    path = root / "data/publication-policy.json"
+    data = _read_json(path)
+    if data.get("schema_version") != 1:
+        raise ValueError(f"{path}: expected schema_version 1")
+    if not isinstance(data.get("search"), dict) or not isinstance(data.get("sensitive_patterns"), list):
+        raise ValueError(f"{path}: expected search and sensitive_patterns")
+    for item in data["sensitive_patterns"]:
+        if not isinstance(item, dict) or not isinstance(item.get("name"), str) or not isinstance(item.get("pattern"), str):
+            raise ValueError(f"{path}: invalid sensitive pattern")
+        re.compile(item["pattern"])
+    return data
+
+
+def _fragment_lookup(entries: dict[str, dict[str, object]]) -> dict[str, dict[str, object]]:
+    lookup: dict[str, dict[str, object]] = {}
+    for identity, entry in entries.items():
+        for value in [identity, str(entry["canonical"]), *[str(item) for item in entry["legacy"]]]:
+            if value in lookup and lookup[value] is not entry:
+                raise ValueError(f"fragment identity is ambiguous: {value}")
+            lookup[value] = entry
+    return lookup
+
+
+ALIAS_RE = re.compile(
+    r'<span\s+class=["\']fragment-alias["\'][^>]*data-canonical-fragment=["\'][^"\']+["\'][^>]*></span>\s*',
+    re.IGNORECASE,
+)
+
+
+def _assign_heading_ids(
+    source: str,
+    page: Page,
+    entries: dict[str, dict[str, object]] | None = None,
+) -> str:
+    source = ALIAS_RE.sub("", source)
     used = set(re.findall(r'\bid=["\']([^"\']+)', source))
+    lookup = _fragment_lookup(entries or {})
     counter = 0
 
     def add_id(match: re.Match[str]) -> str:
         nonlocal counter
         level, attrs, body = match.groups()
-        if re.search(r'\bid\s*=', attrs):
-            return match.group(0)
-        counter += 1
-        candidate = f"heading-{Path(page.path).stem}-{counter}"
-        while candidate in used:
+        id_match = re.search(r'\bid\s*=\s*["\']([^"\']+)["\']', attrs)
+        current = id_match.group(1) if id_match else ""
+        entry = lookup.get(current)
+        if entries is not None and entry is None:
+            raise ValueError(f"{page.path}: unregistered h{level} fragment #{current or '(missing)'}")
+        if entry is None:
             counter += 1
             candidate = f"heading-{Path(page.path).stem}-{counter}"
-        used.add(candidate)
-        return f'<h{level}{attrs} id="{candidate}">{body}</h{level}>'
+            while candidate in used:
+                counter += 1
+                candidate = f"heading-{Path(page.path).stem}-{counter}"
+            if id_match:
+                return match.group(0)
+            used.add(candidate)
+            return f'<h{level}{attrs} id="{candidate}">{body}</h{level}>'
+
+        canonical = str(entry["canonical"])
+        aliases = [str(value) for value in entry["legacy"] if str(value) != canonical]
+        if current and current != canonical and current not in aliases:
+            aliases.append(current)
+        occupied = used - ({current} if current else set())
+        collisions = [value for value in [canonical, *aliases] if value in occupied]
+        if collisions:
+            raise ValueError(f"{page.path}: fragment collides with structural target #{collisions[0]}")
+        used.discard(current)
+        used.add(canonical)
+        used.update(aliases)
+        if id_match:
+            attrs = attrs[: id_match.start()] + f'id="{canonical}"' + attrs[id_match.end() :]
+        else:
+            attrs += f' id="{canonical}"'
+        alias_markup = "".join(
+            f'<span class="fragment-alias" id="{html.escape(alias)}" '
+            f'data-canonical-fragment="{html.escape(canonical)}" aria-hidden="true"></span>'
+            for alias in aliases
+        )
+        return f'{alias_markup}<h{level}{attrs}>{body}</h{level}>'
 
     return re.sub(r"<h([23])(\b[^>]*)>(.*?)</h\1>", add_id, source, flags=re.DOTALL | re.IGNORECASE)
 
@@ -79,9 +180,18 @@ def _article_headings(source: str) -> list[dict[str, str]]:
     return _headings(match.group(0) if match else source)
 
 
-def render_page(model: SiteModel, page: Page, source: str) -> str:
+def render_page(
+    model: SiteModel,
+    page: Page,
+    source: str,
+    fragment_registry: dict[str, dict[str, dict[str, object]]] | None = None,
+) -> str:
     """Render generated chrome around authored page content."""
-    source = _assign_heading_ids(source, page)
+    if fragment_registry is None:
+        registry_path = model.root / "data/heading-fragments.json"
+        fragment_registry = load_heading_fragments(model.root) if registry_path.exists() else None
+    entries = fragment_registry.get(page.path) if fragment_registry is not None else None
+    source = _assign_heading_ids(source, page, entries)
     page_map = {item.path: item for item in model.pages}
     flat_order = [path for group in model.navigation for path in group.pages]
     current_index = flat_order.index(page.path)
@@ -151,16 +261,13 @@ def render_page(model: SiteModel, page: Page, source: str) -> str:
 class HeadingParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__(convert_charrefs=True)
-        self.section_ids: list[str] = []
         self.current_heading: dict[str, object] | None = None
         self.headings: list[dict[str, str]] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         attr = dict(attrs)
-        if tag == "section":
-            self.section_ids.append(attr.get("id") or "")
         if tag in {"h2", "h3"}:
-            self.current_heading = {"level": tag, "id": next((value for value in reversed(self.section_ids) if value), "") or attr.get("id") or "", "text": []}
+            self.current_heading = {"level": tag, "id": attr.get("id") or "", "text": []}
 
     def handle_endtag(self, tag: str) -> None:
         if tag in {"h2", "h3"} and self.current_heading:
@@ -168,62 +275,202 @@ class HeadingParser(HTMLParser):
             if text:
                 self.headings.append({"level": str(self.current_heading["level"]), "id": str(self.current_heading["id"]), "text": text})
             self.current_heading = None
-        if tag == "section" and self.section_ids:
-            self.section_ids.pop()
 
     def handle_data(self, data: str) -> None:
         if self.current_heading:
             self.current_heading["text"].append(data)
 
 
-def _payloads(model: SiteModel) -> dict[Path, str]:
+class SectionSearchParser(HTMLParser):
+    def __init__(self, policy: dict[str, object]) -> None:
+        super().__init__(convert_charrefs=True)
+        search = policy.get("search", {})
+        assert isinstance(search, dict)
+        self.excluded_tags = set(search.get("excluded_tags", []))
+        self.excluded_attributes = set(search.get("excluded_attributes", []))
+        self.excluded_classes = set(search.get("excluded_classes", []))
+        self.in_main = 0
+        self.excluded_depth = 0
+        self.stack: list[tuple[str, bool]] = []
+        self.heading: dict[str, object] | None = None
+        self.current: dict[str, object] | None = None
+        self.records: list[dict[str, object]] = []
+        self.pre_depth = 0
+        self.prompt: list[str] | None = None
+
+    def _finish_current(self) -> None:
+        if self.current is None:
+            return
+        chunks = [str(value) for value in self.current.pop("chunks")]
+        self.current["text"] = " ".join("".join(chunks).split())
+        self.records.append(self.current)
+        self.current = None
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        attr = {key: value or "" for key, value in attrs}
+        if tag == "main":
+            self.in_main += 1
+        classes = set(attr.get("class", "").split())
+        excluded = bool(
+            self.in_main
+            and (
+                tag in self.excluded_tags
+                or any(name in attr for name in self.excluded_attributes)
+                or bool(classes & self.excluded_classes)
+            )
+        )
+        self.stack.append((tag, excluded))
+        if excluded:
+            self.excluded_depth += 1
+        if not self.in_main or self.excluded_depth:
+            return
+        if tag in {"h2", "h3"}:
+            self._finish_current()
+            self.heading = {"level": tag, "fragment": attr.get("id", ""), "text": []}
+        elif tag == "pre":
+            self.pre_depth += 1
+        elif tag == "code" and self.pre_depth:
+            self.prompt = []
+
+    def handle_endtag(self, tag: str) -> None:
+        if self.in_main and not self.excluded_depth:
+            if tag in {"h2", "h3"} and self.heading is not None:
+                heading_text = " ".join("".join(self.heading["text"]).split())
+                self.current = {
+                    "level": self.heading["level"],
+                    "section": heading_text,
+                    "fragment": self.heading["fragment"],
+                    "chunks": [],
+                    "prompts": [],
+                }
+                self.heading = None
+            elif tag == "code" and self.prompt is not None:
+                if self.current is not None:
+                    self.current["prompts"].append("".join(self.prompt))
+                self.prompt = None
+            elif tag == "pre" and self.pre_depth:
+                self.pre_depth -= 1
+        if self.stack:
+            _, excluded = self.stack.pop()
+            if excluded and self.excluded_depth:
+                self.excluded_depth -= 1
+        if tag == "main" and self.in_main:
+            self._finish_current()
+            self.in_main -= 1
+
+    def handle_data(self, data: str) -> None:
+        if not self.in_main or self.excluded_depth:
+            return
+        if self.heading is not None:
+            self.heading["text"].append(data)
+        elif self.current is not None:
+            self.current["chunks"].append(data)
+            if self.prompt is not None:
+                self.prompt.append(data)
+
+
+def extract_search_records(
+    page: str,
+    title: str,
+    description: str,
+    source: str,
+    policy: dict[str, object],
+) -> list[dict[str, object]]:
+    parser = SectionSearchParser(policy)
+    parser.feed(source)
+    records: list[dict[str, object]] = [
+        {"page": page, "title": title, "section": "", "fragment": "", "level": "page", "text": description, "prompts": []}
+    ]
+    for record in parser.records:
+        record.update({"page": page, "title": title})
+        records.append(record)
+    for record in records:
+        searchable = "\n".join(
+            [str(record["section"]), str(record["text"]), *[str(value) for value in record["prompts"]]]
+        )
+        for item in policy.get("sensitive_patterns", []):
+            assert isinstance(item, dict)
+            if re.search(str(item["pattern"]), searchable, flags=re.IGNORECASE):
+                raise ValueError(
+                    f"{page}#{record['fragment']}: public search corpus matches sensitive pattern {item['name']}"
+                )
+    return records
+
+
+def _payloads(
+    model: SiteModel,
+    rendered_pages: dict[str, str],
+    policy: dict[str, object],
+) -> dict[str, str]:
     source = {
         "site": model.site,
         "navigation": [{"label": group.label, "pages": list(group.pages)} for group in model.navigation],
         "pages": [page.__dict__ for page in model.pages],
         "changelog": list(model.changelog),
     }
-    canonical = json.dumps(source, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
-    build_id = hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:12]
-    source["build_id"] = build_id
-
-    search: list[dict[str, str]] = []
+    search: list[dict[str, object]] = []
     for page in model.pages:
-        parser = HeadingParser()
-        parser.feed((model.root / page.path).read_text(encoding="utf-8"))
-        search.append({"page": page.path, "title": page.title, "section": "", "fragment": "", "text": page.description})
-        for heading in parser.headings:
-            search.append({"page": page.path, "title": page.title, "section": heading["text"], "fragment": heading["id"], "text": heading["text"]})
+        search.extend(extract_search_records(page.path, page.title, page.description, rendered_pages[page.path], policy))
+
+    search_payload = {"schema_version": 1, "records": search}
+    fingerprint_input = {
+        "site_data": source,
+        "pages": rendered_pages,
+        "search": search_payload,
+    }
+    canonical = json.dumps(fingerprint_input, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    source["build_id"] = hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:12]
 
     pretty_source = json.dumps(source, ensure_ascii=False, sort_keys=True, indent=2)
-    pretty_search = json.dumps(search, ensure_ascii=False, sort_keys=True, indent=2)
+    pretty_search = json.dumps(search_payload, ensure_ascii=False, sort_keys=True, indent=2)
     return {
-        model.root / "assets/site-data.js": f"window.GUIDE_SITE_DATA = {pretty_source};\n",
-        model.root / "assets/search-index.js": f"window.GUIDE_SEARCH_INDEX = {pretty_search};\n",
+        "assets/site-data.js": f"window.GUIDE_SITE_DATA = {pretty_source};\n",
+        "assets/search-index.js": f"window.GUIDE_SEARCH_INDEX = {pretty_search};\n",
     }
+
+
+def build_publication_graph(
+    model: SiteModel,
+    fragment_registry: dict[str, dict[str, dict[str, object]]] | None = None,
+    policy: dict[str, object] | None = None,
+) -> tuple[dict[str, str], dict[str, str]]:
+    if fragment_registry is None:
+        fragment_registry = load_heading_fragments(model.root)
+    if policy is None:
+        policy = load_publication_policy(model.root)
+    rendered_pages = {
+        page.path: render_page(
+            model,
+            page,
+            (model.root / page.path).read_text(encoding="utf-8"),
+            fragment_registry,
+        )
+        for page in model.pages
+    }
+    return rendered_pages, _payloads(model, rendered_pages, policy)
 
 
 def generate(root: Path = ROOT, check: bool = False) -> list[str]:
     model = load_site_model(root)
+    rendered_pages, payloads = build_publication_graph(model)
     stale: list[str] = []
     for page in model.pages:
         path = root / page.path
         actual = path.read_text(encoding="utf-8")
-        expected = render_page(model, page, actual)
+        expected = rendered_pages[page.path]
         if actual == expected:
             continue
         if check:
             stale.append(page.path)
         else:
             path.write_text(expected, encoding="utf-8")
-    if not check:
-        model = load_site_model(root)
-    for path, expected in _payloads(model).items():
+    for relative, expected in payloads.items():
+        path = root / relative
         actual = path.read_text(encoding="utf-8") if path.exists() else None
         if actual == expected:
             continue
         if check:
-            stale.append(path.relative_to(root).as_posix())
+            stale.append(relative)
         else:
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(expected, encoding="utf-8")
