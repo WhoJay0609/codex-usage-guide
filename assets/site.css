@@ -986,10 +986,18 @@ code { border-color: var(--line); background: var(--surface-input); }
   .mini-list li { grid-template-columns: 1fr; }
   .footer { align-items: start; }
   .toolbook-shell { width: min(calc(100% - 24px), var(--max)); margin-top: 22px; }
-  .topbar-inner { flex-direction: row; align-items: center; }
-  .topbar-actions { margin-left: auto; }
+  .topbar-inner { align-items: stretch; flex-direction: column; }
+  .topbar-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    width: 100%;
+    margin-left: 0;
+    gap: 6px;
+  }
+  .theme-control,
+  .theme-select { min-width: 0; width: 100%; }
   .search-trigger,
-  .menu-toggle { min-height: 44px; }
+  .menu-toggle { min-height: 44px; padding-inline: 11px; }
   .search-dialog { width: min(calc(100% - 20px), 760px); max-height: calc(100vh - 20px); }
   .search-dialog-panel { padding: 18px; }
   .page-sequence { align-items: stretch; flex-direction: column; }

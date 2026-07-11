@@ -111,11 +111,12 @@ test('persists manual theme choices and survives storage failure', async ({ page
 });
 
 test('marks only cross-origin HTTP links as external', async ({ page }) => {
-  await page.goto('/permissions.html');
+  await page.goto('/resources.html');
   const external = page.locator('main a.external-link').first();
   await expect(external).toHaveAttribute('target', '_blank');
   await expect(external).toHaveAttribute('rel', 'noopener noreferrer');
   await expect(external).toHaveAttribute('referrerpolicy', 'no-referrer');
   await expect(external.locator('.external-link-indicator')).toHaveText('↗');
-  await expect(page.locator('a[href^="mailto:"]')).not.toHaveClass(/external-link/);
+  await expect(page.locator('main a[href="install-desktop.html"]').first()).not.toHaveClass(/external-link/);
+  await expect(page.locator('main a[href^="#"]').first()).not.toHaveClass(/external-link/);
 });

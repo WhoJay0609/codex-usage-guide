@@ -1,11 +1,11 @@
 window.GUIDE_SITE_DATA = {
   "asset_fingerprints": {
-    "assets/site.css": "aee96980f7642410c34e4d6e49004d073360f3187fe954ea9f65f7b64045aec2",
+    "assets/site.css": "6c101b5e9b979f3fc43de6b7ee6336e8423f508031b04bd188abdcde4151fa9c",
     "assets/site.js": "c0e08ab2a6510c0a204e331bb9ce67b23b04832357a456b33091ea6345bf1e4a",
     "assets/theme.js": "5f43877b14508575ef4cb002c71855631077e790754275260f7e46ae73ef234d",
     "figures/social-preview.png": "e0ee23ae3b99a8507b4aa423c530289468f1db067d1e7041e4afcefb5fe3ac58"
   },
-  "build_id": "c009c98b3b3f",
+  "build_id": "c913ce4a5bfc",
   "changelog": [
     {
       "category": "structure",
