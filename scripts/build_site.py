@@ -129,6 +129,7 @@ RUNTIME_SCRIPT_RE = re.compile(
 )
 MERMAID_SRC = "https://cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js"
 MERMAID_INTEGRITY = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk"
+BUILD_PLACEHOLDER = "__GUIDE_BUILD__"
 
 
 def _assign_heading_ids(
@@ -260,6 +261,7 @@ def _render_metadata(source: str, model: SiteModel, page: Page) -> str:
     }
     metadata = (
         f'<meta name="description" content="{values["description"]}">\n'
+        f'<meta name="guide-build" content="{BUILD_PLACEHOLDER}">\n'
         f'<link rel="canonical" href="{values["canonical"]}">\n'
         '<meta property="og:type" content="website">\n'
         f'<meta property="og:locale" content="{values["locale"]}">\n'
@@ -621,10 +623,20 @@ def _payloads(
         search.extend(extract_search_records(page.path, page.title, page.description, rendered_pages[page.path], policy))
 
     search_payload = {"schema_version": 1, "records": search}
+    fingerprint_assets = {}
+    for relative in (
+        "assets/site.css",
+        "assets/site.js",
+        "assets/theme.js",
+        model.site["social_preview"],
+    ):
+        fingerprint_assets[relative] = hashlib.sha256((model.root / relative).read_bytes()).hexdigest()
+    source["asset_fingerprints"] = fingerprint_assets
     fingerprint_input = {
         "site_data": source,
         "pages": rendered_pages,
         "search": search_payload,
+        "assets": fingerprint_assets,
     }
     canonical = json.dumps(fingerprint_input, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
     source["build_id"] = hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:12]
@@ -655,7 +667,16 @@ def build_publication_graph(
         )
         for page in model.pages
     }
-    return rendered_pages, _payloads(model, rendered_pages, policy)
+    payloads = _payloads(model, rendered_pages, policy)
+    build_match = re.search(r'"build_id":\s*"([^"]+)"', payloads["assets/site-data.js"])
+    if not build_match:
+        raise ValueError("generated site data is missing build_id")
+    build_id = build_match.group(1)
+    rendered_pages = {
+        path: source.replace(BUILD_PLACEHOLDER, build_id)
+        for path, source in rendered_pages.items()
+    }
+    return rendered_pages, payloads
 
 
 def generate(root: Path = ROOT, check: bool = False) -> list[str]:

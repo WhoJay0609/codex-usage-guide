@@ -297,6 +297,10 @@ def parse_page(path: Path) -> PageParser:
     return parser
 
 
+def manifest_html_paths(root: Path, page_paths: list[str]) -> list[Path]:
+    return sorted(root / path for path in page_paths)
+
+
 def is_external(href: str) -> bool:
     parsed = urlparse(href)
     return parsed.scheme in {"http", "https", "mailto", "tel"}
@@ -639,16 +643,16 @@ def validate_required_pages(pages: dict[str, PageParser]) -> list[str]:
 
 
 def main() -> int:
-    html_paths = sorted(
-        path
-        for path in ROOT.rglob("*.html")
-        if not (set(path.relative_to(ROOT).parts) & IGNORED_HTML_DIRS)
-    )
+    try:
+        model = load_site_model(ROOT)
+    except SiteModelError as error:
+        print(f"Site check failed:\n- site data invalid: {error}")
+        return 1
+    html_paths = manifest_html_paths(ROOT, [page.path for page in model.pages])
     pages = {path.relative_to(ROOT).as_posix(): parse_page(path) for path in html_paths}
     errors = validate_semantic_contracts(pages)
     errors.extend(validate_interaction_contracts(pages))
     try:
-        model = load_site_model(ROOT)
         registry = load_heading_fragments(ROOT)
         errors.extend(validate_fragment_registry(pages, registry))
         errors.extend(

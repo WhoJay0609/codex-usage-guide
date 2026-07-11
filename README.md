@@ -58,7 +58,11 @@ https://github.com/WhoJay0609/codex-goal-entry
 
 - `index.html`: GitHub Pages 静态网页指南入口。
 - `assets/site.css`: 全站共享视觉样式。
-- `assets/site.js`: 全站共享导航高亮和渐进式动画。
+- `assets/site.js`: 全站共享搜索、复制、主题、导航和 Mermaid 渐进增强。
+- `assets/theme.js`: 在共享 CSS 前应用有限的主题偏好，避免错误主题首屏闪烁。
+- `data/site-manifest.json`: 19 个公开根页面、导航、描述和发布 URL 的唯一清单。
+- `data/heading-fragments.json`: canonical 标题 fragment 与 legacy alias 的受审映射。
+- `data/publication-policy.json`: 公开搜索语料的排除项和敏感内容规则。
 - `scripts/check_site.py`: 发布前静态检查，覆盖 HTML 页面、站内链接、锚点和关键章节。
 - `*.html`: 多页面指南，每页可直接通过 GitHub Pages 访问。
 - `skills-repositories.html`: 高关注 skills 仓库选择页，包含第三方仓库边界和可复制 Codex Desktop prompts。
@@ -91,5 +95,15 @@ GitHub Pages 使用仓库根目录发布，`index.html` 是公开指南主入口
 ```bash
 make check
 ```
+
+只检查生成产物和静态站点合同时运行：
+
+```bash
+make check-fast
+```
+
+需要本地浏览器回归时运行 `make test-browser`；部署完成后再运行 `make check-published`。后者会联网读取 manifest 中的全部 19 个公开页面和关键资产；部署前或网络不可用时必须记录为 `not run`，不能写成通过。
+
+生成边界：`scripts/build_site.py` 只负责带 `guide:*` sentinel 的共享块、标题 fragment/alias、共享数据资产和受控属性归一化。正文、案例、prompt 与截图说明仍是 authored content；不要手改 sentinel 内代码，也不要让生成器用整页模板覆盖正文。真实 Desktop 截图只有在原分辨率脱敏复核完成后才能发布；当前缺失截图不得用 mock 代替。
 
 这个检查会确认根目录 HTML 页面可解析、共享导航完整、站内链接和锚点存在，并且主要任务/资料页保留“真实实例”段落。需要 PDF 时再单独运行 `make pdf`。

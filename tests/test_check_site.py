@@ -14,6 +14,7 @@ from check_site import (  # noqa: E402
     validate_fragment_registry,
     validate_presentation_contracts,
     validate_interaction_contracts,
+    manifest_html_paths,
     validate_metadata_contracts,
     validate_required_pages,
     validate_semantic_contracts,
@@ -28,6 +29,14 @@ def parse(markup: str) -> PageParser:
 
 
 class SemanticContractTests(unittest.TestCase):
+    def test_manifest_html_paths_excludes_nested_docs_html(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "index.html").write_text("public", encoding="utf-8")
+            (root / "docs").mkdir()
+            (root / "docs/ideation.html").write_text("internal", encoding="utf-8")
+            self.assertEqual(manifest_html_paths(root, ["index.html"]), [root / "index.html"])
+
     def test_metadata_contract_rejects_missing_social_head_and_generic_kicker(self) -> None:
         pages = {
             "sample.html": parse(

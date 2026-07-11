@@ -7,6 +7,7 @@ import argparse
 import json
 import re
 import sys
+from dataclasses import dataclass
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.error import HTTPError, URLError
@@ -24,9 +25,12 @@ class HeadMetadataParser(HTMLParser):
         self.in_title = False
         self.metas: list[dict[str, str]] = []
         self.links: list[dict[str, str]] = []
+        self.ids: set[str] = set()
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         attr = {key: value or "" for key, value in attrs}
+        if attr.get("id"):
+            self.ids.add(attr["id"])
         if tag == "title":
             self.in_title = True
         elif tag == "meta":
@@ -87,13 +91,52 @@ def validate_snapshot(html: str, expected_build: str, assets: dict[str, bool]) -
     return errors
 
 
-def _fetch(url: str) -> tuple[bool, str]:
+def validate_published_page(html: str, expected_build: str, fragments: list[str]) -> list[str]:
+    errors = validate_snapshot(html, expected_build, {})
+    parser = HeadMetadataParser()
+    parser.feed(html)
+    for fragment in fragments:
+        if fragment not in parser.ids:
+            errors.append(f"published page is missing fragment #{fragment}")
+    return errors
+
+
+def validate_published_asset(
+    path: str,
+    ok: bool,
+    content_type: str,
+    body: bytes,
+    expected_content_type: str,
+    local_body: bytes,
+) -> list[str]:
+    if not ok:
+        return [f"missing published asset: {path}"]
+    errors: list[str] = []
+    if expected_content_type not in content_type.lower():
+        errors.append(f"published asset has wrong content type: {path} ({content_type or 'missing'})")
+    if body != local_body:
+        errors.append(f"published asset content fingerprint differs from local: {path}")
+    return errors
+
+
+@dataclass(frozen=True)
+class FetchResult:
+    ok: bool
+    content_type: str
+    body: bytes
+
+
+def _fetch(url: str) -> FetchResult:
     request = Request(url, headers={"User-Agent": "codex-usage-guide-check/1"})
     try:
         with urlopen(request, timeout=15) as response:
-            return response.status == 200, response.read().decode("utf-8", errors="replace")
+            return FetchResult(
+                response.status == 200,
+                response.headers.get("Content-Type", ""),
+                response.read(),
+            )
     except (HTTPError, URLError, TimeoutError):
-        return False, ""
+        return FetchResult(False, "", b"")
 
 
 def main() -> int:
@@ -107,22 +150,37 @@ def main() -> int:
     configured_base = manifest["site"]["base_url"]
     preview_path = manifest["site"]["social_preview"]
     preview_url = urljoin(configured_base, preview_path)
-    site_data_text = (ROOT / "assets/site-data.js").read_text(encoding="utf-8")
+    site_data_path = ROOT / "assets/site-data.js"
+    site_data_bytes = site_data_path.read_bytes()
+    site_data_text = site_data_bytes.decode("utf-8")
     match = re.search(r'"build_id":\s*"([^"]+)"', site_data_text)
     if not match:
         print("Cannot determine local build marker.")
         return 2
     expected_build = match.group(1)
-    published_pages = {item["path"]: _fetch(urljoin(base_url, item["path"])) for item in manifest["pages"]}
-    index_ok, html = published_pages["index.html"]
-    assets = {path: _fetch(urljoin(base_url, path))[0] for path in ("assets/site.css", "assets/site.js", "assets/site-data.js", "assets/search-index.js", preview_path)}
-    errors = [] if index_ok else ["missing published page: index.html"]
-    errors.extend(validate_snapshot(html, expected_build, assets))
+    data_match = re.search(r"window\.GUIDE_SITE_DATA\s*=\s*(\{.*\});\s*$", site_data_text, re.DOTALL)
+    if not data_match:
+        print("Cannot parse local site data.")
+        return 2
+    site_data = json.loads(data_match.group(1))
+    errors: list[str] = []
     for item in manifest["pages"]:
-        ok, page_html = published_pages[item["path"]]
-        if not ok:
-            errors.append(f"missing published page: {item['path']}")
+        path = item["path"]
+        result = _fetch(urljoin(base_url, path))
+        errors.extend(
+            validate_published_asset(
+                path,
+                result.ok,
+                result.content_type,
+                result.body,
+                "text/html",
+                (ROOT / path).read_bytes(),
+            )
+        )
+        if not result.ok:
             continue
+        page_html = result.body.decode("utf-8", errors="replace")
+        errors.extend(validate_published_page(page_html, expected_build, site_data["fragments"][path]))
         errors.extend(
             validate_page_metadata(
                 page_html,
@@ -130,6 +188,26 @@ def main() -> int:
                 item["description"],
                 urljoin(configured_base, item["path"]),
                 preview_url,
+            )
+        )
+    asset_types = {
+        "assets/site.css": "text/css",
+        "assets/site.js": "javascript",
+        "assets/theme.js": "javascript",
+        "assets/site-data.js": "javascript",
+        "assets/search-index.js": "javascript",
+        preview_path: "image/png",
+    }
+    for path, content_type in asset_types.items():
+        result = _fetch(urljoin(base_url, path))
+        errors.extend(
+            validate_published_asset(
+                path,
+                result.ok,
+                result.content_type,
+                result.body,
+                content_type,
+                (ROOT / path).read_bytes(),
             )
         )
     if errors:
