@@ -113,6 +113,10 @@ ALIAS_RE = re.compile(
     r'<span\s+class=["\']fragment-alias["\'][^>]*data-canonical-fragment=["\'][^"\']+["\'][^>]*></span>\s*',
     re.IGNORECASE,
 )
+PERMALINK_RE = re.compile(
+    r'<a\s+class=["\']heading-permalink["\'][^>]*data-heading-permalink[^>]*>.*?</a>',
+    re.IGNORECASE | re.DOTALL,
+)
 
 
 def _assign_heading_ids(
@@ -120,7 +124,7 @@ def _assign_heading_ids(
     page: Page,
     entries: dict[str, dict[str, object]] | None = None,
 ) -> str:
-    source = ALIAS_RE.sub("", source)
+    source = PERMALINK_RE.sub("", ALIAS_RE.sub("", source))
     used = set(re.findall(r'\bid=["\']([^"\']+)', source))
     lookup = _fragment_lookup(entries or {})
     counter = 0
@@ -169,6 +173,28 @@ def _assign_heading_ids(
     return re.sub(r"<h([23])(\b[^>]*)>(.*?)</h\1>", add_id, source, flags=re.DOTALL | re.IGNORECASE)
 
 
+def _add_heading_permalinks(source: str) -> str:
+    def add_permalink(match: re.Match[str]) -> str:
+        level, attrs, body = match.groups()
+        id_match = re.search(r'\bid\s*=\s*["\']([^"\']+)["\']', attrs)
+        if not id_match:
+            return match.group(0)
+        fragment = id_match.group(1)
+        permalink = (
+            f'<a class="heading-permalink" data-heading-permalink data-search-exclude '
+            f'href="#{html.escape(fragment)}" aria-label="本节永久链接">'
+            '<span aria-hidden="true">#</span></a>'
+        )
+        return f'<h{level}{attrs}>{body}{permalink}</h{level}>'
+
+    return re.sub(
+        r"<h([23])(\b[^>]*)>(.*?)</h\1>",
+        add_permalink,
+        source,
+        flags=re.DOTALL | re.IGNORECASE,
+    )
+
+
 def _headings(source: str) -> list[dict[str, str]]:
     parser = HeadingParser()
     parser.feed(source)
@@ -191,7 +217,7 @@ def render_page(
         registry_path = model.root / "data/heading-fragments.json"
         fragment_registry = load_heading_fragments(model.root) if registry_path.exists() else None
     entries = fragment_registry.get(page.path) if fragment_registry is not None else None
-    source = _assign_heading_ids(source, page, entries)
+    source = _add_heading_permalinks(_assign_heading_ids(source, page, entries))
     page_map = {item.path: item for item in model.pages}
     flat_order = [path for group in model.navigation for path in group.pages]
     current_index = flat_order.index(page.path)
@@ -223,11 +249,25 @@ def render_page(
         next_link = f'<a rel="next" href="{following.path}">{html.escape(following.nav_label)} →</a>'
 
     header = (
+        '<script src="assets/site-data.js"></script><script src="assets/search-index.js"></script>'
         '<header class="topbar"><div class="topbar-inner">'
         '<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a>'
-        '<div class="topbar-actions"><span class="search-status">全站搜索将在下一阶段启用</span>'
+        '<div class="topbar-actions"><button class="search-trigger" type="button" '
+        'aria-haspopup="dialog" aria-controls="site-search-dialog">搜索</button>'
         '<button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div>'
         '</div></header>'
+        '<dialog class="search-dialog" id="site-search-dialog" role="dialog" '
+        'aria-modal="true" aria-labelledby="site-search-title">'
+        '<div class="search-dialog-panel"><div class="search-dialog-head">'
+        '<p class="search-title" id="site-search-title">搜索全站</p>'
+        '<button class="search-close" type="button" aria-label="关闭搜索">关闭</button></div>'
+        '<label class="search-label" for="site-search-input">搜索标题、正文和可复用 prompt</label>'
+        '<input class="search-input" id="site-search-input" type="search" role="combobox" '
+        'autocomplete="off" aria-autocomplete="list" aria-controls="site-search-results" '
+        'aria-describedby="site-search-status" aria-expanded="false">'
+        '<p class="search-message" id="site-search-status" aria-live="polite">输入关键词开始搜索。</p>'
+        '<ul class="search-results" id="site-search-results" role="listbox" '
+        'aria-label="搜索结果"></ul></div></dialog>'
     )
     shell_open = (
         '<div class="toolbook-shell">' + global_nav + '<div class="toolbook-main">'
@@ -263,13 +303,23 @@ class HeadingParser(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.current_heading: dict[str, object] | None = None
         self.headings: list[dict[str, str]] = []
+        self.ignored_depth = 0
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         attr = dict(attrs)
+        if self.ignored_depth:
+            self.ignored_depth += 1
+            return
+        if self.current_heading is not None and "data-heading-permalink" in attr:
+            self.ignored_depth = 1
+            return
         if tag in {"h2", "h3"}:
             self.current_heading = {"level": tag, "id": attr.get("id") or "", "text": []}
 
     def handle_endtag(self, tag: str) -> None:
+        if self.ignored_depth:
+            self.ignored_depth -= 1
+            return
         if tag in {"h2", "h3"} and self.current_heading:
             text = " ".join("".join(self.current_heading["text"]).split())
             if text:
@@ -277,7 +327,7 @@ class HeadingParser(HTMLParser):
             self.current_heading = None
 
     def handle_data(self, data: str) -> None:
-        if self.current_heading:
+        if self.current_heading and not self.ignored_depth:
             self.current_heading["text"].append(data)
 
 
@@ -406,6 +456,10 @@ def _payloads(
         "site": model.site,
         "navigation": [{"label": group.label, "pages": list(group.pages)} for group in model.navigation],
         "pages": [page.__dict__ for page in model.pages],
+        "fragments": {
+            page.path: [heading["id"] for heading in _article_headings(rendered_pages[page.path])]
+            for page in model.pages
+        },
         "changelog": list(model.changelog),
     }
     search: list[dict[str, object]] = []

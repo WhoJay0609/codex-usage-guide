@@ -9,7 +9,7 @@
 </head>
 <body>
   <!-- guide:header:start -->
-<header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><span class="search-status">全站搜索将在下一阶段启用</span><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header>
+<script src="assets/site-data.js"></script><script src="assets/search-index.js"></script><header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><button class="search-trigger" type="button" aria-haspopup="dialog" aria-controls="site-search-dialog">搜索</button><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header><dialog class="search-dialog" id="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title"><div class="search-dialog-panel"><div class="search-dialog-head"><p class="search-title" id="site-search-title">搜索全站</p><button class="search-close" type="button" aria-label="关闭搜索">关闭</button></div><label class="search-label" for="site-search-input">搜索标题、正文和可复用 prompt</label><input class="search-input" id="site-search-input" type="search" role="combobox" autocomplete="off" aria-autocomplete="list" aria-controls="site-search-results" aria-describedby="site-search-status" aria-expanded="false"><p class="search-message" id="site-search-status" aria-live="polite">输入关键词开始搜索。</p><ul class="search-results" id="site-search-results" role="listbox" aria-label="搜索结果"></ul></div></dialog>
 <!-- guide:header:end -->
 
   <!-- guide:shell-open:start -->
@@ -28,15 +28,15 @@
       <div class="section-head">
         <div class="section-title">
           <p class="section-kicker">Core loop</p>
-          <span class="fragment-alias" id="heading-daily-workflow-1" data-canonical-fragment="日常任务的最小可靠闭环" aria-hidden="true"></span><h2 id="日常任务的最小可靠闭环">日常任务的最小可靠闭环</h2>
+          <span class="fragment-alias" id="heading-daily-workflow-1" data-canonical-fragment="日常任务的最小可靠闭环" aria-hidden="true"></span><h2 id="日常任务的最小可靠闭环">日常任务的最小可靠闭环<a class="heading-permalink" data-heading-permalink data-search-exclude href="#日常任务的最小可靠闭环" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
         <p>这个闭环适用于解释错误、修失败测试、更新文档、调整页面、检查 PR 和清理小 bug。不要一上来就要求 Codex “全部优化一下”。</p>
       </div>
       <div class="steps">
-        <article class="step"><span class="fragment-alias" id="heading-daily-workflow-2" data-canonical-fragment="说明任务" aria-hidden="true"></span><h3 id="说明任务">说明任务</h3><p>写清当前现象、目标结果、相关路径和不想碰的范围。最好附上失败日志、截图、URL 或测试名。</p></article>
-        <article class="step"><span class="fragment-alias" id="heading-daily-workflow-3" data-canonical-fragment="让-codex-读上下文" aria-hidden="true"></span><h3 id="让-codex-读上下文">让 Codex 读上下文</h3><p>要求先读 <code>AGENTS.md</code>、README、相关源码、测试和日志。没有读上下文之前，不要让它直接大改。</p></article>
-        <article class="step"><span class="fragment-alias" id="heading-daily-workflow-4" data-canonical-fragment="小范围执行" aria-hidden="true"></span><h3 id="小范围执行">小范围执行</h3><p>一次只解决一个可验证问题。改文件前应知道预计会改哪些文件，避免顺手重构和无关格式化。</p></article>
-        <article class="step"><span class="fragment-alias" id="heading-daily-workflow-5" data-canonical-fragment="验证和收口" aria-hidden="true"></span><h3 id="验证和收口">验证和收口</h3><p>让 Codex 跑最窄测试或构建，解释结果；如果不能跑，要说明原因和剩余风险。</p></article>
+        <article class="step"><span class="fragment-alias" id="heading-daily-workflow-2" data-canonical-fragment="说明任务" aria-hidden="true"></span><h3 id="说明任务">说明任务<a class="heading-permalink" data-heading-permalink data-search-exclude href="#说明任务" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>写清当前现象、目标结果、相关路径和不想碰的范围。最好附上失败日志、截图、URL 或测试名。</p></article>
+        <article class="step"><span class="fragment-alias" id="heading-daily-workflow-3" data-canonical-fragment="让-codex-读上下文" aria-hidden="true"></span><h3 id="让-codex-读上下文">让 Codex 读上下文<a class="heading-permalink" data-heading-permalink data-search-exclude href="#让-codex-读上下文" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>要求先读 <code>AGENTS.md</code>、README、相关源码、测试和日志。没有读上下文之前，不要让它直接大改。</p></article>
+        <article class="step"><span class="fragment-alias" id="heading-daily-workflow-4" data-canonical-fragment="小范围执行" aria-hidden="true"></span><h3 id="小范围执行">小范围执行<a class="heading-permalink" data-heading-permalink data-search-exclude href="#小范围执行" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>一次只解决一个可验证问题。改文件前应知道预计会改哪些文件，避免顺手重构和无关格式化。</p></article>
+        <article class="step"><span class="fragment-alias" id="heading-daily-workflow-5" data-canonical-fragment="验证和收口" aria-hidden="true"></span><h3 id="验证和收口">验证和收口<a class="heading-permalink" data-heading-permalink data-search-exclude href="#验证和收口" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>让 Codex 跑最窄测试或构建，解释结果；如果不能跑，要说明原因和剩余风险。</p></article>
       </div>
       <figure class="figure-card mermaid-card">
         <div class="mermaid">
@@ -55,16 +55,16 @@ flowchart LR
       <div class="section-head">
         <div class="section-title">
           <p class="section-kicker">Desktop routine</p>
-          <span class="fragment-alias" id="heading-daily-workflow-6" data-canonical-fragment="在桌面版里实际怎么操作" aria-hidden="true"></span><h2 id="在桌面版里实际怎么操作">在桌面版里实际怎么操作</h2>
+          <span class="fragment-alias" id="heading-daily-workflow-6" data-canonical-fragment="在桌面版里实际怎么操作" aria-hidden="true"></span><h2 id="在桌面版里实际怎么操作">在桌面版里实际怎么操作<a class="heading-permalink" data-heading-permalink data-search-exclude href="#在桌面版里实际怎么操作" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
         <p>Desktop 的关键不是“聊天更方便”，而是你能把页面反馈、文件修改、终端验证和权限审批串成一个可追踪的任务线程。</p>
       </div>
       <div class="bento">
-        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-7" data-canonical-fragment="把问题贴进线程" aria-hidden="true"></span><h3 id="把问题贴进线程">把问题贴进线程</h3><p>包括当前 URL、截图描述、失败命令、目标读者、相关路径。不要只说“这里不对”。</p></article>
-        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-8" data-canonical-fragment="要求先读规则" aria-hidden="true"></span><h3 id="要求先读规则">要求先读规则</h3><p>让 Codex 先读 <code>AGENTS.md</code> 和目标文件，再说明准备改哪些地方。</p></article>
-        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-9" data-canonical-fragment="逐个批准动作" aria-hidden="true"></span><h3 id="逐个批准动作">逐个批准动作</h3><p>启动本地服务、联网查询、安装依赖、<code>git push</code> 都应先说明原因和影响范围。</p></article>
-        <article class="card span-6"><span class="fragment-alias" id="heading-daily-workflow-10" data-canonical-fragment="用浏览器反馈迭代" aria-hidden="true"></span><h3 id="用浏览器反馈迭代">用浏览器反馈迭代</h3><p>如果页面仍不对，把 in-app browser 当前 URL 和问题区域发回线程，让 Codex 针对同一个 diff 继续修。</p></article>
-        <article class="card span-6"><span class="fragment-alias" id="heading-daily-workflow-11" data-canonical-fragment="最后看证据" aria-hidden="true"></span><h3 id="最后看证据">最后看证据</h3><p>要求最终回答包含命令、页面抽样、commit、公开链接和未验证风险；没有证据就继续追问。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-7" data-canonical-fragment="把问题贴进线程" aria-hidden="true"></span><h3 id="把问题贴进线程">把问题贴进线程<a class="heading-permalink" data-heading-permalink data-search-exclude href="#把问题贴进线程" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>包括当前 URL、截图描述、失败命令、目标读者、相关路径。不要只说“这里不对”。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-8" data-canonical-fragment="要求先读规则" aria-hidden="true"></span><h3 id="要求先读规则">要求先读规则<a class="heading-permalink" data-heading-permalink data-search-exclude href="#要求先读规则" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>让 Codex 先读 <code>AGENTS.md</code> 和目标文件，再说明准备改哪些地方。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-9" data-canonical-fragment="逐个批准动作" aria-hidden="true"></span><h3 id="逐个批准动作">逐个批准动作<a class="heading-permalink" data-heading-permalink data-search-exclude href="#逐个批准动作" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>启动本地服务、联网查询、安装依赖、<code>git push</code> 都应先说明原因和影响范围。</p></article>
+        <article class="card span-6"><span class="fragment-alias" id="heading-daily-workflow-10" data-canonical-fragment="用浏览器反馈迭代" aria-hidden="true"></span><h3 id="用浏览器反馈迭代">用浏览器反馈迭代<a class="heading-permalink" data-heading-permalink data-search-exclude href="#用浏览器反馈迭代" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>如果页面仍不对，把 in-app browser 当前 URL 和问题区域发回线程，让 Codex 针对同一个 diff 继续修。</p></article>
+        <article class="card span-6"><span class="fragment-alias" id="heading-daily-workflow-11" data-canonical-fragment="最后看证据" aria-hidden="true"></span><h3 id="最后看证据">最后看证据<a class="heading-permalink" data-heading-permalink data-search-exclude href="#最后看证据" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>要求最终回答包含命令、页面抽样、commit、公开链接和未验证风险；没有证据就继续追问。</p></article>
       </div>
     </section>
 
@@ -72,29 +72,29 @@ flowchart LR
       <div class="section-head">
         <div class="section-title">
           <p class="section-kicker">Common jobs</p>
-          <span class="fragment-alias" id="heading-daily-workflow-12" data-canonical-fragment="五类高频日常任务" aria-hidden="true"></span><h2 id="五类高频日常任务">五类高频日常任务</h2>
+          <span class="fragment-alias" id="heading-daily-workflow-12" data-canonical-fragment="五类高频日常任务" aria-hidden="true"></span><h2 id="五类高频日常任务">五类高频日常任务<a class="heading-permalink" data-heading-permalink data-search-exclude href="#五类高频日常任务" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
         <p>新手可以直接从这些模板开始。进阶用户可以把这些模板沉淀进 <code>AGENTS.md</code> 或 skill。</p>
       </div>
       <div class="bento">
-        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-13" data-canonical-fragment="读代码并解释" aria-hidden="true"></span><h3 id="读代码并解释">读代码并解释</h3><p>适合刚接手仓库、看不懂模块边界、需要快速建立 mental model。要求 Codex 引用真实文件和函数，不要泛泛解释。</p><pre><code>请只读分析这个仓库的登录流程。
+        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-13" data-canonical-fragment="读代码并解释" aria-hidden="true"></span><h3 id="读代码并解释">读代码并解释<a class="heading-permalink" data-heading-permalink data-search-exclude href="#读代码并解释" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>适合刚接手仓库、看不懂模块边界、需要快速建立 mental model。要求 Codex 引用真实文件和函数，不要泛泛解释。</p><pre><code>请只读分析这个仓库的登录流程。
 先读 AGENTS.md、README 和 auth 相关源码。
 输出：入口文件、核心函数、数据流、风险点。
 不要改文件。</code></pre></article>
-        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-14" data-canonical-fragment="修失败测试" aria-hidden="true"></span><h3 id="修失败测试">修失败测试</h3><p>适合已经有明确红灯的场景。给出测试命令和失败片段，让 Codex 先定位根因，再做最小修复。</p><pre><code>请修复这个失败测试。
+        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-14" data-canonical-fragment="修失败测试" aria-hidden="true"></span><h3 id="修失败测试">修失败测试<a class="heading-permalink" data-heading-permalink data-search-exclude href="#修失败测试" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>适合已经有明确红灯的场景。给出测试命令和失败片段，让 Codex 先定位根因，再做最小修复。</p><pre><code>请修复这个失败测试。
 失败命令：npm test -- checkout
 范围：只改 checkout 相关代码和测试。
 要求：先解释根因，再改最小 diff。</code></pre></article>
-        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-15" data-canonical-fragment="修改网页或文档" aria-hidden="true"></span><h3 id="修改网页或文档">修改网页或文档</h3><p>适合样式、内容、导航、README、指南页。要说明目标读者和验收方式，尤其是需要浏览器验证时。</p><pre><code>我在 Codex Desktop 浏览器里看到 daily-workflow 页面内容太少。
+        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-15" data-canonical-fragment="修改网页或文档" aria-hidden="true"></span><h3 id="修改网页或文档">修改网页或文档<a class="heading-permalink" data-heading-permalink data-search-exclude href="#修改网页或文档" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>适合样式、内容、导航、README、指南页。要说明目标读者和验收方式，尤其是需要浏览器验证时。</p><pre><code>我在 Codex Desktop 浏览器里看到 daily-workflow 页面内容太少。
 请更新 daily-workflow 页面。
 目标读者：第一次使用 Codex 的中文用户。
 验收：页面有完整流程、示例、检查清单。
 完成后本地静态服务抽样访问。</code></pre></article>
-        <article class="card span-6"><span class="fragment-alias" id="heading-daily-workflow-16" data-canonical-fragment="审查当前-diff" aria-hidden="true"></span><h3 id="审查当前-diff">审查当前 diff</h3><p>让 Codex 站在 reviewer 视角查 bug、遗漏测试、破坏兼容和文档缺口。只读 review 时要明确“不改文件”。</p><pre><code>请 review 当前 git diff。
+        <article class="card span-6"><span class="fragment-alias" id="heading-daily-workflow-16" data-canonical-fragment="审查当前-diff" aria-hidden="true"></span><h3 id="审查当前-diff">审查当前 diff<a class="heading-permalink" data-heading-permalink data-search-exclude href="#审查当前-diff" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>让 Codex 站在 reviewer 视角查 bug、遗漏测试、破坏兼容和文档缺口。只读 review 时要明确“不改文件”。</p><pre><code>请 review 当前 git diff。
 重点：行为回归、缺失测试、权限/安全风险。
 输出：按严重程度排序的 findings。
 不要改文件。</code></pre></article>
-        <article class="card span-6"><span class="fragment-alias" id="heading-daily-workflow-17" data-canonical-fragment="提交和发布" aria-hidden="true"></span><h3 id="提交和发布">提交和发布</h3><p>适合你已经确认改动方向，想让 Codex 负责测试、commit、push、Pages 或 PR 状态确认。一定要要求最终链接和验证证据。</p><pre><code>请提交并推送这次网页修改。
+        <article class="card span-6"><span class="fragment-alias" id="heading-daily-workflow-17" data-canonical-fragment="提交和发布" aria-hidden="true"></span><h3 id="提交和发布">提交和发布<a class="heading-permalink" data-heading-permalink data-search-exclude href="#提交和发布" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>适合你已经确认改动方向，想让 Codex 负责测试、commit、push、Pages 或 PR 状态确认。一定要要求最终链接和验证证据。</p><pre><code>请提交并推送这次网页修改。
 提交前：git diff --check，抽样访问关键页面。
 提交信息：Improve daily workflow guide
 推送后：确认 GitHub Pages built。</code></pre></article>
@@ -105,19 +105,19 @@ flowchart LR
       <div class="section-head">
         <div class="section-title">
           <p class="section-kicker">Prompt quality</p>
-          <span class="fragment-alias" id="heading-daily-workflow-18" data-canonical-fragment="坏请求和好请求的差别" aria-hidden="true"></span><h2 id="坏请求和好请求的差别">坏请求和好请求的差别</h2>
+          <span class="fragment-alias" id="heading-daily-workflow-18" data-canonical-fragment="坏请求和好请求的差别" aria-hidden="true"></span><h2 id="坏请求和好请求的差别">坏请求和好请求的差别<a class="heading-permalink" data-heading-permalink data-search-exclude href="#坏请求和好请求的差别" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
         <p>Codex 的能力很大程度取决于任务边界。坏请求通常省略上下文、范围、验收和风险；好请求会让 Codex 先读、再判断、再小步执行。</p>
       </div>
       <div class="bento">
-        <article class="card span-6 dark-card"><span class="fragment-alias" id="heading-daily-workflow-19" data-canonical-fragment="不要这样写" aria-hidden="true"></span><h3 id="不要这样写">不要这样写</h3><pre><code>帮我优化一下这个项目。
+        <article class="card span-6 dark-card"><span class="fragment-alias" id="heading-daily-workflow-19" data-canonical-fragment="不要这样写" aria-hidden="true"></span><h3 id="不要这样写">不要这样写<a class="heading-permalink" data-heading-permalink data-search-exclude href="#不要这样写" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><pre><code>帮我优化一下这个项目。
 
 这个页面太丑了，改好看点。
 
 测试挂了，修一下。
 
 你自己看着办。</code></pre><p>这些请求的问题是目标不可验收，范围过大，容易导致 Codex 猜需求、乱改文件或给出空泛总结。</p></article>
-        <article class="card span-6"><span class="fragment-alias" id="heading-daily-workflow-20" data-canonical-fragment="推荐这样写" aria-hidden="true"></span><h3 id="推荐这样写">推荐这样写</h3><pre><code>请修复 checkout 流程里的失败测试。
+        <article class="card span-6"><span class="fragment-alias" id="heading-daily-workflow-20" data-canonical-fragment="推荐这样写" aria-hidden="true"></span><h3 id="推荐这样写">推荐这样写<a class="heading-permalink" data-heading-permalink data-search-exclude href="#推荐这样写" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><pre><code>请修复 checkout 流程里的失败测试。
 
 背景：
 - 当前分支新增了优惠券逻辑
@@ -142,16 +142,16 @@ flowchart LR
       <div class="section-head">
         <div class="section-title">
           <p class="section-kicker">Evidence</p>
-          <span class="fragment-alias" id="heading-daily-workflow-21" data-canonical-fragment="验收不是-看起来完成了" aria-hidden="true"></span><h2 id="验收不是-看起来完成了">验收不是“看起来完成了”</h2>
+          <span class="fragment-alias" id="heading-daily-workflow-21" data-canonical-fragment="验收不是-看起来完成了" aria-hidden="true"></span><h2 id="验收不是-看起来完成了">验收不是“看起来完成了”<a class="heading-permalink" data-heading-permalink data-search-exclude href="#验收不是-看起来完成了" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
         <p>日常任务完成时，最终回答应该能让你判断是否真的可用。没有证据的“已完成”不算完成。</p>
       </div>
       <div class="bento">
-        <article class="card span-3"><span class="fragment-alias" id="heading-daily-workflow-22" data-canonical-fragment="改动证据" aria-hidden="true"></span><h3 id="改动证据">改动证据</h3><p>列出关键文件、关键行为变化、没有改哪些范围。不要只说“优化了代码”。</p></article>
-        <article class="card span-3"><span class="fragment-alias" id="heading-daily-workflow-23" data-canonical-fragment="验证证据" aria-hidden="true"></span><h3 id="验证证据">验证证据</h3><p>列出测试、构建、静态服务、页面访问、截图或线上状态。</p></article>
-        <article class="card span-3"><span class="fragment-alias" id="heading-daily-workflow-24" data-canonical-fragment="风险证据" aria-hidden="true"></span><h3 id="风险证据">风险证据</h3><p>说明没跑的测试、依赖的外部状态、可能的兼容影响。</p></article>
-        <article class="card span-3"><span class="fragment-alias" id="heading-daily-workflow-25" data-canonical-fragment="交付证据" aria-hidden="true"></span><h3 id="交付证据">交付证据</h3><p>给出 commit、PR、Pages URL、issue 链接或产物路径。</p></article>
-        <article class="card span-12"><span class="fragment-alias" id="heading-daily-workflow-26" data-canonical-fragment="推荐-closeout-模板" aria-hidden="true"></span><h3 id="推荐-closeout-模板">推荐 closeout 模板</h3><pre><code>完成情况：
+        <article class="card span-3"><span class="fragment-alias" id="heading-daily-workflow-22" data-canonical-fragment="改动证据" aria-hidden="true"></span><h3 id="改动证据">改动证据<a class="heading-permalink" data-heading-permalink data-search-exclude href="#改动证据" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>列出关键文件、关键行为变化、没有改哪些范围。不要只说“优化了代码”。</p></article>
+        <article class="card span-3"><span class="fragment-alias" id="heading-daily-workflow-23" data-canonical-fragment="验证证据" aria-hidden="true"></span><h3 id="验证证据">验证证据<a class="heading-permalink" data-heading-permalink data-search-exclude href="#验证证据" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>列出测试、构建、静态服务、页面访问、截图或线上状态。</p></article>
+        <article class="card span-3"><span class="fragment-alias" id="heading-daily-workflow-24" data-canonical-fragment="风险证据" aria-hidden="true"></span><h3 id="风险证据">风险证据<a class="heading-permalink" data-heading-permalink data-search-exclude href="#风险证据" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>说明没跑的测试、依赖的外部状态、可能的兼容影响。</p></article>
+        <article class="card span-3"><span class="fragment-alias" id="heading-daily-workflow-25" data-canonical-fragment="交付证据" aria-hidden="true"></span><h3 id="交付证据">交付证据<a class="heading-permalink" data-heading-permalink data-search-exclude href="#交付证据" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>给出 commit、PR、Pages URL、issue 链接或产物路径。</p></article>
+        <article class="card span-12"><span class="fragment-alias" id="heading-daily-workflow-26" data-canonical-fragment="推荐-closeout-模板" aria-hidden="true"></span><h3 id="推荐-closeout-模板">推荐 closeout 模板<a class="heading-permalink" data-heading-permalink data-search-exclude href="#推荐-closeout-模板" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><pre><code>完成情况：
 - 改了 [文件/模块]，实现了 [可观察行为]
 
 验证：
@@ -172,17 +172,17 @@ flowchart LR
       <div class="section-head">
         <div class="section-title">
           <p class="section-kicker">Failure modes</p>
-          <span class="fragment-alias" id="heading-daily-workflow-27" data-canonical-fragment="常见失败和补救" aria-hidden="true"></span><h2 id="常见失败和补救">常见失败和补救</h2>
+          <span class="fragment-alias" id="heading-daily-workflow-27" data-canonical-fragment="常见失败和补救" aria-hidden="true"></span><h2 id="常见失败和补救">常见失败和补救<a class="heading-permalink" data-heading-permalink data-search-exclude href="#常见失败和补救" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
         <p>发现 Codex 偏离方向时，不要继续追加模糊要求。直接指出偏差，把任务拉回边界。</p>
       </div>
       <div class="bento">
-        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-28" data-canonical-fragment="改动太散" aria-hidden="true"></span><h3 id="改动太散">改动太散</h3><p>让 Codex 停下，列出当前 diff，解释每个文件为什么必要。无关改动应撤回或拆到后续任务。</p></article>
-        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-29" data-canonical-fragment="没有读上下文" aria-hidden="true"></span><h3 id="没有读上下文">没有读上下文</h3><p>要求它回到 <code>AGENTS.md</code>、README、相关代码和测试。不要让它基于猜测继续写。</p></article>
-        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-30" data-canonical-fragment="验证跑不通" aria-hidden="true"></span><h3 id="验证跑不通">验证跑不通</h3><p>区分代码失败、环境失败、依赖缺失和权限限制。最终报告里必须保留这个区别。</p></article>
-        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-31" data-canonical-fragment="网页看起来不对" aria-hidden="true"></span><h3 id="网页看起来不对">网页看起来不对</h3><p>要求本地服务或公开 URL 抽样访问；如果有浏览器工具，再用截图检查排版和文本溢出。</p></article>
-        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-32" data-canonical-fragment="解释太空泛" aria-hidden="true"></span><h3 id="解释太空泛">解释太空泛</h3><p>要求它引用文件路径、函数名、命令输出或页面 URL。没有引用就不能作为依据。</p></article>
-        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-33" data-canonical-fragment="任务变长了" aria-hidden="true"></span><h3 id="任务变长了">任务变长了</h3><p>如果超过一个短回合、需要多个阶段或要发布，转入 <a href="goal.html">Goal</a>；如果能拆并行调查，再看 <a href="subagents.html">Subagents</a>。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-28" data-canonical-fragment="改动太散" aria-hidden="true"></span><h3 id="改动太散">改动太散<a class="heading-permalink" data-heading-permalink data-search-exclude href="#改动太散" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>让 Codex 停下，列出当前 diff，解释每个文件为什么必要。无关改动应撤回或拆到后续任务。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-29" data-canonical-fragment="没有读上下文" aria-hidden="true"></span><h3 id="没有读上下文">没有读上下文<a class="heading-permalink" data-heading-permalink data-search-exclude href="#没有读上下文" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>要求它回到 <code>AGENTS.md</code>、README、相关代码和测试。不要让它基于猜测继续写。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-30" data-canonical-fragment="验证跑不通" aria-hidden="true"></span><h3 id="验证跑不通">验证跑不通<a class="heading-permalink" data-heading-permalink data-search-exclude href="#验证跑不通" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>区分代码失败、环境失败、依赖缺失和权限限制。最终报告里必须保留这个区别。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-31" data-canonical-fragment="网页看起来不对" aria-hidden="true"></span><h3 id="网页看起来不对">网页看起来不对<a class="heading-permalink" data-heading-permalink data-search-exclude href="#网页看起来不对" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>要求本地服务或公开 URL 抽样访问；如果有浏览器工具，再用截图检查排版和文本溢出。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-32" data-canonical-fragment="解释太空泛" aria-hidden="true"></span><h3 id="解释太空泛">解释太空泛<a class="heading-permalink" data-heading-permalink data-search-exclude href="#解释太空泛" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>要求它引用文件路径、函数名、命令输出或页面 URL。没有引用就不能作为依据。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-33" data-canonical-fragment="任务变长了" aria-hidden="true"></span><h3 id="任务变长了">任务变长了<a class="heading-permalink" data-heading-permalink data-search-exclude href="#任务变长了" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>如果超过一个短回合、需要多个阶段或要发布，转入 <a href="goal.html">Goal</a>；如果能拆并行调查，再看 <a href="subagents.html">Subagents</a>。</p></article>
       </div>
     </section>
 
@@ -190,17 +190,17 @@ flowchart LR
       <div class="section-head">
         <div class="section-title">
           <p class="section-kicker">Real example</p>
-          <span class="fragment-alias" id="heading-daily-workflow-34" data-canonical-fragment="真实实例-把短页面扩成日常任务手册" aria-hidden="true"></span><h2 id="真实实例-把短页面扩成日常任务手册">真实实例：把短页面扩成日常任务手册</h2>
+          <span class="fragment-alias" id="heading-daily-workflow-34" data-canonical-fragment="真实实例-把短页面扩成日常任务手册" aria-hidden="true"></span><h2 id="真实实例-把短页面扩成日常任务手册">真实实例：把短页面扩成日常任务手册<a class="heading-permalink" data-heading-permalink data-search-exclude href="#真实实例-把短页面扩成日常任务手册" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
         <p>这次 <code>daily-workflow.html</code> 原本只有几十个词。用户在 Desktop 浏览器里指出“内容太少”，Codex 按日常任务闭环完成了读上下文、改页面、验证和发布。</p>
       </div>
       <div class="bento">
-        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-35" data-canonical-fragment="输入" aria-hidden="true"></span><h3 id="输入">输入</h3><p>坏输入是“内容太少”；修复后应写清当前页面、目标读者、要补的任务类型和验收方式。</p></article>
-        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-36" data-canonical-fragment="先读" aria-hidden="true"></span><h3 id="先读">先读</h3><p><code>AGENTS.md</code>、当前 HTML、README、相关官方资料和本机 skill 边界。</p></article>
-        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-37" data-canonical-fragment="应动文件" aria-hidden="true"></span><h3 id="应动文件">应动文件</h3><p>日常任务页和必要导航；不顺手改无关样式或其它场景页。</p></article>
-        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-38" data-canonical-fragment="验证" aria-hidden="true"></span><h3 id="验证">验证</h3><p><code>make check</code>、<code>git diff --check</code>、关键标题抽样。</p></article>
-        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-39" data-canonical-fragment="最终回答" aria-hidden="true"></span><h3 id="最终回答">最终回答</h3><p>列出改了哪些任务、跑了哪些检查、哪些风险还需要人工判断。</p></article>
-        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-40" data-canonical-fragment="失败停止" aria-hidden="true"></span><h3 id="失败停止">失败停止</h3><p>页面结构不清、AGENTS 冲突、验证失败且没有窄修复时停止。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-35" data-canonical-fragment="输入" aria-hidden="true"></span><h3 id="输入">输入<a class="heading-permalink" data-heading-permalink data-search-exclude href="#输入" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>坏输入是“内容太少”；修复后应写清当前页面、目标读者、要补的任务类型和验收方式。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-36" data-canonical-fragment="先读" aria-hidden="true"></span><h3 id="先读">先读<a class="heading-permalink" data-heading-permalink data-search-exclude href="#先读" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p><code>AGENTS.md</code>、当前 HTML、README、相关官方资料和本机 skill 边界。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-37" data-canonical-fragment="应动文件" aria-hidden="true"></span><h3 id="应动文件">应动文件<a class="heading-permalink" data-heading-permalink data-search-exclude href="#应动文件" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>日常任务页和必要导航；不顺手改无关样式或其它场景页。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-38" data-canonical-fragment="验证" aria-hidden="true"></span><h3 id="验证">验证<a class="heading-permalink" data-heading-permalink data-search-exclude href="#验证" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p><code>make check</code>、<code>git diff --check</code>、关键标题抽样。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-39" data-canonical-fragment="最终回答" aria-hidden="true"></span><h3 id="最终回答">最终回答<a class="heading-permalink" data-heading-permalink data-search-exclude href="#最终回答" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>列出改了哪些任务、跑了哪些检查、哪些风险还需要人工判断。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-40" data-canonical-fragment="失败停止" aria-hidden="true"></span><h3 id="失败停止">失败停止<a class="heading-permalink" data-heading-permalink data-search-exclude href="#失败停止" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>页面结构不清、AGENTS 冲突、验证失败且没有窄修复时停止。</p></article>
       </div>
     </section>
   </main>

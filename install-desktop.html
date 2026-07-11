@@ -9,7 +9,7 @@
 </head>
 <body>
   <!-- guide:header:start -->
-<header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><span class="search-status">全站搜索将在下一阶段启用</span><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header>
+<script src="assets/site-data.js"></script><script src="assets/search-index.js"></script><header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><button class="search-trigger" type="button" aria-haspopup="dialog" aria-controls="site-search-dialog">搜索</button><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header><dialog class="search-dialog" id="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title"><div class="search-dialog-panel"><div class="search-dialog-head"><p class="search-title" id="site-search-title">搜索全站</p><button class="search-close" type="button" aria-label="关闭搜索">关闭</button></div><label class="search-label" for="site-search-input">搜索标题、正文和可复用 prompt</label><input class="search-input" id="site-search-input" type="search" role="combobox" autocomplete="off" aria-autocomplete="list" aria-controls="site-search-results" aria-describedby="site-search-status" aria-expanded="false"><p class="search-message" id="site-search-status" aria-live="polite">输入关键词开始搜索。</p><ul class="search-results" id="site-search-results" role="listbox" aria-label="搜索结果"></ul></div></dialog>
 <!-- guide:header:end -->
 
   <!-- guide:shell-open:start -->
@@ -32,14 +32,14 @@
       <div class="section-head">
         <div class="section-title">
           <p class="section-kicker">Before install</p>
-          <span class="fragment-alias" id="heading-install-desktop-1" data-canonical-fragment="安装前先确认三件事" aria-hidden="true"></span><h2 id="安装前先确认三件事">安装前先确认三件事</h2>
+          <span class="fragment-alias" id="heading-install-desktop-1" data-canonical-fragment="安装前先确认三件事" aria-hidden="true"></span><h2 id="安装前先确认三件事">安装前先确认三件事<a class="heading-permalink" data-heading-permalink data-search-exclude href="#安装前先确认三件事" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
         <p>不要从第三方下载器或不明链接安装。先确认你用的是官方入口、合适的账号，以及准备让 Codex 读取的本地仓库。</p>
       </div>
       <div class="bento">
-        <article class="card span-4"><span class="fragment-alias" id="heading-install-desktop-2" data-canonical-fragment="官方入口" aria-hidden="true"></span><h3 id="官方入口">官方入口</h3><p>从 <a href="https://developers.openai.com/codex/app">developers.openai.com/codex/app</a> 进入，按官方页面当前展示的下载或打开方式安装。</p></article>
-        <article class="card span-4"><span class="fragment-alias" id="heading-install-desktop-3" data-canonical-fragment="账号和组织" aria-hidden="true"></span><h3 id="账号和组织">账号和组织</h3><p>使用你实际工作的 OpenAI/ChatGPT 账号。团队项目要确认当前 workspace 或组织权限是否能访问 Codex。</p></article>
-        <article class="card span-4"><span class="fragment-alias" id="heading-install-desktop-4" data-canonical-fragment="仓库准备" aria-hidden="true"></span><h3 id="仓库准备">仓库准备</h3><p>本地仓库最好已有 README、测试命令和 <code>AGENTS.md</code>。没有也能用，但 Codex 更容易猜错边界。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-install-desktop-2" data-canonical-fragment="官方入口" aria-hidden="true"></span><h3 id="官方入口">官方入口<a class="heading-permalink" data-heading-permalink data-search-exclude href="#官方入口" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>从 <a href="https://developers.openai.com/codex/app">developers.openai.com/codex/app</a> 进入，按官方页面当前展示的下载或打开方式安装。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-install-desktop-3" data-canonical-fragment="账号和组织" aria-hidden="true"></span><h3 id="账号和组织">账号和组织<a class="heading-permalink" data-heading-permalink data-search-exclude href="#账号和组织" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>使用你实际工作的 OpenAI/ChatGPT 账号。团队项目要确认当前 workspace 或组织权限是否能访问 Codex。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-install-desktop-4" data-canonical-fragment="仓库准备" aria-hidden="true"></span><h3 id="仓库准备">仓库准备<a class="heading-permalink" data-heading-permalink data-search-exclude href="#仓库准备" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>本地仓库最好已有 README、测试命令和 <code>AGENTS.md</code>。没有也能用，但 Codex 更容易猜错边界。</p></article>
       </div>
     </section>
 
@@ -47,7 +47,7 @@
       <div class="section-head">
         <div class="section-title">
           <p class="section-kicker">Install flow</p>
-          <span class="fragment-alias" id="heading-install-desktop-5" data-canonical-fragment="安装到第一个任务" aria-hidden="true"></span><h2 id="安装到第一个任务">安装到第一个任务</h2>
+          <span class="fragment-alias" id="heading-install-desktop-5" data-canonical-fragment="安装到第一个任务" aria-hidden="true"></span><h2 id="安装到第一个任务">安装到第一个任务<a class="heading-permalink" data-heading-permalink data-search-exclude href="#安装到第一个任务" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
         <p>下面是建议的首次使用顺序。你可以把它当作安装后的检查单。</p>
       </div>
@@ -69,12 +69,12 @@ flowchart LR
       <div class="section-head">
         <div class="section-title">
           <p class="section-kicker">First task</p>
-          <span class="fragment-alias" id="heading-install-desktop-6" data-canonical-fragment="第一个任务怎么写" aria-hidden="true"></span><h2 id="第一个任务怎么写">第一个任务怎么写</h2>
+          <span class="fragment-alias" id="heading-install-desktop-6" data-canonical-fragment="第一个任务怎么写" aria-hidden="true"></span><h2 id="第一个任务怎么写">第一个任务怎么写<a class="heading-permalink" data-heading-permalink data-search-exclude href="#第一个任务怎么写" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
         <p>第一个任务应该是只读或小改动任务，用来确认 Codex 能读仓库、能理解规则、能运行验证，而不是一上来让它重构整个项目。</p>
       </div>
       <div class="bento">
-        <article class="card span-6"><span class="fragment-alias" id="heading-install-desktop-7" data-canonical-fragment="只读入门" aria-hidden="true"></span><h3 id="只读入门">只读入门</h3><pre><code>我刚安装 Codex Desktop，正在打开这个仓库：
+        <article class="card span-6"><span class="fragment-alias" id="heading-install-desktop-7" data-canonical-fragment="只读入门" aria-hidden="true"></span><h3 id="只读入门">只读入门<a class="heading-permalink" data-heading-permalink data-search-exclude href="#只读入门" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><pre><code>我刚安装 Codex Desktop，正在打开这个仓库：
 /path/to/repo
 
 请先只读分析：
@@ -83,13 +83,13 @@ flowchart LR
 - 解释这个仓库适合怎样让 Codex 协作
 
 不要改文件。</code></pre></article>
-        <article class="card span-6"><span class="fragment-alias" id="heading-install-desktop-8" data-canonical-fragment="小改动入门" aria-hidden="true"></span><h3 id="小改动入门">小改动入门</h3><pre><code>请做一个小范围文档修改：
+        <article class="card span-6"><span class="fragment-alias" id="heading-install-desktop-8" data-canonical-fragment="小改动入门" aria-hidden="true"></span><h3 id="小改动入门">小改动入门<a class="heading-permalink" data-heading-permalink data-search-exclude href="#小改动入门" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><pre><code>请做一个小范围文档修改：
 - 先读 AGENTS.md
 - 只改 README 的安装说明
 - 改动前告诉我计划
 - 完成后运行最窄检查
 - 最终说明 diff 和未验证项</code></pre></article>
-        <article class="card span-12 dark-card"><span class="fragment-alias" id="heading-install-desktop-9" data-canonical-fragment="第一次不要这样写" aria-hidden="true"></span><h3 id="第一次不要这样写">第一次不要这样写</h3><p>不要写“帮我优化整个项目”“你自己看着办”“把所有问题都修了”。这些请求范围太大，无法判断 Codex 是否真的理解了仓库和你的验收标准。</p></article>
+        <article class="card span-12 dark-card"><span class="fragment-alias" id="heading-install-desktop-9" data-canonical-fragment="第一次不要这样写" aria-hidden="true"></span><h3 id="第一次不要这样写">第一次不要这样写<a class="heading-permalink" data-heading-permalink data-search-exclude href="#第一次不要这样写" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>不要写“帮我优化整个项目”“你自己看着办”“把所有问题都修了”。这些请求范围太大，无法判断 Codex 是否真的理解了仓库和你的验收标准。</p></article>
       </div>
     </section>
 
@@ -97,22 +97,22 @@ flowchart LR
       <div class="section-head">
         <div class="section-title">
           <p class="section-kicker">Approvals</p>
-          <span class="fragment-alias" id="heading-install-desktop-10" data-canonical-fragment="看到权限请求时怎么判断" aria-hidden="true"></span><h2 id="看到权限请求时怎么判断">看到权限请求时怎么判断</h2>
+          <span class="fragment-alias" id="heading-install-desktop-10" data-canonical-fragment="看到权限请求时怎么判断" aria-hidden="true"></span><h2 id="看到权限请求时怎么判断">看到权限请求时怎么判断<a class="heading-permalink" data-heading-permalink data-search-exclude href="#看到权限请求时怎么判断" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
         <p>Desktop 的一个优势是你能看到 Codex 为什么要申请某个动作。批准前重点看三点：动作是否必要、会影响哪里、完成后怎么验证。</p>
       </div>
       <div class="steps">
-        <article class="step"><span class="fragment-alias" id="heading-install-desktop-11" data-canonical-fragment="本地服务" aria-hidden="true"></span><h3 id="本地服务">本地服务</h3><p>比如启动 <code>python3 -m http.server</code> 检查静态页面。通常合理，但要确认只绑定本机地址。</p></article>
-        <article class="step"><span class="fragment-alias" id="heading-install-desktop-12" data-canonical-fragment="联网查询" aria-hidden="true"></span><h3 id="联网查询">联网查询</h3><p>比如读取官方文档或 GitHub Pages 状态。要求 Codex 说明来源和是否只读。</p></article>
-        <article class="step"><span class="fragment-alias" id="heading-install-desktop-13" data-canonical-fragment="安装依赖" aria-hidden="true"></span><h3 id="安装依赖">安装依赖</h3><p>要确认依赖来源、版本和是否会改 lockfile。文档任务通常不应随便安装新依赖。</p></article>
-        <article class="step"><span class="fragment-alias" id="heading-install-desktop-14" data-canonical-fragment="git-push" aria-hidden="true"></span><h3 id="git-push">Git push</h3><p>这是外部写操作。批准前应已经完成本地检查，并知道要推送哪个分支。</p></article>
+        <article class="step"><span class="fragment-alias" id="heading-install-desktop-11" data-canonical-fragment="本地服务" aria-hidden="true"></span><h3 id="本地服务">本地服务<a class="heading-permalink" data-heading-permalink data-search-exclude href="#本地服务" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>比如启动 <code>python3 -m http.server</code> 检查静态页面。通常合理，但要确认只绑定本机地址。</p></article>
+        <article class="step"><span class="fragment-alias" id="heading-install-desktop-12" data-canonical-fragment="联网查询" aria-hidden="true"></span><h3 id="联网查询">联网查询<a class="heading-permalink" data-heading-permalink data-search-exclude href="#联网查询" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>比如读取官方文档或 GitHub Pages 状态。要求 Codex 说明来源和是否只读。</p></article>
+        <article class="step"><span class="fragment-alias" id="heading-install-desktop-13" data-canonical-fragment="安装依赖" aria-hidden="true"></span><h3 id="安装依赖">安装依赖<a class="heading-permalink" data-heading-permalink data-search-exclude href="#安装依赖" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>要确认依赖来源、版本和是否会改 lockfile。文档任务通常不应随便安装新依赖。</p></article>
+        <article class="step"><span class="fragment-alias" id="heading-install-desktop-14" data-canonical-fragment="git-push" aria-hidden="true"></span><h3 id="git-push">Git push<a class="heading-permalink" data-heading-permalink data-search-exclude href="#git-push" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>这是外部写操作。批准前应已经完成本地检查，并知道要推送哪个分支。</p></article>
       </div>
     </section>
 
     <section class="section">
       <div class="content-block">
         <p class="section-kicker">Real example</p>
-        <span class="fragment-alias" id="heading-install-desktop-15" data-canonical-fragment="真实实例-本指南的-desktop-安装页" aria-hidden="true"></span><h2 id="真实实例-本指南的-desktop-安装页">真实实例：本指南的 Desktop 安装页</h2>
+        <span class="fragment-alias" id="heading-install-desktop-15" data-canonical-fragment="真实实例-本指南的-desktop-安装页" aria-hidden="true"></span><h2 id="真实实例-本指南的-desktop-安装页">真实实例：本指南的 Desktop 安装页<a class="heading-permalink" data-heading-permalink data-search-exclude href="#真实实例-本指南的-desktop-安装页" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         <p>这次新增页面时，Codex 先确认任务是可执行网站更新，再读取仓库规则、页面结构和官方资料。因为安装细节可能随官方页面变化，本页只给官方入口和稳定的首次使用流程，不硬编码第三方下载地址。</p>
       </div>
     </section>

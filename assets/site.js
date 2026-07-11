@@ -7,6 +7,203 @@
     }
   });
 
+  var searchTrigger = document.querySelector(".search-trigger");
+  var searchDialog = document.querySelector("#site-search-dialog");
+  var searchClose = document.querySelector(".search-close");
+  var searchInput = document.querySelector("#site-search-input");
+  var searchStatus = document.querySelector("#site-search-status");
+  var searchResults = document.querySelector("#site-search-results");
+  var activeSearchIndex = -1;
+  var renderedSearchOptions = [];
+
+  function normalizeSearchText(value) {
+    var text = String(value || "");
+    if (text.normalize) text = text.normalize("NFKC");
+    return text.toLocaleLowerCase().replace(/[\s\p{P}\p{S}]+/gu, " ").trim();
+  }
+
+  function allowedSearchRecords() {
+    var data = window.GUIDE_SITE_DATA;
+    var index = window.GUIDE_SEARCH_INDEX;
+    if (!data || !Array.isArray(data.pages) || !data.fragments ||
+        !index || index.schema_version !== 1 || !Array.isArray(index.records)) {
+      return null;
+    }
+    var pageFragments = new Map();
+    data.pages.forEach(function (page) {
+      if (!page || typeof page.path !== "string" || !Array.isArray(data.fragments[page.path])) return;
+      pageFragments.set(page.path, new Set(data.fragments[page.path]));
+    });
+    return index.records.filter(function (record) {
+      if (!record || typeof record.page !== "string" || typeof record.fragment !== "string" ||
+          typeof record.title !== "string" || typeof record.section !== "string" ||
+          typeof record.text !== "string" || !Array.isArray(record.prompts)) return false;
+      var fragments = pageFragments.get(record.page);
+      return Boolean(fragments && (!record.fragment || fragments.has(record.fragment)));
+    });
+  }
+
+  var searchRecords = allowedSearchRecords();
+
+  function setActiveSearchOption(index) {
+    if (!searchInput) return;
+    if (!renderedSearchOptions.length) {
+      activeSearchIndex = -1;
+      searchInput.removeAttribute("aria-activedescendant");
+      return;
+    }
+    activeSearchIndex = (index + renderedSearchOptions.length) % renderedSearchOptions.length;
+    renderedSearchOptions.forEach(function (option, optionIndex) {
+      option.setAttribute("aria-selected", String(optionIndex === activeSearchIndex));
+    });
+    var active = renderedSearchOptions[activeSearchIndex];
+    searchInput.setAttribute("aria-activedescendant", active.id);
+    active.scrollIntoView({ block: "nearest" });
+  }
+
+  function navigateToSearchOption(option) {
+    var target = option && option.dataset.searchTarget;
+    if (target) window.location.href = target;
+  }
+
+  function renderSearchResults() {
+    if (!searchInput || !searchStatus || !searchResults) return;
+    searchResults.replaceChildren();
+    renderedSearchOptions = [];
+    setActiveSearchOption(-1);
+    if (searchRecords === null) {
+      searchStatus.textContent = "搜索索引暂时不可用，站内导航仍可继续使用。";
+      return;
+    }
+    var query = normalizeSearchText(searchInput.value);
+    if (!query) {
+      searchStatus.textContent = "输入关键词开始搜索。";
+      return;
+    }
+    var matches = searchRecords.map(function (record) {
+      var title = normalizeSearchText(record.title);
+      var section = normalizeSearchText(record.section);
+      var body = normalizeSearchText([record.text].concat(record.prompts).join(" "));
+      var score = section === query ? 100 : section.indexOf(query) >= 0 ? 60 :
+        title.indexOf(query) >= 0 ? 40 : body.indexOf(query) >= 0 ? 20 : 0;
+      return { record: record, score: score };
+    }).filter(function (match) {
+      return match.score > 0;
+    }).sort(function (left, right) {
+      return right.score - left.score || left.record.page.localeCompare(right.record.page, "zh-CN") ||
+        left.record.fragment.localeCompare(right.record.fragment, "zh-CN");
+    }).slice(0, 12);
+
+    if (!matches.length) {
+      searchStatus.textContent = "没有找到匹配结果。";
+      return;
+    }
+    searchStatus.textContent = "找到 " + matches.length + " 条结果。";
+    matches.forEach(function (match, index) {
+      var record = match.record;
+      var option = document.createElement("li");
+      option.className = "search-option";
+      option.id = "search-option-" + index;
+      option.setAttribute("role", "option");
+      option.setAttribute("aria-selected", "false");
+      option.tabIndex = -1;
+      option.dataset.searchTarget = record.page + (record.fragment ? "#" + encodeURIComponent(record.fragment) : "");
+      var title = document.createElement("strong");
+      title.textContent = record.title;
+      var section = document.createElement("span");
+      section.textContent = record.section || "页面概览";
+      var snippet = document.createElement("small");
+      snippet.textContent = record.text.slice(0, 120);
+      option.append(title, section, snippet);
+      option.addEventListener("mousedown", function (event) { event.preventDefault(); });
+      option.addEventListener("click", function () { navigateToSearchOption(option); });
+      searchResults.appendChild(option);
+      renderedSearchOptions.push(option);
+    });
+  }
+
+  function openSearch() {
+    if (!searchDialog || !searchInput) return;
+    searchInput.setAttribute("aria-expanded", "true");
+    renderSearchResults();
+    if (typeof searchDialog.showModal === "function") searchDialog.showModal();
+    else searchDialog.setAttribute("open", "");
+    searchInput.focus();
+  }
+
+  function closeSearch() {
+    if (!searchDialog || !searchDialog.hasAttribute("open")) return;
+    searchInput.setAttribute("aria-expanded", "false");
+    if (typeof searchDialog.close === "function") searchDialog.close();
+    else {
+      searchDialog.removeAttribute("open");
+      if (searchTrigger) searchTrigger.focus();
+    }
+  }
+
+  if (searchTrigger && searchDialog && searchInput && searchResults && searchStatus) {
+    searchTrigger.addEventListener("click", openSearch);
+    searchClose.addEventListener("click", closeSearch);
+    searchDialog.addEventListener("cancel", function (event) {
+      event.preventDefault();
+      closeSearch();
+    });
+    searchDialog.addEventListener("close", function () {
+      searchInput.setAttribute("aria-expanded", "false");
+      searchTrigger.focus();
+    });
+    searchDialog.addEventListener("click", function (event) {
+      if (event.target === searchDialog) closeSearch();
+    });
+    searchInput.addEventListener("input", renderSearchResults);
+    searchInput.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowDown") {
+        event.preventDefault();
+        setActiveSearchOption(activeSearchIndex + 1);
+      } else if (event.key === "ArrowUp") {
+        event.preventDefault();
+        setActiveSearchOption(activeSearchIndex - 1);
+      } else if (event.key === "Enter" && renderedSearchOptions.length) {
+        event.preventDefault();
+        navigateToSearchOption(renderedSearchOptions[activeSearchIndex < 0 ? 0 : activeSearchIndex]);
+      }
+    });
+  }
+
+  document.querySelectorAll("main pre > code").forEach(function (code) {
+    var pre = code.parentElement;
+    if (!pre || pre.closest(".copy-block")) return;
+    var sourceText = code.textContent;
+    var wrapper = document.createElement("div");
+    wrapper.className = "copy-block";
+    pre.parentNode.insertBefore(wrapper, pre);
+    var tools = document.createElement("div");
+    tools.className = "copy-tools";
+    var button = document.createElement("button");
+    button.className = "copy-button";
+    button.type = "button";
+    button.textContent = "复制";
+    var status = document.createElement("span");
+    status.className = "copy-status";
+    status.setAttribute("aria-live", "polite");
+    tools.append(button, status);
+    wrapper.append(tools, pre);
+    button.addEventListener("click", function () {
+      status.textContent = "";
+      button.disabled = true;
+      var write = navigator.clipboard && typeof navigator.clipboard.writeText === "function"
+        ? navigator.clipboard.writeText(sourceText)
+        : Promise.reject(new Error("Clipboard unavailable"));
+      Promise.resolve(write).then(function () {
+        status.textContent = "已复制";
+      }).catch(function () {
+        status.textContent = "复制失败，请手动选择文本。";
+      }).finally(function () {
+        button.disabled = false;
+      });
+    });
+  });
+
   var menuButton = document.querySelector(".menu-toggle");
   var globalNav = document.querySelector(".global-nav");
   function closeMenu() {

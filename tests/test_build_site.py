@@ -76,6 +76,23 @@ class SiteModelTests(unittest.TestCase):
         self.assertTrue(headings)
         self.assertTrue(all(re.search(r'\bid="[^"]+"', attrs) for attrs in headings))
 
+    def test_toolbook_shell_generates_search_dialog_and_heading_permalinks(self) -> None:
+        model = load_site_model(ROOT)
+        page = next(page for page in model.pages if page.path == "permissions.html")
+        rendered = render_page(model, page, (ROOT / page.path).read_text(encoding="utf-8"))
+        self.assertIn('src="assets/site-data.js"', rendered)
+        self.assertIn('src="assets/search-index.js"', rendered)
+        self.assertIn('class="search-trigger"', rendered)
+        self.assertIn('role="dialog"', rendered)
+        self.assertIn('role="combobox"', rendered)
+        self.assertIn('role="listbox"', rendered)
+        article = rendered.split("<main", 1)[1].split("</main>", 1)[0]
+        self.assertEqual(
+            article.count('data-heading-permalink'),
+            article.count("<h2") + article.count("<h3"),
+        )
+        self.assertEqual(render_page(model, page, rendered), rendered)
+
     def test_canonical_heading_preserves_legacy_and_structural_fragments(self) -> None:
         model = load_site_model(ROOT)
         page = next(page for page in model.pages if page.path == "permissions.html")

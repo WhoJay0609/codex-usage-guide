@@ -12,6 +12,7 @@ from check_site import (  # noqa: E402
     check_local_link,
     validate_case_index,
     validate_fragment_registry,
+    validate_interaction_contracts,
     validate_required_pages,
     validate_semantic_contracts,
 )
@@ -25,6 +26,21 @@ def parse(markup: str) -> PageParser:
 
 
 class SemanticContractTests(unittest.TestCase):
+    def test_interaction_contract_requires_search_and_matching_permalinks(self) -> None:
+        pages = {
+            "sample.html": parse(
+                '<script src="assets/site-data.js"></script>'
+                '<script src="assets/search-index.js"></script>'
+                '<button class="search-trigger"></button>'
+                '<dialog id="site-search-dialog" role="dialog"></dialog>'
+                '<input id="site-search-input" role="combobox">'
+                '<ul id="site-search-results" role="listbox"></ul>'
+                '<main><h2 id="canonical">Title<a data-heading-permalink href="#wrong">#</a></h2></main>'
+            )
+        }
+        errors = validate_interaction_contracts(pages)
+        self.assertTrue(any("permalink for #canonical must target #canonical" in error for error in errors), errors)
+
     def test_fragment_registry_requires_canonical_heading_and_legacy_alias(self) -> None:
         pages = {
             "sample.html": parse(

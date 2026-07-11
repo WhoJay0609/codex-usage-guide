@@ -142,10 +142,16 @@ class PageParser(HTMLParser):
         self._visible_chunks: list[str] = []
         self.loop_stages: list[tuple[str, str]] = []
         self.heading_ids: list[str] = []
+        self.heading_permalinks: list[tuple[str, str]] = []
+        self.search_triggers = 0
+        self.search_dialogs = 0
+        self.search_comboboxes = 0
+        self.search_listboxes = 0
         self.fragment_aliases: dict[str, str] = {}
         self.cases: list[dict[str, str]] = []
         self._case_stack: list[dict[str, object]] = []
         self._depth = 0
+        self._current_heading_id = ""
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         attribute_counts = Counter(key for key, _ in attrs)
@@ -162,6 +168,18 @@ class PageParser(HTMLParser):
             self.id_counts[attr["id"]] += 1
         if tag in {"h2", "h3"}:
             self.heading_ids.append(attr.get("id", ""))
+            self._current_heading_id = attr.get("id", "")
+        classes = set(attr.get("class", "").split())
+        if "search-trigger" in classes:
+            self.search_triggers += 1
+        if tag == "dialog" and attr.get("id") == "site-search-dialog" and attr.get("role") == "dialog":
+            self.search_dialogs += 1
+        if attr.get("id") == "site-search-input" and attr.get("role") == "combobox":
+            self.search_comboboxes += 1
+        if attr.get("id") == "site-search-results" and attr.get("role") == "listbox":
+            self.search_listboxes += 1
+        if "data-heading-permalink" in attr:
+            self.heading_permalinks.append((self._current_heading_id, attr.get("href", "")))
         if "fragment-alias" in attr.get("class", "").split():
             self.fragment_aliases[attr.get("id", "")] = attr.get("data-canonical-fragment", "")
         if "data-loop-stage" in attr:
@@ -214,6 +232,8 @@ class PageParser(HTMLParser):
             self._current_tag = None
         if tag == "a":
             self._current_nav_href = None
+        if tag in {"h2", "h3"}:
+            self._current_heading_id = ""
         if tag not in VOID_TAGS and self._depth:
             self._depth -= 1
 
@@ -367,6 +387,34 @@ def validate_fragment_registry(
     return errors
 
 
+def validate_interaction_contracts(pages: dict[str, PageParser]) -> list[str]:
+    errors: list[str] = []
+    for rel, parser in pages.items():
+        if "/" in rel:
+            continue
+        for label, count in {
+            "search trigger": parser.search_triggers,
+            "search dialog": parser.search_dialogs,
+            "search combobox": parser.search_comboboxes,
+            "search listbox": parser.search_listboxes,
+        }.items():
+            if count != 1:
+                errors.append(f"{rel}: expected exactly one {label}, found {count}")
+        for script in ("assets/site-data.js", "assets/search-index.js"):
+            if script not in parser.scripts:
+                errors.append(f"{rel}: missing search data script {script}")
+        by_heading: dict[str, list[str]] = {}
+        for heading, href in parser.heading_permalinks:
+            by_heading.setdefault(heading, []).append(href)
+        for heading in parser.heading_ids:
+            links = by_heading.get(heading, [])
+            if len(links) != 1:
+                errors.append(f"{rel}: heading #{heading} must have exactly one permalink")
+            elif links[0] != f"#{heading}":
+                errors.append(f"{rel}: permalink for #{heading} must target #{heading}")
+    return errors
+
+
 def validate_case_index(pages: dict[str, PageParser], index_text: str) -> list[str]:
     errors: list[str] = []
     rows: dict[str, list[str]] = {}
@@ -455,6 +503,7 @@ def main() -> int:
     )
     pages = {path.relative_to(ROOT).as_posix(): parse_page(path) for path in html_paths}
     errors = validate_semantic_contracts(pages)
+    errors.extend(validate_interaction_contracts(pages))
     try:
         errors.extend(validate_fragment_registry(pages, load_heading_fragments(ROOT)))
     except (OSError, ValueError) as error:
