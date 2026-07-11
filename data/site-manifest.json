@@ -3,7 +3,8 @@
   "site": {
     "title": "Codex 使用指南",
     "base_url": "https://whojay0609.github.io/codex-usage-guide/",
-    "language": "zh-CN"
+    "language": "zh-CN",
+    "social_preview": "figures/social-preview.png"
   },
   "navigation": [
     {"label": "开始", "pages": ["index.html", "install-desktop.html", "desktop-cli.html"]},

@@ -28,6 +28,22 @@ The web page is the canonical public artifact.
   - GitHub Pages has been pushed and, when network access is available,
     the published page returns the updated HTML.
 
+### Maintainer Commands
+
+- `make generate` updates sentinel-owned root-page blocks and generated assets.
+- `make check-fast` checks deterministic generation plus the manifest-scoped 19-page static contract.
+- `make check` adds the Python unit suite.
+- `make test-browser` runs Playwright interaction and responsive checks.
+- `make check-release-local` runs local automated release gates; it does not satisfy human privacy or reader checks.
+- `make check-published` is post-deployment and network-dependent. Record `not run` before deployment or when the public site is unavailable; never convert that state to pass.
+
+### Generated And Authored Boundaries
+
+- `data/site-manifest.json`, `data/heading-fragments.json`, and `data/publication-policy.json` are reviewed sources of truth.
+- `assets/site-data.js`, `assets/search-index.js`, root-page `guide:*` blocks, canonical heading IDs, legacy alias elements, permalink controls, and normalized external-link attributes are generated. Change their source and run `make generate`; do not hand-edit them.
+- Article prose, prompts, case evidence, captions, and narrowly scoped evidence sections outside generated blocks are authored content. Generator changes must preserve those bytes except for the explicitly registered narrow transformations above.
+- Real Desktop screenshots remain an external-input gate. Do not create an approval record, claim privacy sign-off, or publish substitutes until the exact committed derivative has received independent original-resolution review.
+
 ## Documentation Boundaries
 
 - `index.html` is the GitHub Pages guide and canonical public artifact.

@@ -4,12 +4,34 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>高 stars skills 仓库介绍</title>
-  <meta name="description" content="中文 Codex 实战手册：面向 Codex Desktop 用户的高关注 skills 仓库选择、安装、使用示例和自动化边界。">
+  <!-- guide:theme-bootstrap:start -->
+<script src="assets/theme.js"></script>
+<!-- guide:theme-bootstrap:end -->
   <link rel="stylesheet" href="assets/site.css">
+  <!-- guide:metadata:start -->
+<meta name="description" content="比较常用第三方 skills 仓库并选择合适入口。">
+<meta name="guide-build" content="c913ce4a5bfc">
+<link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/skills-repositories.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="Codex 使用指南">
+<meta property="og:title" content="高 stars skills 仓库介绍">
+<meta property="og:description" content="比较常用第三方 skills 仓库并选择合适入口。">
+<meta property="og:url" content="https://whojay0609.github.io/codex-usage-guide/skills-repositories.html">
+<meta property="og:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Codex 使用指南">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="高 stars skills 仓库介绍">
+<meta name="twitter:description" content="比较常用第三方 skills 仓库并选择合适入口。">
+<meta name="twitter:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
+<meta name="twitter:image:alt" content="Codex 使用指南">
+<!-- guide:metadata:end -->
 </head>
 <body>
   <!-- guide:header:start -->
-<header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><span class="search-status">全站搜索将在下一阶段启用</span><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header>
+<script src="assets/site-data.js"></script><script src="assets/search-index.js"></script><header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><label class="theme-control"><span class="sr-only">主题</span><select class="theme-select" aria-label="主题"><option value="system">跟随系统</option><option value="light">浅色</option><option value="dark">深色</option></select></label><span class="theme-status sr-only" aria-live="polite"></span><button class="search-trigger" type="button" aria-haspopup="dialog" aria-controls="site-search-dialog">搜索</button><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header><dialog class="search-dialog" id="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title"><div class="search-dialog-panel"><div class="search-dialog-head"><p class="search-title" id="site-search-title">搜索全站</p><button class="search-close" type="button" aria-label="关闭搜索">关闭</button></div><label class="search-label" for="site-search-input">搜索标题、正文和可复用 prompt</label><input class="search-input" id="site-search-input" type="search" role="combobox" autocomplete="off" aria-autocomplete="list" aria-controls="site-search-results" aria-describedby="site-search-status" aria-expanded="false"><p class="search-message" id="site-search-status" aria-live="polite">输入关键词开始搜索。</p><ul class="search-results" id="site-search-results" role="listbox" aria-label="搜索结果"></ul></div></dialog>
 <!-- guide:header:end -->
 
   <!-- guide:shell-open:start -->
@@ -18,7 +40,7 @@
 <main>
     <section class="hero compact">
       <div class="hero-copy">
-        <p class="hero-kicker">Skills repositories</p>
+        <p class="hero-kicker">Skills 仓库</p>
         <h1>高 stars skills 仓库介绍</h1>
         <p class="lead">这页不是实时排名表，而是 Codex Desktop 用户的选择页：按任务类型比较几个社区关注较高的 skills 仓库，看清它们的能力、安装或启用路径、第一条可复制 prompt 和使用边界。</p>
         <div class="tier-badges">
@@ -34,8 +56,8 @@
 
       <article class="doc-content">
         <section class="content-block" id="what">
-          <p class="section-kicker">What</p>
-          <h2 id="heading-skills-repositories-1">先按任务 fit 选仓库</h2>
+          <p class="section-kicker">是什么</p>
+          <span class="fragment-alias" id="heading-skills-repositories-1" data-canonical-fragment="先按任务-fit-选仓库" aria-hidden="true"></span><h2 id="先按任务-fit-选仓库">先按任务 fit 选仓库<a class="heading-permalink" data-heading-permalink data-search-exclude href="#先按任务-fit-选仓库" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <p>不要把所有 skills 仓库一次性塞进同一个请求。普通 Codex Desktop 用户先回答三个问题：我要做工程交付、工程思考、学术工作，还是长时间研究自动化？然后只选一个主仓库，最多加一个辅助仓库。</p>
           <figure class="figure-card">
             <img src="figures/high-stars-chooser.png" alt="小黑把任务纸条分拣到工程闭环、需求拷问、学术套件和自动科研四个托盘" loading="lazy" decoding="async" width="1672" height="941">
@@ -44,8 +66,8 @@
         </section>
 
         <section class="content-block" id="chooser">
-          <p class="section-kicker">Chooser</p>
-          <h2 id="heading-skills-repositories-2">30 秒选择表</h2>
+          <p class="section-kicker">选择器</p>
+          <span class="fragment-alias" id="heading-skills-repositories-2" data-canonical-fragment="30-秒选择表" aria-hidden="true"></span><h2 id="30-秒选择表">30 秒选择表<a class="heading-permalink" data-heading-permalink data-search-exclude href="#30-秒选择表" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <div class="decision-table">
             <div class="decision-row"><strong>多步骤工程功能 / 复杂 bug</strong><span>首选：Compound Engineering</span><span>辅助：<code>mattpocock/skills</code></span><span>要完整 brainstorm-plan-work-review 闭环时用 Compound；只想先拷问需求时用 Matt。</span></div>
             <div class="decision-row"><strong>需求模糊 / 想被追问</strong><span>首选：<code>mattpocock/skills</code></span><span>辅助：Compound Engineering</span><span>先用 <code>/grill-with-docs</code> 或 <code>ask-matt</code> 收紧语言，再进入重流程。</span></div>
@@ -56,8 +78,8 @@
         </section>
 
         <section class="content-block" id="case-labels">
-          <p class="section-kicker">Evidence labels</p>
-          <h2 id="heading-skills-repositories-3">先看案例证据等级</h2>
+          <p class="section-kicker">证据标签</p>
+          <span class="fragment-alias" id="heading-skills-repositories-3" data-canonical-fragment="先看案例证据等级" aria-hidden="true"></span><h2 id="先看案例证据等级">先看案例证据等级<a class="heading-permalink" data-heading-permalink data-search-exclude href="#先看案例证据等级" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <div class="decision-table">
             <div class="decision-row"><strong>历史案例</strong><span>有可核验的计划、Git、测试或公开产物</span><span>只主张证据覆盖的阶段</span><span>不能把局部使用扩写成完整交付</span></div>
             <div class="decision-row"><strong>历史复合案例</strong><span>多个已核验片段重排成教学流程</span><span>必须标明组合性质</span><span>完整示例见 <a href="engineering.html#team-flow">团队协作规范</a></span></div>
@@ -66,13 +88,13 @@
         </section>
 
         <section class="content-block" id="compound">
-          <p class="section-kicker">Engineering workflow</p>
-          <h2 id="heading-skills-repositories-4">Compound Engineering</h2>
+          <p class="section-kicker">工程工作流</p>
+          <span class="fragment-alias" id="heading-skills-repositories-4" data-canonical-fragment="compound-engineering" aria-hidden="true"></span><h2 id="compound-engineering">Compound Engineering<a class="heading-permalink" data-heading-permalink data-search-exclude href="#compound-engineering" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <p>EveryInc 的 Compound Engineering plugin 适合把工程任务组织成可复利的流程：brainstorm、plan、work、simplify、review、compound。它更像工程流程插件，不是一个单独的提示词集合。</p>
           <div class="bento">
-            <article class="card span-4"><h3 id="heading-skills-repositories-5">能力</h3><p>用 <code>/ce-brainstorm</code>、<code>/ce-plan</code>、<code>/ce-work</code>、<code>/ce-simplify-code</code>、<code>/ce-code-review</code>、<code>/ce-compound</code> 串起长任务。</p></article>
-            <article class="card span-4"><h3 id="heading-skills-repositories-6">最适合</h3><p>多文件功能、复杂 bug、PR 前审查、长期维护同一仓库的工程知识。</p></article>
-            <article class="card span-4"><h3 id="heading-skills-repositories-7">安装路径</h3><p>Codex Desktop 里添加 custom marketplace，Source 填 <code>EveryInc/compound-engineering-plugin</code>，ref 填 <code>main</code>，安装 <code>compound-engineering</code> 后重启。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-skills-repositories-5" data-canonical-fragment="能力" aria-hidden="true"></span><h3 id="能力">能力<a class="heading-permalink" data-heading-permalink data-search-exclude href="#能力" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>用 <code>/ce-brainstorm</code>、<code>/ce-plan</code>、<code>/ce-work</code>、<code>/ce-simplify-code</code>、<code>/ce-code-review</code>、<code>/ce-compound</code> 串起长任务。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-skills-repositories-6" data-canonical-fragment="最适合" aria-hidden="true"></span><h3 id="最适合">最适合<a class="heading-permalink" data-heading-permalink data-search-exclude href="#最适合" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>多文件功能、复杂 bug、PR 前审查、长期维护同一仓库的工程知识。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-skills-repositories-7" data-canonical-fragment="安装路径" aria-hidden="true"></span><h3 id="安装路径">安装路径<a class="heading-permalink" data-heading-permalink data-search-exclude href="#安装路径" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>Codex Desktop 里添加 custom marketplace，Source 填 <code>EveryInc/compound-engineering-plugin</code>，ref 填 <code>main</code>，安装 <code>compound-engineering</code> 后重启。</p></article>
           </div>
           <pre><code>[$compound-engineering:ce-brainstorm]
 目标：把这个产品改动先讨论清楚。
@@ -81,19 +103,19 @@
 输出：给出 requirements-only 计划和下一步问题。</code></pre>
           <ul class="mini-list">
             <li><strong>使用边界</strong><span>需求还很粗时先 brainstorm；不要一行模糊目标直接交给 <code>/lfg</code>。</span></li>
-            <li><strong>仓库链接</strong><span><a href="https://github.com/EveryInc/compound-engineering-plugin">github.com/EveryInc/compound-engineering-plugin</a></span></li>
+            <li><strong>仓库链接</strong><span><a href="https://github.com/EveryInc/compound-engineering-plugin" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>github.com/EveryInc/compound-engineering-plugin</a></span></li>
           </ul>
-          <article class="card" id="compound-case" data-case-type="historical" data-case-id="compound-guide-summary"><div class="tier-badges"><span class="tier-badge">历史案例</span></div><h3 id="heading-skills-repositories-8">案例：从需求到 PR #1</h3><p>本指南先确认单页范围与读者顺序，再在同一计划中补齐实施单元，通过 LFG 完成页面、图片、检查和 PR #1。重要恢复是收紧 staging，避免把忽略的过程记录带入公开提交。证据包括公开计划、提交、PR、<code>make check</code> 和默认分支合并；完整交付门禁见 <a href="engineering.html#team-flow">团队协作规范</a>。</p></article>
+          <article class="card" id="compound-case" data-case-type="historical" data-case-id="compound-guide-summary"><div class="tier-badges"><span class="tier-badge">历史案例</span></div><span class="fragment-alias" id="heading-skills-repositories-8" data-canonical-fragment="案例-从需求到-pr-1" aria-hidden="true"></span><h3 id="案例-从需求到-pr-1">案例：从需求到 PR #1<a class="heading-permalink" data-heading-permalink data-search-exclude href="#案例-从需求到-pr-1" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>本指南先确认单页范围与读者顺序，再在同一计划中补齐实施单元，通过 LFG 完成页面、图片、检查和 PR #1。重要恢复是收紧 staging，避免把忽略的过程记录带入公开提交。证据包括公开计划、提交、PR、<code>make check</code> 和默认分支合并；完整交付门禁见 <a href="engineering.html#team-flow">团队协作规范</a>。</p></article>
         </section>
 
         <section class="content-block" id="matt">
-          <p class="section-kicker">Engineering discipline</p>
-          <h2 id="heading-skills-repositories-9">mattpocock/skills</h2>
+          <p class="section-kicker">工程约束</p>
+          <span class="fragment-alias" id="heading-skills-repositories-9" data-canonical-fragment="mattpocock-skills" aria-hidden="true"></span><h2 id="mattpocock-skills">mattpocock/skills<a class="heading-permalink" data-heading-permalink data-search-exclude href="#mattpocock-skills" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <p><code>mattpocock/skills</code> 是一组小而可组合的工程 skills，强调 shared language、需求拷问、TDD、调试、架构改进和代码审查。它适合先把“我要做什么”问清楚，再决定是否进入更重的交付流程。</p>
           <div class="bento">
-            <article class="card span-4"><h3 id="heading-skills-repositories-10">能力</h3><p><code>/grill-with-docs</code>、<code>/grill-me</code>、<code>/tdd</code>、<code>/diagnosing-bugs</code>、<code>/improve-codebase-architecture</code>、<code>/code-review</code> 等。</p></article>
-            <article class="card span-4"><h3 id="heading-skills-repositories-11">最适合</h3><p>需求不稳、术语混乱、想先被高质量追问，或者想把工程任务拆成 PRD / issues。</p></article>
-            <article class="card span-4"><h3 id="heading-skills-repositories-12">启用路径</h3><p>README 给出的路径是 <code>npx skills@latest add mattpocock/skills</code>，安装后运行 <code>/setup-matt-pocock-skills</code> 选择技能和项目偏好。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-skills-repositories-10" data-canonical-fragment="能力-2" aria-hidden="true"></span><h3 id="能力-2">能力<a class="heading-permalink" data-heading-permalink data-search-exclude href="#能力-2" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p><code>/grill-with-docs</code>、<code>/grill-me</code>、<code>/tdd</code>、<code>/diagnosing-bugs</code>、<code>/improve-codebase-architecture</code>、<code>/code-review</code> 等。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-skills-repositories-11" data-canonical-fragment="最适合-2" aria-hidden="true"></span><h3 id="最适合-2">最适合<a class="heading-permalink" data-heading-permalink data-search-exclude href="#最适合-2" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>需求不稳、术语混乱、想先被高质量追问，或者想把工程任务拆成 PRD / issues。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-skills-repositories-12" data-canonical-fragment="启用路径" aria-hidden="true"></span><h3 id="启用路径">启用路径<a class="heading-permalink" data-heading-permalink data-search-exclude href="#启用路径" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>README 给出的路径是 <code>npx skills@latest add mattpocock/skills</code>，安装后运行 <code>/setup-matt-pocock-skills</code> 选择技能和项目偏好。</p></article>
           </div>
           <pre><code>[$grill-with-docs]
 仓库：当前 Codex Desktop 打开的仓库。
@@ -102,23 +124,23 @@
 不要开始实现。</code></pre>
           <ul class="mini-list">
             <li><strong>使用边界</strong><span>它不是全自动大框架。先用 setup 选择需要的 skills，再按任务调用，不要一次加载全部。</span></li>
-            <li><strong>仓库链接</strong><span><a href="https://github.com/mattpocock/skills">github.com/mattpocock/skills</a></span></li>
+            <li><strong>仓库链接</strong><span><a href="https://github.com/mattpocock/skills" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>github.com/mattpocock/skills</a></span></li>
           </ul>
-          <article class="card" id="matt-case" data-case-type="historical" data-case-id="matt-context-grill"><div class="tier-badges"><span class="tier-badge">历史案例</span></div><h3 id="heading-skills-repositories-13">案例：先建立上下文，再 grill</h3><p>一次仓库任务先运行 setup 选择所需 skills，再读取 <code>AGENTS.md</code>、README、相关源码和 dirty 状态，只追问会改变范围或验收的问题。发现无关未提交文件后，明确把它们排除在写域之外，再形成计划。该证据只支持“上下文准备与需求澄清”，不声称自动完成实现、PR 或 merge。</p></article>
+          <article class="card" id="matt-case" data-case-type="historical" data-case-id="matt-context-grill"><div class="tier-badges"><span class="tier-badge">历史案例</span></div><span class="fragment-alias" id="heading-skills-repositories-13" data-canonical-fragment="案例-先建立上下文-再-grill" aria-hidden="true"></span><h3 id="案例-先建立上下文-再-grill">案例：先建立上下文，再 grill<a class="heading-permalink" data-heading-permalink data-search-exclude href="#案例-先建立上下文-再-grill" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>一次仓库任务先运行 setup 选择所需 skills，再读取 <code>AGENTS.md</code>、README、相关源码和 dirty 状态，只追问会改变范围或验收的问题。发现无关未提交文件后，明确把它们排除在写域之外，再形成计划。该证据只支持“上下文准备与需求澄清”，不声称自动完成实现、PR 或 merge。</p></article>
         </section>
 
         <section class="content-block" id="academic">
-          <p class="section-kicker">Academic suite</p>
-          <h2 id="heading-skills-repositories-14">academic-research-skills-codex</h2>
+          <p class="section-kicker">学术套件</p>
+          <span class="fragment-alias" id="heading-skills-repositories-14" data-canonical-fragment="academic-research-skills-codex" aria-hidden="true"></span><h2 id="academic-research-skills-codex">academic-research-skills-codex<a class="heading-permalink" data-heading-permalink data-search-exclude href="#academic-research-skills-codex" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <p><code>academic-research-skills-codex</code> 是 Academic Research Skills 的 Codex-native sibling distribution。仓库名是 <code>academic-research-skills-codex</code>，Codex skill path 是 <code>skills/academic-research-suite</code>，页面里简称 ARS。</p>
           <figure class="figure-card">
             <img src="figures/high-stars-engineering-research.png" alt="小黑在工程台和研究台之间分工，避免把所有 skills 混成一袋" loading="lazy" decoding="async" width="1672" height="941">
             <figcaption>工程台和研究台要分开：代码交付看工程流程，文献、论文和实验看学术 suite。</figcaption>
           </figure>
           <div class="bento">
-            <article class="card span-4"><h3 id="heading-skills-repositories-15">能力</h3><p>一个 <code>academic-research-suite</code> 入口路由 deep research、paper writing、review、academic pipeline 和 experiment planning。</p></article>
-            <article class="card span-4"><h3 id="heading-skills-repositories-16">最适合</h3><p>文献综述、新颖性检查、论文草稿、审稿意见模拟、实验计划和结果到 claim 的边界整理。</p></article>
-            <article class="card span-4"><h3 id="heading-skills-repositories-17">安装路径</h3><p>按 README 用 skill-installer 指向 <code>academic-research-skills-codex</code> 仓库里的 <code>skills/academic-research-suite</code>。不要把 Claude Code 分发里的多个 skills 当成 Codex 安装路径。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-skills-repositories-15" data-canonical-fragment="能力-3" aria-hidden="true"></span><h3 id="能力-3">能力<a class="heading-permalink" data-heading-permalink data-search-exclude href="#能力-3" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>一个 <code>academic-research-suite</code> 入口路由 deep research、paper writing、review、academic pipeline 和 experiment planning。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-skills-repositories-16" data-canonical-fragment="最适合-3" aria-hidden="true"></span><h3 id="最适合-3">最适合<a class="heading-permalink" data-heading-permalink data-search-exclude href="#最适合-3" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>文献综述、新颖性检查、论文草稿、审稿意见模拟、实验计划和结果到 claim 的边界整理。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-skills-repositories-17" data-canonical-fragment="安装路径-2" aria-hidden="true"></span><h3 id="安装路径-2">安装路径<a class="heading-permalink" data-heading-permalink data-search-exclude href="#安装路径-2" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>按 README 用 skill-installer 指向 <code>academic-research-skills-codex</code> 仓库里的 <code>skills/academic-research-suite</code>。不要把 Claude Code 分发里的多个 skills 当成 Codex 安装路径。</p></article>
           </div>
           <pre><code>[$academic-research-suite]
 任务：为这个 AI/ML 论文想法做 deep research 和实验计划。
@@ -127,19 +149,19 @@
 证据：列出需要人工确认的来源和假设。</code></pre>
           <ul class="mini-list">
             <li><strong>使用边界</strong><span>安装后应该只有一个 ARS entry。不要把 Claude Code 分发里的多个独立 skills 当成 Codex-native 安装结果。</span></li>
-            <li><strong>仓库链接</strong><span><a href="https://github.com/Imbad0202/academic-research-skills-codex">github.com/Imbad0202/academic-research-skills-codex</a></span></li>
+            <li><strong>仓库链接</strong><span><a href="https://github.com/Imbad0202/academic-research-skills-codex" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>github.com/Imbad0202/academic-research-skills-codex</a></span></li>
           </ul>
-          <article class="card" id="ars-case" data-case-type="demo" data-case-id="academic-research-suite-demo"><div class="tier-badges"><span class="tier-badge">演示场景</span></div><h3 id="heading-skills-repositories-18">场景：先做 novelty 与最小实验矩阵</h3><p>输入一个方法想法和证据边界，让 suite 先返回研究问题、closest work、可证伪 novelty、最小实验与人工核验来源。来源不足或 baseline 不可复现时输出 blocked 研究回执，不进入论文正文。本项目没有该场景的执行记录，因此不标为历史案例。</p></article>
+          <article class="card" id="ars-case" data-case-type="demo" data-case-id="academic-research-suite-demo"><div class="tier-badges"><span class="tier-badge">演示场景</span></div><span class="fragment-alias" id="heading-skills-repositories-18" data-canonical-fragment="场景-先做-novelty-与最小实验矩阵" aria-hidden="true"></span><h3 id="场景-先做-novelty-与最小实验矩阵">场景：先做 novelty 与最小实验矩阵<a class="heading-permalink" data-heading-permalink data-search-exclude href="#场景-先做-novelty-与最小实验矩阵" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>输入一个方法想法和证据边界，让 suite 先返回研究问题、closest work、可证伪 novelty、最小实验与人工核验来源。来源不足或 baseline 不可复现时输出 blocked 研究回执，不进入论文正文。本项目没有该场景的执行记录，因此不标为历史案例。</p></article>
         </section>
 
         <section class="content-block" id="aris">
-          <p class="section-kicker">Autonomous research</p>
-          <h2 id="heading-skills-repositories-19">ARIS / auto-claude-code-research-in-sleep</h2>
+          <p class="section-kicker">自主研究</p>
+          <span class="fragment-alias" id="heading-skills-repositories-19" data-canonical-fragment="aris-auto-claude-code-research-in-sleep" aria-hidden="true"></span><h2 id="aris-auto-claude-code-research-in-sleep">ARIS / auto-claude-code-research-in-sleep<a class="heading-permalink" data-heading-permalink data-search-exclude href="#aris-auto-claude-code-research-in-sleep" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <p>ARIS 更像一套“睡眠式科研”的方法论和工具集合，而不是单个 Codex skill。它强调计划、资料收集、写作或实验、反向评审、迭代和持久化，适合已经有清晰研究目标和验证边界的高级用户。</p>
           <div class="bento">
-            <article class="card span-4"><h3 id="heading-skills-repositories-20">能力</h3><p>覆盖 idea discovery、literature、auto review loop、paper writing、experiment run、results analysis、experiment monitoring 等研究环节。</p></article>
-            <article class="card span-4"><h3 id="heading-skills-repositories-21">最适合</h3><p>长时间研究流水线、自动审稿循环、实验监控、研究知识库和多轮论文改进。</p></article>
-            <article class="card span-4"><h3 id="heading-skills-repositories-22">启用路径</h3><p>Codex 侧可参考仓库里的 <code>tools/install_aris_codex.sh</code> 和 <code>tools/smart_update_codex.sh</code>；主线说明仍以仓库 README 为准。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-skills-repositories-20" data-canonical-fragment="能力-4" aria-hidden="true"></span><h3 id="能力-4">能力<a class="heading-permalink" data-heading-permalink data-search-exclude href="#能力-4" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>覆盖 idea discovery、literature、auto review loop、paper writing、experiment run、results analysis、experiment monitoring 等研究环节。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-skills-repositories-21" data-canonical-fragment="最适合-4" aria-hidden="true"></span><h3 id="最适合-4">最适合<a class="heading-permalink" data-heading-permalink data-search-exclude href="#最适合-4" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>长时间研究流水线、自动审稿循环、实验监控、研究知识库和多轮论文改进。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-skills-repositories-22" data-canonical-fragment="启用路径-2" aria-hidden="true"></span><h3 id="启用路径-2">启用路径<a class="heading-permalink" data-heading-permalink data-search-exclude href="#启用路径-2" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>Codex 侧可参考仓库里的 <code>tools/install_aris_codex.sh</code> 和 <code>tools/smart_update_codex.sh</code>；主线说明仍以仓库 README 为准。</p></article>
           </div>
           <pre><code>[$auto-review-loop]
 目标：对我的论文方法和实验计划做一轮 adversarial review。
@@ -147,14 +169,14 @@
 边界：只输出问题、证据缺口和下一轮实验建议；不要自动改论文或提交外部结果。</code></pre>
           <ul class="mini-list">
             <li><strong>使用边界</strong><span>长任务必须写清 objective、来源可信边界、验证证据和外部写操作审批。不要把“睡觉时自动科研”理解成无人监管。</span></li>
-            <li><strong>仓库链接</strong><span><a href="https://github.com/wanshuiyin/auto-claude-code-research-in-sleep">github.com/wanshuiyin/auto-claude-code-research-in-sleep</a></span></li>
+            <li><strong>仓库链接</strong><span><a href="https://github.com/wanshuiyin/auto-claude-code-research-in-sleep" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>github.com/wanshuiyin/auto-claude-code-research-in-sleep</a></span></li>
           </ul>
-          <article class="card" id="aris-case" data-case-type="demo" data-case-id="aris-sleep-research-demo"><div class="tier-badges"><span class="tier-badge">演示场景</span></div><h3 id="heading-skills-repositories-23">场景：夜间循环保留人工闸门</h3><p>把已确认的研究 brief、预算、停止条件和输出目录交给长循环，每轮只生成日志、证据缺口和下一轮建议；修改论文、提交结果或启动高成本实验前必须等待人工授权。本项目没有该场景的执行记录，因此不标为历史案例。</p></article>
+          <article class="card" id="aris-case" data-case-type="demo" data-case-id="aris-sleep-research-demo"><div class="tier-badges"><span class="tier-badge">演示场景</span></div><span class="fragment-alias" id="heading-skills-repositories-23" data-canonical-fragment="场景-夜间循环保留人工闸门" aria-hidden="true"></span><h3 id="场景-夜间循环保留人工闸门">场景：夜间循环保留人工闸门<a class="heading-permalink" data-heading-permalink data-search-exclude href="#场景-夜间循环保留人工闸门" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>把已确认的研究 brief、预算、停止条件和输出目录交给长循环，每轮只生成日志、证据缺口和下一轮建议；修改论文、提交结果或启动高成本实验前必须等待人工授权。本项目没有该场景的执行记录，因此不标为历史案例。</p></article>
         </section>
 
         <section class="content-block" id="advanced">
-          <p class="section-kicker">Advanced</p>
-          <h2 id="heading-skills-repositories-24">高级用户：按阶段组合，不要一锅端</h2>
+          <p class="section-kicker">进阶</p>
+          <span class="fragment-alias" id="heading-skills-repositories-24" data-canonical-fragment="高级用户-按阶段组合-不要一锅端" aria-hidden="true"></span><h2 id="高级用户-按阶段组合-不要一锅端">高级用户：按阶段组合，不要一锅端<a class="heading-permalink" data-heading-permalink data-search-exclude href="#高级用户-按阶段组合-不要一锅端" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <p>组合这些仓库时，按阶段串联，而不是在一个 prompt 里同时要求所有 skills 工作。每一段都要有输入、停止条件和验证证据。</p>
           <figure class="figure-card">
             <img src="figures/high-stars-automation-loop.png" alt="小黑在夜间研究循环里盖检查点章，外部输出前有人工确认闸门" loading="lazy" decoding="async" width="1672" height="941">
@@ -169,8 +191,8 @@
         </section>
 
         <section class="content-block" id="boundaries">
-          <p class="section-kicker">Boundaries</p>
-          <h2 id="heading-skills-repositories-25">使用边界</h2>
+          <p class="section-kicker">边界</p>
+          <span class="fragment-alias" id="heading-skills-repositories-25" data-canonical-fragment="使用边界" aria-hidden="true"></span><h2 id="使用边界">使用边界<a class="heading-permalink" data-heading-permalink data-search-exclude href="#使用边界" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <ul class="mini-list">
             <li><strong>非官方</strong><span>这些第三方 skills 仓库不是 OpenAI 官方功能。涉及 Codex Desktop 能力边界时，以 OpenAI 官方文档为准。</span></li>
             <li><strong>不写 star 数</strong><span>本页只说“高关注”或“高 stars”，不写具体数字；需要数字时应抓取 GitHub 数据并标日期。</span></li>
@@ -180,32 +202,31 @@
         </section>
 
         <section class="content-block" id="real-example" data-case-type="historical" data-case-id="skills-page-delivery">
-          <p class="section-kicker">Real example</p>
-          <h2 id="heading-skills-repositories-26">真实实例：历史案例</h2>
+          <p class="section-kicker">真实实例</p>
+          <span class="fragment-alias" id="heading-skills-repositories-26" data-canonical-fragment="真实实例-历史案例" aria-hidden="true"></span><h2 id="真实实例-历史案例">真实实例：历史案例<a class="heading-permalink" data-heading-permalink data-search-exclude href="#真实实例-历史案例" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <div class="tier-badges"><span class="tier-badge">历史案例</span><span class="tier-badge">公开仓库证据</span></div>
           <div class="bento">
-            <article class="card span-4"><h3 id="heading-skills-repositories-27">输入</h3><p>用户要求把 Compound Engineering、Matt Pocock skills、ARS 和 ARIS 放在一页，说明能力、使用方式和示例，并生成小黑配图。</p></article>
-            <article class="card span-4"><h3 id="heading-skills-repositories-28">先读</h3><p>先读四个上游 README、本仓库页面模式、<code>scripts/check_site.py</code> 和 <code>ian-xiaohei-illustrations</code> 风格要求。</p></article>
-            <article class="card span-4"><h3 id="heading-skills-repositories-29">应动文件</h3><p><code>skills-repositories.html</code>、入口页、<code>README.md</code>、三张 <code>figures/high-stars-*.png</code> 和静态检查脚本。</p></article>
-            <article class="card span-4"><h3 id="heading-skills-repositories-30">验证</h3><p><code>make check</code> 检查 HTML、导航、锚点、文本和图片链接；再用 diff 检查是否误改全站顶栏。</p></article>
-            <article class="card span-4"><h3 id="heading-skills-repositories-31">最终回答</h3><p>报告新增页面、图片路径、静态验证结果、未做 PDF 以及是否还有未提交改动。</p></article>
-            <article class="card span-4"><h3 id="heading-skills-repositories-32">失败停止</h3><p>上游事实无法确认、图片无法保存、页面链接断裂、或实现必须把 <code>goal-entry</code> 放进高 stars 仓库列表。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-skills-repositories-27" data-canonical-fragment="输入" aria-hidden="true"></span><h3 id="输入">输入<a class="heading-permalink" data-heading-permalink data-search-exclude href="#输入" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>用户要求把 Compound Engineering、Matt Pocock skills、ARS 和 ARIS 放在一页，说明能力、使用方式和示例，并生成小黑配图。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-skills-repositories-28" data-canonical-fragment="先读" aria-hidden="true"></span><h3 id="先读">先读<a class="heading-permalink" data-heading-permalink data-search-exclude href="#先读" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>先读四个上游 README、本仓库页面模式、<code>scripts/check_site.py</code> 和 <code>ian-xiaohei-illustrations</code> 风格要求。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-skills-repositories-29" data-canonical-fragment="应动文件" aria-hidden="true"></span><h3 id="应动文件">应动文件<a class="heading-permalink" data-heading-permalink data-search-exclude href="#应动文件" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p><code>skills-repositories.html</code>、入口页、<code>README.md</code>、三张 <code>figures/high-stars-*.png</code> 和静态检查脚本。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-skills-repositories-30" data-canonical-fragment="验证" aria-hidden="true"></span><h3 id="验证">验证<a class="heading-permalink" data-heading-permalink data-search-exclude href="#验证" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p><code>make check</code> 检查 HTML、导航、锚点、文本和图片链接；再用 diff 检查是否误改全站顶栏。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-skills-repositories-31" data-canonical-fragment="最终回答" aria-hidden="true"></span><h3 id="最终回答">最终回答<a class="heading-permalink" data-heading-permalink data-search-exclude href="#最终回答" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>报告新增页面、图片路径、静态验证结果、未做 PDF 以及是否还有未提交改动。</p></article>
+            <article class="card span-4"><span class="fragment-alias" id="heading-skills-repositories-32" data-canonical-fragment="失败停止" aria-hidden="true"></span><h3 id="失败停止">失败停止<a class="heading-permalink" data-heading-permalink data-search-exclude href="#失败停止" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>上游事实无法确认、图片无法保存、页面链接断裂、或实现必须把 <code>goal-entry</code> 放进高 stars 仓库列表。</p></article>
           </div>
         </section>
       </article>
     </div>
   </main>
 <!-- guide:shell-close:start -->
-<nav class="page-sequence" aria-label="前后页"><a rel="prev" href="compound-engineering.html">← Compound</a><a rel="next" href="goal-entry.html">goal-entry →</a></nav></div><aside class="page-toc" aria-label="本页目录"><details open><summary>本页目录</summary><nav><a class="toc-h2" href="#what">先按任务 fit 选仓库</a><a class="toc-h2" href="#chooser">30 秒选择表</a><a class="toc-h2" href="#case-labels">先看案例证据等级</a><a class="toc-h2" href="#compound">Compound Engineering</a><a class="toc-h3" href="#compound">能力</a><a class="toc-h3" href="#compound">最适合</a><a class="toc-h3" href="#compound">安装路径</a><a class="toc-h3" href="#compound">案例：从需求到 PR #1</a><a class="toc-h2" href="#matt">mattpocock/skills</a><a class="toc-h3" href="#matt">能力</a><a class="toc-h3" href="#matt">最适合</a><a class="toc-h3" href="#matt">启用路径</a><a class="toc-h3" href="#matt">案例：先建立上下文，再 grill</a><a class="toc-h2" href="#academic">academic-research-skills-codex</a><a class="toc-h3" href="#academic">能力</a><a class="toc-h3" href="#academic">最适合</a><a class="toc-h3" href="#academic">安装路径</a><a class="toc-h3" href="#academic">场景：先做 novelty 与最小实验矩阵</a><a class="toc-h2" href="#aris">ARIS / auto-claude-code-research-in-sleep</a><a class="toc-h3" href="#aris">能力</a><a class="toc-h3" href="#aris">最适合</a><a class="toc-h3" href="#aris">启用路径</a><a class="toc-h3" href="#aris">场景：夜间循环保留人工闸门</a><a class="toc-h2" href="#advanced">高级用户：按阶段组合，不要一锅端</a><a class="toc-h2" href="#boundaries">使用边界</a><a class="toc-h2" href="#real-example">真实实例：历史案例</a><a class="toc-h3" href="#real-example">输入</a><a class="toc-h3" href="#real-example">先读</a><a class="toc-h3" href="#real-example">应动文件</a><a class="toc-h3" href="#real-example">验证</a><a class="toc-h3" href="#real-example">最终回答</a><a class="toc-h3" href="#real-example">失败停止</a></nav></details></aside></div>
+<nav class="page-sequence" aria-label="前后页"><a rel="prev" href="compound-engineering.html">← Compound</a><a rel="next" href="goal-entry.html">goal-entry →</a></nav></div><aside class="page-toc" aria-label="本页目录"><details open><summary>本页目录</summary><nav><a class="toc-h2" href="#先按任务-fit-选仓库">先按任务 fit 选仓库</a><a class="toc-h2" href="#30-秒选择表">30 秒选择表</a><a class="toc-h2" href="#先看案例证据等级">先看案例证据等级</a><a class="toc-h2" href="#compound-engineering">Compound Engineering</a><a class="toc-h3" href="#能力">能力</a><a class="toc-h3" href="#最适合">最适合</a><a class="toc-h3" href="#安装路径">安装路径</a><a class="toc-h3" href="#案例-从需求到-pr-1">案例：从需求到 PR #1</a><a class="toc-h2" href="#mattpocock-skills">mattpocock/skills</a><a class="toc-h3" href="#能力-2">能力</a><a class="toc-h3" href="#最适合-2">最适合</a><a class="toc-h3" href="#启用路径">启用路径</a><a class="toc-h3" href="#案例-先建立上下文-再-grill">案例：先建立上下文，再 grill</a><a class="toc-h2" href="#academic-research-skills-codex">academic-research-skills-codex</a><a class="toc-h3" href="#能力-3">能力</a><a class="toc-h3" href="#最适合-3">最适合</a><a class="toc-h3" href="#安装路径-2">安装路径</a><a class="toc-h3" href="#场景-先做-novelty-与最小实验矩阵">场景：先做 novelty 与最小实验矩阵</a><a class="toc-h2" href="#aris-auto-claude-code-research-in-sleep">ARIS / auto-claude-code-research-in-sleep</a><a class="toc-h3" href="#能力-4">能力</a><a class="toc-h3" href="#最适合-4">最适合</a><a class="toc-h3" href="#启用路径-2">启用路径</a><a class="toc-h3" href="#场景-夜间循环保留人工闸门">场景：夜间循环保留人工闸门</a><a class="toc-h2" href="#高级用户-按阶段组合-不要一锅端">高级用户：按阶段组合，不要一锅端</a><a class="toc-h2" href="#使用边界">使用边界</a><a class="toc-h2" href="#真实实例-历史案例">真实实例：历史案例</a><a class="toc-h3" href="#输入">输入</a><a class="toc-h3" href="#先读">先读</a><a class="toc-h3" href="#应动文件">应动文件</a><a class="toc-h3" href="#验证">验证</a><a class="toc-h3" href="#最终回答">最终回答</a><a class="toc-h3" href="#失败停止">失败停止</a></nav></details></aside></div>
 <!-- guide:shell-close:end -->
 
   <footer class="footer">
     <p><strong>高 stars skills 仓库介绍</strong><br>先按任务选择主仓库，再写可验证的 Codex Desktop prompt。</p>
     <a class="button" href="skills.html">返回 Skills</a>
   </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="assets/site.js"></script>
+  <!-- guide:runtime:start -->
+<script src="assets/site.js"></script>
+<!-- guide:runtime:end -->
 </body>
 </html>

@@ -4,7 +4,7 @@ SRC = src/main.tex
 OUTDIR = build
 PDF = $(OUTDIR)/codex-usage-guide.pdf
 
-.PHONY: generate check check-static test test-browser check-published pdf clean
+.PHONY: generate check check-static check-fast check-release-local test test-browser check-published pdf clean
 
 generate:
 	$(PYTHON) scripts/build_site.py
@@ -15,6 +15,12 @@ check:
 	$(PYTHON) scripts/check_site.py
 
 check-static: check
+
+check-fast:
+	$(PYTHON) scripts/build_site.py --check
+	$(PYTHON) scripts/check_site.py
+
+check-release-local: check test-browser
 
 test:
 	$(PYTHON) -m unittest discover -s tests -v
