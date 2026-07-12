@@ -9,15 +9,15 @@
 <!-- guide:theme-bootstrap:end -->
   <link rel="stylesheet" href="assets/site.css">
   <!-- guide:metadata:start -->
-<meta name="description" content="从一个可验证的小任务开始使用 Codex Desktop。">
-<meta name="guide-build" content="6bb0bb663fb1">
+<meta name="description" content="从一个可验证的小任务开始，并区分 Codex 原生能力与本指南推荐实践。">
+<meta name="guide-build" content="d49541b5e543">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/index.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:site_name" content="Codex 使用指南">
 <meta property="og:title" content="中文 Codex 实战手册">
-<meta property="og:description" content="从一个可验证的小任务开始使用 Codex Desktop。">
+<meta property="og:description" content="从一个可验证的小任务开始，并区分 Codex 原生能力与本指南推荐实践。">
 <meta property="og:url" content="https://whojay0609.github.io/codex-usage-guide/index.html">
 <meta property="og:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
 <meta property="og:image:width" content="1200">
@@ -25,25 +25,25 @@
 <meta property="og:image:alt" content="Codex 使用指南">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="中文 Codex 实战手册">
-<meta name="twitter:description" content="从一个可验证的小任务开始使用 Codex Desktop。">
+<meta name="twitter:description" content="从一个可验证的小任务开始，并区分 Codex 原生能力与本指南推荐实践。">
 <meta name="twitter:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
 <meta name="twitter:image:alt" content="Codex 使用指南">
 <!-- guide:metadata:end -->
 </head>
 <body>
   <!-- guide:header:start -->
-<script src="assets/site-data.js"></script><script src="assets/search-index.js"></script><header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><label class="theme-control"><span class="sr-only">主题</span><select class="theme-select" id="theme-select" name="theme" aria-label="主题"><option value="light" selected>浅色</option><option value="dark">深色</option></select></label><span class="theme-status sr-only" aria-live="polite"></span><button class="search-trigger" type="button" aria-haspopup="dialog" aria-controls="site-search-dialog">搜索</button><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header><dialog class="search-dialog" id="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title"><div class="search-dialog-panel"><div class="search-dialog-head"><p class="search-title" id="site-search-title">搜索全站</p><button class="search-close" type="button" aria-label="关闭搜索">关闭</button></div><label class="search-label" for="site-search-input">搜索标题、正文和可复用 prompt</label><input class="search-input" id="site-search-input" type="search" role="combobox" autocomplete="off" aria-autocomplete="list" aria-controls="site-search-results" aria-describedby="site-search-status" aria-expanded="false"><p class="search-message" id="site-search-status" aria-live="polite">输入关键词开始搜索。</p><ul class="search-results" id="site-search-results" role="listbox" aria-label="搜索结果"></ul></div></dialog>
+<script src="assets/site-data.js"></script><a class="skip-link" href="#main-content">跳到正文</a><header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><label class="theme-control"><span class="sr-only">主题</span><select class="theme-select" id="theme-select" name="theme" aria-label="主题"><option value="light" selected>浅色</option><option value="dark">深色</option></select></label><span class="theme-status sr-only" aria-live="polite"></span><button class="search-trigger" type="button" aria-haspopup="dialog" aria-controls="site-search-dialog">搜索</button><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header><dialog class="search-dialog" id="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title"><div class="search-dialog-panel"><div class="search-dialog-head"><p class="search-title" id="site-search-title">搜索全站</p><button class="search-close" type="button" aria-label="关闭搜索">关闭</button></div><label class="search-label" for="site-search-input">搜索标题、正文和可复用 prompt</label><input class="search-input" id="site-search-input" type="search" role="combobox" autocomplete="off" aria-autocomplete="list" aria-controls="site-search-results" aria-describedby="site-search-status" aria-expanded="false"><p class="search-message" id="site-search-status" aria-live="polite">输入关键词开始搜索。</p><ul class="search-results" id="site-search-results" role="listbox" aria-label="搜索结果"></ul></div></dialog>
 <!-- guide:header:end -->
 
   <!-- guide:shell-open:start -->
-<div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html" aria-current="page">首页</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="worktrees.html">Worktrees</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">自动化</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html">Compound</a><details class="global-nav-disclosure"><summary>Skills 仓库</summary><a data-nav href="skills-repositories.html">全部仓库</a><a href="skills-repositories.html#compound-engineering">Compound Engineering</a><a href="skills-repositories.html#mattpocock-skills">Matt Pocock skills</a><a href="skills-repositories.html#academic-research-skills-codex">ARS</a><a href="skills-repositories.html#aris-auto-claude-code-research-in-sleep">ARIS</a></details><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>首页</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-07-11">2026-07-11</time></span><span>事实核验：<time datetime="2026-07-11">2026-07-11</time></span></div><aside class="page-toc" aria-label="本页目录"><details><summary>本页目录</summary><nav><a class="toc-h2" href="#选择你的路径">选择你的路径</a><a class="toc-h3" href="#零基础-安装到第一个任务">零基础：安装到第一个任务</a><a class="toc-h3" href="#日常协作-桌面版工作流">日常协作：桌面版工作流</a><a class="toc-h3" href="#进阶用户-任务升级路线">进阶用户：任务升级路线</a><a class="toc-h3" href="#skills-仓库怎么选">Skills 仓库怎么选</a><a class="toc-h3" href="#工程-学术场景">工程 / 学术场景</a><a class="toc-h3" href="#维护者-资料和发布边界">维护者：资料和发布边界</a><a class="toc-h2" href="#30-秒选择入口">30 秒选择入口</a><a class="toc-h2" href="#需要时再查概念">需要时再查概念</a><a class="toc-h3" href="#codex-是什么">Codex 是什么</a><a class="toc-h3" href="#权限与安全">权限与安全</a><a class="toc-h3" href="#agents.md">AGENTS.md</a><a class="toc-h3" href="#skills">Skills</a><a class="toc-h3" href="#mcp-plugins">MCP / Plugins</a><a class="toc-h3" href="#subagents">Subagents</a><a class="toc-h3" href="#goal">Goal</a><a class="toc-h2" href="#每页都有真实实例">每页都有真实实例</a><a class="toc-h3" href="#日常实例">日常实例</a><a class="toc-h3" href="#插件实例">插件实例</a><a class="toc-h3" href="#skills-仓库实例">Skills 仓库实例</a><a class="toc-h3" href="#权限实例">权限实例</a><a class="toc-h3" href="#自动化实例">自动化实例</a></nav></details></aside>
+<div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html" aria-current="page">首页</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="worktrees.html">Worktrees</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">定时任务</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html">Compound</a><details class="global-nav-disclosure"><summary>Skills 仓库</summary><a data-nav href="skills-repositories.html">全部仓库</a><a href="skills-repositories.html#compound-engineering">Compound Engineering</a><a href="skills-repositories.html#mattpocock-skills">Matt Pocock skills</a><a href="skills-repositories.html#academic-research-skills-codex">ARS</a><a href="skills-repositories.html#aris-auto-claude-code-research-in-sleep">ARIS</a></details><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>开始</span><span aria-hidden="true">/</span><span aria-current="page">首页</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-07-12">2026-07-12</time></span><span>事实核验：<time datetime="2026-07-12">2026-07-12</time></span></div><aside class="page-toc" aria-label="本页目录"><details><summary>本页目录</summary><nav><a class="toc-h2" href="#原生能力与本指南推荐实践">原生能力与本指南推荐实践</a><a class="toc-h3" href="#codex-原生能力">Codex 原生能力</a><a class="toc-h3" href="#本指南推荐实践">本指南推荐实践</a><a class="toc-h2" href="#选择你的路径">选择你的路径</a><a class="toc-h3" href="#零基础-安装到第一个任务">零基础：安装到第一个任务</a><a class="toc-h3" href="#日常协作-桌面版工作流">日常协作：桌面版工作流</a><a class="toc-h3" href="#进阶用户-任务升级路线">进阶用户：任务升级路线</a><a class="toc-h3" href="#skills-仓库怎么选">Skills 仓库怎么选</a><a class="toc-h3" href="#工程-学术场景">工程 / 学术场景</a><a class="toc-h3" href="#维护者-资料和发布边界">维护者：资料和发布边界</a><a class="toc-h2" href="#30-秒选择入口">30 秒选择入口</a><a class="toc-h2" href="#需要时再查概念">需要时再查概念</a><a class="toc-h3" href="#codex-是什么">Codex 是什么</a><a class="toc-h3" href="#权限与安全">权限与安全</a><a class="toc-h3" href="#agents.md">AGENTS.md</a><a class="toc-h3" href="#skills">Skills</a><a class="toc-h3" href="#mcp-plugins">MCP / Plugins</a><a class="toc-h3" href="#subagents">Subagents</a><a class="toc-h3" href="#goal">Goal</a><a class="toc-h2" href="#每页都有真实实例">每页都有真实实例</a><a class="toc-h3" href="#日常实例">日常实例</a><a class="toc-h3" href="#插件实例">插件实例</a><a class="toc-h3" href="#skills-仓库实例">Skills 仓库实例</a><a class="toc-h3" href="#权限实例">权限实例</a><a class="toc-h3" href="#自动化实例">自动化实例</a></nav></details></aside>
 <!-- guide:shell-open:end -->
-<main>
+<main id="main-content">
     <section class="hero home-hero">
       <div class="hero-copy">
         <p class="hero-kicker">中文 Codex 实战手册</p>
-        <h1>从一个可验证小任务开始使用 Codex</h1>
-        <p class="lead">这不是官方文档镜像，而是一份中文 Codex Desktop 实战手册。先完成安装、打开仓库、跑通第一个只读任务，再进入日常协作、工程、学术、自动化和 Goal。</p>
+        <h1>从一个可验证的小任务开始使用 Codex</h1>
+        <p class="lead">这不是官方文档镜像，而是一份中文 Codex Desktop 实战手册；“Codex Desktop”在本指南中指 ChatGPT desktop app 中的 Codex 工作面。先完成安装、打开仓库、跑通第一个只读任务，再进入日常协作、工程、学术、定时任务和 Goal。</p>
         <div class="hero-actions">
           <a class="button primary" href="install-desktop.html">第一次使用：安装和第一个任务</a>
           <a class="button" href="desktop-cli.html">日常协作：Desktop 工作流</a>
@@ -55,6 +55,14 @@
         <a href="desktop-cli.html"><span>02</span><strong>会打开 Desktop 了</strong><em>学习线程、浏览器反馈、审批、diff 和发布验证。</em></a>
         <a href="daily-workflow.html"><span>03</span><strong>要处理真实任务</strong><em>读代码、改文档、修 bug、跑测试、审查 diff。</em></a>
         <a href="workflows.html"><span>04</span><strong>任务变复杂</strong><em>进入 Goal、Subagents、Skills、MCP 和自动化。</em></a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><div class="section-title"><p class="section-kicker">先分清边界</p><h2 id="原生能力与本指南推荐实践">原生能力与本指南推荐实践<a class="heading-permalink" data-heading-permalink data-search-exclude href="#原生能力与本指南推荐实践" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2></div><p>两类内容都能使用，但产品 UI、命令和可迁移性不同；看到“本指南推荐”时，不要把它当成 Codex 内置机制。</p></div>
+      <div class="bento">
+        <article class="card span-6"><h3 id="codex-原生能力">Codex 原生能力<a class="heading-permalink" data-heading-permalink data-search-exclude href="#codex-原生能力" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p><strong>Goal、Subagent、Worktree、MCP、AGENTS.md、Skills、Scheduled tasks（定时任务）和 Browser</strong> 都有产品或官方文档入口；具体可用性以当前客户端、配置和账户为准。</p></article>
+        <article class="card span-6 dark-card"><h3 id="本指南推荐实践">本指南推荐实践<a class="heading-permalink" data-heading-permalink data-search-exclude href="#本指南推荐实践" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p><strong>receipt（任务回执）、grant（提示词授权约定）、A2/A3/A4 教学框架、五阶段工作流、prompt ladder（提示词阶梯）、claim ledger（主张台账）和六字段 Goal 模板</strong> 是本指南为提高可验证性整理的方法，不是原生 UI 功能。</p></article>
       </div>
     </section>
 
@@ -85,10 +93,10 @@
         <p>先选工作面，再看页面。读者不需要知道所有术语，只要知道当前任务最适合放在哪个入口，以及完成后拿什么证据验收。</p>
       </div>
       <div class="decision-table">
-        <div class="decision-row"><strong>改网页</strong><span>首选：Desktop + in-app browser</span><span>避免：只用口头描述问题</span><span>证据：页面预览、截图/评论、<code>make check</code></span></div>
-        <div class="decision-row"><strong>修测试</strong><span>首选：Desktop 线程 + integrated terminal</span><span>避免：让模型凭猜测改代码</span><span>证据：失败日志、最窄测试、diff review</span></div>
-        <div class="decision-row"><strong>长任务</strong><span>首选：Goal / subagent / skills</span><span>避免：单轮聊天里混多个目标</span><span>证据：objective、validation、closeout</span></div>
-        <div class="decision-row"><strong>周期任务</strong><span>首选：Automations</span><span>避免：手工重复提醒</span><span>证据：任务发现、run 记录、后台 worktree</span></div>
+        <div class="decision-row"><strong>改网页</strong><span>首选：Desktop + Browser（内置浏览器）</span><span>避免：只用口头描述问题</span><span>证据：页面预览、截图/评论、<code>make check</code></span></div>
+        <div class="decision-row"><strong>修测试</strong><span>首选：Desktop 任务 + Integrated terminal（集成终端）</span><span>避免：让模型凭猜测改代码</span><span>证据：失败日志、最窄测试、diff（差异）审查</span></div>
+        <div class="decision-row"><strong>长任务</strong><span>首选：Goal（目标）/ subagent（子代理）/ skills（技能）</span><span>避免：单轮聊天里混多个目标</span><span>证据：objective（目标）、validation（验证）、closeout（收口）</span></div>
+        <div class="decision-row"><strong>周期任务</strong><span>首选：Scheduled tasks（定时任务）</span><span>避免：手工重复提醒</span><span>证据：Scheduled 视图、运行记录、后台 worktree（工作树）</span></div>
       </div>
       <div class="tier-badges" aria-label="资料层级">
         <span class="tier-badge">官方事实：OpenAI Codex docs</span>
