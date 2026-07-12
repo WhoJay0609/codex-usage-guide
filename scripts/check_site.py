@@ -48,7 +48,7 @@ REQUIRED_TEXT = {
     "workflows.html": ["先选工作面", "统一案例模板", "坏 prompt 怎么修"],
     "worktrees.html": ["Codex Desktop", "Handoff", "detached HEAD", ".worktreeinclude", "不是安全沙箱"],
     "compound-engineering.html": ["Compound Engineering plugin", "在 Codex Desktop 里安装", "核心七步怎么用", "1. /ce-ideate", "失败停止"],
-    "skills-repositories.html": ["高 stars skills 仓库介绍", "Codex Desktop", "Compound Engineering", "mattpocock/skills", "academic-research-skills-codex", "skills/academic-research-suite", "ARIS", "不是 OpenAI 官方功能", "goal-entry 不列入", "效果一般", "真实实例"],
+    "skills-repositories.html": ["Codex 相关高 stars 开源仓库", "Codex CLI 生态 Top 10", "taste-skill", "design-taste-frontend", "ian-xiaohei-illustrations", "认知锚点", "Codex Desktop", "Compound Engineering", "mattpocock/skills", "academic-research-skills-codex", "skills/academic-research-suite", "agentic-awesome-skills", "modelcontextprotocol/servers", "星标快照", "ARIS", "不是 OpenAI 官方功能", "goal-entry 不列入", "效果一般", "真实实例"],
     "goal-entry.html": ["本机自己开发", "效果一般", "非官方", "真实实例"],
     "resources.html": ["Codex Desktop", "本指南只保留 Desktop 读者主线"],
 }

@@ -3,29 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>高 stars skills 仓库介绍</title>
+  <title>Codex 相关高 stars 开源仓库</title>
   <!-- guide:theme-bootstrap:start -->
 <script src="assets/theme.js"></script>
 <!-- guide:theme-bootstrap:end -->
   <link rel="stylesheet" href="assets/site.css">
   <!-- guide:metadata:start -->
-<meta name="description" content="比较常用第三方 skills 仓库并选择合适入口。">
-<meta name="guide-build" content="6bb0bb663fb1">
+<meta name="description" content="按 GitHub 星标快照比较 Codex CLI 生态中的 skills、MCP 与辅助工具。">
+<meta name="guide-build" content="538251dfca31">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/skills-repositories.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:site_name" content="Codex 使用指南">
-<meta property="og:title" content="高 stars skills 仓库介绍">
-<meta property="og:description" content="比较常用第三方 skills 仓库并选择合适入口。">
+<meta property="og:title" content="Codex 相关高 stars 开源仓库">
+<meta property="og:description" content="按 GitHub 星标快照比较 Codex CLI 生态中的 skills、MCP 与辅助工具。">
 <meta property="og:url" content="https://whojay0609.github.io/codex-usage-guide/skills-repositories.html">
 <meta property="og:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Codex 使用指南">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="高 stars skills 仓库介绍">
-<meta name="twitter:description" content="比较常用第三方 skills 仓库并选择合适入口。">
+<meta name="twitter:title" content="Codex 相关高 stars 开源仓库">
+<meta name="twitter:description" content="按 GitHub 星标快照比较 Codex CLI 生态中的 skills、MCP 与辅助工具。">
 <meta name="twitter:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
 <meta name="twitter:image:alt" content="Codex 使用指南">
 <!-- guide:metadata:end -->
@@ -36,18 +36,18 @@
 <!-- guide:header:end -->
 
   <!-- guide:shell-open:start -->
-<div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html">首页</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="worktrees.html">Worktrees</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">自动化</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html">Compound</a><details class="global-nav-disclosure" open><summary>Skills 仓库</summary><a data-nav href="skills-repositories.html" aria-current="page">全部仓库</a><a href="skills-repositories.html#compound-engineering">Compound Engineering</a><a href="skills-repositories.html#mattpocock-skills">Matt Pocock skills</a><a href="skills-repositories.html#academic-research-skills-codex">ARS</a><a href="skills-repositories.html#aris-auto-claude-code-research-in-sleep">ARIS</a></details><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>Skills 仓库</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-07-11">2026-07-11</time></span><span>事实核验：<time datetime="2026-07-11">2026-07-11</time></span></div><aside class="page-toc" aria-label="本页目录"><details><summary>本页目录</summary><nav><a class="toc-h2" href="#先按任务-fit-选仓库">先按任务 fit 选仓库</a><a class="toc-h2" href="#30-秒选择表">30 秒选择表</a><a class="toc-h2" href="#先看案例证据等级">先看案例证据等级</a><a class="toc-h2" href="#compound-engineering">Compound Engineering</a><a class="toc-h3" href="#能力">能力</a><a class="toc-h3" href="#最适合">最适合</a><a class="toc-h3" href="#安装路径">安装路径</a><a class="toc-h3" href="#案例-从需求到-pr-1">案例：从需求到 PR #1</a><a class="toc-h2" href="#mattpocock-skills">mattpocock/skills</a><a class="toc-h3" href="#能力-2">能力</a><a class="toc-h3" href="#最适合-2">最适合</a><a class="toc-h3" href="#启用路径">启用路径</a><a class="toc-h3" href="#案例-先建立上下文-再-grill">案例：先建立上下文，再 grill</a><a class="toc-h2" href="#academic-research-skills-codex">academic-research-skills-codex</a><a class="toc-h3" href="#能力-3">能力</a><a class="toc-h3" href="#最适合-3">最适合</a><a class="toc-h3" href="#安装路径-2">安装路径</a><a class="toc-h3" href="#场景-先做-novelty-与最小实验矩阵">场景：先做 novelty 与最小实验矩阵</a><a class="toc-h2" href="#aris-auto-claude-code-research-in-sleep">ARIS / auto-claude-code-research-in-sleep</a><a class="toc-h3" href="#能力-4">能力</a><a class="toc-h3" href="#最适合-4">最适合</a><a class="toc-h3" href="#启用路径-2">启用路径</a><a class="toc-h3" href="#场景-夜间循环保留人工闸门">场景：夜间循环保留人工闸门</a><a class="toc-h2" href="#高级用户-按阶段组合-不要一锅端">高级用户：按阶段组合，不要一锅端</a><a class="toc-h2" href="#使用边界">使用边界</a><a class="toc-h2" href="#真实实例-历史案例">真实实例：历史案例</a><a class="toc-h3" href="#输入">输入</a><a class="toc-h3" href="#先读">先读</a><a class="toc-h3" href="#应动文件">应动文件</a><a class="toc-h3" href="#验证">验证</a><a class="toc-h3" href="#最终回答">最终回答</a><a class="toc-h3" href="#失败停止">失败停止</a></nav></details></aside>
+<div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html">首页</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="worktrees.html">Worktrees</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">自动化</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html">Compound</a><details class="global-nav-disclosure" open><summary>Skills 仓库</summary><a data-nav href="skills-repositories.html" aria-current="page">全部仓库</a><a href="skills-repositories.html#compound-engineering">Compound Engineering</a><a href="skills-repositories.html#mattpocock-skills">Matt Pocock skills</a><a href="skills-repositories.html#academic-research-skills-codex">ARS</a><a href="skills-repositories.html#aris-auto-claude-code-research-in-sleep">ARIS</a></details><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>Skills 仓库</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-07-12">2026-07-12</time></span><span>事实核验：<time datetime="2026-07-12">2026-07-12</time></span></div><aside class="page-toc" aria-label="本页目录"><details><summary>本页目录</summary><nav><a class="toc-h2" href="#先按任务-fit-选仓库">先按任务 fit 选仓库</a><a class="toc-h2" href="#30-秒选择表">30 秒选择表</a><a class="toc-h2" href="#先看案例证据等级">先看案例证据等级</a><a class="toc-h2" href="#codex-cli-生态-top-10">Codex CLI 生态 Top 10</a><a class="toc-h2" href="#compound-engineering">Compound Engineering</a><a class="toc-h3" href="#能力">能力</a><a class="toc-h3" href="#最适合">最适合</a><a class="toc-h3" href="#安装路径">安装路径</a><a class="toc-h3" href="#案例-从需求到-pr-1">案例：从需求到 PR #1</a><a class="toc-h2" href="#mattpocock-skills">mattpocock/skills</a><a class="toc-h3" href="#能力-2">能力</a><a class="toc-h3" href="#最适合-2">最适合</a><a class="toc-h3" href="#启用路径">启用路径</a><a class="toc-h3" href="#案例-先建立上下文-再-grill">案例：先建立上下文，再 grill</a><a class="toc-h2" href="#academic-research-skills-codex">academic-research-skills-codex</a><a class="toc-h3" href="#能力-3">能力</a><a class="toc-h3" href="#最适合-3">最适合</a><a class="toc-h3" href="#安装路径-2">安装路径</a><a class="toc-h3" href="#场景-先做-novelty-与最小实验矩阵">场景：先做 novelty 与最小实验矩阵</a><a class="toc-h2" href="#aris-auto-claude-code-research-in-sleep">ARIS / auto-claude-code-research-in-sleep</a><a class="toc-h3" href="#能力-4">能力</a><a class="toc-h3" href="#最适合-4">最适合</a><a class="toc-h3" href="#启用路径-2">启用路径</a><a class="toc-h3" href="#场景-夜间循环保留人工闸门">场景：夜间循环保留人工闸门</a><a class="toc-h2" href="#taste-skill">leonxlnx/taste-skill</a><a class="toc-h2" href="#ian-xiaohei-illustrations">helloianneo/ian-xiaohei-illustrations</a><a class="toc-h2" href="#高级用户-按阶段组合-不要一锅端">高级用户：按阶段组合，不要一锅端</a><a class="toc-h2" href="#使用边界">使用边界</a><a class="toc-h2" href="#真实实例-历史案例">真实实例：历史案例</a><a class="toc-h3" href="#输入">输入</a><a class="toc-h3" href="#先读">先读</a><a class="toc-h3" href="#应动文件">应动文件</a><a class="toc-h3" href="#验证">验证</a><a class="toc-h3" href="#最终回答">最终回答</a><a class="toc-h3" href="#失败停止">失败停止</a></nav></details></aside>
 <!-- guide:shell-open:end -->
 <main>
     <section class="hero compact">
       <div class="hero-copy">
-        <p class="hero-kicker">Skills 仓库</p>
-        <h1>高 stars skills 仓库介绍</h1>
-        <p class="lead">这页不是实时排名表，而是 Codex Desktop 用户的选择页：按任务类型比较几个社区关注较高的 skills 仓库，看清它们的能力、安装或启用路径、第一条可复制 prompt 和使用边界。</p>
+        <p class="hero-kicker">Codex 生态榜单</p>
+        <h1>Codex 相关高 stars 开源仓库</h1>
+        <p class="lead">这页先给出按 GitHub <code>codex-cli</code> 主题页 Most stars 排序、于 2026-07-12 核验的生态 Top 10，再保留几个适合深入学习的 skills 仓库说明。星标只是发现信号，不是安全、质量或兼容性背书。</p>
         <div class="tier-badges">
-          <span class="tier-badge">第三方仓库：不是 OpenAI 官方功能</span>
-          <span class="tier-badge">不硬编码 star 数</span>
-          <span class="tier-badge">先普通用户，再高级自动化</span>
+          <span class="tier-badge">星标快照：2026-07-12</span>
+          <span class="tier-badge">Top 10：Codex CLI 生态</span>
+          <span class="tier-badge">高 star ≠ 推荐</span>
         </div>
       </div>
     </section>
@@ -74,6 +74,8 @@
             <div class="decision-row"><strong>需求模糊 / 想被追问</strong><span>首选：<code>mattpocock/skills</code></span><span>辅助：Compound Engineering</span><span>先用 <code>/grill-with-docs</code> 或 <code>ask-matt</code> 收紧语言，再进入重流程。</span></div>
             <div class="decision-row"><strong>文献 / 写作 / 审稿 / 实验计划</strong><span>首选：<code>academic-research-skills-codex</code></span><span>辅助：ARIS</span><span>想在 Codex 里用单个 suite 入口时选 ARS；需要更长流水线时再看 ARIS。</span></div>
             <div class="decision-row"><strong>睡眠式研究自动化</strong><span>首选：ARIS</span><span>辅助：<code>academic-research-skills-codex</code></span><span>长时间研究、自动评审、研究 wiki 和实验监控适合 ARIS；普通学术任务先选 ARS。</span></div>
+            <div class="decision-row"><strong>前端视觉 / 页面重设计</strong><span>首选：<code>leonxlnx/taste-skill</code></span><span>辅助：现有项目的测试与无障碍检查</span><span>用 <code>design-taste-frontend</code> 或 <code>redesign-existing-projects</code> 处理视觉方向；它不替代功能、响应式和无障碍验收。</span></div>
+            <div class="decision-row"><strong>中文文章 / 方法论配图</strong><span>首选：<code>helloianneo/ian-xiaohei-illustrations</code></span><span>辅助：无</span><span>先提炼认知锚点和 shot list，再生成 16:9 小黑手绘图；不把它当 PPT 模板或可编辑矢量工具。</span></div>
             <div class="decision-row"><strong>完全不知道选哪个</strong><span>首选：<code>mattpocock/skills</code></span><span>辅助：Compound Engineering</span><span>先让任务变清楚，再决定是否需要完整工程流水线。</span></div>
           </div>
         </section>
@@ -88,10 +90,34 @@
           </div>
         </section>
 
+        <section class="content-block" id="top-10">
+          <p class="section-kicker">星标快照</p>
+          <span class="fragment-alias" id="heading-skills-repositories-33" data-canonical-fragment="codex-cli-生态-top-10" aria-hidden="true"></span><h2 id="codex-cli-生态-top-10">Codex CLI 生态 Top 10<a class="heading-permalink" data-heading-permalink data-search-exclude href="#codex-cli-生态-top-10" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <p>榜单口径是 GitHub <code>codex-cli</code> 主题页的 <code>Most stars</code> 结果，再逐一核对仓库页是否确实涉及 Codex CLI、skills、plugins、MCP、客户端或 agent workflow。GitHub 页面只显示约数，因此正文也使用约数；后续维护应重新核验，而不是把这次快照当成永久排名。</p>
+          <div class="decision-table">
+            <div class="decision-row"><strong>#1 <code>HKUDS/nanobot</code></strong><span>其他 / agent runtime</span><span>约 45.3k stars</span><span>轻量级 self-hosted agent，包含 WebUI、聊天渠道、MCP、memory 和 automation；它是独立 runtime，不是给 Codex 加 skill。</span><span><a href="https://github.com/HKUDS/nanobot" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>仓库</a></span></div>
+            <div class="decision-row"><strong>#2 <code>sickn33/agentic-awesome-skills</code></strong><span>Skills</span><span>约 42.9k stars</span><span>1,900+ 个可安装的 <code>SKILL.md</code> playbooks，README 给出 <code>--codex</code> 安装路径；适合先挑单个 skill，再检查脚本和权限。</span><span><a href="https://github.com/sickn33/agentic-awesome-skills" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>仓库</a></span></div>
+            <div class="decision-row"><strong>#3 <code>wshobson/agents</code></strong><span>Skills / Plugins / MCP</span><span>约 37.8k stars</span><span>多 harness plugin marketplace；Codex 通过 committed registry 和 plugin manifest 安装，适合按能力安装 plugin，而不是一次加载全部内容。</span><span><a href="https://github.com/wshobson/agents" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>仓库</a></span></div>
+            <div class="decision-row"><strong>#4 <code>slopus/happy</code></strong><span>其他 / 移动客户端</span><span>约 22.6k stars</span><span>给 Claude Code 和 Codex 使用的移动/Web 客户端与 CLI wrapper；<code>happy codex</code> 可以远程查看和控制本地 Codex，先评估远程同步与权限边界。</span><span><a href="https://github.com/slopus/happy" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>仓库</a></span></div>
+            <div class="decision-row"><strong>#5 <code>mksglu/context-mode</code></strong><span>MCP / Hooks / Plugin</span><span>约 18.8k stars</span><span>用 MCP 与 hooks 做上下文压缩和工具输出路由；仓库提供 <code>.codex-plugin</code>，安装后要重启 Codex，并单独确认 hooks 是否可信。</span><span><a href="https://github.com/mksglu/context-mode" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>仓库</a></span></div>
+            <div class="decision-row"><strong>#6 <code>ComposioHQ/awesome-codex-skills</code></strong><span>Skills</span><span>约 14.9k stars</span><span>专门面向 Codex CLI/API 的 skills 目录，提供 skill-installer 路径；把它当目录逐项审查，不要把星标当作所有子 skill 的质量证明。</span><span><a href="https://github.com/ComposioHQ/awesome-codex-skills" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>仓库</a></span></div>
+            <div class="decision-row"><strong>#7 <code>Wei-Shaw/claude-relay-service</code></strong><span>其他 / 模型代理</span><span>约 12.3k stars</span><span>模型代理 / 中转服务，仓库明确提供 Codex CLI 配置；涉及凭据、服务条款和多账号会话，默认不建议直接接入生产环境。</span><span><a href="https://github.com/Wei-Shaw/claude-relay-service" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>仓库</a></span></div>
+            <div class="decision-row"><strong>#8 <code>AgentWrapper/agent-orchestrator</code></strong><span>其他 / 编排</span><span>约 8.2k stars</span><span>并行 coding agents、CI 修复、冲突处理与 review；适合在 worktree 隔离和人工 checkpoint 下做实验，不能替代审批。</span><span><a href="https://github.com/AgentWrapper/agent-orchestrator" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>仓库</a></span></div>
+            <div class="decision-row"><strong>#9 <code>htdt/godogen</code></strong><span>Skills / 游戏开发</span><span>约 4.6k stars</span><span>领域化的游戏生成工作流；选择 Codex 作为 agent 时会生成 <code>AGENTS.md</code> 与 <code>.agents/skills/</code>，只适合 Godot、Bevy 或 Babylon.js 场景。</span><span><a href="https://github.com/htdt/godogen" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>仓库</a></span></div>
+            <div class="decision-row"><strong>#10 <code>Galaxy-Dawn/claude-scholar</code></strong><span>Skills / 学术研究</span><span>约 4.6k stars</span><span>学术研究助手；Codex branch 提供 <code>config.toml</code>、40 个 skills 和 14 个 agents，研究结论仍必须经过人工来源核验。</span><span><a href="https://github.com/Galaxy-Dawn/claude-scholar" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>仓库</a></span></div>
+          </div>
+          <ul class="mini-list">
+            <li><strong>官方基准</strong><span><a href="https://github.com/openai/codex" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span><code>openai/codex</code></a> 是 Codex CLI 本身的官方开源仓库；它不混入社区生态 Top 10。产品能力和安全边界以 OpenAI 官方资料为准。</span></li>
+            <li><strong>MCP 基础设施</strong><span><a href="https://github.com/modelcontextprotocol/servers" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span><code>modelcontextprotocol/servers</code></a> 是官方 MCP reference servers 仓库；Codex 可以作为 MCP client，但具体 server 仍要按权限、网络和凭据逐项审查。</span></li>
+            <li><strong>排名来源</strong><span>打开 <a href="https://github.com/topics/codex-cli" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>GitHub codex-cli 主题页</a> 可重新查看 Most stars 结果；主题归类由仓库维护者设置，不能替代 README 和代码审查。</span></li>
+            <li><strong>安装前检查</strong><span>先读 README、许可证、<code>SKILL.md</code>、plugin manifest、scripts、hooks、MCP 配置和凭据说明；先在测试仓库或 worktree 试运行，再决定是否进入日常环境。</span></li>
+          </ul>
+        </section>
+
         <section class="content-block" id="compound">
           <p class="section-kicker">工程工作流</p>
           <span class="fragment-alias" id="heading-skills-repositories-4" data-canonical-fragment="compound-engineering" aria-hidden="true"></span><h2 id="compound-engineering">Compound Engineering<a class="heading-permalink" data-heading-permalink data-search-exclude href="#compound-engineering" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
-          <p>EveryInc 的 Compound Engineering plugin 适合把工程任务组织成可复利的流程：brainstorm、plan、work、simplify、review、compound。它更像工程流程插件，不是一个单独的提示词集合。</p>
+          <p>EveryInc 的 Compound Engineering plugin 适合把工程任务组织成一套可重复的流程：brainstorm、plan、work、simplify、review、compound。它更像工程流程插件，而不是单独的提示词集合。</p>
           <div class="bento">
             <article class="card span-4"><span class="fragment-alias" id="heading-skills-repositories-5" data-canonical-fragment="能力" aria-hidden="true"></span><h3 id="能力">能力<a class="heading-permalink" data-heading-permalink data-search-exclude href="#能力" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>用 <code>/ce-brainstorm</code>、<code>/ce-plan</code>、<code>/ce-work</code>、<code>/ce-simplify-code</code>、<code>/ce-code-review</code>、<code>/ce-compound</code> 串起长任务。</p></article>
             <article class="card span-4"><span class="fragment-alias" id="heading-skills-repositories-6" data-canonical-fragment="最适合" aria-hidden="true"></span><h3 id="最适合">最适合<a class="heading-permalink" data-heading-permalink data-search-exclude href="#最适合" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>多文件功能、复杂 bug、PR 前审查、长期维护同一仓库的工程知识。</p></article>
@@ -175,10 +201,47 @@
           <article class="card" id="aris-case" data-case-type="demo" data-case-id="aris-sleep-research-demo"><div class="tier-badges"><span class="tier-badge">演示场景</span></div><span class="fragment-alias" id="heading-skills-repositories-23" data-canonical-fragment="场景-夜间循环保留人工闸门" aria-hidden="true"></span><h3 id="场景-夜间循环保留人工闸门">场景：夜间循环保留人工闸门<a class="heading-permalink" data-heading-permalink data-search-exclude href="#场景-夜间循环保留人工闸门" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>把已确认的研究 brief、预算、停止条件和输出目录交给长循环，每轮只生成日志、证据缺口和下一轮建议；修改论文、提交结果或启动高成本实验前必须等待人工授权。本项目没有该场景的执行记录，因此不标为历史案例。</p></article>
         </section>
 
+        <section class="content-block" id="taste">
+          <p class="section-kicker">前端视觉</p>
+          <span class="fragment-alias" id="heading-skills-repositories-34" data-canonical-fragment="taste-skill" aria-hidden="true"></span><h2 id="taste-skill"><code>leonxlnx/taste-skill</code><a class="heading-permalink" data-heading-permalink data-search-exclude href="#taste-skill" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <p><code>leonxlnx/taste-skill</code> 是一个第三方、可移植的前端视觉 skill 集合。它会先读 brief，再处理布局变化度、动效强度和视觉密度，并提供 <code>design-taste-frontend</code>、<code>gpt-taste</code>、<code>image-to-code</code>、<code>redesign-existing-projects</code> 等入口。Codex 可以使用它，但它不是 OpenAI 官方设计规范。</p>
+          <div class="bento">
+            <article class="card span-4"><strong>能力</strong><p>把页面 brief 转成设计方向、布局与视觉系统，再按需要处理动效、图片生成和现有页面重设计。</p></article>
+            <article class="card span-4"><strong>最适合</strong><p>landing page、portfolio、营销页和需要视觉重做的前端页面；后台、数据表、多步骤产品 UI 仍要以产品约束和可用性为主。</p></article>
+            <article class="card span-4"><strong>安装路径</strong><p>先装单个 skill：<code>npx skills add https://github.com/Leonxlnx/taste-skill --skill "design-taste-frontend"</code>；需要 Codex 全套时再按上游说明使用 <code>npx skills add Leonxlnx/taste-skill -a codex</code>。</p></article>
+          </div>
+          <pre><code>$design-taste-frontend
+仓库：当前 Codex Desktop 打开的仓库。
+目标：重做这个 landing page 的视觉层，不改变 URL、字段名和业务行为。
+先读现有页面、AGENTS.md 和品牌资产；先输出 design read、方向和风险，不要立即改文件。
+验收：响应式、键盘操作、WCAG 对比度、真实内容和现有测试都不能退化。</code></pre>
+          <ul class="mini-list">
+            <li><strong>使用边界</strong><span>上游把 v2 标为 experimental；如果需要旧版行为，显式选择 <code>design-taste-frontend-v1</code>。第三方审美规则不能替代响应式、无障碍和功能验证。</span></li>
+            <li><strong>仓库链接</strong><span><a href="https://github.com/leonxlnx/taste-skill" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>github.com/leonxlnx/taste-skill</a> · <a href="https://www.tasteskill.dev/docs" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>官方文档</a></span></li>
+          </ul>
+        </section>
+
+        <section class="content-block" id="ian-xiaohei">
+          <p class="section-kicker">中文内容配图</p>
+          <span class="fragment-alias" id="heading-skills-repositories-35" data-canonical-fragment="ian-xiaohei-illustrations" aria-hidden="true"></span><h2 id="ian-xiaohei-illustrations"><code>helloianneo/ian-xiaohei-illustrations</code><a class="heading-permalink" data-heading-permalink data-search-exclude href="#ian-xiaohei-illustrations" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <p><code>helloianneo/ian-xiaohei-illustrations</code> 是面向 Codex 的中文文章配图 Skill。它先提炼文章中的认知锚点，再输出 shot list、低科技物理隐喻和 16:9 小黑手绘图；它不是 PPT 信息图、商业 KV、架构图或可编辑矢量图。</p>
+          <div class="bento">
+            <article class="card span-4"><strong>能力</strong><p>从文章抽取主题、核心含义、结构、小黑动作和短标注，形成约 4–8 张图的 shot list，并在生成后做可读性和构图检查。</p></article>
+            <article class="card span-4"><strong>最适合</strong><p>中文知识、方法论、AI workflow、研究笔记、Notion 或博客正文配图；每张图只保留一个核心动作和一条清晰认知。</p></article>
+            <article class="card span-4"><strong>安装路径</strong><p>按上游 README 克隆仓库，把其中的 <code>ian-xiaohei-illustrations</code> 目录复制到 <code>${CODEX_HOME:-$HOME/.codex}/skills/</code>。</p></article>
+          </div>
+          <pre><code>Use $ian-xiaohei-illustrations 先不要生图。
+请读下面这篇文章，输出 5 张左右 shot list；每张写放置段落、认知锚点、结构、小黑动作和短中文标注。</code></pre>
+          <ul class="mini-list">
+            <li><strong>使用边界</strong><span>不适合商业主视觉、品牌系统、PPT / Keynote、建筑图或可编辑矢量交付；图内中文要短，发布前必须逐张检查生成文件。</span></li>
+            <li><strong>仓库链接</strong><span><a href="https://github.com/helloianneo/ian-xiaohei-illustrations" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>github.com/helloianneo/ian-xiaohei-illustrations</a></span></li>
+          </ul>
+        </section>
+
         <section class="content-block" id="advanced">
           <p class="section-kicker">进阶</p>
           <span class="fragment-alias" id="heading-skills-repositories-24" data-canonical-fragment="高级用户-按阶段组合-不要一锅端" aria-hidden="true"></span><h2 id="高级用户-按阶段组合-不要一锅端">高级用户：按阶段组合，不要一锅端<a class="heading-permalink" data-heading-permalink data-search-exclude href="#高级用户-按阶段组合-不要一锅端" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
-          <p>组合这些仓库时，按阶段串联，而不是在一个 prompt 里同时要求所有 skills 工作。每一段都要有输入、停止条件和验证证据。</p>
+          <p>组合这些仓库时，按阶段串联，不要在一个 prompt 里同时要求所有 skills 工作。每一段都要写清输入、停止条件和验证证据。</p>
           <figure class="figure-card">
             <img src="figures/high-stars-automation-loop.png" alt="小黑在夜间研究循环里盖检查点章，外部输出前有人工确认闸门" loading="lazy" decoding="async" width="1672" height="941">
             <figcaption>自动化循环可以很长，但外部输出前仍要有人工确认和证据留存。</figcaption>
@@ -196,7 +259,8 @@
           <span class="fragment-alias" id="heading-skills-repositories-25" data-canonical-fragment="使用边界" aria-hidden="true"></span><h2 id="使用边界">使用边界<a class="heading-permalink" data-heading-permalink data-search-exclude href="#使用边界" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <ul class="mini-list">
             <li><strong>非官方</strong><span>这些第三方 skills 仓库不是 OpenAI 官方功能。涉及 Codex Desktop 能力边界时，以 OpenAI 官方文档为准。</span></li>
-            <li><strong>不写 star 数</strong><span>本页只说“高关注”或“高 stars”，不写具体数字；需要数字时应抓取 GitHub 数据并标日期。</span></li>
+            <li><strong>星标快照</strong><span>Top 10 的 star 数是 2026-07-12 的约数快照；GitHub star 会变化，后续更新必须重新抓取并标注日期。</span></li>
+            <li><strong>官方与第三方</strong><span><code>openai/codex</code> 和 MCP 基础设施单独标出；其余仓库都不是 OpenAI 官方功能，安装前要审查代码、权限和供应链。</span></li>
             <li><strong>goal-entry 不列入</strong><span><code>goal-entry</code> 是本机自己开发的 local adaptation，效果一般，只在 <a href="goal-entry.html">goal-entry 页面</a>作为案例保留。</span></li>
             <li><strong>长任务要可验收</strong><span>高级自动化仍要写 objective、范围、验证、停止条件、外部写操作审批和人工 closeout。</span></li>
           </ul>
@@ -223,7 +287,7 @@
 <!-- guide:shell-close:end -->
 
   <footer class="footer">
-    <p><strong>高 stars skills 仓库介绍</strong><br>先按任务选择主仓库，再写可验证的 Codex Desktop prompt。</p>
+    <p><strong>Codex 相关高 stars 开源仓库</strong><br>先按任务选择 skills、MCP 或辅助工具，再写可验证的 Codex Desktop prompt。</p>
     <a class="button" href="skills.html">返回 Skills</a>
   </footer>
   <!-- guide:runtime:start -->
