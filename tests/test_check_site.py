@@ -42,13 +42,198 @@ class SemanticContractTests(unittest.TestCase):
             errors,
         )
 
+    def test_product_accuracy_contract_rejects_codex_desktop_automations_terminology(self) -> None:
+        pages = {
+            "automation.html": parse("<main>Codex Desktop Automations</main>"),
+        }
+
+        errors = validate_product_accuracy_contracts(pages)
+
+        self.assertTrue(
+            any("obsolete Scheduled tasks terminology" in error for error in errors),
+            errors,
+        )
+
+    def test_product_accuracy_contract_rejects_plain_automations_product_name(self) -> None:
+        for text in ("Automations", "Automation prompt: inspect the diff"):
+            with self.subTest(text=text):
+                errors = validate_product_accuracy_contracts(
+                    {"automation.html": parse(f"<main>{text}</main>")}
+                )
+                self.assertTrue(
+                    any("obsolete Scheduled tasks terminology" in error for error in errors),
+                    errors,
+                )
+
+    def test_product_accuracy_contract_rejects_one_missing_permission_mode(self) -> None:
+        pages = {
+            "permissions.html": parse(
+                "<main>Ask for approval Approve for me Full access</main>"
+            ),
+        }
+
+        errors = validate_product_accuracy_contracts(pages)
+
+        self.assertEqual(
+            [
+                "permissions.html: permission modes missing visible label: "
+                "Custom (config.toml)"
+            ],
+            errors,
+        )
+
+    def test_hidden_permission_labels_do_not_count_as_visible(self) -> None:
+        pages = {
+            "permissions.html": parse(
+                "<main>"
+                "<section hidden>Ask for approval <span>Approve for me</span></section>"
+                '<section aria-hidden="true">Full access '
+                "<span>Custom (config.toml)</span></section>"
+                "<p>Reader-visible text after hidden containers.</p>"
+                "</main>"
+            ),
+        }
+
+        errors = validate_product_accuracy_contracts(pages)
+
+        self.assertEqual(len(errors), 4, errors)
+        for mode in (
+            "Ask for approval",
+            "Approve for me",
+            "Full access",
+            "Custom (config.toml)",
+        ):
+            self.assertTrue(any(mode in error for error in errors), errors)
+        self.assertIn("Reader-visible text", pages["permissions.html"].visible_text())
+
+    def test_product_accuracy_contract_checks_visible_decoded_skill_syntax(self) -> None:
+        encoded = {"skills.html": parse("<main>&#91;$goal-entry&#93;</main>")}
+        split_across_inline_markup = {
+            "skills.html": parse("<main>[$<span>goal-entry</span>]</main>")
+        }
+        commented = {
+            "skills.html": parse("<!-- [$goal-entry] --><main>Use $goal-entry.</main>")
+        }
+        hidden = {
+            "skills.html": parse("<main hidden>[$<span>goal-entry</span>]</main>")
+        }
+
+        self.assertTrue(
+            any(
+                "invalid skill mention syntax" in error
+                for error in validate_product_accuracy_contracts(encoded)
+            )
+        )
+        self.assertTrue(
+            any(
+                "invalid skill mention syntax" in error
+                for error in validate_product_accuracy_contracts(split_across_inline_markup)
+            )
+        )
+        self.assertEqual(validate_product_accuracy_contracts(commented), [])
+        self.assertEqual(validate_product_accuracy_contracts(hidden), [])
+
+    def test_native_recommended_boundaries_are_page_scoped(self) -> None:
+        missing = {
+            "workflows.html": "receipt",
+            "engineering.html": "A2 A3 A4 grant",
+            "goal.html": (
+                "Goal template: Objective Scope Acceptance Validation Artifacts "
+                "Stop Conditions"
+            ),
+        }
+        qualified = {
+            "workflows.html": "receipt 是本指南推荐的任务收口实践",
+            "engineering.html": (
+                "A2/A3/A4 是本指南的教学框架；"
+                "grant 是提示词层面的授权约定"
+            ),
+            "goal.html": "六字段 Goal 模板是本指南推荐的提示词结构",
+        }
+
+        for rel, text in missing.items():
+            with self.subTest(page=rel, qualifier="missing"):
+                errors = validate_product_accuracy_contracts(
+                    {rel: parse(f"<main>{text}</main>")}
+                )
+                self.assertTrue(
+                    any("native/recommended boundary" in error for error in errors),
+                    errors,
+                )
+
+        for rel, text in qualified.items():
+            with self.subTest(page=rel, qualifier="present"):
+                self.assertEqual(
+                    validate_product_accuracy_contracts(
+                        {rel: parse(f"<main>{text}</main>")}
+                    ),
+                    [],
+                )
+
+        self.assertEqual(
+            validate_product_accuracy_contracts(
+                {"historical-example.html": parse("<main>A2 grant receipt</main>")}
+            ),
+            [],
+        )
+
+    def test_native_recommended_boundary_rejects_unrelated_guide_wording(self) -> None:
+        unrelated = {
+            "workflows.html": "receipt。本指南还有其他建议。",
+            "engineering.html": "A2 A3 A4 grant。本指南面向桌面端读者。",
+            "goal.html": (
+                "Goal template: Objective Scope Acceptance Validation Artifacts "
+                "Stop Conditions。本指南提供示例。"
+            ),
+        }
+
+        for rel, text in unrelated.items():
+            with self.subTest(page=rel):
+                errors = validate_product_accuracy_contracts(
+                    {rel: parse(f"<main>{text}</main>")}
+                )
+                self.assertTrue(
+                    any("native/recommended boundary" in error for error in errors),
+                    errors,
+                )
+
+    def test_hidden_native_boundary_signal_does_not_satisfy_contract(self) -> None:
+        hidden_containers = (
+            "<aside hidden>{text}</aside>",
+            "<template>{text}</template>",
+            '<aside style="display: none">{text}</aside>',
+            '<aside style="visibility:hidden">{text}</aside>',
+        )
+        for container in hidden_containers:
+            with self.subTest(container=container):
+                pages = {
+                    "workflows.html": parse(
+                        "<main><p>receipt</p>"
+                        + container.format(text="receipt 是本指南推荐的任务收口实践")
+                        + "</main>"
+                    )
+                }
+                errors = validate_product_accuracy_contracts(pages)
+                self.assertTrue(
+                    any("native/recommended boundary" in error for error in errors),
+                    errors,
+                )
+
+    def test_product_accuracy_contract_rejects_singular_automation_product_name(self) -> None:
+        errors = validate_product_accuracy_contracts(
+            {"automation.html": parse("<main>Open Automation settings.</main>")}
+        )
+        self.assertTrue(any("obsolete Scheduled tasks" in error for error in errors), errors)
+
     def test_product_accuracy_contract_accepts_current_product_terminology(self) -> None:
         pages = {
             "permissions.html": parse(
                 "<main>Ask for approval Approve for me Full access "
                 "Custom (config.toml)</main>"
             ),
-            "automation.html": parse("<main>Automations</main>"),
+            "automation.html": parse(
+                "<main>Scheduled tasks（定时任务）；在 Scheduled 视图查看结果。</main>"
+            ),
             "skills.html": parse("<main>Use $goal-entry for goal work.</main>"),
         }
 
@@ -97,12 +282,12 @@ class SemanticContractTests(unittest.TestCase):
         pages = {
             "sample.html": parse(
                 '<script src="assets/site-data.js"></script>'
-                '<script src="assets/search-index.js"></script>'
+                '<a href="#main-content">跳到正文</a>'
                 '<button class="search-trigger"></button>'
                 '<dialog id="site-search-dialog" role="dialog"></dialog>'
                 '<input id="site-search-input" role="combobox">'
                 '<ul id="site-search-results" role="listbox"></ul>'
-                '<main><h2 id="canonical">Title<a data-heading-permalink href="#wrong">#</a></h2></main>'
+                '<main id="main-content"><h2 id="canonical">Title<a data-heading-permalink href="#wrong">#</a></h2></main>'
             )
         }
         errors = validate_interaction_contracts(pages)
@@ -112,12 +297,12 @@ class SemanticContractTests(unittest.TestCase):
         pages = {
             "sample.html": parse(
                 '<script src="assets/site-data.js"></script>'
-                '<script src="assets/search-index.js"></script>'
+                '<a href="#main-content">跳到正文</a>'
                 '<button class="search-trigger"></button>'
                 '<dialog id="site-search-dialog" role="dialog"></dialog>'
                 '<input id="site-search-input" role="combobox">'
                 '<ul id="site-search-results" role="listbox"></ul>'
-                '<main><a class="source-card" href="next.html"><h3 id="card">Title</h3><p>Summary</p></a></main>'
+                '<main id="main-content"><a class="source-card" href="next.html"><h3 id="card">Title</h3><p>Summary</p></a></main>'
             )
         }
         self.assertEqual(validate_interaction_contracts(pages), [])

@@ -268,6 +268,13 @@ def _decorate_external_links(source: str, base_url: str) -> str:
 
 
 def _render_metadata(source: str, model: SiteModel, page: Page) -> str:
+    source = re.sub(
+        r"<title\b[^>]*>.*?</title>",
+        f"<title>{html.escape(page.title)}</title>",
+        source,
+        count=1,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
     canonical = urljoin(model.site["base_url"], page.path)
     preview = urljoin(model.site["base_url"], model.site["social_preview"])
     locale = model.site["language"].replace("-", "_")
@@ -434,7 +441,8 @@ def render_page(
         next_link = f'<a rel="next" href="{following.path}">{html.escape(following.nav_label)} →</a>'
 
     header = (
-        '<script src="assets/site-data.js"></script><script src="assets/search-index.js"></script>'
+        '<script src="assets/site-data.js"></script>'
+        '<a class="skip-link" href="#main-content">跳到正文</a>'
         '<header class="topbar"><div class="topbar-inner">'
         '<a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a>'
         '<div class="topbar-actions"><label class="theme-control"><span class="sr-only">主题</span>'
@@ -459,9 +467,12 @@ def render_page(
         '<ul class="search-results" id="site-search-results" role="listbox" '
         'aria-label="搜索结果"></ul></div></dialog>'
     )
+    group_label = next(group.label for group in model.navigation if page.path in group.pages)
     shell_open = (
         '<div class="toolbook-shell">' + global_nav + '<div class="toolbook-main">'
-        f'<nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>{html.escape(page.nav_label)}</span></nav>'
+        f'<nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a>'
+        f'<span aria-hidden="true">/</span><span>{html.escape(group_label)}</span>'
+        f'<span aria-hidden="true">/</span><span aria-current="page">{html.escape(page.nav_label)}</span></nav>'
         f'<div class="page-freshness"><span>页面更新：<time datetime="{page.modified}">{page.modified}</time></span>'
         f'<span>事实核验：<time datetime="{page.facts_verified}">{page.facts_verified}</time></span></div>{toc}'
     )
@@ -485,6 +496,7 @@ def render_page(
             raise ValueError(f"{page.path}: expected one main region")
         before, after = source.rsplit("</main>", 1)
         source = before + "</main>\n" + _block("shell-close", shell_close) + after
+    source = re.sub(r'<main(?![^>]*\bid=)(\b[^>]*)>', r'<main id="main-content"\1>', source, count=1)
     return _render_head_and_runtime(source, model, page)
 
 

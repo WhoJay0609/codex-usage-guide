@@ -69,7 +69,7 @@ class SiteModelTests(unittest.TestCase):
         self.assertNotIn('<details open><summary>本页目录</summary>', rendered)
         self.assertLess(rendered.index('class="page-toc"'), rendered.index('<main'))
         self.assertNotIn('class="side-nav"', rendered)
-        self.assertEqual(rendered.count('aria-current="page"'), 1)
+        self.assertEqual(rendered.count('aria-current="page"'), 2)
 
     def test_skills_repository_navigation_lists_each_repository_on_demand(self) -> None:
         model = load_site_model(ROOT)
@@ -109,7 +109,11 @@ class SiteModelTests(unittest.TestCase):
         page = next(page for page in model.pages if page.path == "permissions.html")
         rendered = render_page(model, page, (ROOT / page.path).read_text(encoding="utf-8"))
         self.assertIn('src="assets/site-data.js"', rendered)
-        self.assertIn('src="assets/search-index.js"', rendered)
+        self.assertNotIn('src="assets/search-index.js"', rendered)
+        self.assertIn('class="skip-link" href="#main-content"', rendered)
+        self.assertIn('<main id="main-content"', rendered)
+        self.assertIn('<span>基础概念</span>', rendered)
+        self.assertIn('<span aria-current="page">权限</span>', rendered)
         self.assertIn('class="search-trigger"', rendered)
         self.assertIn('role="dialog"', rendered)
         self.assertIn('role="combobox"', rendered)
@@ -142,11 +146,19 @@ class SiteModelTests(unittest.TestCase):
     def test_manifest_metadata_generates_complete_same_origin_social_head(self) -> None:
         model = load_site_model(ROOT)
         page = next(page for page in model.pages if page.path == "permissions.html")
-        rendered = render_page(model, page, (ROOT / page.path).read_text(encoding="utf-8"))
+        source = (ROOT / page.path).read_text(encoding="utf-8").replace(
+            "<title>权限与安全</title>", "<title>旧页面标题</title>"
+        )
+        rendered = render_page(model, page, source)
         canonical = "https://whojay0609.github.io/codex-usage-guide/permissions.html"
         preview = "https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png"
+        self.assertIn("<title>权限与安全</title>", rendered)
+        self.assertNotIn("旧页面标题", rendered)
         self.assertIn(f'<link rel="canonical" href="{canonical}">', rendered)
-        self.assertIn('<meta name="description" content="理解 sandbox、approval、network 与 secret 边界。">', rendered)
+        self.assertIn(
+            '<meta name="description" content="理解 Desktop 四个权限选择及底层 sandbox、approval、network 与 secret 边界。">',
+            rendered,
+        )
         self.assertIn('<meta property="og:title" content="权限与安全">', rendered)
         self.assertIn(f'<meta property="og:url" content="{canonical}">', rendered)
         self.assertIn(f'<meta property="og:image" content="{preview}">', rendered)

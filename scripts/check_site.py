@@ -44,7 +44,7 @@ REQUIRED_TEXT = {
     "daily-workflow.html": ["真实实例", "失败停止"],
     "engineering.html": ["真实实例", "失败停止"],
     "research.html": ["真实实例", "失败停止"],
-    "automation.html": ["Automations", "后台 worktree", "失败停止"],
+    "automation.html": ["Scheduled tasks", "后台 worktree", "失败停止"],
     "workflows.html": ["先选工作面", "统一案例模板", "坏 prompt 怎么修"],
     "worktrees.html": ["Codex Desktop", "Handoff", "detached HEAD", ".worktreeinclude", "不是安全沙箱"],
     "compound-engineering.html": ["Compound Engineering plugin", "在 Codex Desktop 里安装", "核心七步怎么用", "1. /ce-ideate", "失败停止"],
@@ -140,6 +140,34 @@ GENERIC_KICKER_LABELS = {
     "Task handbook", "Tasks", "Team engineering", "Team flow", "Template", "Two-layer isolation",
     "Unified plan", "Use cases", "What", "When",
 }
+NATIVE_RECOMMENDED_BOUNDARY_REQUIREMENTS = {
+    "workflows.html": (
+        (
+            "receipt 是本指南推荐的任务收口实践",
+            "receipt 是本指南推荐的任务收口做法",
+            "receipt 是本指南的推荐收口实践",
+        ),
+    ),
+    "engineering.html": (
+        (
+            "A2/A3/A4 是本指南的教学框架",
+            "A2、A3、A4 是本指南的教学框架",
+            "A2、A3、A4 是本指南使用的教学框架",
+        ),
+        (
+            "grant 是提示词层面的授权约定",
+            "grant 是本指南在提示词层面的授权约定",
+            "grant 只是提示词层面的授权约定",
+        ),
+    ),
+    "goal.html": (
+        (
+            "六字段 Goal 模板是本指南推荐的提示词结构",
+            "六字段 Goal 模板不是原生字段",
+            "Goal 六字段模板不是原生字段",
+        ),
+    ),
+}
 
 
 class PageParser(HTMLParser):
@@ -161,6 +189,8 @@ class PageParser(HTMLParser):
         self.source_text = ""
         self._current_tag: str | None = None
         self._ignored_depth = 0
+        self._hidden_depth = 0
+        self._visibility_stack: list[tuple[str, bool]] = []
         self._current_nav_href: str | None = None
         self._text_chunks: dict[str, list[str]] = {"title": [], "h1": []}
         self._visible_chunks: list[str] = []
@@ -188,6 +218,16 @@ class PageParser(HTMLParser):
         attr = {key: value or "" for key, value in attrs}
         if tag not in VOID_TAGS:
             self._depth += 1
+            inline_style = attr.get("style", "").lower()
+            hidden_here = (
+                tag == "template"
+                or "hidden" in attr
+                or attr.get("aria-hidden", "").strip().lower() == "true"
+                or re.search(r"(?:display\s*:\s*none|visibility\s*:\s*hidden)\b", inline_style) is not None
+            )
+            self._visibility_stack.append((tag, hidden_here))
+            if hidden_here:
+                self._hidden_depth += 1
         if tag in {"script", "style"}:
             self._ignored_depth += 1
         if "id" in attr:
@@ -276,11 +316,24 @@ class PageParser(HTMLParser):
         if tag == "p" and self._current_kicker is not None:
             self.kickers.append(" ".join("".join(self._current_kicker).split()))
             self._current_kicker = None
+        if tag not in VOID_TAGS:
+            matching_index = next(
+                (
+                    index
+                    for index in range(len(self._visibility_stack) - 1, -1, -1)
+                    if self._visibility_stack[index][0] == tag
+                ),
+                None,
+            )
+            if matching_index is not None:
+                closed = self._visibility_stack[matching_index:]
+                del self._visibility_stack[matching_index:]
+                self._hidden_depth -= sum(hidden for _, hidden in closed)
         if tag not in VOID_TAGS and self._depth:
             self._depth -= 1
 
     def handle_data(self, data: str) -> None:
-        if self._ignored_depth:
+        if self._ignored_depth or self._hidden_depth:
             return
         stripped = data.strip()
         if stripped:
@@ -426,10 +479,26 @@ def validate_product_accuracy_contracts(pages: dict[str, PageParser]) -> list[st
 
     for rel, parser in pages.items():
         visible_text = parser.visible_text()
-        if "Triage inbox" in visible_text or "Codex Desktop Automations" in visible_text:
+        obsolete_scheduled_terms = (
+            "Automation prompt",
+            "Triage inbox",
+            "Codex Desktop Automations",
+        )
+        if (
+            re.search(r"\bAutomations?\b", visible_text)
+            or any(term in visible_text for term in obsolete_scheduled_terms)
+        ):
             errors.append(f"{rel}: obsolete Scheduled tasks terminology remains visible")
-        if re.search(r"\[\$[A-Za-z0-9_-]+\]", parser.source_text):
+        compact_visible_text = re.sub(r"\s+", "", visible_text)
+        if re.search(r"\[\$[A-Za-z0-9_-]+\]", compact_visible_text):
             errors.append(f"{rel}: invalid skill mention syntax")
+
+        boundary_requirements = NATIVE_RECOMMENDED_BOUNDARY_REQUIREMENTS.get(rel, ())
+        for accepted_phrases in boundary_requirements:
+            if not any(phrase in visible_text for phrase in accepted_phrases):
+                errors.append(
+                    f"{rel}: native/recommended boundary missing for guide-defined terminology"
+                )
     return errors
 
 
@@ -587,9 +656,12 @@ def validate_interaction_contracts(pages: dict[str, PageParser]) -> list[str]:
         }.items():
             if count != 1:
                 errors.append(f"{rel}: expected exactly one {label}, found {count}")
-        for script in ("assets/site-data.js", "assets/search-index.js"):
-            if script not in parser.scripts:
-                errors.append(f"{rel}: missing search data script {script}")
+        if "assets/site-data.js" not in parser.scripts:
+            errors.append(f"{rel}: missing search data script assets/site-data.js")
+        if "assets/search-index.js" in parser.scripts:
+            errors.append(f"{rel}: search index must load on demand")
+        if "#main-content" not in parser.hrefs or "main-content" not in parser.ids:
+            errors.append(f"{rel}: missing skip-to-content target")
         by_heading: dict[str, list[str]] = {}
         for heading, href in parser.heading_permalinks:
             by_heading.setdefault(heading, []).append(href)

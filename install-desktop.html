@@ -9,15 +9,15 @@
 <!-- guide:theme-bootstrap:end -->
   <link rel="stylesheet" href="assets/site.css">
   <!-- guide:metadata:start -->
-<meta name="description" content="安装、登录并完成第一个 Codex Desktop 任务。">
-<meta name="guide-build" content="538251dfca31">
+<meta name="description" content="安装 ChatGPT desktop app，并在 Codex 工作面完成首个只读任务。">
+<meta name="guide-build" content="7fdbee178024">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/install-desktop.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:site_name" content="Codex 使用指南">
 <meta property="og:title" content="安装 Codex Desktop">
-<meta property="og:description" content="安装、登录并完成第一个 Codex Desktop 任务。">
+<meta property="og:description" content="安装 ChatGPT desktop app，并在 Codex 工作面完成首个只读任务。">
 <meta property="og:url" content="https://whojay0609.github.io/codex-usage-guide/install-desktop.html">
 <meta property="og:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
 <meta property="og:image:width" content="1200">
@@ -25,25 +25,26 @@
 <meta property="og:image:alt" content="Codex 使用指南">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="安装 Codex Desktop">
-<meta name="twitter:description" content="安装、登录并完成第一个 Codex Desktop 任务。">
+<meta name="twitter:description" content="安装 ChatGPT desktop app，并在 Codex 工作面完成首个只读任务。">
 <meta name="twitter:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
 <meta name="twitter:image:alt" content="Codex 使用指南">
 <!-- guide:metadata:end -->
 </head>
 <body>
   <!-- guide:header:start -->
-<script src="assets/site-data.js"></script><script src="assets/search-index.js"></script><header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><label class="theme-control"><span class="sr-only">主题</span><select class="theme-select" id="theme-select" name="theme" aria-label="主题"><option value="light" selected>浅色</option><option value="dark">深色</option></select></label><span class="theme-status sr-only" aria-live="polite"></span><button class="search-trigger" type="button" aria-haspopup="dialog" aria-controls="site-search-dialog">搜索</button><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header><dialog class="search-dialog" id="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title"><div class="search-dialog-panel"><div class="search-dialog-head"><p class="search-title" id="site-search-title">搜索全站</p><button class="search-close" type="button" aria-label="关闭搜索">关闭</button></div><label class="search-label" for="site-search-input">搜索标题、正文和可复用 prompt</label><input class="search-input" id="site-search-input" type="search" role="combobox" autocomplete="off" aria-autocomplete="list" aria-controls="site-search-results" aria-describedby="site-search-status" aria-expanded="false"><p class="search-message" id="site-search-status" aria-live="polite">输入关键词开始搜索。</p><ul class="search-results" id="site-search-results" role="listbox" aria-label="搜索结果"></ul></div></dialog>
+<script src="assets/site-data.js"></script><a class="skip-link" href="#main-content">跳到正文</a><header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><label class="theme-control"><span class="sr-only">主题</span><select class="theme-select" id="theme-select" name="theme" aria-label="主题"><option value="light" selected>浅色</option><option value="dark">深色</option></select></label><span class="theme-status sr-only" aria-live="polite"></span><button class="search-trigger" type="button" aria-haspopup="dialog" aria-controls="site-search-dialog">搜索</button><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header><dialog class="search-dialog" id="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title"><div class="search-dialog-panel"><div class="search-dialog-head"><p class="search-title" id="site-search-title">搜索全站</p><button class="search-close" type="button" aria-label="关闭搜索">关闭</button></div><label class="search-label" for="site-search-input">搜索标题、正文和可复用 prompt</label><input class="search-input" id="site-search-input" type="search" role="combobox" autocomplete="off" aria-autocomplete="list" aria-controls="site-search-results" aria-describedby="site-search-status" aria-expanded="false"><p class="search-message" id="site-search-status" aria-live="polite">输入关键词开始搜索。</p><ul class="search-results" id="site-search-results" role="listbox" aria-label="搜索结果"></ul></div></dialog>
 <!-- guide:header:end -->
 
   <!-- guide:shell-open:start -->
-<div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html">首页</a><a data-nav href="install-desktop.html" aria-current="page">安装</a><a data-nav href="desktop-cli.html">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="worktrees.html">Worktrees</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">自动化</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html">Compound</a><details class="global-nav-disclosure"><summary>Skills 仓库</summary><a data-nav href="skills-repositories.html">全部仓库</a><a href="skills-repositories.html#compound-engineering">Compound Engineering</a><a href="skills-repositories.html#mattpocock-skills">Matt Pocock skills</a><a href="skills-repositories.html#academic-research-skills-codex">ARS</a><a href="skills-repositories.html#aris-auto-claude-code-research-in-sleep">ARIS</a></details><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>安装</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-07-11">2026-07-11</time></span><span>事实核验：<time datetime="2026-07-11">2026-07-11</time></span></div><aside class="page-toc" aria-label="本页目录"><details><summary>本页目录</summary><nav><a class="toc-h2" href="#安装前先确认三件事">安装前先确认三件事</a><a class="toc-h3" href="#官方入口">官方入口</a><a class="toc-h3" href="#账号和组织">账号和组织</a><a class="toc-h3" href="#仓库准备">仓库准备</a><a class="toc-h2" href="#安装到第一个任务">安装到第一个任务</a><a class="toc-h2" href="#第一个任务怎么写">第一个任务怎么写</a><a class="toc-h3" href="#只读入门">只读入门</a><a class="toc-h3" href="#小改动入门">小改动入门</a><a class="toc-h3" href="#第一次不要这样写">第一次不要这样写</a><a class="toc-h2" href="#看到权限请求时怎么判断">看到权限请求时怎么判断</a><a class="toc-h3" href="#本地服务">本地服务</a><a class="toc-h3" href="#联网查询">联网查询</a><a class="toc-h3" href="#安装依赖">安装依赖</a><a class="toc-h3" href="#git-push">Git push</a><a class="toc-h2" href="#真实实例-本指南的-desktop-安装页">真实实例：本指南的 Desktop 安装页</a></nav></details></aside>
+<div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html">首页</a><a data-nav href="install-desktop.html" aria-current="page">安装</a><a data-nav href="desktop-cli.html">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="worktrees.html">Worktrees</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">定时任务</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html">Compound</a><details class="global-nav-disclosure"><summary>Skills 仓库</summary><a data-nav href="skills-repositories.html">全部仓库</a><a href="skills-repositories.html#compound-engineering">Compound Engineering</a><a href="skills-repositories.html#mattpocock-skills">Matt Pocock skills</a><a href="skills-repositories.html#academic-research-skills-codex">ARS</a><a href="skills-repositories.html#aris-auto-claude-code-research-in-sleep">ARIS</a></details><a data-nav href="goal-entry.html">goal-entry</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>开始</span><span aria-hidden="true">/</span><span aria-current="page">安装</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-07-12">2026-07-12</time></span><span>事实核验：<time datetime="2026-07-12">2026-07-12</time></span></div><aside class="page-toc" aria-label="本页目录"><details><summary>本页目录</summary><nav><a class="toc-h2" href="#安装前先确认三件事">安装前先确认三件事</a><a class="toc-h3" href="#官方入口">官方入口</a><a class="toc-h3" href="#账号和组织">账号和组织</a><a class="toc-h3" href="#仓库准备">仓库准备</a><a class="toc-h2" href="#安装到第一个任务">安装到第一个任务</a><a class="toc-h2" href="#第一个任务怎么写">第一个任务怎么写</a><a class="toc-h3" href="#只读入门">只读入门</a><a class="toc-h3" href="#小改动入门">小改动入门</a><a class="toc-h3" href="#第一次不要这样写">第一次不要这样写</a><a class="toc-h2" href="#看到权限请求时怎么判断">看到权限请求时怎么判断</a><a class="toc-h3" href="#本地服务">本地服务</a><a class="toc-h3" href="#联网查询">联网查询</a><a class="toc-h3" href="#安装依赖">安装依赖</a><a class="toc-h3" href="#git-push">Git push</a><a class="toc-h2" href="#真实实例-本指南的-desktop-安装页">真实实例：本指南的 Desktop 安装页</a></nav></details></aside>
 <!-- guide:shell-open:end -->
-<main>
+<main id="main-content">
     <section class="hero compact">
       <div class="hero-copy">
         <p class="hero-kicker">安装</p>
         <h1>安装 Codex Desktop</h1>
-        <p class="lead">这里不重复官方安装文档，重点讲第一次打开桌面版后，如何把账号、仓库、权限和第一个任务接起来。下载入口和平台要求以 OpenAI 官方 Codex App 页面为准。</p>
+        <p class="lead">官方产品名是 <strong>ChatGPT desktop app</strong>；本指南为行文方便，把其中的 Codex 工作面简称为“Codex Desktop”。本页说明第一次打开桌面版时，如何把安装、账号、项目、权限和第一个任务串起来；下载入口和平台要求以 OpenAI 官方页面为准。</p>
+        <p><strong>事实核验 2026-07-12，UI 以当前版本为准。</strong></p>
         <div class="hero-actions">
           <a href="https://developers.openai.com/codex/app" class="button primary external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>打开官方 Codex App 页面</a>
           <a class="button" href="desktop-cli.html">查看桌面版操作</a>
@@ -60,7 +61,7 @@
         <p>不要从第三方下载器或不明链接安装。先确认你用的是官方入口、合适的账号，以及准备让 Codex 读取的本地仓库。</p>
       </div>
       <div class="bento">
-        <article class="card span-4"><span class="fragment-alias" id="heading-install-desktop-2" data-canonical-fragment="官方入口" aria-hidden="true"></span><h3 id="官方入口">官方入口<a class="heading-permalink" data-heading-permalink data-search-exclude href="#官方入口" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>从 <a href="https://developers.openai.com/codex/app" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>developers.openai.com/codex/app</a> 进入，按照页面当前提供的方式下载或打开。</p></article>
+        <article class="card span-4"><span class="fragment-alias" id="heading-install-desktop-2" data-canonical-fragment="官方入口" aria-hidden="true"></span><h3 id="官方入口">官方入口<a class="heading-permalink" data-heading-permalink data-search-exclude href="#官方入口" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>从 <a href="https://developers.openai.com/codex/app" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>developers.openai.com/codex/app</a> 进入。macOS 使用官方提供的 <strong>Apple Silicon</strong> 下载；Windows 使用 <strong>Microsoft Store</strong>，也可通过 <strong>winget</strong> 查找并安装官方 ChatGPT 应用。不要使用第三方安装包。</p></article>
         <article class="card span-4"><span class="fragment-alias" id="heading-install-desktop-3" data-canonical-fragment="账号和组织" aria-hidden="true"></span><h3 id="账号和组织">账号和组织<a class="heading-permalink" data-heading-permalink data-search-exclude href="#账号和组织" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>使用你实际工作的 OpenAI/ChatGPT 账号。团队项目要确认当前 workspace 或组织权限是否能访问 Codex。</p></article>
         <article class="card span-4"><span class="fragment-alias" id="heading-install-desktop-4" data-canonical-fragment="仓库准备" aria-hidden="true"></span><h3 id="仓库准备">仓库准备<a class="heading-permalink" data-heading-permalink data-search-exclude href="#仓库准备" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>本地仓库最好已有 README、测试命令和 <code>AGENTS.md</code>。没有也能用，但 Codex 更容易猜错边界。</p></article>
       </div>
@@ -77,12 +78,12 @@
       <figure class="figure-card mermaid-card">
         <div class="mermaid">
 flowchart LR
-  A["打开官方 Codex App 页面"] --> B["按页面提示安装或打开 Desktop"]
-  B --> C["登录正确账号 / workspace"]
-  C --> D["打开本地仓库或任务线程"]
-  D --> E["让 Codex 先读 AGENTS.md"]
-  E --> F["执行一个小任务"]
-  F --> G["检查 diff / 终端验证 / 页面结果"]
+  A["安装 ChatGPT desktop app"] --> B["登录正确账号 / workspace"]
+  B --> C["选择 Codex"]
+  C --> D["选择本地项目"]
+  D --> E["选择 Ask for approval"]
+  E --> F["执行首个只读任务"]
+  F --> G["检查回复与项目边界"]
         </div>
         <figcaption>第一次使用时，先用一个可验证的小任务确认账号、仓库、权限和验证流程都正常。</figcaption>
       </figure>
@@ -94,7 +95,7 @@ flowchart LR
           <p class="section-kicker">第一个任务</p>
           <span class="fragment-alias" id="heading-install-desktop-6" data-canonical-fragment="第一个任务怎么写" aria-hidden="true"></span><h2 id="第一个任务怎么写">第一个任务怎么写<a class="heading-permalink" data-heading-permalink data-search-exclude href="#第一个任务怎么写" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
-        <p>第一个任务选只读或小改动，用来确认 Codex 能读仓库、理解规则并运行验证。先别让它一上来重构整个项目。</p>
+        <p>登录后选择 <strong>Codex</strong>，选择要工作的本地项目，并把权限设为 <strong>Ask for approval</strong>。第一个任务建议只读，用来确认 Codex 能读仓库、理解规则和尊重边界，而不是一上来让它重构整个项目。</p>
       </div>
       <div class="bento">
         <article class="card span-6"><span class="fragment-alias" id="heading-install-desktop-7" data-canonical-fragment="只读入门" aria-hidden="true"></span><h3 id="只读入门">只读入门<a class="heading-permalink" data-heading-permalink data-search-exclude href="#只读入门" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><pre><code>我刚安装 Codex Desktop，正在打开这个仓库：

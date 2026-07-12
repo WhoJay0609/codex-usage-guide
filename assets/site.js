@@ -88,6 +88,8 @@
   var searchResults = document.querySelector("#site-search-results");
   var activeSearchIndex = -1;
   var renderedSearchOptions = [];
+  var searchRecords;
+  var searchIndexPromise = null;
 
   function normalizeSearchText(value) {
     var text = String(value || "");
@@ -116,7 +118,50 @@
     });
   }
 
-  var searchRecords = allowedSearchRecords();
+  function loadSearchIndex() {
+    if (window.GUIDE_SEARCH_INDEX) {
+      searchRecords = allowedSearchRecords();
+      return Promise.resolve(searchRecords);
+    }
+    if (searchIndexPromise) return searchIndexPromise;
+    searchIndexPromise = new Promise(function (resolve) {
+      var script = document.createElement("script");
+      script.src = "assets/search-index.js";
+      script.async = true;
+      script.addEventListener("load", function () {
+        searchRecords = allowedSearchRecords();
+        resolve(searchRecords);
+      });
+      script.addEventListener("error", function () {
+        searchRecords = null;
+        resolve(null);
+      });
+      document.head.appendChild(script);
+    });
+    return searchIndexPromise;
+  }
+
+  function appendHighlightedText(parent, value, query) {
+    var text = String(value || "");
+    var needle = String(query || "").trim();
+    if (!needle) {
+      parent.textContent = text;
+      return;
+    }
+    var lowerText = text.toLocaleLowerCase();
+    var lowerNeedle = needle.toLocaleLowerCase();
+    var offset = 0;
+    var matchAt = lowerText.indexOf(lowerNeedle);
+    while (matchAt >= 0) {
+      parent.appendChild(document.createTextNode(text.slice(offset, matchAt)));
+      var mark = document.createElement("mark");
+      mark.textContent = text.slice(matchAt, matchAt + needle.length);
+      parent.appendChild(mark);
+      offset = matchAt + needle.length;
+      matchAt = lowerText.indexOf(lowerNeedle, offset);
+    }
+    parent.appendChild(document.createTextNode(text.slice(offset)));
+  }
 
   function setActiveSearchOption(index) {
     if (!searchInput) return;
@@ -144,6 +189,10 @@
     searchResults.replaceChildren();
     renderedSearchOptions = [];
     setActiveSearchOption(-1);
+    if (typeof searchRecords === "undefined") {
+      searchStatus.textContent = "正在加载搜索索引…";
+      return;
+    }
     if (searchRecords === null) {
       searchStatus.textContent = "搜索索引暂时不可用，站内导航仍可继续使用。";
       return;
@@ -182,11 +231,11 @@
       option.tabIndex = -1;
       option.dataset.searchTarget = record.page + (record.fragment ? "#" + encodeURIComponent(record.fragment) : "");
       var title = document.createElement("strong");
-      title.textContent = record.title;
+      appendHighlightedText(title, record.title, searchInput.value);
       var section = document.createElement("span");
-      section.textContent = record.section || "页面概览";
+      appendHighlightedText(section, record.section || "页面概览", searchInput.value);
       var snippet = document.createElement("small");
-      snippet.textContent = record.text.slice(0, 120);
+      appendHighlightedText(snippet, record.text.slice(0, 120), searchInput.value);
       option.append(title, section, snippet);
       option.addEventListener("mousedown", function (event) { event.preventDefault(); });
       option.addEventListener("click", function () { navigateToSearchOption(option); });
@@ -198,10 +247,11 @@
   function openSearch() {
     if (!searchDialog || !searchInput) return;
     searchInput.setAttribute("aria-expanded", "true");
-    renderSearchResults();
     if (typeof searchDialog.showModal === "function") searchDialog.showModal();
     else searchDialog.setAttribute("open", "");
     searchInput.focus();
+    searchStatus.textContent = "正在加载搜索索引…";
+    loadSearchIndex().then(renderSearchResults);
   }
 
   function closeSearch() {
@@ -227,6 +277,22 @@
     });
     searchDialog.addEventListener("click", function (event) {
       if (event.target === searchDialog) closeSearch();
+    });
+    searchDialog.addEventListener("keydown", function (event) {
+      if (event.key !== "Tab") return;
+      var focusable = Array.from(searchDialog.querySelectorAll(
+        'button:not([disabled]), input:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'
+      ));
+      if (!focusable.length) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     });
     searchInput.addEventListener("input", renderSearchResults);
     searchInput.addEventListener("keydown", function (event) {
@@ -296,7 +362,10 @@
       if (event.target.closest("a")) closeMenu();
     });
     document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape" && document.body.classList.contains("nav-open")) {
+      if (event.key !== "Escape") return;
+      if (searchDialog && searchDialog.hasAttribute("open")) {
+        return;
+      } else if (document.body.classList.contains("nav-open")) {
         closeMenu();
         menuButton.focus();
       }
