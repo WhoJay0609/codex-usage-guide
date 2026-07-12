@@ -3,7 +3,9 @@
 ## Glossary
 
 - **Codex**: the coding agent used through the local workspace to read files, edit code, run commands, and report verified outcomes.
-- **Codex App**: the desktop Codex surface used for parallel threads, project work, review, local terminal actions, worktrees, automations, skills, plugins, and browser/computer-use workflows.
+- **Codex Desktop (guide shorthand)**: this guide's shorthand for the Codex surface inside the ChatGPT desktop app; it is not presented as a separate current app name.
+- **Scheduled tasks**: the current product name for recurring tasks; runs and results are reviewed in the Scheduled view.
+- **Native / Recommended Boundary**: Goal, Subagent, Worktree, MCP, AGENTS.md, Skills, Scheduled tasks, and Browser are native/documented capabilities; receipt, grant, A2/A3/A4, the five-stage workflow, prompt ladder, claim ledger, and the six-field Goal template are guide-recommended practices.
 - **Workspace**: the filesystem scope shared by the user and Codex for a task.
 - **Repository**: a Git-controlled project directory with its own source, docs, task rules, and verification surface.
 - **Guide Reader**: a person using this guide to operate Codex. The guide supports both beginner readers and advanced automation or Agent developers.

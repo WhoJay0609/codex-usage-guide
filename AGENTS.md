@@ -31,7 +31,7 @@ The web page is the canonical public artifact.
 ### Maintainer Commands
 
 - `make generate` updates sentinel-owned root-page blocks and generated assets.
-- `make check-fast` checks deterministic generation plus the manifest-scoped 19-page static contract.
+- `make check-fast` checks deterministic generation plus the manifest-scoped 20-page static contract.
 - `make check` adds the Python unit suite.
 - `make test-browser` runs Playwright interaction and responsive checks.
 - `make check-release-local` runs local automated release gates; it does not satisfy human privacy or reader checks.

@@ -3,7 +3,7 @@ const { test, expect } = require('@playwright/test');
 test('serves the static guide without an application runtime', async ({ page }) => {
   await page.goto('/index.html');
   await expect(page).toHaveTitle('中文 Codex 实战手册');
-  await expect(page.locator('h1')).toContainText('可验证小任务');
+  await expect(page.locator('h1')).toContainText('可验证的小任务');
   await expect(page.locator('.global-nav [data-nav]')).toHaveCount(20);
   await expect(page.locator('.global-nav [aria-current="page"]')).toHaveCount(1);
 });
@@ -11,7 +11,7 @@ test('serves the static guide without an application runtime', async ({ page }) 
 test('exposes complete social metadata from the page manifest', async ({ page }) => {
   await page.goto('/permissions.html');
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://whojay0609.github.io/codex-usage-guide/permissions.html');
-  await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', '理解 sandbox、approval、network 与 secret 边界。');
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', '理解 Desktop 四个权限选择及底层 sandbox、approval、network 与 secret 边界。');
   await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', '权限与安全');
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png');
   await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute('content', 'summary_large_image');
@@ -103,17 +103,32 @@ test('starts the Compound Engineering core loop with Ideate', async ({ page }) =
 
 test('searches canonical sections with an accessible modal', async ({ page }) => {
   await page.goto('/index.html');
+  await expect(page.locator('script[src="assets/search-index.js"]')).toHaveCount(0);
   await page.locator('.search-trigger').click();
+  await expect(page.locator('script[src="assets/search-index.js"]')).toHaveCount(1);
   await expect(page.locator('#site-search-dialog')).toBeVisible();
   await expect(page.locator('#site-search-input')).toBeFocused();
   await page.locator('#site-search-input').fill('审批决策矩阵');
   const option = page.locator('#site-search-results [role="option"]').first();
   await expect(option).toContainText('权限与安全');
   await expect(option).toContainText('审批决策矩阵');
+  await expect(option.locator('mark')).toContainText('审批决策矩阵');
   await page.keyboard.press('ArrowDown');
   await expect(page.locator('#site-search-input')).toHaveAttribute('aria-activedescendant', /search-option-/);
   await page.keyboard.press('Enter');
   await expect(page).toHaveURL(/permissions\.html#%E5%AE%A1%E6%89%B9%E5%86%B3%E7%AD%96%E7%9F%A9%E9%98%B5$/);
+});
+
+test('keeps keyboard focus inside search and exposes grouped navigation', async ({ page }) => {
+  await page.goto('/permissions.html');
+  await expect(page.locator('.skip-link')).toHaveAttribute('href', '#main-content');
+  await expect(page.locator('.breadcrumbs')).toContainText('基础概念');
+  await page.locator('.search-trigger').click();
+  await page.locator('.search-close').focus();
+  await page.keyboard.press('Tab');
+  await expect(page.locator('#site-search-input')).toBeFocused();
+  await page.keyboard.press('Shift+Tab');
+  await expect(page.locator('.search-close')).toBeFocused();
 });
 
 test('closes search with Escape and restores trigger focus', async ({ page }) => {
