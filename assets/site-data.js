@@ -5,8 +5,15 @@ window.GUIDE_SITE_DATA = {
     "assets/theme.js": "187420686654f8c1c58df32a0687d4a0d11e6e0707b8696d5f077774982d766a",
     "figures/social-preview.png": "e0ee23ae3b99a8507b4aa423c530289468f1db067d1e7041e4afcefb5fe3ac58"
   },
-  "build_id": "538251dfca31",
+  "build_id": "c0a9784dd2a6",
   "changelog": [
+    {
+      "category": "content",
+      "date": "2026-07-12",
+      "summary": "加入 awesome-chatgpt-prompts-zh 的 Codex 适配路径、示例和提示词安全边界。",
+      "target": "skills-repositories.html",
+      "title": "补充中文 Prompt 第三方仓库"
+    },
     {
       "category": "content",
       "date": "2026-07-12",
@@ -400,6 +407,7 @@ window.GUIDE_SITE_DATA = {
       "场景-夜间循环保留人工闸门",
       "taste-skill",
       "ian-xiaohei-illustrations",
+      "awesome-chatgpt-prompts-zh",
       "高级用户-按阶段组合-不要一锅端",
       "使用边界",
       "真实实例-历史案例",
