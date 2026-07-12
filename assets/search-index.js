@@ -6,7 +6,34 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "index.html",
       "prompts": [],
       "section": "",
-      "text": "从一个可验证的小任务开始使用 Codex Desktop。",
+      "text": "从一个可验证的小任务开始，并区分 Codex 原生能力与本指南推荐实践。",
+      "title": "中文 Codex 实战手册"
+    },
+    {
+      "fragment": "原生能力与本指南推荐实践",
+      "level": "h2",
+      "page": "index.html",
+      "prompts": [],
+      "section": "原生能力与本指南推荐实践",
+      "text": "两类内容都能使用，但产品 UI、命令和可迁移性不同；看到“本指南推荐”时，不要把它当成 Codex 内置机制。",
+      "title": "中文 Codex 实战手册"
+    },
+    {
+      "fragment": "codex-原生能力",
+      "level": "h3",
+      "page": "index.html",
+      "prompts": [],
+      "section": "Codex 原生能力",
+      "text": "Goal、Subagent、Worktree、MCP、AGENTS.md、Skills、Scheduled tasks（定时任务）和 Browser 都有产品或官方文档入口；具体可用性以当前客户端、配置和账户为准。",
+      "title": "中文 Codex 实战手册"
+    },
+    {
+      "fragment": "本指南推荐实践",
+      "level": "h3",
+      "page": "index.html",
+      "prompts": [],
+      "section": "本指南推荐实践",
+      "text": "receipt（任务回执）、grant（提示词授权约定）、A2/A3/A4 教学框架、五阶段工作流、prompt ladder（提示词阶梯）、claim ledger（主张台账）和六字段 Goal 模板 是本指南为提高可验证性整理的方法，不是原生 UI 功能。 从这里开始",
       "title": "中文 Codex 实战手册"
     },
     {
@@ -78,7 +105,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "index.html",
       "prompts": [],
       "section": "30 秒选择入口",
-      "text": "先选工作面，再看页面。读者不需要知道所有术语，只要知道当前任务最适合放在哪个入口，以及完成后拿什么证据验收。 改网页首选：Desktop + in-app browser避免：只用口头描述问题证据：页面预览、截图/评论、make check 修测试首选：Desktop 线程 + integrated terminal避免：让模型凭猜测改代码证据：失败日志、最窄测试、diff review 长任务首选：Goal / subagent / skills避免：单轮聊天里混多个目标证据：objective、validation、closeout 周期任务首选：Automations避免：手工重复提醒证据：任务发现、run 记录、后台 worktree 官方事实：OpenAI Codex docs 插件扩展：Compound Engineering / local skills 经验建议：本指南工作流沉淀 概念地图",
+      "text": "先选工作面，再看页面。读者不需要知道所有术语，只要知道当前任务最适合放在哪个入口，以及完成后拿什么证据验收。 改网页首选：Desktop + Browser（内置浏览器）避免：只用口头描述问题证据：页面预览、截图/评论、make check 修测试首选：Desktop 任务 + Integrated terminal（集成终端）避免：让模型凭猜测改代码证据：失败日志、最窄测试、diff（差异）审查 长任务首选：Goal（目标）/ subagent（子代理）/ skills（技能）避免：单轮聊天里混多个目标证据：objective（目标）、validation（验证）、closeout（收口） 周期任务首选：Scheduled tasks（定时任务）避免：手工重复提醒证据：Scheduled 视图、运行记录、后台 worktree（工作树） 官方事实：OpenAI Codex docs 插件扩展：Compound Engineering / local skills 经验建议：本指南工作流沉淀 概念地图",
       "title": "中文 Codex 实战手册"
     },
     {
@@ -213,7 +240,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "install-desktop.html",
       "prompts": [],
       "section": "",
-      "text": "安装、登录并完成第一个 Codex Desktop 任务。",
+      "text": "安装 ChatGPT desktop app，并在 Codex 工作面完成首个只读任务。",
       "title": "安装 Codex Desktop"
     },
     {
@@ -231,7 +258,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "install-desktop.html",
       "prompts": [],
       "section": "官方入口",
-      "text": "从 developers.openai.com/codex/app 进入，按照页面当前提供的方式下载或打开。",
+      "text": "从 developers.openai.com/codex/app 进入。macOS 使用官方提供的 Apple Silicon 下载；Windows 使用 Microsoft Store，也可通过 winget 查找并安装官方 ChatGPT 应用。不要使用第三方安装包。",
       "title": "安装 Codex Desktop"
     },
     {
@@ -258,7 +285,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "install-desktop.html",
       "prompts": [],
       "section": "安装到第一个任务",
-      "text": "安装完成后，按这个顺序走一遍即可。 flowchart LR A[\"打开官方 Codex App 页面\"] --> B[\"按页面提示安装或打开 Desktop\"] B --> C[\"登录正确账号 / workspace\"] C --> D[\"打开本地仓库或任务线程\"] D --> E[\"让 Codex 先读 AGENTS.md\"] E --> F[\"执行一个小任务\"] F --> G[\"检查 diff / 终端验证 / 页面结果\"] 第一次使用时，先用一个可验证的小任务确认账号、仓库、权限和验证流程都正常。 第一个任务",
+      "text": "安装完成后，按这个顺序走一遍即可。 flowchart LR A[\"安装 ChatGPT desktop app\"] --> B[\"登录正确账号 / workspace\"] B --> C[\"选择 Codex\"] C --> D[\"选择本地项目\"] D --> E[\"选择 Ask for approval\"] E --> F[\"执行首个只读任务\"] F --> G[\"检查回复与项目边界\"] 第一次使用时，先用一个可验证的小任务确认账号、仓库、权限和验证流程都正常。 第一个任务",
       "title": "安装 Codex Desktop"
     },
     {
@@ -267,7 +294,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "install-desktop.html",
       "prompts": [],
       "section": "第一个任务怎么写",
-      "text": "第一个任务选只读或小改动，用来确认 Codex 能读仓库、理解规则并运行验证。先别让它一上来重构整个项目。",
+      "text": "登录后选择 Codex，选择要工作的本地项目，并把权限设为 Ask for approval。第一个任务建议只读，用来确认 Codex 能读仓库、理解规则和尊重边界，而不是一上来让它重构整个项目。",
       "title": "安装 Codex Desktop"
     },
     {
@@ -361,7 +388,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "desktop-cli.html",
       "prompts": [],
       "section": "",
-      "text": "线程、审批、diff 与发布验证的 Desktop 主流程。",
+      "text": "在 ChatGPT desktop app 的 Codex 工作面使用线程、Browser、Integrated terminal、审批与 diff。",
       "title": "Codex Desktop 操作手册"
     },
     {
@@ -370,7 +397,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "desktop-cli.html",
       "prompts": [],
       "section": "什么时候优先用 Desktop",
-      "text": "需要边看结果边调整，或希望 Codex 解释当前动作时，优先用 Desktop。重复任务先在 Desktop 跑通，确认输入、输出和失败处理都稳定后，再放进 Automations。",
+      "text": "如果任务需要你边看结果边调整，或者需要 Codex 解释它正在做什么，Desktop 应该是默认入口。重复任务也先在 Desktop 跑通，再沉淀为 Scheduled tasks（定时任务）。",
       "title": "Codex Desktop 操作手册"
     },
     {
@@ -388,7 +415,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "desktop-cli.html",
       "prompts": [],
       "section": "本地仓库协作",
-      "text": "让 Codex 读 AGENTS.md、源码、测试、diff，再通过 Desktop 内置终端运行验证命令。",
+      "text": "让 Codex 读 AGENTS.md、源码、测试和 diff；用户也可以在任务中打开 Integrated terminal 并运行验证命令。",
       "title": "Codex Desktop 操作手册"
     },
     {
@@ -405,8 +432,8 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h3",
       "page": "desktop-cli.html",
       "prompts": [],
-      "section": "沉淀为 Automations 的场景",
-      "text": "批量审查、周期检查、文档漂移、链接检查和固定报告，先在 Desktop 线程跑通，再放进 Automations 后台执行。",
+      "section": "沉淀为定时任务的场景",
+      "text": "批量审查、周期检查、文档漂移、链接检查和固定报告，先在 Desktop 任务跑通，再放进 Scheduled tasks 后台执行；结果在 Scheduled 视图查看。",
       "title": "Codex Desktop 操作手册"
     },
     {
@@ -451,7 +478,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "desktop-cli.html",
       "prompts": [],
       "section": "3. 用浏览器反馈定位问题",
-      "text": "如果你在 in-app browser 里看到页面不对，把当前 URL、区域截图或评论直接发给 Codex。",
+      "text": "Browser 是你与 ChatGPT 的共享视图：可预览页面、在具体区域留下视觉反馈或评论，也可让 ChatGPT 与页面交互。反馈时附上当前 URL 和预期结果。",
       "title": "Codex Desktop 操作手册"
     },
     {
@@ -585,7 +612,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "codex.html",
       "prompts": [],
       "section": "",
-      "text": "理解 Codex Desktop 的工作面与适用边界。",
+      "text": "理解 ChatGPT desktop app 中 Codex 工作面的能力与适用边界。",
       "title": "Codex 是什么"
     },
     {
@@ -594,7 +621,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "codex.html",
       "prompts": [],
       "section": "它是什么",
-      "text": "本指南把 Codex 理解为一个以 Desktop 为主的本地工程协作工作面：你在桌面应用里选择项目、开启线程、让 Codex 读仓库上下文、在同一个任务里查看 diff、审批操作、使用内置终端验证、用 in-app browser 反馈页面问题，并在需要时把重复任务沉淀为 Automations。线程一个目标一个线程，保留上下文、审批、终端输出和最终证据。Local / WorktreeLocal 直接改当前项目；Worktree 隔离试验和并行任务。Browser + Git预览页面、评论反馈、审查 diff、提交、推送和创建 PR。Automations把稳定重复任务放到 Desktop 后台运行，并在 任务收件箱 收结果。 何时使用",
+      "text": "你可以在桌面应用里选择项目、开启线程、让 Codex 读仓库上下文、在同一个任务里查看 diff、审批操作，并打开官方称为 Integrated terminal 的终端运行命令。内置 Browser 是用户与 ChatGPT 的共享视图：你可以预览页面、留下视觉反馈或评论，也可以让 ChatGPT 与页面交互；它不是单纯的日志面板。线程一个目标一个线程，保留上下文、审批、终端输出和最终证据。Local / WorktreeLocal 直接改当前项目；Worktree 隔离试验和并行任务。Browser + Git共享预览、视觉评论与页面交互，并审查 diff 和 Git 操作。Scheduled tasks把稳定重复任务放到后台运行，并在 Scheduled 视图查看结果。 何时使用",
       "title": "Codex 是什么"
     },
     {
@@ -634,7 +661,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "permissions.html",
       "prompts": [],
       "section": "",
-      "text": "理解 sandbox、approval、network 与 secret 边界。",
+      "text": "理解 Desktop 四个权限选择及底层 sandbox、approval、network 与 secret 边界。",
       "title": "权限与安全"
     },
     {
@@ -643,7 +670,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "permissions.html",
       "prompts": [],
       "section": "它是什么",
-      "text": "sandbox、approval、network、auth 和 secret 管理共同构成安全边界。默认应该用最小权限：能只读就不写，能限定工作区就不开放 full access。读文件通常允许，除非路径包含 secret 或生产数据。写文件只写目标仓库和明确文件，避免顺手重构。联网用于官方文档、依赖下载、GitHub Pages 验证。执行优先最窄命令，危险命令必须解释回滚方式。 Desktop 权限层级",
+      "text": "sandbox、approval、network、auth 和 secret 管理共同构成安全边界。默认应该用最小权限：能只读就不写，能限定工作区就不开放 full access。读文件通常允许，除非路径包含 secret 或生产数据。写文件只写目标仓库和明确文件，避免顺手重构。联网用于官方文档、依赖下载、GitHub Pages 验证。执行优先最窄命令，危险命令必须解释回滚方式。 Desktop 权限选择",
       "title": "权限与安全"
     },
     {
@@ -651,8 +678,8 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h2",
       "page": "permissions.html",
       "prompts": [],
-      "section": "Codex Desktop 权限等级一览",
-      "text": "桌面版的安全边界分为两部分：sandbox 决定能读写什么，approval 决定什么时候需要确认。使用时从较小权限开始，并先验证再扩大范围。",
+      "section": "Codex Desktop 的四个权限选择",
+      "text": "这四个名称是 Desktop UI 的选择；workspace-write、read-only、on-request 等是底层 sandbox / approval 配置名，常见于 CLI 或 config.toml，不要把它们当成另外几张 Desktop 模式卡。",
       "title": "权限与安全"
     },
     {
@@ -660,8 +687,8 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h3",
       "page": "permissions.html",
       "prompts": [],
-      "section": "Read-only",
-      "text": "sandbox：read-onlyapproval：on-request/never（二选一）用于只读审计、说明文档提取、代码结构梳理，不能改文件。",
+      "section": "Ask for approval",
+      "text": "Codex 可在所选项目工作区内读写文件并运行常规命令；需要联网或超出工作区等更高权限动作时会询问。适合第一次使用、敏感仓库或希望逐次确认边界的任务。",
       "title": "权限与安全"
     },
     {
@@ -669,8 +696,8 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h3",
       "page": "permissions.html",
       "prompts": [],
-      "section": "Workspace-write",
-      "text": "sandbox：workspace-writeapproval：on-request/never/auto用于日常开发：可改当前仓库内文件，超出工作区会触发审批。",
+      "section": "Approve for me（Auto-review）",
+      "text": "让 Codex 依据风险判断并自动处理更多审批，设置页将此选项称为 Auto-review。效率更高，但用户仍应限定写域、查看 diff，并对外部写入和破坏性动作保持明确授权。",
       "title": "权限与安全"
     },
     {
@@ -678,8 +705,8 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h3",
       "page": "permissions.html",
       "prompts": [],
-      "section": "Auto (建议默认)",
-      "text": "桌面端常见默认模式之一。可看可写，审批通常在高风险动作上触发，适合真实任务推进，但仍保留确认口径。",
+      "section": "Full access",
+      "text": "允许更宽的本机文件、命令与网络访问，显著减弱隔离和逐次确认保护。只在你理解任务、信任仓库内容且能承担命令副作用时短时使用；不要把它设成处理未知代码或敏感数据的默认项。",
       "title": "权限与安全"
     },
     {
@@ -687,17 +714,8 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h3",
       "page": "permissions.html",
       "prompts": [],
-      "section": "Auto-review",
-      "text": "在 workspace-write 上加一层审阅策略，适合较复杂修改。先跑自动评审，再决定是否落地，适合多文件改动。",
-      "title": "权限与安全"
-    },
-    {
-      "fragment": "danger",
-      "level": "h3",
-      "page": "permissions.html",
-      "prompts": [],
-      "section": "Danger",
-      "text": "模型建议：仅用于受控本机排障例如 dangerously-bypass-approvals-and-sandbox，会失去审批与沙箱保护，不建议长期启用。 实操建议：从 Read-only on-request 验证需求，再升级到 Workspace-write on-request，最后才考虑持续运行危险模式。 何时使用",
+      "section": "Custom (config.toml)",
+      "text": "使用 config.toml 精细组合 sandbox、approval、network 等底层设置，适合已经理解配置含义的高级用户。配置效果取决于当前环境和组织策略。 CLI 高风险别名（不是 Desktop 模式）：--dangerously-bypass-approvals-and-sandbox 是 CLI 的高风险别名，不是 Desktop 的第五种权限模式；它会绕过审批和沙箱保护，仅应在外部已经强隔离的受控环境中使用。 实操建议：第一次先选 Ask for approval，明确工作区与验证方式；确认任务和仓库可信后再考虑 Approve for me。只有确有必要且已有外部隔离时才使用 Full access 或 CLI 绕过保护。 何时使用",
       "title": "权限与安全"
     },
     {
@@ -726,7 +744,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "permissions.html",
       "prompts": [],
       "section": "补充内容",
-      "text": "桌面端权限等级从低权限到高权限的读写边界，优先从只读起步。审批决策矩阵快速判断哪些动作可批准、哪些动作需要追问或拒绝。申请权限模板统一审批输出格式，降低误会和追问成本。Secret 与生产数据明确哪些文件、字段、密钥不能被读取或提及。 决策矩阵",
+      "text": "桌面端权限等级从低权限到高权限理解读写边界，优先从 Ask for approval 起步。审批决策矩阵快速判断哪些动作可批准、哪些动作需要追问或拒绝。申请权限模板统一审批输出格式，降低误会和追问成本。Secret 与生产数据明确哪些文件、字段、密钥不能被读取或提及。 决策矩阵",
       "title": "权限与安全"
     },
     {
@@ -802,7 +820,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "agents-md.html",
       "prompts": [],
       "section": "",
-      "text": "为 Codex 写清项目规则、边界和验证命令。",
+      "text": "理解 AGENTS.md 发现链并写清项目规则、边界和验证命令。",
       "title": "AGENTS.md"
     },
     {
@@ -811,7 +829,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "agents-md.html",
       "prompts": [],
       "section": "它是什么",
-      "text": "AGENTS.md 是给 Codex 读取的项目说明书。它适合写搜索方式、编辑规则、测试命令、敏感路径、完成报告格式和团队约定。开始读什么README、CONTEXT、架构文档、失败日志。怎么改编辑边界、禁止重构、代码风格、命名约定。怎么验最窄测试、构建命令、浏览器检查、截图要求。怎么报告改动、验证、风险、未完成项、链接或 commit。 何时使用",
+      "text": "AGENTS.md 是给代理看的项目说明书。它适合写搜索方式、编辑规则、测试命令、敏感路径、完成报告格式和团队约定。完整发现链：CODEX_HOME 默认是 ~/.codex。Codex 先在其中读取全局规则：有 AGENTS.override.md 时优先使用它，否则读取 AGENTS.md；然后从项目根（通常是 Git 根）沿目录逐级走到当前工作目录，每一层都按 AGENTS.override.md → AGENTS.md → project_doc_fallback_filenames 的顺序选择一个文件并累计内容。越靠近当前目录的项目规则越具体。项目规则默认最多累计 32 KiB，由 project_doc_max_bytes 控制；需要兼容其他项目说明文件时，可在 project_doc_fallback_filenames 配置候选文件名。超过上限的后续内容不会继续加入，因此根层规则应简洁，把模块细则放在更近的目录。开始读什么README、CONTEXT、架构文档、失败日志。怎么改编辑边界、禁止重构、代码风格、命名约定。怎么验最窄测试、构建命令、浏览器检查、截图要求。怎么报告改动、验证、风险、未完成项、链接或 commit。 何时使用",
       "title": "AGENTS.md"
     },
     {
@@ -820,7 +838,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "agents-md.html",
       "prompts": [],
       "section": "什么时候用 / 不用",
-      "text": "当你连续两次纠正同一类行为，就可以考虑把规则写入 AGENTS.md。不要把一次性任务要求、临时实验参数、个人口令、私有 token 或只对当前线程有效的决定写进去。 示例",
+      "text": "当你连续两次纠正同一类行为，就该写入 AGENTS.md。不要把一次性任务要求、临时实验参数、个人口令、私有 token 或只对当前线程有效的决策写进去。 示例",
       "title": "AGENTS.md"
     },
     {
@@ -831,7 +849,7 @@ window.GUIDE_SEARCH_INDEX = {
         "## Repository Expectations\n- Preserve unrelated dirty worktree changes.\n- Use rg for search and apply_patch for manual edits.\n\n## Verification\n- Run the narrowest relevant test first.\n- Report changed files, commands, failures, and residual risk."
       ],
       "section": "可复制示例",
-      "text": "## Repository Expectations - Preserve unrelated dirty worktree changes. - Use rg for search and apply_patch for manual edits. ## Verification - Run the narrowest relevant test first. - Report changed files, commands, failures, and residual risk. 层级",
+      "text": "## Repository Expectations - Preserve unrelated dirty worktree changes. - Use rg for search and apply_patch for manual edits. ## Verification - Run the narrowest relevant test first. - Report changed files, commands, failures, and residual risk.apply_patch 是 Codex 在内部进行精确文本编辑的一种方式示例；用户不需要在 Desktop UI 里寻找名为 “apply_patch” 的按钮。你只需描述希望修改的文件、范围和边界。 层级",
       "title": "AGENTS.md"
     },
     {
@@ -840,7 +858,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "agents-md.html",
       "prompts": [],
       "section": "如何设计 AGENTS.md 层级",
-      "text": "把 AGENTS.md 当作项目的操作协议。根目录写全局原则，子目录写局部规则。越靠近目标文件的规则越具体，但不应互相矛盾。",
+      "text": "把 AGENTS.md 想成项目里的操作协议。根目录写全局原则，子目录写局部规则。越靠近文件的规则越具体，但不应该互相矛盾。",
       "title": "AGENTS.md"
     },
     {
@@ -867,7 +885,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "agents-md.html",
       "prompts": [],
       "section": "当前任务",
-      "text": "当前用户消息优先级最高；如果它和 AGENTS.md 冲突，Codex 应指出冲突并按用户最新指令执行。 检查清单",
+      "text": "用户当前消息拥有最高优先级；如果它和 AGENTS.md 冲突，Codex 应该指出冲突并按用户最新指令执行。 检查清单",
       "title": "AGENTS.md"
     },
     {
@@ -876,7 +894,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "agents-md.html",
       "prompts": [],
       "section": "写 AGENTS.md 的检查清单",
-      "text": "搜索方式推荐 rg、rg --files，说明不要用慢搜索扫全仓库。编辑方式说明手动编辑用 apply_patch，避免无关格式化和改动用户未授权文件。测试命令列出最窄测试、完整测试、构建、lint 和浏览器检查方式。敏感路径标注 .env、证书、生产配置、数据目录、生成产物。完成证据要求最终报告包括改动、验证、风险、未完成项、链接或 commit。 反模式",
+      "text": "搜索方式推荐 rg、rg --files，说明不要用慢搜索扫全仓库。编辑方式可以约定 Codex 内部使用 apply_patch 做精确编辑，避免无关格式化和改动用户未授权文件；这不是要求用户点击某个 UI 按钮。测试命令列出最窄测试、完整测试、构建、lint 和浏览器检查方式。敏感路径标注 .env、证书、生产配置、数据目录、生成产物。完成证据要求最终报告包括改动、验证、风险、未完成项、链接或 commit。 反模式",
       "title": "AGENTS.md"
     },
     {
@@ -907,7 +925,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "skills.html",
       "prompts": [],
       "section": "",
-      "text": "选择和使用 Codex skills。",
+      "text": "用 $skill-name mention 选择和使用 Codex skills。",
       "title": "Skills"
     },
     {
@@ -1057,16 +1075,18 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "mcp.html",
       "prompts": [],
       "section": "",
-      "text": "连接外部工具并管理其权限。",
+      "text": "配置 MCP servers，区分 tools 与 resources，并管理外部能力权限。",
       "title": "MCP / Plugins"
     },
     {
       "fragment": "它是什么",
       "level": "h2",
       "page": "mcp.html",
-      "prompts": [],
+      "prompts": [
+        "# 本地 STDIO server\n[mcp_servers.context7]\ncommand = \"npx\"\nargs = [\"-y\", \"@upstash/context7-mcp\"]\n\n# 远程 Streamable HTTP server（替换为服务方给出的真实地址）\n[mcp_servers.remote_docs]\nurl = \"https://example.com/mcp\""
+      ],
       "section": "它是什么",
-      "text": "MCP 提供工具接口，plugins 则是打包好的能力组合。接入后，Codex 除了读取本地文件，还能访问和操作外部系统。读外部状态GitHub PR、设计稿、文档库、数据库 schema。写外部系统创建 issue、同步设计、部署配置，必须先确认。权限来源token、账号、workspace、server 配置都要可追溯。失败策略外部工具失败时停下报告，不伪造结果。 何时使用",
+      "text": "MCP 的全称是 Model Context Protocol（模型上下文协议）。MCP server 可以暴露可执行的 tools，也可以提供只读的 resources 或其他上下文；“能读到资源”不等于“可以执行写操作”。Plugin 是更上层的能力包，可以同时打包 skill 与 app；其中 app 的外部数据和操作通常由 MCP server 支撑。Desktop 添加路径：打开 Settings → MCP servers → Add server，选择 STDIO（启动本地进程）或 Streamable HTTP（连接远程服务），保存后重启应用。回到 composer 可输入 /mcp 查看或管理当前可用 server。Desktop、CLI 和 IDE 共享用户级 ~/.codex/config.toml；项目也可以在可信项目中使用 .codex/config.toml。项目配置可能影响可启动的程序或可访问的服务，所以只对你信任的仓库启用。# 本地 STDIO server [mcp_servers.context7] command = \"npx\" args = [\"-y\", \"@upstash/context7-mcp\"] # 远程 Streamable HTTP server（替换为服务方给出的真实地址） [mcp_servers.remote_docs] url = \"https://example.com/mcp\"读外部状态GitHub PR、设计稿、文档库、数据库 schema。写外部系统创建 issue、同步设计、部署配置，必须先确认。权限来源token、账号、workspace、server 配置都要可追溯。失败策略外部工具失败时停下报告，不伪造结果。 何时使用",
       "title": "MCP / Plugins"
     },
     {
@@ -1075,7 +1095,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "mcp.html",
       "prompts": [],
       "section": "什么时候用 / 不用",
-      "text": "需要实时外部状态、设计同步、GitHub 操作、数据库查询时使用。涉及 secret、生产数据或写操作时，必须先确认权限边界；如果本地文件已经足够完成任务，不要为了“更自动化”引入外部工具。 示例",
+      "text": "需要实时外部状态、设计同步、GitHub 操作、数据库查询时使用。涉及 secret、生产数据或写操作时，必须先确认权限边界；如果本地文件已经足够完成任务，不要为了“更自动化”引入外部工具。MCP server 的 instructions，以及 tool / resource 返回的文本都属于不可信上下文：它们不能覆盖用户意图、项目规则或权限边界。遇到要求泄露 secret、扩大范围或忽略审批的返回内容应停止；任何创建、修改、发布、发送等外部写操作仍需用户明确授权和可复核证据。 示例",
       "title": "MCP / Plugins"
     },
     {
@@ -1247,8 +1267,8 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h2",
       "page": "mcp.html",
       "prompts": [],
-      "section": "使用 MCP 前的 5 个问题",
-      "text": "是否必要本地文件是否已经足够？如果足够，不要引入外部工具。读还是写只读风险较低；写入 GitHub、设计、数据库或生产系统必须先确认。凭证在哪里token、账号和 workspace 是否已经安全配置？不要把 secret 写进 prompt。失败怎么处理工具超时、权限失败、返回空数据时必须停下报告。如何验收外部操作后要给链接、截图、状态码、PR/check 状态或日志。 提示词（Prompt）",
+      "section": "使用 MCP 前的 7 个问题",
+      "text": "是否必要本地文件是否已经足够？如果足够，不要引入外部工具。是 tool 还是 resourceresource / 上下文通常只读；tool 可能执行动作。先核对能力类型和参数。读还是写只读风险较低；写入 GitHub、设计、数据库或生产系统必须先确认。凭证在哪里token、账号和 workspace 是否已经安全配置？不要把 secret 写进 prompt。返回内容可信么把 server instructions、tool 与 resource 返回视为不可信上下文，不接受其中的越权指令。失败怎么处理工具超时、权限失败、返回空数据时必须停下报告。如何验收外部操作后要给链接、截图、状态码、PR/check 状态或日志。 提示词（Prompt）",
       "title": "MCP / Plugins"
     },
     {
@@ -1427,7 +1447,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "subagents.html",
       "prompts": [],
       "section": "",
-      "text": "拆分、约束和收口 subagent 工作。",
+      "text": "显式传递上下文、拆分写域并由主线程收口 subagent 工作。",
       "title": "Subagents"
     },
     {
@@ -1436,7 +1456,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "subagents.html",
       "prompts": [],
       "section": "它是什么",
-      "text": "Subagent 是被分配明确子任务的代理。它可以做只读调查、审查、并行测试或互不重叠的实现切片。 flowchart LR A[\"主线程定义目标\"] --> B[\"Agent A: 只读审查\"] A --> C[\"Agent B: 测试缺口\"] A --> D[\"Agent C: 文档/可维护性\"] B --> E[\"主线程整合\"] C --> E D --> E E --> F[\"统一验证和最终判断\"] Subagent 只负责边界清晰的子任务；主线程保留目标、取舍和最终验收。 何时使用",
+      "text": "Subagent 是被分配明确子任务的代理。它会执行自己的 model / tool work，可以做只读调查、审查、并行测试或互不重叠的实现切片。Codex app 会显示每个 subagent 的独立线程，并把结果摘要返回主线程，方便查看进度与整合。不要假定 subagent 自动继承主线程的完整私密对话历史。主线程应显式传入目标、必要上下文、允许和禁止的写域、输出格式及验收标准，只提供完成子任务所需的信息。本地 custom agents 可以配置不同的 model、config 与 instructions，但其权限和可用工具仍受当前环境、沙箱、审批与组织策略约束。 flowchart LR A[\"主线程定义目标\"] --> B[\"Agent A: 只读审查\"] A --> C[\"Agent B: 测试缺口\"] A --> D[\"Agent C: 文档/可维护性\"] B --> E[\"主线程整合\"] C --> E D --> E E --> F[\"统一验证和最终判断\"] Subagent 只负责边界清晰的子任务；主线程保留目标、取舍和最终验收。 何时使用",
       "title": "Subagents"
     },
     {
@@ -1465,7 +1485,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "subagents.html",
       "prompts": [],
       "section": "Worktree 与 Subagent 如何配合",
-      "text": "Worktree 隔离 Git checkout 和工作目录；Subagent 隔离上下文、职责和写域。两者可以组合，但不能互相替代：独立目录不会自动消除逻辑冲突，独立代理也不一定拥有自己的 Worktree。 Worktree解决目录与 Git 状态干扰适合并行试验和后台任务仍共享仓库元数据与外部资源Subagent解决上下文与责任边界适合只读审查或互斥写域主线程保留整合与最终判断 单独阅读 Worktrees 指南 共享 contract、同一文件或强依赖任务仍应串行；并行拆分方式见 Issue lanes。 委派契约",
+      "text": "Worktree 隔离 Git checkout 和工作目录；Subagent 隔离上下文、职责和写域。两者可以组合，但不能互相替代：独立目录不会自动消除逻辑冲突，独立代理也不一定拥有自己的 Worktree。同一工作区内的文件修改通常彼此可见，但文字结论、风险和未验证项仍必须明确回传，由主线程检查真实 diff、整合结论并统一验收。 Worktree解决目录与 Git 状态干扰适合并行试验和后台任务仍共享仓库元数据与外部资源Subagent解决上下文与责任边界适合只读审查或互斥写域主线程保留整合与最终判断 单独阅读 Worktrees 指南 共享 contract、同一文件或强依赖任务仍应串行；并行拆分方式见 Issue lanes。 委派契约",
       "title": "Subagents"
     },
     {
@@ -1483,7 +1503,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "subagents.html",
       "prompts": [],
       "section": "输入",
-      "text": "给仓库路径、问题背景、只读或可写范围、必须读取的文件、禁止触碰的路径。",
+      "text": "显式给目标、仓库路径、必要背景、只读或可写范围、必须读取的文件、禁止触碰的路径和验收标准；不要依赖它猜测主线程历史。",
       "title": "Subagents"
     },
     {
@@ -1492,7 +1512,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "subagents.html",
       "prompts": [],
       "section": "输出",
-      "text": "要求固定格式：findings、证据、风险级别、建议修复、未验证项。不要只让它“看看”。",
+      "text": "要求固定格式：findings、改动文件、证据、风险级别、建议修复、未验证项，并把文本结果回传主线程。不要只让它“看看”。",
       "title": "Subagents"
     },
     {
@@ -1501,7 +1521,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "subagents.html",
       "prompts": [],
       "section": "整合",
-      "text": "主线程负责去重、冲突处理、最终判断和用户报告。Subagent 的结论不是自动真理。 模式",
+      "text": "主线程负责检查共享文件的真实状态、去重、冲突处理、最终判断和用户报告。Subagent 的摘要和结论不是自动真理。 模式",
       "title": "Subagents"
     },
     {
@@ -1581,7 +1601,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "goal.html",
       "prompts": [],
       "section": "",
-      "text": "用 Goal 管理长任务的目标、验收与停止条件。",
+      "text": "理解原生 Goal 与本指南推荐提示词模板的边界。",
       "title": "Goal"
     },
     {
@@ -1590,7 +1610,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "goal.html",
       "prompts": [],
       "section": "它是什么",
-      "text": "Goal 适合跨阶段、跨仓库、需要 artifact、需要 subagent 或需要 closeout 的任务。好的 Goal 会保留成功标准、验收标准、验证命令和停止条件。 flowchart TD A[\"Objective\"] --> B[\"Scope / Stop Conditions\"] B --> C[\"Context / AGENTS.md\"] C --> D{\"需要拆分吗？\"} D -->|是| E[\"Subagents / 专家审查\"] D -->|否| F[\"主线程执行\"] E --> G[\"整合结果\"] F --> G G --> H[\"Validation / Closeout\"] Goal 的重点是让长任务的每一阶段都有边界、证据和停止条件，而不是单纯保持运行。 何时使用",
+      "text": "Goal 适合跨阶段、跨仓库、需要 artifact、需要 subagent 或需要 closeout 的任务。Codex 在执行中会依据目标与验收标准检查进度。停止条件是写给模型的判断边界，由模型结合任务状态决定何时停止或报告阻塞，并不是用户配置后由系统自动触发的事件规则。六字段 Goal 模板是本指南推荐的提示词结构，不是原生 UI 的六个固定输入框。你可以从最小合同开始，再按风险补充上下文和范围。Goal 是当前长任务的临时合同；AGENTS.md 则是跨任务持续生效的项目规则，两者不能互相替代。 flowchart TD A[\"Objective\"] --> B[\"Scope / Stop Conditions\"] B --> C[\"Context / AGENTS.md\"] C --> D{\"需要拆分吗？\"} D -->|是| E[\"Subagents / 专家审查\"] D -->|否| F[\"主线程执行\"] E --> G[\"整合结果\"] F --> G G --> H[\"Validation / Closeout\"] Goal 的重点是让长任务的每一阶段都有边界、证据和停止条件，而不是单纯保持运行。 何时使用",
       "title": "Goal"
     },
     {
@@ -1607,10 +1627,11 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h2",
       "page": "goal.html",
       "prompts": [
-        "Objective:\n把指南拆成多页面 GitHub Pages 文档站。\n\nScope:\n- Include: HTML pages, assets/site.css, assets/site.js\n- Exclude: PDF 和 LaTeX\n\nAcceptance:\n- 每个页面可访问，导航可跳转\n- GitHub Pages built\n\nStop Conditions:\n- 官方资料无法访问\n- 共享资源导致页面不可读"
+        "Objective: 把指南拆成可访问的多页面 GitHub Pages 文档站。\nAcceptance: 每个页面可访问，导航可跳转。\nValidation: 运行静态站点检查，并核对 GitHub Pages 状态。\nStop: 官方资料无法访问，或共享资源导致页面不可读。",
+        "Objective: 把指南拆成可访问的多页面 GitHub Pages 文档站。\nContext: 先读 AGENTS.md、站点 manifest、现有页面结构和发布检查。\nScope: 只改批准的 HTML 页面；不改 PDF、LaTeX 和无关 dirty 文件。\nAcceptance: 每个页面可访问，导航可跳转，公开页面内容正确。\nValidation: 静态检查、diff review、本地浏览器抽样、Pages built。\nStop: 来源冲突、写域扩大、验证失败或发布权限不足。"
       ],
       "section": "可复制示例",
-      "text": "Objective: 把指南拆成多页面 GitHub Pages 文档站。 Scope: - Include: HTML pages, assets/site.css, assets/site.js - Exclude: PDF 和 LaTeX Acceptance: - 每个页面可访问，导航可跳转 - GitHub Pages built Stop Conditions: - 官方资料无法访问 - 共享资源导致页面不可读 设计",
+      "text": "最小版：先写 Objective、Acceptance、Validation 和 Stop，让结果、证据与停止边界可见。Objective: 把指南拆成可访问的多页面 GitHub Pages 文档站。 Acceptance: 每个页面可访问，导航可跳转。 Validation: 运行静态站点检查，并核对 GitHub Pages 状态。 Stop: 官方资料无法访问，或共享资源导致页面不可读。完整版：任务跨目录、涉及敏感边界或需要交接时，再加入 Context 与 Scope。Objective: 把指南拆成可访问的多页面 GitHub Pages 文档站。 Context: 先读 AGENTS.md、站点 manifest、现有页面结构和发布检查。 Scope: 只改批准的 HTML 页面；不改 PDF、LaTeX 和无关 dirty 文件。 Acceptance: 每个页面可访问，导航可跳转，公开页面内容正确。 Validation: 静态检查、diff review、本地浏览器抽样、Pages built。 Stop: 来源冲突、写域扩大、验证失败或发布权限不足。 设计",
       "title": "Goal"
     },
     {
@@ -1619,7 +1640,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "goal.html",
       "prompts": [],
       "section": "一个好 Goal 必须包含什么",
-      "text": "Goal 用来防止长任务在上下文中逐渐偏离。它必须能执行、能验收，遇到失败也知道何时停。",
+      "text": "Goal 的价值是让长任务不会在上下文里漂移。它不是标题，也不是一句愿望，而是能被执行、能被验收、能在失败时停止的合同。",
       "title": "Goal"
     },
     {
@@ -1722,7 +1743,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "workflows.html",
       "prompts": [],
       "section": "",
-      "text": "根据任务复杂度选择合适的 Codex 工作流。",
+      "text": "根据任务复杂度选择工作流，并用推荐 receipt 实践收口。",
       "title": "任务路径"
     },
     {
@@ -1731,7 +1752,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "workflows.html",
       "prompts": [],
       "section": "先选工作面，再写任务",
-      "text": "先按范围、风险和协作人数选入口。短小、低风险、单文件任务直接进入五阶段循环，不需要 Issue 或 Worktree；多文件、高风险或多人写入任务升级到 团队工程流程。 短小 / 低风险 / 单文件Desktop 直接循环固定一个写域最窄验证后签发 receipt 页面 / 视觉Desktop + in-app browser先给页面与目标状态URL、截图或页面抽样 代码 / 测试Desktop + integrated terminal保留失败日志与边界最窄测试、构建或 diff 多文件 / 高风险 / 多人写入升级团队工程流程Issue、依赖与互斥写域Worktree、PR、独立 review、CI 稳定重复任务Automations + 隔离环境定义停止条件run 记录与异常 receipt",
+      "text": "先按范围、风险和协作人数选入口。短小、低风险、单文件任务直接进入五阶段循环，不需要 Issue 或 Worktree；多文件、高风险或多人写入任务升级到 团队工程流程。 短小 / 低风险 / 单文件Desktop 直接循环固定一个写域最窄验证后签发 receipt 页面 / 视觉Desktop + in-app browser先给页面与目标状态URL、截图或页面抽样 代码 / 测试Desktop + integrated terminal保留失败日志与边界最窄测试、构建或 diff 多文件 / 高风险 / 多人写入升级团队工程流程Issue、依赖与互斥写域Worktree、PR、独立 review、CI 稳定重复任务Scheduled tasks + 隔离环境定义停止条件运行记录与异常 receipt",
       "title": "任务路径"
     },
     {
@@ -1784,8 +1805,8 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h3",
       "page": "workflows.html",
       "prompts": [],
-      "section": "自动化",
-      "text": "把稳定重复任务放进 Automations，并用后台 worktree 隔离改动。",
+      "section": "定时任务",
+      "text": "把稳定重复任务放进 Scheduled tasks，并用后台 worktree 隔离改动。",
       "title": "任务路径"
     },
     {
@@ -1973,7 +1994,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "workflows.html",
       "prompts": [],
       "section": "用两种终态收口",
-      "text": "receipt 只能是 done 或 blocked。两者都必须列出 changed scope、behavior_changed、验证证据、风险或阻塞，以及明确下一步。",
+      "text": "receipt 是本指南推荐的任务收口实践，不是 Codex 原生 UI 功能。本指南把它分为 done 或 blocked；两者都应列出 changed scope、behavior_changed、验证证据、风险或阻塞，以及明确下一步。",
       "title": "任务路径"
     },
     {
@@ -2065,7 +2086,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "daily-workflow.html",
       "prompts": [],
       "section": "",
-      "text": "完成解释、修复、测试和审查等日常任务。",
+      "text": "完成解释、修复、测试和审查，并用推荐 closeout 字段收口。",
       "title": "日常任务 workflow"
     },
     {
@@ -2312,10 +2333,10 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h3",
       "page": "daily-workflow.html",
       "prompts": [
-        "完成情况：\n- 改了 [文件/模块]，实现了 [可观察行为]\n\n验证：\n- 运行了 [命令]，结果 [通过/失败/无法运行及原因]\n- 访问了 [URL/页面]，确认 [关键内容]\n\n风险：\n- 未验证 [范围]，原因是 [原因]\n- 需要你人工确认 [事项]\n\n交付：\n- commit: [hash]\n- 链接: [URL]"
+        "changed scope：实际改动的文件、模块或页面\nbehavior_changed：用户可观察的行为变化；没有则写 false\nvalidation evidence：测试、构建、URL、截图或人工检查结论\nrisk-or-blocker：剩余风险、未运行检查或当前阻塞\nnext step：发布、人工确认、继续修复或无需动作"
       ],
       "section": "推荐 closeout 模板",
-      "text": "完成情况： - 改了 [文件/模块]，实现了 [可观察行为] 验证： - 运行了 [命令]，结果 [通过/失败/无法运行及原因] - 访问了 [URL/页面]，确认 [关键内容] 风险： - 未验证 [范围]，原因是 [原因] - 需要你人工确认 [事项] 交付： - commit: [hash] - 链接: [URL] 失败模式",
+      "text": "这是本指南推荐实践，不是 Codex 原生 UI。字段与任务页的 receipt 保持一致：changed scope：实际改动的文件、模块或页面 behavior_changed：用户可观察的行为变化；没有则写 false validation evidence：测试、构建、URL、截图或人工检查结论 risk-or-blocker：剩余风险、未运行检查或当前阻塞 next step：发布、人工确认、继续修复或无需动作 失败模式",
       "title": "日常任务 workflow"
     },
     {
@@ -2450,7 +2471,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "engineering.html",
       "prompts": [],
       "section": "",
-      "text": "从需求澄清到验证发布的工程任务路径。",
+      "text": "用用户、编排线程和执行线程组织从需求澄清到验证发布的工程任务。",
       "title": "工程 flow"
     },
     {
@@ -2459,7 +2480,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "engineering.html",
       "prompts": [],
       "section": "从 Idea 到 task receipt",
-      "text": "先把产品问题变成合同，再把同一份合同逐层细化。需要任务入口、长目标、Worktree 隔离、代理分工或指令层级时，分别参考 任务路径、Goal、Worktrees、Subagents 与 AGENTS.md。 flowchart TD A[\"Idea\"] --> B[\"Matt-style grill\"] B --> C[\"ce-brainstorm Product Contract\"] C --> D[\"ce-plan 统一实施计划\"] D --> E[\"Issues 与依赖图\"] E --> F[\"Worktrees / subagents\"] F --> G[\"PR + 独立 review + CI\"] G --> H[\"经授权合并主分支\"] H --> I[\"主分支 / 公开页面验证\"] I --> J[\"task receipt\"] C -->|驳回| B D -->|not ready| D E -->|依赖或写域重叠| E G -->|验证失败 / changes / CI red| F H -->|未授权| K[\"blocked receipt\"] I -->|失败| K 团队协作主流程及失败回路。图形不可用时，紧邻下方的文字版提供完全等价的顺序与门禁。 1. Idea → grill先读证据并做 Matt-style grill开放问题不能带入实现Product Contract 驳回就回到 grill 2. Contract → plance-brainstorm 固化 Product Contractce-plan 细化同一份统一实施计划plan 不 ready 就留在 plan 3. Issues → lanes建立依赖图和互斥写域Worktree / subagent 只接明确 lane依赖或写域重叠就回 issue slicing 4. PR → review提交 PR、独立 review、运行 CIreviewer 记录合同、diff、disposition验证失败、changes 或 CI red 回 implementation 5. Merge → receipt获得授权后合并主分支更新基线并验证主分支/公开页面未授权或最终验证失败，输出 blocked receipt A2 / A3 / A4",
+      "text": "先把产品问题变成合同，再把同一份合同逐层细化。下述 ce-brainstorm、ce-plan 等 CE 流程需要先安装 Compound Engineering；未安装时可沿用相同步骤，但不能假定命令可用。需要任务入口、长目标、Worktree 隔离、代理分工或指令层级时，分别参考 任务路径、Goal、Worktrees、Subagents 与 AGENTS.md。 flowchart TD A[\"Idea\"] --> B[\"Matt-style grill\"] B --> C[\"ce-brainstorm Product Contract\"] C --> D[\"ce-plan 统一实施计划\"] D --> E[\"Issues 与依赖图\"] E --> F[\"Worktrees / subagents\"] F --> G[\"PR + 独立 review + CI\"] G --> H[\"经授权合并主分支\"] H --> I[\"主分支 / 公开页面验证\"] I --> J[\"task receipt\"] C -->|驳回| B D -->|not ready| D E -->|依赖或写域重叠| E G -->|验证失败 / changes / CI red| F H -->|未授权| K[\"blocked receipt\"] I -->|失败| K 团队协作主流程及失败回路。图形不可用时，紧邻下方的文字版提供完全等价的顺序与门禁。 1. Idea → grill先读证据并做 Matt-style grill开放问题不能带入实现Product Contract 驳回就回到 grill 2. Contract → plance-brainstorm 固化 Product Contractce-plan 细化同一份统一实施计划plan 不 ready 就留在 plan 3. Issues → lanes建立依赖图和互斥写域Worktree / subagent 只接明确 lane依赖或写域重叠就回 issue slicing 4. PR → review提交 PR、独立 review、运行 CIreviewer 记录合同、diff、disposition验证失败、changes 或 CI red 回 implementation 5. Merge → receipt获得授权后合并主分支更新基线并验证主分支/公开页面未授权或最终验证失败，输出 blocked receipt 角色与权限",
       "title": "工程 flow"
     },
     {
@@ -2467,8 +2488,8 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h2",
       "page": "engineering.html",
       "prompts": [],
-      "section": "双层角色与权限",
-      "text": "第一层定义责任，第二层定义动作权限。A3 负责整合，但不能替代 A2 的产品批准；A4 提供独立证据，不能越过写域或自行发布。",
+      "section": "用户、编排线程与执行线程",
+      "text": "A2/A3/A4 是本指南的教学框架，不是 Codex 原生角色名。主要角色分别是用户、编排线程和执行线程；编排线程负责整合但不能替代用户的产品批准，执行线程提供实现或独立证据且不能越过写域自行发布。",
       "title": "工程 flow"
     },
     {
@@ -2476,7 +2497,7 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h3",
       "page": "engineering.html",
       "prompts": [],
-      "section": "A2 用户 / 产品负责人",
+      "section": "用户（A2）",
       "text": "拥有产品意图、Product Contract、范围变化和最终合并授权；验收 receipt，并决定 blocked 项如何处理。",
       "title": "工程 flow"
     },
@@ -2485,8 +2506,8 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h3",
       "page": "engineering.html",
       "prompts": [],
-      "section": "A3 主线程 / 编排者",
-      "text": "维护唯一合同与统一计划，切 issue、分配写域、集成结果、处理 review disposition，并向 A2 报告可审计证据。",
+      "section": "编排线程（A3）",
+      "text": "维护唯一合同与统一计划，切 issue、分配写域、集成结果、处理 review disposition，并向用户报告可审计证据。",
       "title": "工程 flow"
     },
     {
@@ -2494,7 +2515,7 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h3",
       "page": "engineering.html",
       "prompts": [],
-      "section": "A4 subagent / 独立 reviewer",
+      "section": "执行线程 / 独立 reviewer（A4）",
       "text": "在被分配的只读或隔离写域内工作。reviewer 必须未参与实现，且不共享被审 lane 的写域。 动作A2 用户 / 产品负责人A3 主线程 / 编排者A4 subagent / reviewer Product Contract 批准批准、驳回或收窄基于 grill 起草并维护版本只提供证据与风险 计划 readiness确认产品验收口径补齐依赖、写域和验证后判定独立检查缺口，不自行放行 Issue定优先级与产品边界创建、切片、维护依赖图只执行被分配 issue Worktree / branch批准超出既定合同的隔离需求按 lane 创建、登记、回收不得自行创建或切换 扩范围批准新版合同停止当前 lane 并申请变更停止并上报，不擅自扩写域 commit / push对外 push 需明确 grant可按合同 commit；push 仅在 grant 内禁止 commit/push，只返回文件与验证证据 PR授予目标仓库与 base 范围在有效 grant 内创建/更新不创建或更新 PR review resolution裁决产品分歧逐项记录接受、修复或有据拒绝独立 reviewer 只给 disposition 建议 merge逐次明确授权仅在授权、review、CI 都满足时执行禁止合并 receipt验收或要求补证签发 done / blocked receipt提交本 lane 的证据与未验证项",
       "title": "工程 flow"
     },
@@ -2504,7 +2525,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "engineering.html",
       "prompts": [],
       "section": "外部写入 grant",
-      "text": "push、PR、评论、发布、merge 等外部写入必须使用有明确 scope、目标 base、允许动作和到期条件的 grant；默认不会跨任务继承。",
+      "text": "grant 是提示词层面的授权约定，不能扩大 Desktop 的沙箱、审批、账号或组织权限。push、PR、评论、发布、merge 等外部写入还必须处于实际权限边界内，并写清 scope、目标 base、允许动作和到期条件；默认不会跨任务继承。",
       "title": "工程 flow"
     },
     {
@@ -2513,7 +2534,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "engineering.html",
       "prompts": [],
       "section": "自动失效",
-      "text": "scope、base、review 结论或 redaction 要求发生变化，原 grant 立即失效。A3 必须停下，重新说明影响并向 A2 申请授权。 Issue 分工",
+      "text": "scope、base、review 结论或 redaction 要求发生变化，原 grant 立即失效。A3 必须停下，重新展示影响并向 A2 申请授权。 Issue 分工",
       "title": "工程 flow"
     },
     {
@@ -2585,7 +2606,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "engineering.html",
       "prompts": [],
       "section": "独立 reviewer 合同",
-      "text": "独立 reviewer 必须没有实现该 lane，也不共享该 lane 的写域。其任务是验证约定，不是接管实现。 Acceptance contract记录要满足的行为、边界和验证固定 review 使用的 base / head合同变化即重新审查 Diff检查实际 diff 和生成产物核对无越界文件、无隐藏副作用不只依赖实现者摘要 Dispositionapprove / changes requested / blocked每项 finding 有证据和严重度A3 逐项记录 resolution 真实实例",
+      "text": "独立 reviewer 必须没有实现该 lane，也不共享该 lane 的写域。其任务是验证约定，不是接管实现；即使换成独立线程，使用相同模型仍可能共享盲点，因此关键安全、数据、权限和发布变更必须由人类审查。 Acceptance contract记录要满足的行为、边界和验证固定 review 使用的 base / head合同变化即重新审查 Diff检查实际 diff 和生成产物核对无越界文件、无隐藏副作用不只依赖实现者摘要 Dispositionapprove / changes requested / blocked每项 finding 有证据和严重度A3 逐项记录 resolution 真实实例",
       "title": "工程 flow"
     },
     {
@@ -3005,8 +3026,8 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "automation.html",
       "prompts": [],
       "section": "",
-      "text": "把稳定重复任务交给 Codex Desktop Automations。",
-      "title": "自动化"
+      "text": "配置 Scheduled tasks、Scheduled 视图、运行环境与无人值守安全边界。",
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "什么时候值得自动化",
@@ -3014,17 +3035,17 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "automation.html",
       "prompts": [],
       "section": "什么时候值得自动化",
-      "text": "同一类任务反复出现，输入可以参数化，输出可以验证，失败能安全停止，这时才考虑 Automations。先人工跑通，再让后台任务按计划重复执行。",
-      "title": "自动化"
+      "text": "同一类任务反复出现，输入可以参数化，输出可以验证，失败能安全停止，这时才考虑 Scheduled tasks（定时任务）。先人工跑通，再让后台任务按计划重复执行。",
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "适合-automations",
       "level": "h3",
       "page": "automation.html",
       "prompts": [],
-      "section": "适合 Automations",
-      "text": "批量 review、生成结构化报告、检查文档漂移、分析日志、定期跑本地站点检查。",
-      "title": "自动化"
+      "section": "适合定时任务",
+      "text": "批量审查、生成结构化报告、检查文档漂移、分析日志、定期跑本地站点检查。",
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "适合后台-worktree",
@@ -3033,7 +3054,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "适合后台 worktree",
       "text": "对 Git 仓库中的重复任务使用独立后台 worktree，避免直接污染未完成的本地工作区。",
-      "title": "自动化"
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "适合本地脚本",
@@ -3042,7 +3063,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "适合本地脚本",
       "text": "稳定输入输出的仓库任务，例如生成索引、检查链接、归档实验结果。",
-      "title": "自动化"
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "自动化前置条件",
@@ -3051,7 +3072,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "自动化前置条件",
       "text": "输入稳定同类任务重复出现，参数能结构化。输出可验JSONL、测试结果、PR comment 或文件产物。失败会停权限、网络、测试失败时必须停止并报告。",
-      "title": "自动化"
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "不该自动化的任务",
@@ -3059,8 +3080,37 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "automation.html",
       "prompts": [],
       "section": "不该自动化的任务",
-      "text": "需求未定还需要人判断产品方向或论文 claim。权限过宽需要生产 secret、外部写入或不可回滚操作。验证缺失没有测试、没有审查点、没有输出结构。 模式",
-      "title": "自动化"
+      "text": "需求未定还需要人判断产品方向或论文 claim。权限过宽需要生产 secret、外部写入或不可回滚操作。验证缺失没有测试、没有审查点、没有输出结构。 配置",
+      "title": "Scheduled tasks（定时任务）"
+    },
+    {
+      "fragment": "创建定时任务",
+      "level": "h2",
+      "page": "automation.html",
+      "prompts": [],
+      "section": "在 Desktop 或 Web 中创建定时任务",
+      "text": "打开 Scheduled，选择新建任务；结果与历次运行也在 Scheduled 视图查看。项目任务只有在机器开机且 ChatGPT desktop app 正在运行时才能执行。",
+      "title": "Scheduled tasks（定时任务）"
+    },
+    {
+      "fragment": "逐项配置",
+      "level": "h3",
+      "page": "automation.html",
+      "prompts": [],
+      "section": "逐项配置",
+      "text": "描述要完成的工作，并设置 schedule / cadence（执行时间或频率）。选择继续当前任务，还是创建独立任务。项目任务选择 Local 或新 worktree；不确定时优先新 worktree 隔离改动。选择模型与推理强度，并核对默认 sandbox（沙箱）权限。保存前先把同一提示词作为普通任务跑通；上线后人工审查前几次运行。",
+      "title": "Scheduled tasks（定时任务）"
+    },
+    {
+      "fragment": "配置模板",
+      "level": "h3",
+      "page": "automation.html",
+      "prompts": [
+        "任务：检查文档命令是否与仓库脚本一致\nSchedule：每周一 09:00（Asia/Shanghai）\n上下文：继续当前任务 / 独立任务\n环境：Local / 新 worktree\n模型与推理：按任务复杂度选择\n权限：默认 sandbox；禁止外部写入\n输出：文件、证据、风险、下一步\n停止条件：命令失败、需要 secret 或范围不明时停止"
+      ],
+      "section": "配置模板",
+      "text": "任务：检查文档命令是否与仓库脚本一致 Schedule：每周一 09:00（Asia/Shanghai） 上下文：继续当前任务 / 独立任务 环境：Local / 新 worktree 模型与推理：按任务复杂度选择 权限：默认 sandbox；禁止外部写入 输出：文件、证据、风险、下一步 停止条件：命令失败、需要 secret 或范围不明时停止 模式",
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "三种实用自动化模式",
@@ -3068,41 +3118,41 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "automation.html",
       "prompts": [],
       "section": "三种实用自动化模式",
-      "text": "自动化要先写清输入、权限、输出和失败策略，命令只是其中一部分。",
-      "title": "自动化"
+      "text": "自动化的关键不是命令本身，而是输入、权限、输出和失败策略。",
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "只读审查",
       "level": "h3",
       "page": "automation.html",
       "prompts": [
-        "Automation prompt:\nReview this diff for missing tests.\nOutput JSONL with fields:\nseverity, file, finding, evidence, recommendation.\nDo not edit files."
+        "定时任务提示词：\nReview this diff for missing tests.\nOutput JSONL with fields:\nseverity, file, finding, evidence, recommendation.\nDo not edit files."
       ],
       "section": "只读审查",
-      "text": "Automation prompt: Review this diff for missing tests. Output JSONL with fields: severity, file, finding, evidence, recommendation. Do not edit files.",
-      "title": "自动化"
+      "text": "定时任务提示词： Review this diff for missing tests. Output JSONL with fields: severity, file, finding, evidence, recommendation. Do not edit files.",
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "失败日志解释",
       "level": "h3",
       "page": "automation.html",
       "prompts": [
-        "Automation prompt:\nRead the latest failure log and explain root cause.\nReturn:\n- failing command\n- likely cause\n- minimal fix\n- whether local reproduction is needed."
+        "定时任务提示词：\nRead the latest failure log and explain root cause.\nReturn:\n- failing command\n- likely cause\n- minimal fix\n- whether local reproduction is needed."
       ],
       "section": "失败日志解释",
-      "text": "Automation prompt: Read the latest failure log and explain root cause. Return: - failing command - likely cause - minimal fix - whether local reproduction is needed.",
-      "title": "自动化"
+      "text": "定时任务提示词： Read the latest failure log and explain root cause. Return: - failing command - likely cause - minimal fix - whether local reproduction is needed.",
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "文档漂移检查",
       "level": "h3",
       "page": "automation.html",
       "prompts": [
-        "Automation prompt:\nCompare README, AGENTS.md, and project scripts.\nReport stale commands, missing setup steps, and risky assumptions.\nDo not modify files."
+        "定时任务提示词：\nCompare README, AGENTS.md, and project scripts.\nReport stale commands, missing setup steps, and risky assumptions.\nDo not modify files."
       ],
       "section": "文档漂移检查",
-      "text": "Automation prompt: Compare README, AGENTS.md, and project scripts. Report stale commands, missing setup steps, and risky assumptions. Do not modify files. 安全",
-      "title": "自动化"
+      "text": "定时任务提示词： Compare README, AGENTS.md, and project scripts. Report stale commands, missing setup steps, and risky assumptions. Do not modify files. 安全",
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "自动化安全阀",
@@ -3110,8 +3160,8 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "automation.html",
       "prompts": [],
       "section": "自动化安全阀",
-      "text": "自动化最危险的地方，是它把一次错误变成重复错误。每个自动化任务都应写明权限和停止条件。",
-      "title": "自动化"
+      "text": "定时任务最危险的地方，是它把一次错误变成重复错误。每个任务都应写明权限和停止条件。",
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "最小权限",
@@ -3120,7 +3170,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "最小权限",
       "text": "能只读就只读；能限定目录就限定目录；需要网络时说明访问目标。",
-      "title": "自动化"
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "结构化输出",
@@ -3129,7 +3179,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "结构化输出",
       "text": "优先 JSONL、表格或固定字段，避免自动化结果无法被脚本和人复核。",
-      "title": "自动化"
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "人工-checkpoint",
@@ -3138,18 +3188,27 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "人工 checkpoint",
       "text": "涉及写文件、发布、PR comment、外部系统写入时保留人工确认点。",
-      "title": "自动化"
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "失败即停止",
       "level": "h3",
       "page": "automation.html",
-      "prompts": [
-        "自动化任务模板：\nInput:\n- repo/path:\n- target files:\n- task type:\n\nPermission:\n- read:\n- write:\n- network:\n- external systems:\n\nOutput:\n- format:\n- required fields:\n- artifact path:\n\nStop:\n- missing context\n- command failure\n- ambiguous requirement\n- unsafe permission request"
-      ],
+      "prompts": [],
       "section": "失败即停止",
-      "text": "权限失败、测试失败、上下文缺失、网络不可达时不要继续猜测执行。 自动化任务模板： Input: - repo/path: - target files: - task type: Permission: - read: - write: - network: - external systems: Output: - format: - required fields: - artifact path: Stop: - missing context - command failure - ambiguous requirement - unsafe permission request 真实实例",
-      "title": "自动化"
+      "text": "权限失败、测试失败、上下文缺失、网络不可达时不要继续猜测执行。",
+      "title": "Scheduled tasks（定时任务）"
+    },
+    {
+      "fragment": "无人值守禁区",
+      "level": "h3",
+      "page": "automation.html",
+      "prompts": [
+        "定时任务模板：\nInput:\n- repo/path:\n- target files:\n- task type:\n\nPermission:\n- read:\n- write:\n- network:\n- external systems:\n\nOutput:\n- format:\n- required fields:\n- artifact path:\n\nStop:\n- missing context\n- command failure\n- ambiguous requirement\n- unsafe permission request"
+      ],
+      "section": "无人值守禁区",
+      "text": "不要在无人值守的 Scheduled tasks 中运行 /lfg，也不要调用任何会自动 commit、push、打开 PR 或反复修复 CI 的 skill。仓库应启用 protected branch，任务使用最小权限；任何写入、提交与发布结果都必须由人审查，merge 只由人执行。 定时任务模板： Input: - repo/path: - target files: - task type: Permission: - read: - write: - network: - external systems: Output: - format: - required fields: - artifact path: Stop: - missing context - command failure - ambiguous requirement - unsafe permission request 真实实例",
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "真实实例-自动检查网页链接和关键标题",
@@ -3158,7 +3217,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "真实实例：自动检查网页链接和关键标题",
       "text": "这份手册每次修改后，都可以把“本地链接检查 + 公开页面关键标题抽样”沉淀为自动化。这个任务适合自动化：输入稳定、输出可验，失败时也能安全停止。",
-      "title": "自动化"
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "输入",
@@ -3167,7 +3226,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "输入",
       "text": "坏输入是“每天帮我看一下”；修复后写清频率、项目、输出字段和停止条件。",
-      "title": "自动化"
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "先读",
@@ -3176,7 +3235,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "先读",
       "text": "README、AGENTS.md、验证脚本、最近失败日志和自动化权限设置。",
-      "title": "自动化"
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "应动文件",
@@ -3185,7 +3244,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "应动文件",
       "text": "自动化 prompt、检查脚本或报告路径；不直接改生产 secret 或外部系统。",
-      "title": "自动化"
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "验证",
@@ -3193,8 +3252,8 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "automation.html",
       "prompts": [],
       "section": "验证",
-      "text": "先在普通 Desktop 线程手动跑通，再安排 Automations。",
-      "title": "自动化"
+      "text": "先在普通 Desktop 任务手动跑通，再安排 Scheduled tasks；发布后在 Scheduled 视图审查前几次运行。",
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "最终回答",
@@ -3203,7 +3262,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "最终回答",
       "text": "列出 findings、证据路径、是否需要人工处理和下一次运行条件。",
-      "title": "自动化"
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "失败停止",
@@ -3212,7 +3271,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "失败停止",
       "text": "权限不足、输入缺失、网络不可达、验证脚本失败时不要继续猜测。",
-      "title": "自动化"
+      "title": "Scheduled tasks（定时任务）"
     },
     {
       "fragment": "",
@@ -3220,8 +3279,8 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "compound-engineering.html",
       "prompts": [],
       "section": "",
-      "text": "在 Codex Desktop 中使用 Compound Engineering plugin。",
-      "title": "Compound Engineering"
+      "text": "使用 Compound Engineering 插件命令，并约束 /lfg 与无人值守任务边界。",
+      "title": "Compound Engineering plugin"
     },
     {
       "fragment": "它是什么",
@@ -3229,8 +3288,8 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "compound-engineering.html",
       "prompts": [],
       "section": "它是什么",
-      "text": "这个仓库提供 Compound Engineering 插件，用一组 /ce-* skills 组织需求澄清、计划、执行、审查和经验沉淀。在 Codex Desktop 里，它适合多步骤功能、复杂 bug、PR 前审查和团队知识复用。 官方来源：EveryInc GitHub repo Codex Desktop：custom marketplace 安装 经验建议：先小任务验证，再交给长流程 安装",
-      "title": "Compound Engineering"
+      "text": "这个仓库提供 Compound Engineering 插件：用一组 /ce-* skills 把工程任务从“随手改”变成“先澄清、再计划、再执行、再审查、再沉淀”。Codex 通用 skill 用 $skill-name mention；本页保留的 /ce-* 是该插件自己定义的 slash 命令，不应机械改写，实际命令以上游当前 README 为准。在 Codex Desktop 里，它适合多步骤功能、复杂 bug、PR 前审查和团队知识复用。 官方来源：EveryInc GitHub repo Codex Desktop：custom marketplace 安装 经验建议：先小任务验证，再交给长流程 安装",
+      "title": "Compound Engineering plugin"
     },
     {
       "fragment": "在-codex-desktop-里安装",
@@ -3239,7 +3298,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "在 Codex Desktop 里安装",
       "text": "打开 Plugins在 Codex Desktop 侧边栏进入 Plugins。 添加 marketplace选择 Add / Add plugin marketplace。 填写来源Source 填 EveryInc/compound-engineering-plugin，Git ref 填 main，Sparse paths 留空。 安装并重启添加后选择 Compound Engineering，安装 compound-engineering，然后重启 Codex。 仓库入口：everyinc/compound-engineering-plugin。 设置",
-      "title": "Compound Engineering"
+      "title": "Compound Engineering plugin"
     },
     {
       "fragment": "第一次进入项目后先跑什么",
@@ -3250,7 +3309,7 @@ window.GUIDE_SEARCH_INDEX = {
       ],
       "section": "第一次进入项目后先跑什么",
       "text": "安装后，在目标仓库的新线程里先运行 /ce-setup。它会检查 repo-local 配置、可用工具和本机设置，帮助确认插件已加载，也能避免把机器配置误写进仓库。 /ce-setup 项目方向还不清楚时，用 /ce-strategy 建立或维护 STRATEGY.md。如果只是一个明确任务，不要为了流程完整而强行创建策略文件。 核心循环",
-      "title": "Compound Engineering"
+      "title": "Compound Engineering plugin"
     },
     {
       "fragment": "核心七步怎么用",
@@ -3259,7 +3318,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "核心七步怎么用",
       "text": "1. /ce-ideate发现并筛选值得探索的方向不要过早收敛成方案证据：候选、basis、淘汰理由 2. /ce-brainstorm把选中方向澄清为需求不要直接写代码证据：范围、用户目标、验收 3. /ce-plan把需求转成实现计划不要把风险藏进执行阶段证据：文件、步骤、验证 4. /ce-work按计划执行实现不要扩大写域证据：diff、测试、日志 5. /ce-simplify-code收紧刚写出的代码不要提前抽象证据：更小 diff、更清楚路径 6. /ce-code-review按计划审查实现不要只看样式问题证据：风险、缺测、修复项 7. /ce-compound把经验写入可复用文档不要记录一次性噪声证据：docs/solutions/ 里的结论 统一计划",
-      "title": "Compound Engineering"
+      "title": "Compound Engineering plugin"
     },
     {
       "fragment": "product-contract-和实施计划写在同一份文档",
@@ -3268,7 +3327,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "Product Contract 和实施计划写在同一份文档",
       "text": "/ce-ideate 先筛选有依据的候选方向；选中 survivor 后，/ce-brainstorm 把用户、范围、验收、非目标和失败条件写成轻量 Product Contract。确认后，/ce-plan 在同一份计划中补充文件、依赖、U-ID、测试场景和 Definition of Done。不要另起一份 PRD，让两个事实源慢慢分叉。 Product Contract用户目标、范围、非目标、验收由用户或产品负责人确认未确认就回到 brainstorm Implementation plan文件、依赖、U-ID、验证合同由主线程补齐并审阅 readiness不 ready 就继续规划 Issues / lanes从已确认计划派生，不另写需求按依赖和不重叠写域执行完整团队路径见 团队协作规范 选择",
-      "title": "Compound Engineering"
+      "title": "Compound Engineering plugin"
     },
     {
       "fragment": "常见情况选哪个-skill",
@@ -3277,7 +3336,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "常见情况选哪个 skill",
       "text": "",
-      "title": "Compound Engineering"
+      "title": "Compound Engineering plugin"
     },
     {
       "fragment": "还不知道做什么",
@@ -3286,7 +3345,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "还不知道做什么",
       "text": "用 /ce-ideate，让它从代码、问题和候选方向里筛出值得进入 brainstorm 的任务。",
-      "title": "Compound Engineering"
+      "title": "Compound Engineering plugin"
     },
     {
       "fragment": "这是-bug",
@@ -3295,7 +3354,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "这是 bug",
       "text": "用 /ce-debug，先复现和定位根因，再修复和准备审查。",
-      "title": "Compound Engineering"
+      "title": "Compound Engineering plugin"
     },
     {
       "fragment": "在评估外部方案",
@@ -3304,7 +3363,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "在评估外部方案",
       "text": "用 /ce-pov，给出项目上下文里的采用、拒绝或 spike 判断。",
-      "title": "Compound Engineering"
+      "title": "Compound Engineering plugin"
     },
     {
       "fragment": "刚做完一批代码",
@@ -3313,7 +3372,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "刚做完一批代码",
       "text": "用 /ce-simplify-code 后再 review，避免把临时实现直接推给审查。",
-      "title": "Compound Engineering"
+      "title": "Compound Engineering plugin"
     },
     {
       "fragment": "想全自动交付",
@@ -3321,8 +3380,8 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "compound-engineering.html",
       "prompts": [],
       "section": "想全自动交付",
-      "text": "/lfg 只适合需求已经澄清、分支/PR/验证/推送边界明确的任务；一行粗需求不要直接交给它。 提示词（Prompts）",
-      "title": "Compound Engineering"
+      "text": "/lfg 只适合需求已经澄清、分支/PR/验证/推送边界明确且有人值守审查的任务；一行粗需求不要直接交给它。严禁在无人值守的 Scheduled tasks 中运行 /lfg，或运行任何会自动 commit、push、打开 PR、反复修复 CI 的 skill。使用 protected branch 和最小权限，并由人 review、merge。 提示词（Prompts）",
+      "title": "Compound Engineering plugin"
     },
     {
       "fragment": "可复制输入",
@@ -3336,7 +3395,7 @@ window.GUIDE_SEARCH_INDEX = {
       ],
       "section": "可复制输入",
       "text": "/ce-ideate 主题：后台任务可靠性。 目标：从代码、历史问题和外部先例中筛选值得继续探索的方向。 要求：给每个入选方向标明 basis、代价和淘汰其他候选的理由。 /ce-brainstorm 目标：让后台任务重试更安全。 背景：现在重复 webhook 偶尔创建重复记录。 边界：先只讨论需求和验收，不改代码。 /ce-plan 基于刚才的 brainstorm 输出，生成实现计划。 要求：列出要读的文件、最小修改点、验证命令和停止条件。 /ce-debug 结账 webhook 偶尔重复创建 invoice。 请先复现或定位根因；没有证据时不要猜测修复。 边界",
-      "title": "Compound Engineering"
+      "title": "Compound Engineering plugin"
     },
     {
       "fragment": "使用边界",
@@ -3345,7 +3404,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "使用边界",
       "text": "先读项目规则让 Codex 读取 AGENTS.md、README 和相关源码，再进入 CE 流程。 写清楚验收每个长流程都要有测试、构建、页面检查、PR check 或人工验收标准。 外部写操作先确认提交、推送、开 PR、改 issue、改设计稿或触发部署前，先说明目标和证据。 不要把流程当结果跑过一个 skill 不等于完成；最终仍要看 diff、验证和用户可检查的输出。 真实实例",
-      "title": "Compound Engineering"
+      "title": "Compound Engineering plugin"
     },
     {
       "fragment": "真实实例-历史案例",
@@ -3354,7 +3413,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "真实实例：历史案例",
       "text": "历史案例公开仓库证据 本指南的“高 stars skills 仓库介绍”经过 requirements-only brainstorm、同一份计划的实施补全、LFG 交付、PR #1、静态验证和默认分支合并。这里引用的是公开仓库记录，不把流程名称当成完成证据。",
-      "title": "Compound Engineering"
+      "title": "Compound Engineering plugin"
     },
     {
       "fragment": "请求",
@@ -3363,7 +3422,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "请求",
       "text": "把四个第三方 skills 仓库放在一页，说明能力、使用方式、示例和边界，并配入一致插图。",
-      "title": "Compound Engineering"
+      "title": "Compound Engineering plugin"
     },
     {
       "fragment": "先读与角色",
@@ -3372,7 +3431,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "先读与角色",
       "text": "主线程读取项目规则、四个上游 README、页面模式和检查器；实现与审阅按不重叠写域分工，Git 集成留在主线程。",
-      "title": "Compound Engineering"
+      "title": "Compound Engineering plugin"
     },
     {
       "fragment": "边界",
@@ -3381,7 +3440,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "边界",
       "text": "只发布普通读者优先、自动化读者其次的一页；本机 goal-entry 不冒充外部高关注仓库，内部过程文档不提交。",
-      "title": "Compound Engineering"
+      "title": "Compound Engineering plugin"
     },
     {
       "fragment": "验证证据",
@@ -3390,7 +3449,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "验证证据",
       "text": "make check、图片和锚点检查、diff review；提交 44643ae 经 PR #1 合并为 55d11e7。",
-      "title": "Compound Engineering"
+      "title": "Compound Engineering plugin"
     },
     {
       "fragment": "重要恢复与结果",
@@ -3399,7 +3458,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "重要恢复与结果",
       "text": "发布前收紧 staging，排除忽略的过程记录；PR 合并到该仓库实际默认分支 master，随后抽样公开页面。",
-      "title": "Compound Engineering"
+      "title": "Compound Engineering plugin"
     },
     {
       "fragment": "失败停止",
@@ -3408,7 +3467,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "失败停止",
       "text": "上游事实无法确认、图片缺失、链接或检查失败、脱敏边界变化，或没有明确 push/PR 授权时停止。",
-      "title": "Compound Engineering"
+      "title": "Compound Engineering plugin"
     },
     {
       "fragment": "",
@@ -3416,8 +3475,8 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "skills-repositories.html",
       "prompts": [],
       "section": "",
-      "text": "按 GitHub 星标快照比较 Codex CLI 生态中的 skills、MCP 与辅助工具。",
-      "title": "Codex 相关高 stars 开源仓库"
+      "text": "比较第三方 skills 仓库及 Desktop、CLI 与本地安装边界。",
+      "title": "Skills 仓库"
     },
     {
       "fragment": "先按任务-fit-选仓库",
@@ -3426,7 +3485,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "先按任务 fit 选仓库",
       "text": "不要把所有 skills 仓库一次性塞进同一个请求。普通 Codex Desktop 用户先回答三个问题：我要做工程交付、工程思考、学术工作，还是长时间研究自动化？然后只选一个主仓库，最多加一个辅助仓库。 图片只帮助理解“先分拣任务”的动作；精确仓库名和安装方式以正文为准。 选择器",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "30-秒选择表",
@@ -3434,8 +3493,8 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "skills-repositories.html",
       "prompts": [],
       "section": "30 秒选择表",
-      "text": "多步骤工程功能 / 复杂 bug首选：Compound Engineering辅助：mattpocock/skills要完整 brainstorm-plan-work-review 闭环时用 Compound；只想先拷问需求时用 Matt。 需求模糊 / 想被追问首选：mattpocock/skills辅助：Compound Engineering先用 /grill-with-docs 或 ask-matt 收紧语言，再进入重流程。 文献 / 写作 / 审稿 / 实验计划首选：academic-research-skills-codex辅助：ARIS想在 Codex 里用单个 suite 入口时选 ARS；需要更长流水线时再看 ARIS。 睡眠式研究自动化首选：ARIS辅助：academic-research-skills-codex长时间研究、自动评审、研究 wiki 和实验监控适合 ARIS；普通学术任务先选 ARS。 前端视觉 / 页面重设计首选：leonxlnx/taste-skill辅助：现有项目的测试与无障碍检查用 design-taste-frontend 或 redesign-existing-projects 处理视觉方向；它不替代功能、响应式和无障碍验收。 中文文章 / 方法论配图首选：helloianneo/ian-xiaohei-illustrations辅助：无先提炼认知锚点和 shot list，再生成 16:9 小黑手绘图；不把它当 PPT 模板或可编辑矢量工具。 中文 prompt / 快速起步首选：plexpt/awesome-chatgpt-prompts-zh辅助：Codex Desktop 任务合同把角色或场景 prompt 当作起点，再补齐仓库上下文、范围、权限、验收和停止条件；它不是可直接执行的 Codex skill。 完全不知道选哪个首选：mattpocock/skills辅助：Compound Engineering先让任务变清楚，再决定是否需要完整工程流水线。 证据标签",
-      "title": "Codex 相关高 stars 开源仓库"
+      "text": "多步骤工程功能 / 复杂 bug首选：Compound Engineering辅助：mattpocock/skills要完整 brainstorm-plan-work-review 闭环时用 Compound；只想先拷问需求时用 Matt。 需求模糊 / 想被追问首选：mattpocock/skills辅助：Compound Engineering先用 $grill-with-docs 或 $ask-matt 收紧语言，再进入重流程。 文献 / 写作 / 审稿 / 实验计划首选：academic-research-skills-codex辅助：ARIS想在 Codex 里用单个 suite 入口时选 ARS；需要更长流水线时再看 ARIS。 睡眠式研究自动化首选：ARIS辅助：academic-research-skills-codex长时间研究、自动评审、研究 wiki 和实验监控适合 ARIS；普通学术任务先选 ARS。 前端视觉 / 页面重设计首选：leonxlnx/taste-skill辅助：现有项目的测试与无障碍检查用 design-taste-frontend 或 redesign-existing-projects 处理视觉方向；它不替代功能、响应式和无障碍验收。 中文文章 / 方法论配图首选：helloianneo/ian-xiaohei-illustrations辅助：无先提炼认知锚点和 shot list，再生成 16:9 小黑手绘图；不把它当 PPT 模板或可编辑矢量工具。 中文 prompt / 快速起步首选：plexpt/awesome-chatgpt-prompts-zh辅助：Codex Desktop 任务合同把角色或场景 prompt 当作起点，再补齐仓库上下文、范围、权限、验收和停止条件；它不是可直接执行的 Codex skill。 完全不知道选哪个首选：mattpocock/skills辅助：Compound Engineering先让任务变清楚，再决定是否需要完整工程流水线。 证据标签",
+      "title": "Skills 仓库"
     },
     {
       "fragment": "先看案例证据等级",
@@ -3444,7 +3503,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "先看案例证据等级",
       "text": "历史案例有可核验的计划、Git、测试或公开产物只主张证据覆盖的阶段不能把局部使用扩写成完整交付 历史复合案例多个已核验片段重排成教学流程必须标明组合性质完整示例见 团队协作规范 演示场景基于上游能力设计的可复制输入帮助读者起步不声称本项目已经执行 星标快照",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "codex-cli-生态-top-10",
@@ -3453,7 +3512,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "Codex CLI 生态 Top 10",
       "text": "榜单口径是 GitHub codex-cli 主题页的 Most stars 结果，再逐一核对仓库页是否确实涉及 Codex CLI、skills、plugins、MCP、客户端或 agent workflow。GitHub 页面只显示约数，因此正文也使用约数；后续维护应重新核验，而不是把这次快照当成永久排名。 #1 HKUDS/nanobot其他 / agent runtime约 45.3k stars轻量级 self-hosted agent，包含 WebUI、聊天渠道、MCP、memory 和 automation；它是独立 runtime，不是给 Codex 加 skill。仓库 #2 sickn33/agentic-awesome-skillsSkills约 42.9k stars1,900+ 个可安装的 SKILL.md playbooks，README 给出 --codex 安装路径；适合先挑单个 skill，再检查脚本和权限。仓库 #3 wshobson/agentsSkills / Plugins / MCP约 37.8k stars多 harness plugin marketplace；Codex 通过 committed registry 和 plugin manifest 安装，适合按能力安装 plugin，而不是一次加载全部内容。仓库 #4 slopus/happy其他 / 移动客户端约 22.6k stars给 Claude Code 和 Codex 使用的移动/Web 客户端与 CLI wrapper；happy codex 可以远程查看和控制本地 Codex，先评估远程同步与权限边界。仓库 #5 mksglu/context-modeMCP / Hooks / Plugin约 18.8k stars用 MCP 与 hooks 做上下文压缩和工具输出路由；仓库提供 .codex-plugin，安装后要重启 Codex，并单独确认 hooks 是否可信。仓库 #6 ComposioHQ/awesome-codex-skillsSkills约 14.9k stars专门面向 Codex CLI/API 的 skills 目录，提供 skill-installer 路径；把它当目录逐项审查，不要把星标当作所有子 skill 的质量证明。仓库 #7 Wei-Shaw/claude-relay-service其他 / 模型代理约 12.3k stars模型代理 / 中转服务，仓库明确提供 Codex CLI 配置；涉及凭据、服务条款和多账号会话，默认不建议直接接入生产环境。仓库 #8 AgentWrapper/agent-orchestrator其他 / 编排约 8.2k stars并行 coding agents、CI 修复、冲突处理与 review；适合在 worktree 隔离和人工 checkpoint 下做实验，不能替代审批。仓库 #9 htdt/godogenSkills / 游戏开发约 4.6k stars领域化的游戏生成工作流；选择 Codex 作为 agent 时会生成 AGENTS.md 与 .agents/skills/，只适合 Godot、Bevy 或 Babylon.js 场景。仓库 #10 Galaxy-Dawn/claude-scholarSkills / 学术研究约 4.6k stars学术研究助手；Codex branch 提供 config.toml、40 个 skills 和 14 个 agents，研究结论仍必须经过人工来源核验。仓库 官方基准openai/codex 是 Codex CLI 本身的官方开源仓库；它不混入社区生态 Top 10。产品能力和安全边界以 OpenAI 官方资料为准。 MCP 基础设施modelcontextprotocol/servers 是官方 MCP reference servers 仓库；Codex 可以作为 MCP client，但具体 server 仍要按权限、网络和凭据逐项审查。 排名来源打开 GitHub codex-cli 主题页 可重新查看 Most stars 结果；主题归类由仓库维护者设置，不能替代 README 和代码审查。 安装前检查先读 README、许可证、SKILL.md、plugin manifest、scripts、hooks、MCP 配置和凭据说明；先在测试仓库或 worktree 试运行，再决定是否进入日常环境。 工程工作流",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "compound-engineering",
@@ -3462,7 +3521,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "Compound Engineering",
       "text": "EveryInc 的 Compound Engineering plugin 适合把工程任务组织成一套可重复的流程：brainstorm、plan、work、simplify、review、compound。它更像工程流程插件，而不是单独的提示词集合。",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "能力",
@@ -3471,7 +3530,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "能力",
       "text": "用 /ce-brainstorm、/ce-plan、/ce-work、/ce-simplify-code、/ce-code-review、/ce-compound 串起长任务。",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "最适合",
@@ -3480,18 +3539,18 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "最适合",
       "text": "多文件功能、复杂 bug、PR 前审查、长期维护同一仓库的工程知识。",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "安装路径",
       "level": "h3",
       "page": "skills-repositories.html",
       "prompts": [
-        "$compound-engineering:ce-brainstorm\n目标：把这个产品改动先讨论清楚。\n仓库：当前 Codex Desktop 打开的仓库。\n边界：只讨论需求、风险和验收，不改文件。\n输出：给出 requirements-only 计划和下一步问题。"
+        "/ce-brainstorm\n目标：把这个产品改动先讨论清楚。\n仓库：当前 Codex Desktop 打开的仓库。\n边界：只讨论需求、风险和验收，不改文件。\n输出：给出 requirements-only 计划和下一步问题。"
       ],
       "section": "安装路径",
-      "text": "Codex Desktop 里添加 custom marketplace，Source 填 EveryInc/compound-engineering-plugin，ref 填 main，安装 compound-engineering 后重启。 $compound-engineering:ce-brainstorm 目标：把这个产品改动先讨论清楚。 仓库：当前 Codex Desktop 打开的仓库。 边界：只讨论需求、风险和验收，不改文件。 输出：给出 requirements-only 计划和下一步问题。 使用边界需求还很粗时先 brainstorm；不要一行模糊目标直接交给 /lfg。 仓库链接github.com/EveryInc/compound-engineering-plugin 历史案例",
-      "title": "Codex 相关高 stars 开源仓库"
+      "text": "Codex Desktop 里添加 custom marketplace，Source 填 EveryInc/compound-engineering-plugin，ref 填 main，安装 compound-engineering 后重启。 /ce-brainstorm 目标：把这个产品改动先讨论清楚。 仓库：当前 Codex Desktop 打开的仓库。 边界：只讨论需求、风险和验收，不改文件。 输出：给出 requirements-only 计划和下一步问题。 使用边界需求还很粗时先 brainstorm；不要一行模糊目标直接交给 /lfg。 仓库链接github.com/EveryInc/compound-engineering-plugin 历史案例",
+      "title": "Skills 仓库"
     },
     {
       "fragment": "案例-从需求到-pr-1",
@@ -3500,7 +3559,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "案例：从需求到 PR #1",
       "text": "本指南先确认单页范围与读者顺序，再在同一计划中补齐实施单元，通过 LFG 完成页面、图片、检查和 PR #1。重要恢复是收紧 staging，避免把忽略的过程记录带入公开提交。证据包括公开计划、提交、PR、make check 和默认分支合并；完整交付门禁见 团队协作规范。 工程约束",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "mattpocock-skills",
@@ -3509,7 +3568,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "mattpocock/skills",
       "text": "mattpocock/skills 是一组小而可组合的工程 skills，强调 shared language、需求拷问、TDD、调试、架构改进和代码审查。它适合先把“我要做什么”问清楚，再决定是否进入更重的交付流程。",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "能力-2",
@@ -3517,8 +3576,8 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "skills-repositories.html",
       "prompts": [],
       "section": "能力",
-      "text": "/grill-with-docs、/grill-me、/tdd、/diagnosing-bugs、/improve-codebase-architecture、/code-review 等。",
-      "title": "Codex 相关高 stars 开源仓库"
+      "text": "$grill-with-docs、$grill-me、$tdd、$diagnosing-bugs、$improve-codebase-architecture、$code-review 等。",
+      "title": "Skills 仓库"
     },
     {
       "fragment": "最适合-2",
@@ -3527,7 +3586,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "最适合",
       "text": "需求不稳、术语混乱、想先被高质量追问，或者想把工程任务拆成 PRD / issues。",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "启用路径",
@@ -3537,8 +3596,8 @@ window.GUIDE_SEARCH_INDEX = {
         "$grill-with-docs\n仓库：当前 Codex Desktop 打开的仓库。\n目标：我想做一个新的导出功能。\n请先读 AGENTS.md、README 和相关源码，然后只追问会改变范围或验收的问题。\n不要开始实现。"
       ],
       "section": "启用路径",
-      "text": "README 给出的路径是 npx skills@latest add mattpocock/skills，安装后运行 /setup-matt-pocock-skills 选择技能和项目偏好。 $grill-with-docs 仓库：当前 Codex Desktop 打开的仓库。 目标：我想做一个新的导出功能。 请先读 AGENTS.md、README 和相关源码，然后只追问会改变范围或验收的问题。 不要开始实现。 使用边界它不是全自动大框架。先用 setup 选择需要的 skills，再按任务调用，不要一次加载全部。 仓库链接github.com/mattpocock/skills 历史案例",
-      "title": "Codex 相关高 stars 开源仓库"
+      "text": "Codex CLI / 本地文件系统安装路径：README 给出的完整命令是 npx skills@latest add mattpocock/skills。安装后用 $setup-matt-pocock-skills 选择技能和项目偏好；该 CLI 操作不会自动把未安装插件加入 Desktop 的 Plugins 面板。 $grill-with-docs 仓库：当前 Codex Desktop 打开的仓库。 目标：我想做一个新的导出功能。 请先读 AGENTS.md、README 和相关源码，然后只追问会改变范围或验收的问题。 不要开始实现。 使用边界它不是全自动大框架。先用 setup 选择需要的 skills，再按任务调用，不要一次加载全部。 仓库链接github.com/mattpocock/skills 历史案例",
+      "title": "Skills 仓库"
     },
     {
       "fragment": "案例-先建立上下文-再-grill",
@@ -3547,7 +3606,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "案例：先建立上下文，再 grill",
       "text": "一次仓库任务先运行 setup 选择所需 skills，再读取 AGENTS.md、README、相关源码和 dirty 状态，只追问会改变范围或验收的问题。发现无关未提交文件后，明确把它们排除在写域之外，再形成计划。该证据只支持“上下文准备与需求澄清”，不声称自动完成实现、PR 或 merge。 学术套件",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "academic-research-skills-codex",
@@ -3556,7 +3615,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "academic-research-skills-codex",
       "text": "academic-research-skills-codex 是 Academic Research Skills 的 Codex-native sibling distribution。仓库名是 academic-research-skills-codex，Codex skill path 是 skills/academic-research-suite，页面里简称 ARS。 工程台和研究台要分开：代码交付看工程流程，文献、论文和实验看学术 suite。",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "能力-3",
@@ -3565,7 +3624,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "能力",
       "text": "一个 academic-research-suite 入口路由 deep research、paper writing、review、academic pipeline 和 experiment planning。",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "最适合-3",
@@ -3574,7 +3633,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "最适合",
       "text": "文献综述、新颖性检查、论文草稿、审稿意见模拟、实验计划和结果到 claim 的边界整理。",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "安装路径-2",
@@ -3584,8 +3643,8 @@ window.GUIDE_SEARCH_INDEX = {
         "$academic-research-suite\n任务：为这个 AI/ML 论文想法做 deep research 和实验计划。\n主题：[你的方法一句话]\n边界：先输出研究问题、相关工作、可验证 novelty 和最小实验矩阵，不写论文正文。\n证据：列出需要人工确认的来源和假设。"
       ],
       "section": "安装路径",
-      "text": "按 README 用 skill-installer 指向 academic-research-skills-codex 仓库里的 skills/academic-research-suite。不要把 Claude Code 分发里的多个 skills 当成 Codex 安装路径。 $academic-research-suite 任务：为这个 AI/ML 论文想法做 deep research 和实验计划。 主题：[你的方法一句话] 边界：先输出研究问题、相关工作、可验证 novelty 和最小实验矩阵，不写论文正文。 证据：列出需要人工确认的来源和假设。 使用边界安装后应该只有一个 ARS entry。不要把 Claude Code 分发里的多个独立 skills 当成 Codex-native 安装结果。 仓库链接github.com/Imbad0202/academic-research-skills-codex 演示场景",
-      "title": "Codex 相关高 stars 开源仓库"
+      "text": "Codex CLI / 本地文件系统安装路径：仓库与 path 已明确时，可运行 python3 ~/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py --repo Imbad0202/academic-research-skills-codex --path skills/academic-research-suite。安装器位置或上游结构变化时，以官方上游 README为准，不要把 Claude Code 分发里的多个 skills 当成 Codex 安装路径。 $academic-research-suite 任务：为这个 AI/ML 论文想法做 deep research 和实验计划。 主题：[你的方法一句话] 边界：先输出研究问题、相关工作、可验证 novelty 和最小实验矩阵，不写论文正文。 证据：列出需要人工确认的来源和假设。 使用边界安装后应该只有一个 ARS entry。不要把 Claude Code 分发里的多个独立 skills 当成 Codex-native 安装结果。 仓库链接github.com/Imbad0202/academic-research-skills-codex 演示场景",
+      "title": "Skills 仓库"
     },
     {
       "fragment": "场景-先做-novelty-与最小实验矩阵",
@@ -3594,7 +3653,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "场景：先做 novelty 与最小实验矩阵",
       "text": "输入一个方法想法和证据边界，让 suite 先返回研究问题、closest work、可证伪 novelty、最小实验与人工核验来源。来源不足或 baseline 不可复现时输出 blocked 研究回执，不进入论文正文。本项目没有该场景的执行记录，因此不标为历史案例。 自主研究",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "aris-auto-claude-code-research-in-sleep",
@@ -3603,7 +3662,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "ARIS / auto-claude-code-research-in-sleep",
       "text": "ARIS 更像一套“睡眠式科研”的方法论和工具集合，而不是单个 Codex skill。它强调计划、资料收集、写作或实验、反向评审、迭代和持久化，适合已经有清晰研究目标和验证边界的高级用户。",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "能力-4",
@@ -3612,7 +3671,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "能力",
       "text": "覆盖 idea discovery、literature、auto review loop、paper writing、experiment run、results analysis、experiment monitoring 等研究环节。",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "最适合-4",
@@ -3621,7 +3680,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "最适合",
       "text": "长时间研究流水线、自动审稿循环、实验监控、研究知识库和多轮论文改进。",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "启用路径-2",
@@ -3631,8 +3690,8 @@ window.GUIDE_SEARCH_INDEX = {
         "$auto-review-loop\n目标：对我的论文方法和实验计划做一轮 adversarial review。\n输入：当前草稿路径、实验日志路径、需要保护的 claim。\n边界：只输出问题、证据缺口和下一轮实验建议；不要自动改论文或提交外部结果。"
       ],
       "section": "启用路径",
-      "text": "Codex 侧可参考仓库里的 tools/install_aris_codex.sh 和 tools/smart_update_codex.sh；主线说明仍以仓库 README 为准。 $auto-review-loop 目标：对我的论文方法和实验计划做一轮 adversarial review。 输入：当前草稿路径、实验日志路径、需要保护的 claim。 边界：只输出问题、证据缺口和下一轮实验建议；不要自动改论文或提交外部结果。 使用边界长任务必须写清 objective、来源可信边界、验证证据和外部写操作审批。不要把“睡觉时自动科研”理解成无人监管。 仓库链接github.com/wanshuiyin/auto-claude-code-research-in-sleep 演示场景",
-      "title": "Codex 相关高 stars 开源仓库"
+      "text": "Codex CLI / 本地文件系统安装路径：克隆仓库后在仓库根目录运行 bash tools/install_aris_codex.sh；更新脚本为 bash tools/smart_update_codex.sh。脚本行为可能随上游变化，请先阅读当前 README和脚本再执行，不假定额外参数。 $auto-review-loop 目标：对我的论文方法和实验计划做一轮 adversarial review。 输入：当前草稿路径、实验日志路径、需要保护的 claim。 边界：只输出问题、证据缺口和下一轮实验建议；不要自动改论文或提交外部结果。 使用边界长任务必须写清 objective、来源可信边界、验证证据和外部写操作审批。不要把“睡觉时自动科研”理解成无人监管。 仓库链接github.com/wanshuiyin/auto-claude-code-research-in-sleep 演示场景",
+      "title": "Skills 仓库"
     },
     {
       "fragment": "场景-夜间循环保留人工闸门",
@@ -3641,7 +3700,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "场景：夜间循环保留人工闸门",
       "text": "把已确认的研究 brief、预算、停止条件和输出目录交给长循环，每轮只生成日志、证据缺口和下一轮建议；修改论文、提交结果或启动高成本实验前必须等待人工授权。本项目没有该场景的执行记录，因此不标为历史案例。 前端视觉",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "taste-skill",
@@ -3652,7 +3711,7 @@ window.GUIDE_SEARCH_INDEX = {
       ],
       "section": "leonxlnx/taste-skill",
       "text": "leonxlnx/taste-skill 是一个第三方、可移植的前端视觉 skill 集合。它会先读 brief，再处理布局变化度、动效强度和视觉密度，并提供 design-taste-frontend、gpt-taste、image-to-code、redesign-existing-projects 等入口。Codex 可以使用它，但它不是 OpenAI 官方设计规范。 能力把页面 brief 转成设计方向、布局与视觉系统，再按需要处理动效、图片生成和现有页面重设计。 最适合landing page、portfolio、营销页和需要视觉重做的前端页面；后台、数据表、多步骤产品 UI 仍要以产品约束和可用性为主。 安装路径先装单个 skill：npx skills add https://github.com/Leonxlnx/taste-skill --skill \"design-taste-frontend\"；需要 Codex 全套时再按上游说明使用 npx skills add Leonxlnx/taste-skill -a codex。 $design-taste-frontend 仓库：当前 Codex Desktop 打开的仓库。 目标：重做这个 landing page 的视觉层，不改变 URL、字段名和业务行为。 先读现有页面、AGENTS.md 和品牌资产；先输出 design read、方向和风险，不要立即改文件。 验收：响应式、键盘操作、WCAG 对比度、真实内容和现有测试都不能退化。 使用边界上游把 v2 标为 experimental；如果需要旧版行为，显式选择 design-taste-frontend-v1。第三方审美规则不能替代响应式、无障碍和功能验证。 仓库链接github.com/leonxlnx/taste-skill · 官方文档 中文内容配图",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "ian-xiaohei-illustrations",
@@ -3663,7 +3722,7 @@ window.GUIDE_SEARCH_INDEX = {
       ],
       "section": "helloianneo/ian-xiaohei-illustrations",
       "text": "helloianneo/ian-xiaohei-illustrations 是面向 Codex 的中文文章配图 Skill。它先提炼文章中的认知锚点，再输出 shot list、低科技物理隐喻和 16:9 小黑手绘图；它不是 PPT 信息图、商业 KV、架构图或可编辑矢量图。 能力从文章抽取主题、核心含义、结构、小黑动作和短标注，形成约 4–8 张图的 shot list，并在生成后做可读性和构图检查。 最适合中文知识、方法论、AI workflow、研究笔记、Notion 或博客正文配图；每张图只保留一个核心动作和一条清晰认知。 安装路径按上游 README 克隆仓库，把其中的 ian-xiaohei-illustrations 目录复制到 ${CODEX_HOME:-$HOME/.codex}/skills/。 Use $ian-xiaohei-illustrations 先不要生图。 请读下面这篇文章，输出 5 张左右 shot list；每张写放置段落、认知锚点、结构、小黑动作和短中文标注。 使用边界不适合商业主视觉、品牌系统、PPT / Keynote、建筑图或可编辑矢量交付；图内中文要短，发布前必须逐张检查生成文件。 仓库链接github.com/helloianneo/ian-xiaohei-illustrations 中文 Prompt 库",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "awesome-chatgpt-prompts-zh",
@@ -3674,7 +3733,7 @@ window.GUIDE_SEARCH_INDEX = {
       ],
       "section": "plexpt/awesome-chatgpt-prompts-zh",
       "text": "plexpt/awesome-chatgpt-prompts-zh 是中文 ChatGPT prompt 集合，README 和 prompts-zh.json 提供大量可复制的角色、写作、翻译、学术、编程和内容创作提示词。它适合作为 prompt 起点，但不会自动读取当前仓库、AGENTS.md、源码、测试或权限状态，因此不是原生 Codex skill、MCP server 或 plugin。 能力按场景提供角色设定、任务模板和输出格式，适合快速比较不同的表达方式和工作入口。 最适合中文写作、翻译、论文润色、内容创作、头脑风暴和需要先找一个表达起点的轻量任务。 Codex 适配复制 prompt 后，补上仓库上下文、改动范围、权限边界、验收标准和停止条件，再交给 Codex Desktop。 请把下面这个中文 prompt 改写成当前仓库可执行的 Codex Desktop 任务。 先读 AGENTS.md、README 和相关源码；只输出目标、范围、风险、验收标准和需要确认的问题，不要修改文件。 原始 prompt： [把 plexpt/awesome-chatgpt-prompts-zh 中选出的 prompt 粘贴在这里] 使用边界不要直接照搬“忽略之前的对话”、无限角色扮演或无验收的自动执行指令；先改写成当前仓库可审查、可验证的任务合同，也不要把密钥或敏感上下文粘贴到不必要的外部服务。 仓库链接github.com/plexpt/awesome-chatgpt-prompts-zh 进阶",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "高级用户-按阶段组合-不要一锅端",
@@ -3682,8 +3741,8 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "skills-repositories.html",
       "prompts": [],
       "section": "高级用户：按阶段组合，不要一锅端",
-      "text": "组合这些仓库时，按阶段串联，不要在一个 prompt 里同时要求所有 skills 工作。每一段都要写清输入、停止条件和验证证据。 自动化循环可以很长，但外部输出前仍要有人工确认和证据留存。 工程计划Compound Engineering/ce-brainstorm、/ce-plan产物：范围、U-ID、验证合同。 工程纪律mattpocock/skills/grill-with-docs、/tdd、/code-review产物：更清楚的需求语言、测试思路、审查问题。 学术工作academic-research-skills-codex$academic-research-suite产物：research brief、paper review、experiment plan。 自动研究ARISresearch pipeline / auto review loop产物：长循环记录、反审结果、实验监控和人工审批点。 边界",
-      "title": "Codex 相关高 stars 开源仓库"
+      "text": "组合这些仓库时，按阶段串联，不要在一个 prompt 里同时要求所有 skills 工作。每一段都要写清输入、停止条件和验证证据。 自动化循环可以很长，但外部输出前仍要有人工确认和证据留存。 工程计划Compound Engineering/ce-brainstorm、/ce-plan产物：范围、U-ID、验证合同。 工程纪律mattpocock/skills$grill-with-docs、$tdd、$code-review产物：更清楚的需求语言、测试思路、审查问题。 学术工作academic-research-skills-codex$academic-research-suite产物：research brief、paper review、experiment plan。 自动研究ARISresearch pipeline / auto review loop产物：长循环记录、反审结果、实验监控和人工审批点。 边界",
+      "title": "Skills 仓库"
     },
     {
       "fragment": "使用边界",
@@ -3692,7 +3751,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "使用边界",
       "text": "非官方这些第三方 skills 仓库不是 OpenAI 官方功能。涉及 Codex Desktop 能力边界时，以 OpenAI 官方文档为准。 星标快照Top 10 的 star 数是 2026-07-12 的约数快照；GitHub star 会变化，后续更新必须重新抓取并标注日期。 官方与第三方openai/codex 和 MCP 基础设施单独标出；其余仓库都不是 OpenAI 官方功能，安装前要审查代码、权限和供应链。 goal-entry 不列入goal-entry 是本机自己开发的 local adaptation，效果一般，只在 goal-entry 页面作为案例保留。 长任务要可验收高级自动化仍要写 objective、范围、验证、停止条件、外部写操作审批和人工 closeout。 真实实例",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "真实实例-历史案例",
@@ -3701,7 +3760,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "真实实例：历史案例",
       "text": "历史案例公开仓库证据",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "输入",
@@ -3710,7 +3769,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "输入",
       "text": "用户要求把 Compound Engineering、Matt Pocock skills、ARS 和 ARIS 放在一页，说明能力、使用方式和示例，并生成小黑配图。",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "先读",
@@ -3719,7 +3778,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "先读",
       "text": "先读四个上游 README、本仓库页面模式、scripts/check_site.py 和 ian-xiaohei-illustrations 风格要求。",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "应动文件",
@@ -3728,7 +3787,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "应动文件",
       "text": "skills-repositories.html、入口页、README.md、三张 figures/high-stars-*.png 和静态检查脚本。",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "验证",
@@ -3737,7 +3796,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "验证",
       "text": "make check 检查 HTML、导航、锚点、文本和图片链接；再用 diff 检查是否误改全站顶栏。",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "最终回答",
@@ -3746,7 +3805,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "最终回答",
       "text": "报告新增页面、图片路径、静态验证结果、未做 PDF 以及是否还有未提交改动。",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "失败停止",
@@ -3755,7 +3814,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "失败停止",
       "text": "上游事实无法确认、图片无法保存、页面链接断裂、或实现必须把 goal-entry 放进高 stars 仓库列表。",
-      "title": "Codex 相关高 stars 开源仓库"
+      "title": "Skills 仓库"
     },
     {
       "fragment": "",
@@ -3763,7 +3822,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "goal-entry.html",
       "prompts": [],
       "section": "",
-      "text": "了解本机自开发 goal-entry 的用途和限制。",
+      "text": "了解本机自开发 goal-entry 的用途、$ mention 方式和限制。",
       "title": "goal-entry"
     },
     {
@@ -3820,7 +3879,16 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "resources.html",
       "prompts": [],
       "section": "",
-      "text": "查找 Codex Desktop 官方资料与本指南维护边界。",
+      "text": "查找 canonical 官方资料、中文术语对照与本指南维护边界。",
+      "title": "资料地图"
+    },
+    {
+      "fragment": "中文术语对照",
+      "level": "h2",
+      "page": "resources.html",
+      "prompts": [],
+      "section": "中文术语对照",
+      "text": "正文首次出现时优先写中文并附英文；英文继续用于产品 UI、命令、字段名和可搜索标识。 sandbox沙箱approval审批 worktree工作树receipt任务回执 closeout收口checkpoint检查点 diff差异commit提交 push推送merge合并 PR拉取请求CI持续集成 Objective目标Scope范围 Acceptance验收Validation验证 prompt ladder提示词阶梯grant提示词授权约定 disposition处置lane任务通道 官方文档",
       "title": "资料地图"
     },
     {
@@ -3829,16 +3897,151 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "resources.html",
       "prompts": [],
       "section": "官方资料优先",
-      "text": "官方资料用于解释 Codex Desktop 的产品边界、权限模型、线程、Local/Worktree、in-app browser、Automations、AGENTS.md、Skills 和 subagents。本指南只保留 Desktop 读者主线，其他内容只在确有帮助时补充。",
+      "text": "以下链接使用已核对的 ChatGPT Learn canonical 路径，覆盖 ChatGPT desktop app、权限、Scheduled tasks、Browser、Integrated terminal、Skills、AGENTS.md、Subagents、MCP、Worktrees 以及各工作面。本指南只保留 Desktop 读者主线。",
       "title": "资料地图"
     },
     {
-      "fragment": "codex-101",
+      "fragment": "chatgpt-desktop-app",
       "level": "h3",
       "page": "resources.html",
       "prompts": [],
-      "section": "Codex 101",
-      "text": "适合第一次建立整体认识。",
+      "section": "ChatGPT desktop app",
+      "text": "桌面应用与 Codex 工作面的总入口。",
+      "title": "资料地图"
+    },
+    {
+      "fragment": "permissions-docs",
+      "level": "h3",
+      "page": "resources.html",
+      "prompts": [],
+      "section": "Permissions",
+      "text": "四种 Desktop 权限选择与安全边界。",
+      "title": "资料地图"
+    },
+    {
+      "fragment": "scheduled-tasks-docs",
+      "level": "h3",
+      "page": "resources.html",
+      "prompts": [],
+      "section": "Scheduled tasks",
+      "text": "创建定时任务并在 Scheduled 视图查看运行。",
+      "title": "资料地图"
+    },
+    {
+      "fragment": "browser-docs",
+      "level": "h3",
+      "page": "resources.html",
+      "prompts": [],
+      "section": "Browser",
+      "text": "共享页面视图、视觉反馈和网页交互。",
+      "title": "资料地图"
+    },
+    {
+      "fragment": "integrated-terminal-docs",
+      "level": "h3",
+      "page": "resources.html",
+      "prompts": [],
+      "section": "Integrated terminal",
+      "text": "在任务中运行和检查命令。",
+      "title": "资料地图"
+    },
+    {
+      "fragment": "skills-plugins-docs",
+      "level": "h3",
+      "page": "resources.html",
+      "prompts": [],
+      "section": "Skills & Plugins",
+      "text": "技能 mention、插件发现和安装。",
+      "title": "资料地图"
+    },
+    {
+      "fragment": "agents-md-docs",
+      "level": "h3",
+      "page": "resources.html",
+      "prompts": [],
+      "section": "AGENTS.md",
+      "text": "项目指令发现链与覆盖规则。",
+      "title": "资料地图"
+    },
+    {
+      "fragment": "subagents-docs",
+      "level": "h3",
+      "page": "resources.html",
+      "prompts": [],
+      "section": "Subagents",
+      "text": "子代理配置与协作边界。",
+      "title": "资料地图"
+    },
+    {
+      "fragment": "mcp-docs",
+      "level": "h3",
+      "page": "resources.html",
+      "prompts": [],
+      "section": "MCP",
+      "text": "为 Desktop 与 CLI 扩展 tools 和 resources；URL 的 surface=cli 只是文档视图参数，共享配置边界见 MCP 页。",
+      "title": "资料地图"
+    },
+    {
+      "fragment": "worktrees-docs",
+      "level": "h3",
+      "page": "resources.html",
+      "prompts": [],
+      "section": "Worktrees",
+      "text": "隔离并行改动与项目任务。",
+      "title": "资料地图"
+    },
+    {
+      "fragment": "cli-docs",
+      "level": "h3",
+      "page": "resources.html",
+      "prompts": [],
+      "section": "CLI",
+      "text": "终端中的 Codex 工作面。",
+      "title": "资料地图"
+    },
+    {
+      "fragment": "ide-docs",
+      "level": "h3",
+      "page": "resources.html",
+      "prompts": [],
+      "section": "IDE",
+      "text": "编辑器集成入口。",
+      "title": "资料地图"
+    },
+    {
+      "fragment": "cloud-docs",
+      "level": "h3",
+      "page": "resources.html",
+      "prompts": [],
+      "section": "Cloud",
+      "text": "云端任务与环境边界。",
+      "title": "资料地图"
+    },
+    {
+      "fragment": "changelog-docs",
+      "level": "h3",
+      "page": "resources.html",
+      "prompts": [],
+      "section": "Changelog",
+      "text": "核对版本变化和新能力。",
+      "title": "资料地图"
+    },
+    {
+      "fragment": "record-replay-docs",
+      "level": "h3",
+      "page": "resources.html",
+      "prompts": [],
+      "section": "Record & Replay",
+      "text": "记录并复现交互流程。 兼容旧链接",
+      "title": "资料地图"
+    },
+    {
+      "fragment": "旧主题的站内对应路径",
+      "level": "h2",
+      "page": "resources.html",
+      "prompts": [],
+      "section": "旧主题的站内对应路径",
+      "text": "旧版资源锚点继续落到同主题入口，但不再冒充当前官方文档 URL。",
       "title": "资料地图"
     },
     {
@@ -3847,88 +4050,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "resources.html",
       "prompts": [],
       "section": "Best practices",
-      "text": "理解如何写任务、给上下文和验收。",
-      "title": "资料地图"
-    },
-    {
-      "fragment": "codex-desktop",
-      "level": "h3",
-      "page": "resources.html",
-      "prompts": [],
-      "section": "Codex Desktop",
-      "text": "本手册默认入口：线程、仓库协作、浏览器反馈和审批。",
-      "title": "资料地图"
-    },
-    {
-      "fragment": "app-features",
-      "level": "h3",
-      "page": "resources.html",
-      "prompts": [],
-      "section": "App features",
-      "text": "Local/Worktree、Git diff、内置终端和桌面操作能力。",
-      "title": "资料地图"
-    },
-    {
-      "fragment": "in-app-browser",
-      "level": "h3",
-      "page": "resources.html",
-      "prompts": [],
-      "section": "In-app browser",
-      "text": "预览页面、添加视觉反馈、让 Codex 验证网页修复。",
-      "title": "资料地图"
-    },
-    {
-      "fragment": "automations",
-      "level": "h3",
-      "page": "resources.html",
-      "prompts": [],
-      "section": "Automations",
-      "text": "后台定时任务、任务收件箱 和 worktree 隔离。",
-      "title": "资料地图"
-    },
-    {
-      "fragment": "security",
-      "level": "h3",
-      "page": "resources.html",
-      "prompts": [],
-      "section": "Security",
-      "text": "approvals、sandbox 和安全模型。",
-      "title": "资料地图"
-    },
-    {
-      "fragment": "customization",
-      "level": "h3",
-      "page": "resources.html",
-      "prompts": [],
-      "section": "Customization",
-      "text": "把 Codex 调整为项目协作者。",
-      "title": "资料地图"
-    },
-    {
-      "fragment": "agents.md",
-      "level": "h3",
-      "page": "resources.html",
-      "prompts": [],
-      "section": "AGENTS.md",
-      "text": "项目规则、层级和可复用上下文。",
-      "title": "资料地图"
-    },
-    {
-      "fragment": "skills",
-      "level": "h3",
-      "page": "resources.html",
-      "prompts": [],
-      "section": "Skills",
-      "text": "Codex skills 的官方入口。",
-      "title": "资料地图"
-    },
-    {
-      "fragment": "subagents",
-      "level": "h3",
-      "page": "resources.html",
-      "prompts": [],
-      "section": "Subagents",
-      "text": "任务拆分和多代理协作。",
+      "text": "转到站内任务编写、上下文与验收实践。",
       "title": "资料地图"
     },
     {
@@ -3937,16 +4059,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "resources.html",
       "prompts": [],
       "section": "Workflows",
-      "text": "常见任务工作流。",
-      "title": "资料地图"
-    },
-    {
-      "fragment": "worktrees",
-      "level": "h3",
-      "page": "resources.html",
-      "prompts": [],
-      "section": "Worktrees",
-      "text": "用隔离工作区试验改动或运行后台任务。",
+      "text": "转到站内任务路径与验证闭环。",
       "title": "资料地图"
     },
     {
@@ -3955,7 +4068,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "resources.html",
       "prompts": [],
       "section": "GitHub integration",
-      "text": "issue、PR 和代码审查协作。",
+      "text": "转到站内提交、PR 与发布边界。",
       "title": "资料地图"
     },
     {
@@ -3964,7 +4077,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "resources.html",
       "prompts": [],
       "section": "Review",
-      "text": "在 Desktop 里审查 diff、评论、暂存、提交和发起 PR。 本地指南",
+      "text": "转到 Desktop diff、评论与审查工作流。 本地指南",
       "title": "资料地图"
     },
     {
@@ -4047,7 +4160,7 @@ window.GUIDE_SEARCH_INDEX = {
         "资料使用方式：\n- 官方文档：确认概念和安全边界\n- Codex App 官方资料：确认 Desktop 功能和安全边界\n- 插件仓库：解释可迁移扩展\n- 本机 SKILL.md：只解释 local adaptation\n- 本仓库实例：展示真实任务如何跑完"
       ],
       "section": "真实实例：资料如何进入页面内容",
-      "text": "扩充这份手册时，官方资料用来确认产品边界，例如 Codex App、Local/Worktree、in-app browser、Automations、AGENTS.md、Skills 和 Subagents；插件仓库用来解释第三方扩展，例如 Compound Engineering；本机资料只作为 local adaptation 案例，例如 goal-entry。页面不直接复制官方文档，而是把这些资料整理成中文 Desktop 操作流程、真实 prompt 和验证清单。 资料使用方式： - 官方文档：确认概念和安全边界 - Codex App 官方资料：确认 Desktop 功能和安全边界 - 插件仓库：解释可迁移扩展 - 本机 SKILL.md：只解释 local adaptation - 本仓库实例：展示真实任务如何跑完",
+      "text": "扩充这份手册时，官方资料用于确认产品边界，例如 ChatGPT desktop app、Local/Worktree、Browser、Scheduled tasks、AGENTS.md、Skills 和 Subagents；插件仓库用于解释第三方扩展，例如 Compound Engineering；本机资料只作为 local adaptation 案例，例如 goal-entry。页面内容不会复制官方文档，而是把资料转成中文 Desktop 操作流程、真实 prompt 和验证清单。 资料使用方式： - 官方文档：确认概念和安全边界 - Codex App 官方资料：确认 Desktop 功能和安全边界 - 插件仓库：解释可迁移扩展 - 本机 SKILL.md：只解释 local adaptation - 本仓库实例：展示真实任务如何跑完",
       "title": "资料地图"
     }
   ],

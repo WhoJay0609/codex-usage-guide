@@ -63,6 +63,10 @@
       }
     },
     "automation.html": {
+      "scheduled-create": {"canonical": "创建定时任务", "legacy": []},
+      "scheduled-fields": {"canonical": "逐项配置", "legacy": []},
+      "scheduled-template": {"canonical": "配置模板", "legacy": []},
+      "scheduled-red-lines": {"canonical": "无人值守禁区", "legacy": []},
       "heading-automation-1": {
         "canonical": "什么时候值得自动化",
         "legacy": [
@@ -1022,6 +1026,18 @@
       }
     },
     "index.html": {
+      "native-guide-boundary": {
+        "canonical": "原生能力与本指南推荐实践",
+        "legacy": []
+      },
+      "native-capabilities": {
+        "canonical": "codex-原生能力",
+        "legacy": []
+      },
+      "guide-practices": {
+        "canonical": "本指南推荐实践",
+        "legacy": []
+      },
       "heading-index-1": {
         "canonical": "选择你的路径",
         "legacy": [
@@ -1445,7 +1461,9 @@
       "heading-permissions-2": {
         "canonical": "codex-desktop-权限等级一览",
         "legacy": [
-          "heading-permissions-2"
+          "heading-permissions-2",
+          "danger",
+          "heading-permissions-7"
         ]
       },
       "heading-permissions-3": {
@@ -1470,12 +1488,6 @@
         "canonical": "auto-review",
         "legacy": [
           "heading-permissions-6"
-        ]
-      },
-      "heading-permissions-7": {
-        "canonical": "danger",
-        "legacy": [
-          "heading-permissions-7"
         ]
       },
       "heading-permissions-8": {
@@ -1674,52 +1686,31 @@
       }
     },
     "resources.html": {
+      "glossary": {"canonical": "中文术语对照", "legacy": []},
+      "official-app": {"canonical": "chatgpt-desktop-app", "legacy": ["codex-101", "heading-resources-2", "codex-desktop", "heading-resources-4", "app-features", "heading-resources-5"]},
+      "official-permissions": {"canonical": "permissions-docs", "legacy": ["security", "heading-resources-8"]},
+      "official-scheduled": {"canonical": "scheduled-tasks-docs", "legacy": ["automations", "heading-resources-7"]},
+      "official-browser": {"canonical": "browser-docs", "legacy": ["in-app-browser", "heading-resources-6"]},
+      "official-terminal": {"canonical": "integrated-terminal-docs", "legacy": []},
+      "official-skills": {"canonical": "skills-plugins-docs", "legacy": ["skills", "heading-resources-11", "customization", "heading-resources-9"]},
+      "official-agents": {"canonical": "agents-md-docs", "legacy": ["agents.md", "heading-resources-10"]},
+      "official-subagents": {"canonical": "subagents-docs", "legacy": ["subagents", "heading-resources-12"]},
+      "official-mcp": {"canonical": "mcp-docs", "legacy": []},
+      "official-worktrees": {"canonical": "worktrees-docs", "legacy": ["worktrees", "heading-resources-14"]},
+      "official-cli": {"canonical": "cli-docs", "legacy": []},
+      "official-ide": {"canonical": "ide-docs", "legacy": []},
+      "official-cloud": {"canonical": "cloud-docs", "legacy": []},
+      "official-changelog": {"canonical": "changelog-docs", "legacy": []},
+      "official-replay": {"canonical": "record-replay-docs", "legacy": []},
+      "legacy-topic-paths": {"canonical": "旧主题的站内对应路径", "legacy": []},
+      "heading-resources-3": {"canonical": "best-practices", "legacy": ["heading-resources-3"]},
+      "heading-resources-13": {"canonical": "workflows", "legacy": ["heading-resources-13"]},
+      "heading-resources-15": {"canonical": "github-integration", "legacy": ["heading-resources-15"]},
+      "heading-resources-16": {"canonical": "review", "legacy": ["heading-resources-16"]},
       "heading-resources-1": {
         "canonical": "官方资料优先",
         "legacy": [
           "heading-resources-1"
-        ]
-      },
-      "heading-resources-10": {
-        "canonical": "agents.md",
-        "legacy": [
-          "heading-resources-10"
-        ]
-      },
-      "heading-resources-11": {
-        "canonical": "skills",
-        "legacy": [
-          "heading-resources-11"
-        ]
-      },
-      "heading-resources-12": {
-        "canonical": "subagents",
-        "legacy": [
-          "heading-resources-12"
-        ]
-      },
-      "heading-resources-13": {
-        "canonical": "workflows",
-        "legacy": [
-          "heading-resources-13"
-        ]
-      },
-      "heading-resources-14": {
-        "canonical": "worktrees",
-        "legacy": [
-          "heading-resources-14"
-        ]
-      },
-      "heading-resources-15": {
-        "canonical": "github-integration",
-        "legacy": [
-          "heading-resources-15"
-        ]
-      },
-      "heading-resources-16": {
-        "canonical": "review",
-        "legacy": [
-          "heading-resources-16"
         ]
       },
       "heading-resources-17": {
@@ -1738,12 +1729,6 @@
         "canonical": "readme",
         "legacy": [
           "heading-resources-19"
-        ]
-      },
-      "heading-resources-2": {
-        "canonical": "codex-101",
-        "legacy": [
-          "heading-resources-2"
         ]
       },
       "heading-resources-20": {
@@ -1780,48 +1765,6 @@
         "canonical": "真实实例-资料如何进入页面内容",
         "legacy": [
           "heading-resources-25"
-        ]
-      },
-      "heading-resources-3": {
-        "canonical": "best-practices",
-        "legacy": [
-          "heading-resources-3"
-        ]
-      },
-      "heading-resources-4": {
-        "canonical": "codex-desktop",
-        "legacy": [
-          "heading-resources-4"
-        ]
-      },
-      "heading-resources-5": {
-        "canonical": "app-features",
-        "legacy": [
-          "heading-resources-5"
-        ]
-      },
-      "heading-resources-6": {
-        "canonical": "in-app-browser",
-        "legacy": [
-          "heading-resources-6"
-        ]
-      },
-      "heading-resources-7": {
-        "canonical": "automations",
-        "legacy": [
-          "heading-resources-7"
-        ]
-      },
-      "heading-resources-8": {
-        "canonical": "security",
-        "legacy": [
-          "heading-resources-8"
-        ]
-      },
-      "heading-resources-9": {
-        "canonical": "customization",
-        "legacy": [
-          "heading-resources-9"
         ]
       }
     },
