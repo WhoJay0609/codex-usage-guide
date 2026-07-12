@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/site.css">
   <!-- guide:metadata:start -->
 <meta name="description" content="安装 ChatGPT desktop app，并在 Codex 工作面完成首个只读任务。">
-<meta name="guide-build" content="54b93b531574">
+<meta name="guide-build" content="7fdbee178024">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/install-desktop.html">
 <meta property="og:type" content="website">
@@ -73,7 +73,7 @@
           <p class="section-kicker">安装流程</p>
           <span class="fragment-alias" id="heading-install-desktop-5" data-canonical-fragment="安装到第一个任务" aria-hidden="true"></span><h2 id="安装到第一个任务">安装到第一个任务<a class="heading-permalink" data-heading-permalink data-search-exclude href="#安装到第一个任务" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
-        <p>下面是建议的首次使用顺序。你可以把它当作安装后的检查单。</p>
+        <p>安装完成后，按这个顺序走一遍即可。</p>
       </div>
       <figure class="figure-card mermaid-card">
         <div class="mermaid">
@@ -85,7 +85,7 @@ flowchart LR
   E --> F["执行首个只读任务"]
   F --> G["检查回复与项目边界"]
         </div>
-        <figcaption>首次使用不要直接给大任务。先用一个可验证的小任务确认账号、仓库、权限和验证闭环都正常。</figcaption>
+        <figcaption>第一次使用时，先用一个可验证的小任务确认账号、仓库、权限和验证流程都正常。</figcaption>
       </figure>
     </section>
 
@@ -123,7 +123,7 @@ flowchart LR
           <p class="section-kicker">审批</p>
           <span class="fragment-alias" id="heading-install-desktop-10" data-canonical-fragment="看到权限请求时怎么判断" aria-hidden="true"></span><h2 id="看到权限请求时怎么判断">看到权限请求时怎么判断<a class="heading-permalink" data-heading-permalink data-search-exclude href="#看到权限请求时怎么判断" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
-        <p>Desktop 的一个优势是你能看到 Codex 为什么要申请某个动作。批准前重点看三点：动作是否必要、会影响哪里、完成后怎么验证。</p>
+        <p>Desktop 的好处之一是你能看到 Codex 为什么要申请某个动作。批准前先看动作是否必要、影响范围，以及完成后如何验证。</p>
       </div>
       <div class="steps">
         <article class="step"><span class="fragment-alias" id="heading-install-desktop-11" data-canonical-fragment="本地服务" aria-hidden="true"></span><h3 id="本地服务">本地服务<a class="heading-permalink" data-heading-permalink data-search-exclude href="#本地服务" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>比如启动 <code>python3 -m http.server</code> 检查静态页面。通常合理，但要确认只绑定本机地址。</p></article>
@@ -137,7 +137,7 @@ flowchart LR
       <div class="content-block">
         <p class="section-kicker">真实实例</p>
         <span class="fragment-alias" id="heading-install-desktop-15" data-canonical-fragment="真实实例-本指南的-desktop-安装页" aria-hidden="true"></span><h2 id="真实实例-本指南的-desktop-安装页">真实实例：本指南的 Desktop 安装页<a class="heading-permalink" data-heading-permalink data-search-exclude href="#真实实例-本指南的-desktop-安装页" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
-        <p>这次新增页面时，Codex 先确认任务是可执行网站更新，再读取仓库规则、页面结构和官方资料。因为安装细节可能随官方页面变化，本页只给官方入口和稳定的首次使用流程，不硬编码第三方下载地址。</p>
+        <p>新增这个页面时，Codex 先确认任务是网站内容更新，再读取仓库规则、页面结构和官方资料。安装细节可能随官方页面变化，所以本页只保留官方入口和相对稳定的首次使用流程，不写死第三方下载地址。</p>
       </div>
     </section>
   </main>

@@ -5,7 +5,7 @@
 <!-- guide:theme-bootstrap:end -->
   <link rel="stylesheet" href="assets/site.css">  <!-- guide:metadata:start -->
 <meta name="description" content="理解原生 Goal 与本指南推荐提示词模板的边界。">
-<meta name="guide-build" content="54b93b531574">
+<meta name="guide-build" content="7fdbee178024">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/goal.html">
 <meta property="og:type" content="website">
@@ -44,7 +44,7 @@ flowchart TD
   E --> G["整合结果"]
   F --> G
   G --> H["Validation / Closeout"]
-      </div><figcaption>Goal 的重点不是“保持运行”，而是让长任务每一阶段都有边界、证据和停止条件。</figcaption></figure></section>
+      </div><figcaption>Goal 的重点是让长任务的每一阶段都有边界、证据和停止条件，而不是单纯保持运行。</figcaption></figure></section>
       <section class="content-block" id="when"><p class="section-kicker">何时使用</p><span class="fragment-alias" id="heading-goal-2" data-canonical-fragment="什么时候用-不用" aria-hidden="true"></span><h2 id="什么时候用-不用">什么时候用 / 不用<a class="heading-permalink" data-heading-permalink data-search-exclude href="#什么时候用-不用" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2><ul class="mini-list"><li><strong>用 Goal</strong><span>跨多个页面或仓库、需要发布、需要实验、需要 subagent、需要最终 closeout。</span></li><li><strong>不用 Goal</strong><span>简单问答、单文件小改、一次性解释、纯只读 review。</span></li><li><strong>写法要点</strong><span>Objective 写结果，Scope 写边界，Acceptance 写用户如何验收，Validation 写命令和证据。</span></li></ul></section>
       <section class="content-block" id="examples"><p class="section-kicker">示例</p><span class="fragment-alias" id="heading-goal-3" data-canonical-fragment="可复制示例" aria-hidden="true"></span><h2 id="可复制示例">可复制示例<a class="heading-permalink" data-heading-permalink data-search-exclude href="#可复制示例" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2><p><strong>最小版：</strong>先写 Objective、Acceptance、Validation 和 Stop，让结果、证据与停止边界可见。</p><pre><code>Objective: 把指南拆成可访问的多页面 GitHub Pages 文档站。
 Acceptance: 每个页面可访问，导航可跳转。

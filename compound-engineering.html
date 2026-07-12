@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/site.css">
   <!-- guide:metadata:start -->
 <meta name="description" content="使用 Compound Engineering 插件命令，并约束 /lfg 与无人值守任务边界。">
-<meta name="guide-build" content="54b93b531574">
+<meta name="guide-build" content="7fdbee178024">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/compound-engineering.html">
 <meta property="og:type" content="website">
@@ -42,7 +42,7 @@
       <div class="hero-copy">
         <p class="hero-kicker">插件工作流</p>
         <h1>Compound Engineering plugin</h1>
-        <p class="lead">EveryInc 的 Compound Engineering plugin 是一组工程流程 skills。它不替代 Codex Desktop 的线程、权限、diff 和验证，而是把需求澄清、计划、执行、简化、审查、知识沉淀组织成一条可重复的工作流。</p>
+        <p class="lead">EveryInc 的 Compound Engineering plugin 提供一组工程流程 skills。它保留 Codex Desktop 的线程、权限、diff 和验证，再把需求澄清、计划、执行、简化、审查和知识沉淀串成一套可重复的流程。</p>
       </div>
     </section>
 
@@ -76,9 +76,9 @@
         <section class="content-block" id="setup">
           <p class="section-kicker">设置</p>
           <span class="fragment-alias" id="heading-compound-engineering-3" data-canonical-fragment="第一次进入项目后先跑什么" aria-hidden="true"></span><h2 id="第一次进入项目后先跑什么">第一次进入项目后先跑什么<a class="heading-permalink" data-heading-permalink data-search-exclude href="#第一次进入项目后先跑什么" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
-          <p>安装后，在目标仓库的新线程里先运行 <code>/ce-setup</code>。它会检查 repo-local 配置、可用工具和本机设置，适合确认插件已经加载，并避免把机器配置误写进仓库。</p>
+          <p>安装后，在目标仓库的新线程里先运行 <code>/ce-setup</code>。它会检查 repo-local 配置、可用工具和本机设置，帮助确认插件已加载，也能避免把机器配置误写进仓库。</p>
           <pre><code>/ce-setup</code></pre>
-          <p>如果项目方向还不清楚，再用 <code>/ce-strategy</code> 建立或维护 <code>STRATEGY.md</code>；如果只是一个明确任务，不要为了流程完整而强行创建策略文件。</p>
+          <p>项目方向还不清楚时，用 <code>/ce-strategy</code> 建立或维护 <code>STRATEGY.md</code>。如果只是一个明确任务，不要为了流程完整而强行创建策略文件。</p>
         </section>
 
         <section class="content-block" id="loop">
@@ -98,7 +98,7 @@
         <section class="content-block" id="unified-plan">
           <p class="section-kicker">统一计划</p>
           <span class="fragment-alias" id="heading-compound-engineering-5" data-canonical-fragment="product-contract-和实施计划写在同一份文档" aria-hidden="true"></span><h2 id="product-contract-和实施计划写在同一份文档">Product Contract 和实施计划写在同一份文档<a class="heading-permalink" data-heading-permalink data-search-exclude href="#product-contract-和实施计划写在同一份文档" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
-          <p><code>/ce-ideate</code> 先产出有依据的候选方向；选中 survivor 后，<code>/ce-brainstorm</code> 把用户、范围、验收、非目标和失败条件写成轻量 Product Contract；确认后，<code>/ce-plan</code> 在同一份计划中补充文件、依赖、U-ID、测试场景和 Definition of Done。不要另起一份 PRD 让两个事实源逐渐漂移。</p>
+          <p><code>/ce-ideate</code> 先筛选有依据的候选方向；选中 survivor 后，<code>/ce-brainstorm</code> 把用户、范围、验收、非目标和失败条件写成轻量 Product Contract。确认后，<code>/ce-plan</code> 在同一份计划中补充文件、依赖、U-ID、测试场景和 Definition of Done。不要另起一份 PRD，让两个事实源慢慢分叉。</p>
           <div class="decision-table">
             <div class="decision-row"><strong>Product Contract</strong><span>用户目标、范围、非目标、验收</span><span>由用户或产品负责人确认</span><span>未确认就回到 brainstorm</span></div>
             <div class="decision-row"><strong>Implementation plan</strong><span>文件、依赖、U-ID、验证合同</span><span>由主线程补齐并审阅 readiness</span><span>不 ready 就继续规划</span></div>

@@ -1,17 +1,17 @@
 # 中文 Codex 实战手册
 
-中文优先的 Codex Desktop GitHub Pages 实战手册仓库，面向两类读者：
+这是一个中文优先的 Codex Desktop GitHub Pages 实战手册，面向两类读者：
 
 - 初学者：想知道如何在 Codex Desktop 里打开仓库、写清楚目标、审批操作并判断结果是否真的完成。
 - 进阶用户：想系统使用 Goal、subagent、`AGENTS.md`、skills、MCP 和 Scheduled tasks（定时任务），并把 Codex 用成可验证的工程协作者。
 
 ## 内容结构
 
-网页已经从单页指南改为多页面实战手册。结构按“任务主线优先，概念能力补充，插件和本机实验单独说明”的顺序组织：
+网页已从单页指南改成多页面实战手册，结构按“任务主线优先，概念能力补充，插件和本机实验单独说明”的顺序组织：
 
 1. 任务页：`daily-workflow.html`、`desktop-cli.html`（Desktop 操作页，保留旧链接文件名）、`engineering.html`、`research.html`、`automation.html`、`workflows.html`。
 2. 概念页：`codex.html`、`permissions.html`、`agents-md.html`、`skills.html`、`mcp.html`、`subagents.html`、`goal.html`。
-3. Skills 仓库选择页：`skills-repositories.html`，比较 Compound Engineering、`mattpocock/skills`、`academic-research-skills-codex` 和 ARIS 的能力、安装路径、prompt 示例和边界。
+3. Skills 仓库选择页：`skills-repositories.html`，先看 Codex CLI 生态 Top 10，再比较 Compound Engineering、`mattpocock/skills`、`academic-research-skills-codex`、ARIS、`leonxlnx/taste-skill` 和 `helloianneo/ian-xiaohei-illustrations` 的能力、安装路径、prompt 示例和边界。
 4. 插件页：`compound-engineering.html`，说明 EveryInc Compound Engineering plugin 在 Codex Desktop 中的安装和使用方式。
 5. 本机实验页：`goal-entry.html`，说明自开发 `goal-entry` 的定位、限制和效果一般的现实边界。
 6. 资料页：`resources.html`，汇总 OpenAI 官方资料、开源仓库和本指南内部资料。
@@ -42,7 +42,7 @@ Compound Engineering plugin：
 https://github.com/EveryInc/compound-engineering-plugin
 ```
 
-高关注 skills 仓库选择页：
+Codex 相关高 stars 开源仓库选择页：
 
 ```text
 skills-repositories.html
@@ -65,7 +65,7 @@ https://github.com/WhoJay0609/codex-goal-entry
 - `data/publication-policy.json`: 公开搜索语料的排除项和敏感内容规则。
 - `scripts/check_site.py`: 发布前静态检查，覆盖 HTML 页面、站内链接、锚点和关键章节。
 - `*.html`: 多页面指南，每页可直接通过 GitHub Pages 访问。
-- `skills-repositories.html`: 高关注 skills 仓库选择页，包含第三方仓库边界和可复制 Codex Desktop prompts。
+- `skills-repositories.html`: Codex 相关高 stars 开源仓库选择页，包含 skills、MCP、其他辅助工具、第三方仓库边界和可复制 Codex Desktop prompts。
 - `figures/*.mmd`: Mermaid 流程图源文件，可在 GitHub 上预览。
 - `figures/*.md`: Mermaid 图的 Markdown 包装文件。
 - `figures/*.png`: 已渲染图，用于网页展示。
@@ -90,7 +90,7 @@ https://github.com/WhoJay0609/codex-goal-entry
 
 GitHub Pages 使用仓库根目录发布，`index.html` 是公开指南主入口。站点采用普通静态 HTML/CSS/JS，不需要构建步骤。不要把生成目录或本地任务过程文档发布为主内容。
 
-发布前先跑：
+发布前先运行：
 
 ```bash
 make check

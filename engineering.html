@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/site.css">
   <!-- guide:metadata:start -->
 <meta name="description" content="用用户、编排线程和执行线程组织从需求澄清到验证发布的工程任务。">
-<meta name="guide-build" content="54b93b531574">
+<meta name="guide-build" content="7fdbee178024">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/engineering.html">
 <meta property="og:type" content="website">
@@ -99,7 +99,7 @@ flowchart TD
     </section>
 
     <section class="section" id="issue-lanes">
-      <div class="section-head"><div class="section-title"><p class="section-kicker">Issue 分工</p><span class="fragment-alias" id="heading-engineering-8" data-canonical-fragment="按依赖和写域组织并行" aria-hidden="true"></span><h2 id="按依赖和写域组织并行">按依赖和写域组织并行<a class="heading-permalink" data-heading-permalink data-search-exclude href="#按依赖和写域组织并行" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2></div><p>并行不是多开线程，而是先证明依赖允许并行、写域互不重叠、集成点可验证。</p></div>
+      <div class="section-head"><div class="section-title"><p class="section-kicker">Issue 分工</p><span class="fragment-alias" id="heading-engineering-8" data-canonical-fragment="按依赖和写域组织并行" aria-hidden="true"></span><h2 id="按依赖和写域组织并行">按依赖和写域组织并行<a class="heading-permalink" data-heading-permalink data-search-exclude href="#按依赖和写域组织并行" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2></div><p>并行前先确认依赖允许并行、写域互不重叠，且集成点可以验证。多开线程本身不等于并行。</p></div>
       <div class="steps">
         <article class="step"><span class="fragment-alias" id="heading-engineering-9" data-canonical-fragment="contract-lane-串行" aria-hidden="true"></span><h3 id="contract-lane-串行">Contract lane 串行<a class="heading-permalink" data-heading-permalink data-search-exclude href="#contract-lane-串行" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>schema、公开接口、共同数据模型等 contract 变更先完成并合并；所有下游都依赖这一基线。</p></article>
         <article class="step"><span class="fragment-alias" id="heading-engineering-10" data-canonical-fragment="独立-lanes-并行" aria-hidden="true"></span><h3 id="独立-lanes-并行">独立 lanes 并行<a class="heading-permalink" data-heading-permalink data-search-exclude href="#独立-lanes-并行" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>在 contract 稳定后，互不重叠的 docs、frontend、test 可以进入不同 Worktree / subagent 并行执行。</p></article>
@@ -122,7 +122,7 @@ flowchart TD
     </section>
 
     <section class="section" id="team-case" data-case-type="composite" data-case-id="team-delivery-composite">
-      <div class="section-head"><div class="section-title"><p class="section-kicker">真实实例</p><span class="fragment-alias" id="heading-engineering-16" data-canonical-fragment="真实实例-历史复合案例" aria-hidden="true"></span><h2 id="真实实例-历史复合案例">真实实例：历史复合案例<a class="heading-permalink" data-heading-permalink data-search-exclude href="#真实实例-历史复合案例" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2><div class="tier-badges"><span class="tier-badge">历史复合案例</span><span class="tier-badge">中等脱敏</span></div></div><p>以下案例由多个可核验片段组成，用来展示完整协作合同；它不声称来自一次连续执行。内容保留工程证据类别，但不包含私人姓名、机器路径、主机或业务代码。</p></div>
+      <div class="section-head"><div class="section-title"><p class="section-kicker">真实实例</p><span class="fragment-alias" id="heading-engineering-16" data-canonical-fragment="真实实例-历史复合案例" aria-hidden="true"></span><h2 id="真实实例-历史复合案例">真实实例：历史复合案例<a class="heading-permalink" data-heading-permalink data-search-exclude href="#真实实例-历史复合案例" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2><div class="tier-badges"><span class="tier-badge">历史复合案例</span><span class="tier-badge">中等脱敏</span></div></div><p>以下案例由多个可核验片段组成，用来说明完整协作合同；它不声称来自一次连续执行。内容保留工程证据类别，但不包含私人姓名、机器路径、主机或业务代码。</p></div>
       <div class="bento">
         <article class="card span-6"><span class="fragment-alias" id="heading-engineering-17" data-canonical-fragment="请求" aria-hidden="true"></span><h3 id="请求">请求<a class="heading-permalink" data-heading-permalink data-search-exclude href="#请求" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>在 Codex Desktop 中把团队工程规范做成可公开验证的指南页；保持导航和视觉模式，保护既有修改，只改批准的页面，并在授权后才发布。</p></article>
         <article class="card span-6"><span class="fragment-alias" id="heading-engineering-18" data-canonical-fragment="先读" aria-hidden="true"></span><h3 id="先读">先读<a class="heading-permalink" data-heading-permalink data-search-exclude href="#先读" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>按层级读取全局、仓库根目录、目标目录的 <code>AGENTS.md</code>，再读 README、目标 HTML、共享样式、验证脚本与生成上下文；最近规则优先，生成上下文只作索引并检查漂移。</p></article>
