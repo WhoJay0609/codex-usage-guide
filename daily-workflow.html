@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/site.css">
   <!-- guide:metadata:start -->
 <meta name="description" content="完成解释、修复、测试和审查等日常任务。">
-<meta name="guide-build" content="6bb0bb663fb1">
+<meta name="guide-build" content="538251dfca31">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/daily-workflow.html">
 <meta property="og:type" content="website">
@@ -43,7 +43,7 @@
       <div class="hero-copy">
         <p class="hero-kicker">任务手册</p>
         <h1>日常任务 workflow</h1>
-        <p class="lead">日常任务不是“小任务随便说”。在 Codex Desktop 里，你要把 Codex 当成会读仓库、会改文件、会跑命令、也可能误解边界的工程协作者。最稳的方式是：先开一个清晰线程，再给上下文，限定范围，审批必要操作，最后检查验证证据。</p>
+        <p class="lead">日常任务不能只用一句“做一下”带过。在 Codex Desktop 里，Codex 会读仓库、改文件、跑命令，也可能误解边界。比较稳妥的做法是：开一个清晰线程，补充上下文，限定范围，审批必要操作，最后检查验证证据。</p>
       </div>
     </section>
 
@@ -53,7 +53,7 @@
           <p class="section-kicker">核心循环</p>
           <span class="fragment-alias" id="heading-daily-workflow-1" data-canonical-fragment="日常任务的最小可靠闭环" aria-hidden="true"></span><h2 id="日常任务的最小可靠闭环">日常任务的最小可靠闭环<a class="heading-permalink" data-heading-permalink data-search-exclude href="#日常任务的最小可靠闭环" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
-        <p>这个闭环适用于解释错误、修失败测试、更新文档、调整页面、检查 PR 和清理小 bug。不要一上来就要求 Codex “全部优化一下”。</p>
+        <p>这套流程适用于解释错误、修失败测试、更新文档、调整页面、检查 PR 和清理小 bug。不要一上来就让 Codex “全部优化一下”。</p>
       </div>
       <div class="steps">
         <article class="step"><span class="fragment-alias" id="heading-daily-workflow-2" data-canonical-fragment="说明任务" aria-hidden="true"></span><h3 id="说明任务">说明任务<a class="heading-permalink" data-heading-permalink data-search-exclude href="#说明任务" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>写清当前现象、目标结果、相关路径和不想碰的范围。最好附上失败日志、截图、URL 或测试名。</p></article>
@@ -80,7 +80,7 @@ flowchart LR
           <p class="section-kicker">Desktop 日常流程</p>
           <span class="fragment-alias" id="heading-daily-workflow-6" data-canonical-fragment="在桌面版里实际怎么操作" aria-hidden="true"></span><h2 id="在桌面版里实际怎么操作">在桌面版里实际怎么操作<a class="heading-permalink" data-heading-permalink data-search-exclude href="#在桌面版里实际怎么操作" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
-        <p>Desktop 的关键不是“聊天更方便”，而是你能把页面反馈、文件修改、终端验证和权限审批串成一个可追踪的任务线程。</p>
+        <p>Desktop 方便的地方在于，你可以把页面反馈、文件修改、终端验证和权限审批放进同一个可追踪的任务线程。</p>
       </div>
       <div class="bento">
         <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-7" data-canonical-fragment="把问题贴进线程" aria-hidden="true"></span><h3 id="把问题贴进线程">把问题贴进线程<a class="heading-permalink" data-heading-permalink data-search-exclude href="#把问题贴进线程" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>包括当前 URL、截图描述、失败命令、目标读者、相关路径。不要只说“这里不对”。</p></article>
@@ -97,7 +97,7 @@ flowchart LR
           <p class="section-kicker">常见任务</p>
           <span class="fragment-alias" id="heading-daily-workflow-12" data-canonical-fragment="五类高频日常任务" aria-hidden="true"></span><h2 id="五类高频日常任务">五类高频日常任务<a class="heading-permalink" data-heading-permalink data-search-exclude href="#五类高频日常任务" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
-        <p>新手可以直接从这些模板开始。进阶用户可以把这些模板沉淀进 <code>AGENTS.md</code> 或 skill。</p>
+        <p>新手可以从这些模板开始；进阶用户可以把稳定的部分沉淀进 <code>AGENTS.md</code> 或 skill。</p>
       </div>
       <div class="bento">
         <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-13" data-canonical-fragment="读代码并解释" aria-hidden="true"></span><h3 id="读代码并解释">读代码并解释<a class="heading-permalink" data-heading-permalink data-search-exclude href="#读代码并解释" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>适合刚接手仓库、看不懂模块边界、需要快速建立 mental model。要求 Codex 引用真实文件和函数，不要泛泛解释。</p><pre><code>请只读分析这个仓库的登录流程。
@@ -130,7 +130,7 @@ flowchart LR
           <p class="section-kicker">Prompt 质量</p>
           <span class="fragment-alias" id="heading-daily-workflow-18" data-canonical-fragment="坏请求和好请求的差别" aria-hidden="true"></span><h2 id="坏请求和好请求的差别">坏请求和好请求的差别<a class="heading-permalink" data-heading-permalink data-search-exclude href="#坏请求和好请求的差别" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
-        <p>Codex 的能力很大程度取决于任务边界。坏请求通常省略上下文、范围、验收和风险；好请求会让 Codex 先读、再判断、再小步执行。</p>
+        <p>Codex 做得好不好，很大程度取决于任务边界。坏请求通常省略上下文、范围、验收和风险；好请求会让 Codex 先读、判断，再小步执行。</p>
       </div>
       <div class="bento">
         <article class="card span-6 dark-card"><span class="fragment-alias" id="heading-daily-workflow-19" data-canonical-fragment="不要这样写" aria-hidden="true"></span><h3 id="不要这样写">不要这样写<a class="heading-permalink" data-heading-permalink data-search-exclude href="#不要这样写" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><pre><code>帮我优化一下这个项目。
@@ -167,7 +167,7 @@ flowchart LR
           <p class="section-kicker">证据</p>
           <span class="fragment-alias" id="heading-daily-workflow-21" data-canonical-fragment="验收不是-看起来完成了" aria-hidden="true"></span><h2 id="验收不是-看起来完成了">验收不是“看起来完成了”<a class="heading-permalink" data-heading-permalink data-search-exclude href="#验收不是-看起来完成了" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
-        <p>日常任务完成时，最终回答应该能让你判断是否真的可用。没有证据的“已完成”不算完成。</p>
+        <p>日常任务收尾时，最终回答应该让你判断结果是否真的可用。没有证据的“已完成”不算完成。</p>
       </div>
       <div class="bento">
         <article class="card span-3"><span class="fragment-alias" id="heading-daily-workflow-22" data-canonical-fragment="改动证据" aria-hidden="true"></span><h3 id="改动证据">改动证据<a class="heading-permalink" data-heading-permalink data-search-exclude href="#改动证据" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>列出关键文件、关键行为变化、没有改哪些范围。不要只说“优化了代码”。</p></article>
@@ -197,7 +197,7 @@ flowchart LR
           <p class="section-kicker">失败模式</p>
           <span class="fragment-alias" id="heading-daily-workflow-27" data-canonical-fragment="常见失败和补救" aria-hidden="true"></span><h2 id="常见失败和补救">常见失败和补救<a class="heading-permalink" data-heading-permalink data-search-exclude href="#常见失败和补救" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
-        <p>发现 Codex 偏离方向时，不要继续追加模糊要求。直接指出偏差，把任务拉回边界。</p>
+        <p>如果 Codex 偏离了方向，别继续追加模糊要求。指出偏差，重新限定范围。</p>
       </div>
       <div class="bento">
         <article class="card span-4"><span class="fragment-alias" id="heading-daily-workflow-28" data-canonical-fragment="改动太散" aria-hidden="true"></span><h3 id="改动太散">改动太散<a class="heading-permalink" data-heading-permalink data-search-exclude href="#改动太散" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>让 Codex 停下，列出当前 diff，解释每个文件为什么必要。无关改动应撤回或拆到后续任务。</p></article>

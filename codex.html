@@ -5,7 +5,7 @@
 <!-- guide:theme-bootstrap:end -->
   <link rel="stylesheet" href="assets/site.css">  <!-- guide:metadata:start -->
 <meta name="description" content="理解 Codex Desktop 的工作面与适用边界。">
-<meta name="guide-build" content="6bb0bb663fb1">
+<meta name="guide-build" content="538251dfca31">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/codex.html">
 <meta property="og:type" content="website">
@@ -43,7 +43,7 @@
 请先读取 AGENTS.md、README.md 和失败测试日志。
 目标：解释这个错误，并提出最小修复方案。
 约束：只读分析，不要改文件。</code></pre></section>
-        <section class="content-block" id="real-example"><p class="section-kicker">真实实例</p><span class="fragment-alias" id="heading-codex-4" data-canonical-fragment="真实实例-扩充这份网页手册" aria-hidden="true"></span><h2 id="真实实例-扩充这份网页手册">真实实例：扩充这份网页手册<a class="heading-permalink" data-heading-permalink data-search-exclude href="#真实实例-扩充这份网页手册" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2><p>这次维护 <code>codex-usage-guide</code> 时，Codex 的主工作面是 Desktop：用户给出页面反馈，Codex 读取 <code>AGENTS.md</code> 和 HTML 文件，在内置终端运行静态链接检查，最后用 Git diff 和验证结果收口。这个例子说明 Codex Desktop 的价值不是“聊天”，而是把读、改、验、审查和发布证据放进一个可追踪线程。</p><pre><code>真实任务输入：
+        <section class="content-block" id="real-example"><p class="section-kicker">真实实例</p><span class="fragment-alias" id="heading-codex-4" data-canonical-fragment="真实实例-扩充这份网页手册" aria-hidden="true"></span><h2 id="真实实例-扩充这份网页手册">真实实例：扩充这份网页手册<a class="heading-permalink" data-heading-permalink data-search-exclude href="#真实实例-扩充这份网页手册" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2><p>维护 <code>codex-usage-guide</code> 时，Codex 的主工作面是 Desktop：用户给出页面反馈，Codex 读取 <code>AGENTS.md</code> 和 HTML 文件，在内置终端运行静态链接检查，最后用 Git diff 和验证结果收口。这个例子展示了 Desktop 如何把读取、修改、验证、审查和发布证据放进一个可追踪的线程。</p><pre><code>真实任务输入：
 请把中文 Codex 指南扩成实战手册。
 要求：
 - 每个主要页面都有真实实例

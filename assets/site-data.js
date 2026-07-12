@@ -5,8 +5,22 @@ window.GUIDE_SITE_DATA = {
     "assets/theme.js": "187420686654f8c1c58df32a0687d4a0d11e6e0707b8696d5f077774982d766a",
     "figures/social-preview.png": "e0ee23ae3b99a8507b4aa423c530289468f1db067d1e7041e4afcefb5fe3ac58"
   },
-  "build_id": "6bb0bb663fb1",
+  "build_id": "538251dfca31",
   "changelog": [
+    {
+      "category": "content",
+      "date": "2026-07-12",
+      "summary": "加入 taste-skill 与 Ian Xiaohei Illustrations 的第三方使用路径、示例和边界。",
+      "target": "skills-repositories.html",
+      "title": "补充视觉与中文配图 Skills"
+    },
+    {
+      "category": "content",
+      "date": "2026-07-12",
+      "summary": "按 GitHub codex-cli 主题页快照补充 skills、MCP 与其他辅助工具榜单，并保留官方基础设施基准。",
+      "target": "skills-repositories.html",
+      "title": "加入 Codex 生态高 stars Top 10"
+    },
     {
       "category": "structure",
       "date": "2026-07-11",
@@ -363,6 +377,7 @@ window.GUIDE_SITE_DATA = {
       "先按任务-fit-选仓库",
       "30-秒选择表",
       "先看案例证据等级",
+      "codex-cli-生态-top-10",
       "compound-engineering",
       "能力",
       "最适合",
@@ -383,6 +398,8 @@ window.GUIDE_SITE_DATA = {
       "最适合-4",
       "启用路径-2",
       "场景-夜间循环保留人工闸门",
+      "taste-skill",
+      "ian-xiaohei-illustrations",
       "高级用户-按阶段组合-不要一锅端",
       "使用边界",
       "真实实例-历史案例",
@@ -663,12 +680,12 @@ window.GUIDE_SITE_DATA = {
       "title": "Compound Engineering"
     },
     {
-      "description": "比较常用第三方 skills 仓库并选择合适入口。",
-      "facts_verified": "2026-07-11",
-      "modified": "2026-07-11",
+      "description": "按 GitHub 星标快照比较 Codex CLI 生态中的 skills、MCP 与辅助工具。",
+      "facts_verified": "2026-07-12",
+      "modified": "2026-07-12",
       "nav_label": "Skills 仓库",
       "path": "skills-repositories.html",
-      "title": "高 stars skills 仓库介绍"
+      "title": "Codex 相关高 stars 开源仓库"
     },
     {
       "description": "了解本机自开发 goal-entry 的用途和限制。",

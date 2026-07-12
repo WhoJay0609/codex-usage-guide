@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/site.css">
   <!-- guide:metadata:start -->
 <meta name="description" content="线程、审批、diff 与发布验证的 Desktop 主流程。">
-<meta name="guide-build" content="6bb0bb663fb1">
+<meta name="guide-build" content="538251dfca31">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/desktop-cli.html">
 <meta property="og:type" content="website">
@@ -43,7 +43,7 @@
       <div class="hero-copy">
         <p class="hero-kicker">Codex Desktop</p>
         <h1>桌面版怎么用</h1>
-        <p class="lead">这份手册只把 Codex Desktop 作为主入口。Desktop 的优势是把对话、仓库、内置终端、浏览器反馈、权限审批、Git diff 和发布验证放在同一个工作面里，适合交互式地完成真实工程任务。</p>
+        <p class="lead">这份手册只把 Codex Desktop 作为主入口，重点讲如何把对话、仓库、内置终端、浏览器反馈、权限审批、Git diff 和发布验证放进同一个工作面，边操作边检查真实工程任务。</p>
       </div>
     </section>
 
@@ -53,7 +53,7 @@
           <p class="section-kicker">何时使用</p>
           <span class="fragment-alias" id="heading-desktop-cli-1" data-canonical-fragment="什么时候优先用-desktop" aria-hidden="true"></span><h2 id="什么时候优先用-desktop">什么时候优先用 Desktop<a class="heading-permalink" data-heading-permalink data-search-exclude href="#什么时候优先用-desktop" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
-        <p>如果任务需要你边看结果边调整，或者需要 Codex 解释它正在做什么，Desktop 应该是默认入口。重复任务也先在 Desktop 跑通，再沉淀为 Automations。</p>
+        <p>需要边看结果边调整，或希望 Codex 解释当前动作时，优先用 Desktop。重复任务先在 Desktop 跑通，确认输入、输出和失败处理都稳定后，再放进 Automations。</p>
       </div>
       <div class="bento">
         <article class="card span-4 dark-card"><span class="fragment-alias" id="heading-desktop-cli-2" data-canonical-fragment="页面和视觉反馈" aria-hidden="true"></span><h3 id="页面和视觉反馈">页面和视觉反馈<a class="heading-permalink" data-heading-permalink data-search-exclude href="#页面和视觉反馈" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>网页、PDF、截图、排版、交互状态、GitHub Pages 发布效果，适合放在 Desktop 里迭代。</p></article>
@@ -70,7 +70,7 @@
           <p class="section-kicker">操作</p>
           <span class="fragment-alias" id="heading-desktop-cli-7" data-canonical-fragment="desktop-里的六个常用操作" aria-hidden="true"></span><h2 id="desktop-里的六个常用操作">Desktop 里的六个常用操作<a class="heading-permalink" data-heading-permalink data-search-exclude href="#desktop-里的六个常用操作" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
-        <p>零基础用户不需要先背概念。按下面六步走，基本能覆盖网页、文档、小型代码修改和发布验证。</p>
+        <p>零基础用户不用先背概念。按下面六步走，就能处理网页、文档、小型代码修改和发布验证。</p>
       </div>
       <div class="steps">
         <article class="step"><span class="fragment-alias" id="heading-desktop-cli-8" data-canonical-fragment="1.-打开任务线程" aria-hidden="true"></span><h3 id="1.-打开任务线程">1. 打开任务线程<a class="heading-permalink" data-heading-permalink data-search-exclude href="#1.-打开任务线程" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>一个线程只放一个目标。开头写清仓库路径、页面 URL、当前问题、验收标准和禁区。</p></article>
@@ -141,7 +141,7 @@ https://example.github.io/project/page.html
           <p class="section-kicker">真实实例</p>
           <span class="fragment-alias" id="heading-desktop-cli-19" data-canonical-fragment="真实实例-本页这次怎么改" aria-hidden="true"></span><h2 id="真实实例-本页这次怎么改">真实实例：本页这次怎么改<a class="heading-permalink" data-heading-permalink data-search-exclude href="#真实实例-本页这次怎么改" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
         </div>
-        <p>用户在 Desktop 浏览器里打开 <code>workflows.html</code>，要求“主要面向 Codex Desktop，把桌面版操作加进去”。这是典型 Desktop 任务：用户给出页面上下文，Codex 读仓库规则和页面，修改 HTML，运行检查，推送后验证公开站点。</p>
+        <p>用户在 Desktop 浏览器里打开 <code>workflows.html</code>，要求“主要面向 Codex Desktop，把桌面版操作加进去”。这是一个典型的 Desktop 任务：用户提供页面上下文，Codex 读取仓库规则和页面，修改 HTML，运行检查，推送后再验证公开站点。</p>
       </div>
       <div class="bento">
         <article class="card span-3"><span class="fragment-alias" id="heading-desktop-cli-20" data-canonical-fragment="输入" aria-hidden="true"></span><h3 id="输入">输入<a class="heading-permalink" data-heading-permalink data-search-exclude href="#输入" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>当前 URL、用户反馈、项目规则和目标是 Desktop-first。</p></article>

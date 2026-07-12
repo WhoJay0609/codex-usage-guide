@@ -30,7 +30,7 @@
     {"path": "research.html", "title": "学术 flow", "nav_label": "学术", "description": "从研究问题到实验和写作的学术任务路径。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
     {"path": "automation.html", "title": "自动化", "nav_label": "自动化", "description": "把稳定重复任务交给 Codex Desktop Automations。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
     {"path": "compound-engineering.html", "title": "Compound Engineering", "nav_label": "Compound", "description": "在 Codex Desktop 中使用 Compound Engineering plugin。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
-    {"path": "skills-repositories.html", "title": "高 stars skills 仓库介绍", "nav_label": "Skills 仓库", "description": "比较常用第三方 skills 仓库并选择合适入口。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
+    {"path": "skills-repositories.html", "title": "Codex 相关高 stars 开源仓库", "nav_label": "Skills 仓库", "description": "按 GitHub 星标快照比较 Codex CLI 生态中的 skills、MCP 与辅助工具。", "modified": "2026-07-12", "facts_verified": "2026-07-12"},
     {"path": "goal-entry.html", "title": "goal-entry", "nav_label": "goal-entry", "description": "了解本机自开发 goal-entry 的用途和限制。", "modified": "2026-07-11", "facts_verified": "2026-07-11"},
     {"path": "resources.html", "title": "资料地图", "nav_label": "资料", "description": "查找 Codex Desktop 官方资料与本指南维护边界。", "modified": "2026-07-11", "facts_verified": "2026-07-11"}
   ]

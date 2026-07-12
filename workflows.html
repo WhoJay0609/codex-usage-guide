@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/site.css">
   <!-- guide:metadata:start -->
 <meta name="description" content="根据任务复杂度选择合适的 Codex 工作流。">
-<meta name="guide-build" content="6bb0bb663fb1">
+<meta name="guide-build" content="538251dfca31">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/workflows.html">
 <meta property="og:type" content="website">
@@ -43,7 +43,7 @@
       <div class="hero-copy">
         <p class="hero-kicker">任务</p>
         <h1>任务路径总览</h1>
-        <p class="lead">本指南默认你主要使用 Codex Desktop。先按桌面版任务闭环组织工作，再决定是否需要 Goal、subagent、skills 或自动化。任务页的重点是可执行流程，不是术语解释。</p>
+        <p class="lead">本指南默认你主要使用 Codex Desktop。先用桌面版把任务闭环跑通，再判断是否需要 Goal、subagent、skills 或自动化。任务页重点讲怎么做，不展开术语解释。</p>
       </div>
     </section>
 
@@ -77,7 +77,7 @@
     <section class="section" id="bounded-practice" data-loop-stage="practice">
       <div class="section-head">
         <div class="section-title"><p class="section-kicker">2 / 实践</p><span class="fragment-alias" id="heading-workflows-10" data-canonical-fragment="同一任务-小步练到可验收" aria-hidden="true"></span><h2 id="同一任务-小步练到可验收">同一任务，小步练到可验收<a class="heading-permalink" data-heading-permalink data-search-exclude href="#同一任务-小步练到可验收" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2></div>
-        <p>prompt ladder 只逐步补齐同一个真实任务的上下文、边界和验收，不另换一个更容易的假任务。每一步只做当前最小改动，完成后立即检查 diff 与局部行为。</p>
+        <p>prompt ladder 针对同一个真实任务逐步补齐上下文、边界和验收，不要中途换成更容易的演示任务。每一步只做当前最小改动，完成后立即检查 diff 和局部行为。</p>
       </div>
       <div class="steps">
         <article class="step"><span class="fragment-alias" id="heading-workflows-11" data-canonical-fragment="1.-现象" aria-hidden="true"></span><h3 id="1.-现象">1. 现象<a class="heading-permalink" data-heading-permalink data-search-exclude href="#1.-现象" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>指出当前页面、仓库或失败命令，以及实际发生了什么。</p></article>
@@ -122,7 +122,7 @@ make check 通过；桌面和 390px 页面无溢出。
       </div>
       <div class="section-head">
         <div class="section-title"><p class="section-kicker">反例</p><span class="fragment-alias" id="heading-workflows-19" data-canonical-fragment="坏-prompt-怎么修" aria-hidden="true"></span><h2 id="坏-prompt-怎么修">坏 prompt 怎么修<a class="heading-permalink" data-heading-permalink data-search-exclude href="#坏-prompt-怎么修" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2></div>
-        <p>反例的价值是暴露缺失边界。每次修 prompt，都补齐范围、验收、验证和停止条件。</p>
+        <p>反例可以帮助找出缺失的边界。每次修改 prompt，都补上范围、验收、验证和停止条件。</p>
       </div>
       <div class="bento">
         <article class="card span-4 repair-card"><span class="fragment-alias" id="heading-workflows-20" data-canonical-fragment="帮我优化项目" aria-hidden="true"></span><h3 id="帮我优化项目">“帮我优化项目”<a class="heading-permalink" data-heading-permalink data-search-exclude href="#帮我优化项目" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>改成：说明目标页面/目录、目标读者、允许改的文件、验收命令和不碰的边界。</p></article>
@@ -134,7 +134,7 @@ make check 通过；桌面和 390px 页面无溢出。
     <section class="section" id="acceptance-evidence" data-loop-stage="evidence">
       <div class="section-head">
         <div class="section-title"><p class="section-kicker">3 / 证据</p><span class="fragment-alias" id="heading-workflows-23" data-canonical-fragment="证据通过-才算-accepted" aria-hidden="true"></span><h2 id="证据通过-才算-accepted">证据通过，才算 accepted<a class="heading-permalink" data-heading-permalink data-search-exclude href="#证据通过-才算-accepted" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2></div>
-        <p>实现摘要不是验收证据。先按任务合同收集对应类别的证据，再由用户、reviewer 或既定自动门判定 <code>accepted</code>；未 accepted 的任务不能进入 done。</p>
+        <p>实现摘要本身不是验收证据。先按任务合同收集对应证据，再由用户、reviewer 或既定自动门判定 <code>accepted</code>；未 accepted 的任务不能进入 done。</p>
       </div>
       <div class="decision-table">
         <div class="decision-row"><strong>代码测试</strong><span>测试或构建命令</span><span>退出码与关键结果</span><span>覆盖实际改动路径</span></div>
@@ -175,7 +175,7 @@ make check 通过；桌面和 390px 页面无溢出。
       <div class="content-block">
         <p class="section-kicker">真实实例</p>
         <span class="fragment-alias" id="heading-workflows-30" data-canonical-fragment="真实实例-从一句反馈选择任务路径" aria-hidden="true"></span><h2 id="真实实例-从一句反馈选择任务路径">真实实例：从一句反馈选择任务路径<a class="heading-permalink" data-heading-permalink data-search-exclude href="#真实实例-从一句反馈选择任务路径" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
-        <p>用户在 Codex Desktop 的浏览器里说“每个内容都加一个真实的实例”。它会修改多个页面、需要发布且可能多人写入，因此从 choose 阶段升级到 <a href="engineering.html#team-flow">团队工程流程</a>，但仍沿用同一份验收合同直到 receipt。</p>
+        <p>用户在 Codex Desktop 的浏览器里说“每个内容都加一个真实的实例”。这个请求涉及多个页面，需要发布，也可能多人写入，因此从 choose 阶段升级到 <a href="engineering.html#team-flow">团队工程流程</a>，但仍使用同一份验收合同直到 receipt。</p>
         <div class="bento">
           <article class="card span-4"><span class="fragment-alias" id="heading-workflows-31" data-canonical-fragment="1.-request" aria-hidden="true"></span><h3 id="1.-request">1. Request<a class="heading-permalink" data-heading-permalink data-search-exclude href="#1.-request" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>给主要内容加入真实实例，让读者能照着完成任务。</p></article>
           <article class="card span-4"><span class="fragment-alias" id="heading-workflows-32" data-canonical-fragment="2.-context-to-inspect" aria-hidden="true"></span><h3 id="2.-context-to-inspect">2. Context to inspect<a class="heading-permalink" data-heading-permalink data-search-exclude href="#2.-context-to-inspect" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p><code>AGENTS.md</code>、现有页面与导航、案例模式、静态检查和发布说明。</p></article>
