@@ -11,7 +11,7 @@
 
 1. 任务页：`daily-workflow.html`、`desktop-cli.html`（Desktop 操作页，保留旧链接文件名）、`engineering.html`、`research.html`、`automation.html`、`workflows.html`。
 2. 概念页：`codex.html`、`permissions.html`、`agents-md.html`、`skills.html`、`mcp.html`、`subagents.html`、`goal.html`。
-3. Skills 仓库选择页：`skills-repositories.html`，先看 Codex CLI 生态 Top 10，再比较 Compound Engineering、`mattpocock/skills`、`academic-research-skills-codex`、ARIS、`leonxlnx/taste-skill` 和 `helloianneo/ian-xiaohei-illustrations` 的能力、安装路径、prompt 示例和边界。
+3. Skills 仓库选择页：`skills-repositories.html`，先看 Codex CLI 生态 Top 10，再比较 Compound Engineering、`mattpocock/skills`、`academic-research-skills-codex`、ARIS、`leonxlnx/taste-skill`、`helloianneo/ian-xiaohei-illustrations` 和 `plexpt/awesome-chatgpt-prompts-zh` 的能力、安装路径、prompt 示例和边界。
 4. 插件页：`compound-engineering.html`，说明 EveryInc Compound Engineering plugin 在 Codex Desktop 中的安装和使用方式。
 5. 本机实验页：`goal-entry.html`，说明自开发 `goal-entry` 的定位、限制和效果一般的现实边界。
 6. 资料页：`resources.html`，汇总 OpenAI 官方资料、开源仓库和本指南内部资料。
@@ -74,7 +74,7 @@ https://github.com/WhoJay0609/codex-goal-entry
 - `docs/adr/0001-dual-track-chinese-latex-guide.md`: 文档结构和受众决策。
 - `AGENTS.md`: 给 Codex/agent 使用的仓库工作规则。
 
-## 插件与本机 skills 备注
+## 插件、本机 skills 与第三方辅助工具备注
 
 指南中提到的部分 skills 是插件或本机自写扩展，不等同于 OpenAI 官方内置功能。发布或迁移到其它机器时，请以对应仓库、`SKILL.md` 或插件页面为准，并把不可复现的本机路径标成 local adaptation。
 
@@ -84,6 +84,7 @@ https://github.com/WhoJay0609/codex-goal-entry
 - `mattpocock/skills`: https://github.com/mattpocock/skills
 - `academic-research-skills-codex`: https://github.com/Imbad0202/academic-research-skills-codex
 - `ARIS`: https://github.com/wanshuiyin/auto-claude-code-research-in-sleep
+- `awesome-chatgpt-prompts-zh`: https://github.com/plexpt/awesome-chatgpt-prompts-zh
 - `goal-entry`: 自己开发的本机实验，效果一般，仅作参考：https://github.com/WhoJay0609/codex-goal-entry
 
 ## 发布建议

@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
   "entries": [
+    {"date": "2026-07-12", "category": "content", "title": "补充中文 Prompt 第三方仓库", "summary": "加入 awesome-chatgpt-prompts-zh 的 Codex 适配路径、示例和提示词安全边界。", "target": "skills-repositories.html"},
     {"date": "2026-07-12", "category": "content", "title": "补充视觉与中文配图 Skills", "summary": "加入 taste-skill 与 Ian Xiaohei Illustrations 的第三方使用路径、示例和边界。", "target": "skills-repositories.html"},
     {"date": "2026-07-12", "category": "content", "title": "加入 Codex 生态高 stars Top 10", "summary": "按 GitHub codex-cli 主题页快照补充 skills、MCP 与其他辅助工具榜单，并保留官方基础设施基准。", "target": "skills-repositories.html"},
     {"date": "2026-07-11", "category": "structure", "title": "启动工具书升级", "summary": "建立统一站点清单、更新日志和可复现验证基础。", "target": "index.html"},

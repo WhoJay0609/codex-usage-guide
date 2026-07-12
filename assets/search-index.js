@@ -3493,7 +3493,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "skills-repositories.html",
       "prompts": [],
       "section": "30 秒选择表",
-      "text": "多步骤工程功能 / 复杂 bug首选：Compound Engineering辅助：mattpocock/skills要完整 brainstorm-plan-work-review 闭环时用 Compound；只想先拷问需求时用 Matt。 需求模糊 / 想被追问首选：mattpocock/skills辅助：Compound Engineering先用 $grill-with-docs 或 $ask-matt 收紧语言，再进入重流程。 文献 / 写作 / 审稿 / 实验计划首选：academic-research-skills-codex辅助：ARIS想在 Codex 里用单个 suite 入口时选 ARS；需要更长流水线时再看 ARIS。 睡眠式研究自动化首选：ARIS辅助：academic-research-skills-codex长时间研究、自动评审、研究 wiki 和实验监控适合 ARIS；普通学术任务先选 ARS。 前端视觉 / 页面重设计首选：leonxlnx/taste-skill辅助：现有项目的测试与无障碍检查用 design-taste-frontend 或 redesign-existing-projects 处理视觉方向；它不替代功能、响应式和无障碍验收。 中文文章 / 方法论配图首选：helloianneo/ian-xiaohei-illustrations辅助：无先提炼认知锚点和 shot list，再生成 16:9 小黑手绘图；不把它当 PPT 模板或可编辑矢量工具。 完全不知道选哪个首选：mattpocock/skills辅助：Compound Engineering先让任务变清楚，再决定是否需要完整工程流水线。 证据标签",
+      "text": "多步骤工程功能 / 复杂 bug首选：Compound Engineering辅助：mattpocock/skills要完整 brainstorm-plan-work-review 闭环时用 Compound；只想先拷问需求时用 Matt。 需求模糊 / 想被追问首选：mattpocock/skills辅助：Compound Engineering先用 $grill-with-docs 或 $ask-matt 收紧语言，再进入重流程。 文献 / 写作 / 审稿 / 实验计划首选：academic-research-skills-codex辅助：ARIS想在 Codex 里用单个 suite 入口时选 ARS；需要更长流水线时再看 ARIS。 睡眠式研究自动化首选：ARIS辅助：academic-research-skills-codex长时间研究、自动评审、研究 wiki 和实验监控适合 ARIS；普通学术任务先选 ARS。 前端视觉 / 页面重设计首选：leonxlnx/taste-skill辅助：现有项目的测试与无障碍检查用 design-taste-frontend 或 redesign-existing-projects 处理视觉方向；它不替代功能、响应式和无障碍验收。 中文文章 / 方法论配图首选：helloianneo/ian-xiaohei-illustrations辅助：无先提炼认知锚点和 shot list，再生成 16:9 小黑手绘图；不把它当 PPT 模板或可编辑矢量工具。 中文 prompt / 快速起步首选：plexpt/awesome-chatgpt-prompts-zh辅助：Codex Desktop 任务合同把角色或场景 prompt 当作起点，再补齐仓库上下文、范围、权限、验收和停止条件；它不是可直接执行的 Codex skill。 完全不知道选哪个首选：mattpocock/skills辅助：Compound Engineering先让任务变清楚，再决定是否需要完整工程流水线。 证据标签",
       "title": "Skills 仓库"
     },
     {
@@ -3721,7 +3721,18 @@ window.GUIDE_SEARCH_INDEX = {
         "Use $ian-xiaohei-illustrations 先不要生图。\n请读下面这篇文章，输出 5 张左右 shot list；每张写放置段落、认知锚点、结构、小黑动作和短中文标注。"
       ],
       "section": "helloianneo/ian-xiaohei-illustrations",
-      "text": "helloianneo/ian-xiaohei-illustrations 是面向 Codex 的中文文章配图 Skill。它先提炼文章中的认知锚点，再输出 shot list、低科技物理隐喻和 16:9 小黑手绘图；它不是 PPT 信息图、商业 KV、架构图或可编辑矢量图。 能力从文章抽取主题、核心含义、结构、小黑动作和短标注，形成约 4–8 张图的 shot list，并在生成后做可读性和构图检查。 最适合中文知识、方法论、AI workflow、研究笔记、Notion 或博客正文配图；每张图只保留一个核心动作和一条清晰认知。 安装路径按上游 README 克隆仓库，把其中的 ian-xiaohei-illustrations 目录复制到 ${CODEX_HOME:-$HOME/.codex}/skills/。 Use $ian-xiaohei-illustrations 先不要生图。 请读下面这篇文章，输出 5 张左右 shot list；每张写放置段落、认知锚点、结构、小黑动作和短中文标注。 使用边界不适合商业主视觉、品牌系统、PPT / Keynote、建筑图或可编辑矢量交付；图内中文要短，发布前必须逐张检查生成文件。 仓库链接github.com/helloianneo/ian-xiaohei-illustrations 进阶",
+      "text": "helloianneo/ian-xiaohei-illustrations 是面向 Codex 的中文文章配图 Skill。它先提炼文章中的认知锚点，再输出 shot list、低科技物理隐喻和 16:9 小黑手绘图；它不是 PPT 信息图、商业 KV、架构图或可编辑矢量图。 能力从文章抽取主题、核心含义、结构、小黑动作和短标注，形成约 4–8 张图的 shot list，并在生成后做可读性和构图检查。 最适合中文知识、方法论、AI workflow、研究笔记、Notion 或博客正文配图；每张图只保留一个核心动作和一条清晰认知。 安装路径按上游 README 克隆仓库，把其中的 ian-xiaohei-illustrations 目录复制到 ${CODEX_HOME:-$HOME/.codex}/skills/。 Use $ian-xiaohei-illustrations 先不要生图。 请读下面这篇文章，输出 5 张左右 shot list；每张写放置段落、认知锚点、结构、小黑动作和短中文标注。 使用边界不适合商业主视觉、品牌系统、PPT / Keynote、建筑图或可编辑矢量交付；图内中文要短，发布前必须逐张检查生成文件。 仓库链接github.com/helloianneo/ian-xiaohei-illustrations 中文 Prompt 库",
+      "title": "Skills 仓库"
+    },
+    {
+      "fragment": "awesome-chatgpt-prompts-zh",
+      "level": "h2",
+      "page": "skills-repositories.html",
+      "prompts": [
+        "请把下面这个中文 prompt 改写成当前仓库可执行的 Codex Desktop 任务。\n先读 AGENTS.md、README 和相关源码；只输出目标、范围、风险、验收标准和需要确认的问题，不要修改文件。\n原始 prompt：\n[把 plexpt/awesome-chatgpt-prompts-zh 中选出的 prompt 粘贴在这里]"
+      ],
+      "section": "plexpt/awesome-chatgpt-prompts-zh",
+      "text": "plexpt/awesome-chatgpt-prompts-zh 是中文 ChatGPT prompt 集合，README 和 prompts-zh.json 提供大量可复制的角色、写作、翻译、学术、编程和内容创作提示词。它适合作为 prompt 起点，但不会自动读取当前仓库、AGENTS.md、源码、测试或权限状态，因此不是原生 Codex skill、MCP server 或 plugin。 能力按场景提供角色设定、任务模板和输出格式，适合快速比较不同的表达方式和工作入口。 最适合中文写作、翻译、论文润色、内容创作、头脑风暴和需要先找一个表达起点的轻量任务。 Codex 适配复制 prompt 后，补上仓库上下文、改动范围、权限边界、验收标准和停止条件，再交给 Codex Desktop。 请把下面这个中文 prompt 改写成当前仓库可执行的 Codex Desktop 任务。 先读 AGENTS.md、README 和相关源码；只输出目标、范围、风险、验收标准和需要确认的问题，不要修改文件。 原始 prompt： [把 plexpt/awesome-chatgpt-prompts-zh 中选出的 prompt 粘贴在这里] 使用边界不要直接照搬“忽略之前的对话”、无限角色扮演或无验收的自动执行指令；先改写成当前仓库可审查、可验证的任务合同，也不要把密钥或敏感上下文粘贴到不必要的外部服务。 仓库链接github.com/plexpt/awesome-chatgpt-prompts-zh 进阶",
       "title": "Skills 仓库"
     },
     {
