@@ -5,7 +5,7 @@ window.GUIDE_SITE_DATA = {
     "assets/theme.js": "187420686654f8c1c58df32a0687d4a0d11e6e0707b8696d5f077774982d766a",
     "figures/social-preview.png": "e0ee23ae3b99a8507b4aa423c530289468f1db067d1e7041e4afcefb5fe3ac58"
   },
-  "build_id": "d49541b5e543",
+  "build_id": "54b93b531574",
   "changelog": [
     {
       "category": "structure",

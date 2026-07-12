@@ -268,6 +268,13 @@ def _decorate_external_links(source: str, base_url: str) -> str:
 
 
 def _render_metadata(source: str, model: SiteModel, page: Page) -> str:
+    source = re.sub(
+        r"<title\b[^>]*>.*?</title>",
+        f"<title>{html.escape(page.title)}</title>",
+        source,
+        count=1,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
     canonical = urljoin(model.site["base_url"], page.path)
     preview = urljoin(model.site["base_url"], model.site["social_preview"])
     locale = model.site["language"].replace("-", "_")

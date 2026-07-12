@@ -146,9 +146,14 @@ class SiteModelTests(unittest.TestCase):
     def test_manifest_metadata_generates_complete_same_origin_social_head(self) -> None:
         model = load_site_model(ROOT)
         page = next(page for page in model.pages if page.path == "permissions.html")
-        rendered = render_page(model, page, (ROOT / page.path).read_text(encoding="utf-8"))
+        source = (ROOT / page.path).read_text(encoding="utf-8").replace(
+            "<title>权限与安全</title>", "<title>旧页面标题</title>"
+        )
+        rendered = render_page(model, page, source)
         canonical = "https://whojay0609.github.io/codex-usage-guide/permissions.html"
         preview = "https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png"
+        self.assertIn("<title>权限与安全</title>", rendered)
+        self.assertNotIn("旧页面标题", rendered)
         self.assertIn(f'<link rel="canonical" href="{canonical}">', rendered)
         self.assertIn(
             '<meta name="description" content="理解 Desktop 四个权限选择及底层 sandbox、approval、network 与 secret 边界。">',
