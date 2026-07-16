@@ -895,7 +895,8 @@ AUTO_WRITE: false
   \item \keypoint{从找 idea 到实验、review、写作 handoff}：\skill{research-pipeline}。
   \item \keypoint{多个独立实现任务}：\skill{subagent-driven-development}。
   \item \keypoint{多个独立故障调查}：\skill{dispatching-parallel-agents}。
-  \item \keypoint{长流程、强审计、需要目标闭环}：优先使用通用 Goal 模式或可复现插件；本机 \skill{goal-entry} 只是自开发实验，效果一般，具体见最后一节。
+  \item \keypoint{原始需求混杂、需要先重构提示词}：使用 \skill{refine-user-prompt}，先展示任务合同，再按授权决定停止、回答、执行或创建 Goal。
+  \item \keypoint{长流程、强审计、需要目标闭环}：优先使用通用 Goal 模式或可复现插件，并明确持久状态、验证和停止条件。
 \end{itemize}
 
 \section{官方资料与维护方法}
@@ -903,19 +904,26 @@ AUTO_WRITE: false
 本指南当前参考了这些来源：
 
 \begin{itemize}
-  \item OpenAI Codex app 官方页面：\url{https://developers.openai.com/codex/app}
+  \item OpenAI Codex app 官方页面：\url{https://learn.chatgpt.com/docs/app}
   \item OpenAI Codex manual：\url{https://developers.openai.com/codex/codex-manual.md}
+  \item OpenAI Codex permission modes：\url{https://learn.chatgpt.com/docs/permission-modes}
+  \item OpenAI Codex Skills 与 Plugins：\url{https://learn.chatgpt.com/docs/skills-and-plugins}
+  \item OpenAI Codex MCP：\url{https://learn.chatgpt.com/docs/extend/mcp}
+  \item OpenAI GPT-5.6 prompting guidance：\url{https://developers.openai.com/api/docs/guides/prompt-guidance-gpt-5p6}
+  \item OpenAI GPT-5.6 model guide：\url{https://developers.openai.com/api/docs/guides/latest-model}
   \item 本机 skills：\file{/home/hujie/.codex/skills/ask-matt/SKILL.md}
   \item 本机 skills：\file{/home/hujie/.codex/skills/academic-research-suite/SKILL.md}
   \item 本机 skills：\file{/home/hujie/.codex/skills/research-pipeline/SKILL.md}
   \item 本机 skills：\file{/home/hujie/.codex/skills/subagent-driven-development/SKILL.md}
   \item Compound Engineering plugin：\url{https://github.com/EveryInc/compound-engineering-plugin}
-  \item 自开发 \skill{goal-entry} 实验仓库：\url{https://github.com/WhoJay0609/codex-goal-entry}
+  \item 第三方 \skill{refine-user-prompt}：\url{https://github.com/WhoJay0609/refine-user-prompt}
 \end{itemize}
 
-\subsection{本机自写或本地维护 skills 备注}
+网页版本把每页的事实依据维护在 \file{data/site-manifest.json}，由生成器显示为“本页依据”；首页的最近更新与完整记录维护在 \file{data/changelog.json}。事实核验日期用于提示时效，不代替可追溯来源。第三方资料必须明确标成第三方上游，不能与 OpenAI 官方能力混写。
 
-本文提到的 skills 不是同一种来源。Codex app、worktree、automation、in-app browser、review 等属于产品或官方能力；Compound Engineering 属于第三方插件；而 \skill{ask-research}、\skill{research-grill-me}、部分 Matt Pocock 风格 workflow、本机 \skill{goal-entry} 和若干 \file{goal-*} skills 属于本机安装、本地维护或自写扩展。其中 \skill{goal-entry} 是自己开发的实验，实际效果一般，不应被理解成 OpenAI 官方内置功能或推荐默认路径。
+\subsection{第三方或本地维护 skills 备注}
+
+本文提到的 skills 不是同一种来源。Codex app、worktree、automation、in-app browser、review 等属于产品或官方能力；Compound Engineering 属于第三方插件；\skill{refine-user-prompt} 是基于 OpenAI GPT-5.6 提示原则设计的第三方 skill；而 \skill{ask-research}、\skill{research-grill-me}、部分 Matt Pocock 风格 workflow 和若干 \file{goal-*} skills 属于本机安装、本地维护或自写扩展。第三方或本地 skill 都不应被理解成 OpenAI 官方内置功能。
 
 使用这些本机 skills 时，优先级应该是：
 
@@ -926,7 +934,7 @@ AUTO_WRITE: false
   \item 如果要发布到 GitHub，把本机路径、私有约定和不可复现命令标成“local adaptation”或放入单独附录。
 \end{enumerate}
 
-本指南最后一节只保留本机 \skill{goal-entry} 的简要实现说明；前面的 Goal、subagent 和插件章节保持通用，方便没有安装这些本机 skills 的读者也能学习。
+本指南最后一节解读官方 GPT-5.6 prompting guidance，并把 \skill{refine-user-prompt} 作为第三方实现案例；前面的 Goal、subagent 和插件章节保持通用。
 
 本指南会过期，尤其是 skills 名称、Goal 使用方法、ARS workflow 和本地 MCP 工具。维护时先查 live 文件，而不是凭记忆改：
 
@@ -936,7 +944,7 @@ AUTO_WRITE: false
   \item 研究拷问：读 \file{research-grill-me/SKILL.md}。
   \item subagent 流：读 \file{subagent-driven-development/SKILL.md}。
   \item 并行 agent：读 \file{dispatching-parallel-agents/SKILL.md}。
-  \item Goal 入口实现：见最后一节，再读对应本机 skill 文件。
+  \item 提示词重构：见最后一节，再读 \skill{refine-user-prompt} 仓库中的 \file{SKILL.md}。
 \end{itemize}
 
 重新编译：
@@ -945,116 +953,86 @@ AUTO_WRITE: false
 make pdf
 \end{lstlisting}
 
-\section{本机 \skill{goal-entry} 对应实现}
+\section{GPT-5.6 提示词与 \skill{refine-user-prompt}}
 
-本节是全文最后一节，只把前面的通用 Goal/Subagent 模型映射到本机实现。当前本机入口是 \skill{goal-entry}，但它是自己开发的 local adaptation，效果一般，不建议作为默认学习路径。它是 router-only public entry，不把所有规则写在自己文件里，而是先用 resolver 分类，再路由到子 skill。公开版本仓库见：\url{https://github.com/WhoJay0609/codex-goal-entry}。
+OpenAI 的 GPT-5.6 prompting guidance 强调：先写清用户可见结果、关键约束、可用证据和完成标准，再删掉重复规则、无效示例和无关工具说明，让模型自己选择高效路径。官方在一组内部 coding-agent eval 中观察到，较精简的 system prompt 让得分约提高 10--15\%，总 token 下降 41--66\%，成本下降 33--67\%；这些数字只是方向性结果，迁移时仍要用自己的代表性任务验证。
 
-\subsection{本机实现备注}
+官方原文见：\url{https://developers.openai.com/api/docs/guides/prompt-guidance-gpt-5p6}。本节的中文结构化解释属于本指南；\skill{refine-user-prompt} 则是第三方实现，不是 OpenAI 官方 skill，仓库见：\url{https://github.com/WhoJay0609/refine-user-prompt}。
 
-\skill{goal-entry} 和相关 \skill{goal-*} skills 是本机维护的目标编排层，不是每个 Codex 安装环境都会自带的官方标准接口。阅读本节时应把它看成“一个效果一般的本地实验案例”：通用原则是 Goal objective、readiness、context、dispatch、validation 和 closeout；具体脚本名、路径和路由规则以本机 \file{SKILL.md} 为准。
-
-\subsection{\skill{goal-entry} 如何对应前文概念}
-
-前文通用概念和本机实现的对应关系如下：
+\subsection{先保留什么，再删什么}
 
 \begin{itemize}
-  \item \keypoint{请求分类}：由 \file{resolve\_goal\_entry.py} 判断 request mode、tier、dispatch level、readiness 和 goal action。
-  \item \keypoint{准备检查}：由 \skill{goal-preflight} 检查 objective 长度、repo/path、AGENTS/doc context 和 readiness。
-  \item \keypoint{Goal objective}：由 \skill{goal-objective} 生成紧凑 objective。本机硬规则是不超过 4,000 字符。
-  \item \keypoint{项目 instructions}：由 \skill{goal-context} 解析 \file{AGENTS.md} 层级和路径索引。
-  \item \keypoint{团队和 subagent 边界}：由 \skill{goal-team} 和 \skill{goal-dispatch} 负责团队选择、dispatch contract、write scope 和输出合同。
-  \item \keypoint{运行 artifact}：由 \skill{goal-backend} 维护 artifact-producing run。
-  \item \keypoint{验证和收尾}：由 \skill{goal-trace} 与 \skill{goal-close} 处理验证证据和 closeout。
+  \item \keypoint{必须保留}：用户要得到的结果、明确事实与值、成功标准、停止条件、安全与权限边界、证据要求、输出格式和验证方式。
+  \item \keypoint{优先删减}：同一规则的重复表达、不改变行为的过程旁白、无独特约束的示例、模型已稳定完成的脚手架、与当前任务无关的工具。
+  \item \keypoint{先消除冲突}：GPT-5 系列会认真遵循 prompt contract；互相矛盾的强规则通常比缺少次要细节更不稳定。
+  \item \keypoint{一次只改一组}：切换模型后先保留当前 reasoning effort 做基线，再逐组精简 prompt 或工具说明，并重跑同一批 eval。
 \end{itemize}
 
-\subsection{\skill{goal-entry} 的路线}
+\subsection{结果优先的 Codex 任务合同}
 
-\skill{goal-entry} 的关键流程：
+复杂任务可以从下面的短结构开始，只保留真正影响行为的栏目：
 
 \begin{lstlisting}
-goal-entry
-  -> resolve_goal_entry.py
-  -> goal-preflight
-  -> goal-objective
-  -> goal-context
-  -> goal-team / goal-dispatch
-  -> goal-backend
-  -> goal-trace / goal-close
+目标：更新当前仓库的安装指南，使新用户能完成首次配置。
+
+成功标准：
+- 命令与当前代码一致
+- 站内链接无断链
+- 最窄相关检查通过
+
+约束与授权：
+- 只修改文档和对应验证
+- 保留无关工作区改动
+- 推送、发布或扩大范围前先确认
+
+输出：列出改动文件、验证结果和剩余阻碍。
+
+停止规则：如果仓库事实与官方资料冲突，报告冲突并停止猜测。
 \end{lstlisting}
 
-\subsection{\skill{goal-entry} 的硬规则}
+不要为了显得完整而固定十二步流程。真正不可变的安全顺序可以写成 must；搜索、提问、工具选择和迭代次数更适合写成决策规则。
+
+\subsection{\skill{refine-user-prompt} 的四种模式}
+
+这个 skill 必须先展示重构后的提示词，再根据原始请求的授权选择一种模式：
 
 \begin{itemize}
-  \item 不创建嵌套 Codex goals。
-  \item readiness 不明确时不调用 \skill{create\_goal}。
-  \item objective 不超过 4,000 字符。
-  \item subagent 不允许调用 \skill{get\_goal}、\skill{create\_goal}、\skill{update\_goal}。
-  \item subagent 不允许被分配 \skill{goal-*} 或 legacy harness protocol skills。
-  \item 不绕过 \file{resolve\_goal\_entry.py} 手写 mode logic。
-  \item 对 \skill{execute\_goal} 或 \skill{active\_goal\_bind} 不绕过 \skill{goal-preflight}。
+  \item \skill{refine\_only}：只润色、只计划或明确不要执行；展示后停止。
+  \item \skill{refine\_then\_answer}：有界、无副作用的解释、总结或审查；展示后直接回答。
+  \item \skill{refine\_then\_execute}：普通、已授权的本地修改；展示后执行范围内工作并保留审批闸门。
+  \item \skill{refine\_then\_create\_goal}：工作跨多阶段、需要恢复或长期状态，且执行已经获得授权；展示后再创建 Goal。
 \end{itemize}
 
-\subsection{什么时候直接点名 \skill{goal-entry}}
+润色不会自动扩大权限。回答、解释、诊断和计划默认只读；外部写入、删除、购买、高成本任务或实质扩域仍需单独确认。
 
-当请求需要先分类再决定是否创建 goal、绑定 active goal、规划、dispatch、初始化 backend artifact 或 closeout 时，可以直接点名：
+\subsection{模型与 reasoning effort 建议}
 
-\begin{lstlisting}
-[$goal-entry](https://github.com/WhoJay0609/codex-goal-entry)
-请先判断这是 plan-only 还是 execute_goal。
-如果需要执行，先给出 compact objective 和 stop conditions。
-\end{lstlisting}
-
-如果只是简单问答，不要点名 \skill{goal-entry}。如果只是想要一份计划，也不要让它创建 goal；让它走 \skill{goal-plan} 或 plan-only handoff。
-
-\subsection{\skill{goal-entry} 的具体使用例子}
-
-例子一：先判断是否需要创建 Goal。
-
-\begin{lstlisting}
-[$goal-entry]
-请先判断这是 plan-only 还是 execute_goal。
-任务：把 codex-usage-guide 的网页改成中文侧边栏文档站，
-并在完成后重新构建、推送、检查 GitHub Pages。
-
-如果需要执行，请给出 compact objective、validation 和 stop conditions。
-\end{lstlisting}
-
-这类请求不应该直接开干。正确流程是先由 resolver 判断 \skill{request\_mode}、\skill{goal\_entry\_tier}、\skill{goal\_action}，再决定是否进入 preflight 和 goal creation。
-
-例子二：明确只是计划。
-
-\begin{lstlisting}
-[$goal-entry]
-只规划，不执行。请给出把 goal-entry 拆成公开仓库的计划：
-范围、文件清单、隐私检查、验证命令、GitHub 发布步骤。
-\end{lstlisting}
-
-这个请求应当走 \skill{plan\_only} 或 handoff，不应该调用 \skill{create\_goal}。
-
-例子三：带验收的执行目标。
-
-\begin{lstlisting}
-[$goal-entry]
-执行：创建 goal-entry 的公开仓库，推送到 GitHub；
-然后更新 codex-usage-guide，在介绍 goal-entry 时链接新仓库。
-
-验收：
-- 新仓库公开可访问；
-- resolver quick_validate 通过；
-- codex-usage-guide 的 PDF 和 GitHub Pages 都更新；
-- 最终报告链接、提交 hash 和验证结果。
-\end{lstlisting}
-
-这个请求适合 \skill{execute\_goal}：它有跨仓库修改、公开发布、验证和 closeout，应该有明确 objective 和停止条件。
-
-\subsection{维护时读取的本机文件}
+\skill{refine-user-prompt} 按任务歧义、依赖深度、工具和验证负担、错误后果、延迟与成本建议一个默认配置：
 
 \begin{itemize}
-  \item \file{/home/hujie/.codex/skills/goal-entry/SKILL.md}
-  \item \file{/home/hujie/.codex/skills/goal-objective/SKILL.md}
-  \item \file{/home/hujie/.codex/skills/goal-dispatch/SKILL.md}
-  \item \file{/home/hujie/.codex/skills/goal-team/SKILL.md}
-  \item \file{/home/hujie/.codex/skills/goal-preflight/SKILL.md}
+  \item \skill{gpt-5.6-luna}：高效、例行、高吞吐或延迟敏感任务。
+  \item \skill{gpt-5.6-terra}：日常 coding、分析和中等工具使用的平衡选择。
+  \item \skill{gpt-5.6-sol}：复杂、高价值或高后果任务的旗舰质量选择；\skill{gpt-5.6} alias 路由到它。
 \end{itemize}
+
+通常从 \skill{medium} 开始，延迟敏感任务测试 \skill{low}；只有 eval 证明有明显收益时才升到 \skill{high} 或 \skill{xhigh}，\skill{max} 只留给最难的质量优先工作。这些都是建议，不会自动切换当前模型或 reasoning effort。
+
+\subsection{安装和调用}
+
+\begin{lstlisting}
+git clone https://github.com/WhoJay0609/refine-user-prompt.git
+cp -R refine-user-prompt/skills/refine-user-prompt ~/.codex/skills/
+\end{lstlisting}
+
+安装后开启一个新的 Codex 任务刷新 skill catalog。显式调用示例：
+
+\begin{lstlisting}
+$refine-user-prompt
+
+请重新梳理下面的用户输入，保留原意和授权边界：
+[原始输入]
+\end{lstlisting}
+
+如果原始请求已经短、清楚且可直接执行，额外重构可能只增加往返。大量 prompt 自动评测、应用级 system prompt 迁移或训练优化器也应使用专门的 eval 流程，不要把单次任务润色 skill 当成自动优化框架。
 
 \end{document}

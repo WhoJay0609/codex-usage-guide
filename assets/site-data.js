@@ -1,12 +1,26 @@
 window.GUIDE_SITE_DATA = {
   "asset_fingerprints": {
-    "assets/site.css": "d58d4a0a8ed083932baf4a4cb1370b63f32fccde8141657b3f2b5f0987c29e50",
+    "assets/site.css": "0ffde7066b412e33e244782f5a8184fdd0035a20ab05e04de34867c9defe2a48",
     "assets/site.js": "59423ac374ef053874fb1615d4c99b5ab28006cf53cccf21d51a98c2cbc0688e",
     "assets/theme.js": "187420686654f8c1c58df32a0687d4a0d11e6e0707b8696d5f077774982d766a",
     "figures/social-preview.png": "e0ee23ae3b99a8507b4aa423c530289468f1db067d1e7041e4afcefb5fe3ac58"
   },
-  "build_id": "776125781554",
+  "build_id": "aa4b762d54c4",
   "changelog": [
+    {
+      "category": "quality",
+      "date": "2026-07-16",
+      "summary": "补齐逐页资料依据、可见更新记录、权限准确性、MCP 与 Plugin 分层，以及全页面响应式回归。",
+      "target": "index.html#最近更新",
+      "title": "完成读者与专家红蓝队审阅"
+    },
+    {
+      "category": "content",
+      "date": "2026-07-16",
+      "summary": "解读 OpenAI GPT-5.6 prompting guidance，加入基于该指南的第三方 skill，并移除旧的本机路由专题。",
+      "target": "prompt-guidance.html",
+      "title": "加入 GPT-5.6 提示词与 refine-user-prompt"
+    },
     {
       "category": "content",
       "date": "2026-07-12",
@@ -217,13 +231,6 @@ window.GUIDE_SITE_DATA = {
       "失败停止-2",
       "来源分类"
     ],
-    "goal-entry.html": [
-      "定位-自开发本机扩展",
-      "为什么说效果一般",
-      "什么时候可以用",
-      "可复制示例",
-      "真实实例-本指南如何标注它"
-    ],
     "goal.html": [
       "它是什么",
       "什么时候用-不用",
@@ -241,6 +248,7 @@ window.GUIDE_SITE_DATA = {
       "结果与回执"
     ],
     "index.html": [
+      "最近更新",
       "原生能力与本指南推荐实践",
       "codex-原生能力",
       "本指南推荐实践",
@@ -327,6 +335,18 @@ window.GUIDE_SITE_DATA = {
       "secret-和生产数据规则",
       "真实实例-验证-github-pages-发布"
     ],
+    "prompt-guidance.html": [
+      "先分清三层",
+      "官方指南到底在说什么",
+      "把建议翻成-codex-任务合同",
+      "refine-user-prompt-是什么",
+      "四种执行模式",
+      "模型与思考强度怎么选",
+      "润色不会自动扩大权限",
+      "安装和调用",
+      "真实实例-润色后执行文档更新",
+      "什么时候不该用"
+    ],
     "research.html": [
       "从-idea-到可审查证据",
       "research-brief",
@@ -368,6 +388,7 @@ window.GUIDE_SITE_DATA = {
       "browser-docs",
       "integrated-terminal-docs",
       "skills-plugins-docs",
+      "gpt-5p6-prompt-guidance",
       "agents-md-docs",
       "subagents-docs",
       "mcp-docs",
@@ -389,7 +410,7 @@ window.GUIDE_SITE_DATA = {
       "历史流程图",
       "高-stars-skills-仓库介绍",
       "compound-engineering-plugin",
-      "goal-entry-本机实验",
+      "gpt-5.6-提示词与-refine-user-prompt",
       "真实实例-资料如何进入页面内容"
     ],
     "skills-repositories.html": [
@@ -420,6 +441,7 @@ window.GUIDE_SITE_DATA = {
       "taste-skill",
       "ian-xiaohei-illustrations",
       "awesome-chatgpt-prompts-zh",
+      "refine-user-prompt",
       "高级用户-按阶段组合-不要一锅端",
       "使用边界",
       "真实实例-历史案例",
@@ -445,7 +467,7 @@ window.GUIDE_SITE_DATA = {
       "加入验证",
       "维护版本",
       "一个实用-skill-模板",
-      "真实实例-区分插件和本机实验"
+      "真实实例-区分官方指南和第三方-skill"
     ],
     "subagents.html": [
       "它是什么",
@@ -557,7 +579,7 @@ window.GUIDE_SITE_DATA = {
       "pages": [
         "compound-engineering.html",
         "skills-repositories.html",
-        "goal-entry.html",
+        "prompt-guidance.html",
         "resources.html"
       ]
     }
@@ -565,90 +587,187 @@ window.GUIDE_SITE_DATA = {
   "pages": [
     {
       "description": "从一个可验证的小任务开始，并区分 Codex 原生能力与本指南推荐实践。",
-      "facts_verified": "2026-07-12",
-      "modified": "2026-07-12",
+      "facts_verified": "2026-07-16",
+      "modified": "2026-07-16",
       "nav_label": "首页",
       "path": "index.html",
+      "sources": [
+        {
+          "kind": "official",
+          "label": "Codex best practices",
+          "url": "https://learn.chatgpt.com/guides/best-practices"
+        }
+      ],
       "title": "中文 Codex 实战手册"
     },
     {
       "description": "安装 ChatGPT desktop app，并在 Codex 工作面完成首个只读任务。",
-      "facts_verified": "2026-07-12",
-      "modified": "2026-07-12",
+      "facts_verified": "2026-07-16",
+      "modified": "2026-07-16",
       "nav_label": "安装",
       "path": "install-desktop.html",
+      "sources": [
+        {
+          "kind": "official",
+          "label": "ChatGPT desktop app",
+          "url": "https://learn.chatgpt.com/docs/app"
+        }
+      ],
       "title": "安装 Codex Desktop"
     },
     {
       "description": "在 ChatGPT desktop app 的 Codex 工作面使用线程、Browser、Integrated terminal、审批与 diff。",
-      "facts_verified": "2026-07-12",
-      "modified": "2026-07-12",
+      "facts_verified": "2026-07-16",
+      "modified": "2026-07-16",
       "nav_label": "Desktop",
       "path": "desktop-cli.html",
+      "sources": [
+        {
+          "kind": "official",
+          "label": "ChatGPT desktop app",
+          "url": "https://learn.chatgpt.com/docs/app"
+        },
+        {
+          "kind": "official",
+          "label": "Browser",
+          "url": "https://learn.chatgpt.com/docs/browser"
+        }
+      ],
       "title": "Codex Desktop 操作手册"
     },
     {
       "description": "理解 ChatGPT desktop app 中 Codex 工作面的能力与适用边界。",
-      "facts_verified": "2026-07-12",
-      "modified": "2026-07-12",
+      "facts_verified": "2026-07-16",
+      "modified": "2026-07-16",
       "nav_label": "Codex",
       "path": "codex.html",
+      "sources": [
+        {
+          "kind": "official",
+          "label": "ChatGPT desktop app",
+          "url": "https://learn.chatgpt.com/docs/app"
+        }
+      ],
       "title": "Codex 是什么"
     },
     {
-      "description": "理解 Desktop 四个权限选择及底层 sandbox、approval、network 与 secret 边界。",
-      "facts_verified": "2026-07-12",
-      "modified": "2026-07-12",
+      "description": "理解 Desktop 常见权限模式及底层 sandbox、approval、network 与 secret 边界。",
+      "facts_verified": "2026-07-16",
+      "modified": "2026-07-16",
       "nav_label": "权限",
       "path": "permissions.html",
+      "sources": [
+        {
+          "kind": "official",
+          "label": "Permissions",
+          "url": "https://learn.chatgpt.com/docs/permission-modes"
+        },
+        {
+          "kind": "official",
+          "label": "Sandbox and approvals",
+          "url": "https://learn.chatgpt.com/docs/sandboxing"
+        }
+      ],
       "title": "权限与安全"
     },
     {
       "description": "理解 AGENTS.md 发现链并写清项目规则、边界和验证命令。",
-      "facts_verified": "2026-07-12",
-      "modified": "2026-07-12",
+      "facts_verified": "2026-07-16",
+      "modified": "2026-07-16",
       "nav_label": "AGENTS.md",
       "path": "agents-md.html",
+      "sources": [
+        {
+          "kind": "official",
+          "label": "AGENTS.md",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md"
+        }
+      ],
       "title": "AGENTS.md"
     },
     {
       "description": "用 $skill-name mention 选择和使用 Codex skills。",
-      "facts_verified": "2026-07-12",
-      "modified": "2026-07-12",
+      "facts_verified": "2026-07-16",
+      "modified": "2026-07-16",
       "nav_label": "Skills",
       "path": "skills.html",
+      "sources": [
+        {
+          "kind": "official",
+          "label": "Build skills",
+          "url": "https://learn.chatgpt.com/docs/build-skills"
+        },
+        {
+          "kind": "official",
+          "label": "Skills & Plugins",
+          "url": "https://learn.chatgpt.com/docs/skills-and-plugins"
+        }
+      ],
       "title": "Skills"
     },
     {
-      "description": "配置 MCP servers，区分 tools 与 resources，并管理外部能力权限。",
-      "facts_verified": "2026-07-12",
-      "modified": "2026-07-12",
+      "description": "区分 MCP servers 与 installable plugins，并管理 tools、resources 和外部能力权限。",
+      "facts_verified": "2026-07-16",
+      "modified": "2026-07-16",
       "nav_label": "MCP",
       "path": "mcp.html",
-      "title": "MCP / Plugins"
+      "sources": [
+        {
+          "kind": "official",
+          "label": "MCP",
+          "url": "https://learn.chatgpt.com/docs/extend/mcp"
+        },
+        {
+          "kind": "official",
+          "label": "Skills & Plugins",
+          "url": "https://learn.chatgpt.com/docs/skills-and-plugins"
+        }
+      ],
+      "title": "MCP 与 Plugins"
     },
     {
       "description": "在 Codex Desktop 中用 Worktree 隔离并行任务，并安全地在 Local 与 Worktree 间交接。",
-      "facts_verified": "2026-07-11",
-      "modified": "2026-07-11",
+      "facts_verified": "2026-07-16",
+      "modified": "2026-07-16",
       "nav_label": "Worktrees",
       "path": "worktrees.html",
+      "sources": [
+        {
+          "kind": "official",
+          "label": "Git worktrees",
+          "url": "https://learn.chatgpt.com/docs/environments/git-worktrees"
+        }
+      ],
       "title": "Worktrees"
     },
     {
       "description": "显式传递上下文、拆分写域并由主线程收口 subagent 工作。",
-      "facts_verified": "2026-07-12",
-      "modified": "2026-07-12",
+      "facts_verified": "2026-07-16",
+      "modified": "2026-07-16",
       "nav_label": "Subagents",
       "path": "subagents.html",
+      "sources": [
+        {
+          "kind": "official",
+          "label": "Subagents",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents"
+        }
+      ],
       "title": "Subagents"
     },
     {
       "description": "理解原生 Goal 与本指南推荐提示词模板的边界。",
-      "facts_verified": "2026-07-12",
-      "modified": "2026-07-12",
+      "facts_verified": "2026-07-16",
+      "modified": "2026-07-16",
       "nav_label": "Goal",
       "path": "goal.html",
+      "sources": [
+        {
+          "kind": "official",
+          "label": "Goal mode and prompting",
+          "url": "https://learn.chatgpt.com/docs/prompting#goal-mode"
+        }
+      ],
       "title": "Goal"
     },
     {
@@ -657,6 +776,7 @@ window.GUIDE_SITE_DATA = {
       "modified": "2026-07-12",
       "nav_label": "任务",
       "path": "workflows.html",
+      "sources": [],
       "title": "任务路径"
     },
     {
@@ -665,6 +785,7 @@ window.GUIDE_SITE_DATA = {
       "modified": "2026-07-12",
       "nav_label": "日常",
       "path": "daily-workflow.html",
+      "sources": [],
       "title": "日常任务 workflow"
     },
     {
@@ -673,6 +794,7 @@ window.GUIDE_SITE_DATA = {
       "modified": "2026-07-12",
       "nav_label": "工程",
       "path": "engineering.html",
+      "sources": [],
       "title": "工程 flow"
     },
     {
@@ -681,46 +803,91 @@ window.GUIDE_SITE_DATA = {
       "modified": "2026-07-12",
       "nav_label": "学术",
       "path": "research.html",
+      "sources": [],
       "title": "学术 flow"
     },
     {
       "description": "配置 Scheduled tasks、Scheduled 视图、运行环境与无人值守安全边界。",
-      "facts_verified": "2026-07-12",
-      "modified": "2026-07-12",
+      "facts_verified": "2026-07-16",
+      "modified": "2026-07-16",
       "nav_label": "定时任务",
       "path": "automation.html",
+      "sources": [
+        {
+          "kind": "official",
+          "label": "Scheduled tasks",
+          "url": "https://learn.chatgpt.com/docs/automations"
+        }
+      ],
       "title": "Scheduled tasks（定时任务）"
     },
     {
       "description": "使用 Compound Engineering 插件命令，并约束 /lfg 与无人值守任务边界。",
-      "facts_verified": "2026-07-12",
-      "modified": "2026-07-12",
+      "facts_verified": "2026-07-16",
+      "modified": "2026-07-16",
       "nav_label": "Compound",
       "path": "compound-engineering.html",
+      "sources": [
+        {
+          "kind": "third_party",
+          "label": "Compound Engineering repository",
+          "url": "https://github.com/EveryInc/compound-engineering-plugin"
+        },
+        {
+          "kind": "official",
+          "label": "Skills & Plugins",
+          "url": "https://learn.chatgpt.com/docs/skills-and-plugins"
+        }
+      ],
       "title": "Compound Engineering plugin"
     },
     {
       "description": "比较第三方 skills 仓库及 Desktop、CLI 与本地安装边界。",
-      "facts_verified": "2026-07-12",
-      "modified": "2026-07-12",
+      "facts_verified": "2026-07-16",
+      "modified": "2026-07-16",
       "nav_label": "Skills 仓库",
       "path": "skills-repositories.html",
+      "sources": [
+        {
+          "kind": "official",
+          "label": "Build skills",
+          "url": "https://learn.chatgpt.com/docs/build-skills"
+        },
+        {
+          "kind": "third_party",
+          "label": "GitHub codex-cli topic",
+          "url": "https://github.com/topics/codex-cli"
+        }
+      ],
       "title": "Skills 仓库"
     },
     {
-      "description": "了解本机自开发 goal-entry 的用途、$ mention 方式和限制。",
-      "facts_verified": "2026-07-12",
-      "modified": "2026-07-12",
-      "nav_label": "goal-entry",
-      "path": "goal-entry.html",
-      "title": "goal-entry"
+      "description": "解读 GPT-5.6 提示词指南，并使用 refine-user-prompt 把原始请求改写成可执行任务合同。",
+      "facts_verified": "2026-07-16",
+      "modified": "2026-07-16",
+      "nav_label": "提示词",
+      "path": "prompt-guidance.html",
+      "sources": [
+        {
+          "kind": "official",
+          "label": "GPT-5.6 prompting guidance",
+          "url": "https://developers.openai.com/api/docs/guides/prompt-guidance-gpt-5p6"
+        },
+        {
+          "kind": "third_party",
+          "label": "refine-user-prompt repository",
+          "url": "https://github.com/WhoJay0609/refine-user-prompt"
+        }
+      ],
+      "title": "GPT-5.6 提示词与 refine-user-prompt"
     },
     {
       "description": "查找 canonical 官方资料、中文术语对照与本指南维护边界。",
-      "facts_verified": "2026-07-12",
-      "modified": "2026-07-12",
+      "facts_verified": "2026-07-16",
+      "modified": "2026-07-16",
       "nav_label": "资料",
       "path": "resources.html",
+      "sources": [],
       "title": "资料地图"
     }
   ],

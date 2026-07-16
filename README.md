@@ -7,13 +7,13 @@
 
 ## 内容结构
 
-网页已从单页指南改成多页面实战手册，结构按“任务主线优先，概念能力补充，插件和本机实验单独说明”的顺序组织：
+网页已从单页指南改成多页面实战手册，结构按“任务主线优先，概念能力补充，插件和提示词实践单独说明”的顺序组织：
 
 1. 任务页：`daily-workflow.html`、`desktop-cli.html`（Desktop 操作页，保留旧链接文件名）、`engineering.html`、`research.html`、`automation.html`、`workflows.html`。
 2. 概念页：`codex.html`、`permissions.html`、`agents-md.html`、`skills.html`、`mcp.html`、`subagents.html`、`goal.html`。
 3. Skills 仓库选择页：`skills-repositories.html`，先看 Codex CLI 生态 Top 10，再比较 Compound Engineering、`mattpocock/skills`、`academic-research-skills-codex`、ARIS、`leonxlnx/taste-skill`、`helloianneo/ian-xiaohei-illustrations` 和 `plexpt/awesome-chatgpt-prompts-zh` 的能力、安装路径、prompt 示例和边界。
 4. 插件页：`compound-engineering.html`，说明 EveryInc Compound Engineering plugin 在 Codex Desktop 中的安装和使用方式。
-5. 本机实验页：`goal-entry.html`，说明自开发 `goal-entry` 的定位、限制和效果一般的现实边界。
+5. 提示词页：`prompt-guidance.html`，解读 OpenAI GPT-5.6 prompting guidance，并介绍第三方 `refine-user-prompt` skill。
 6. 资料页：`resources.html`，汇总 OpenAI 官方资料、开源仓库和本指南内部资料。
 
 ## 快速开始
@@ -48,10 +48,11 @@ Codex 相关高 stars 开源仓库选择页：
 skills-repositories.html
 ```
 
-本机自开发 `goal-entry` 示例：
+GPT-5.6 提示词与 `refine-user-prompt`：
 
 ```text
-https://github.com/WhoJay0609/codex-goal-entry
+prompt-guidance.html
+https://github.com/WhoJay0609/refine-user-prompt
 ```
 
 ## 仓库文件
@@ -60,7 +61,8 @@ https://github.com/WhoJay0609/codex-goal-entry
 - `assets/site.css`: 全站共享视觉样式。
 - `assets/site.js`: 全站共享搜索、复制、主题、导航和 Mermaid 渐进增强。
 - `assets/theme.js`: 在共享 CSS 前应用有限的主题偏好，避免错误主题首屏闪烁。
-- `data/site-manifest.json`: 20 个公开根页面、导航、描述和发布 URL 的唯一清单。
+- `data/site-manifest.json`: 20 个公开根页面、导航、描述、发布 URL 和逐页资料依据的唯一清单。
+- `data/changelog.json`: 首页“最近更新”和完整更新记录的唯一数据源。
 - `data/heading-fragments.json`: canonical 标题 fragment 与 legacy alias 的受审映射。
 - `data/publication-policy.json`: 公开搜索语料的排除项和敏感内容规则。
 - `scripts/check_site.py`: 发布前静态检查，覆盖 HTML 页面、站内链接、锚点和关键章节。
@@ -74,9 +76,9 @@ https://github.com/WhoJay0609/codex-goal-entry
 - `docs/adr/0001-dual-track-chinese-latex-guide.md`: 文档结构和受众决策。
 - `AGENTS.md`: 给 Codex/agent 使用的仓库工作规则。
 
-## 插件、本机 skills 与第三方辅助工具备注
+## 插件、第三方 skills 与辅助工具备注
 
-指南中提到的部分 skills 是插件或本机自写扩展，不等同于 OpenAI 官方内置功能。发布或迁移到其它机器时，请以对应仓库、`SKILL.md` 或插件页面为准，并把不可复现的本机路径标成 local adaptation。
+指南中提到的部分 skills 是插件或第三方扩展，不等同于 OpenAI 官方内置功能。发布或迁移到其它机器时，请以对应仓库、`SKILL.md` 或插件页面为准。
 
 当前单独说明的扩展：
 
@@ -85,7 +87,7 @@ https://github.com/WhoJay0609/codex-goal-entry
 - `academic-research-skills-codex`: https://github.com/Imbad0202/academic-research-skills-codex
 - `ARIS`: https://github.com/wanshuiyin/auto-claude-code-research-in-sleep
 - `awesome-chatgpt-prompts-zh`: https://github.com/plexpt/awesome-chatgpt-prompts-zh
-- `goal-entry`: 自己开发的本机实验，效果一般，仅作参考：https://github.com/WhoJay0609/codex-goal-entry
+- `refine-user-prompt`: 基于 GPT-5.6 prompting guidance 的第三方 skill：https://github.com/WhoJay0609/refine-user-prompt
 
 ## 发布建议
 

@@ -907,35 +907,65 @@
         ]
       }
     },
-    "goal-entry.html": {
-      "heading-goal-entry-1": {
-        "canonical": "定位-自开发本机扩展",
+    "prompt-guidance.html": {
+      "heading-prompt-guidance-1": {
+        "canonical": "先分清三层",
         "legacy": [
-          "heading-goal-entry-1"
+          "heading-prompt-guidance-1"
         ]
       },
-      "heading-goal-entry-2": {
-        "canonical": "为什么说效果一般",
+      "heading-prompt-guidance-2": {
+        "canonical": "官方指南到底在说什么",
         "legacy": [
-          "heading-goal-entry-2"
+          "heading-prompt-guidance-2"
         ]
       },
-      "heading-goal-entry-3": {
-        "canonical": "什么时候可以用",
+      "heading-prompt-guidance-3": {
+        "canonical": "把建议翻成-codex-任务合同",
         "legacy": [
-          "heading-goal-entry-3"
+          "heading-prompt-guidance-3"
         ]
       },
-      "heading-goal-entry-4": {
-        "canonical": "可复制示例",
+      "heading-prompt-guidance-4": {
+        "canonical": "refine-user-prompt-是什么",
         "legacy": [
-          "heading-goal-entry-4"
+          "heading-prompt-guidance-4"
         ]
       },
-      "heading-goal-entry-5": {
-        "canonical": "真实实例-本指南如何标注它",
+      "heading-prompt-guidance-5": {
+        "canonical": "四种执行模式",
         "legacy": [
-          "heading-goal-entry-5"
+          "heading-prompt-guidance-5"
+        ]
+      },
+      "heading-prompt-guidance-6": {
+        "canonical": "模型与思考强度怎么选",
+        "legacy": [
+          "heading-prompt-guidance-6"
+        ]
+      },
+      "heading-prompt-guidance-7": {
+        "canonical": "润色不会自动扩大权限",
+        "legacy": [
+          "heading-prompt-guidance-7"
+        ]
+      },
+      "heading-prompt-guidance-8": {
+        "canonical": "安装和调用",
+        "legacy": [
+          "heading-prompt-guidance-8"
+        ]
+      },
+      "heading-prompt-guidance-9": {
+        "canonical": "真实实例-润色后执行文档更新",
+        "legacy": [
+          "heading-prompt-guidance-9"
+        ]
+      },
+      "heading-prompt-guidance-10": {
+        "canonical": "什么时候不该用",
+        "legacy": [
+          "heading-prompt-guidance-10"
         ]
       }
     },
@@ -1026,6 +1056,10 @@
       }
     },
     "index.html": {
+      "recent-updates": {
+        "canonical": "最近更新",
+        "legacy": []
+      },
       "native-guide-boundary": {
         "canonical": "原生能力与本指南推荐实践",
         "legacy": []
@@ -1693,6 +1727,7 @@
       "official-browser": {"canonical": "browser-docs", "legacy": ["in-app-browser", "heading-resources-6"]},
       "official-terminal": {"canonical": "integrated-terminal-docs", "legacy": []},
       "official-skills": {"canonical": "skills-plugins-docs", "legacy": ["skills", "heading-resources-11", "customization", "heading-resources-9"]},
+      "official-prompt-guidance": {"canonical": "gpt-5p6-prompt-guidance", "legacy": []},
       "official-agents": {"canonical": "agents-md-docs", "legacy": ["agents.md", "heading-resources-10"]},
       "official-subagents": {"canonical": "subagents-docs", "legacy": ["subagents", "heading-resources-12"]},
       "official-mcp": {"canonical": "mcp-docs", "legacy": []},
@@ -1756,7 +1791,7 @@
         ]
       },
       "heading-resources-24": {
-        "canonical": "goal-entry-本机实验",
+        "canonical": "gpt-5.6-提示词与-refine-user-prompt",
         "legacy": [
           "heading-resources-24"
         ]
@@ -1949,6 +1984,12 @@
           "heading-skills-repositories-36"
         ]
       },
+      "heading-skills-repositories-37": {
+        "canonical": "refine-user-prompt",
+        "legacy": [
+          "heading-skills-repositories-37"
+        ]
+      },
       "heading-skills-repositories-4": {
         "canonical": "compound-engineering",
         "legacy": [
@@ -2024,7 +2065,7 @@
         ]
       },
       "heading-skills-15": {
-        "canonical": "真实实例-区分插件和本机实验",
+        "canonical": "真实实例-区分官方指南和第三方-skill",
         "legacy": [
           "heading-skills-15"
         ]

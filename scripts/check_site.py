@@ -37,10 +37,12 @@ CORE_NAV = {
     "resources.html",
 }
 REQUIRED_TEXT = {
-    "index.html": ["Codex Desktop", "Desktop 工作流", "30 秒选择入口", "官方事实"],
+    "index.html": ["Codex Desktop", "Desktop 工作流", "30 秒选择入口", "官方事实", "最近更新", "查看完整更新记录"],
     "codex.html": ["Codex Desktop", "Desktop 为主"],
     "install-desktop.html": ["Codex Desktop", "第一次打开桌面版"],
     "desktop-cli.html": ["Codex Desktop", "这份手册只把 Codex Desktop 作为主入口"],
+    "permissions.html": ["可能包含", "Codex Desktop 常见权限选择"],
+    "mcp.html": ["MCP 与 Plugins", "不是同一个概念", "只需要可复用步骤", "要连接外部系统"],
     "daily-workflow.html": ["真实实例", "失败停止"],
     "engineering.html": ["真实实例", "失败停止"],
     "research.html": ["真实实例", "失败停止"],
@@ -48,9 +50,9 @@ REQUIRED_TEXT = {
     "workflows.html": ["先选工作面", "统一案例模板", "坏 prompt 怎么修"],
     "worktrees.html": ["Codex Desktop", "Handoff", "detached HEAD", ".worktreeinclude", "不是安全沙箱"],
     "compound-engineering.html": ["Compound Engineering plugin", "在 Codex Desktop 里安装", "核心七步怎么用", "1. /ce-ideate", "失败停止"],
-    "skills-repositories.html": ["Codex 相关高 stars 开源仓库", "Codex CLI 生态 Top 10", "taste-skill", "design-taste-frontend", "ian-xiaohei-illustrations", "awesome-chatgpt-prompts-zh", "prompts-zh.json", "不是原生 Codex skill", "认知锚点", "Codex Desktop", "Compound Engineering", "mattpocock/skills", "academic-research-skills-codex", "skills/academic-research-suite", "agentic-awesome-skills", "modelcontextprotocol/servers", "星标快照", "ARIS", "不是 OpenAI 官方功能", "goal-entry 不列入", "效果一般", "真实实例"],
-    "goal-entry.html": ["本机自己开发", "效果一般", "非官方", "真实实例"],
-    "resources.html": ["Codex Desktop", "本指南只保留 Desktop 读者主线"],
+    "skills-repositories.html": ["Codex 相关高 stars 开源仓库", "Codex CLI 生态 Top 10", "taste-skill", "design-taste-frontend", "ian-xiaohei-illustrations", "awesome-chatgpt-prompts-zh", "prompts-zh.json", "不是原生 Codex skill", "认知锚点", "Codex Desktop", "Compound Engineering", "mattpocock/skills", "academic-research-skills-codex", "skills/academic-research-suite", "agentic-awesome-skills", "modelcontextprotocol/servers", "星标快照", "ARIS", "refine-user-prompt", "不是 OpenAI 官方功能", "真实实例"],
+    "prompt-guidance.html": ["GPT-5.6", "官方指南解读", "refine-user-prompt", "refine_then_execute", "授权边界", "真实实例"],
+    "resources.html": ["Codex Desktop", "本指南只保留 Desktop 读者主线", "GPT-5.6 prompting guidance", "七步工程循环"],
 }
 FORBIDDEN_VISIBLE_TEXT = {
     "Desktop/CLI",
@@ -59,6 +61,14 @@ FORBIDDEN_VISIBLE_TEXT = {
     "命令行优先",
     "终端优先",
     "non-interactive",
+    "Desktop 当前提供四个选择",
+}
+
+SOURCE_REQUIRED_PAGES = {
+    "index.html", "install-desktop.html", "desktop-cli.html", "codex.html",
+    "permissions.html", "agents-md.html", "skills.html", "mcp.html",
+    "worktrees.html", "subagents.html", "goal.html", "automation.html",
+    "compound-engineering.html", "skills-repositories.html", "prompt-guidance.html",
 }
 CONCEPT_PAGES = {
     "codex.html",
@@ -79,7 +89,7 @@ TASK_PAGES = {
     "automation.html",
     "workflows.html",
     "resources.html",
-    "goal-entry.html",
+    "prompt-guidance.html",
     "compound-engineering.html",
     "skills-repositories.html",
 }
@@ -769,6 +779,20 @@ def main() -> int:
     errors = validate_semantic_contracts(pages)
     errors.extend(validate_product_accuracy_contracts(pages))
     errors.extend(validate_interaction_contracts(pages))
+    model_pages = {page.path: page for page in model.pages}
+    for rel in sorted(SOURCE_REQUIRED_PAGES):
+        page = model_pages.get(rel)
+        parser = pages.get(rel)
+        if page is None or parser is None:
+            continue
+        if not page.sources:
+            errors.append(f"{rel}: fact-bearing page is missing manifest sources")
+            continue
+        if 'class="page-sources"' not in parser.source_text:
+            errors.append(f"{rel}: manifest sources are not rendered")
+        for source in page.sources:
+            if source.url not in parser.hrefs:
+                errors.append(f"{rel}: rendered source link is missing: {source.url}")
     try:
         registry = load_heading_fragments(ROOT)
         errors.extend(validate_fragment_registry(pages, registry))
@@ -832,6 +856,21 @@ def main() -> int:
         for phrase in REQUIRED_TEXT.get(rel, []):
             if phrase not in visible_text:
                 errors.append(f"{rel}: missing required Desktop-first text: {phrase}")
+        sequence = re.search(
+            r'<nav class="page-sequence"[^>]*>.*?<a rel="next" href="([^"]+)"',
+            parser.source_text,
+            flags=re.DOTALL,
+        )
+        footer_next = re.search(
+            r'<footer class="footer">.*?<a[^>]*href="([^"]+)"[^>]*>下一页[：:]',
+            parser.source_text,
+            flags=re.DOTALL,
+        )
+        if footer_next and (sequence is None or footer_next.group(1) != sequence.group(1)):
+            expected = sequence.group(1) if sequence else "(none)"
+            errors.append(
+                f"{rel}: footer 下一页 points to {footer_next.group(1)}, expected generated next {expected}"
+            )
         desktop_nav = " ".join(parser.nav_text.get("desktop-cli.html", []))
         if desktop_nav and desktop_nav != "Desktop":
             errors.append(f"{rel}: desktop navigation label should be Desktop, got: {desktop_nav}")

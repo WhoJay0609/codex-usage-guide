@@ -135,7 +135,58 @@ SKILL_REPOSITORY_NAV = (
     ("mattpocock-skills", "Matt Pocock skills"),
     ("academic-research-skills-codex", "ARS"),
     ("aris-auto-claude-code-research-in-sleep", "ARIS"),
+    ("refine-user-prompt", "refine-user-prompt"),
 )
+
+CHANGELOG_CATEGORY_LABELS = {
+    "content": "内容",
+    "structure": "结构",
+    "quality": "质量",
+    "verification": "验证",
+}
+
+
+def _render_page_sources(page: Page) -> str:
+    if not page.sources:
+        return ""
+    links: list[str] = []
+    for source in page.sources:
+        kind_label = "OpenAI 官方" if source.kind == "official" else "第三方上游"
+        links.append(
+            f'<a class="page-source-link external-link" href="{html.escape(source.url, quote=True)}" '
+            'target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer">'
+            '<span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span>'
+            '<span class="sr-only" data-search-exclude>（外部链接）</span>'
+            f'<span class="source-kind">{kind_label}</span>{html.escape(source.label)}</a>'
+        )
+    return '<aside class="page-sources" aria-label="本页资料依据"><strong>本页依据</strong>' + "".join(links) + "</aside>"
+
+
+def _render_home_changelog(model: SiteModel) -> str:
+    if not model.changelog:
+        return ""
+
+    def render_entry(entry: dict[str, str], class_name: str) -> str:
+        category = CHANGELOG_CATEGORY_LABELS.get(entry["category"], entry["category"])
+        return (
+            f'<li class="{class_name}"><a href="{html.escape(entry["target"], quote=True)}">'
+            f'<span class="update-meta"><time datetime="{entry["date"]}">{entry["date"]}</time>'
+            f'<span>{html.escape(category)}</span></span>'
+            f'<strong>{html.escape(entry["title"])}</strong><span>{html.escape(entry["summary"])}</span>'
+            '</a></li>'
+        )
+
+    recent = "".join(render_entry(entry, "update-card") for entry in model.changelog[:3])
+    complete = "".join(render_entry(entry, "update-row") for entry in model.changelog)
+    return (
+        '<section class="section recent-updates" aria-labelledby="最近更新">'
+        '<div class="section-head"><div class="section-title"><p class="section-kicker">持续维护</p>'
+        '<h2 id="最近更新">最近更新</h2></div>'
+        '<p>更新记录由 <code>data/changelog.json</code> 生成；先看最近三项，需要时再展开完整记录。</p></div>'
+        f'<ol class="update-grid">{recent}</ol>'
+        f'<details class="changelog-disclosure"><summary>查看完整更新记录（{len(model.changelog)}）</summary>'
+        f'<ol class="update-list">{complete}</ol></details></section>'
+    )
 
 
 def _assign_heading_ids(
@@ -395,6 +446,8 @@ def render_page(
         registry_path = model.root / "data/heading-fragments.json"
         fragment_registry = load_heading_fragments(model.root) if registry_path.exists() else None
     entries = fragment_registry.get(page.path) if fragment_registry is not None else None
+    if page.path == "index.html":
+        source = _replace_named(source, "changelog", _render_home_changelog(model))
     source = _decorate_external_links(source, model.site["base_url"])
     source = _add_heading_permalinks(_assign_heading_ids(source, page, entries))
     page_map = {item.path: item for item in model.pages}
@@ -468,13 +521,14 @@ def render_page(
         'aria-label="搜索结果"></ul></div></dialog>'
     )
     group_label = next(group.label for group in model.navigation if page.path in group.pages)
+    page_sources = _render_page_sources(page)
     shell_open = (
         '<div class="toolbook-shell">' + global_nav + '<div class="toolbook-main">'
         f'<nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a>'
         f'<span aria-hidden="true">/</span><span>{html.escape(group_label)}</span>'
         f'<span aria-hidden="true">/</span><span aria-current="page">{html.escape(page.nav_label)}</span></nav>'
         f'<div class="page-freshness"><span>页面更新：<time datetime="{page.modified}">{page.modified}</time></span>'
-        f'<span>事实核验：<time datetime="{page.facts_verified}">{page.facts_verified}</time></span></div>{toc}'
+        f'<span>事实核验：<time datetime="{page.facts_verified}">{page.facts_verified}</time></span></div>{page_sources}{toc}'
     )
     shell_close = f'<nav class="page-sequence" aria-label="前后页">{previous_link}{next_link}</nav></div></div>'
 
@@ -657,7 +711,18 @@ def _payloads(
     source = {
         "site": model.site,
         "navigation": [{"label": group.label, "pages": list(group.pages)} for group in model.navigation],
-        "pages": [page.__dict__ for page in model.pages],
+        "pages": [
+            {
+                "path": page.path,
+                "title": page.title,
+                "nav_label": page.nav_label,
+                "description": page.description,
+                "modified": page.modified,
+                "facts_verified": page.facts_verified,
+                "sources": [source.__dict__ for source in page.sources],
+            }
+            for page in model.pages
+        ],
         "fragments": {
             page.path: [heading["id"] for heading in _article_headings(rendered_pages[page.path])]
             for page in model.pages

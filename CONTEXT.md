@@ -18,6 +18,8 @@
 - **Engineering Advanced Track**: the path grounded in the Matt Pocock skills flow: `ask-matt`, `grill-me`, `grill-with-docs`, `to-prd`, `to-issues`, `implement`, and review.
 - **Academic Automation Track**: the path grounded in installed research skills: `academic-research-suite`, `ask-research`, and `research-grill-me`.
 - **Skill**: a local instruction package with a `SKILL.md` entry point that changes how Codex should approach a class of tasks.
+- **Plugin**: an installable and distributable capability bundle that can combine skills, apps, MCP configuration, and presentation metadata.
+- **MCP Server**: an external capability endpoint that exposes tools, resources, or prompts through the Model Context Protocol; it is not itself a plugin.
 - **AGENTS.md**: repository or directory-level operating rules that Codex must read and obey when working in that scope.
 - **Instruction Chain**: the ordered set of global, project, and nested instruction files Codex reads before work; nearer path-level files override broader guidance.
 - **Subagent Mode**: delegation mode where isolated agents receive narrow task context, scoped write boundaries, expected outputs, and later integration by the main thread.
@@ -26,8 +28,8 @@
 - **General Guidance Front Half**: the report structure that places reusable Codex work-model, Goal, subagent, `AGENTS.md`, and validation guidance before scenario-specific skill chapters.
 - **Scenario Skills Chapters**: the later report chapters that explain how engineering and academic skills apply after the generic method is understood.
 - **Compound Engineering Plugin**: EveryInc's plugin repository for a reusable engineering workflow in Codex Desktop.
-- **Local Goal Implementation Mapping**: the short local-adaptation section that maps the generic Goal/Subagent model to the installed `goal-entry` router and its child skills.
-- **Standalone Goal Entry Repository**: the public `codex-goal-entry` repository that packages the self-developed `goal-entry` experiment; it is not official and its practical effect is average.
+- **Prompt Contract**: an outcome-first request that preserves facts, scope, authorization, evidence, validation, output, and stopping conditions without prescribing unnecessary process.
+- **refine-user-prompt**: a third-party Codex skill that restructures a raw request into a visible prompt contract before any separately authorized answer, execution, or Goal creation.
 - **Self-Written Skill Note**: the explicit warning that some mentioned skills are local, self-written, or locally maintained extensions rather than OpenAI official built-ins.
 - **Mermaid Figure Source**: the `figures/*.mmd` source files used to create visual flow diagrams for GitHub preview and web rendering.
 - **Matt Pocock Skills Flow**: engineering flow for idea sharpening, PRD/issue decomposition, implementation, and review.

@@ -107,15 +107,15 @@ class SemanticContractTests(unittest.TestCase):
         self.assertIn("Reader-visible text", pages["permissions.html"].visible_text())
 
     def test_product_accuracy_contract_checks_visible_decoded_skill_syntax(self) -> None:
-        encoded = {"skills.html": parse("<main>&#91;$goal-entry&#93;</main>")}
+        encoded = {"skills.html": parse("<main>&#91;$refine-user-prompt&#93;</main>")}
         split_across_inline_markup = {
-            "skills.html": parse("<main>[$<span>goal-entry</span>]</main>")
+            "skills.html": parse("<main>[$<span>refine-user-prompt</span>]</main>")
         }
         commented = {
-            "skills.html": parse("<!-- [$goal-entry] --><main>Use $goal-entry.</main>")
+            "skills.html": parse("<!-- [$refine-user-prompt] --><main>Use $refine-user-prompt.</main>")
         }
         hidden = {
-            "skills.html": parse("<main hidden>[$<span>goal-entry</span>]</main>")
+            "skills.html": parse("<main hidden>[$<span>refine-user-prompt</span>]</main>")
         }
 
         self.assertTrue(
@@ -234,7 +234,7 @@ class SemanticContractTests(unittest.TestCase):
             "automation.html": parse(
                 "<main>Scheduled tasks（定时任务）；在 Scheduled 视图查看结果。</main>"
             ),
-            "skills.html": parse("<main>Use $goal-entry for goal work.</main>"),
+            "skills.html": parse("<main>Use $refine-user-prompt before execution.</main>"),
         }
 
         self.assertEqual(validate_product_accuracy_contracts(pages), [])
