@@ -1,67 +1,74 @@
 window.GUIDE_SITE_DATA = {
   "asset_fingerprints": {
-    "assets/site.css": "0ffde7066b412e33e244782f5a8184fdd0035a20ab05e04de34867c9defe2a48",
+    "assets/site.css": "fffc015e09ec2df287e11189b92aa951db920a59208355e2755fd3412550c080",
     "assets/site.js": "59423ac374ef053874fb1615d4c99b5ab28006cf53cccf21d51a98c2cbc0688e",
     "assets/theme.js": "187420686654f8c1c58df32a0687d4a0d11e6e0707b8696d5f077774982d766a",
     "figures/social-preview.png": "e0ee23ae3b99a8507b4aa423c530289468f1db067d1e7041e4afcefb5fe3ac58"
   },
-  "build_id": "aa4b762d54c4",
+  "build_id": "164efa044e15",
   "changelog": [
     {
       "category": "quality",
       "date": "2026-07-16",
-      "summary": "补齐逐页资料依据、可见更新记录、权限准确性、MCP 与 Plugin 分层，以及全页面响应式回归。",
+      "summary": "Mermaid 流程图尺寸；权限、MCP、Subagents、提示词四页的小黑配图；配图图注与替代文本。",
+      "target": "install-desktop.html#安装到第一个任务",
+      "title": "调整流程图与正文配图"
+    },
+    {
+      "category": "quality",
+      "date": "2026-07-16",
+      "summary": "逐页资料依据、首页更新日志、权限模式表述、Skill／Plugin／MCP 分层、页脚内容与全页面响应式适配。",
       "target": "index.html#最近更新",
-      "title": "完成读者与专家红蓝队审阅"
+      "title": "补齐资料依据与页面信息"
     },
     {
       "category": "content",
       "date": "2026-07-16",
-      "summary": "解读 OpenAI GPT-5.6 prompting guidance，加入基于该指南的第三方 skill，并移除旧的本机路由专题。",
+      "summary": "GPT-5.6 prompting guidance 中文解读、refine-user-prompt skill 介绍；移除原 Goal Entry 专题。",
       "target": "prompt-guidance.html",
-      "title": "加入 GPT-5.6 提示词与 refine-user-prompt"
+      "title": "新增 GPT-5.6 提示词指南"
     },
     {
       "category": "content",
       "date": "2026-07-12",
-      "summary": "加入 awesome-chatgpt-prompts-zh 的 Codex 适配路径、示例和提示词安全边界。",
+      "summary": "awesome-chatgpt-prompts-zh 仓库说明、Codex 使用示例与提示词安全边界。",
       "target": "skills-repositories.html",
-      "title": "补充中文 Prompt 第三方仓库"
+      "title": "新增中文 Prompt 仓库条目"
     },
     {
       "category": "content",
       "date": "2026-07-12",
-      "summary": "加入 taste-skill 与 Ian Xiaohei Illustrations 的第三方使用路径、示例和边界。",
+      "summary": "taste-skill 与 Ian Xiaohei Illustrations 的仓库说明、使用示例和适用边界。",
       "target": "skills-repositories.html",
-      "title": "补充视觉与中文配图 Skills"
+      "title": "新增视觉与中文配图 Skills"
     },
     {
       "category": "content",
       "date": "2026-07-12",
-      "summary": "按 GitHub codex-cli 主题页快照补充 skills、MCP 与其他辅助工具榜单，并保留官方基础设施基准。",
+      "summary": "Skills、MCP、辅助工具榜单与官方基础设施条目。",
       "target": "skills-repositories.html",
-      "title": "加入 Codex 生态高 stars Top 10"
+      "title": "新增 Codex 生态 Top 10"
     },
     {
       "category": "structure",
       "date": "2026-07-11",
-      "summary": "建立统一站点清单、更新日志和可复现验证基础。",
+      "summary": "统一站点清单、首页最近更新、完整更新日志与站点生成数据。",
       "target": "index.html",
-      "title": "启动工具书升级"
+      "title": "新增站点清单与更新日志"
     },
     {
       "category": "content",
       "date": "2026-07-10",
-      "summary": "加入第三方 skills 仓库比较和选择路径。",
+      "summary": "第三方 Skills 仓库对比、任务选择表与安装入口。",
       "target": "skills-repositories.html",
-      "title": "补充 Skills 仓库选择指南"
+      "title": "新增 Skills 仓库选择指南"
     },
     {
       "category": "content",
       "date": "2026-07-07",
-      "summary": "补充插件安装、核心流程和真实实例。",
+      "summary": "插件安装、核心流程与真实实例。",
       "target": "compound-engineering.html",
-      "title": "加入 Compound Engineering 指南"
+      "title": "新增 Compound Engineering 指南"
     }
   ],
   "fragments": {

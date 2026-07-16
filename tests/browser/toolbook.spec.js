@@ -52,6 +52,40 @@ test('keeps article content readable without horizontal overflow', async ({ page
   expect(overflow).toBeFalsy();
 });
 
+test('renders horizontal Mermaid flows at article width without empty fixed-height cards', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  for (const path of ['install-desktop.html', 'daily-workflow.html', 'skills.html']) {
+    await page.goto(`/${path}`);
+    const diagram = page.locator('.mermaid').first();
+    const svg = diagram.locator('svg');
+    await expect(svg).toBeVisible();
+    const geometry = await diagram.evaluate((element) => {
+      const container = element.getBoundingClientRect();
+      const rendered = element.querySelector('svg').getBoundingClientRect();
+      return {
+        containerWidth: container.width,
+        containerHeight: container.height,
+        svgWidth: rendered.width,
+        svgHeight: rendered.height,
+      };
+    });
+    expect(geometry.svgWidth, `${path} Mermaid width`).toBeGreaterThan(geometry.containerWidth * 0.8);
+    expect(geometry.containerHeight - geometry.svgHeight, `${path} Mermaid empty vertical space`).toBeLessThan(90);
+  }
+});
+
+test('loads every guide illustration with useful alternative text and a figure explanation', async ({ page }) => {
+  for (const path of ['permissions.html', 'mcp.html', 'subagents.html', 'prompt-guidance.html']) {
+    await page.goto(`/${path}`);
+    const figure = page.locator('.article-illustration');
+    await expect(figure).toHaveCount(1);
+    await expect(figure.locator('figcaption')).toContainText('图意：');
+    const image = figure.locator('img');
+    await expect(image).toHaveAttribute('alt', /\S{12,}/);
+    await expect.poll(() => image.evaluate((element) => element.naturalWidth)).toBe(1672);
+  }
+});
+
 test('uses a compact table-of-contents above the article on desktop', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/goal.html');

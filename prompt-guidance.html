@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/site.css">
   <!-- guide:metadata:start -->
 <meta name="description" content="解读 GPT-5.6 提示词指南，并使用 refine-user-prompt 把原始请求改写成可执行任务合同。">
-<meta name="guide-build" content="aa4b762d54c4">
+<meta name="guide-build" content="164efa044e15">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/prompt-guidance.html">
 <meta property="og:type" content="website">
@@ -68,6 +68,10 @@
             <div class="decision-row"><strong>改写</strong><span>“必须按 12 步执行”</span><span>改成决策规则</span><span>只有真正不可变的顺序才保留强制步骤</span></div>
             <div class="decision-row"><strong>复测</strong><span>一次只改一组 prompt 或工具说明</span><span>跑同一批 eval</span><span>同时看正确性、证据、token、延迟和成本</span></div>
           </div>
+          <figure class="figure-card article-illustration">
+            <img src="assets/codex-guide-illustrations/04-prompt-contract.png" alt="小黑把缠成一团的原始请求送入压缩机，删除重复内容，同时保留授权、约束和验收三枚印章，输出可执行合同" loading="lazy" decoding="async" width="1672" height="941">
+            <figcaption><strong>图意：</strong>精简不是压掉边界：删除重复和无关脚手架，但授权、约束与验收标准必须完整穿过重写过程，最后形成可执行的任务合同。</figcaption>
+          </figure>
         </section>
 
         <section class="content-block" id="task-contract">
