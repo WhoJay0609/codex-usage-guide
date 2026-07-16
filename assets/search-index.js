@@ -10,6 +10,15 @@ window.GUIDE_SEARCH_INDEX = {
       "title": "中文 Codex 实战手册"
     },
     {
+      "fragment": "最近更新",
+      "level": "h2",
+      "page": "index.html",
+      "prompts": [],
+      "section": "最近更新",
+      "text": "更新记录由 data/changelog.json 生成；先看最近三项，需要时再展开完整记录。2026-07-16质量完成读者与专家红蓝队审阅补齐逐页资料依据、可见更新记录、权限准确性、MCP 与 Plugin 分层，以及全页面响应式回归。2026-07-16内容加入 GPT-5.6 提示词与 refine-user-prompt解读 OpenAI GPT-5.6 prompting guidance，加入基于该指南的第三方 skill，并移除旧的本机路由专题。2026-07-12内容补充中文 Prompt 第三方仓库加入 awesome-chatgpt-prompts-zh 的 Codex 适配路径、示例和提示词安全边界。查看完整更新记录（8）2026-07-16质量完成读者与专家红蓝队审阅补齐逐页资料依据、可见更新记录、权限准确性、MCP 与 Plugin 分层，以及全页面响应式回归。2026-07-16内容加入 GPT-5.6 提示词与 refine-user-prompt解读 OpenAI GPT-5.6 prompting guidance，加入基于该指南的第三方 skill，并移除旧的本机路由专题。2026-07-12内容补充中文 Prompt 第三方仓库加入 awesome-chatgpt-prompts-zh 的 Codex 适配路径、示例和提示词安全边界。2026-07-12内容补充视觉与中文配图 Skills加入 taste-skill 与 Ian Xiaohei Illustrations 的第三方使用路径、示例和边界。2026-07-12内容加入 Codex 生态高 stars Top 10按 GitHub codex-cli 主题页快照补充 skills、MCP 与其他辅助工具榜单，并保留官方基础设施基准。2026-07-11结构启动工具书升级建立统一站点清单、更新日志和可复现验证基础。2026-07-10内容补充 Skills 仓库选择指南加入第三方 skills 仓库比较和选择路径。2026-07-07内容加入 Compound Engineering 指南补充插件安装、核心流程和真实实例。 先分清边界",
+      "title": "中文 Codex 实战手册"
+    },
+    {
       "fragment": "原生能力与本指南推荐实践",
       "level": "h2",
       "page": "index.html",
@@ -158,8 +167,8 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h3",
       "page": "index.html",
       "prompts": [],
-      "section": "MCP / Plugins",
-      "text": "外部工具连接和权限治理。",
+      "section": "MCP 与 Plugins",
+      "text": "区分协议、外部服务与可安装能力包。",
       "title": "中文 Codex 实战手册"
     },
     {
@@ -661,7 +670,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "permissions.html",
       "prompts": [],
       "section": "",
-      "text": "理解 Desktop 四个权限选择及底层 sandbox、approval、network 与 secret 边界。",
+      "text": "理解 Desktop 常见权限模式及底层 sandbox、approval、network 与 secret 边界。",
       "title": "权限与安全"
     },
     {
@@ -670,7 +679,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "permissions.html",
       "prompts": [],
       "section": "它是什么",
-      "text": "sandbox、approval、network、auth 和 secret 管理共同构成安全边界。默认应该用最小权限：能只读就不写，能限定工作区就不开放 full access。读文件通常允许，除非路径包含 secret 或生产数据。写文件只写目标仓库和明确文件，避免顺手重构。联网用于官方文档、依赖下载、GitHub Pages 验证。执行优先最窄命令，危险命令必须解释回滚方式。 Desktop 权限选择",
+      "text": "sandbox、approval、network、auth 和 secret 管理共同构成安全边界。默认应该用最小权限：能只读就不写，能限定工作区就不开放 full access。读文件通常允许，除非路径包含 secret 或生产数据。写文件只写目标仓库和明确文件，避免顺手重构。联网用于官方文档、依赖下载、GitHub Pages 验证。执行优先最窄命令，危险命令必须解释回滚方式。 Desktop 常见选择",
       "title": "权限与安全"
     },
     {
@@ -678,8 +687,8 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h2",
       "page": "permissions.html",
       "prompts": [],
-      "section": "Codex Desktop 的四个权限选择",
-      "text": "这四个名称是 Desktop UI 的选择；workspace-write、read-only、on-request 等是底层 sandbox / approval 配置名，常见于 CLI 或 config.toml，不要把它们当成另外几张 Desktop 模式卡。",
+      "section": "Codex Desktop 常见权限选择",
+      "text": "下面四类是常见 UI 入口，但实际菜单取决于本地配置和组织策略；workspace-write、read-only、on-request 等是底层 sandbox / approval 配置名，常见于 CLI 或 config.toml，不要把它们当成额外的 Desktop 固定模式。",
       "title": "权限与安全"
     },
     {
@@ -934,7 +943,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "skills.html",
       "prompts": [],
       "section": "它是什么",
-      "text": "Skills 适合记录会反复使用的流程，例如工程 grilling、学术 pipeline、部署检查和代码 review。公开指南需要区分官方能力、第三方仓库和本机自写 skills。想按任务比较 Codex 生态仓库时，看 Codex 相关高 stars 开源仓库。触发条件什么时候必须使用，什么时候不该使用。输入合同需要仓库、目标、范围、预算、人工 checkpoint。执行步骤先读哪些文件，是否允许 subagent，如何验证。输出合同产物、证据、风险、下一步和本地限制。 何时使用",
+      "text": "Skills 适合记录会反复使用的流程，例如工程 grilling、学术 pipeline、部署检查和代码 review。公开指南需要区分官方能力、第三方仓库和本机自写 skills。想按任务比较 Codex 生态仓库时，看 Codex 相关高 stars 开源仓库；想把原始请求改写成 GPT-5.6 任务合同，看 GPT-5.6 提示词与 refine-user-prompt。触发条件什么时候必须使用，什么时候不该使用。输入合同需要仓库、目标、范围、预算、人工 checkpoint。执行步骤先读哪些文件，是否允许 subagent，如何验证。输出合同产物、证据、风险、下一步和本地限制。 何时使用",
       "title": "Skills"
     },
     {
@@ -1059,14 +1068,14 @@ window.GUIDE_SEARCH_INDEX = {
       "title": "Skills"
     },
     {
-      "fragment": "真实实例-区分插件和本机实验",
+      "fragment": "真实实例-区分官方指南和第三方-skill",
       "level": "h2",
       "page": "skills.html",
       "prompts": [
-        "判断顺序：\n1. 官方 Codex 能力是否足够\n2. 是否有可安装插件，例如 Compound Engineering\n3. 是否有第三方 skills 仓库可复用\n4. 最后才参考本机自开发 skill"
+        "判断顺序：\n1. 官方 Codex 能力是否足够\n2. 是否有可安装插件，例如 Compound Engineering\n3. 是否有第三方 skills 仓库可复用\n4. 第三方 skill 的来源、授权和验证是否清楚"
       ],
-      "section": "真实实例：区分插件和本机实验",
-      "text": "本次指南同时保留多个扩展入口：Codex 相关高 stars 开源仓库 用来比较第三方 skills 仓库；Compound Engineering 是 EveryInc 的插件仓库，适合按官方仓库说明安装；goal-entry 是自己开发的本机 skill，实际效果一般，只适合作为 local adaptation 案例参考。读者迁移到新机器时，优先选择可复现的插件和官方机制。判断顺序： 1. 官方 Codex 能力是否足够 2. 是否有可安装插件，例如 Compound Engineering 3. 是否有第三方 skills 仓库可复用 4. 最后才参考本机自开发 skill",
+      "section": "真实实例：区分官方指南和第三方 skill",
+      "text": "本指南同时保留多个扩展入口：Codex 相关高 stars 开源仓库 用来比较第三方 skills 仓库；Compound Engineering 是 EveryInc 的插件仓库；refine-user-prompt 是基于 OpenAI GPT-5.6 提示原则设计的第三方 skill。它能复用官方方法，但不是 OpenAI 官方发布的能力。判断顺序： 1. 官方 Codex 能力是否足够 2. 是否有可安装插件，例如 Compound Engineering 3. 是否有第三方 skills 仓库可复用 4. 第三方 skill 的来源、授权和验证是否清楚",
       "title": "Skills"
     },
     {
@@ -1075,8 +1084,8 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "mcp.html",
       "prompts": [],
       "section": "",
-      "text": "配置 MCP servers，区分 tools 与 resources，并管理外部能力权限。",
-      "title": "MCP / Plugins"
+      "text": "区分 MCP servers 与 installable plugins，并管理 tools、resources 和外部能力权限。",
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "它是什么",
@@ -1086,8 +1095,8 @@ window.GUIDE_SEARCH_INDEX = {
         "# 本地 STDIO server\n[mcp_servers.context7]\ncommand = \"npx\"\nargs = [\"-y\", \"@upstash/context7-mcp\"]\n\n# 远程 Streamable HTTP server（替换为服务方给出的真实地址）\n[mcp_servers.remote_docs]\nurl = \"https://example.com/mcp\""
       ],
       "section": "它是什么",
-      "text": "MCP 的全称是 Model Context Protocol（模型上下文协议）。MCP server 可以暴露可执行的 tools，也可以提供只读的 resources 或其他上下文；“能读到资源”不等于“可以执行写操作”。Plugin 是更上层的能力包，可以同时打包 skill 与 app；其中 app 的外部数据和操作通常由 MCP server 支撑。Desktop 添加路径：打开 Settings → MCP servers → Add server，选择 STDIO（启动本地进程）或 Streamable HTTP（连接远程服务），保存后重启应用。回到 composer 可输入 /mcp 查看或管理当前可用 server。Desktop、CLI 和 IDE 共享用户级 ~/.codex/config.toml；项目也可以在可信项目中使用 .codex/config.toml。项目配置可能影响可启动的程序或可访问的服务，所以只对你信任的仓库启用。# 本地 STDIO server [mcp_servers.context7] command = \"npx\" args = [\"-y\", \"@upstash/context7-mcp\"] # 远程 Streamable HTTP server（替换为服务方给出的真实地址） [mcp_servers.remote_docs] url = \"https://example.com/mcp\"读外部状态GitHub PR、设计稿、文档库、数据库 schema。写外部系统创建 issue、同步设计、部署配置，必须先确认。权限来源token、账号、workspace、server 配置都要可追溯。失败策略外部工具失败时停下报告，不伪造结果。 何时使用",
-      "title": "MCP / Plugins"
+      "text": "MCP 的全称是 Model Context Protocol（模型上下文协议）。MCP server 可以暴露可执行的 tools，也可以提供只读的 resources 或其他上下文；“能读到资源”不等于“可以执行写操作”。Plugin 是更上层的能力包，可以同时打包 skill 与 app；其中 app 的外部数据和操作通常由 MCP server 支撑。只需要可复用步骤Skill说明、模板、脚本和 references无需外部服务时，从 skill 开始。要安装和共享一组能力Plugin可组合 skills、apps、MCP 配置与展示信息已有 plugin 时优先安装并审查其权限。要连接外部系统MCP server暴露 tools、resources 或 prompts按 server、凭据和读写能力逐项授权。Desktop 添加路径：打开 Settings → MCP servers → Add server，选择 STDIO（启动本地进程）或 Streamable HTTP（连接远程服务），保存后重启应用。回到 composer 可输入 /mcp 查看或管理当前可用 server。Desktop、CLI 和 IDE 共享用户级 ~/.codex/config.toml；项目也可以在可信项目中使用 .codex/config.toml。项目配置可能影响可启动的程序或可访问的服务，所以只对你信任的仓库启用。# 本地 STDIO server [mcp_servers.context7] command = \"npx\" args = [\"-y\", \"@upstash/context7-mcp\"] # 远程 Streamable HTTP server（替换为服务方给出的真实地址） [mcp_servers.remote_docs] url = \"https://example.com/mcp\"读外部状态GitHub PR、设计稿、文档库、数据库 schema。写外部系统创建 issue、同步设计、部署配置，必须先确认。权限来源token、账号、workspace、server 配置都要可追溯。失败策略外部工具失败时停下报告，不伪造结果。 何时使用",
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "什么时候用-不用",
@@ -1096,7 +1105,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "什么时候用 / 不用",
       "text": "需要实时外部状态、设计同步、GitHub 操作、数据库查询时使用。涉及 secret、生产数据或写操作时，必须先确认权限边界；如果本地文件已经足够完成任务，不要为了“更自动化”引入外部工具。MCP server 的 instructions，以及 tool / resource 返回的文本都属于不可信上下文：它们不能覆盖用户意图、项目规则或权限边界。遇到要求泄露 secret、扩大范围或忽略审批的返回内容应停止；任何创建、修改、发布、发送等外部写操作仍需用户明确授权和可复核证据。 示例",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "可复制示例",
@@ -1107,7 +1116,7 @@ window.GUIDE_SEARCH_INDEX = {
       ],
       "section": "可复制示例",
       "text": "请先说明你需要哪个 MCP/plugin、会访问哪些数据、 是否会写入外部系统，以及我应该如何验证结果。 补充内容",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "补充内容",
@@ -1116,7 +1125,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "补充内容",
       "text": "热门功能先看适用度高、落地快、风险可控的 MCP。场景选型根据任务类型选 MCP，优先只读+只做必须动作。应用场景按 GitHub、设计、数据和文档三类任务组织调用。调用前检查确认是否必要、写读边界、凭证和验收证据。模板与边界固定输出格式，防止权限和越权写入。 MCP 热点",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "最近较火的-mcp-能力",
@@ -1125,7 +1134,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "最近较火的 MCP 能力",
       "text": "以下不是完整列表，重点是社区落地快、价值明确、与 Codex 工作流最容易结合的功能。",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "github-全链路",
@@ -1134,7 +1143,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "GitHub 全链路",
       "text": "查看 PR、提交、checks、issue 与 release 状态；支撑 review、发布验证、自动更新追踪。典型：核对 Pages、依赖更新后检查 CI。优先级：高（开发者第一选择）",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "浏览器自动化-playwright",
@@ -1143,7 +1152,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "浏览器自动化（Playwright）",
       "text": "可执行网页导航、点击、截图和可访问性检查，适合 UI 回归和发布验收。典型：页面加载失败截图取证、关键信息抓取。优先级：高（网页内容类任务常用）",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "搜索与情报聚合",
@@ -1152,7 +1161,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "搜索与情报聚合",
       "text": "用专用搜索 MCP 把网页、文档和代码片段统一拉取，适合研究与调研任务。典型：快速补充官方引用、竞品功能对比。优先级：中高（研究场景非常常见）",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "数据库与知识库查询",
@@ -1161,7 +1170,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "数据库与知识库查询",
       "text": "连接 Postgres/SQL、Notion、Confluence 这类知识库，直接回答业务问题或核实配置。典型：核对字段定义、抽查记录样例、文档溯源。优先级：中高（企业场景热门）",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "设计与协作工具",
@@ -1170,7 +1179,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "设计与协作工具",
       "text": "读取设计稿元信息、截图、组件、版本差异，支持设计稿与实现对齐。典型：更新页面后比对 Figma 与代码差异。优先级：中（产品/前端任务常用）",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "命令与执行接口",
@@ -1179,7 +1188,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "命令与执行接口",
       "text": "在受控沙箱中执行命令和脚本、收集日志，形成可追踪的工程闭环。典型：跑测试后上传日志摘要给用户。优先级：高（自动化工作流底层能力） 操作手册",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "热点功能怎么选",
@@ -1188,7 +1197,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "热点功能怎么选",
       "text": "",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "你要写代码但不想查网页",
@@ -1197,7 +1206,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "你要写代码但不想查网页",
       "text": "优先 GitHub + 浏览器截图 MCP。一个负责仓库上下文，一个负责页面效果核验。",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "你要做研究复核",
@@ -1206,7 +1215,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "你要做研究复核",
       "text": "优先搜索 MCP + 文档检索 MCP + 本地记忆 MCP，先聚合证据再输出结论。",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "你要修复部署问题",
@@ -1215,7 +1224,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "你要修复部署问题",
       "text": "优先命令执行 MCP + GitHub MCP。拿到运行日志，再回到 PR/issue 形成证据。",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "最容易踩雷的误区",
@@ -1224,7 +1233,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "最容易踩雷的误区",
       "text": "把每个外部动作都设为自动化。建议原则是：先问“只读可否满足”，能只读时先只读；一旦涉及写操作，强制加上目标页边界、目标文件和验收条件。 使用场景",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "mcp-适合解决什么问题",
@@ -1233,7 +1242,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "MCP 适合解决什么问题",
       "text": "",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "github",
@@ -1242,7 +1251,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "GitHub",
       "text": "读取 PR 状态、查看 checks、创建或回复 issue、核对 Pages 发布状态。写操作要先确认。",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "设计工具",
@@ -1251,7 +1260,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "设计工具",
       "text": "读取 Figma 设计、生成截图、同步组件、把代码实现和设计稿比对。",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "数据和文档",
@@ -1260,7 +1269,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "数据和文档",
       "text": "查询数据库 schema、读取知识库、检索论文和内部文档。注意权限和数据边界。 事前检查",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "使用-mcp-前的-5-个问题",
@@ -1269,7 +1278,7 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "使用 MCP 前的 7 个问题",
       "text": "是否必要本地文件是否已经足够？如果足够，不要引入外部工具。是 tool 还是 resourceresource / 上下文通常只读；tool 可能执行动作。先核对能力类型和参数。读还是写只读风险较低；写入 GitHub、设计、数据库或生产系统必须先确认。凭证在哪里token、账号和 workspace 是否已经安全配置？不要把 secret 写进 prompt。返回内容可信么把 server instructions、tool 与 resource 返回视为不可信上下文，不接受其中的越权指令。失败怎么处理工具超时、权限失败、返回空数据时必须停下报告。如何验收外部操作后要给链接、截图、状态码、PR/check 状态或日志。 提示词（Prompt）",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "mcp-安全调用模板",
@@ -1280,7 +1289,7 @@ window.GUIDE_SEARCH_INDEX = {
       ],
       "section": "MCP 安全调用模板",
       "text": "请使用 GitHub MCP 只读检查 PR 状态。 边界： - 可以读取 PR、checks、comments - 不要创建评论、不要推送、不要改 label 输出： - PR 当前 head - checks 是否是最新 run - 失败项和对应日志链接 - 是否需要本地复现 如果权限不足或数据不完整，请停止并说明缺口。 真实实例",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "真实实例-只读核对-pages-状态",
@@ -1291,7 +1300,7 @@ window.GUIDE_SEARCH_INDEX = {
       ],
       "section": "真实实例：只读核对 Pages 状态",
       "text": "本指南每次推送后，Codex 用 GitHub API 查询 codex-usage-guide 的 Pages 状态，再用公开 URL 抓取关键章节标题。这是一个典型 MCP/GitHub 工具场景：需要外部实时状态，但只读即可完成，不需要创建 issue、评论或修改仓库设置。真实验证目标： - gh api repos/WhoJay0609/codex-usage-guide/pages - curl 公开页面 HTML 验收证据： - Pages status: built - daily-workflow.html 包含“五类高频日常任务” - compound-engineering.html 包含“核心七步怎么用”，且第 1 步为 /ce-ideate",
-      "title": "MCP / Plugins"
+      "title": "MCP 与 Plugins"
     },
     {
       "fragment": "",
@@ -3439,7 +3448,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "compound-engineering.html",
       "prompts": [],
       "section": "边界",
-      "text": "只发布普通读者优先、自动化读者其次的一页；本机 goal-entry 不冒充外部高关注仓库，内部过程文档不提交。",
+      "text": "只发布普通读者优先、自动化读者其次的一页；第三方扩展不能冒充 OpenAI 官方能力，内部过程文档不提交。",
       "title": "Compound Engineering plugin"
     },
     {
@@ -3732,7 +3741,18 @@ window.GUIDE_SEARCH_INDEX = {
         "请把下面这个中文 prompt 改写成当前仓库可执行的 Codex Desktop 任务。\n先读 AGENTS.md、README 和相关源码；只输出目标、范围、风险、验收标准和需要确认的问题，不要修改文件。\n原始 prompt：\n[把 plexpt/awesome-chatgpt-prompts-zh 中选出的 prompt 粘贴在这里]"
       ],
       "section": "plexpt/awesome-chatgpt-prompts-zh",
-      "text": "plexpt/awesome-chatgpt-prompts-zh 是中文 ChatGPT prompt 集合，README 和 prompts-zh.json 提供大量可复制的角色、写作、翻译、学术、编程和内容创作提示词。它适合作为 prompt 起点，但不会自动读取当前仓库、AGENTS.md、源码、测试或权限状态，因此不是原生 Codex skill、MCP server 或 plugin。 能力按场景提供角色设定、任务模板和输出格式，适合快速比较不同的表达方式和工作入口。 最适合中文写作、翻译、论文润色、内容创作、头脑风暴和需要先找一个表达起点的轻量任务。 Codex 适配复制 prompt 后，补上仓库上下文、改动范围、权限边界、验收标准和停止条件，再交给 Codex Desktop。 请把下面这个中文 prompt 改写成当前仓库可执行的 Codex Desktop 任务。 先读 AGENTS.md、README 和相关源码；只输出目标、范围、风险、验收标准和需要确认的问题，不要修改文件。 原始 prompt： [把 plexpt/awesome-chatgpt-prompts-zh 中选出的 prompt 粘贴在这里] 使用边界不要直接照搬“忽略之前的对话”、无限角色扮演或无验收的自动执行指令；先改写成当前仓库可审查、可验证的任务合同，也不要把密钥或敏感上下文粘贴到不必要的外部服务。 仓库链接github.com/plexpt/awesome-chatgpt-prompts-zh 进阶",
+      "text": "plexpt/awesome-chatgpt-prompts-zh 是中文 ChatGPT prompt 集合，README 和 prompts-zh.json 提供大量可复制的角色、写作、翻译、学术、编程和内容创作提示词。它适合作为 prompt 起点，但不会自动读取当前仓库、AGENTS.md、源码、测试或权限状态，因此不是原生 Codex skill、MCP server 或 plugin。 能力按场景提供角色设定、任务模板和输出格式，适合快速比较不同的表达方式和工作入口。 最适合中文写作、翻译、论文润色、内容创作、头脑风暴和需要先找一个表达起点的轻量任务。 Codex 适配复制 prompt 后，补上仓库上下文、改动范围、权限边界、验收标准和停止条件，再交给 Codex Desktop。 请把下面这个中文 prompt 改写成当前仓库可执行的 Codex Desktop 任务。 先读 AGENTS.md、README 和相关源码；只输出目标、范围、风险、验收标准和需要确认的问题，不要修改文件。 原始 prompt： [把 plexpt/awesome-chatgpt-prompts-zh 中选出的 prompt 粘贴在这里] 使用边界不要直接照搬“忽略之前的对话”、无限角色扮演或无验收的自动执行指令；先改写成当前仓库可审查、可验证的任务合同，也不要把密钥或敏感上下文粘贴到不必要的外部服务。 仓库链接github.com/plexpt/awesome-chatgpt-prompts-zh 提示词重构",
+      "title": "Skills 仓库"
+    },
+    {
+      "fragment": "refine-user-prompt",
+      "level": "h2",
+      "page": "skills-repositories.html",
+      "prompts": [
+        "$refine-user-prompt\n\n请重新梳理下面的用户输入，保留原意和授权边界：\n[原始输入]"
+      ],
+      "section": "WhoJay0609/refine-user-prompt",
+      "text": "refine-user-prompt 是基于 OpenAI GPT-5.6 prompting guidance 设计的第三方 Codex skill。本节是指南配套介绍，不属于上面的 Top 10 星标排名。它把原始输入重构成精简、结果优先、可验收的提示词，必须先向用户展示重构结果，再按原始授权决定只润色、回答、执行，或为确实需要持久状态的工作创建 Codex Goal。 能力保留事实、范围、授权、证据和输出要求；删掉重复过程；补齐成功标准与停止条件；推荐一个 GPT-5.6 model variant 和 reasoning effort。 最适合用户说“梳理、优化、改写提示词”或“润色后执行”，但原始输入仍混有背景、约束、验证和授权边界的任务。 安装路径克隆仓库后，把 skills/refine-user-prompt 复制到 ~/.codex/skills/，再开启新的 Codex 任务刷新 skill catalog。 $refine-user-prompt 请重新梳理下面的用户输入，保留原意和授权边界： [原始输入] 详细指南先读站内 GPT-5.6 提示词与 refine-user-prompt，了解官方原则、四种执行模式、模型建议和审批边界。 使用边界它不是 OpenAI 官方 skill，不会自动扩大用户授权，也不会自动切换当前模型或 reasoning effort。 仓库链接github.com/WhoJay0609/refine-user-prompt 进阶",
       "title": "Skills 仓库"
     },
     {
@@ -3741,7 +3761,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "skills-repositories.html",
       "prompts": [],
       "section": "高级用户：按阶段组合，不要一锅端",
-      "text": "组合这些仓库时，按阶段串联，不要在一个 prompt 里同时要求所有 skills 工作。每一段都要写清输入、停止条件和验证证据。 自动化循环可以很长，但外部输出前仍要有人工确认和证据留存。 工程计划Compound Engineering/ce-brainstorm、/ce-plan产物：范围、U-ID、验证合同。 工程纪律mattpocock/skills$grill-with-docs、$tdd、$code-review产物：更清楚的需求语言、测试思路、审查问题。 学术工作academic-research-skills-codex$academic-research-suite产物：research brief、paper review、experiment plan。 自动研究ARISresearch pipeline / auto review loop产物：长循环记录、反审结果、实验监控和人工审批点。 边界",
+      "text": "组合这些仓库时，按阶段串联，不要在一个 prompt 里同时要求所有 skills 工作。每一段都要写清输入、停止条件和验证证据。 自动化循环可以很长，但外部输出前仍要有人工确认和证据留存。 工程计划Compound Engineering/ce-brainstorm、/ce-plan产物：范围、U-ID、验证合同。 工程纪律mattpocock/skills$grill-with-docs、$tdd、$code-review产物：更清楚的需求语言、测试思路、审查问题。 学术工作academic-research-skills-codex$academic-research-suite产物：research brief、paper review、experiment plan。 自动研究ARISresearch pipeline / auto review loop产物：长循环记录、反审结果、实验监控和人工审批点。 提示词重构refine-user-prompt$refine-user-prompt产物：先展示的任务合同、执行模式和模型建议。 边界",
       "title": "Skills 仓库"
     },
     {
@@ -3750,7 +3770,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "skills-repositories.html",
       "prompts": [],
       "section": "使用边界",
-      "text": "非官方这些第三方 skills 仓库不是 OpenAI 官方功能。涉及 Codex Desktop 能力边界时，以 OpenAI 官方文档为准。 星标快照Top 10 的 star 数是 2026-07-12 的约数快照；GitHub star 会变化，后续更新必须重新抓取并标注日期。 官方与第三方openai/codex 和 MCP 基础设施单独标出；其余仓库都不是 OpenAI 官方功能，安装前要审查代码、权限和供应链。 goal-entry 不列入goal-entry 是本机自己开发的 local adaptation，效果一般，只在 goal-entry 页面作为案例保留。 长任务要可验收高级自动化仍要写 objective、范围、验证、停止条件、外部写操作审批和人工 closeout。 真实实例",
+      "text": "非官方这些第三方 skills 仓库不是 OpenAI 官方功能。涉及 Codex Desktop 能力边界时，以 OpenAI 官方文档为准。 星标快照Top 10 的 star 数是 2026-07-12 的约数快照；GitHub star 会变化，后续更新必须重新抓取并标注日期。 官方与第三方openai/codex 和 MCP 基础设施单独标出；其余仓库都不是 OpenAI 官方功能，安装前要审查代码、权限和供应链。 指南来源refine-user-prompt 的方法来源可追溯到 OpenAI GPT-5.6 prompting guidance，但仓库本身仍是第三方实现。 长任务要可验收高级自动化仍要写 objective、范围、验证、停止条件、外部写操作审批和人工 closeout。 真实实例",
       "title": "Skills 仓库"
     },
     {
@@ -3813,65 +3833,114 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "skills-repositories.html",
       "prompts": [],
       "section": "失败停止",
-      "text": "上游事实无法确认、图片无法保存、页面链接断裂、或实现必须把 goal-entry 放进高 stars 仓库列表。",
+      "text": "上游事实无法确认、图片无法保存、页面链接断裂，或第三方能力被误写成 OpenAI 官方功能时停止发布。",
       "title": "Skills 仓库"
     },
     {
       "fragment": "",
       "level": "page",
-      "page": "goal-entry.html",
+      "page": "prompt-guidance.html",
       "prompts": [],
       "section": "",
-      "text": "了解本机自开发 goal-entry 的用途、$ mention 方式和限制。",
-      "title": "goal-entry"
+      "text": "解读 GPT-5.6 提示词指南，并使用 refine-user-prompt 把原始请求改写成可执行任务合同。",
+      "title": "GPT-5.6 提示词与 refine-user-prompt"
     },
     {
-      "fragment": "定位-自开发本机扩展",
+      "fragment": "先分清三层",
       "level": "h2",
-      "page": "goal-entry.html",
+      "page": "prompt-guidance.html",
       "prompts": [],
-      "section": "定位：自开发本机扩展",
-      "text": "goal-entry 的设计目标是先判断请求属于讨论、计划、执行，还是要绑定已有 goal；再决定是否进入 preflight 和 closeout。它主要把“不要误执行、不要跳过验证”写成固定规程。 本机自开发 效果一般 非官方内置能力 限制",
-      "title": "goal-entry"
+      "section": "先分清三层",
+      "text": "官方事实以 OpenAI 的 GPT-5.6 prompting guidance 和 GPT-5.6 model guide 为准。 本指南解读把 API 侧的提示建议翻成 Codex 任务合同：目标、成功标准、授权边界、工具与验证、输出和停止规则。 第三方实现WhoJay0609/refine-user-prompt 不是 OpenAI 官方 skill；它把上述原则固化为“先展示重构提示词，再按授权执行”的工作流。 官方指南解读",
+      "title": "GPT-5.6 提示词与 refine-user-prompt"
     },
     {
-      "fragment": "为什么说效果一般",
+      "fragment": "官方指南到底在说什么",
       "level": "h2",
-      "page": "goal-entry.html",
+      "page": "prompt-guidance.html",
       "prompts": [],
-      "section": "为什么说效果一般",
-      "text": "提示词依赖高用户如果同时写“只讨论”和“执行修改”，仍需要人工判断外层意图。 流程偏重小任务用它会显得啰嗦，普通 Desktop 线程通常更快。 迁移成本高它依赖本机 goal-* skills、脚本和运行记录，换机器前必须重新确认。 不是质量保证它只能约束流程；最终质量仍取决于实际 diff、测试和人工验收。 何时使用",
-      "title": "goal-entry"
+      "section": "官方指南到底在说什么",
+      "text": "核心可以压缩成一句话：描述终点和验收，保留真正的硬边界，减少不改变行为的过程规定。 OpenAI 报告，在一组内部 coding-agent eval 中，较精简的 system prompt 让得分约提高 10–15%，同时总 token 下降 41–66%、成本下降 33–67%；官方也明确提醒这些范围只是方向性结果，必须用自己的代表性任务复测。 保留用户可见结果成功标准与停止条件安全、证据、权限、输出和验证要求 删减重复规则不改变行为的示例和风格话术与任务无关的工具和过程旁白 改写“必须按 12 步执行”改成决策规则只有真正不可变的顺序才保留强制步骤 复测一次只改一组 prompt 或工具说明跑同一批 eval同时看正确性、证据、token、延迟和成本 Codex 写法",
+      "title": "GPT-5.6 提示词与 refine-user-prompt"
     },
     {
-      "fragment": "什么时候可以用",
+      "fragment": "把建议翻成-codex-任务合同",
       "level": "h2",
-      "page": "goal-entry.html",
-      "prompts": [],
-      "section": "什么时候可以用",
-      "text": "可用跨多文件、需要目标闭环风险：流程偏重证据：objective、validation、closeout 少用单文件小改、普通问答风险：浪费时间替代：直接用 Codex Desktop 线程 不要当官方能力对外教学或迁移到新机器风险：读者无法复现做法：标注 local adaptation 示例",
-      "title": "goal-entry"
-    },
-    {
-      "fragment": "可复制示例",
-      "level": "h2",
-      "page": "goal-entry.html",
+      "page": "prompt-guidance.html",
       "prompts": [
-        "$goal-entry\n只判断路线，不改文件。\n请说明这个请求应该讨论、计划还是执行，并列出停止条件。",
-        "$goal-entry\n执行：修改 codex-usage-guide 的两个页面。\n范围：只改 HTML 和验证脚本。\n验收：make check 通过，并扫描旧词残留。"
+        "目标：更新当前仓库的安装指南，使新用户能完成首次配置。\n\n成功标准：\n- 命令与当前代码一致\n- 站内链接无断链\n- 最窄相关检查通过\n\n约束与授权：\n- 只修改文档和对应验证\n- 保留无关工作区改动\n- 推送、发布或扩大范围前先确认\n\n输出：列出改动文件、验证结果和剩余阻碍。\n\n停止规则：如果仓库事实与官方资料冲突，报告冲突并停止猜测。"
       ],
-      "section": "可复制示例",
-      "text": "$goal-entry 只判断路线，不改文件。 请说明这个请求应该讨论、计划还是执行，并列出停止条件。 $goal-entry 执行：修改 codex-usage-guide 的两个页面。 范围：只改 HTML 和验证脚本。 验收：make check 通过，并扫描旧词残留。 真实实例",
-      "title": "goal-entry"
+      "section": "把建议翻成 Codex 任务合同",
+      "text": "复杂任务不需要固定套满所有栏目。先写结果，再只加入会改变行为的约束；缺少的关键事实会改变范围或副作用时，要求 Codex 只问最小问题。 目标：更新当前仓库的安装指南，使新用户能完成首次配置。 成功标准： - 命令与当前代码一致 - 站内链接无断链 - 最窄相关检查通过 约束与授权： - 只修改文档和对应验证 - 保留无关工作区改动 - 推送、发布或扩大范围前先确认 输出：列出改动文件、验证结果和剩余阻碍。 停止规则：如果仓库事实与官方资料冲突，报告冲突并停止猜测。 第三方 Skill",
+      "title": "GPT-5.6 提示词与 refine-user-prompt"
     },
     {
-      "fragment": "真实实例-本指南如何标注它",
+      "fragment": "refine-user-prompt-是什么",
       "level": "h2",
-      "page": "goal-entry.html",
+      "page": "prompt-guidance.html",
       "prompts": [],
-      "section": "真实实例：本指南如何标注它",
-      "text": "用户要求保留 goal-entry 的介绍，同时说明它是自开发扩展，实际效果一般。因此本页不把它写成默认流程，只保留来源、限制、适用场景和失败边界。复杂工程任务优先看 Compound Engineering plugin。",
-      "title": "goal-entry"
+      "section": "refine-user-prompt 是什么",
+      "text": "这个 skill 接收一段原始请求，先提取目标、事实、范围、授权、证据、输出和停止条件，再删除重复或无效脚手架。它必须先把可复制的重构提示词展示给用户，然后才根据原始授权决定停止、回答、执行，或为真正需要持久状态的工作创建 Codex Goal。 保真优先不静默增加事实、权限、交付物、截止时间或质量承诺。 按复杂度组织简单请求保持一句话或短列表；只有复杂任务才加入分节合同。 最小澄清只有歧义会实质改变结果、范围、副作用或证据标准时才提问。 建议不等于切换模型、reasoning effort 和 Goal 模式都是建议；skill 不会声称自动切换当前配置。 执行合同",
+      "title": "GPT-5.6 提示词与 refine-user-prompt"
+    },
+    {
+      "fragment": "四种执行模式",
+      "level": "h2",
+      "page": "prompt-guidance.html",
+      "prompts": [],
+      "section": "四种执行模式",
+      "text": "refine_only用户只要润色、计划或明确说不要执行展示重构提示词后停止不改文件 refine_then_answer有界、无副作用的解释或总结先展示提示词，再直接回答不扩大实现权限 refine_then_execute普通、已授权的修改或生成任务先展示提示词，再执行本地范围内工作保留审批闸门 refine_then_create_goal跨多阶段、可恢复、需长期跟踪且执行已获授权先展示提示词，再创建 GoalGoal 目标默认使用完整重构提示词 模型建议",
+      "title": "GPT-5.6 提示词与 refine-user-prompt"
+    },
+    {
+      "fragment": "模型与思考强度怎么选",
+      "level": "h2",
+      "page": "prompt-guidance.html",
+      "prompts": [],
+      "section": "模型与思考强度怎么选",
+      "text": "该 skill 按任务歧义、依赖深度、工具和验证负担、错误后果、延迟与成本来建议一个默认配置。它遵循当前官方模型分层：gpt-5.6-luna 面向高效、高吞吐任务，gpt-5.6-terra 是日常平衡选择，gpt-5.6-sol 面向旗舰质量；gpt-5.6 alias 路由到 gpt-5.6-sol。 medium 是平衡起点，延迟敏感任务可测试 low；只有代表性 eval 证明有收益时才升到 high 或 xhigh，max 只留给最难的质量优先工作。先补成功标准、依赖规则、工具路由和验证闭环，再考虑提高 reasoning effort。 授权边界",
+      "title": "GPT-5.6 提示词与 refine-user-prompt"
+    },
+    {
+      "fragment": "润色不会自动扩大权限",
+      "level": "h2",
+      "page": "prompt-guidance.html",
+      "prompts": [],
+      "section": "润色不会自动扩大权限",
+      "text": "“把 prompt 写完整”不等于获得新的行动授权。回答、解释、审查、诊断和计划默认只读；用户明确要求修改、构建或修复时，才执行范围内的本地变更和非破坏性验证。外部写入、删除、购买、高成本任务或实质扩域仍要单独确认。 安装与调用",
+      "title": "GPT-5.6 提示词与 refine-user-prompt"
+    },
+    {
+      "fragment": "安装和调用",
+      "level": "h2",
+      "page": "prompt-guidance.html",
+      "prompts": [
+        "git clone https://github.com/WhoJay0609/refine-user-prompt.git\ncp -R refine-user-prompt/skills/refine-user-prompt ~/.codex/skills/",
+        "$refine-user-prompt\n\n请重新梳理下面的用户输入，保留原意和授权边界：\n[原始输入]"
+      ],
+      "section": "安装和调用",
+      "text": "git clone https://github.com/WhoJay0609/refine-user-prompt.git cp -R refine-user-prompt/skills/refine-user-prompt ~/.codex/skills/ 安装后开启一个新的 Codex 任务，让 skill catalog 重新加载。显式调用时，把原始输入放在 skill mention 之后： $refine-user-prompt 请重新梳理下面的用户输入，保留原意和授权边界： [原始输入] 真实实例",
+      "title": "GPT-5.6 提示词与 refine-user-prompt"
+    },
+    {
+      "fragment": "真实实例-润色后执行文档更新",
+      "level": "h2",
+      "page": "prompt-guidance.html",
+      "prompts": [
+        "$refine-user-prompt 润色并执行：\n在 Codex 使用指南中解读 GPT-5.6 prompting guidance，\n介绍 WhoJay0609/refine-user-prompt，并移除旧的本机路由专题。"
+      ],
+      "section": "真实实例：润色后执行文档更新",
+      "text": "本页本身就是一次 refine_then_execute：原始请求要求“润色并执行”，所以先展示了包含官方资料、删除范围和验证条件的重构提示词，再读取官方页面、更新站点来源文件、重新生成导航与搜索资产，并以 make check 和旧词残留扫描收口。没有创建 Goal，因为这是一轮可以在当前任务中完成的有界文档修改。 $refine-user-prompt 润色并执行： 在 Codex 使用指南中解读 GPT-5.6 prompting guidance， 介绍 WhoJay0609/refine-user-prompt，并移除旧的本机路由专题。 使用边界",
+      "title": "GPT-5.6 提示词与 refine-user-prompt"
+    },
+    {
+      "fragment": "什么时候不该用",
+      "level": "h2",
+      "page": "prompt-guidance.html",
+      "prompts": [],
+      "section": "什么时候不该用",
+      "text": "如果用户已经给出清楚、短小、可直接执行的任务，额外重构可能只会增加往返。若目标是自动评测大量 prompt、训练优化器或改写应用级 system prompt stack，也应使用专门的 eval 与迁移流程，而不是把单次任务润色 skill 当成自动优化框架。",
+      "title": "GPT-5.6 提示词与 refine-user-prompt"
     },
     {
       "fragment": "",
@@ -3897,7 +3966,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "resources.html",
       "prompts": [],
       "section": "官方资料优先",
-      "text": "以下链接使用已核对的 ChatGPT Learn canonical 路径，覆盖 ChatGPT desktop app、权限、Scheduled tasks、Browser、Integrated terminal、Skills、AGENTS.md、Subagents、MCP、Worktrees 以及各工作面。本指南只保留 Desktop 读者主线。",
+      "text": "以下链接使用已核对的 OpenAI canonical 路径，覆盖 ChatGPT desktop app、权限、Scheduled tasks、Browser、Integrated terminal、Skills、AGENTS.md、Subagents、MCP、Worktrees、GPT-5.6 prompting guidance 以及各工作面。本指南只保留 Desktop 读者主线。",
       "title": "资料地图"
     },
     {
@@ -3915,7 +3984,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "resources.html",
       "prompts": [],
       "section": "Permissions",
-      "text": "四种 Desktop 权限选择与安全边界。",
+      "text": "按配置可用的 Desktop 权限模式与安全边界。",
       "title": "资料地图"
     },
     {
@@ -3952,6 +4021,15 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "Skills & Plugins",
       "text": "技能 mention、插件发现和安装。",
+      "title": "资料地图"
+    },
+    {
+      "fragment": "gpt-5p6-prompt-guidance",
+      "level": "h3",
+      "page": "resources.html",
+      "prompts": [],
+      "section": "GPT-5.6 prompting guidance",
+      "text": "结果优先、精简 prompt、授权边界、工具路由、停止条件与 reasoning effort。",
       "title": "资料地图"
     },
     {
@@ -4140,16 +4218,16 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "resources.html",
       "prompts": [],
       "section": "Compound Engineering plugin",
-      "text": "EveryInc 插件仓库的 Codex Desktop 使用页，覆盖 custom marketplace 安装、/ce-setup、六步工程循环和 /lfg 边界。",
+      "text": "EveryInc 插件仓库的 Codex Desktop 使用页，覆盖 custom marketplace 安装、/ce-setup、七步工程循环和 /lfg 边界。",
       "title": "资料地图"
     },
     {
-      "fragment": "goal-entry-本机实验",
+      "fragment": "gpt-5.6-提示词与-refine-user-prompt",
       "level": "h3",
       "page": "resources.html",
       "prompts": [],
-      "section": "goal-entry 本机实验",
-      "text": "goal-entry 是自己开发的本机扩展，不是官方能力，实际效果一般；本指南只把它作为 local adaptation 案例保留。 真实实例",
+      "section": "GPT-5.6 提示词与 refine-user-prompt",
+      "text": "把 OpenAI 官方提示原则翻成 Codex 任务合同，并介绍基于该指南的第三方 skill、执行模式和授权边界。 真实实例",
       "title": "资料地图"
     },
     {
@@ -4157,10 +4235,10 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h2",
       "page": "resources.html",
       "prompts": [
-        "资料使用方式：\n- 官方文档：确认概念和安全边界\n- Codex App 官方资料：确认 Desktop 功能和安全边界\n- 插件仓库：解释可迁移扩展\n- 本机 SKILL.md：只解释 local adaptation\n- 本仓库实例：展示真实任务如何跑完"
+        "资料使用方式：\n- 官方文档：确认概念和安全边界\n- Codex App 官方资料：确认 Desktop 功能和安全边界\n- 第三方仓库：解释可迁移扩展，并明确非官方边界\n- SKILL.md：核对触发、授权、执行和输出合同\n- 本仓库实例：展示真实任务如何跑完"
       ],
       "section": "真实实例：资料如何进入页面内容",
-      "text": "扩充这份手册时，官方资料用于确认产品边界，例如 ChatGPT desktop app、Local/Worktree、Browser、Scheduled tasks、AGENTS.md、Skills 和 Subagents；插件仓库用于解释第三方扩展，例如 Compound Engineering；本机资料只作为 local adaptation 案例，例如 goal-entry。页面内容不会复制官方文档，而是把资料转成中文 Desktop 操作流程、真实 prompt 和验证清单。 资料使用方式： - 官方文档：确认概念和安全边界 - Codex App 官方资料：确认 Desktop 功能和安全边界 - 插件仓库：解释可迁移扩展 - 本机 SKILL.md：只解释 local adaptation - 本仓库实例：展示真实任务如何跑完",
+      "text": "扩充这份手册时，官方资料用于确认产品边界，例如 ChatGPT desktop app、Local/Worktree、Browser、Scheduled tasks、AGENTS.md、Skills、Subagents 和 GPT-5.6 prompting guidance；插件或 skill 仓库用于解释第三方扩展，例如 Compound Engineering 与 refine-user-prompt。页面内容不会复制官方文档，而是把资料转成中文 Desktop 操作流程、真实 prompt 和验证清单。 资料使用方式： - 官方文档：确认概念和安全边界 - Codex App 官方资料：确认 Desktop 功能和安全边界 - 第三方仓库：解释可迁移扩展，并明确非官方边界 - SKILL.md：核对触发、授权、执行和输出合同 - 本仓库实例：展示真实任务如何跑完",
       "title": "资料地图"
     }
   ],

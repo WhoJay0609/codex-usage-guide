@@ -9,10 +9,10 @@ The web page is the canonical public artifact.
 
 - Keep the guide useful for both beginners and advanced Codex users.
 - Preserve exact English identifiers such as `Goal`, `subagent`, `AGENTS.md`,
-  `goal-entry`, `Compound Engineering`, `SKILL.md`, and command names.
+  `refine-user-prompt`, `Compound Engineering`, `SKILL.md`, and command names.
 - Keep generic Goal/Subagent guidance before scenario-specific skills.
-- Keep local `goal-entry` implementation details short and clearly labeled as
-  self-developed, average-effectiveness local adaptation.
+- Keep the GPT-5.6 prompt-guidance interpretation grounded in the linked OpenAI
+  source, and label `refine-user-prompt` as a third-party skill.
 - Do not publish internal task process docs under `doc/`; they are local
   execution records.
 - Do not make PDF generation part of the default completion contract unless the
@@ -39,7 +39,7 @@ The web page is the canonical public artifact.
 
 ### Generated And Authored Boundaries
 
-- `data/site-manifest.json`, `data/heading-fragments.json`, and `data/publication-policy.json` are reviewed sources of truth.
+- `data/site-manifest.json`, `data/changelog.json`, `data/heading-fragments.json`, and `data/publication-policy.json` are reviewed sources of truth.
 - `assets/site-data.js`, `assets/search-index.js`, root-page `guide:*` blocks, canonical heading IDs, legacy alias elements, permalink controls, and normalized external-link attributes are generated. Change their source and run `make generate`; do not hand-edit them.
 - Article prose, prompts, case evidence, captions, and narrowly scoped evidence sections outside generated blocks are authored content. Generator changes must preserve those bytes except for the explicitly registered narrow transformations above.
 - Real Desktop screenshots remain an external-input gate. Do not create an approval record, claim privacy sign-off, or publish substitutes until the exact committed derivative has received independent original-resolution review.

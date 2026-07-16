@@ -15,6 +15,22 @@ class SiteModelError(ValueError):
     """Raised when source data cannot describe a deterministic site."""
 
 
+OFFICIAL_SOURCE_HOSTS = {
+    "developers.openai.com",
+    "learn.chatgpt.com",
+    "help.openai.com",
+    "openai.com",
+    "platform.openai.com",
+}
+
+
+@dataclass(frozen=True)
+class PageSource:
+    label: str
+    url: str
+    kind: str
+
+
 @dataclass(frozen=True)
 class Page:
     path: str
@@ -23,6 +39,7 @@ class Page:
     description: str
     modified: str
     facts_verified: str
+    sources: tuple[PageSource, ...]
 
 
 @dataclass(frozen=True)
@@ -95,6 +112,34 @@ def load_site_model(root: Path) -> SiteModel:
     for index, item in enumerate(pages_raw):
         if not isinstance(item, dict):
             raise SiteModelError(f"pages[{index}] must be an object")
+        sources_raw = item.get("sources", [])
+        if not isinstance(sources_raw, list):
+            raise SiteModelError(f"pages[{index}].sources must be a list")
+        sources: list[PageSource] = []
+        seen_source_urls: set[str] = set()
+        for source_index, source_item in enumerate(sources_raw):
+            if not isinstance(source_item, dict):
+                raise SiteModelError(f"pages[{index}].sources[{source_index}] must be an object")
+            source = PageSource(
+                label=_required_text(source_item.get("label"), f"pages[{index}].sources[{source_index}].label"),
+                url=_required_text(source_item.get("url"), f"pages[{index}].sources[{source_index}].url"),
+                kind=_required_text(source_item.get("kind"), f"pages[{index}].sources[{source_index}].kind"),
+            )
+            if source.kind not in {"official", "third_party"}:
+                raise SiteModelError(
+                    f"pages[{index}].sources[{source_index}].kind must be official or third_party"
+                )
+            parsed_source_url = urlparse(source.url)
+            if parsed_source_url.scheme != "https" or not parsed_source_url.netloc:
+                raise SiteModelError(f"pages[{index}].sources[{source_index}].url must be absolute HTTPS")
+            if source.kind == "official" and parsed_source_url.hostname not in OFFICIAL_SOURCE_HOSTS:
+                raise SiteModelError(
+                    f"pages[{index}].sources[{source_index}] labels a non-OpenAI host as official"
+                )
+            if source.url in seen_source_urls:
+                raise SiteModelError(f"pages[{index}] has duplicate source URL: {source.url}")
+            seen_source_urls.add(source.url)
+            sources.append(source)
         page = Page(
             path=_required_text(item.get("path"), f"pages[{index}].path"),
             title=_required_text(item.get("title"), f"pages[{index}].title"),
@@ -102,6 +147,7 @@ def load_site_model(root: Path) -> SiteModel:
             description=_required_text(item.get("description"), f"pages[{index}].description"),
             modified=_iso_date(item.get("modified"), f"pages[{index}].modified"),
             facts_verified=_iso_date(item.get("facts_verified"), f"pages[{index}].facts_verified"),
+            sources=tuple(sources),
         )
         if page.path in page_paths:
             raise SiteModelError(f"duplicate page path: {page.path}")

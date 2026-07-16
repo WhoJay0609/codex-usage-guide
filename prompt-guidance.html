@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GPT-5.6 提示词与 refine-user-prompt</title>
+  <!-- guide:theme-bootstrap:start -->
+<script src="assets/theme.js"></script>
+<!-- guide:theme-bootstrap:end -->
+  <link rel="stylesheet" href="assets/site.css">
+  <!-- guide:metadata:start -->
+<meta name="description" content="解读 GPT-5.6 提示词指南，并使用 refine-user-prompt 把原始请求改写成可执行任务合同。">
+<meta name="guide-build" content="aa4b762d54c4">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/prompt-guidance.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="Codex 使用指南">
+<meta property="og:title" content="GPT-5.6 提示词与 refine-user-prompt">
+<meta property="og:description" content="解读 GPT-5.6 提示词指南，并使用 refine-user-prompt 把原始请求改写成可执行任务合同。">
+<meta property="og:url" content="https://whojay0609.github.io/codex-usage-guide/prompt-guidance.html">
+<meta property="og:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Codex 使用指南">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GPT-5.6 提示词与 refine-user-prompt">
+<meta name="twitter:description" content="解读 GPT-5.6 提示词指南，并使用 refine-user-prompt 把原始请求改写成可执行任务合同。">
+<meta name="twitter:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
+<meta name="twitter:image:alt" content="Codex 使用指南">
+<!-- guide:metadata:end -->
+</head>
+<body>
+  <!-- guide:header:start -->
+<script src="assets/site-data.js"></script><a class="skip-link" href="#main-content">跳到正文</a><header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><label class="theme-control"><span class="sr-only">主题</span><select class="theme-select" id="theme-select" name="theme" aria-label="主题"><option value="light" selected>浅色</option><option value="dark">深色</option></select></label><span class="theme-status sr-only" aria-live="polite"></span><button class="search-trigger" type="button" aria-haspopup="dialog" aria-controls="site-search-dialog">搜索</button><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header><dialog class="search-dialog" id="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title"><div class="search-dialog-panel"><div class="search-dialog-head"><p class="search-title" id="site-search-title">搜索全站</p><button class="search-close" type="button" aria-label="关闭搜索">关闭</button></div><label class="search-label" for="site-search-input">搜索标题、正文和可复用 prompt</label><input class="search-input" id="site-search-input" type="search" role="combobox" autocomplete="off" aria-autocomplete="list" aria-controls="site-search-results" aria-describedby="site-search-status" aria-expanded="false"><p class="search-message" id="site-search-status" aria-live="polite">输入关键词开始搜索。</p><ul class="search-results" id="site-search-results" role="listbox" aria-label="搜索结果"></ul></div></dialog>
+<!-- guide:header:end -->
+  <!-- guide:shell-open:start -->
+<div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html">首页</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="worktrees.html">Worktrees</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">定时任务</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html">Compound</a><details class="global-nav-disclosure"><summary>Skills 仓库</summary><a data-nav href="skills-repositories.html">全部仓库</a><a href="skills-repositories.html#compound-engineering">Compound Engineering</a><a href="skills-repositories.html#mattpocock-skills">Matt Pocock skills</a><a href="skills-repositories.html#academic-research-skills-codex">ARS</a><a href="skills-repositories.html#aris-auto-claude-code-research-in-sleep">ARIS</a><a href="skills-repositories.html#refine-user-prompt">refine-user-prompt</a></details><a data-nav href="prompt-guidance.html" aria-current="page">提示词</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>扩展与资料</span><span aria-hidden="true">/</span><span aria-current="page">提示词</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-07-16">2026-07-16</time></span><span>事实核验：<time datetime="2026-07-16">2026-07-16</time></span></div><aside class="page-sources" aria-label="本页资料依据"><strong>本页依据</strong><a class="page-source-link external-link" href="https://developers.openai.com/api/docs/guides/prompt-guidance-gpt-5p6" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span><span class="source-kind">OpenAI 官方</span>GPT-5.6 prompting guidance</a><a class="page-source-link external-link" href="https://github.com/WhoJay0609/refine-user-prompt" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span><span class="source-kind">第三方上游</span>refine-user-prompt repository</a></aside><aside class="page-toc" aria-label="本页目录"><details><summary>本页目录</summary><nav><a class="toc-h2" href="#先分清三层">先分清三层</a><a class="toc-h2" href="#官方指南到底在说什么">官方指南到底在说什么</a><a class="toc-h2" href="#把建议翻成-codex-任务合同">把建议翻成 Codex 任务合同</a><a class="toc-h2" href="#refine-user-prompt-是什么">refine-user-prompt 是什么</a><a class="toc-h2" href="#四种执行模式">四种执行模式</a><a class="toc-h2" href="#模型与思考强度怎么选">模型与思考强度怎么选</a><a class="toc-h2" href="#润色不会自动扩大权限">润色不会自动扩大权限</a><a class="toc-h2" href="#安装和调用">安装和调用</a><a class="toc-h2" href="#真实实例-润色后执行文档更新">真实实例：润色后执行文档更新</a><a class="toc-h2" href="#什么时候不该用">什么时候不该用</a></nav></details></aside>
+<!-- guide:shell-open:end -->
+<main id="main-content">
+    <section class="hero compact">
+      <div class="hero-copy">
+        <p class="hero-kicker">提示词与 Skills</p>
+        <h1>GPT-5.6 提示词与 <code>refine-user-prompt</code></h1>
+        <p class="lead">OpenAI 对 GPT-5.6 的建议不是把 prompt 写得更长，而是先写清结果、关键约束、证据和完成标准，再删掉重复过程，让模型选择高效路径。本页把这套原则翻成 Codex 任务写法，并介绍一个基于这些原则实现的第三方 skill。</p>
+      </div>
+    </section>
+
+    <div class="doc-layout">
+      <article class="doc-content">
+        <section class="content-block" id="source-boundary">
+          <p class="section-kicker">来源边界</p>
+          <span class="fragment-alias" id="heading-prompt-guidance-1" data-canonical-fragment="先分清三层" aria-hidden="true"></span><h2 id="先分清三层">先分清三层<a class="heading-permalink" data-heading-permalink data-search-exclude href="#先分清三层" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <div class="bento">
+            <article class="card span-4"><strong>官方事实</strong><p>以 OpenAI 的 <a href="https://developers.openai.com/api/docs/guides/prompt-guidance-gpt-5p6" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>GPT-5.6 prompting guidance</a> 和 <a href="https://developers.openai.com/api/docs/guides/latest-model" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>GPT-5.6 model guide</a> 为准。</p></article>
+            <article class="card span-4"><strong>本指南解读</strong><p>把 API 侧的提示建议翻成 Codex 任务合同：目标、成功标准、授权边界、工具与验证、输出和停止规则。</p></article>
+            <article class="card span-4"><strong>第三方实现</strong><p><a href="https://github.com/WhoJay0609/refine-user-prompt" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span><code>WhoJay0609/refine-user-prompt</code></a> 不是 OpenAI 官方 skill；它把上述原则固化为“先展示重构提示词，再按授权执行”的工作流。</p></article>
+          </div>
+        </section>
+
+        <section class="content-block" id="official-reading">
+          <p class="section-kicker">官方指南解读</p>
+          <span class="fragment-alias" id="heading-prompt-guidance-2" data-canonical-fragment="官方指南到底在说什么" aria-hidden="true"></span><h2 id="官方指南到底在说什么">官方指南到底在说什么<a class="heading-permalink" data-heading-permalink data-search-exclude href="#官方指南到底在说什么" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <p>核心可以压缩成一句话：<strong>描述终点和验收，保留真正的硬边界，减少不改变行为的过程规定。</strong> OpenAI 报告，在一组内部 coding-agent eval 中，较精简的 system prompt 让得分约提高 10–15%，同时总 token 下降 41–66%、成本下降 33–67%；官方也明确提醒这些范围只是方向性结果，必须用自己的代表性任务复测。</p>
+          <div class="decision-table">
+            <div class="decision-row"><strong>保留</strong><span>用户可见结果</span><span>成功标准与停止条件</span><span>安全、证据、权限、输出和验证要求</span></div>
+            <div class="decision-row"><strong>删减</strong><span>重复规则</span><span>不改变行为的示例和风格话术</span><span>与任务无关的工具和过程旁白</span></div>
+            <div class="decision-row"><strong>改写</strong><span>“必须按 12 步执行”</span><span>改成决策规则</span><span>只有真正不可变的顺序才保留强制步骤</span></div>
+            <div class="decision-row"><strong>复测</strong><span>一次只改一组 prompt 或工具说明</span><span>跑同一批 eval</span><span>同时看正确性、证据、token、延迟和成本</span></div>
+          </div>
+        </section>
+
+        <section class="content-block" id="task-contract">
+          <p class="section-kicker">Codex 写法</p>
+          <span class="fragment-alias" id="heading-prompt-guidance-3" data-canonical-fragment="把建议翻成-codex-任务合同" aria-hidden="true"></span><h2 id="把建议翻成-codex-任务合同">把建议翻成 Codex 任务合同<a class="heading-permalink" data-heading-permalink data-search-exclude href="#把建议翻成-codex-任务合同" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <p>复杂任务不需要固定套满所有栏目。先写结果，再只加入会改变行为的约束；缺少的关键事实会改变范围或副作用时，要求 Codex 只问最小问题。</p>
+          <pre><code>目标：更新当前仓库的安装指南，使新用户能完成首次配置。
+
+成功标准：
+- 命令与当前代码一致
+- 站内链接无断链
+- 最窄相关检查通过
+
+约束与授权：
+- 只修改文档和对应验证
+- 保留无关工作区改动
+- 推送、发布或扩大范围前先确认
+
+输出：列出改动文件、验证结果和剩余阻碍。
+
+停止规则：如果仓库事实与官方资料冲突，报告冲突并停止猜测。</code></pre>
+        </section>
+
+        <section class="content-block" id="skill-overview">
+          <p class="section-kicker">第三方 Skill</p>
+          <span class="fragment-alias" id="heading-prompt-guidance-4" data-canonical-fragment="refine-user-prompt-是什么" aria-hidden="true"></span><h2 id="refine-user-prompt-是什么"><code>refine-user-prompt</code> 是什么<a class="heading-permalink" data-heading-permalink data-search-exclude href="#refine-user-prompt-是什么" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <p>这个 skill 接收一段原始请求，先提取目标、事实、范围、授权、证据、输出和停止条件，再删除重复或无效脚手架。它必须先把可复制的重构提示词展示给用户，然后才根据原始授权决定停止、回答、执行，或为真正需要持久状态的工作创建 Codex Goal。</p>
+          <ul class="mini-list">
+            <li><strong>保真优先</strong><span>不静默增加事实、权限、交付物、截止时间或质量承诺。</span></li>
+            <li><strong>按复杂度组织</strong><span>简单请求保持一句话或短列表；只有复杂任务才加入分节合同。</span></li>
+            <li><strong>最小澄清</strong><span>只有歧义会实质改变结果、范围、副作用或证据标准时才提问。</span></li>
+            <li><strong>建议不等于切换</strong><span>模型、reasoning effort 和 Goal 模式都是建议；skill 不会声称自动切换当前配置。</span></li>
+          </ul>
+        </section>
+
+        <section class="content-block" id="execution-modes">
+          <p class="section-kicker">执行合同</p>
+          <span class="fragment-alias" id="heading-prompt-guidance-5" data-canonical-fragment="四种执行模式" aria-hidden="true"></span><h2 id="四种执行模式">四种执行模式<a class="heading-permalink" data-heading-permalink data-search-exclude href="#四种执行模式" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <div class="decision-table">
+            <div class="decision-row"><strong><code>refine_only</code></strong><span>用户只要润色、计划或明确说不要执行</span><span>展示重构提示词后停止</span><span>不改文件</span></div>
+            <div class="decision-row"><strong><code>refine_then_answer</code></strong><span>有界、无副作用的解释或总结</span><span>先展示提示词，再直接回答</span><span>不扩大实现权限</span></div>
+            <div class="decision-row"><strong><code>refine_then_execute</code></strong><span>普通、已授权的修改或生成任务</span><span>先展示提示词，再执行本地范围内工作</span><span>保留审批闸门</span></div>
+            <div class="decision-row"><strong><code>refine_then_create_goal</code></strong><span>跨多阶段、可恢复、需长期跟踪且执行已获授权</span><span>先展示提示词，再创建 Goal</span><span>Goal 目标默认使用完整重构提示词</span></div>
+          </div>
+        </section>
+
+        <section class="content-block" id="model-effort">
+          <p class="section-kicker">模型建议</p>
+          <span class="fragment-alias" id="heading-prompt-guidance-6" data-canonical-fragment="模型与思考强度怎么选" aria-hidden="true"></span><h2 id="模型与思考强度怎么选">模型与思考强度怎么选<a class="heading-permalink" data-heading-permalink data-search-exclude href="#模型与思考强度怎么选" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <p>该 skill 按任务歧义、依赖深度、工具和验证负担、错误后果、延迟与成本来建议一个默认配置。它遵循当前官方模型分层：<code>gpt-5.6-luna</code> 面向高效、高吞吐任务，<code>gpt-5.6-terra</code> 是日常平衡选择，<code>gpt-5.6-sol</code> 面向旗舰质量；<code>gpt-5.6</code> alias 路由到 <code>gpt-5.6-sol</code>。</p>
+          <p><code>medium</code> 是平衡起点，延迟敏感任务可测试 <code>low</code>；只有代表性 eval 证明有收益时才升到 <code>high</code> 或 <code>xhigh</code>，<code>max</code> 只留给最难的质量优先工作。先补成功标准、依赖规则、工具路由和验证闭环，再考虑提高 reasoning effort。</p>
+        </section>
+
+        <section class="content-block" id="authorization">
+          <p class="section-kicker">授权边界</p>
+          <span class="fragment-alias" id="heading-prompt-guidance-7" data-canonical-fragment="润色不会自动扩大权限" aria-hidden="true"></span><h2 id="润色不会自动扩大权限">润色不会自动扩大权限<a class="heading-permalink" data-heading-permalink data-search-exclude href="#润色不会自动扩大权限" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <p>“把 prompt 写完整”不等于获得新的行动授权。回答、解释、审查、诊断和计划默认只读；用户明确要求修改、构建或修复时，才执行范围内的本地变更和非破坏性验证。外部写入、删除、购买、高成本任务或实质扩域仍要单独确认。</p>
+        </section>
+
+        <section class="content-block" id="install-use">
+          <p class="section-kicker">安装与调用</p>
+          <span class="fragment-alias" id="heading-prompt-guidance-8" data-canonical-fragment="安装和调用" aria-hidden="true"></span><h2 id="安装和调用">安装和调用<a class="heading-permalink" data-heading-permalink data-search-exclude href="#安装和调用" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <pre><code>git clone https://github.com/WhoJay0609/refine-user-prompt.git
+cp -R refine-user-prompt/skills/refine-user-prompt ~/.codex/skills/</code></pre>
+          <p>安装后开启一个新的 Codex 任务，让 skill catalog 重新加载。显式调用时，把原始输入放在 skill mention 之后：</p>
+          <pre><code>$refine-user-prompt
+
+请重新梳理下面的用户输入，保留原意和授权边界：
+[原始输入]</code></pre>
+        </section>
+
+        <section class="content-block" id="real-example">
+          <p class="section-kicker">真实实例</p>
+          <span class="fragment-alias" id="heading-prompt-guidance-9" data-canonical-fragment="真实实例-润色后执行文档更新" aria-hidden="true"></span><h2 id="真实实例-润色后执行文档更新">真实实例：润色后执行文档更新<a class="heading-permalink" data-heading-permalink data-search-exclude href="#真实实例-润色后执行文档更新" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <p>本页本身就是一次 <code>refine_then_execute</code>：原始请求要求“润色并执行”，所以先展示了包含官方资料、删除范围和验证条件的重构提示词，再读取官方页面、更新站点来源文件、重新生成导航与搜索资产，并以 <code>make check</code> 和旧词残留扫描收口。没有创建 Goal，因为这是一轮可以在当前任务中完成的有界文档修改。</p>
+          <pre><code>$refine-user-prompt 润色并执行：
+在 Codex 使用指南中解读 GPT-5.6 prompting guidance，
+介绍 WhoJay0609/refine-user-prompt，并移除旧的本机路由专题。</code></pre>
+        </section>
+
+        <section class="content-block" id="when-not">
+          <p class="section-kicker">使用边界</p>
+          <span class="fragment-alias" id="heading-prompt-guidance-10" data-canonical-fragment="什么时候不该用" aria-hidden="true"></span><h2 id="什么时候不该用">什么时候不该用<a class="heading-permalink" data-heading-permalink data-search-exclude href="#什么时候不该用" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <p>如果用户已经给出清楚、短小、可直接执行的任务，额外重构可能只会增加往返。若目标是自动评测大量 prompt、训练优化器或改写应用级 system prompt stack，也应使用专门的 eval 与迁移流程，而不是把单次任务润色 skill 当成自动优化框架。</p>
+        </section>
+      </article>
+    </div>
+  </main>
+<!-- guide:shell-close:start -->
+<nav class="page-sequence" aria-label="前后页"><a rel="prev" href="skills-repositories.html">← Skills 仓库</a><a rel="next" href="resources.html">资料 →</a></nav></div></div>
+<!-- guide:shell-close:end -->
+  <footer class="footer"><p><strong>GPT-5.6 提示词与 refine-user-prompt</strong><br>先把任务写成可验证合同，再决定回答、执行或进入持久 Goal。</p><a class="button" href="resources.html">查看资料地图</a></footer>
+  <!-- guide:runtime:start -->
+<script src="assets/site.js"></script>
+<!-- guide:runtime:end -->
+</body>
+</html>

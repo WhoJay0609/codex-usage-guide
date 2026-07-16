@@ -44,6 +44,46 @@ class SiteModelTests(unittest.TestCase):
             with self.assertRaisesRegex(SiteModelError, "duplicate navigation page"):
                 load_site_model(root)
 
+    def test_manifest_rejects_non_https_page_sources(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "index.html").write_text("<title>x</title><h1>x</h1>", encoding="utf-8")
+            manifest = {
+                "schema_version": 1,
+                "site": {"title": "x", "base_url": "https://example.test/", "language": "zh-CN", "social_preview": "figures/social-preview.png"},
+                "navigation": [{"label": "a", "pages": ["index.html"]}],
+                "pages": [{
+                    "path": "index.html", "title": "x", "nav_label": "x", "description": "x",
+                    "modified": "2026-07-11", "facts_verified": "2026-07-11",
+                    "sources": [{"label": "bad", "url": "http://example.test/docs", "kind": "official"}],
+                }],
+            }
+            (root / "data").mkdir()
+            (root / "data/site-manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+            (root / "data/changelog.json").write_text('{"schema_version": 1, "entries": []}', encoding="utf-8")
+            with self.assertRaisesRegex(SiteModelError, "absolute HTTPS"):
+                load_site_model(root)
+
+    def test_manifest_rejects_third_party_host_labeled_as_official(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "index.html").write_text("<title>x</title><h1>x</h1>", encoding="utf-8")
+            manifest = {
+                "schema_version": 1,
+                "site": {"title": "x", "base_url": "https://example.test/", "language": "zh-CN", "social_preview": "figures/social-preview.png"},
+                "navigation": [{"label": "a", "pages": ["index.html"]}],
+                "pages": [{
+                    "path": "index.html", "title": "x", "nav_label": "x", "description": "x",
+                    "modified": "2026-07-11", "facts_verified": "2026-07-11",
+                    "sources": [{"label": "misclassified", "url": "https://example.test/docs", "kind": "official"}],
+                }],
+            }
+            (root / "data").mkdir()
+            (root / "data/site-manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+            (root / "data/changelog.json").write_text('{"schema_version": 1, "entries": []}', encoding="utf-8")
+            with self.assertRaisesRegex(SiteModelError, "non-OpenAI host"):
+                load_site_model(root)
+
     def test_generated_block_replacement_preserves_authored_bytes(self) -> None:
         source = f"before\n{GENERATED_START}old{GENERATED_END}\nafter"
         actual = replace_generated_block(source, "new")
@@ -71,6 +111,16 @@ class SiteModelTests(unittest.TestCase):
         self.assertNotIn('class="side-nav"', rendered)
         self.assertEqual(rendered.count('aria-current="page"'), 2)
 
+    def test_manifest_sources_and_changelog_are_rendered_from_site_data(self) -> None:
+        model = load_site_model(ROOT)
+        index = next(page for page in model.pages if page.path == "index.html")
+        rendered = render_page(model, index, (ROOT / index.path).read_text(encoding="utf-8"))
+        self.assertIn('class="page-sources"', rendered)
+        self.assertIn('OpenAI 官方', rendered)
+        self.assertIn('recent-updates', rendered)
+        self.assertEqual(rendered.count('class="update-card"'), min(3, len(model.changelog)))
+        self.assertEqual(rendered.count('class="update-row"'), len(model.changelog))
+
     def test_skills_repository_navigation_lists_each_repository_on_demand(self) -> None:
         model = load_site_model(ROOT)
         page = next(page for page in model.pages if page.path == "skills-repositories.html")
@@ -81,6 +131,7 @@ class SiteModelTests(unittest.TestCase):
         self.assertIn('href="skills-repositories.html#mattpocock-skills"', rendered)
         self.assertIn('href="skills-repositories.html#academic-research-skills-codex"', rendered)
         self.assertIn('href="skills-repositories.html#aris-auto-claude-code-research-in-sleep"', rendered)
+        self.assertIn('href="skills-repositories.html#refine-user-prompt"', rendered)
 
     def test_toolbook_shell_assigns_ids_to_every_reader_heading(self) -> None:
         model = load_site_model(ROOT)
@@ -156,7 +207,7 @@ class SiteModelTests(unittest.TestCase):
         self.assertNotIn("旧页面标题", rendered)
         self.assertIn(f'<link rel="canonical" href="{canonical}">', rendered)
         self.assertIn(
-            '<meta name="description" content="理解 Desktop 四个权限选择及底层 sandbox、approval、network 与 secret 边界。">',
+            '<meta name="description" content="理解 Desktop 常见权限模式及底层 sandbox、approval、network 与 secret 边界。">',
             rendered,
         )
         self.assertIn('<meta property="og:title" content="权限与安全">', rendered)

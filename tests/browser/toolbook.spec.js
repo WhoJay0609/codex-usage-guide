@@ -11,10 +11,38 @@ test('serves the static guide without an application runtime', async ({ page }) 
 test('exposes complete social metadata from the page manifest', async ({ page }) => {
   await page.goto('/permissions.html');
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', 'https://whojay0609.github.io/codex-usage-guide/permissions.html');
-  await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', '理解 Desktop 四个权限选择及底层 sandbox、approval、network 与 secret 边界。');
+  await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', '理解 Desktop 常见权限模式及底层 sandbox、approval、network 与 secret 边界。');
   await expect(page.locator('meta[property="og:title"]')).toHaveAttribute('content', '权限与安全');
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute('content', 'https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png');
   await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute('content', 'summary_large_image');
+});
+
+test('renders manifest sources and a visible generated changelog', async ({ page }) => {
+  await page.goto('/index.html');
+  await expect(page.locator('.page-sources')).toContainText('OpenAI 官方');
+  await expect(page.locator('.recent-updates .update-card')).toHaveCount(3);
+  await expect(page.locator('.changelog-disclosure')).toContainText('查看完整更新记录');
+
+  await page.goto('/prompt-guidance.html');
+  await expect(page.locator('.page-source-link')).toHaveCount(2);
+  await expect(page.locator('.page-sources')).toContainText('OpenAI 官方');
+  await expect(page.locator('.page-sources')).toContainText('第三方上游');
+});
+
+test('keeps every public page usable at desktop and mobile widths', async ({ page }) => {
+  await page.goto('/index.html');
+  const paths = await page.evaluate(() => window.GUIDE_SITE_DATA.pages.map((item) => item.path));
+  for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 }]) {
+    await page.setViewportSize(viewport);
+    for (const path of paths) {
+      await page.goto(`/${path}`);
+      await expect(page.locator('main h1')).toHaveCount(1);
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
+      );
+      expect(overflow, `${path} overflows at ${viewport.width}px`).toBeFalsy();
+    }
+  }
 });
 
 test('keeps article content readable without horizontal overflow', async ({ page }) => {
