@@ -5,7 +5,7 @@
 <!-- guide:theme-bootstrap:end -->
   <link rel="stylesheet" href="assets/site.css">  <!-- guide:metadata:start -->
 <meta name="description" content="显式传递上下文、拆分写域并由主线程收口 subagent 工作。">
-<meta name="guide-build" content="aa4b762d54c4">
+<meta name="guide-build" content="164efa044e15">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/subagents.html">
 <meta property="og:type" content="website">
@@ -44,7 +44,7 @@ flowchart LR
   D --> E
   E --> F["统一验证和最终判断"]
       </div><figcaption>Subagent 只负责边界清晰的子任务；主线程保留目标、取舍和最终验收。</figcaption></figure></section>
-      <section class="content-block" id="when"><p class="section-kicker">何时使用</p><span class="fragment-alias" id="heading-subagents-2" data-canonical-fragment="什么时候用-不用" aria-hidden="true"></span><h2 id="什么时候用-不用">什么时候用 / 不用<a class="heading-permalink" data-heading-permalink data-search-exclude href="#什么时候用-不用" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2><ul class="mini-list"><li><strong>适合</strong><span>只读审查、并行资料检索、互不重叠的测试、独立实现切片。</span></li><li><strong>不适合</strong><span>共享同一文件的高频编辑、需要实时产品判断、权限边界不清的外部操作。</span></li><li><strong>主线程责任</strong><span>整合结果、处理冲突、决定最终方案、给用户报告证据。</span></li></ul></section>
+      <section class="content-block" id="when"><p class="section-kicker">何时使用</p><span class="fragment-alias" id="heading-subagents-2" data-canonical-fragment="什么时候用-不用" aria-hidden="true"></span><h2 id="什么时候用-不用">什么时候用 / 不用<a class="heading-permalink" data-heading-permalink data-search-exclude href="#什么时候用-不用" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2><ul class="mini-list"><li><strong>适合</strong><span>只读审查、并行资料检索、互不重叠的测试、独立实现切片。</span></li><li><strong>不适合</strong><span>共享同一文件的高频编辑、需要实时产品判断、权限边界不清的外部操作。</span></li><li><strong>主线程责任</strong><span>整合结果、处理冲突、决定最终方案、给用户报告证据。</span></li></ul><figure class="figure-card article-illustration"><img src="assets/codex-guide-illustrations/03-subagent-integration.png" alt="三个小黑在互不重叠的写域内完成窄任务，主线程把结果缝合后交给最后一道统一验证" loading="lazy" decoding="async" width="1672" height="941"><figcaption><strong>图意：</strong>并行的前提不是“多派人”，而是任务足够窄、写域互不重叠；主线程必须整合真实工作区状态，并用同一套标准完成最终验证。</figcaption></figure></section>
       <section class="content-block" id="examples"><p class="section-kicker">示例</p><span class="fragment-alias" id="heading-subagents-3" data-canonical-fragment="可复制示例" aria-hidden="true"></span><h2 id="可复制示例">可复制示例<a class="heading-permalink" data-heading-permalink data-search-exclude href="#可复制示例" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2><pre><code>请用并行 subagents 审查当前分支。
 Agent 1: security risks，只读，不改文件。
 Agent 2: missing tests，只读，不改文件。

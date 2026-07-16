@@ -5,7 +5,7 @@
 <!-- guide:theme-bootstrap:end -->
   <link rel="stylesheet" href="assets/site.css">  <!-- guide:metadata:start -->
 <meta name="description" content="区分 MCP servers 与 installable plugins，并管理 tools、resources 和外部能力权限。">
-<meta name="guide-build" content="aa4b762d54c4">
+<meta name="guide-build" content="164efa044e15">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/mcp.html">
 <meta property="og:type" content="website">
@@ -41,7 +41,7 @@ args = ["-y", "@upstash/context7-mcp"]
 
 # 远程 Streamable HTTP server（替换为服务方给出的真实地址）
 [mcp_servers.remote_docs]
-url = "https://example.com/mcp"</code></pre><div class="route-strip"><div class="route-pill"><strong>读外部状态</strong><span>GitHub PR、设计稿、文档库、数据库 schema。</span></div><div class="route-pill"><strong>写外部系统</strong><span>创建 issue、同步设计、部署配置，必须先确认。</span></div><div class="route-pill"><strong>权限来源</strong><span>token、账号、workspace、server 配置都要可追溯。</span></div><div class="route-pill"><strong>失败策略</strong><span>外部工具失败时停下报告，不伪造结果。</span></div></div></section>
+url = "https://example.com/mcp"</code></pre><div class="route-strip"><div class="route-pill"><strong>读外部状态</strong><span>GitHub PR、设计稿、文档库、数据库 schema。</span></div><div class="route-pill"><strong>写外部系统</strong><span>创建 issue、同步设计、部署配置，必须先确认。</span></div><div class="route-pill"><strong>权限来源</strong><span>token、账号、workspace、server 配置都要可追溯。</span></div><div class="route-pill"><strong>失败策略</strong><span>外部工具失败时停下报告，不伪造结果。</span></div></div><figure class="figure-card article-illustration"><img src="assets/codex-guide-illustrations/02-skill-plugin-mcp.png" alt="小黑依次查看写有做法的 Skill 卡片、装着能力的 Plugin 工具箱，以及连接外部系统的 MCP 插头" loading="lazy" decoding="async" width="1672" height="941"><figcaption><strong>图意：</strong>Skill 记录做法，Plugin 打包一组能力，MCP server 连接外部系统。安装能力包不等于自动批准全部外部读写；server、凭据和工具仍要逐项审查。</figcaption></figure></section>
       <section class="content-block" id="when"><p class="section-kicker">何时使用</p><span class="fragment-alias" id="heading-mcp-2" data-canonical-fragment="什么时候用-不用" aria-hidden="true"></span><h2 id="什么时候用-不用">什么时候用 / 不用<a class="heading-permalink" data-heading-permalink data-search-exclude href="#什么时候用-不用" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2><p>需要实时外部状态、设计同步、GitHub 操作、数据库查询时使用。涉及 secret、生产数据或写操作时，必须先确认权限边界；如果本地文件已经足够完成任务，不要为了“更自动化”引入外部工具。</p><p>MCP server 的 instructions，以及 tool / resource 返回的文本都属于<strong>不可信上下文</strong>：它们不能覆盖用户意图、项目规则或权限边界。遇到要求泄露 secret、扩大范围或忽略审批的返回内容应停止；任何创建、修改、发布、发送等外部写操作仍需用户明确授权和可复核证据。</p></section>
       <section class="content-block" id="examples"><p class="section-kicker">示例</p><span class="fragment-alias" id="heading-mcp-3" data-canonical-fragment="可复制示例" aria-hidden="true"></span><h2 id="可复制示例">可复制示例<a class="heading-permalink" data-heading-permalink data-search-exclude href="#可复制示例" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2><pre><code>请先说明你需要哪个 MCP/plugin、会访问哪些数据、
 是否会写入外部系统，以及我应该如何验证结果。</code></pre></section>

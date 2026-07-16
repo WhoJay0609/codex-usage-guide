@@ -15,7 +15,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "index.html",
       "prompts": [],
       "section": "最近更新",
-      "text": "更新记录由 data/changelog.json 生成；先看最近三项，需要时再展开完整记录。2026-07-16质量完成读者与专家红蓝队审阅补齐逐页资料依据、可见更新记录、权限准确性、MCP 与 Plugin 分层，以及全页面响应式回归。2026-07-16内容加入 GPT-5.6 提示词与 refine-user-prompt解读 OpenAI GPT-5.6 prompting guidance，加入基于该指南的第三方 skill，并移除旧的本机路由专题。2026-07-12内容补充中文 Prompt 第三方仓库加入 awesome-chatgpt-prompts-zh 的 Codex 适配路径、示例和提示词安全边界。查看完整更新记录（8）2026-07-16质量完成读者与专家红蓝队审阅补齐逐页资料依据、可见更新记录、权限准确性、MCP 与 Plugin 分层，以及全页面响应式回归。2026-07-16内容加入 GPT-5.6 提示词与 refine-user-prompt解读 OpenAI GPT-5.6 prompting guidance，加入基于该指南的第三方 skill，并移除旧的本机路由专题。2026-07-12内容补充中文 Prompt 第三方仓库加入 awesome-chatgpt-prompts-zh 的 Codex 适配路径、示例和提示词安全边界。2026-07-12内容补充视觉与中文配图 Skills加入 taste-skill 与 Ian Xiaohei Illustrations 的第三方使用路径、示例和边界。2026-07-12内容加入 Codex 生态高 stars Top 10按 GitHub codex-cli 主题页快照补充 skills、MCP 与其他辅助工具榜单，并保留官方基础设施基准。2026-07-11结构启动工具书升级建立统一站点清单、更新日志和可复现验证基础。2026-07-10内容补充 Skills 仓库选择指南加入第三方 skills 仓库比较和选择路径。2026-07-07内容加入 Compound Engineering 指南补充插件安装、核心流程和真实实例。 先分清边界",
+      "text": "更新记录由 data/changelog.json 生成；先看最近三项，需要时再展开完整记录。2026-07-16质量调整流程图与正文配图Mermaid 流程图尺寸；权限、MCP、Subagents、提示词四页的小黑配图；配图图注与替代文本。2026-07-16质量补齐资料依据与页面信息逐页资料依据、首页更新日志、权限模式表述、Skill／Plugin／MCP 分层、页脚内容与全页面响应式适配。2026-07-16内容新增 GPT-5.6 提示词指南GPT-5.6 prompting guidance 中文解读、refine-user-prompt skill 介绍；移除原 Goal Entry 专题。查看完整更新记录（9）2026-07-16质量调整流程图与正文配图Mermaid 流程图尺寸；权限、MCP、Subagents、提示词四页的小黑配图；配图图注与替代文本。2026-07-16质量补齐资料依据与页面信息逐页资料依据、首页更新日志、权限模式表述、Skill／Plugin／MCP 分层、页脚内容与全页面响应式适配。2026-07-16内容新增 GPT-5.6 提示词指南GPT-5.6 prompting guidance 中文解读、refine-user-prompt skill 介绍；移除原 Goal Entry 专题。2026-07-12内容新增中文 Prompt 仓库条目awesome-chatgpt-prompts-zh 仓库说明、Codex 使用示例与提示词安全边界。2026-07-12内容新增视觉与中文配图 Skillstaste-skill 与 Ian Xiaohei Illustrations 的仓库说明、使用示例和适用边界。2026-07-12内容新增 Codex 生态 Top 10Skills、MCP、辅助工具榜单与官方基础设施条目。2026-07-11结构新增站点清单与更新日志统一站点清单、首页最近更新、完整更新日志与站点生成数据。2026-07-10内容新增 Skills 仓库选择指南第三方 Skills 仓库对比、任务选择表与安装入口。2026-07-07内容新增 Compound Engineering 指南插件安装、核心流程与真实实例。 先分清边界",
       "title": "中文 Codex 实战手册"
     },
     {
@@ -679,7 +679,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "permissions.html",
       "prompts": [],
       "section": "它是什么",
-      "text": "sandbox、approval、network、auth 和 secret 管理共同构成安全边界。默认应该用最小权限：能只读就不写，能限定工作区就不开放 full access。读文件通常允许，除非路径包含 secret 或生产数据。写文件只写目标仓库和明确文件，避免顺手重构。联网用于官方文档、依赖下载、GitHub Pages 验证。执行优先最窄命令，危险命令必须解释回滚方式。 Desktop 常见选择",
+      "text": "sandbox、approval、network、auth 和 secret 管理共同构成安全边界。默认应该用最小权限：能只读就不写，能限定工作区就不开放 full access。读文件通常允许，除非路径包含 secret 或生产数据。写文件只写目标仓库和明确文件，避免顺手重构。联网用于官方文档、依赖下载、GitHub Pages 验证。执行优先最窄命令，危险命令必须解释回滚方式。图意：先确认当前动作只需要打开哪一扇门，再选择足够完成任务的最小权限；Full access 只留给边界明确、风险受控且可回滚的场景。 Desktop 常见选择",
       "title": "权限与安全"
     },
     {
@@ -1095,7 +1095,7 @@ window.GUIDE_SEARCH_INDEX = {
         "# 本地 STDIO server\n[mcp_servers.context7]\ncommand = \"npx\"\nargs = [\"-y\", \"@upstash/context7-mcp\"]\n\n# 远程 Streamable HTTP server（替换为服务方给出的真实地址）\n[mcp_servers.remote_docs]\nurl = \"https://example.com/mcp\""
       ],
       "section": "它是什么",
-      "text": "MCP 的全称是 Model Context Protocol（模型上下文协议）。MCP server 可以暴露可执行的 tools，也可以提供只读的 resources 或其他上下文；“能读到资源”不等于“可以执行写操作”。Plugin 是更上层的能力包，可以同时打包 skill 与 app；其中 app 的外部数据和操作通常由 MCP server 支撑。只需要可复用步骤Skill说明、模板、脚本和 references无需外部服务时，从 skill 开始。要安装和共享一组能力Plugin可组合 skills、apps、MCP 配置与展示信息已有 plugin 时优先安装并审查其权限。要连接外部系统MCP server暴露 tools、resources 或 prompts按 server、凭据和读写能力逐项授权。Desktop 添加路径：打开 Settings → MCP servers → Add server，选择 STDIO（启动本地进程）或 Streamable HTTP（连接远程服务），保存后重启应用。回到 composer 可输入 /mcp 查看或管理当前可用 server。Desktop、CLI 和 IDE 共享用户级 ~/.codex/config.toml；项目也可以在可信项目中使用 .codex/config.toml。项目配置可能影响可启动的程序或可访问的服务，所以只对你信任的仓库启用。# 本地 STDIO server [mcp_servers.context7] command = \"npx\" args = [\"-y\", \"@upstash/context7-mcp\"] # 远程 Streamable HTTP server（替换为服务方给出的真实地址） [mcp_servers.remote_docs] url = \"https://example.com/mcp\"读外部状态GitHub PR、设计稿、文档库、数据库 schema。写外部系统创建 issue、同步设计、部署配置，必须先确认。权限来源token、账号、workspace、server 配置都要可追溯。失败策略外部工具失败时停下报告，不伪造结果。 何时使用",
+      "text": "MCP 的全称是 Model Context Protocol（模型上下文协议）。MCP server 可以暴露可执行的 tools，也可以提供只读的 resources 或其他上下文；“能读到资源”不等于“可以执行写操作”。Plugin 是更上层的能力包，可以同时打包 skill 与 app；其中 app 的外部数据和操作通常由 MCP server 支撑。只需要可复用步骤Skill说明、模板、脚本和 references无需外部服务时，从 skill 开始。要安装和共享一组能力Plugin可组合 skills、apps、MCP 配置与展示信息已有 plugin 时优先安装并审查其权限。要连接外部系统MCP server暴露 tools、resources 或 prompts按 server、凭据和读写能力逐项授权。Desktop 添加路径：打开 Settings → MCP servers → Add server，选择 STDIO（启动本地进程）或 Streamable HTTP（连接远程服务），保存后重启应用。回到 composer 可输入 /mcp 查看或管理当前可用 server。Desktop、CLI 和 IDE 共享用户级 ~/.codex/config.toml；项目也可以在可信项目中使用 .codex/config.toml。项目配置可能影响可启动的程序或可访问的服务，所以只对你信任的仓库启用。# 本地 STDIO server [mcp_servers.context7] command = \"npx\" args = [\"-y\", \"@upstash/context7-mcp\"] # 远程 Streamable HTTP server（替换为服务方给出的真实地址） [mcp_servers.remote_docs] url = \"https://example.com/mcp\"读外部状态GitHub PR、设计稿、文档库、数据库 schema。写外部系统创建 issue、同步设计、部署配置，必须先确认。权限来源token、账号、workspace、server 配置都要可追溯。失败策略外部工具失败时停下报告，不伪造结果。图意：Skill 记录做法，Plugin 打包一组能力，MCP server 连接外部系统。安装能力包不等于自动批准全部外部读写；server、凭据和工具仍要逐项审查。 何时使用",
       "title": "MCP 与 Plugins"
     },
     {
@@ -1474,7 +1474,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "subagents.html",
       "prompts": [],
       "section": "什么时候用 / 不用",
-      "text": "适合只读审查、并行资料检索、互不重叠的测试、独立实现切片。不适合共享同一文件的高频编辑、需要实时产品判断、权限边界不清的外部操作。主线程责任整合结果、处理冲突、决定最终方案、给用户报告证据。 示例",
+      "text": "适合只读审查、并行资料检索、互不重叠的测试、独立实现切片。不适合共享同一文件的高频编辑、需要实时产品判断、权限边界不清的外部操作。主线程责任整合结果、处理冲突、决定最终方案、给用户报告证据。图意：并行的前提不是“多派人”，而是任务足够窄、写域互不重叠；主线程必须整合真实工作区状态，并用同一套标准完成最终验证。 示例",
       "title": "Subagents"
     },
     {
@@ -3493,7 +3493,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "skills-repositories.html",
       "prompts": [],
       "section": "先按任务 fit 选仓库",
-      "text": "不要把所有 skills 仓库一次性塞进同一个请求。普通 Codex Desktop 用户先回答三个问题：我要做工程交付、工程思考、学术工作，还是长时间研究自动化？然后只选一个主仓库，最多加一个辅助仓库。 图片只帮助理解“先分拣任务”的动作；精确仓库名和安装方式以正文为准。 选择器",
+      "text": "不要把所有 skills 仓库一次性塞进同一个请求。普通 Codex Desktop 用户先回答三个问题：我要做工程交付、工程思考、学术工作，还是长时间研究自动化？然后只选一个主仓库，最多加一个辅助仓库。 图意：先按工程、需求澄清、学术和自动研究分拣任务，再选一个主仓库；图片不替代正文中的精确仓库名与安装路径。 选择器",
       "title": "Skills 仓库"
     },
     {
@@ -3623,7 +3623,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "skills-repositories.html",
       "prompts": [],
       "section": "academic-research-skills-codex",
-      "text": "academic-research-skills-codex 是 Academic Research Skills 的 Codex-native sibling distribution。仓库名是 academic-research-skills-codex，Codex skill path 是 skills/academic-research-suite，页面里简称 ARS。 工程台和研究台要分开：代码交付看工程流程，文献、论文和实验看学术 suite。",
+      "text": "academic-research-skills-codex 是 Academic Research Skills 的 Codex-native sibling distribution。仓库名是 academic-research-skills-codex，Codex skill path 是 skills/academic-research-suite，页面里简称 ARS。 图意：工程台和研究台解决的问题不同：代码交付看工程流程，文献、论文和实验看学术 suite，不要把全部 skills 混进同一个请求。",
       "title": "Skills 仓库"
     },
     {
@@ -3761,7 +3761,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "skills-repositories.html",
       "prompts": [],
       "section": "高级用户：按阶段组合，不要一锅端",
-      "text": "组合这些仓库时，按阶段串联，不要在一个 prompt 里同时要求所有 skills 工作。每一段都要写清输入、停止条件和验证证据。 自动化循环可以很长，但外部输出前仍要有人工确认和证据留存。 工程计划Compound Engineering/ce-brainstorm、/ce-plan产物：范围、U-ID、验证合同。 工程纪律mattpocock/skills$grill-with-docs、$tdd、$code-review产物：更清楚的需求语言、测试思路、审查问题。 学术工作academic-research-skills-codex$academic-research-suite产物：research brief、paper review、experiment plan。 自动研究ARISresearch pipeline / auto review loop产物：长循环记录、反审结果、实验监控和人工审批点。 提示词重构refine-user-prompt$refine-user-prompt产物：先展示的任务合同、执行模式和模型建议。 边界",
+      "text": "组合这些仓库时，按阶段串联，不要在一个 prompt 里同时要求所有 skills 工作。每一段都要写清输入、停止条件和验证证据。 图意：自动化循环可以很长，但每一轮都应留下检查点；发布、发送或写入外部系统前仍要人工确认并保留可复核证据。 工程计划Compound Engineering/ce-brainstorm、/ce-plan产物：范围、U-ID、验证合同。 工程纪律mattpocock/skills$grill-with-docs、$tdd、$code-review产物：更清楚的需求语言、测试思路、审查问题。 学术工作academic-research-skills-codex$academic-research-suite产物：research brief、paper review、experiment plan。 自动研究ARISresearch pipeline / auto review loop产物：长循环记录、反审结果、实验监控和人工审批点。 提示词重构refine-user-prompt$refine-user-prompt产物：先展示的任务合同、执行模式和模型建议。 边界",
       "title": "Skills 仓库"
     },
     {
@@ -3860,7 +3860,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "prompt-guidance.html",
       "prompts": [],
       "section": "官方指南到底在说什么",
-      "text": "核心可以压缩成一句话：描述终点和验收，保留真正的硬边界，减少不改变行为的过程规定。 OpenAI 报告，在一组内部 coding-agent eval 中，较精简的 system prompt 让得分约提高 10–15%，同时总 token 下降 41–66%、成本下降 33–67%；官方也明确提醒这些范围只是方向性结果，必须用自己的代表性任务复测。 保留用户可见结果成功标准与停止条件安全、证据、权限、输出和验证要求 删减重复规则不改变行为的示例和风格话术与任务无关的工具和过程旁白 改写“必须按 12 步执行”改成决策规则只有真正不可变的顺序才保留强制步骤 复测一次只改一组 prompt 或工具说明跑同一批 eval同时看正确性、证据、token、延迟和成本 Codex 写法",
+      "text": "核心可以压缩成一句话：描述终点和验收，保留真正的硬边界，减少不改变行为的过程规定。 OpenAI 报告，在一组内部 coding-agent eval 中，较精简的 system prompt 让得分约提高 10–15%，同时总 token 下降 41–66%、成本下降 33–67%；官方也明确提醒这些范围只是方向性结果，必须用自己的代表性任务复测。 保留用户可见结果成功标准与停止条件安全、证据、权限、输出和验证要求 删减重复规则不改变行为的示例和风格话术与任务无关的工具和过程旁白 改写“必须按 12 步执行”改成决策规则只有真正不可变的顺序才保留强制步骤 复测一次只改一组 prompt 或工具说明跑同一批 eval同时看正确性、证据、token、延迟和成本 图意：精简不是压掉边界：删除重复和无关脚手架，但授权、约束与验收标准必须完整穿过重写过程，最后形成可执行的任务合同。 Codex 写法",
       "title": "GPT-5.6 提示词与 refine-user-prompt"
     },
     {
