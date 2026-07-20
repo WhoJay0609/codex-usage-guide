@@ -1,12 +1,19 @@
 window.GUIDE_SITE_DATA = {
   "asset_fingerprints": {
-    "assets/site.css": "fffc015e09ec2df287e11189b92aa951db920a59208355e2755fd3412550c080",
+    "assets/site.css": "b8cda07e3007b4ed5a557afe6f6ee8746532209ffca7dab529b8aed8a72a9ec3",
     "assets/site.js": "59423ac374ef053874fb1615d4c99b5ab28006cf53cccf21d51a98c2cbc0688e",
     "assets/theme.js": "187420686654f8c1c58df32a0687d4a0d11e6e0707b8696d5f077774982d766a",
     "figures/social-preview.png": "e0ee23ae3b99a8507b4aa423c530289468f1db067d1e7041e4afcefb5fe3ac58"
   },
-  "build_id": "164efa044e15",
+  "build_id": "a75adad69e23",
   "changelog": [
+    {
+      "category": "quality",
+      "date": "2026-07-21",
+      "summary": "系统化调整排版、材质、色彩、响应式层级与即时交互反馈，并补齐减少动态效果、减少透明度和高对比度适配。",
+      "target": "index.html",
+      "title": "统一 Apple 风格界面体验"
+    },
     {
       "category": "quality",
       "date": "2026-07-16",
