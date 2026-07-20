@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
   "entries": [
+    {"date": "2026-07-21", "category": "quality", "title": "统一 Apple 风格界面体验", "summary": "系统化调整排版、材质、色彩、响应式层级与即时交互反馈，并补齐减少动态效果、减少透明度和高对比度适配。", "target": "index.html"},
     {"date": "2026-07-16", "category": "quality", "title": "调整流程图与正文配图", "summary": "Mermaid 流程图尺寸；权限、MCP、Subagents、提示词四页的小黑配图；配图图注与替代文本。", "target": "install-desktop.html#安装到第一个任务"},
     {"date": "2026-07-16", "category": "quality", "title": "补齐资料依据与页面信息", "summary": "逐页资料依据、首页更新日志、权限模式表述、Skill／Plugin／MCP 分层、页脚内容与全页面响应式适配。", "target": "index.html#最近更新"},
     {"date": "2026-07-16", "category": "content", "title": "新增 GPT-5.6 提示词指南", "summary": "GPT-5.6 prompting guidance 中文解读、refine-user-prompt skill 介绍；移除原 Goal Entry 专题。", "target": "prompt-guidance.html"},
