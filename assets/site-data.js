@@ -5,8 +5,15 @@ window.GUIDE_SITE_DATA = {
     "assets/theme.js": "187420686654f8c1c58df32a0687d4a0d11e6e0707b8696d5f077774982d766a",
     "figures/social-preview.png": "e0ee23ae3b99a8507b4aa423c530289468f1db067d1e7041e4afcefb5fe3ac58"
   },
-  "build_id": "a75adad69e23",
+  "build_id": "17aa193d9c9f",
   "changelog": [
+    {
+      "category": "content",
+      "date": "2026-07-22",
+      "summary": "补充 lidge-jun/opencodex 的本地 provider proxy 定位、原生 Codex 恢复路径及网络、凭据、账户和服务条款边界。",
+      "target": "skills-repositories.html#opencodex",
+      "title": "新增 OpenCodex 第三方代理说明"
+    },
     {
       "category": "quality",
       "date": "2026-07-21",
@@ -455,6 +462,7 @@ window.GUIDE_SITE_DATA = {
       "taste-skill",
       "ian-xiaohei-illustrations",
       "awesome-chatgpt-prompts-zh",
+      "opencodex",
       "refine-user-prompt",
       "高级用户-按阶段组合-不要一锅端",
       "使用边界",
@@ -856,9 +864,9 @@ window.GUIDE_SITE_DATA = {
       "title": "Compound Engineering plugin"
     },
     {
-      "description": "比较第三方 skills 仓库及 Desktop、CLI 与本地安装边界。",
-      "facts_verified": "2026-07-16",
-      "modified": "2026-07-16",
+      "description": "比较第三方 skills、工具链仓库及 Desktop、CLI 与本地安装边界。",
+      "facts_verified": "2026-07-22",
+      "modified": "2026-07-22",
       "nav_label": "Skills 仓库",
       "path": "skills-repositories.html",
       "sources": [
@@ -871,6 +879,16 @@ window.GUIDE_SITE_DATA = {
           "kind": "third_party",
           "label": "GitHub codex-cli topic",
           "url": "https://github.com/topics/codex-cli"
+        },
+        {
+          "kind": "third_party",
+          "label": "OpenCodex repository",
+          "url": "https://github.com/lidge-jun/opencodex"
+        },
+        {
+          "kind": "third_party",
+          "label": "OpenCodex documentation",
+          "url": "https://lidge-jun.github.io/opencodex/"
         }
       ],
       "title": "Skills 仓库"

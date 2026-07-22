@@ -15,7 +15,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "index.html",
       "prompts": [],
       "section": "最近更新",
-      "text": "更新记录由 data/changelog.json 生成；先看最近三项，需要时再展开完整记录。2026-07-21质量统一 Apple 风格界面体验系统化调整排版、材质、色彩、响应式层级与即时交互反馈，并补齐减少动态效果、减少透明度和高对比度适配。2026-07-16质量调整流程图与正文配图Mermaid 流程图尺寸；权限、MCP、Subagents、提示词四页的小黑配图；配图图注与替代文本。2026-07-16质量补齐资料依据与页面信息逐页资料依据、首页更新日志、权限模式表述、Skill／Plugin／MCP 分层、页脚内容与全页面响应式适配。查看完整更新记录（10）2026-07-21质量统一 Apple 风格界面体验系统化调整排版、材质、色彩、响应式层级与即时交互反馈，并补齐减少动态效果、减少透明度和高对比度适配。2026-07-16质量调整流程图与正文配图Mermaid 流程图尺寸；权限、MCP、Subagents、提示词四页的小黑配图；配图图注与替代文本。2026-07-16质量补齐资料依据与页面信息逐页资料依据、首页更新日志、权限模式表述、Skill／Plugin／MCP 分层、页脚内容与全页面响应式适配。2026-07-16内容新增 GPT-5.6 提示词指南GPT-5.6 prompting guidance 中文解读、refine-user-prompt skill 介绍；移除原 Goal Entry 专题。2026-07-12内容新增中文 Prompt 仓库条目awesome-chatgpt-prompts-zh 仓库说明、Codex 使用示例与提示词安全边界。2026-07-12内容新增视觉与中文配图 Skillstaste-skill 与 Ian Xiaohei Illustrations 的仓库说明、使用示例和适用边界。2026-07-12内容新增 Codex 生态 Top 10Skills、MCP、辅助工具榜单与官方基础设施条目。2026-07-11结构新增站点清单与更新日志统一站点清单、首页最近更新、完整更新日志与站点生成数据。2026-07-10内容新增 Skills 仓库选择指南第三方 Skills 仓库对比、任务选择表与安装入口。2026-07-07内容新增 Compound Engineering 指南插件安装、核心流程与真实实例。 先分清边界",
+      "text": "更新记录由 data/changelog.json 生成；先看最近三项，需要时再展开完整记录。2026-07-22内容新增 OpenCodex 第三方代理说明补充 lidge-jun/opencodex 的本地 provider proxy 定位、原生 Codex 恢复路径及网络、凭据、账户和服务条款边界。2026-07-21质量统一 Apple 风格界面体验系统化调整排版、材质、色彩、响应式层级与即时交互反馈，并补齐减少动态效果、减少透明度和高对比度适配。2026-07-16质量调整流程图与正文配图Mermaid 流程图尺寸；权限、MCP、Subagents、提示词四页的小黑配图；配图图注与替代文本。查看完整更新记录（11）2026-07-22内容新增 OpenCodex 第三方代理说明补充 lidge-jun/opencodex 的本地 provider proxy 定位、原生 Codex 恢复路径及网络、凭据、账户和服务条款边界。2026-07-21质量统一 Apple 风格界面体验系统化调整排版、材质、色彩、响应式层级与即时交互反馈，并补齐减少动态效果、减少透明度和高对比度适配。2026-07-16质量调整流程图与正文配图Mermaid 流程图尺寸；权限、MCP、Subagents、提示词四页的小黑配图；配图图注与替代文本。2026-07-16质量补齐资料依据与页面信息逐页资料依据、首页更新日志、权限模式表述、Skill／Plugin／MCP 分层、页脚内容与全页面响应式适配。2026-07-16内容新增 GPT-5.6 提示词指南GPT-5.6 prompting guidance 中文解读、refine-user-prompt skill 介绍；移除原 Goal Entry 专题。2026-07-12内容新增中文 Prompt 仓库条目awesome-chatgpt-prompts-zh 仓库说明、Codex 使用示例与提示词安全边界。2026-07-12内容新增视觉与中文配图 Skillstaste-skill 与 Ian Xiaohei Illustrations 的仓库说明、使用示例和适用边界。2026-07-12内容新增 Codex 生态 Top 10Skills、MCP、辅助工具榜单与官方基础设施条目。2026-07-11结构新增站点清单与更新日志统一站点清单、首页最近更新、完整更新日志与站点生成数据。2026-07-10内容新增 Skills 仓库选择指南第三方 Skills 仓库对比、任务选择表与安装入口。2026-07-07内容新增 Compound Engineering 指南插件安装、核心流程与真实实例。 先分清边界",
       "title": "中文 Codex 实战手册"
     },
     {
@@ -3484,7 +3484,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "skills-repositories.html",
       "prompts": [],
       "section": "",
-      "text": "比较第三方 skills 仓库及 Desktop、CLI 与本地安装边界。",
+      "text": "比较第三方 skills、工具链仓库及 Desktop、CLI 与本地安装边界。",
       "title": "Skills 仓库"
     },
     {
@@ -3741,7 +3741,18 @@ window.GUIDE_SEARCH_INDEX = {
         "请把下面这个中文 prompt 改写成当前仓库可执行的 Codex Desktop 任务。\n先读 AGENTS.md、README 和相关源码；只输出目标、范围、风险、验收标准和需要确认的问题，不要修改文件。\n原始 prompt：\n[把 plexpt/awesome-chatgpt-prompts-zh 中选出的 prompt 粘贴在这里]"
       ],
       "section": "plexpt/awesome-chatgpt-prompts-zh",
-      "text": "plexpt/awesome-chatgpt-prompts-zh 是中文 ChatGPT prompt 集合，README 和 prompts-zh.json 提供大量可复制的角色、写作、翻译、学术、编程和内容创作提示词。它适合作为 prompt 起点，但不会自动读取当前仓库、AGENTS.md、源码、测试或权限状态，因此不是原生 Codex skill、MCP server 或 plugin。 能力按场景提供角色设定、任务模板和输出格式，适合快速比较不同的表达方式和工作入口。 最适合中文写作、翻译、论文润色、内容创作、头脑风暴和需要先找一个表达起点的轻量任务。 Codex 适配复制 prompt 后，补上仓库上下文、改动范围、权限边界、验收标准和停止条件，再交给 Codex Desktop。 请把下面这个中文 prompt 改写成当前仓库可执行的 Codex Desktop 任务。 先读 AGENTS.md、README 和相关源码；只输出目标、范围、风险、验收标准和需要确认的问题，不要修改文件。 原始 prompt： [把 plexpt/awesome-chatgpt-prompts-zh 中选出的 prompt 粘贴在这里] 使用边界不要直接照搬“忽略之前的对话”、无限角色扮演或无验收的自动执行指令；先改写成当前仓库可审查、可验证的任务合同，也不要把密钥或敏感上下文粘贴到不必要的外部服务。 仓库链接github.com/plexpt/awesome-chatgpt-prompts-zh 提示词重构",
+      "text": "plexpt/awesome-chatgpt-prompts-zh 是中文 ChatGPT prompt 集合，README 和 prompts-zh.json 提供大量可复制的角色、写作、翻译、学术、编程和内容创作提示词。它适合作为 prompt 起点，但不会自动读取当前仓库、AGENTS.md、源码、测试或权限状态，因此不是原生 Codex skill、MCP server 或 plugin。 能力按场景提供角色设定、任务模板和输出格式，适合快速比较不同的表达方式和工作入口。 最适合中文写作、翻译、论文润色、内容创作、头脑风暴和需要先找一个表达起点的轻量任务。 Codex 适配复制 prompt 后，补上仓库上下文、改动范围、权限边界、验收标准和停止条件，再交给 Codex Desktop。 请把下面这个中文 prompt 改写成当前仓库可执行的 Codex Desktop 任务。 先读 AGENTS.md、README 和相关源码；只输出目标、范围、风险、验收标准和需要确认的问题，不要修改文件。 原始 prompt： [把 plexpt/awesome-chatgpt-prompts-zh 中选出的 prompt 粘贴在这里] 使用边界不要直接照搬“忽略之前的对话”、无限角色扮演或无验收的自动执行指令；先改写成当前仓库可审查、可验证的任务合同，也不要把密钥或敏感上下文粘贴到不必要的外部服务。 仓库链接github.com/plexpt/awesome-chatgpt-prompts-zh 本地模型路由",
+      "title": "Skills 仓库"
+    },
+    {
+      "fragment": "opencodex",
+      "level": "h2",
+      "page": "skills-repositories.html",
+      "prompts": [
+        "先做只读核验：\n- 阅读上游 README 与配置文档\n- 确认代理绑定地址、provider、凭据和费用边界\n- 运行 ocx doctor / ocx status\n- 再决定是否执行 ocx init 或启动代理\n- 不再需要时，用 ocx restore 恢复原生 Codex 配置"
+      ],
+      "section": "lidge-jun/opencodex",
+      "text": "OpenCodex 是第三方本地 provider proxy：它把 Codex 的 Responses API 转接到已配置的 provider，使 Codex CLI、App、SDK 和 Claude Code 可以使用相应的模型。它不是 OpenAI 官方功能，也不是 Codex Skill、Plugin 或 MCP server；启用前应把它视为会接触本机 Codex 配置、provider 凭据和请求流量的基础设施。 它解决什么在你控制的本机环境中，通过 ocx init 配置 provider，并由本地代理处理 Codex 的模型路由；先确认 provider、模型、凭据和费用边界，再开始任务。 适合什么需要在既有 Codex 工作流中试用明确允许的第三方或本地模型，并愿意自行维护代理、配置与升级的人。它不替代 Codex 的任务范围、审批、测试或 Git 验收。 先看安全边界上游默认绑定 127.0.0.1；若显式暴露到 LAN，必须配置 bearer token。凭据只应交给已审查的 provider；连接前检查其服务条款，尤其不要把代理路由等同于官方支持。 先做只读核验： - 阅读上游 README 与配置文档 - 确认代理绑定地址、provider、凭据和费用边界 - 运行 ocx doctor / ocx status - 再决定是否执行 ocx init 或启动代理 - 不再需要时，用 ocx restore 恢复原生 Codex 配置 恢复路径ocx stop 会停止代理并恢复原生 Codex；只想恢复配置时使用 ocx restore。先保存你的现有配置和运行证据，再做切换。 账户与条款OpenCodex 是独立社区项目，未获 OpenAI 或其他 provider 认可；provider 可能限制第三方代理流量，账号、配额与服务条款风险由使用者核对。 仓库与文档github.com/lidge-jun/opencodex · 上游文档 提示词重构",
       "title": "Skills 仓库"
     },
     {

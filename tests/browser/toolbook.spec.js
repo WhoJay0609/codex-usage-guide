@@ -137,6 +137,16 @@ test('keeps the home headline compact and expands individual skill repositories'
   await expect(repositoryNav.locator('a[href="skills-repositories.html#aris-auto-claude-code-research-in-sleep"]')).toBeVisible();
 });
 
+test('keeps OpenCodex separate from native Codex and extension mechanisms', async ({ page }) => {
+  await page.goto('/skills-repositories.html#opencodex');
+  const section = page.locator('#opencodex-section');
+  await expect(section.locator('h2')).toContainText('lidge-jun/opencodex');
+  await expect(section).toContainText('第三方本地 provider proxy');
+  await expect(section).toContainText('不是 Codex Skill、Plugin 或 MCP server');
+  await expect(section).toContainText('127.0.0.1');
+  await expect(section.locator('a[href="https://github.com/lidge-jun/opencodex"]')).toBeVisible();
+});
+
 test('introduces Worktrees on a standalone page and keeps Subagents focused', async ({ page }) => {
   await page.goto('/worktrees.html');
   await expect(page.locator('h1')).toHaveText('Worktrees');
