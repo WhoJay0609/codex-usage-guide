@@ -5,8 +5,29 @@ window.GUIDE_SITE_DATA = {
     "assets/theme.js": "187420686654f8c1c58df32a0687d4a0d11e6e0707b8696d5f077774982d766a",
     "figures/social-preview.png": "e0ee23ae3b99a8507b4aa423c530289468f1db067d1e7041e4afcefb5fe3ac58"
   },
-  "build_id": "17aa193d9c9f",
+  "build_id": "6e43028cc620",
   "changelog": [
+    {
+      "category": "content",
+      "date": "2026-07-22",
+      "summary": "补充 Panniantong/Agent-Reach 的 CLI + Skill 定位、doctor 诊断、读写授权分界与安装/凭据审查边界。",
+      "target": "skills-repositories.html#agent-reach",
+      "title": "新增 Agent Reach 互联网能力路由说明"
+    },
+    {
+      "category": "content",
+      "date": "2026-07-22",
+      "summary": "补充 WhoJay0609/whojay-skill 的工程与学术双工作流、证据状态、授权边界与隐私去标识说明。",
+      "target": "skills-repositories.html#whojay-skill",
+      "title": "新增 whojay-skill 证据工作流说明"
+    },
+    {
+      "category": "content",
+      "date": "2026-07-22",
+      "summary": "补充 pproenca/dot-skills 的 curated/experimental 分层、Codex 安装目录、按项审查与第三方权限边界。",
+      "target": "skills-repositories.html#dot-skills",
+      "title": "新增 dot-skills 开放格式目录说明"
+    },
     {
       "category": "content",
       "date": "2026-07-22",
@@ -462,6 +483,9 @@ window.GUIDE_SITE_DATA = {
       "taste-skill",
       "ian-xiaohei-illustrations",
       "awesome-chatgpt-prompts-zh",
+      "dot-skills",
+      "whojay-skill",
+      "agent-reach",
       "opencodex",
       "refine-user-prompt",
       "高级用户-按阶段组合-不要一锅端",
@@ -864,7 +888,7 @@ window.GUIDE_SITE_DATA = {
       "title": "Compound Engineering plugin"
     },
     {
-      "description": "比较第三方 skills、工具链仓库及 Desktop、CLI 与本地安装边界。",
+      "description": "比较第三方 skills、开放格式目录、证据工作流与互联网工具链仓库的安装边界。",
       "facts_verified": "2026-07-22",
       "modified": "2026-07-22",
       "nav_label": "Skills 仓库",
@@ -879,6 +903,26 @@ window.GUIDE_SITE_DATA = {
           "kind": "third_party",
           "label": "GitHub codex-cli topic",
           "url": "https://github.com/topics/codex-cli"
+        },
+        {
+          "kind": "third_party",
+          "label": "dot-skills repository",
+          "url": "https://github.com/pproenca/dot-skills"
+        },
+        {
+          "kind": "third_party",
+          "label": "Agent Skills open format",
+          "url": "https://agentskills.io"
+        },
+        {
+          "kind": "third_party",
+          "label": "whojay-skill repository",
+          "url": "https://github.com/WhoJay0609/whojay-skill"
+        },
+        {
+          "kind": "third_party",
+          "label": "Agent Reach repository",
+          "url": "https://github.com/Panniantong/Agent-Reach"
         },
         {
           "kind": "third_party",

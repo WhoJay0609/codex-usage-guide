@@ -1,6 +1,9 @@
 {
   "schema_version": 1,
   "entries": [
+    {"date": "2026-07-22", "category": "content", "title": "新增 Agent Reach 互联网能力路由说明", "summary": "补充 Panniantong/Agent-Reach 的 CLI + Skill 定位、doctor 诊断、读写授权分界与安装/凭据审查边界。", "target": "skills-repositories.html#agent-reach"},
+    {"date": "2026-07-22", "category": "content", "title": "新增 whojay-skill 证据工作流说明", "summary": "补充 WhoJay0609/whojay-skill 的工程与学术双工作流、证据状态、授权边界与隐私去标识说明。", "target": "skills-repositories.html#whojay-skill"},
+    {"date": "2026-07-22", "category": "content", "title": "新增 dot-skills 开放格式目录说明", "summary": "补充 pproenca/dot-skills 的 curated/experimental 分层、Codex 安装目录、按项审查与第三方权限边界。", "target": "skills-repositories.html#dot-skills"},
     {"date": "2026-07-22", "category": "content", "title": "新增 OpenCodex 第三方代理说明", "summary": "补充 lidge-jun/opencodex 的本地 provider proxy 定位、原生 Codex 恢复路径及网络、凭据、账户和服务条款边界。", "target": "skills-repositories.html#opencodex"},
     {"date": "2026-07-21", "category": "quality", "title": "统一 Apple 风格界面体验", "summary": "系统化调整排版、材质、色彩、响应式层级与即时交互反馈，并补齐减少动态效果、减少透明度和高对比度适配。", "target": "index.html"},
     {"date": "2026-07-16", "category": "quality", "title": "调整流程图与正文配图", "summary": "Mermaid 流程图尺寸；权限、MCP、Subagents、提示词四页的小黑配图；配图图注与替代文本。", "target": "install-desktop.html#安装到第一个任务"},

@@ -147,6 +147,39 @@ test('keeps OpenCodex separate from native Codex and extension mechanisms', asyn
   await expect(section.locator('a[href="https://github.com/lidge-jun/opencodex"]')).toBeVisible();
 });
 
+test('keeps dot-skills as a third-party skill collection with a Codex-specific install path', async ({ page }) => {
+  await page.goto('/skills-repositories.html#dot-skills');
+  const section = page.locator('#dot-skills-section');
+  await expect(section.locator('h2')).toContainText('pproenca/dot-skills');
+  await expect(section).toContainText('第三方 Agent Skills 开放格式集合');
+  await expect(section).toContainText('.codex/skills/<name>/');
+  await expect(section).toContainText('不是一个 Codex Plugin 或 MCP server');
+  await expect(section.locator('a[href="https://github.com/pproenca/dot-skills"]')).toBeVisible();
+});
+
+test("keeps whojay-skill evidence-first and within the user's authorization boundary", async ({ page }) => {
+  await page.goto('/skills-repositories.html#whojay-skill');
+  const section = page.locator('#whojay-skill-section');
+  await expect(section.locator('h2')).toContainText('WhoJay0609/whojay-skill');
+  await expect(section).toContainText('$colleague-whojay');
+  await expect(section).toContainText('已验证');
+  await expect(section).toContainText('未知或阻塞');
+  await expect(section).toContainText('不会自动授权删除、远程发布、外部消息、付费调用或 GPU 运行');
+  await expect(section.locator('a[href="https://github.com/WhoJay0609/whojay-skill"]')).toBeVisible();
+});
+
+test('introduces Agent Reach as a third-party capability router with explicit diagnostic and authorization boundaries', async ({ page }) => {
+  await page.goto('/skills-repositories.html#agent-reach');
+  const section = page.locator('#agent-reach-section');
+  await expect(section.locator('h2')).toContainText('Panniantong/Agent-Reach');
+  await expect(section).toContainText('$agent-reach');
+  await expect(section).toContainText('第三方 CLI + Skill 互联网能力路由器');
+  await expect(section).toContainText('agent-reach doctor --json');
+  await expect(section).toContainText('不是原生 Codex、Plugin，也不是单一 MCP server');
+  await expect(section).toContainText('外部写操作仍由用户明确授权');
+  await expect(section.locator('a[href="https://github.com/Panniantong/Agent-Reach"]')).toBeVisible();
+});
+
 test('introduces Worktrees on a standalone page and keeps Subagents focused', async ({ page }) => {
   await page.goto('/worktrees.html');
   await expect(page.locator('h1')).toHaveText('Worktrees');
