@@ -15,7 +15,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "index.html",
       "prompts": [],
       "section": "最近更新",
-      "text": "更新记录由 data/changelog.json 生成；先看最近三项，需要时再展开完整记录。2026-07-21质量统一 Apple 风格界面体验系统化调整排版、材质、色彩、响应式层级与即时交互反馈，并补齐减少动态效果、减少透明度和高对比度适配。2026-07-16质量调整流程图与正文配图Mermaid 流程图尺寸；权限、MCP、Subagents、提示词四页的小黑配图；配图图注与替代文本。2026-07-16质量补齐资料依据与页面信息逐页资料依据、首页更新日志、权限模式表述、Skill／Plugin／MCP 分层、页脚内容与全页面响应式适配。查看完整更新记录（10）2026-07-21质量统一 Apple 风格界面体验系统化调整排版、材质、色彩、响应式层级与即时交互反馈，并补齐减少动态效果、减少透明度和高对比度适配。2026-07-16质量调整流程图与正文配图Mermaid 流程图尺寸；权限、MCP、Subagents、提示词四页的小黑配图；配图图注与替代文本。2026-07-16质量补齐资料依据与页面信息逐页资料依据、首页更新日志、权限模式表述、Skill／Plugin／MCP 分层、页脚内容与全页面响应式适配。2026-07-16内容新增 GPT-5.6 提示词指南GPT-5.6 prompting guidance 中文解读、refine-user-prompt skill 介绍；移除原 Goal Entry 专题。2026-07-12内容新增中文 Prompt 仓库条目awesome-chatgpt-prompts-zh 仓库说明、Codex 使用示例与提示词安全边界。2026-07-12内容新增视觉与中文配图 Skillstaste-skill 与 Ian Xiaohei Illustrations 的仓库说明、使用示例和适用边界。2026-07-12内容新增 Codex 生态 Top 10Skills、MCP、辅助工具榜单与官方基础设施条目。2026-07-11结构新增站点清单与更新日志统一站点清单、首页最近更新、完整更新日志与站点生成数据。2026-07-10内容新增 Skills 仓库选择指南第三方 Skills 仓库对比、任务选择表与安装入口。2026-07-07内容新增 Compound Engineering 指南插件安装、核心流程与真实实例。 先分清边界",
+      "text": "更新记录由 data/changelog.json 生成；先看最近三项，需要时再展开完整记录。2026-07-22内容新增 Agent Reach 互联网能力路由说明补充 Panniantong/Agent-Reach 的 CLI + Skill 定位、doctor 诊断、读写授权分界与安装/凭据审查边界。2026-07-22内容新增 whojay-skill 证据工作流说明补充 WhoJay0609/whojay-skill 的工程与学术双工作流、证据状态、授权边界与隐私去标识说明。2026-07-22内容新增 dot-skills 开放格式目录说明补充 pproenca/dot-skills 的 curated/experimental 分层、Codex 安装目录、按项审查与第三方权限边界。查看完整更新记录（14）2026-07-22内容新增 Agent Reach 互联网能力路由说明补充 Panniantong/Agent-Reach 的 CLI + Skill 定位、doctor 诊断、读写授权分界与安装/凭据审查边界。2026-07-22内容新增 whojay-skill 证据工作流说明补充 WhoJay0609/whojay-skill 的工程与学术双工作流、证据状态、授权边界与隐私去标识说明。2026-07-22内容新增 dot-skills 开放格式目录说明补充 pproenca/dot-skills 的 curated/experimental 分层、Codex 安装目录、按项审查与第三方权限边界。2026-07-22内容新增 OpenCodex 第三方代理说明补充 lidge-jun/opencodex 的本地 provider proxy 定位、原生 Codex 恢复路径及网络、凭据、账户和服务条款边界。2026-07-21质量统一 Apple 风格界面体验系统化调整排版、材质、色彩、响应式层级与即时交互反馈，并补齐减少动态效果、减少透明度和高对比度适配。2026-07-16质量调整流程图与正文配图Mermaid 流程图尺寸；权限、MCP、Subagents、提示词四页的小黑配图；配图图注与替代文本。2026-07-16质量补齐资料依据与页面信息逐页资料依据、首页更新日志、权限模式表述、Skill／Plugin／MCP 分层、页脚内容与全页面响应式适配。2026-07-16内容新增 GPT-5.6 提示词指南GPT-5.6 prompting guidance 中文解读、refine-user-prompt skill 介绍；移除原 Goal Entry 专题。2026-07-12内容新增中文 Prompt 仓库条目awesome-chatgpt-prompts-zh 仓库说明、Codex 使用示例与提示词安全边界。2026-07-12内容新增视觉与中文配图 Skillstaste-skill 与 Ian Xiaohei Illustrations 的仓库说明、使用示例和适用边界。2026-07-12内容新增 Codex 生态 Top 10Skills、MCP、辅助工具榜单与官方基础设施条目。2026-07-11结构新增站点清单与更新日志统一站点清单、首页最近更新、完整更新日志与站点生成数据。2026-07-10内容新增 Skills 仓库选择指南第三方 Skills 仓库对比、任务选择表与安装入口。2026-07-07内容新增 Compound Engineering 指南插件安装、核心流程与真实实例。 先分清边界",
       "title": "中文 Codex 实战手册"
     },
     {
@@ -3484,7 +3484,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "skills-repositories.html",
       "prompts": [],
       "section": "",
-      "text": "比较第三方 skills 仓库及 Desktop、CLI 与本地安装边界。",
+      "text": "比较第三方 skills、开放格式目录、证据工作流与互联网工具链仓库的安装边界。",
       "title": "Skills 仓库"
     },
     {
@@ -3741,7 +3741,51 @@ window.GUIDE_SEARCH_INDEX = {
         "请把下面这个中文 prompt 改写成当前仓库可执行的 Codex Desktop 任务。\n先读 AGENTS.md、README 和相关源码；只输出目标、范围、风险、验收标准和需要确认的问题，不要修改文件。\n原始 prompt：\n[把 plexpt/awesome-chatgpt-prompts-zh 中选出的 prompt 粘贴在这里]"
       ],
       "section": "plexpt/awesome-chatgpt-prompts-zh",
-      "text": "plexpt/awesome-chatgpt-prompts-zh 是中文 ChatGPT prompt 集合，README 和 prompts-zh.json 提供大量可复制的角色、写作、翻译、学术、编程和内容创作提示词。它适合作为 prompt 起点，但不会自动读取当前仓库、AGENTS.md、源码、测试或权限状态，因此不是原生 Codex skill、MCP server 或 plugin。 能力按场景提供角色设定、任务模板和输出格式，适合快速比较不同的表达方式和工作入口。 最适合中文写作、翻译、论文润色、内容创作、头脑风暴和需要先找一个表达起点的轻量任务。 Codex 适配复制 prompt 后，补上仓库上下文、改动范围、权限边界、验收标准和停止条件，再交给 Codex Desktop。 请把下面这个中文 prompt 改写成当前仓库可执行的 Codex Desktop 任务。 先读 AGENTS.md、README 和相关源码；只输出目标、范围、风险、验收标准和需要确认的问题，不要修改文件。 原始 prompt： [把 plexpt/awesome-chatgpt-prompts-zh 中选出的 prompt 粘贴在这里] 使用边界不要直接照搬“忽略之前的对话”、无限角色扮演或无验收的自动执行指令；先改写成当前仓库可审查、可验证的任务合同，也不要把密钥或敏感上下文粘贴到不必要的外部服务。 仓库链接github.com/plexpt/awesome-chatgpt-prompts-zh 提示词重构",
+      "text": "plexpt/awesome-chatgpt-prompts-zh 是中文 ChatGPT prompt 集合，README 和 prompts-zh.json 提供大量可复制的角色、写作、翻译、学术、编程和内容创作提示词。它适合作为 prompt 起点，但不会自动读取当前仓库、AGENTS.md、源码、测试或权限状态，因此不是原生 Codex skill、MCP server 或 plugin。 能力按场景提供角色设定、任务模板和输出格式，适合快速比较不同的表达方式和工作入口。 最适合中文写作、翻译、论文润色、内容创作、头脑风暴和需要先找一个表达起点的轻量任务。 Codex 适配复制 prompt 后，补上仓库上下文、改动范围、权限边界、验收标准和停止条件，再交给 Codex Desktop。 请把下面这个中文 prompt 改写成当前仓库可执行的 Codex Desktop 任务。 先读 AGENTS.md、README 和相关源码；只输出目标、范围、风险、验收标准和需要确认的问题，不要修改文件。 原始 prompt： [把 plexpt/awesome-chatgpt-prompts-zh 中选出的 prompt 粘贴在这里] 使用边界不要直接照搬“忽略之前的对话”、无限角色扮演或无验收的自动执行指令；先改写成当前仓库可审查、可验证的任务合同，也不要把密钥或敏感上下文粘贴到不必要的外部服务。 仓库链接github.com/plexpt/awesome-chatgpt-prompts-zh 开放格式技能目录",
+      "title": "Skills 仓库"
+    },
+    {
+      "fragment": "dot-skills",
+      "level": "h2",
+      "page": "skills-repositories.html",
+      "prompts": [
+        "只读选择流程：\n- npx add-skill pproenca/dot-skills --list\n- 阅读候选 skill 的 SKILL.md 与附带脚本\n- 确认项目范围、权限和验证要求\n- 再决定是否安装一个 --skill <skill-name>\n- 安装后在新任务中确认 catalog 是否发现它"
+      ],
+      "section": "pproenca/dot-skills",
+      "text": "dot-skills 是第三方 Agent Skills 开放格式集合：仓库按 curated 与 experimental 分层提供可复用的 SKILL.md 工作流。它不是 OpenAI 官方目录，也不是一个 Codex Plugin 或 MCP server；对 Codex，README 描述的安装目标是项目内 .codex/skills/<name>/。 先按成熟度选上游把 curated 标为已筛选的技能，把 experimental 标为进行中的工作。把这当作目录导航，不当作安全、兼容性或适合当前仓库的保证。 先列出，再单项安装用 npx add-skill pproenca/dot-skills --list 了解候选项，再用 --skill <skill-name> 安装一个明确需要的 skill。全局安装会影响多个项目，应先确认范围。 安装前审查内容逐项阅读 SKILL.md、scripts、references 与 assets，确认触发条件、文件写入、网络访问、凭据和验证命令。第三方 skill 不能扩大当前任务授权。 只读选择流程： - npx add-skill pproenca/dot-skills --list - 阅读候选 skill 的 SKILL.md 与附带脚本 - 确认项目范围、权限和验证要求 - 再决定是否安装一个 --skill <skill-name> - 安装后在新任务中确认 catalog 是否发现它 适合什么需要按技术栈或工程动作挑选一个明确的 Agent Skills 工作流时使用；普通一次性问题先用项目现有规则和清晰 prompt。 兼容性边界README 列出 Codex、Claude Code、Cursor、OpenCode 和 Antigravity 的不同安装目录。不要把其他 harness 的目录、命令或触发表面直接套到 Codex。 仓库链接github.com/pproenca/dot-skills · Agent Skills 开放格式 证据优先工作流",
+      "title": "Skills 仓库"
+    },
+    {
+      "fragment": "whojay-skill",
+      "level": "h2",
+      "page": "skills-repositories.html",
+      "prompts": [
+        "$colleague-whojay\n\n先读取本仓库的 AGENTS.md、当前 Git 状态和失败证据。\n目标：解释问题并给出最小可验证的修复路径。\n约束：先做只读分析；不要修改、提交或发布。"
+      ],
+      "section": "WhoJay0609/whojay-skill",
+      "text": "whojay-skill 是第三方的工程与学术双工作流 Skill：它将 Work（诊断、实现、验证、Git 交付、研究与实验治理）和 Persona（证据优先、边界清楚、直接纠偏、闭环交付）合并为 Codex 可调用入口 $colleague-whojay。它不是 OpenAI 官方功能，也不替代项目的 AGENTS.md、测试、审批或人工结论。 先标注证据状态把结论区分为已验证、合理推断和未知或阻塞。计划、子代理汇报、进度条或单次实现不应冒充正式完成证据。 工程与研究同样收口工程上从权威链、最小修复到分层验证；研究上从问题、协议账本到结果与主张。两条路径都要求说明实际产物、验证和剩余风险。 授权仍由用户决定Skill 不会自动授权删除、远程发布、外部消息、付费调用或 GPU 运行。只有用户明确授权时，提交、push、PR、合并和清理才构成交付闭环。 $colleague-whojay 先读取本仓库的 AGENTS.md、当前 Git 状态和失败证据。 目标：解释问题并给出最小可验证的修复路径。 约束：先做只读分析；不要修改、提交或发布。 适合什么有真实仓库、实验或交付边界，需要把事实、推断、未知、验证和外部副作用写清的工程或学术任务。 隐私与身份边界上游说明该 Skill 来自去重、隐私过滤后的会话模式分析，不包含原始会话、凭据、会话 ID、私人标识符或本机绝对路径；没有可靠证据支持的身份属性保持未设置。 仓库链接github.com/WhoJay0609/whojay-skill 互联网能力路由",
+      "title": "Skills 仓库"
+    },
+    {
+      "fragment": "agent-reach",
+      "level": "h2",
+      "page": "skills-repositories.html",
+      "prompts": [
+        "$agent-reach\n\n请通过 Agent Reach 核对这个 GitHub 仓库的公开 README 和开放 Issue。\n先运行 agent-reach doctor --json，并只使用 GitHub 当前 active_backend。\n约束：只读；不要登录、Fork、创建 Issue/PR、安装工具或修改本机配置。"
+      ],
+      "section": "Panniantong/Agent-Reach",
+      "text": "Agent Reach 是第三方 CLI + Skill 互联网能力路由器：它为网页、GitHub、视频、RSS、搜索和部分需要登录态的平台维护候选后端、安装与诊断路径；Codex 可通过 $agent-reach 按任务选择当前可用的读取或检索工具。它不是 OpenAI 官方功能，不是原生 Codex、Plugin，也不是单一 MCP server；平台权限、账号状态和外部写操作仍由用户明确授权。 先诊断，再选后端先运行 agent-reach doctor --json，再按该平台的 active_backend 选择命令。诊断结果是本机此刻的健康信号，不是对未来可用性、账号权限或平台条款的保证。 把“读”与“写”分开它主要帮助 agent 获取和搜索公开或已授权的互联网内容；创建 Issue/PR、发帖、评论、登录、导出 Cookie 或配置凭据属于不同的外部副作用，必须先取得用户授权并遵守对应平台规则。 安装前先预览上游提供 agent-reach install --dry-run 和 --safe。先审查将安装的 CLI、MCP 配置、Skill 文件和浏览器登录态边界；不要把某个平台的可用后端或凭据方案照搬到其他机器。 $agent-reach 请通过 Agent Reach 核对这个 GitHub 仓库的公开 README 和开放 Issue。 先运行 agent-reach doctor --json，并只使用 GitHub 当前 active_backend。 约束：只读；不要登录、Fork、创建 Issue/PR、安装工具或修改本机配置。 适合什么需要在多个互联网渠道之间进行可追踪的读取、搜索或资料核验，并希望先知道当前后端是否真的可用的任务。单一、已知链接的阅读任务可直接用相应的最小工具。 登录与隐私边界部分渠道依赖浏览器登录态、Cookie 或单独配置；上游说明凭据保留在本机，但仍应使用专用账号、最小权限和明确的凭据处理边界。未配置、警告或关闭状态应报告为不可用，而不是猜测替代路径。 仓库链接github.com/Panniantong/Agent-Reach 本地模型路由",
+      "title": "Skills 仓库"
+    },
+    {
+      "fragment": "opencodex",
+      "level": "h2",
+      "page": "skills-repositories.html",
+      "prompts": [
+        "先做只读核验：\n- 阅读上游 README 与配置文档\n- 确认代理绑定地址、provider、凭据和费用边界\n- 运行 ocx doctor / ocx status\n- 再决定是否执行 ocx init 或启动代理\n- 不再需要时，用 ocx restore 恢复原生 Codex 配置"
+      ],
+      "section": "lidge-jun/opencodex",
+      "text": "OpenCodex 是第三方本地 provider proxy：它把 Codex 的 Responses API 转接到已配置的 provider，使 Codex CLI、App、SDK 和 Claude Code 可以使用相应的模型。它不是 OpenAI 官方功能，也不是 Codex Skill、Plugin 或 MCP server；启用前应把它视为会接触本机 Codex 配置、provider 凭据和请求流量的基础设施。 它解决什么在你控制的本机环境中，通过 ocx init 配置 provider，并由本地代理处理 Codex 的模型路由；先确认 provider、模型、凭据和费用边界，再开始任务。 适合什么需要在既有 Codex 工作流中试用明确允许的第三方或本地模型，并愿意自行维护代理、配置与升级的人。它不替代 Codex 的任务范围、审批、测试或 Git 验收。 先看安全边界上游默认绑定 127.0.0.1；若显式暴露到 LAN，必须配置 bearer token。凭据只应交给已审查的 provider；连接前检查其服务条款，尤其不要把代理路由等同于官方支持。 先做只读核验： - 阅读上游 README 与配置文档 - 确认代理绑定地址、provider、凭据和费用边界 - 运行 ocx doctor / ocx status - 再决定是否执行 ocx init 或启动代理 - 不再需要时，用 ocx restore 恢复原生 Codex 配置 恢复路径ocx stop 会停止代理并恢复原生 Codex；只想恢复配置时使用 ocx restore。先保存你的现有配置和运行证据，再做切换。 账户与条款OpenCodex 是独立社区项目，未获 OpenAI 或其他 provider 认可；provider 可能限制第三方代理流量，账号、配额与服务条款风险由使用者核对。 仓库与文档github.com/lidge-jun/opencodex · 上游文档 提示词重构",
       "title": "Skills 仓库"
     },
     {

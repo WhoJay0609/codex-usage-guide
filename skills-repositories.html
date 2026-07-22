@@ -9,15 +9,15 @@
 <!-- guide:theme-bootstrap:end -->
   <link rel="stylesheet" href="assets/site.css">
   <!-- guide:metadata:start -->
-<meta name="description" content="比较第三方 skills 仓库及 Desktop、CLI 与本地安装边界。">
-<meta name="guide-build" content="a75adad69e23">
+<meta name="description" content="比较第三方 skills、开放格式目录、证据工作流与互联网工具链仓库的安装边界。">
+<meta name="guide-build" content="6e43028cc620">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/skills-repositories.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:site_name" content="Codex 使用指南">
 <meta property="og:title" content="Skills 仓库">
-<meta property="og:description" content="比较第三方 skills 仓库及 Desktop、CLI 与本地安装边界。">
+<meta property="og:description" content="比较第三方 skills、开放格式目录、证据工作流与互联网工具链仓库的安装边界。">
 <meta property="og:url" content="https://whojay0609.github.io/codex-usage-guide/skills-repositories.html">
 <meta property="og:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
 <meta property="og:image:width" content="1200">
@@ -25,7 +25,7 @@
 <meta property="og:image:alt" content="Codex 使用指南">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Skills 仓库">
-<meta name="twitter:description" content="比较第三方 skills 仓库及 Desktop、CLI 与本地安装边界。">
+<meta name="twitter:description" content="比较第三方 skills、开放格式目录、证据工作流与互联网工具链仓库的安装边界。">
 <meta name="twitter:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
 <meta name="twitter:image:alt" content="Codex 使用指南">
 <!-- guide:metadata:end -->
@@ -36,7 +36,7 @@
 <!-- guide:header:end -->
 
   <!-- guide:shell-open:start -->
-<div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html">首页</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="worktrees.html">Worktrees</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">定时任务</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html">Compound</a><details class="global-nav-disclosure" open><summary>Skills 仓库</summary><a data-nav href="skills-repositories.html" aria-current="page">全部仓库</a><a href="skills-repositories.html#compound-engineering">Compound Engineering</a><a href="skills-repositories.html#mattpocock-skills">Matt Pocock skills</a><a href="skills-repositories.html#academic-research-skills-codex">ARS</a><a href="skills-repositories.html#aris-auto-claude-code-research-in-sleep">ARIS</a><a href="skills-repositories.html#refine-user-prompt">refine-user-prompt</a></details><a data-nav href="prompt-guidance.html">提示词</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>扩展与资料</span><span aria-hidden="true">/</span><span aria-current="page">Skills 仓库</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-07-16">2026-07-16</time></span><span>事实核验：<time datetime="2026-07-16">2026-07-16</time></span></div><aside class="page-sources" aria-label="本页资料依据"><strong>本页依据</strong><a class="page-source-link external-link" href="https://learn.chatgpt.com/docs/build-skills" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span><span class="source-kind">OpenAI 官方</span>Build skills</a><a class="page-source-link external-link" href="https://github.com/topics/codex-cli" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span><span class="source-kind">第三方上游</span>GitHub codex-cli topic</a></aside><aside class="page-toc" aria-label="本页目录"><details><summary>本页目录</summary><nav><a class="toc-h2" href="#先按任务-fit-选仓库">先按任务 fit 选仓库</a><a class="toc-h2" href="#30-秒选择表">30 秒选择表</a><a class="toc-h2" href="#先看案例证据等级">先看案例证据等级</a><a class="toc-h2" href="#codex-cli-生态-top-10">Codex CLI 生态 Top 10</a><a class="toc-h2" href="#compound-engineering">Compound Engineering</a><a class="toc-h3" href="#能力">能力</a><a class="toc-h3" href="#最适合">最适合</a><a class="toc-h3" href="#安装路径">安装路径</a><a class="toc-h3" href="#案例-从需求到-pr-1">案例：从需求到 PR #1</a><a class="toc-h2" href="#mattpocock-skills">mattpocock/skills</a><a class="toc-h3" href="#能力-2">能力</a><a class="toc-h3" href="#最适合-2">最适合</a><a class="toc-h3" href="#启用路径">启用路径</a><a class="toc-h3" href="#案例-先建立上下文-再-grill">案例：先建立上下文，再 grill</a><a class="toc-h2" href="#academic-research-skills-codex">academic-research-skills-codex</a><a class="toc-h3" href="#能力-3">能力</a><a class="toc-h3" href="#最适合-3">最适合</a><a class="toc-h3" href="#安装路径-2">安装路径</a><a class="toc-h3" href="#场景-先做-novelty-与最小实验矩阵">场景：先做 novelty 与最小实验矩阵</a><a class="toc-h2" href="#aris-auto-claude-code-research-in-sleep">ARIS / auto-claude-code-research-in-sleep</a><a class="toc-h3" href="#能力-4">能力</a><a class="toc-h3" href="#最适合-4">最适合</a><a class="toc-h3" href="#启用路径-2">启用路径</a><a class="toc-h3" href="#场景-夜间循环保留人工闸门">场景：夜间循环保留人工闸门</a><a class="toc-h2" href="#taste-skill">leonxlnx/taste-skill</a><a class="toc-h2" href="#ian-xiaohei-illustrations">helloianneo/ian-xiaohei-illustrations</a><a class="toc-h2" href="#awesome-chatgpt-prompts-zh">plexpt/awesome-chatgpt-prompts-zh</a><a class="toc-h2" href="#refine-user-prompt">WhoJay0609/refine-user-prompt</a><a class="toc-h2" href="#高级用户-按阶段组合-不要一锅端">高级用户：按阶段组合，不要一锅端</a><a class="toc-h2" href="#使用边界">使用边界</a><a class="toc-h2" href="#真实实例-历史案例">真实实例：历史案例</a><a class="toc-h3" href="#输入">输入</a><a class="toc-h3" href="#先读">先读</a><a class="toc-h3" href="#应动文件">应动文件</a><a class="toc-h3" href="#验证">验证</a><a class="toc-h3" href="#最终回答">最终回答</a><a class="toc-h3" href="#失败停止">失败停止</a></nav></details></aside>
+<div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html">首页</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html">Codex</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="worktrees.html">Worktrees</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">定时任务</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html">Compound</a><details class="global-nav-disclosure" open><summary>Skills 仓库</summary><a data-nav href="skills-repositories.html" aria-current="page">全部仓库</a><a href="skills-repositories.html#compound-engineering">Compound Engineering</a><a href="skills-repositories.html#mattpocock-skills">Matt Pocock skills</a><a href="skills-repositories.html#academic-research-skills-codex">ARS</a><a href="skills-repositories.html#aris-auto-claude-code-research-in-sleep">ARIS</a><a href="skills-repositories.html#refine-user-prompt">refine-user-prompt</a></details><a data-nav href="prompt-guidance.html">提示词</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>扩展与资料</span><span aria-hidden="true">/</span><span aria-current="page">Skills 仓库</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-07-22">2026-07-22</time></span><span>事实核验：<time datetime="2026-07-22">2026-07-22</time></span></div><aside class="page-sources" aria-label="本页资料依据"><strong>本页依据</strong><a class="page-source-link external-link" href="https://learn.chatgpt.com/docs/build-skills" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span><span class="source-kind">OpenAI 官方</span>Build skills</a><a class="page-source-link external-link" href="https://github.com/topics/codex-cli" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span><span class="source-kind">第三方上游</span>GitHub codex-cli topic</a><a class="page-source-link external-link" href="https://github.com/pproenca/dot-skills" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span><span class="source-kind">第三方上游</span>dot-skills repository</a><a class="page-source-link external-link" href="https://agentskills.io" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span><span class="source-kind">第三方上游</span>Agent Skills open format</a><a class="page-source-link external-link" href="https://github.com/WhoJay0609/whojay-skill" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span><span class="source-kind">第三方上游</span>whojay-skill repository</a><a class="page-source-link external-link" href="https://github.com/Panniantong/Agent-Reach" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span><span class="source-kind">第三方上游</span>Agent Reach repository</a><a class="page-source-link external-link" href="https://github.com/lidge-jun/opencodex" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span><span class="source-kind">第三方上游</span>OpenCodex repository</a><a class="page-source-link external-link" href="https://lidge-jun.github.io/opencodex/" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span><span class="source-kind">第三方上游</span>OpenCodex documentation</a></aside><aside class="page-toc" aria-label="本页目录"><details><summary>本页目录</summary><nav><a class="toc-h2" href="#先按任务-fit-选仓库">先按任务 fit 选仓库</a><a class="toc-h2" href="#30-秒选择表">30 秒选择表</a><a class="toc-h2" href="#先看案例证据等级">先看案例证据等级</a><a class="toc-h2" href="#codex-cli-生态-top-10">Codex CLI 生态 Top 10</a><a class="toc-h2" href="#compound-engineering">Compound Engineering</a><a class="toc-h3" href="#能力">能力</a><a class="toc-h3" href="#最适合">最适合</a><a class="toc-h3" href="#安装路径">安装路径</a><a class="toc-h3" href="#案例-从需求到-pr-1">案例：从需求到 PR #1</a><a class="toc-h2" href="#mattpocock-skills">mattpocock/skills</a><a class="toc-h3" href="#能力-2">能力</a><a class="toc-h3" href="#最适合-2">最适合</a><a class="toc-h3" href="#启用路径">启用路径</a><a class="toc-h3" href="#案例-先建立上下文-再-grill">案例：先建立上下文，再 grill</a><a class="toc-h2" href="#academic-research-skills-codex">academic-research-skills-codex</a><a class="toc-h3" href="#能力-3">能力</a><a class="toc-h3" href="#最适合-3">最适合</a><a class="toc-h3" href="#安装路径-2">安装路径</a><a class="toc-h3" href="#场景-先做-novelty-与最小实验矩阵">场景：先做 novelty 与最小实验矩阵</a><a class="toc-h2" href="#aris-auto-claude-code-research-in-sleep">ARIS / auto-claude-code-research-in-sleep</a><a class="toc-h3" href="#能力-4">能力</a><a class="toc-h3" href="#最适合-4">最适合</a><a class="toc-h3" href="#启用路径-2">启用路径</a><a class="toc-h3" href="#场景-夜间循环保留人工闸门">场景：夜间循环保留人工闸门</a><a class="toc-h2" href="#taste-skill">leonxlnx/taste-skill</a><a class="toc-h2" href="#ian-xiaohei-illustrations">helloianneo/ian-xiaohei-illustrations</a><a class="toc-h2" href="#awesome-chatgpt-prompts-zh">plexpt/awesome-chatgpt-prompts-zh</a><a class="toc-h2" href="#dot-skills">pproenca/dot-skills</a><a class="toc-h2" href="#whojay-skill">WhoJay0609/whojay-skill</a><a class="toc-h2" href="#agent-reach">Panniantong/Agent-Reach</a><a class="toc-h2" href="#opencodex">lidge-jun/opencodex</a><a class="toc-h2" href="#refine-user-prompt">WhoJay0609/refine-user-prompt</a><a class="toc-h2" href="#高级用户-按阶段组合-不要一锅端">高级用户：按阶段组合，不要一锅端</a><a class="toc-h2" href="#使用边界">使用边界</a><a class="toc-h2" href="#真实实例-历史案例">真实实例：历史案例</a><a class="toc-h3" href="#输入">输入</a><a class="toc-h3" href="#先读">先读</a><a class="toc-h3" href="#应动文件">应动文件</a><a class="toc-h3" href="#验证">验证</a><a class="toc-h3" href="#最终回答">最终回答</a><a class="toc-h3" href="#失败停止">失败停止</a></nav></details></aside>
 <!-- guide:shell-open:end -->
 <main id="main-content">
     <section class="hero compact">
@@ -256,6 +256,92 @@
           <ul class="mini-list">
             <li><strong>使用边界</strong><span>不要直接照搬“忽略之前的对话”、无限角色扮演或无验收的自动执行指令；先改写成当前仓库可审查、可验证的任务合同，也不要把密钥或敏感上下文粘贴到不必要的外部服务。</span></li>
             <li><strong>仓库链接</strong><span><a href="https://github.com/plexpt/awesome-chatgpt-prompts-zh" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>github.com/plexpt/awesome-chatgpt-prompts-zh</a></span></li>
+          </ul>
+        </section>
+
+        <section class="content-block" id="dot-skills-section">
+          <p class="section-kicker">开放格式技能目录</p>
+          <span class="fragment-alias" id="heading-skills-repositories-39" data-canonical-fragment="dot-skills" aria-hidden="true"></span><h2 id="dot-skills"><code>pproenca/dot-skills</code><a class="heading-permalink" data-heading-permalink data-search-exclude href="#dot-skills" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <p><strong>dot-skills 是第三方 Agent Skills 开放格式集合：</strong>仓库按 curated 与 experimental 分层提供可复用的 <code>SKILL.md</code> 工作流。它不是 OpenAI 官方目录，也不是一个 Codex Plugin 或 MCP server；对 Codex，README 描述的安装目标是项目内 <code>.codex/skills/&lt;name&gt;/</code>。</p>
+          <div class="bento">
+            <article class="card span-4"><strong>先按成熟度选</strong><p>上游把 curated 标为已筛选的技能，把 experimental 标为进行中的工作。把这当作目录导航，不当作安全、兼容性或适合当前仓库的保证。</p></article>
+            <article class="card span-4"><strong>先列出，再单项安装</strong><p>用 <code>npx add-skill pproenca/dot-skills --list</code> 了解候选项，再用 <code>--skill &lt;skill-name&gt;</code> 安装一个明确需要的 skill。全局安装会影响多个项目，应先确认范围。</p></article>
+            <article class="card span-4"><strong>安装前审查内容</strong><p>逐项阅读 <code>SKILL.md</code>、scripts、references 与 assets，确认触发条件、文件写入、网络访问、凭据和验证命令。第三方 skill 不能扩大当前任务授权。</p></article>
+          </div>
+          <pre><code>只读选择流程：
+- npx add-skill pproenca/dot-skills --list
+- 阅读候选 skill 的 SKILL.md 与附带脚本
+- 确认项目范围、权限和验证要求
+- 再决定是否安装一个 --skill &lt;skill-name&gt;
+- 安装后在新任务中确认 catalog 是否发现它</code></pre>
+          <ul class="mini-list">
+            <li><strong>适合什么</strong><span>需要按技术栈或工程动作挑选一个明确的 Agent Skills 工作流时使用；普通一次性问题先用项目现有规则和清晰 prompt。</span></li>
+            <li><strong>兼容性边界</strong><span>README 列出 Codex、Claude Code、Cursor、OpenCode 和 Antigravity 的不同安装目录。不要把其他 harness 的目录、命令或触发表面直接套到 Codex。</span></li>
+            <li><strong>仓库链接</strong><span><a href="https://github.com/pproenca/dot-skills" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>github.com/pproenca/dot-skills</a> · <a href="https://agentskills.io" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>Agent Skills 开放格式</a></span></li>
+          </ul>
+        </section>
+
+        <section class="content-block" id="whojay-skill-section">
+          <p class="section-kicker">证据优先工作流</p>
+          <span class="fragment-alias" id="heading-skills-repositories-40" data-canonical-fragment="whojay-skill" aria-hidden="true"></span><h2 id="whojay-skill"><code>WhoJay0609/whojay-skill</code><a class="heading-permalink" data-heading-permalink data-search-exclude href="#whojay-skill" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <p><strong>whojay-skill 是第三方的工程与学术双工作流 Skill：</strong>它将 Work（诊断、实现、验证、Git 交付、研究与实验治理）和 Persona（证据优先、边界清楚、直接纠偏、闭环交付）合并为 Codex 可调用入口 <code>$colleague-whojay</code>。它不是 OpenAI 官方功能，也不替代项目的 <code>AGENTS.md</code>、测试、审批或人工结论。</p>
+          <div class="bento">
+            <article class="card span-4"><strong>先标注证据状态</strong><p>把结论区分为<strong>已验证</strong>、<strong>合理推断</strong>和<strong>未知或阻塞</strong>。计划、子代理汇报、进度条或单次实现不应冒充正式完成证据。</p></article>
+            <article class="card span-4"><strong>工程与研究同样收口</strong><p>工程上从权威链、最小修复到分层验证；研究上从问题、协议账本到结果与主张。两条路径都要求说明实际产物、验证和剩余风险。</p></article>
+            <article class="card span-4"><strong>授权仍由用户决定</strong><p>Skill 不会自动授权删除、远程发布、外部消息、付费调用或 GPU 运行。只有用户明确授权时，提交、push、PR、合并和清理才构成交付闭环。</p></article>
+          </div>
+          <pre><code>$colleague-whojay
+
+先读取本仓库的 AGENTS.md、当前 Git 状态和失败证据。
+目标：解释问题并给出最小可验证的修复路径。
+约束：先做只读分析；不要修改、提交或发布。</code></pre>
+          <ul class="mini-list">
+            <li><strong>适合什么</strong><span>有真实仓库、实验或交付边界，需要把事实、推断、未知、验证和外部副作用写清的工程或学术任务。</span></li>
+            <li><strong>隐私与身份边界</strong><span>上游说明该 Skill 来自去重、隐私过滤后的会话模式分析，不包含原始会话、凭据、会话 ID、私人标识符或本机绝对路径；没有可靠证据支持的身份属性保持未设置。</span></li>
+            <li><strong>仓库链接</strong><span><a href="https://github.com/WhoJay0609/whojay-skill" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>github.com/WhoJay0609/whojay-skill</a></span></li>
+          </ul>
+        </section>
+
+        <section class="content-block" id="agent-reach-section">
+          <p class="section-kicker">互联网能力路由</p>
+          <span class="fragment-alias" id="heading-skills-repositories-41" data-canonical-fragment="agent-reach" aria-hidden="true"></span><h2 id="agent-reach"><code>Panniantong/Agent-Reach</code><a class="heading-permalink" data-heading-permalink data-search-exclude href="#agent-reach" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <p><strong>Agent Reach 是第三方 CLI + Skill 互联网能力路由器：</strong>它为网页、GitHub、视频、RSS、搜索和部分需要登录态的平台维护候选后端、安装与诊断路径；Codex 可通过 <code>$agent-reach</code> 按任务选择当前可用的读取或检索工具。它不是 OpenAI 官方功能，不是原生 Codex、Plugin，也不是单一 MCP server；平台权限、账号状态和外部写操作仍由用户明确授权。</p>
+          <div class="bento">
+            <article class="card span-4"><strong>先诊断，再选后端</strong><p>先运行 <code>agent-reach doctor --json</code>，再按该平台的 <code>active_backend</code> 选择命令。诊断结果是本机此刻的健康信号，不是对未来可用性、账号权限或平台条款的保证。</p></article>
+            <article class="card span-4"><strong>把“读”与“写”分开</strong><p>它主要帮助 agent 获取和搜索公开或已授权的互联网内容；创建 Issue/PR、发帖、评论、登录、导出 Cookie 或配置凭据属于不同的外部副作用，必须先取得用户授权并遵守对应平台规则。</p></article>
+            <article class="card span-4"><strong>安装前先预览</strong><p>上游提供 <code>agent-reach install --dry-run</code> 和 <code>--safe</code>。先审查将安装的 CLI、MCP 配置、Skill 文件和浏览器登录态边界；不要把某个平台的可用后端或凭据方案照搬到其他机器。</p></article>
+          </div>
+          <pre><code>$agent-reach
+
+请通过 Agent Reach 核对这个 GitHub 仓库的公开 README 和开放 Issue。
+先运行 agent-reach doctor --json，并只使用 GitHub 当前 active_backend。
+约束：只读；不要登录、Fork、创建 Issue/PR、安装工具或修改本机配置。</code></pre>
+          <ul class="mini-list">
+            <li><strong>适合什么</strong><span>需要在多个互联网渠道之间进行可追踪的读取、搜索或资料核验，并希望先知道当前后端是否真的可用的任务。单一、已知链接的阅读任务可直接用相应的最小工具。</span></li>
+            <li><strong>登录与隐私边界</strong><span>部分渠道依赖浏览器登录态、Cookie 或单独配置；上游说明凭据保留在本机，但仍应使用专用账号、最小权限和明确的凭据处理边界。未配置、警告或关闭状态应报告为不可用，而不是猜测替代路径。</span></li>
+            <li><strong>仓库链接</strong><span><a href="https://github.com/Panniantong/Agent-Reach" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>github.com/Panniantong/Agent-Reach</a></span></li>
+          </ul>
+        </section>
+
+        <section class="content-block" id="opencodex-section">
+          <p class="section-kicker">本地模型路由</p>
+          <span class="fragment-alias" id="heading-skills-repositories-38" data-canonical-fragment="opencodex" aria-hidden="true"></span><h2 id="opencodex"><code>lidge-jun/opencodex</code><a class="heading-permalink" data-heading-permalink data-search-exclude href="#opencodex" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <p><strong>OpenCodex 是第三方本地 provider proxy：</strong>它把 Codex 的 Responses API 转接到已配置的 provider，使 Codex CLI、App、SDK 和 Claude Code 可以使用相应的模型。它<strong>不是 OpenAI 官方功能</strong>，也不是 Codex Skill、Plugin 或 MCP server；启用前应把它视为会接触本机 Codex 配置、provider 凭据和请求流量的基础设施。</p>
+          <div class="bento">
+            <article class="card span-4"><strong>它解决什么</strong><p>在你控制的本机环境中，通过 <code>ocx init</code> 配置 provider，并由本地代理处理 Codex 的模型路由；先确认 provider、模型、凭据和费用边界，再开始任务。</p></article>
+            <article class="card span-4"><strong>适合什么</strong><p>需要在既有 Codex 工作流中试用明确允许的第三方或本地模型，并愿意自行维护代理、配置与升级的人。它不替代 Codex 的任务范围、审批、测试或 Git 验收。</p></article>
+            <article class="card span-4"><strong>先看安全边界</strong><p>上游默认绑定 <code>127.0.0.1</code>；若显式暴露到 LAN，必须配置 bearer token。凭据只应交给已审查的 provider；连接前检查其服务条款，尤其不要把代理路由等同于官方支持。</p></article>
+          </div>
+          <pre><code>先做只读核验：
+- 阅读上游 README 与配置文档
+- 确认代理绑定地址、provider、凭据和费用边界
+- 运行 ocx doctor / ocx status
+- 再决定是否执行 ocx init 或启动代理
+- 不再需要时，用 ocx restore 恢复原生 Codex 配置</code></pre>
+          <ul class="mini-list">
+            <li><strong>恢复路径</strong><span><code>ocx stop</code> 会停止代理并恢复原生 Codex；只想恢复配置时使用 <code>ocx restore</code>。先保存你的现有配置和运行证据，再做切换。</span></li>
+            <li><strong>账户与条款</strong><span>OpenCodex 是独立社区项目，未获 OpenAI 或其他 provider 认可；provider 可能限制第三方代理流量，账号、配额与服务条款风险由使用者核对。</span></li>
+            <li><strong>仓库与文档</strong><span><a href="https://github.com/lidge-jun/opencodex" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>github.com/lidge-jun/opencodex</a> · <a href="https://lidge-jun.github.io/opencodex/" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>上游文档</a></span></li>
           </ul>
         </section>
 
