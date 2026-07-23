@@ -9,7 +9,7 @@
 
 | 门 | 状态 | 说明 |
 |---|---|---|
-| `make check` | pass | 生成确定性、56 项 Python 单测、20 页静态契约 |
+| `make check` | pass | 生成确定性、57 项 Python 单测、20 页静态契约 |
 | `make test-browser` | pass | Playwright 搜索/复制/主题/响应式（部署前本地） |
 | `make check-published` | fail | 2026-07-23 本地 push 后公开站尚未合并；build marker 与新增 fragment 不一致 |
 
@@ -28,5 +28,5 @@
 ## 最终结论
 
 - **blocked**
-- Blocker：Desktop 截图独立复核、3 人读者研究、部署后 `make check-published`
-- 解锁条件：原图级 privacy review 通过 → 更新 registry `review_status` → 跑读者脚本 → push 后 `make check-published`
+- Blocker：Desktop 截图独立复核、3 人读者研究、`make check-published`（2026-07-23 已跑，fail：公开站未部署）
+- 解锁条件：原图级 privacy review 通过 → 更新 registry `review_status` → 跑读者脚本 → merge 后重跑 `make check-published`
