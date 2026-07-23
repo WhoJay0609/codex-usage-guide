@@ -11,7 +11,7 @@
 |---|---|---|
 | `make check` | pass | 生成确定性、56 项 Python 单测、20 页静态契约 |
 | `make test-browser` | pass | Playwright 搜索/复制/主题/响应式（部署前本地） |
-| `make check-published` | not run | 需 push 到 GitHub Pages 后执行 |
+| `make check-published` | fail | 2026-07-23 本地 push 后公开站尚未合并；build marker 与新增 fragment 不一致 |
 
 ## 读者检查（`docs/reader-checks/remaining-experience-script.md`）
 
