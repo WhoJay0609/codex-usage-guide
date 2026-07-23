@@ -518,6 +518,48 @@
           "heading-daily-workflow-34"
         ]
       },
+      "heading-daily-workflow-34a": {
+        "canonical": "真实实例-修复-checkout-失败测试",
+        "legacy": [
+          "heading-daily-workflow-34a"
+        ]
+      },
+      "checkout-approval": {
+        "canonical": "checkout-approval",
+        "legacy": [
+          "checkout-approval"
+        ]
+      },
+      "checkout-input": {
+        "canonical": "checkout-输入",
+        "legacy": [
+          "checkout-输入"
+        ]
+      },
+      "checkout-prompt": {
+        "canonical": "checkout-prompt",
+        "legacy": [
+          "checkout-prompt"
+        ]
+      },
+      "checkout-recovery": {
+        "canonical": "checkout-recovery",
+        "legacy": [
+          "checkout-recovery"
+        ]
+      },
+      "checkout-result": {
+        "canonical": "checkout-result",
+        "legacy": [
+          "checkout-result"
+        ]
+      },
+      "checkout-verify": {
+        "canonical": "checkout-verify",
+        "legacy": [
+          "checkout-verify"
+        ]
+      },
       "heading-daily-workflow-35": {
         "canonical": "输入",
         "legacy": [
@@ -862,6 +904,48 @@
         "canonical": "来源分类",
         "legacy": [
           "heading-engineering-29"
+        ]
+      },
+      "heading-engineering-29a": {
+        "canonical": "真实实例-修复-api-429-限流",
+        "legacy": [
+          "heading-engineering-29a"
+        ]
+      },
+      "api-approval": {
+        "canonical": "api-approval",
+        "legacy": [
+          "api-approval"
+        ]
+      },
+      "api-prompt": {
+        "canonical": "api-prompt",
+        "legacy": [
+          "api-prompt"
+        ]
+      },
+      "api-recovery": {
+        "canonical": "api-recovery",
+        "legacy": [
+          "api-recovery"
+        ]
+      },
+      "api-result": {
+        "canonical": "api-result",
+        "legacy": [
+          "api-result"
+        ]
+      },
+      "api-start": {
+        "canonical": "api-start",
+        "legacy": [
+          "api-start"
+        ]
+      },
+      "api-verify": {
+        "canonical": "api-verify",
+        "legacy": [
+          "api-verify"
         ]
       },
       "heading-engineering-3": {
@@ -1394,6 +1478,12 @@
           "heading-mcp-23"
         ]
       },
+      "heading-mcp-23a": {
+        "canonical": "真实实例-只读拉取-issue-上下文",
+        "legacy": [
+          "heading-mcp-23a"
+        ]
+      },
       "heading-mcp-3": {
         "canonical": "可复制示例",
         "legacy": [
@@ -1490,6 +1580,12 @@
         "canonical": "真实实例-验证-github-pages-发布",
         "legacy": [
           "heading-permissions-17"
+        ]
+      },
+      "heading-permissions-17a": {
+        "canonical": "真实实例-ci-只读网络诊断",
+        "legacy": [
+          "heading-permissions-17a"
         ]
       },
       "heading-permissions-2": {
@@ -1800,6 +1896,12 @@
         "canonical": "真实实例-资料如何进入页面内容",
         "legacy": [
           "heading-resources-25"
+        ]
+      },
+      "heading-resources-26": {
+        "canonical": "cli-附录-非-desktop-主线",
+        "legacy": [
+          "heading-resources-26"
         ]
       }
     },

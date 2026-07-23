@@ -15,7 +15,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "index.html",
       "prompts": [],
       "section": "最近更新",
-      "text": "更新记录由 data/changelog.json 生成；先看最近三项，需要时再展开完整记录。2026-07-22内容新增 Agent Reach 互联网能力路由说明补充 Panniantong/Agent-Reach 的 CLI + Skill 定位、doctor 诊断、读写授权分界与安装/凭据审查边界。2026-07-22内容新增 whojay-skill 证据工作流说明补充 WhoJay0609/whojay-skill 的工程与学术双工作流、证据状态、授权边界与隐私去标识说明。2026-07-22内容新增 dot-skills 开放格式目录说明补充 pproenca/dot-skills 的 curated/experimental 分层、Codex 安装目录、按项审查与第三方权限边界。查看完整更新记录（14）2026-07-22内容新增 Agent Reach 互联网能力路由说明补充 Panniantong/Agent-Reach 的 CLI + Skill 定位、doctor 诊断、读写授权分界与安装/凭据审查边界。2026-07-22内容新增 whojay-skill 证据工作流说明补充 WhoJay0609/whojay-skill 的工程与学术双工作流、证据状态、授权边界与隐私去标识说明。2026-07-22内容新增 dot-skills 开放格式目录说明补充 pproenca/dot-skills 的 curated/experimental 分层、Codex 安装目录、按项审查与第三方权限边界。2026-07-22内容新增 OpenCodex 第三方代理说明补充 lidge-jun/opencodex 的本地 provider proxy 定位、原生 Codex 恢复路径及网络、凭据、账户和服务条款边界。2026-07-21质量统一 Apple 风格界面体验系统化调整排版、材质、色彩、响应式层级与即时交互反馈，并补齐减少动态效果、减少透明度和高对比度适配。2026-07-16质量调整流程图与正文配图Mermaid 流程图尺寸；权限、MCP、Subagents、提示词四页的小黑配图；配图图注与替代文本。2026-07-16质量补齐资料依据与页面信息逐页资料依据、首页更新日志、权限模式表述、Skill／Plugin／MCP 分层、页脚内容与全页面响应式适配。2026-07-16内容新增 GPT-5.6 提示词指南GPT-5.6 prompting guidance 中文解读、refine-user-prompt skill 介绍；移除原 Goal Entry 专题。2026-07-12内容新增中文 Prompt 仓库条目awesome-chatgpt-prompts-zh 仓库说明、Codex 使用示例与提示词安全边界。2026-07-12内容新增视觉与中文配图 Skillstaste-skill 与 Ian Xiaohei Illustrations 的仓库说明、使用示例和适用边界。2026-07-12内容新增 Codex 生态 Top 10Skills、MCP、辅助工具榜单与官方基础设施条目。2026-07-11结构新增站点清单与更新日志统一站点清单、首页最近更新、完整更新日志与站点生成数据。2026-07-10内容新增 Skills 仓库选择指南第三方 Skills 仓库对比、任务选择表与安装入口。2026-07-07内容新增 Compound Engineering 指南插件安装、核心流程与真实实例。 先分清边界",
+      "text": "更新记录由 data/changelog.json 生成；先看最近三项，需要时再展开完整记录。2026-07-23内容补齐 Desktop 界面证据与可迁移案例新增五张 Desktop 操作示意截图、screenshot registry、日常/工程/学术/权限/MCP 演示案例，以及 CLI 附录、404、robots 与 sitemap。2026-07-22内容新增 whojay-skill 证据工作流说明补充 WhoJay0609/whojay-skill 的工程与学术双工作流、证据状态、授权边界与隐私去标识说明。2026-07-22内容新增 dot-skills 开放格式目录说明补充 pproenca/dot-skills 的 curated/experimental 分层、Codex 安装目录、按项审查与第三方权限边界。查看完整更新记录（14）2026-07-23内容补齐 Desktop 界面证据与可迁移案例新增五张 Desktop 操作示意截图、screenshot registry、日常/工程/学术/权限/MCP 演示案例，以及 CLI 附录、404、robots 与 sitemap。2026-07-22内容新增 whojay-skill 证据工作流说明补充 WhoJay0609/whojay-skill 的工程与学术双工作流、证据状态、授权边界与隐私去标识说明。2026-07-22内容新增 dot-skills 开放格式目录说明补充 pproenca/dot-skills 的 curated/experimental 分层、Codex 安装目录、按项审查与第三方权限边界。2026-07-22内容新增 OpenCodex 第三方代理说明补充 lidge-jun/opencodex 的本地 provider proxy 定位、原生 Codex 恢复路径及网络、凭据、账户和服务条款边界。2026-07-21质量统一 Apple 风格界面体验系统化调整排版、材质、色彩、响应式层级与即时交互反馈，并补齐减少动态效果、减少透明度和高对比度适配。2026-07-16质量调整流程图与正文配图Mermaid 流程图尺寸；权限、MCP、Subagents、提示词四页的小黑配图；配图图注与替代文本。2026-07-16质量补齐资料依据与页面信息逐页资料依据、首页更新日志、权限模式表述、Skill／Plugin／MCP 分层、页脚内容与全页面响应式适配。2026-07-16内容新增 GPT-5.6 提示词指南GPT-5.6 prompting guidance 中文解读、refine-user-prompt skill 介绍；移除原 Goal Entry 专题。2026-07-12内容新增中文 Prompt 仓库条目awesome-chatgpt-prompts-zh 仓库说明、Codex 使用示例与提示词安全边界。2026-07-12内容新增视觉与中文配图 Skillstaste-skill 与 Ian Xiaohei Illustrations 的仓库说明、使用示例和适用边界。2026-07-12内容新增 Codex 生态 Top 10Skills、MCP、辅助工具榜单与官方基础设施条目。2026-07-11结构新增站点清单与更新日志统一站点清单、首页最近更新、完整更新日志与站点生成数据。2026-07-10内容新增 Skills 仓库选择指南第三方 Skills 仓库对比、任务选择表与安装入口。2026-07-07内容新增 Compound Engineering 指南插件安装、核心流程与真实实例。 先分清边界",
       "title": "中文 Codex 实战手册"
     },
     {
@@ -294,7 +294,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "install-desktop.html",
       "prompts": [],
       "section": "安装到第一个任务",
-      "text": "安装完成后，按这个顺序走一遍即可。 flowchart LR A[\"安装 ChatGPT desktop app\"] --> B[\"登录正确账号 / workspace\"] B --> C[\"选择 Codex\"] C --> D[\"选择本地项目\"] D --> E[\"选择 Ask for approval\"] E --> F[\"执行首个只读任务\"] F --> G[\"检查回复与项目边界\"] 第一次使用时，先用一个可验证的小任务确认账号、仓库、权限和验证流程都正常。 第一个任务",
+      "text": "安装完成后，按这个顺序走一遍即可。 flowchart LR A[\"安装 ChatGPT desktop app\"] --> B[\"登录正确账号 / workspace\"] B --> C[\"选择 Codex\"] C --> D[\"选择本地项目\"] D --> E[\"选择 Ask for approval\"] E --> F[\"执行首个只读任务\"] F --> G[\"检查回复与项目边界\"] 第一次使用时，先用一个可验证的小任务确认账号、仓库、权限和验证流程都正常。 图意：登录后先进入 Codex 工作面，而不是在通用 Chat 里直接发仓库任务。界面核验：2026-07-23。 图意：选定仓库后确认权限模式；首次任务建议 Ask for approval。界面核验：2026-07-23。 第一个任务",
       "title": "安装 Codex Desktop"
     },
     {
@@ -379,7 +379,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "install-desktop.html",
       "prompts": [],
       "section": "Git push",
-      "text": "这是外部写操作。批准前应已经完成本地检查，并知道要推送哪个分支。 真实实例",
+      "text": "这是外部写操作。批准前应已经完成本地检查，并知道要推送哪个分支。 图意：批准前核对命令用途、绑定地址和停止方式；不需要的动作直接拒绝。界面核验：2026-07-23。 真实实例",
       "title": "安装 Codex Desktop"
     },
     {
@@ -514,7 +514,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "desktop-cli.html",
       "prompts": [],
       "section": "6. 发布后抽样确认",
-      "text": "如果是 GitHub Pages 或 PR，要求 Codex 等状态完成后抽样公开 URL，而不是只说“已 push”。 Prompt 模式",
+      "text": "如果是 GitHub Pages 或 PR，要求 Codex 等状态完成后抽样公开 URL，而不是只说“已 push”。 图意：Browser 反馈应附带 URL 和预期结果，便于 Codex 定位要改的区域。界面核验：2026-07-23。 图意：联网、启动服务、安装依赖等动作都要先读理由再批准。界面核验：2026-07-23。 图意：先看 diff，再对照验证命令输出；不要只看自然语言摘要。界面核验：2026-07-23。 Prompt 模式",
       "title": "Codex Desktop 操作手册"
     },
     {
@@ -639,7 +639,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "codex.html",
       "prompts": [],
       "section": "什么时候用 / 不用",
-      "text": "用 Desktop需要看 diff、页面、截图、浏览器、审批、终端验证和多线程进度。先用 Local小改动、文档、网页、测试修复和发布验证，优先在当前项目里完成。改用 Worktree试验性修改、并行任务、自动化后台任务，或不想碰当前工作区时使用。不用 Codex任务没有明确仓库、没有验收标准，或你不愿让代理读取相关上下文。 示例",
+      "text": "用 Desktop需要看 diff、页面、截图、浏览器、审批、终端验证和多线程进度。先用 Local小改动、文档、网页、测试修复和发布验证，优先在当前项目里完成。改用 Worktree试验性修改、并行任务、自动化后台任务，或不想碰当前工作区时使用。Plan 模式当任务需要先对齐方案再动手时，可在 Desktop 里让 Codex 先输出计划并逐步确认；具体 UI 入口与行为以当前客户端为准，本指南不承诺固定按钮名称。不用 Codex任务没有明确仓库、没有验收标准，或你不愿让代理读取相关上下文。 示例",
       "title": "Codex 是什么"
     },
     {
@@ -810,6 +810,17 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [],
       "section": "Secret 和生产数据规则",
       "text": "不要让 Codex 读取、复制、总结或提交 secret。即使只是“看一眼配置”，也要先确认文件是否可能包含 token、证书、cookie、数据库密码或生产数据。需要使用密钥时，优先让用户在受控环境中配置，不要把密钥写进聊天、网页或仓库。 真实实例",
+      "title": "权限与安全"
+    },
+    {
+      "fragment": "真实实例-ci-只读网络诊断",
+      "level": "h2",
+      "page": "permissions.html",
+      "prompts": [
+        "申请权限理由：\nAction: curl -fsSL https://registry.example.org/v2/.../manifests/latest\nReason: 确认 CI 使用的 base image digest 是否与 lockfile 一致\nScope: 只读 HTTPS GET，不写 registry\nRisk: 无写入；失败时报告无法拉取 manifest\nVerification: 返回 digest 与 lockfile 中记录一致"
+      ],
+      "section": "真实实例：CI 只读网络诊断",
+      "text": "演示场景任意团队仓库都可能遇到：CI 需要拉取公开依赖或查询 artifact 状态，但 token 权限必须最小化。Codex 在 Desktop 里先列出将要访问的域名和只读动作，获批后再执行。申请权限理由： Action: curl -fsSL https://registry.example.org/v2/.../manifests/latest Reason: 确认 CI 使用的 base image digest 是否与 lockfile 一致 Scope: 只读 HTTPS GET，不写 registry Risk: 无写入；失败时报告无法拉取 manifest Verification: 返回 digest 与 lockfile 中记录一致本项目没有该 CI 仓库的执行记录，因此标为演示场景。 真实实例",
       "title": "权限与安全"
     },
     {
@@ -1289,6 +1300,17 @@ window.GUIDE_SEARCH_INDEX = {
       ],
       "section": "MCP 安全调用模板",
       "text": "请使用 GitHub MCP 只读检查 PR 状态。 边界： - 可以读取 PR、checks、comments - 不要创建评论、不要推送、不要改 label 输出： - PR 当前 head - checks 是否是最新 run - 失败项和对应日志链接 - 是否需要本地复现 如果权限不足或数据不完整，请停止并说明缺口。 真实实例",
+      "title": "MCP 与 Plugins"
+    },
+    {
+      "fragment": "真实实例-只读拉取-issue-上下文",
+      "level": "h2",
+      "page": "mcp.html",
+      "prompts": [
+        "任务：修复 #128 checkout 空购物车报错\nMCP 动作（只读）：\n- 读取 issue 描述与 acceptance criteria\n- 列出 linked PR 和 checks 状态\n禁止：创建 comment、改 label、merge PR\n验收：输出 issue 摘要、写域建议、blocked 项"
+      ],
+      "section": "真实实例：只读拉取 issue 上下文",
+      "text": "演示场景工程任务常以 GitHub issue 为入口。通过 MCP/GitHub 工具只读拉取 issue 正文、标签和 linked PR，Codex 可以在不改外部系统的情况下建立任务上下文。任务：修复 #128 checkout 空购物车报错 MCP 动作（只读）： - 读取 issue 描述与 acceptance criteria - 列出 linked PR 和 checks 状态 禁止：创建 comment、改 label、merge PR 验收：输出 issue 摘要、写域建议、blocked 项本项目没有该 issue 仓库的执行记录，因此标为演示场景。 真实实例",
       "title": "MCP 与 Plugins"
     },
     {
@@ -2412,6 +2434,71 @@ window.GUIDE_SEARCH_INDEX = {
       "title": "日常任务 workflow"
     },
     {
+      "fragment": "真实实例-修复-checkout-失败测试",
+      "level": "h2",
+      "page": "daily-workflow.html",
+      "prompts": [],
+      "section": "真实实例：修复 checkout 失败测试",
+      "text": "演示场景 这是一个可迁移到任意 Node/Express 商店的日常修复任务：测试 checkout 在空购物车时报错，Codex 先读失败日志，再只改结算模块。",
+      "title": "日常任务 workflow"
+    },
+    {
+      "fragment": "checkout-输入",
+      "level": "h3",
+      "page": "daily-workflow.html",
+      "prompts": [],
+      "section": "输入",
+      "text": "仓库 example-store，失败命令 npm test -- checkout，现象是空购物车仍尝试扣款。",
+      "title": "日常任务 workflow"
+    },
+    {
+      "fragment": "checkout-prompt",
+      "level": "h3",
+      "page": "daily-workflow.html",
+      "prompts": [
+        "先读 AGENTS.md 和失败日志。\n只改 src/checkout/ 下文件。\n改动前说明根因。\n完成后运行 npm test -- checkout 并报告 diff。"
+      ],
+      "section": "Prompt",
+      "text": "先读 AGENTS.md 和失败日志。 只改 src/checkout/ 下文件。 改动前说明根因。 完成后运行 npm test -- checkout 并报告 diff。",
+      "title": "日常任务 workflow"
+    },
+    {
+      "fragment": "checkout-approval",
+      "level": "h3",
+      "page": "daily-workflow.html",
+      "prompts": [],
+      "section": "审批边界",
+      "text": "允许读文件和跑测试；安装新依赖或改支付网关配置需先说明并等待批准。",
+      "title": "日常任务 workflow"
+    },
+    {
+      "fragment": "checkout-result",
+      "level": "h3",
+      "page": "daily-workflow.html",
+      "prompts": [],
+      "section": "可观察结果",
+      "text": "测试由 fail 变 pass；diff 仅含 checkout 模块；报告列出改动文件和命令输出。",
+      "title": "日常任务 workflow"
+    },
+    {
+      "fragment": "checkout-recovery",
+      "level": "h3",
+      "page": "daily-workflow.html",
+      "prompts": [],
+      "section": "失败恢复",
+      "text": "若根因指向 API 契约而非前端逻辑，停止改码，输出 blocked receipt 并建议补集成测试或 mock。",
+      "title": "日常任务 workflow"
+    },
+    {
+      "fragment": "checkout-verify",
+      "level": "h3",
+      "page": "daily-workflow.html",
+      "prompts": [],
+      "section": "验证证据",
+      "text": "终端测试输出、git diff --stat、相关函数路径引用；本项目没有该商店仓库的执行记录，因此标为演示场景。 真实实例",
+      "title": "日常任务 workflow"
+    },
+    {
       "fragment": "真实实例-把短页面扩成日常任务手册",
       "level": "h2",
       "page": "daily-workflow.html",
@@ -2743,7 +2830,72 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "engineering.html",
       "prompts": [],
       "section": "来源分类",
-      "text": "可核验仓库片段：指令层级、生成上下文、dirty 检出、diff 与测试日志。可核验协作片段：issue 依赖、Worktree 登记、review disposition、PR/CI/merge 状态。教学性组合：为说明端到端合同而重排这些片段；不表示它们发生在同一任务或同一时间线上。",
+      "text": "可核验仓库片段：指令层级、生成上下文、dirty 检出、diff 与测试日志。可核验协作片段：issue 依赖、Worktree 登记、review disposition、PR/CI/merge 状态。教学性组合：为说明端到端合同而重排这些片段；不表示它们发生在同一任务或同一时间线上。 真实实例",
+      "title": "工程 flow"
+    },
+    {
+      "fragment": "真实实例-修复-api-429-限流",
+      "level": "h2",
+      "page": "engineering.html",
+      "prompts": [],
+      "section": "真实实例：修复 API 429 限流",
+      "text": "演示场景工程团队常见任务：公开 REST API 在 burst 流量下返回 429。Codex 先澄清验收标准，再只改 rate limit 中间件和对应测试。",
+      "title": "工程 flow"
+    },
+    {
+      "fragment": "api-start",
+      "level": "h3",
+      "page": "engineering.html",
+      "prompts": [],
+      "section": "起始状态",
+      "text": "集成测试 test_rate_limit_burst 失败；生产日志显示 429 过早触发；主分支已有无关 dirty 文件需排除在写域外。",
+      "title": "工程 flow"
+    },
+    {
+      "fragment": "api-prompt",
+      "level": "h3",
+      "page": "engineering.html",
+      "prompts": [
+        "Objective: 修复 burst 场景 429，保持正常用户不受影响。\nScope: middleware/rate_limit.py 与 tests/integration/test_rate_limit_burst.py\nValidation: pytest tests/integration/test_rate_limit_burst.py\nStop: 若需改数据库 schema 或公共 contract，先输出 blocked receipt。"
+      ],
+      "section": "Prompt",
+      "text": "Objective: 修复 burst 场景 429，保持正常用户不受影响。 Scope: middleware/rate_limit.py 与 tests/integration/test_rate_limit_burst.py Validation: pytest tests/integration/test_rate_limit_burst.py Stop: 若需改数据库 schema 或公共 contract，先输出 blocked receipt。",
+      "title": "工程 flow"
+    },
+    {
+      "fragment": "api-approval",
+      "level": "h3",
+      "page": "engineering.html",
+      "prompts": [],
+      "section": "审批边界",
+      "text": "允许改 middleware 和测试；禁止改 billing、auth 或部署配置，除非用户追加 grant。",
+      "title": "工程 flow"
+    },
+    {
+      "fragment": "api-result",
+      "level": "h3",
+      "page": "engineering.html",
+      "prompts": [],
+      "section": "可观察结果",
+      "text": "目标测试 pass；p95 延迟无显著回归；PR diff 仅含限流模块。",
+      "title": "工程 flow"
+    },
+    {
+      "fragment": "api-recovery",
+      "level": "h3",
+      "page": "engineering.html",
+      "prompts": [],
+      "section": "失败恢复",
+      "text": "若 baseline 测试环境缺 Redis，停止并报告环境 blocker，不伪造通过结果。",
+      "title": "工程 flow"
+    },
+    {
+      "fragment": "api-verify",
+      "level": "h3",
+      "page": "engineering.html",
+      "prompts": [],
+      "section": "验证证据",
+      "text": "pytest 输出、diff stat、reviewer 对 contract 未变的确认；本项目没有该 API 仓库的执行记录，因此标为演示场景。",
       "title": "工程 flow"
     },
     {
@@ -2972,7 +3124,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "research.html",
       "prompts": [],
       "section": "真实实例：长上下文 KV cache pruning idea",
-      "text": "与其直接说“帮我写篇论文”，不如先让 Codex 建立研究 brief，划清审稿边界。例如研究长上下文 LLM 推理中的 KV cache pruning，可以先查 closest work，制定小规模实验计划，确认新颖性和 baseline 后再进入实验。",
+      "text": "演示场景与其直接说“帮我写篇论文”，不如先让 Codex 建立研究 brief，划清审稿边界。例如研究长上下文 LLM 推理中的 KV cache pruning，可以先查 closest work，制定小规模实验计划，确认新颖性和 baseline 后再进入实验。",
       "title": "学术 flow"
     },
     {
@@ -4271,7 +4423,16 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "resources.html",
       "prompts": [],
       "section": "GPT-5.6 提示词与 refine-user-prompt",
-      "text": "把 OpenAI 官方提示原则翻成 Codex 任务合同，并介绍基于该指南的第三方 skill、执行模式和授权边界。 真实实例",
+      "text": "把 OpenAI 官方提示原则翻成 Codex 任务合同，并介绍基于该指南的第三方 skill、执行模式和授权边界。 CLI 附录",
+      "title": "资料地图"
+    },
+    {
+      "fragment": "cli-附录-非-desktop-主线",
+      "level": "h2",
+      "page": "resources.html",
+      "prompts": [],
+      "section": "CLI 附录（非 Desktop 主线）",
+      "text": "本指南以 Codex Desktop 为主入口。下列 CLI 能力在终端工作流中有用，但行为与可用性以当前 官方 CLI 文档 为准。 codex resume恢复先前 CLI 会话适合终端里继续未完成任务不替代 Desktop 线程上下文 codex --search启用联网搜索需要查官方资料或最新信息时仍要说明来源与只读边界 codex --image附加图片输入UI 截图、设计稿或报错截图注意隐私与脱敏 /init初始化项目上下文新仓库首次接入时以当前客户端文档为准 真实实例",
       "title": "资料地图"
     },
     {

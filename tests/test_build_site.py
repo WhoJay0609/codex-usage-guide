@@ -16,7 +16,7 @@ from scripts.build_site import (
     render_page,
     replace_generated_block,
 )
-from scripts.site_model import SiteModelError, load_site_model
+from scripts.site_model import ROOT_HTML_IGNORE, SiteModelError, load_site_model
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,7 +25,10 @@ ROOT = Path(__file__).resolve().parents[1]
 class SiteModelTests(unittest.TestCase):
     def test_live_manifest_covers_every_root_page(self) -> None:
         model = load_site_model(ROOT)
-        self.assertEqual(sorted(page.path for page in model.pages), sorted(path.name for path in ROOT.glob("*.html")))
+        root_pages = sorted(
+            path.name for path in ROOT.glob("*.html") if path.name not in ROOT_HTML_IGNORE
+        )
+        self.assertEqual(sorted(page.path for page in model.pages), root_pages)
         self.assertEqual(len(model.pages), 20)
 
     def test_manifest_rejects_duplicate_navigation_membership(self) -> None:

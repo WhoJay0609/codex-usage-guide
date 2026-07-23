@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "description": "Codex Desktop operating evidence for the beginner path.",
+  "screenshots": [
+    {
+      "id": "desktop-install-entry",
+      "file": "figures/desktop-install-entry.png",
+      "product_state": "setup",
+      "pages": [
+        "install-desktop.html#安装到第一个任务"
+      ],
+      "alt": "Codex Desktop 安装后选择 Codex 工作面的界面示意",
+      "caption": "图意：登录后先进入 Codex 工作面，而不是在通用 Chat 里直接发仓库任务。",
+      "facts_verified": "2026-07-23",
+      "width": 1440,
+      "height": 900,
+      "sha256": "c007d5b0ef553719b9261000e71bdd4cb236e2ba4b08d9b7fcc5555609a0ecac",
+      "review_status": "pending_independent_review",
+      "source_deleted": true,
+      "redaction_notes": "Generic workspace/repo placeholders; no usernames, tokens, or local paths."
+    },
+    {
+      "id": "desktop-open-repository",
+      "file": "figures/desktop-open-repository.png",
+      "product_state": "open_repository",
+      "pages": [
+        "install-desktop.html#第一个任务怎么写",
+        "desktop-cli.html#1.-打开任务线程"
+      ],
+      "alt": "Codex Desktop 选择本地 example-repo 并设置 Ask for approval 的界面示意",
+      "caption": "图意：选定仓库后确认权限模式；首次任务建议 Ask for approval。",
+      "facts_verified": "2026-07-23",
+      "width": 1440,
+      "height": 900,
+      "sha256": "120d92ecef0259399f90d460b4f3f7000bb566475c025f4187fc6dabd991bc26",
+      "review_status": "pending_independent_review",
+      "source_deleted": true,
+      "redaction_notes": "Generic workspace/repo placeholders; no usernames, tokens, or local paths."
+    },
+    {
+      "id": "desktop-approval-request",
+      "file": "figures/desktop-approval-request.png",
+      "product_state": "approval",
+      "pages": [
+        "install-desktop.html#看到权限请求时怎么判断",
+        "desktop-cli.html#4.-审批有副作用动作"
+      ],
+      "alt": "Codex Desktop 展示 Run command 审批请求与批准拒绝按钮的界面示意",
+      "caption": "图意：批准前核对命令用途、绑定地址和停止方式；不需要的动作直接拒绝。",
+      "facts_verified": "2026-07-23",
+      "width": 1440,
+      "height": 900,
+      "sha256": "b4e6df1957847309dc9570b054382f380aac866a8d4bb22f5432261f06b23248",
+      "review_status": "pending_independent_review",
+      "source_deleted": true,
+      "redaction_notes": "Generic workspace/repo placeholders; no usernames, tokens, or local paths."
+    },
+    {
+      "id": "desktop-diff-review",
+      "file": "figures/desktop-diff-review.png",
+      "product_state": "diff_review",
+      "pages": [
+        "desktop-cli.html#5.-看-diff-和验证结果"
+      ],
+      "alt": "Codex Desktop 展示 README 改动 diff 与 make check 验证结果的界面示意",
+      "caption": "图意：先看 diff，再对照验证命令输出；不要只看自然语言摘要。",
+      "facts_verified": "2026-07-23",
+      "width": 1440,
+      "height": 900,
+      "sha256": "49edbe0c7a493d80d6aa21b43b8f4d1f1a4537feb9d8b93069c4f51acdcc8077",
+      "review_status": "pending_independent_review",
+      "source_deleted": true,
+      "redaction_notes": "Generic workspace/repo placeholders; no usernames, tokens, or local paths."
+    },
+    {
+      "id": "desktop-browser-feedback",
+      "file": "figures/desktop-browser-feedback.png",
+      "product_state": "browser_feedback",
+      "pages": [
+        "desktop-cli.html#3.-用浏览器反馈定位问题"
+      ],
+      "alt": "Codex Desktop Browser 在 GitHub Pages 页面上留下视觉反馈标记的界面示意",
+      "caption": "图意：Browser 反馈应附带 URL 和预期结果，便于 Codex 定位要改的区域。",
+      "facts_verified": "2026-07-23",
+      "width": 1440,
+      "height": 900,
+      "sha256": "5ffbd284e777d0e3f143650c630c68a2133adb500326969ae607c4e685ade7fc",
+      "review_status": "pending_independent_review",
+      "source_deleted": true,
+      "redaction_notes": "Generic workspace/repo placeholders; no usernames, tokens, or local paths."
+    }
+  ]
+}

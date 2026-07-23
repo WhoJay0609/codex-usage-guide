@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/site.css">
   <!-- guide:metadata:start -->
 <meta name="description" content="安装 ChatGPT desktop app，并在 Codex 工作面完成首个只读任务。">
-<meta name="guide-build" content="6e43028cc620">
+<meta name="guide-build" content="d0550756eb85">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/install-desktop.html">
 <meta property="og:type" content="website">
@@ -87,6 +87,14 @@ flowchart LR
         </div>
         <figcaption>第一次使用时，先用一个可验证的小任务确认账号、仓库、权限和验证流程都正常。</figcaption>
       </figure>
+      <figure class="figure-card desktop-evidence">
+        <img src="figures/desktop-install-entry.png" alt="Codex Desktop 安装后选择 Codex 工作面的界面示意" loading="lazy" decoding="async" width="1440" height="900">
+        <figcaption><strong>图意：</strong>登录后先进入 Codex 工作面，而不是在通用 Chat 里直接发仓库任务。界面核验：<time datetime="2026-07-23">2026-07-23</time>。</figcaption>
+      </figure>
+      <figure class="figure-card desktop-evidence">
+        <img src="figures/desktop-open-repository.png" alt="Codex Desktop 选择本地 example-repo 并设置 Ask for approval 的界面示意" loading="lazy" decoding="async" width="1440" height="900">
+        <figcaption><strong>图意：</strong>选定仓库后确认权限模式；首次任务建议 Ask for approval。界面核验：<time datetime="2026-07-23">2026-07-23</time>。</figcaption>
+      </figure>
     </section>
 
     <section class="section">
@@ -131,6 +139,10 @@ flowchart LR
         <article class="step"><span class="fragment-alias" id="heading-install-desktop-13" data-canonical-fragment="安装依赖" aria-hidden="true"></span><h3 id="安装依赖">安装依赖<a class="heading-permalink" data-heading-permalink data-search-exclude href="#安装依赖" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>要确认依赖来源、版本和是否会改 lockfile。文档任务通常不应随便安装新依赖。</p></article>
         <article class="step"><span class="fragment-alias" id="heading-install-desktop-14" data-canonical-fragment="git-push" aria-hidden="true"></span><h3 id="git-push">Git push<a class="heading-permalink" data-heading-permalink data-search-exclude href="#git-push" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>这是外部写操作。批准前应已经完成本地检查，并知道要推送哪个分支。</p></article>
       </div>
+      <figure class="figure-card desktop-evidence">
+        <img src="figures/desktop-approval-request.png" alt="Codex Desktop 展示 Run command 审批请求与批准拒绝按钮的界面示意" loading="lazy" decoding="async" width="1440" height="900">
+        <figcaption><strong>图意：</strong>批准前核对命令用途、绑定地址和停止方式；不需要的动作直接拒绝。界面核验：<time datetime="2026-07-23">2026-07-23</time>。</figcaption>
+      </figure>
     </section>
 
     <section class="section">

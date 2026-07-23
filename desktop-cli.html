@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="assets/site.css">
   <!-- guide:metadata:start -->
 <meta name="description" content="在 ChatGPT desktop app 的 Codex 工作面使用线程、Browser、Integrated terminal、审批与 diff。">
-<meta name="guide-build" content="6e43028cc620">
+<meta name="guide-build" content="d0550756eb85">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/desktop-cli.html">
 <meta property="og:type" content="website">
@@ -80,6 +80,18 @@
         <article class="step"><span class="fragment-alias" id="heading-desktop-cli-12" data-canonical-fragment="5.-看-diff-和验证结果" aria-hidden="true"></span><h3 id="5.-看-diff-和验证结果">5. 看 diff 和验证结果<a class="heading-permalink" data-heading-permalink data-search-exclude href="#5.-看-diff-和验证结果" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>让 Codex 报告改了哪些文件、跑了哪些命令、哪些页面或测试已经通过。</p></article>
         <article class="step"><span class="fragment-alias" id="heading-desktop-cli-13" data-canonical-fragment="6.-发布后抽样确认" aria-hidden="true"></span><h3 id="6.-发布后抽样确认">6. 发布后抽样确认<a class="heading-permalink" data-heading-permalink data-search-exclude href="#6.-发布后抽样确认" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h3><p>如果是 GitHub Pages 或 PR，要求 Codex 等状态完成后抽样公开 URL，而不是只说“已 push”。</p></article>
       </div>
+      <figure class="figure-card desktop-evidence">
+        <img src="figures/desktop-browser-feedback.png" alt="Codex Desktop Browser 在 GitHub Pages 页面上留下视觉反馈标记的界面示意" loading="lazy" decoding="async" width="1440" height="900">
+        <figcaption><strong>图意：</strong>Browser 反馈应附带 URL 和预期结果，便于 Codex 定位要改的区域。界面核验：<time datetime="2026-07-23">2026-07-23</time>。</figcaption>
+      </figure>
+      <figure class="figure-card desktop-evidence">
+        <img src="figures/desktop-approval-request.png" alt="Codex Desktop 展示 Run command 审批请求与批准拒绝按钮的界面示意" loading="lazy" decoding="async" width="1440" height="900">
+        <figcaption><strong>图意：</strong>联网、启动服务、安装依赖等动作都要先读理由再批准。界面核验：<time datetime="2026-07-23">2026-07-23</time>。</figcaption>
+      </figure>
+      <figure class="figure-card desktop-evidence">
+        <img src="figures/desktop-diff-review.png" alt="Codex Desktop 展示 README 改动 diff 与 make check 验证结果的界面示意" loading="lazy" decoding="async" width="1440" height="900">
+        <figcaption><strong>图意：</strong>先看 diff，再对照验证命令输出；不要只看自然语言摘要。界面核验：<time datetime="2026-07-23">2026-07-23</time>。</figcaption>
+      </figure>
     </section>
 
     <section class="section">
