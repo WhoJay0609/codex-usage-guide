@@ -15,6 +15,7 @@ from check_site import (  # noqa: E402
     validate_presentation_contracts,
     validate_product_accuracy_contracts,
     validate_interaction_contracts,
+    validate_screenshot_registry,
     manifest_html_paths,
     validate_metadata_contracts,
     validate_required_pages,
@@ -491,6 +492,24 @@ class SemanticContractTests(unittest.TestCase):
         errors = validate_required_pages({})
         self.assertTrue(any("missing required concept page" in error for error in errors), errors)
         self.assertTrue(any("missing required task/resource page" in error for error in errors), errors)
+
+
+class ScreenshotRegistryTests(unittest.TestCase):
+    def test_screenshot_registry_matches_committed_assets(self) -> None:
+        pages = {
+            "install-desktop.html": parse(
+                '<img src="figures/desktop-install-entry.png" alt="a">'
+                '<img src="figures/desktop-open-repository.png" alt="b">'
+                '<img src="figures/desktop-approval-request.png" alt="c">'
+            ),
+            "desktop-cli.html": parse(
+                '<img src="figures/desktop-browser-feedback.png" alt="d">'
+                '<img src="figures/desktop-approval-request.png" alt="c">'
+                '<img src="figures/desktop-diff-review.png" alt="e">'
+            ),
+        }
+        errors = validate_screenshot_registry(pages)
+        self.assertEqual(errors, [], errors)
 
 
 if __name__ == "__main__":

@@ -5,14 +5,14 @@ window.GUIDE_SITE_DATA = {
     "assets/theme.js": "187420686654f8c1c58df32a0687d4a0d11e6e0707b8696d5f077774982d766a",
     "figures/social-preview.png": "e0ee23ae3b99a8507b4aa423c530289468f1db067d1e7041e4afcefb5fe3ac58"
   },
-  "build_id": "6e43028cc620",
+  "build_id": "d0550756eb85",
   "changelog": [
     {
       "category": "content",
-      "date": "2026-07-22",
-      "summary": "补充 Panniantong/Agent-Reach 的 CLI + Skill 定位、doctor 诊断、读写授权分界与安装/凭据审查边界。",
-      "target": "skills-repositories.html#agent-reach",
-      "title": "新增 Agent Reach 互联网能力路由说明"
+      "date": "2026-07-23",
+      "summary": "新增五张 Desktop 操作示意截图、screenshot registry、日常/工程/学术/权限/MCP 演示案例，以及 CLI 附录、404、robots 与 sitemap。",
+      "target": "install-desktop.html#安装到第一个任务",
+      "title": "补齐 Desktop 界面证据与可迁移案例"
     },
     {
       "category": "content",
@@ -209,6 +209,13 @@ window.GUIDE_SITE_DATA = {
       "网页看起来不对",
       "解释太空泛",
       "任务变长了",
+      "真实实例-修复-checkout-失败测试",
+      "checkout-输入",
+      "checkout-prompt",
+      "checkout-approval",
+      "checkout-result",
+      "checkout-recovery",
+      "checkout-verify",
       "真实实例-把短页面扩成日常任务手册",
       "输入",
       "先读",
@@ -271,7 +278,14 @@ window.GUIDE_SITE_DATA = {
       "重要恢复",
       "结果-receipt",
       "失败停止-2",
-      "来源分类"
+      "来源分类",
+      "真实实例-修复-api-429-限流",
+      "api-start",
+      "api-prompt",
+      "api-approval",
+      "api-result",
+      "api-recovery",
+      "api-verify"
     ],
     "goal.html": [
       "它是什么",
@@ -357,6 +371,7 @@ window.GUIDE_SITE_DATA = {
       "数据和文档",
       "使用-mcp-前的-5-个问题",
       "mcp-安全调用模板",
+      "真实实例-只读拉取-issue-上下文",
       "真实实例-只读核对-pages-状态"
     ],
     "permissions.html": [
@@ -375,6 +390,7 @@ window.GUIDE_SITE_DATA = {
       "默认拒绝",
       "你可以这样要求-codex-申请权限",
       "secret-和生产数据规则",
+      "真实实例-ci-只读网络诊断",
       "真实实例-验证-github-pages-发布"
     ],
     "prompt-guidance.html": [
@@ -453,6 +469,7 @@ window.GUIDE_SITE_DATA = {
       "高-stars-skills-仓库介绍",
       "compound-engineering-plugin",
       "gpt-5.6-提示词与-refine-user-prompt",
+      "cli-附录-非-desktop-主线",
       "真实实例-资料如何进入页面内容"
     ],
     "skills-repositories.html": [

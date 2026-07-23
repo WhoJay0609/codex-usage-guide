@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Load and validate the static guide's source-of-truth data."""
 
-from __future__ import annotations
+ROOT_HTML_IGNORE = frozenset({"404.html"})
 
 import json
 from dataclasses import dataclass
@@ -156,7 +156,7 @@ def load_site_model(root: Path) -> SiteModel:
         page_paths.add(page.path)
         pages.append(page)
 
-    actual_pages = {path.name for path in root.glob("*.html")}
+    actual_pages = {path.name for path in root.glob("*.html")} - ROOT_HTML_IGNORE
     if page_paths != actual_pages:
         missing = sorted(actual_pages - page_paths)
         unknown = sorted(page_paths - actual_pages)

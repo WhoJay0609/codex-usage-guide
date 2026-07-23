@@ -26,17 +26,17 @@
 
 | Reader | 查找秒数/状态 | Copy 状态 | Desktop 状态 | 主持人提示 | 观察备注 |
 |---|---|---|---|---|---|
-| R1 | not run | not run | not run | — | — |
-| R2 | not run | not run | not run | — | — |
-| R3 | not run | not run | not run | — | — |
+| R1 | not run | not run | not run (blocked: screenshot review pending) | — | 2026-07-23：五张 Desktop 截图待独立复核 |
+| R2 | not run | not run | not run (blocked: screenshot review pending) | — | — |
+| R3 | not run | not run | not run (blocked: screenshot review pending) | — | — |
 
 ## 发布回执
 
-- Commit / URL：
+- Commit / URL：见 `docs/reader-checks/release-receipt-2026-07-23.md`
 - 自动化门：`pass / fail / not run`（附命令与原因）
-- 查找门：`pass / fail / not run`（附 3 个用时和中位数）
-- Copy 门：`pass / fail / not run`（附 3 个结果）
-- Desktop 门：`pass / fail / not run`（附完成数；U3 blocker 不得省略）
-- Published-site 门：`pass / fail / not run`（仅部署后运行）
-- 最终结论：`ready / blocked`
-- Blocker 与解锁条件：
+- 查找门：`not run`（需 3 人人工；Playwright 搜索 smoke 已通过但不计入）
+- Copy 门：`not run`（需 3 人人工；Playwright 复制 smoke 已通过但不计入）
+- Desktop 门：`not run (blocked: missing approved Desktop evidence)`（registry 五图均为 pending_independent_review）
+- Published-site 门：`not run`（仅部署后运行）
+- 最终结论：`blocked`
+- Blocker 与解锁条件：独立原图复核 → 读者三项 → push 后 check-published
