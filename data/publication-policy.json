@@ -16,6 +16,11 @@
       "fragment-alias"
     ]
   },
+  "publication": {
+    "excluded_local_prefixes": [
+      "doc/"
+    ]
+  },
   "sensitive_patterns": [
     {
       "name": "macOS user path",

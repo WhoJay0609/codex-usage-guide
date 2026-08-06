@@ -15,7 +15,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "index.html",
       "prompts": [],
       "section": "最近更新",
-      "text": "更新记录由 data/changelog.json 生成；先看最近三项，需要时再展开完整记录。2026-07-23内容补齐 Desktop 界面证据与可迁移案例新增五张 Desktop 操作示意截图、screenshot registry、日常/工程/学术/权限/MCP 演示案例，以及 CLI 附录、404、robots 与 sitemap。2026-07-22内容新增 whojay-skill 证据工作流说明补充 WhoJay0609/whojay-skill 的工程与学术双工作流、证据状态、授权边界与隐私去标识说明。2026-07-22内容新增 dot-skills 开放格式目录说明补充 pproenca/dot-skills 的 curated/experimental 分层、Codex 安装目录、按项审查与第三方权限边界。查看完整更新记录（14）2026-07-23内容补齐 Desktop 界面证据与可迁移案例新增五张 Desktop 操作示意截图、screenshot registry、日常/工程/学术/权限/MCP 演示案例，以及 CLI 附录、404、robots 与 sitemap。2026-07-22内容新增 whojay-skill 证据工作流说明补充 WhoJay0609/whojay-skill 的工程与学术双工作流、证据状态、授权边界与隐私去标识说明。2026-07-22内容新增 dot-skills 开放格式目录说明补充 pproenca/dot-skills 的 curated/experimental 分层、Codex 安装目录、按项审查与第三方权限边界。2026-07-22内容新增 OpenCodex 第三方代理说明补充 lidge-jun/opencodex 的本地 provider proxy 定位、原生 Codex 恢复路径及网络、凭据、账户和服务条款边界。2026-07-21质量统一 Apple 风格界面体验系统化调整排版、材质、色彩、响应式层级与即时交互反馈，并补齐减少动态效果、减少透明度和高对比度适配。2026-07-16质量调整流程图与正文配图Mermaid 流程图尺寸；权限、MCP、Subagents、提示词四页的小黑配图；配图图注与替代文本。2026-07-16质量补齐资料依据与页面信息逐页资料依据、首页更新日志、权限模式表述、Skill／Plugin／MCP 分层、页脚内容与全页面响应式适配。2026-07-16内容新增 GPT-5.6 提示词指南GPT-5.6 prompting guidance 中文解读、refine-user-prompt skill 介绍；移除原 Goal Entry 专题。2026-07-12内容新增中文 Prompt 仓库条目awesome-chatgpt-prompts-zh 仓库说明、Codex 使用示例与提示词安全边界。2026-07-12内容新增视觉与中文配图 Skillstaste-skill 与 Ian Xiaohei Illustrations 的仓库说明、使用示例和适用边界。2026-07-12内容新增 Codex 生态 Top 10Skills、MCP、辅助工具榜单与官方基础设施条目。2026-07-11结构新增站点清单与更新日志统一站点清单、首页最近更新、完整更新日志与站点生成数据。2026-07-10内容新增 Skills 仓库选择指南第三方 Skills 仓库对比、任务选择表与安装入口。2026-07-07内容新增 Compound Engineering 指南插件安装、核心流程与真实实例。 先分清边界",
+      "text": "更新记录由 data/changelog.json 生成；先看最近三项，需要时再展开完整记录。2026-08-06质量根据读者与专家反馈整理首轮指南把新手首条路径、$skill-name 与插件 slash 命令、项目验证命令和 Desktop 页面边界说清，并加入公开发布路径与搜索索引覆盖门禁。2026-08-06内容同步 Matt Pocock skills v1.2.2 说明更新 user-invoked / model-invoked 分层、ask-matt 到 implement 的工程主线、skills.sh 的 Codex 安装边界，以及原生 Codex plugin 暂缓和近期技能改名。2026-07-23内容补齐 Desktop 界面证据与可迁移案例新增五张 Desktop 操作示意截图、screenshot registry、日常/工程/学术/权限/MCP 演示案例，以及 CLI 附录、404、robots 与 sitemap。查看完整更新记录（16）2026-08-06质量根据读者与专家反馈整理首轮指南把新手首条路径、$skill-name 与插件 slash 命令、项目验证命令和 Desktop 页面边界说清，并加入公开发布路径与搜索索引覆盖门禁。2026-08-06内容同步 Matt Pocock skills v1.2.2 说明更新 user-invoked / model-invoked 分层、ask-matt 到 implement 的工程主线、skills.sh 的 Codex 安装边界，以及原生 Codex plugin 暂缓和近期技能改名。2026-07-23内容补齐 Desktop 界面证据与可迁移案例新增五张 Desktop 操作示意截图、screenshot registry、日常/工程/学术/权限/MCP 演示案例，以及 CLI 附录、404、robots 与 sitemap。2026-07-22内容新增 whojay-skill 证据工作流说明补充 WhoJay0609/whojay-skill 的工程与学术双工作流、证据状态、授权边界与隐私去标识说明。2026-07-22内容新增 dot-skills 开放格式目录说明补充 pproenca/dot-skills 的 curated/experimental 分层、Codex 安装目录、按项审查与第三方权限边界。2026-07-22内容新增 OpenCodex 第三方代理说明补充 lidge-jun/opencodex 的本地 provider proxy 定位、原生 Codex 恢复路径及网络、凭据、账户和服务条款边界。2026-07-21质量统一 Apple 风格界面体验系统化调整排版、材质、色彩、响应式层级与即时交互反馈，并补齐减少动态效果、减少透明度和高对比度适配。2026-07-16质量调整流程图与正文配图Mermaid 流程图尺寸；权限、MCP、Subagents、提示词四页的小黑配图；配图图注与替代文本。2026-07-16质量补齐资料依据与页面信息逐页资料依据、首页更新日志、权限模式表述、Skill／Plugin／MCP 分层、页脚内容与全页面响应式适配。2026-07-16内容新增 GPT-5.6 提示词指南GPT-5.6 prompting guidance 中文解读、refine-user-prompt skill 介绍；移除原 Goal Entry 专题。2026-07-12内容新增中文 Prompt 仓库条目awesome-chatgpt-prompts-zh 仓库说明、Codex 使用示例与提示词安全边界。2026-07-12内容新增视觉与中文配图 Skillstaste-skill 与 Ian Xiaohei Illustrations 的仓库说明、使用示例和适用边界。2026-07-12内容新增 Codex 生态 Top 10Skills、MCP、辅助工具榜单与官方基础设施条目。2026-07-11结构新增站点清单与更新日志统一站点清单、首页最近更新、完整更新日志与站点生成数据。2026-07-10内容新增 Skills 仓库选择指南第三方 Skills 仓库对比、任务选择表与安装入口。2026-07-07内容新增 Compound Engineering 指南插件安装、核心流程与真实实例。 先分清边界",
       "title": "中文 Codex 实战手册"
     },
     {
@@ -123,7 +123,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "index.html",
       "prompts": [],
       "section": "需要时再查概念",
-      "text": "这些页面解释背后的原因。新手不用一次读完；遇到权限、项目规则、工具扩展或长任务时再回来查。",
+      "text": "这些页面解释背后的原因。新手不用一次读完；遇到权限、项目规则、工具扩展或长任务时再回来查。 新手顺序：先完成零基础：安装到第一个任务里的安装、仓库选择和只读任务；Goal、subagent、Skills、MCP 等概念，遇到对应任务时再回来查。",
       "title": "中文 Codex 实战手册"
     },
     {
@@ -303,7 +303,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "install-desktop.html",
       "prompts": [],
       "section": "第一个任务怎么写",
-      "text": "登录后选择 Codex，选择要工作的本地项目，并把权限设为 Ask for approval。第一个任务建议只读，用来确认 Codex 能读仓库、理解规则和尊重边界，而不是一上来让它重构整个项目。",
+      "text": "登录后选择 Codex，选择要工作的本地项目，并把权限设为 Ask for approval。第一个任务建议只读，用来确认 Codex 能读仓库、理解规则和尊重边界，而不是一上来让它重构整个项目。 如果你已经在 Desktop 中选择了项目，不需要把绝对路径粘进 prompt；只有要指出仓库内的子目录或文件时，才写仓库内相对路径。",
       "title": "安装 Codex Desktop"
     },
     {
@@ -311,10 +311,10 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h3",
       "page": "install-desktop.html",
       "prompts": [
-        "我刚安装 Codex Desktop，正在打开这个仓库：\n/path/to/repo\n\n请先只读分析：\n- 读取 AGENTS.md 和 README\n- 找到测试命令和主要入口\n- 解释这个仓库适合怎样让 Codex 协作\n\n不要改文件。"
+        "我刚安装 Codex Desktop，正在处理当前已经打开的仓库：\n\n请先只读分析：\n- 读取 AGENTS.md 和 README\n- 找到测试命令和主要入口\n- 解释这个仓库适合怎样让 Codex 协作\n\n不要改文件。"
       ],
       "section": "只读入门",
-      "text": "我刚安装 Codex Desktop，正在打开这个仓库： /path/to/repo 请先只读分析： - 读取 AGENTS.md 和 README - 找到测试命令和主要入口 - 解释这个仓库适合怎样让 Codex 协作 不要改文件。",
+      "text": "我刚安装 Codex Desktop，正在处理当前已经打开的仓库： 请先只读分析： - 读取 AGENTS.md 和 README - 找到测试命令和主要入口 - 解释这个仓库适合怎样让 Codex 协作 不要改文件。",
       "title": "安装 Codex Desktop"
     },
     {
@@ -954,7 +954,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "skills.html",
       "prompts": [],
       "section": "它是什么",
-      "text": "Skills 适合记录会反复使用的流程，例如工程 grilling、学术 pipeline、部署检查和代码 review。公开指南需要区分官方能力、第三方仓库和本机自写 skills。想按任务比较 Codex 生态仓库时，看 Codex 相关高 stars 开源仓库；想把原始请求改写成 GPT-5.6 任务合同，看 GPT-5.6 提示词与 refine-user-prompt。触发条件什么时候必须使用，什么时候不该使用。输入合同需要仓库、目标、范围、预算、人工 checkpoint。执行步骤先读哪些文件，是否允许 subagent，如何验证。输出合同产物、证据、风险、下一步和本地限制。 何时使用",
+      "text": "Skills 适合记录会反复使用的流程，例如工程 grilling、学术 pipeline、部署检查和代码 review。公开指南需要区分官方能力、第三方仓库和本机自写 skills。想按任务比较 Codex 生态仓库时，看 Codex 相关高 stars 开源仓库；想把原始请求改写成 GPT-5.6 任务合同，看 GPT-5.6 提示词与 refine-user-prompt。调用语法：普通 Codex skill 使用 $skill-name（例如 $grill-with-docs）；插件自定义的 slash command 使用 /command（例如 /ce-ideate），前提是对应插件已安装。两者不要混写。触发条件什么时候必须使用，什么时候不该使用。输入合同需要仓库、目标、范围、预算、人工 checkpoint。执行步骤先读哪些文件，是否允许 subagent，如何验证。输出合同产物、证据、风险、下一步和本地限制。 何时使用",
       "title": "Skills"
     },
     {
@@ -1552,7 +1552,21 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "subagents.html",
       "prompts": [],
       "section": "整合",
-      "text": "主线程负责检查共享文件的真实状态、去重、冲突处理、最终判断和用户报告。Subagent 的摘要和结论不是自动真理。 模式",
+      "text": "主线程负责检查共享文件的真实状态、去重、冲突处理、最终判断和用户报告。Subagent 的摘要和结论不是自动真理。 第三方模型路由",
+      "title": "Subagents"
+    },
+    {
+      "fragment": "用-opencodex-调用-luna-子代理",
+      "level": "h2",
+      "page": "subagents.html",
+      "prompts": [
+        "# 需要 Node.js 18+；先审查第三方包，再在测试环境安装\nnpm install -g @bitkyc08/opencodex\nocx init\nocx start\nocx gui",
+        "{\n  \"subagentModels\": [\"gpt-5.6-luna\", \"gpt-5.6-terra\", \"gpt-5.6-sol\"],\n  \"injectionModel\": \"gpt-5.6-luna\",\n  \"injectionEffort\": \"medium\",\n  \"syncCodexSubagentDefaults\": true\n}",
+        "spawn_agent({\n  \"task_name\": \"routine_checks\",\n  \"agent_type\": \"worker\",\n  \"fork_turns\": \"none\",\n  \"model\": \"gpt-5.6-luna\",\n  \"reasoning_effort\": \"medium\",\n  \"message\": \"在共享工作区只读检查目标模块；返回 finding、证据路径和未验证项。\"\n})",
+        "请把边界清晰、成本敏感的检查交给 Luna subagent。\n调用 spawn_agent 时显式设置 model=\"gpt-5.6-luna\"、\nreasoning_effort=\"medium\"、fork_turns=\"none\"；\n子代理只读，主线程核对真实文件并完成最终验收。"
+      ],
+      "section": "用 OpenCodex 调用 Luna 子代理",
+      "text": "先分清责任：OpenCodex 是第三方本地 provider proxy。它可以把 gpt-5.6-luna 放进 Codex 的 subagent model override 清单，并注入委派指引或同步新任务的原生 [agents] 默认值；它不是逐次 spawn 的代理侧路由器，也不会替你触发委派。需要逐次、可审计地指定 Luna 时，仍应让 Codex 在 spawn_agent 调用中显式传入 model override。 # 需要 Node.js 18+；先审查第三方包，再在测试环境安装 npm install -g @bitkyc08/opencodex ocx init ocx start ocx gui 1. 准备路由安装后运行 ocx init、ocx start 和 ocx gui。在 Models 确认 bare native id gpt-5.6-luna 已启用；在 Subagents 把它放进最多五个 featured models。2. 设置委派在 Dashboard 的 Sub-agent delegation 选择 Luna 和 reasoning effort，开启 OpenCodex multi-agent guidance。需要让新建 Codex 任务默认采用该子代理时，再启用 Use as native Codex subagent defaults。3. 同步并新建任务运行 ocx sync --restart-codex，检查 ocx status 与 ocx v2 status，然后新建 Codex 任务。已有任务不会自动换用新默认值。 也可以把下列顶层字段合并进 ~/.opencodex/config.json；syncCodexSubagentDefaults 是可选开关，不会自动创建 subagent： { \"subagentModels\": [\"gpt-5.6-luna\", \"gpt-5.6-terra\", \"gpt-5.6-sol\"], \"injectionModel\": \"gpt-5.6-luna\", \"injectionEffort\": \"medium\", \"syncCodexSubagentDefaults\": true } 主线程真正委派时，模型 override 必须出现在 spawn 调用里。完整历史 fork 会继承父模型并拒绝 model / effort override，因此要用 fork_turns: \"none\"（或明确的部分历史）；由于子代理不继承完整历史，message 必须包含可独立执行的目标、上下文、边界和验收： spawn_agent({ \"task_name\": \"routine_checks\", \"agent_type\": \"worker\", \"fork_turns\": \"none\", \"model\": \"gpt-5.6-luna\", \"reasoning_effort\": \"medium\", \"message\": \"在共享工作区只读检查目标模块；返回 finding、证据路径和未验证项。\" }) 给 Codex 的可复制请求： 请把边界清晰、成本敏感的检查交给 Luna subagent。 调用 spawn_agent 时显式设置 model=\"gpt-5.6-luna\"、 reasoning_effort=\"medium\"、fork_turns=\"none\"； 子代理只读，主线程核对真实文件并完成最终验收。 bare id 优先从原生 Codex / ChatGPT 父代理委派时，优先使用 gpt-5.6-luna。OpenCodex 不能替账号增加模型权限；按 OpenAI 当前说明，Plus、Pro、Business 与 Enterprise 可在 Codex 选择 Luna。用户配置仍优先syncCodexSubagentDefaults: true 只会尝试为新任务同步原生默认值，不覆盖用户已有的 [agents] 默认键。配置显示 sync 已开启，不等于写入已成功；应在同步后核对 OpenCodex 日志、Codex 配置和实际 child model。先确认 v1 / v2OpenCodex 的 base/default 模式中，Sol 与 Terra 使用 v2，Luna 使用 v1；强制 v2 才会让所有模型都走 v2。模式修改只影响新任务。Luna 的精确 effort 阶梯最高为 max，不提供 ultra。v2 加密任务边界只有原生父代理向非原生 routed provider 委派、且 v2 task body 仅含加密内容时，才会出现这一限制；bare gpt-5.6-luna 不属于该外部 provider 场景。遇到 unreadable_encrypted_agent_task 时，改用 bare native Luna，或运行 ocx v2 mode v1 后新建任务进行异构 provider 委派。成本仍取决于 tokenLuna 的 API 标价已于 2026-07-30 下调 80%，但 reasoning effort 越高通常消耗越多 token。先用 medium；只有代表性任务证明质量收益时再升到 max。价格详情见 Terra / Luna 降价。恢复原生配置测试结束可运行 ocx stop 停止代理并恢复原生 Codex，或用 ocx restore 只恢复配置。先备份并审查 provider 凭据、账号与服务条款边界。 OpenCodex 子代理界面 · 配置参考 模式",
       "title": "Subagents"
     },
     {
@@ -1930,10 +1944,10 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h3",
       "page": "workflows.html",
       "prompts": [
-        "沿用上面的范围。\n验收：五个阶段各有唯一锚点并按顺序出现；\nmake check 通过；桌面和 390px 页面无溢出。\n失败时保留错误并进入 blocked receipt。"
+        "沿用上面的范围。\n验收：五个阶段各有唯一锚点并按顺序出现；\n项目已有的验证命令通过（例如 npm test 或 make check）；桌面和 390px 页面无溢出。\n失败时保留错误并进入 blocked receipt。"
       ],
       "section": "V3：补验收证据",
-      "text": "沿用上面的范围。 验收：五个阶段各有唯一锚点并按顺序出现； make check 通过；桌面和 390px 页面无溢出。 失败时保留错误并进入 blocked receipt。同一个任务现在有可复核的 done / blocked 条件。 Prompt 骨架",
+      "text": "沿用上面的范围。 验收：五个阶段各有唯一锚点并按顺序出现； 项目已有的验证命令通过（例如 npm test 或 make check）；桌面和 390px 页面无溢出。 失败时保留错误并进入 blocked receipt。同一个任务现在有可复核的 done / blocked 条件。 Prompt 骨架",
       "title": "任务路径"
     },
     {
@@ -1941,10 +1955,10 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h2",
       "page": "workflows.html",
       "prompts": [
-        "背景：\n我正在 Codex Desktop 里处理 [项目/论文/网页]。\n当前页面/仓库是：[URL 或 /path/to/repo]。\n当前问题是：[具体现象]。\n\n目标：\n请完成 [可验收结果]。\n\n范围：\n- 可以改：[文件/目录/页面]\n- 不要改：[禁区/外部接口/已有用户改动]\n\n要求：\n- 先读 AGENTS.md、README 和相关源码\n- 改动前说明你准备改哪里\n- 需要联网、启动服务或推送前先说明理由\n- 完成后运行最窄验证\n\n验收：\n- [测试/构建/页面访问/截图/commit/push]\n- 最终报告列出改动、验证、风险和未完成项"
+        "背景：\n我正在 Codex Desktop 里处理 [项目/论文/网页]。\n当前页面/仓库是：[当前已打开的仓库或仓库内相对路径]。\n当前问题是：[具体现象]。\n\n目标：\n请完成 [可验收结果]。\n\n范围：\n- 可以改：[文件/目录/页面]\n- 不要改：[禁区/外部接口/已有用户改动]\n\n要求：\n- 先读 AGENTS.md、README 和相关源码\n- 改动前说明你准备改哪里\n- 需要联网、启动服务或推送前先说明理由\n- 完成后运行最窄验证\n\n验收：\n- [测试/构建/页面访问/截图/commit/push]\n- 最终报告列出改动、验证、风险和未完成项"
       ],
       "section": "统一案例模板",
-      "text": "背景： 我正在 Codex Desktop 里处理 [项目/论文/网页]。 当前页面/仓库是：[URL 或 /path/to/repo]。 当前问题是：[具体现象]。 目标： 请完成 [可验收结果]。 范围： - 可以改：[文件/目录/页面] - 不要改：[禁区/外部接口/已有用户改动] 要求： - 先读 AGENTS.md、README 和相关源码 - 改动前说明你准备改哪里 - 需要联网、启动服务或推送前先说明理由 - 完成后运行最窄验证 验收： - [测试/构建/页面访问/截图/commit/push] - 最终报告列出改动、验证、风险和未完成项 反例",
+      "text": "背景： 我正在 Codex Desktop 里处理 [项目/论文/网页]。 当前页面/仓库是：[当前已打开的仓库或仓库内相对路径]。 当前问题是：[具体现象]。 目标： 请完成 [可验收结果]。 范围： - 可以改：[文件/目录/页面] - 不要改：[禁区/外部接口/已有用户改动] 要求： - 先读 AGENTS.md、README 和相关源码 - 改动前说明你准备改哪里 - 需要联网、启动服务或推送前先说明理由 - 完成后运行最窄验证 验收： - [测试/构建/页面访问/截图/commit/push] - 最终报告列出改动、验证、风险和未完成项 反例",
       "title": "任务路径"
     },
     {
@@ -3728,7 +3742,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "skills-repositories.html",
       "prompts": [],
       "section": "mattpocock/skills",
-      "text": "mattpocock/skills 是一组小而可组合的工程 skills，强调 shared language、需求拷问、TDD、调试、架构改进和代码审查。它适合先把“我要做什么”问清楚，再决定是否进入更重的交付流程。",
+      "text": "mattpocock/skills 当前上游为 v1.2.2（2026-08-05 发布），已经从一组独立 prompt 扩成有明确路由的工程技能套件：按 user-invoked / model-invoked 分层，把 shared language、需求拷问、TDD、调试、架构改进和代码审查串成可组合流程。它适合先把“我要做什么”问清楚，再决定是否进入更重的交付流程。",
       "title": "Skills 仓库"
     },
     {
@@ -3737,7 +3751,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "skills-repositories.html",
       "prompts": [],
       "section": "能力",
-      "text": "$grill-with-docs、$grill-me、$tdd、$diagnosing-bugs、$improve-codebase-architecture、$code-review 等。",
+      "text": "$ask-matt 负责路由；常见主线是 $grill-with-docs → $to-spec → $to-tickets → $implement，后者内部用 $tdd 驱动并在收尾前运行 $code-review。大型跨会话工作再用 $wayfinder。",
       "title": "Skills 仓库"
     },
     {
@@ -3746,7 +3760,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "skills-repositories.html",
       "prompts": [],
       "section": "最适合",
-      "text": "需求不稳、术语混乱、想先被高质量追问，或者想把工程任务拆成 PRD / issues。",
+      "text": "需求不稳、术语混乱、想先被高质量追问，或需要把工程任务拆成可独立推进的决策 / tickets。Bug、原型和领域语言分别看 $diagnosing-bugs、$prototype、$domain-modeling / $codebase-design；非代码问题用 $grill-me。",
       "title": "Skills 仓库"
     },
     {
@@ -3754,10 +3768,10 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h3",
       "page": "skills-repositories.html",
       "prompts": [
-        "$grill-with-docs\n仓库：当前 Codex Desktop 打开的仓库。\n目标：我想做一个新的导出功能。\n请先读 AGENTS.md、README 和相关源码，然后只追问会改变范围或验收的问题。\n不要开始实现。"
+        "$ask-matt\n仓库：当前 Codex Desktop 打开的仓库。\n目标：我想做一个新的导出功能。\n请先判断应走 $grill-with-docs、$prototype、$diagnosing-bugs 还是 $wayfinder；\n先读 AGENTS.md、README 和相关源码，只追问会改变范围或验收的问题。\n不要开始实现。"
       ],
       "section": "启用路径",
-      "text": "Codex CLI / 本地文件系统安装路径：README 给出的完整命令是 npx skills@latest add mattpocock/skills。安装后用 $setup-matt-pocock-skills 选择技能和项目偏好；该 CLI 操作不会自动把未安装插件加入 Desktop 的 Plugins 面板。 $grill-with-docs 仓库：当前 Codex Desktop 打开的仓库。 目标：我想做一个新的导出功能。 请先读 AGENTS.md、README 和相关源码，然后只追问会改变范围或验收的问题。 不要开始实现。 使用边界它不是全自动大框架。先用 setup 选择需要的 skills，再按任务调用，不要一次加载全部。 仓库链接github.com/mattpocock/skills 历史案例",
+      "text": "Codex / 其他 Agent Skills harness：通过 skills.sh 运行 npx skills@latest add mattpocock/skills，在交互中选择目标 skills 和 agent，并确保选择 setup-matt-pocock-skills；每个仓库运行一次。上游目前没有原生 Codex plugin；Claude Code 的 claude plugins install mattpocock-skills 是另一条官方插件路径，不要混作 Codex 安装方式。 $ask-matt 仓库：当前 Codex Desktop 打开的仓库。 目标：我想做一个新的导出功能。 请先判断应走 $grill-with-docs、$prototype、$diagnosing-bugs 还是 $wayfinder； 先读 AGENTS.md、README 和相关源码，只追问会改变范围或验收的问题。 不要开始实现。 调用边界user-invoked skills 需要显式调用；model-invoked skills 可在任务匹配时由 agent 自动触发。先用 $ask-matt 或 $setup-matt-pocock-skills 选路径，不要一次加载全部。 近期变化review 已由上游改名为 code-review，writing-great-skills 改为 writing-for-agents；$prototype 现在以可分享的单文件 HTML 作为主要证据。 仓库链接github.com/mattpocock/skills 历史案例",
       "title": "Skills 仓库"
     },
     {
@@ -4094,7 +4108,16 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "prompt-guidance.html",
       "prompts": [],
       "section": "模型与思考强度怎么选",
-      "text": "该 skill 按任务歧义、依赖深度、工具和验证负担、错误后果、延迟与成本来建议一个默认配置。它遵循当前官方模型分层：gpt-5.6-luna 面向高效、高吞吐任务，gpt-5.6-terra 是日常平衡选择，gpt-5.6-sol 面向旗舰质量；gpt-5.6 alias 路由到 gpt-5.6-sol。 medium 是平衡起点，延迟敏感任务可测试 low；只有代表性 eval 证明有收益时才升到 high 或 xhigh，max 只留给最难的质量优先工作。先补成功标准、依赖规则、工具路由和验证闭环，再考虑提高 reasoning effort。 授权边界",
+      "text": "该 skill 按任务歧义、依赖深度、工具和验证负担、错误后果、延迟与成本来建议一个默认配置。它遵循当前官方模型分层：gpt-5.6-luna 面向高效、高吞吐任务，gpt-5.6-terra 是日常平衡选择，gpt-5.6-sol 面向旗舰质量；gpt-5.6 alias 路由到 gpt-5.6-sol。 medium 是平衡起点，延迟敏感任务可测试 low；只有代表性 eval 证明有收益时才升到 high 或 xhigh，max 只留给最难的质量优先工作。先补成功标准、依赖规则、工具路由和验证闭环，再考虑提高 reasoning effort。 价格更新",
+      "title": "GPT-5.6 提示词与 refine-user-prompt"
+    },
+    {
+      "fragment": "2026-07-30-terra-luna-降价",
+      "level": "h2",
+      "page": "prompt-guidance.html",
+      "prompts": [],
+      "section": "2026-07-30：Terra / Luna 降价",
+      "text": "OpenAI 自 2026 年 7 月 30 日起下调 GPT-5.6 Terra 与 Luna 的标准 API 标价。以下均为每 100 万 text tokens 的美元价格；API 账单与 ChatGPT / Codex 订阅不是同一计费口径。 gpt-5.6-terraInput：$2.50 → $2.00Cached input：$0.25 → $0.20Output：$15.00 → $12.00；整体降幅 20% gpt-5.6-lunaInput：$1.00 → $0.20Cached input：$0.10 → $0.02Output：$6.00 → $1.20；整体降幅 80% 订阅没有同步降价OpenAI 明确说明 ChatGPT 与 Codex 的订阅价格和 quota budgets 不变；变化是 Terra / Luna 在 Codex 与 ChatGPT Work 中消耗更少 credits。 长上下文另算输入超过 272K tokens 时，官方模型页仍按整次请求收取 2× input 和 1.5× output；cache write 为 uncached input 的 1.25×。做成本估算时不要只乘上表基础单价。 选择建议重复、批量、边界清晰的检索、整理、测试与实现切片优先实测 Luna；日常主任务先用 Terra。价格下降不替代代表性 eval，也不意味着每个任务都应自动降级。 OpenAI 价格更新公告 · Terra 当前模型页 · Luna 当前模型页 授权边界",
       "title": "GPT-5.6 提示词与 refine-user-prompt"
     },
     {

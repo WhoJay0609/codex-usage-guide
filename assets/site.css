@@ -345,6 +345,18 @@ main {
   display: grid;
   gap: 12px;
 }
+.callout {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--surface-soft);
+  color: var(--ink);
+  line-height: 1.65;
+}
+.callout a { color: var(--accent); }
 
 .bento,
 .source-grid {
@@ -1033,6 +1045,7 @@ h3:hover .heading-permalink,
 :root[data-theme="dark"] .card,
 :root[data-theme="dark"] .source-card,
 :root[data-theme="dark"] .decision-row,
+:root[data-theme="dark"] .callout,
 :root[data-theme="dark"] .content-block,
 :root[data-theme="dark"] .step {
   background: var(--surface-soft);

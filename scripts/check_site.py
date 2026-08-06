@@ -14,10 +14,22 @@ import re
 from urllib.parse import urldefrag, urljoin, urlparse
 
 try:
-    from .build_site import MERMAID_INTEGRITY, MERMAID_SRC, generate, load_heading_fragments
+    from .build_site import (
+        MERMAID_INTEGRITY,
+        MERMAID_SRC,
+        generate,
+        load_heading_fragments,
+        load_publication_policy,
+    )
     from .site_model import SiteModelError, load_site_model
 except ImportError:  # Direct script execution.
-    from build_site import MERMAID_INTEGRITY, MERMAID_SRC, generate, load_heading_fragments
+    from build_site import (
+        MERMAID_INTEGRITY,
+        MERMAID_SRC,
+        generate,
+        load_heading_fragments,
+        load_publication_policy,
+    )
     from site_model import SiteModelError, load_site_model
 
 
@@ -39,17 +51,18 @@ CORE_NAV = {
     "resources.html",
 }
 REQUIRED_TEXT = {
-    "index.html": ["Codex Desktop", "Desktop 工作流", "30 秒选择入口", "官方事实", "最近更新", "查看完整更新记录"],
+    "index.html": ["Codex Desktop", "Desktop 工作流", "30 秒选择入口", "官方事实", "最近更新", "查看完整更新记录", "新手顺序"],
     "codex.html": ["Codex Desktop", "Desktop 为主"],
-    "install-desktop.html": ["Codex Desktop", "第一次打开桌面版"],
-    "desktop-cli.html": ["Codex Desktop", "这份手册只把 Codex Desktop 作为主入口"],
+    "install-desktop.html": ["Codex Desktop", "第一次打开桌面版", "不需要把绝对路径粘进 prompt"],
+    "desktop-cli.html": ["Codex Desktop", "这份手册只把 Codex Desktop 作为主入口", "页面边界"],
     "permissions.html": ["可能包含", "Codex Desktop 常见权限选择"],
     "mcp.html": ["MCP 与 Plugins", "不是同一个概念", "只需要可复用步骤", "要连接外部系统"],
-    "daily-workflow.html": ["真实实例", "失败停止"],
+    "daily-workflow.html": ["真实实例", "失败停止", "阅读边界"],
     "engineering.html": ["真实实例", "失败停止"],
     "research.html": ["真实实例", "失败停止"],
     "automation.html": ["Scheduled tasks", "后台 worktree", "失败停止"],
-    "workflows.html": ["先选工作面", "统一案例模板", "坏 prompt 怎么修"],
+    "workflows.html": ["先选工作面", "统一案例模板", "坏 prompt 怎么修", "项目已有的验证命令"],
+    "skills.html": ["调用语法", "$skill-name", "/ce-ideate"],
     "worktrees.html": ["Codex Desktop", "Handoff", "detached HEAD", ".worktreeinclude", "不是安全沙箱"],
     "compound-engineering.html": ["Compound Engineering plugin", "在 Codex Desktop 里安装", "核心七步怎么用", "1. /ce-ideate", "失败停止"],
     "skills-repositories.html": ["Codex 相关高 stars 开源仓库", "Codex CLI 生态 Top 10", "taste-skill", "design-taste-frontend", "ian-xiaohei-illustrations", "awesome-chatgpt-prompts-zh", "prompts-zh.json", "不是原生 Codex skill", "认知锚点", "Codex Desktop", "Compound Engineering", "mattpocock/skills", "academic-research-skills-codex", "skills/academic-research-suite", "agentic-awesome-skills", "modelcontextprotocol/servers", "星标快照", "ARIS", "refine-user-prompt", "pproenca/dot-skills", "第三方 Agent Skills 开放格式集合", ".codex/skills/<name>/", "curated", "experimental", "不是一个 Codex Plugin 或 MCP server", "WhoJay0609/whojay-skill", "$colleague-whojay", "已验证", "合理推断", "未知或阻塞", "不会自动授权删除、远程发布、外部消息、付费调用或 GPU 运行", "Panniantong/Agent-Reach", "$agent-reach", "第三方 CLI + Skill 互联网能力路由器", "agent-reach doctor --json", "不是原生 Codex、Plugin，也不是单一 MCP server", "agent-reach install --dry-run", "lidge-jun/opencodex", "第三方本地 provider proxy", "不是 Codex Skill、Plugin 或 MCP server", "127.0.0.1", "ocx restore", "不是 OpenAI 官方功能", "真实实例"],
@@ -419,6 +432,90 @@ def check_local_link(source: Path, href: str, pages: dict[str, PageParser]) -> l
         if fragment not in pages[rel].ids:
             return [f"{source.name}: missing anchor #{fragment} in {rel}"]
     return []
+
+
+def validate_publication_boundaries(
+    root: Path,
+    pages: dict[str, PageParser],
+    excluded_prefixes: list[str],
+) -> list[str]:
+    """Reject public-page links that enter a locally excluded path."""
+    root = root.resolve()
+    prefixes = []
+    for prefix in excluded_prefixes:
+        normalized = prefix.strip("/")
+        if normalized:
+            prefixes.append(normalized)
+
+    errors: list[str] = []
+    for rel, parser in pages.items():
+        source = root / rel
+        for href in parser.hrefs:
+            if not href or href.startswith(("javascript:", "data:")) or is_external(href):
+                continue
+            target_ref, _ = urldefrag(href)
+            if not target_ref:
+                target_ref = source.name
+            target = (source.parent / target_ref).resolve()
+            if not target.is_relative_to(root):
+                continue
+            target_rel = target.relative_to(root).as_posix()
+            if any(
+                target_rel == prefix or target_rel.startswith(f"{prefix}/")
+                for prefix in prefixes
+            ):
+                errors.append(
+                    f"{rel}: public link enters excluded path {target_rel}: {href}"
+                )
+    return errors
+
+
+def validate_search_index_coverage(root: Path, expected_pages: set[str]) -> list[str]:
+    """Ensure the generated search corpus has exactly one page record per public page."""
+    path = root / "assets/search-index.js"
+    try:
+        source = path.read_text(encoding="utf-8")
+    except OSError as error:
+        return [f"generated search index cannot be read: {error}"]
+
+    prefix = "window.GUIDE_SEARCH_INDEX = "
+    if not source.startswith(prefix):
+        return ["generated search index is missing the GUIDE_SEARCH_INDEX payload"]
+    payload_text = source[len(prefix):].strip()
+    if payload_text.endswith(";"):
+        payload_text = payload_text[:-1].rstrip()
+    try:
+        payload = json.loads(payload_text)
+    except json.JSONDecodeError as error:
+        return [f"generated search index is not valid JSON: {error.msg}"]
+    if not isinstance(payload, dict) or payload.get("schema_version") != 1:
+        return ["generated search index must declare schema_version 1"]
+    records = payload.get("records")
+    if not isinstance(records, list):
+        return ["generated search index is missing a records list"]
+
+    counts: Counter[str] = Counter()
+    errors: list[str] = []
+    for index, record in enumerate(records):
+        if not isinstance(record, dict) or record.get("level") != "page":
+            continue
+        page = record.get("page")
+        if not isinstance(page, str) or not page:
+            errors.append(f"generated search index page record #{index} has no page key")
+            continue
+        counts[page] += 1
+
+    actual_pages = set(counts)
+    for page in sorted(expected_pages - actual_pages):
+        errors.append(f"generated search index is missing page record: {page}")
+    for page in sorted(actual_pages - expected_pages):
+        errors.append(f"generated search index has unknown page record: {page}")
+    for page, count in sorted(counts.items()):
+        if count != 1:
+            errors.append(
+                f"generated search index must have exactly one page record for {page}, found {count}"
+            )
+    return errors
 
 
 def validate_semantic_contracts(pages: dict[str, PageParser]) -> list[str]:
@@ -881,6 +978,19 @@ def main() -> int:
     errors.extend(validate_product_accuracy_contracts(pages))
     errors.extend(validate_interaction_contracts(pages))
     model_pages = {page.path: page for page in model.pages}
+    try:
+        policy = load_publication_policy(ROOT)
+    except (OSError, ValueError) as error:
+        policy = {}
+        errors.append(f"publication policy invalid: {error}")
+    publication = policy.get("publication", {})
+    if isinstance(publication, dict):
+        excluded_prefixes = publication.get("excluded_local_prefixes", [])
+        if isinstance(excluded_prefixes, list):
+            errors.extend(
+                validate_publication_boundaries(ROOT, pages, [str(prefix) for prefix in excluded_prefixes])
+            )
+    errors.extend(validate_search_index_coverage(ROOT, set(model_pages)))
     for rel in sorted(SOURCE_REQUIRED_PAGES):
         page = model_pages.get(rel)
         parser = pages.get(rel)
@@ -928,7 +1038,7 @@ def main() -> int:
 
     try:
         stale_assets = generate(ROOT, check=True)
-    except SiteModelError as error:
+    except (OSError, SiteModelError, ValueError) as error:
         errors.append(f"site data invalid: {error}")
         stale_assets = []
     for path in stale_assets:

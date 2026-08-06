@@ -24,9 +24,24 @@ test('renders manifest sources and a visible generated changelog', async ({ page
   await expect(page.locator('.changelog-disclosure')).toContainText('查看完整更新记录');
 
   await page.goto('/prompt-guidance.html');
-  await expect(page.locator('.page-source-link')).toHaveCount(2);
+  await expect(page.locator('.page-source-link')).toHaveCount(6);
   await expect(page.locator('.page-sources')).toContainText('OpenAI 官方');
   await expect(page.locator('.page-sources')).toContainText('第三方上游');
+});
+
+test('documents the Terra and Luna price cuts and an executable Luna subagent route', async ({ page }) => {
+  await page.goto('/prompt-guidance.html#2026-07-30-terra-luna-降价');
+  const pricing = page.locator('#model-price-update');
+  await expect(pricing).toContainText('Input：$2.50 → $2.00');
+  await expect(pricing).toContainText('Input：$1.00 → $0.20');
+  await expect(pricing).toContainText('订阅没有同步降价');
+
+  await page.goto('/subagents.html#用-opencodex-调用-luna-子代理');
+  const routing = page.locator('#opencodex-luna-subagent');
+  await expect(routing).toContainText('gpt-5.6-luna');
+  await expect(routing).toContainText('fork_turns: "none"');
+  await expect(routing).toContainText('syncCodexSubagentDefaults');
+  await expect(routing.locator('a[href="https://opencodex.me/zh-cn/guides/sub-agent-surface/"]')).toBeVisible();
 });
 
 test('keeps every public page usable at desktop and mobile widths', async ({ page }) => {

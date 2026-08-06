@@ -1,4 +1,5 @@
 import unittest
+import json
 from pathlib import Path
 import sys
 from tempfile import TemporaryDirectory
@@ -18,7 +19,9 @@ from check_site import (  # noqa: E402
     validate_screenshot_registry,
     manifest_html_paths,
     validate_metadata_contracts,
+    validate_publication_boundaries,
     validate_required_pages,
+    validate_search_index_coverage,
     validate_semantic_contracts,
 )
 
@@ -31,6 +34,62 @@ def parse(markup: str) -> PageParser:
 
 
 class SemanticContractTests(unittest.TestCase):
+    def test_publication_boundary_rejects_links_to_excluded_local_paths(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            pages = {
+                "index.html": parse(
+                    '<main><a href="doc/task_plan.md">内部记录</a>'
+                    '<a href="docs/public.md">公开资料</a>'
+                    '<a href="https://example.test/doc/page">外部资料</a></main>'
+                )
+            }
+            errors = validate_publication_boundaries(root, pages, ["doc/"])
+        self.assertEqual(
+            ["index.html: public link enters excluded path doc/task_plan.md: doc/task_plan.md"],
+            errors,
+        )
+
+    def test_search_index_coverage_requires_exact_public_page_records(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "assets").mkdir()
+            payload = {
+                "schema_version": 1,
+                "records": [
+                    {"level": "page", "page": "index.html"},
+                    {"level": "page", "page": "index.html"},
+                    {"level": "page", "page": "stale.html"},
+                ],
+            }
+            (root / "assets/search-index.js").write_text(
+                "window.GUIDE_SEARCH_INDEX = " + json.dumps(payload),
+                encoding="utf-8",
+            )
+            errors = validate_search_index_coverage(root, {"index.html", "skills.html"})
+        self.assertTrue(any("missing page record: skills.html" in error for error in errors), errors)
+        self.assertTrue(any("unknown page record: stale.html" in error for error in errors), errors)
+        self.assertTrue(any("exactly one page record for index.html" in error for error in errors), errors)
+
+    def test_search_index_coverage_accepts_one_record_per_public_page(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "assets").mkdir()
+            payload = {
+                "schema_version": 1,
+                "records": [
+                    {"level": "page", "page": "index.html"},
+                    {"level": "section", "page": "index.html"},
+                    {"level": "page", "page": "skills.html"},
+                ],
+            }
+            (root / "assets/search-index.js").write_text(
+                "window.GUIDE_SEARCH_INDEX = " + json.dumps(payload),
+                encoding="utf-8",
+            )
+            errors = validate_search_index_coverage(root, {"index.html", "skills.html"})
+        self.assertEqual([], errors)
+
     def test_product_accuracy_contract_rejects_obsolete_scheduled_task_terminology(self) -> None:
         pages = {
             "automation.html": parse("<main>Triage inbox</main>"),

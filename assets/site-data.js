@@ -1,12 +1,26 @@
 window.GUIDE_SITE_DATA = {
   "asset_fingerprints": {
-    "assets/site.css": "b8cda07e3007b4ed5a557afe6f6ee8746532209ffca7dab529b8aed8a72a9ec3",
+    "assets/site.css": "131d51115bcc245be03bc65023693bd5a929277c4059cd685159f291a8d43395",
     "assets/site.js": "59423ac374ef053874fb1615d4c99b5ab28006cf53cccf21d51a98c2cbc0688e",
     "assets/theme.js": "187420686654f8c1c58df32a0687d4a0d11e6e0707b8696d5f077774982d766a",
     "figures/social-preview.png": "e0ee23ae3b99a8507b4aa423c530289468f1db067d1e7041e4afcefb5fe3ac58"
   },
-  "build_id": "d0550756eb85",
+  "build_id": "3942a0fae6d0",
   "changelog": [
+    {
+      "category": "quality",
+      "date": "2026-08-06",
+      "summary": "把新手首条路径、$skill-name 与插件 slash 命令、项目验证命令和 Desktop 页面边界说清，并加入公开发布路径与搜索索引覆盖门禁。",
+      "target": "index.html",
+      "title": "根据读者与专家反馈整理首轮指南"
+    },
+    {
+      "category": "content",
+      "date": "2026-08-06",
+      "summary": "更新 user-invoked / model-invoked 分层、ask-matt 到 implement 的工程主线、skills.sh 的 Codex 安装边界，以及原生 Codex plugin 暂缓和近期技能改名。",
+      "target": "skills-repositories.html#mattpocock-skills",
+      "title": "同步 Matt Pocock skills v1.2.2 说明"
+    },
     {
       "category": "content",
       "date": "2026-07-23",
@@ -400,6 +414,7 @@ window.GUIDE_SITE_DATA = {
       "refine-user-prompt-是什么",
       "四种执行模式",
       "模型与思考强度怎么选",
+      "2026-07-30-terra-luna-降价",
       "润色不会自动扩大权限",
       "安装和调用",
       "真实实例-润色后执行文档更新",
@@ -541,6 +556,7 @@ window.GUIDE_SITE_DATA = {
       "输入",
       "输出",
       "整合",
+      "用-opencodex-调用-luna-子代理",
       "推荐和不推荐的拆法",
       "推荐-并行只读审查",
       "推荐-互不重叠实现",
@@ -651,7 +667,7 @@ window.GUIDE_SITE_DATA = {
     {
       "description": "从一个可验证的小任务开始，并区分 Codex 原生能力与本指南推荐实践。",
       "facts_verified": "2026-07-16",
-      "modified": "2026-07-16",
+      "modified": "2026-08-06",
       "nav_label": "首页",
       "path": "index.html",
       "sources": [
@@ -666,7 +682,7 @@ window.GUIDE_SITE_DATA = {
     {
       "description": "安装 ChatGPT desktop app，并在 Codex 工作面完成首个只读任务。",
       "facts_verified": "2026-07-16",
-      "modified": "2026-07-16",
+      "modified": "2026-08-06",
       "nav_label": "安装",
       "path": "install-desktop.html",
       "sources": [
@@ -681,7 +697,7 @@ window.GUIDE_SITE_DATA = {
     {
       "description": "在 ChatGPT desktop app 的 Codex 工作面使用线程、Browser、Integrated terminal、审批与 diff。",
       "facts_verified": "2026-07-16",
-      "modified": "2026-07-16",
+      "modified": "2026-08-06",
       "nav_label": "Desktop",
       "path": "desktop-cli.html",
       "sources": [
@@ -751,7 +767,7 @@ window.GUIDE_SITE_DATA = {
     {
       "description": "用 $skill-name mention 选择和使用 Codex skills。",
       "facts_verified": "2026-07-16",
-      "modified": "2026-07-16",
+      "modified": "2026-08-06",
       "nav_label": "Skills",
       "path": "skills.html",
       "sources": [
@@ -805,8 +821,8 @@ window.GUIDE_SITE_DATA = {
     },
     {
       "description": "显式传递上下文、拆分写域并由主线程收口 subagent 工作。",
-      "facts_verified": "2026-07-16",
-      "modified": "2026-07-16",
+      "facts_verified": "2026-07-31",
+      "modified": "2026-07-31",
       "nav_label": "Subagents",
       "path": "subagents.html",
       "sources": [
@@ -814,6 +830,16 @@ window.GUIDE_SITE_DATA = {
           "kind": "official",
           "label": "Subagents",
           "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents"
+        },
+        {
+          "kind": "third_party",
+          "label": "OpenCodex sub-agent surface",
+          "url": "https://opencodex.me/zh-cn/guides/sub-agent-surface/"
+        },
+        {
+          "kind": "third_party",
+          "label": "OpenCodex configuration",
+          "url": "https://opencodex.me/zh-cn/reference/configuration/"
         }
       ],
       "title": "Subagents"
@@ -836,7 +862,7 @@ window.GUIDE_SITE_DATA = {
     {
       "description": "根据任务复杂度选择工作流，并用推荐 receipt 实践收口。",
       "facts_verified": "2026-07-12",
-      "modified": "2026-07-12",
+      "modified": "2026-08-06",
       "nav_label": "任务",
       "path": "workflows.html",
       "sources": [],
@@ -845,7 +871,7 @@ window.GUIDE_SITE_DATA = {
     {
       "description": "完成解释、修复、测试和审查，并用推荐 closeout 字段收口。",
       "facts_verified": "2026-07-12",
-      "modified": "2026-07-12",
+      "modified": "2026-08-06",
       "nav_label": "日常",
       "path": "daily-workflow.html",
       "sources": [],
@@ -906,8 +932,8 @@ window.GUIDE_SITE_DATA = {
     },
     {
       "description": "比较第三方 skills、开放格式目录、证据工作流与互联网工具链仓库的安装边界。",
-      "facts_verified": "2026-07-22",
-      "modified": "2026-07-22",
+      "facts_verified": "2026-08-06",
+      "modified": "2026-08-06",
       "nav_label": "Skills 仓库",
       "path": "skills-repositories.html",
       "sources": [
@@ -920,6 +946,16 @@ window.GUIDE_SITE_DATA = {
           "kind": "third_party",
           "label": "GitHub codex-cli topic",
           "url": "https://github.com/topics/codex-cli"
+        },
+        {
+          "kind": "third_party",
+          "label": "Matt Pocock skills repository",
+          "url": "https://github.com/mattpocock/skills"
+        },
+        {
+          "kind": "third_party",
+          "label": "skills.sh installer",
+          "url": "https://skills.sh/mattpocock/skills"
         },
         {
           "kind": "third_party",
@@ -956,8 +992,8 @@ window.GUIDE_SITE_DATA = {
     },
     {
       "description": "解读 GPT-5.6 提示词指南，并使用 refine-user-prompt 把原始请求改写成可执行任务合同。",
-      "facts_verified": "2026-07-16",
-      "modified": "2026-07-16",
+      "facts_verified": "2026-07-31",
+      "modified": "2026-07-31",
       "nav_label": "提示词",
       "path": "prompt-guidance.html",
       "sources": [
@@ -965,6 +1001,26 @@ window.GUIDE_SITE_DATA = {
           "kind": "official",
           "label": "GPT-5.6 prompting guidance",
           "url": "https://developers.openai.com/api/docs/guides/prompt-guidance-gpt-5p6"
+        },
+        {
+          "kind": "official",
+          "label": "GPT-5.6 launch pricing",
+          "url": "https://openai.com/index/gpt-5-6/"
+        },
+        {
+          "kind": "official",
+          "label": "GPT-5.6 price-performance update",
+          "url": "https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/"
+        },
+        {
+          "kind": "official",
+          "label": "GPT-5.6 Terra model",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.6-terra"
+        },
+        {
+          "kind": "official",
+          "label": "GPT-5.6 Luna model",
+          "url": "https://developers.openai.com/api/docs/models/gpt-5.6-luna"
         },
         {
           "kind": "third_party",

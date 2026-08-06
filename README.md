@@ -64,8 +64,8 @@ https://github.com/WhoJay0609/refine-user-prompt
 - `data/site-manifest.json`: 20 个公开根页面、导航、描述、发布 URL 和逐页资料依据的唯一清单。
 - `data/changelog.json`: 首页“最近更新”和完整更新记录的唯一数据源。
 - `data/heading-fragments.json`: canonical 标题 fragment 与 legacy alias 的受审映射。
-- `data/publication-policy.json`: 公开搜索语料的排除项和敏感内容规则。
-- `scripts/check_site.py`: 发布前静态检查，覆盖 HTML 页面、站内链接、锚点和关键章节。
+- `data/publication-policy.json`: 公开搜索语料的排除项、敏感内容规则和本地发布边界（`doc/` 不进入公开页面链接）。
+- `scripts/check_site.py`: 发布前静态检查，覆盖 HTML 页面、站内链接、锚点、关键章节、公开边界和搜索索引覆盖。
 - `*.html`: 多页面指南，每页可直接通过 GitHub Pages 访问。
 - `skills-repositories.html`: Codex 相关高 stars 开源仓库选择页，包含 skills、MCP、其他辅助工具、第三方仓库边界和可复制 Codex Desktop prompts。
 - `figures/*.mmd`: Mermaid 流程图源文件，可在 GitHub 上预览。
@@ -83,7 +83,7 @@ https://github.com/WhoJay0609/refine-user-prompt
 当前单独说明的扩展：
 
 - `compound-engineering`: https://github.com/EveryInc/compound-engineering-plugin
-- `mattpocock/skills`: https://github.com/mattpocock/skills
+- `mattpocock/skills`（当前上游 v1.2.2；Codex 走 `skills.sh` / `npx skills@latest add`，原生 Codex plugin 暂缓）: https://github.com/mattpocock/skills
 - `academic-research-skills-codex`: https://github.com/Imbad0202/academic-research-skills-codex
 - `ARIS`: https://github.com/wanshuiyin/auto-claude-code-research-in-sleep
 - `awesome-chatgpt-prompts-zh`: https://github.com/plexpt/awesome-chatgpt-prompts-zh
@@ -91,7 +91,7 @@ https://github.com/WhoJay0609/refine-user-prompt
 
 ## 发布建议
 
-GitHub Pages 使用仓库根目录发布，`index.html` 是公开指南主入口。站点采用普通静态 HTML/CSS/JS，不需要构建步骤。不要把生成目录或本地任务过程文档发布为主内容。
+GitHub Pages 使用仓库根目录发布，`index.html` 是公开指南主入口。站点采用普通静态 HTML/CSS/JS，不需要构建步骤。`data/site-manifest.json` 列出公开根页面；`doc/` 只保存本地执行记录，不能从公开页面链接进入，也不要把它发布为主内容。
 
 发布前先运行：
 

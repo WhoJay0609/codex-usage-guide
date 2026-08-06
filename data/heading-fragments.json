@@ -1051,6 +1051,12 @@
         "legacy": [
           "heading-prompt-guidance-10"
         ]
+      },
+      "heading-prompt-guidance-11": {
+        "canonical": "2026-07-30-terra-luna-降价",
+        "legacy": [
+          "heading-prompt-guidance-11"
+        ]
       }
     },
     "goal.html": {
@@ -2298,6 +2304,12 @@
         "canonical": "真实实例-历史复合案例",
         "legacy": [
           "heading-subagents-17"
+        ]
+      },
+      "heading-subagents-18": {
+        "canonical": "用-opencodex-调用-luna-子代理",
+        "legacy": [
+          "heading-subagents-18"
         ]
       },
       "heading-subagents-2": {

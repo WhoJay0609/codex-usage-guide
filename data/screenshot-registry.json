@@ -14,7 +14,7 @@
       "facts_verified": "2026-07-23",
       "width": 1440,
       "height": 900,
-      "sha256": "c007d5b0ef553719b9261000e71bdd4cb236e2ba4b08d9b7fcc5555609a0ecac",
+      "sha256": "1b6e4e059c7c72dee7acd9d33ef6ccb4f9fd37a9291b1099b7add3d6459f6a66",
       "review_status": "pending_independent_review",
       "source_deleted": true,
       "redaction_notes": "Generic workspace/repo placeholders; no usernames, tokens, or local paths."
@@ -32,7 +32,7 @@
       "facts_verified": "2026-07-23",
       "width": 1440,
       "height": 900,
-      "sha256": "120d92ecef0259399f90d460b4f3f7000bb566475c025f4187fc6dabd991bc26",
+      "sha256": "9e84c34590e67162167d9f53f89509a3abb0e2f191d949dc850a68f90e894707",
       "review_status": "pending_independent_review",
       "source_deleted": true,
       "redaction_notes": "Generic workspace/repo placeholders; no usernames, tokens, or local paths."
@@ -50,7 +50,7 @@
       "facts_verified": "2026-07-23",
       "width": 1440,
       "height": 900,
-      "sha256": "b4e6df1957847309dc9570b054382f380aac866a8d4bb22f5432261f06b23248",
+      "sha256": "11a81c5a474c4d18565a2fa146261859063d66f8d39f4b3f4ea1dde92da6219e",
       "review_status": "pending_independent_review",
       "source_deleted": true,
       "redaction_notes": "Generic workspace/repo placeholders; no usernames, tokens, or local paths."
@@ -67,7 +67,7 @@
       "facts_verified": "2026-07-23",
       "width": 1440,
       "height": 900,
-      "sha256": "49edbe0c7a493d80d6aa21b43b8f4d1f1a4537feb9d8b93069c4f51acdcc8077",
+      "sha256": "a41b3bd5708b531f36e3c7a8c9fa551c57219402fcee0d12a088c00fd11f0bd5",
       "review_status": "pending_independent_review",
       "source_deleted": true,
       "redaction_notes": "Generic workspace/repo placeholders; no usernames, tokens, or local paths."
@@ -84,7 +84,7 @@
       "facts_verified": "2026-07-23",
       "width": 1440,
       "height": 900,
-      "sha256": "5ffbd284e777d0e3f143650c630c68a2133adb500326969ae607c4e685ade7fc",
+      "sha256": "ed8f3bb472ae345a33728de1b5df1fda2446a120ed17e481bf06de25202b11dc",
       "review_status": "pending_independent_review",
       "source_deleted": true,
       "redaction_notes": "Generic workspace/repo placeholders; no usernames, tokens, or local paths."
