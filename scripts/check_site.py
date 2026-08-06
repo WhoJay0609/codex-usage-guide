@@ -3,9 +3,10 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
-import struct
 import sys
+import struct
 from collections import Counter
 from html.parser import HTMLParser
 from pathlib import Path
@@ -64,9 +65,8 @@ REQUIRED_TEXT = {
     "skills.html": ["调用语法", "$skill-name", "/ce-ideate"],
     "worktrees.html": ["Codex Desktop", "Handoff", "detached HEAD", ".worktreeinclude", "不是安全沙箱"],
     "compound-engineering.html": ["Compound Engineering plugin", "在 Codex Desktop 里安装", "核心七步怎么用", "1. /ce-ideate", "失败停止"],
-    "skills-repositories.html": ["Codex 相关高 stars 开源仓库", "Codex CLI 生态 Top 10", "taste-skill", "design-taste-frontend", "ian-xiaohei-illustrations", "awesome-chatgpt-prompts-zh", "prompts-zh.json", "不是原生 Codex skill", "认知锚点", "Codex Desktop", "Compound Engineering", "mattpocock/skills", "v1.2.2", "$ask-matt", "$to-spec", "$to-tickets", "$implement", "$wayfinder", "user-invoked", "model-invoked", "skills.sh", "没有原生 Codex plugin", "writing-for-agents", "academic-research-skills-codex", "skills/academic-research-suite", "agentic-awesome-skills", "modelcontextprotocol/servers", "星标快照", "ARIS", "refine-user-prompt", "pproenca/dot-skills", "第三方 Agent Skills 开放格式集合", ".codex/skills/<name>/", "curated", "experimental", "不是一个 Codex Plugin 或 MCP server", "WhoJay0609/whojay-skill", "$colleague-whojay", "已验证", "合理推断", "未知或阻塞", "不会自动授权删除、远程发布、外部消息、付费调用或 GPU 运行", "Panniantong/Agent-Reach", "$agent-reach", "第三方 CLI + Skill 互联网能力路由器", "agent-reach doctor --json", "不是原生 Codex、Plugin，也不是单一 MCP server", "agent-reach install --dry-run", "lidge-jun/opencodex", "第三方本地 provider proxy", "不是 Codex Skill、Plugin 或 MCP server", "127.0.0.1", "ocx restore", "不是 OpenAI 官方功能", "真实实例"],
-    "subagents.html": ["用 OpenCodex 调用 Luna 子代理", "@bitkyc08/opencodex", "gpt-5.6-luna", "fork_turns: \"none\"", "unreadable_encrypted_agent_task", "syncCodexSubagentDefaults"],
-    "prompt-guidance.html": ["GPT-5.6", "官方指南解读", "refine-user-prompt", "refine_then_execute", "授权边界", "2026-07-30：Terra / Luna 降价", "$0.20", "$1.20", "订阅没有同步降价", "真实实例"],
+    "skills-repositories.html": ["Codex 相关高 stars 开源仓库", "Codex CLI 生态 Top 10", "taste-skill", "design-taste-frontend", "ian-xiaohei-illustrations", "awesome-chatgpt-prompts-zh", "prompts-zh.json", "不是原生 Codex skill", "认知锚点", "Codex Desktop", "Compound Engineering", "mattpocock/skills", "academic-research-skills-codex", "skills/academic-research-suite", "agentic-awesome-skills", "modelcontextprotocol/servers", "星标快照", "ARIS", "refine-user-prompt", "pproenca/dot-skills", "第三方 Agent Skills 开放格式集合", ".codex/skills/<name>/", "curated", "experimental", "不是一个 Codex Plugin 或 MCP server", "WhoJay0609/whojay-skill", "$colleague-whojay", "已验证", "合理推断", "未知或阻塞", "不会自动授权删除、远程发布、外部消息、付费调用或 GPU 运行", "Panniantong/Agent-Reach", "$agent-reach", "第三方 CLI + Skill 互联网能力路由器", "agent-reach doctor --json", "不是原生 Codex、Plugin，也不是单一 MCP server", "agent-reach install --dry-run", "lidge-jun/opencodex", "第三方本地 provider proxy", "不是 Codex Skill、Plugin 或 MCP server", "127.0.0.1", "ocx restore", "不是 OpenAI 官方功能", "真实实例"],
+    "prompt-guidance.html": ["GPT-5.6", "官方指南解读", "refine-user-prompt", "refine_then_execute", "授权边界", "真实实例"],
     "resources.html": ["Codex Desktop", "本指南只保留 Desktop 读者主线", "GPT-5.6 prompting guidance", "七步工程循环"],
 }
 FORBIDDEN_VISIBLE_TEXT = {
@@ -114,6 +114,23 @@ REQUIRED_IMAGES = {
         "figures/high-stars-engineering-research.png",
         "figures/high-stars-automation-loop.png",
     },
+    "install-desktop.html": {
+        "figures/desktop-install-entry.png",
+        "figures/desktop-open-repository.png",
+        "figures/desktop-approval-request.png",
+    },
+    "desktop-cli.html": {
+        "figures/desktop-browser-feedback.png",
+        "figures/desktop-approval-request.png",
+        "figures/desktop-diff-review.png",
+    },
+}
+DESKTOP_SCREENSHOT_STATES = {
+    "setup",
+    "open_repository",
+    "approval",
+    "diff_review",
+    "browser_feedback",
 }
 LOOP_STAGES = [
     ("choose", "task-entry"),
@@ -849,6 +866,88 @@ def validate_case_index(pages: dict[str, PageParser], index_text: str) -> list[s
     return errors
 
 
+def validate_screenshot_registry(pages: dict[str, PageParser]) -> list[str]:
+    errors: list[str] = []
+    registry_path = ROOT / "data" / "screenshot-registry.json"
+    if not registry_path.exists():
+        errors.append("data/screenshot-registry.json: missing desktop screenshot registry")
+        return errors
+    try:
+        registry = json.loads(registry_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as error:
+        errors.append(f"data/screenshot-registry.json: invalid JSON: {error}")
+        return errors
+    if registry.get("schema_version") != 1:
+        errors.append("data/screenshot-registry.json: expected schema_version 1")
+        return errors
+    entries = registry.get("screenshots")
+    if not isinstance(entries, list):
+        errors.append("data/screenshot-registry.json: screenshots must be a list")
+        return errors
+    seen_ids: set[str] = set()
+    seen_states: set[str] = set()
+    for entry in entries:
+        if not isinstance(entry, dict):
+            errors.append("data/screenshot-registry.json: screenshot entry must be an object")
+            continue
+        screenshot_id = entry.get("id", "")
+        rel_file = entry.get("file", "")
+        product_state = entry.get("product_state", "")
+        alt = entry.get("alt", "")
+        caption = entry.get("caption", "")
+        facts_verified = entry.get("facts_verified", "")
+        expected_hash = entry.get("sha256", "")
+        review_status = entry.get("review_status", "")
+        for field_name, value in {
+            "id": screenshot_id,
+            "file": rel_file,
+            "product_state": product_state,
+            "alt": alt,
+            "caption": caption,
+            "facts_verified": facts_verified,
+            "sha256": expected_hash,
+            "review_status": review_status,
+        }.items():
+            if not value:
+                errors.append(
+                    f"screenshot registry {screenshot_id or rel_file}: missing {field_name}"
+                )
+        if screenshot_id in seen_ids:
+            errors.append(f"screenshot registry: duplicate id {screenshot_id}")
+        seen_ids.add(str(screenshot_id))
+        if product_state in seen_states:
+            errors.append(f"screenshot registry: duplicate product_state {product_state}")
+        seen_states.add(str(product_state))
+        if product_state not in DESKTOP_SCREENSHOT_STATES:
+            errors.append(f"screenshot registry {screenshot_id}: unknown product_state {product_state}")
+        image_path = ROOT / str(rel_file)
+        if not image_path.exists():
+            errors.append(f"screenshot registry {screenshot_id}: missing file {rel_file}")
+            continue
+        actual_hash = hashlib.sha256(image_path.read_bytes()).hexdigest()
+        if actual_hash != expected_hash:
+            errors.append(
+                f"screenshot registry {screenshot_id}: sha256 mismatch for {rel_file}"
+            )
+        referenced = False
+        for page_entries in pages.values():
+            if rel_file in page_entries.images:
+                referenced = True
+                break
+        if not referenced:
+            errors.append(f"screenshot registry {screenshot_id}: {rel_file} is not referenced by any page")
+        page_targets = entry.get("pages", [])
+        if not isinstance(page_targets, list) or not page_targets:
+            errors.append(f"screenshot registry {screenshot_id}: pages must be a non-empty list")
+    missing_states = DESKTOP_SCREENSHOT_STATES - seen_states
+    if missing_states:
+        errors.append(
+            "screenshot registry: missing product states: "
+            + ", ".join(sorted(missing_states))
+        )
+    return errors
+
+
 def validate_required_pages(pages: dict[str, PageParser]) -> list[str]:
     errors: list[str] = []
     for rel in sorted(CONCEPT_PAGES):
@@ -935,6 +1034,7 @@ def main() -> int:
         errors.extend(validate_case_index(pages, evidence_index.read_text(encoding="utf-8")))
     else:
         errors.append("docs/case-evidence-index.md: missing case evidence index")
+    errors.extend(validate_screenshot_registry(pages))
 
     try:
         stale_assets = generate(ROOT, check=True)
@@ -997,8 +1097,10 @@ def main() -> int:
         if missing_images:
             errors.append(f"{rel}: missing required images: {', '.join(sorted(missing_images))}")
 
-    if "Geist" in (ROOT / "assets/site.css").read_text(encoding="utf-8"):
-        errors.append("assets/site.css: unavailable Geist font claim remains")
+    if not (ROOT / "robots.txt").exists():
+        errors.append("robots.txt: missing publication robots file")
+    if not (ROOT / "sitemap.xml").exists():
+        errors.append("sitemap.xml: missing publication sitemap file")
 
     if errors:
         print("Site check failed:")

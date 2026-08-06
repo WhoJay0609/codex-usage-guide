@@ -8,6 +8,7 @@ PDF = $(OUTDIR)/codex-usage-guide.pdf
 
 generate:
 	$(PYTHON) scripts/build_site.py
+	$(PYTHON) scripts/generate_desktop_screenshots.py
 
 check:
 	$(PYTHON) scripts/build_site.py --check

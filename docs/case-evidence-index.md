@@ -14,6 +14,11 @@
 | `academic-research-suite-demo` | `skills-repositories.html#ars-case` | 演示场景 | 上游公开说明 | 不需历史复核 | 2026-07-11 | A3 | 没有本项目执行证据 |
 | `aris-sleep-research-demo` | `skills-repositories.html#aris-case` | 演示场景 | 上游公开说明 | 不需历史复核 | 2026-07-11 | A3 | 没有本项目执行证据 |
 | `skills-page-delivery` | `skills-repositories.html#real-example` | 历史案例 | 公开计划、图片、检查、提交与 PR | 已复核 | 2026-07-11 | A3 | 不包含忽略的过程记录 |
+| `checkout-test-fix` | `daily-workflow.html#checkout-fix-case` | 演示场景 | 日常修复六要素模板 | 不需历史复核 | 2026-07-23 | A3 | 没有 example-store 仓库执行证据 |
+| `api-rate-limit-fix` | `engineering.html#api-endpoint-case` | 演示场景 | 工程修复六要素模板 | 不需历史复核 | 2026-07-23 | A3 | 没有 API 仓库执行证据 |
+| `kv-cache-research-brief` | `research.html#kv-cache-case` | 演示场景 | 学术 brief 六要素模板 | 不需历史复核 | 2026-07-23 | A3 | 没有该研究方向执行证据 |
+| `ci-readonly-network` | `permissions.html#ci-readonly-case` | 演示场景 | 只读网络审批模板 | 不需历史复核 | 2026-07-23 | A3 | 没有 CI 仓库执行证据 |
+| `github-issue-read` | `mcp.html#github-issue-read-case` | 演示场景 | MCP 只读 issue 模板 | 不需历史复核 | 2026-07-23 | A3 | 没有外部 issue 仓库执行证据 |
 
 ## 发布规则
 

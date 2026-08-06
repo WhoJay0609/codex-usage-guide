@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://whojay0609.github.io/codex-usage-guide/sitemap.xml
