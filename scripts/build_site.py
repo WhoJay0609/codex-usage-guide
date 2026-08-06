@@ -93,6 +93,18 @@ def load_publication_policy(root: Path) -> dict[str, object]:
         raise ValueError(f"{path}: expected schema_version 1")
     if not isinstance(data.get("search"), dict) or not isinstance(data.get("sensitive_patterns"), list):
         raise ValueError(f"{path}: expected search and sensitive_patterns")
+    publication = data.get("publication", {})
+    if not isinstance(publication, dict):
+        raise ValueError(f"{path}: publication must be an object")
+    excluded_prefixes = publication.get("excluded_local_prefixes", [])
+    if not isinstance(excluded_prefixes, list) or any(
+        not isinstance(prefix, str)
+        or not prefix.strip()
+        or prefix.startswith(("/", "\\"))
+        or "\\" in prefix
+        for prefix in excluded_prefixes
+    ):
+        raise ValueError(f"{path}: publication.excluded_local_prefixes must contain relative POSIX prefixes")
     for item in data["sensitive_patterns"]:
         if not isinstance(item, dict) or not isinstance(item.get("name"), str) or not isinstance(item.get("pattern"), str):
             raise ValueError(f"{path}: invalid sensitive pattern")
