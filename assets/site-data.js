@@ -5,8 +5,15 @@ window.GUIDE_SITE_DATA = {
     "assets/theme.js": "187420686654f8c1c58df32a0687d4a0d11e6e0707b8696d5f077774982d766a",
     "figures/social-preview.png": "e0ee23ae3b99a8507b4aa423c530289468f1db067d1e7041e4afcefb5fe3ac58"
   },
-  "build_id": "3942a0fae6d0",
+  "build_id": "e5ccb6d565d7",
   "changelog": [
+    {
+      "category": "content",
+      "date": "2026-08-11",
+      "summary": "用中文解释 repository、working tree、暂存区、commit、分支、HEAD、remote、merge 和 PR，并以匿名只读历史会话整理 dev 集成、短分支、显式 staging、验证和 PR 的项目模式。",
+      "target": "git.html",
+      "title": "新增 Git 基础与项目高频操作"
+    },
     {
       "category": "quality",
       "date": "2026-08-06",
@@ -300,6 +307,16 @@ window.GUIDE_SITE_DATA = {
       "api-result",
       "api-recovery",
       "api-verify"
+    ],
+    "git.html": [
+      "git-mental-model",
+      "git-inspection",
+      "git-lifecycle",
+      "git-fetch-pull",
+      "git-recovery",
+      "git-project-operations",
+      "git-codex-prompt",
+      "git-boundaries"
     ],
     "goal.html": [
       "它是什么",
@@ -634,6 +651,7 @@ window.GUIDE_SITE_DATA = {
       "label": "基础概念",
       "pages": [
         "codex.html",
+        "git.html",
         "permissions.html",
         "agents-md.html",
         "skills.html",
@@ -728,6 +746,26 @@ window.GUIDE_SITE_DATA = {
         }
       ],
       "title": "Codex 是什么"
+    },
+    {
+      "description": "从 repository、working tree、暂存区和 commit 入门 Git，并用匿名历史案例说明 dev、短分支、显式暂存、验证和 PR 边界。",
+      "facts_verified": "2026-08-11",
+      "modified": "2026-08-11",
+      "nav_label": "Git",
+      "path": "git.html",
+      "sources": [
+        {
+          "kind": "third_party",
+          "label": "Git tutorial",
+          "url": "https://git-scm.com/docs/gittutorial"
+        },
+        {
+          "kind": "third_party",
+          "label": "Creating a pull request",
+          "url": "https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request"
+        }
+      ],
+      "title": "Git 基础与项目高频操作"
     },
     {
       "description": "理解 Desktop 常见权限模式及底层 sandbox、approval、network 与 secret 边界。",

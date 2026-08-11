@@ -10,7 +10,7 @@
 网页已从单页指南改成多页面实战手册，结构按“任务主线优先，概念能力补充，插件和提示词实践单独说明”的顺序组织：
 
 1. 任务页：`daily-workflow.html`、`desktop-cli.html`（Desktop 操作页，保留旧链接文件名）、`engineering.html`、`research.html`、`automation.html`、`workflows.html`。
-2. 概念页：`codex.html`、`permissions.html`、`agents-md.html`、`skills.html`、`mcp.html`、`subagents.html`、`goal.html`。
+2. 概念页：`codex.html`、`git.html`、`permissions.html`、`agents-md.html`、`skills.html`、`mcp.html`、`subagents.html`、`goal.html`。
 3. Skills 仓库选择页：`skills-repositories.html`，先看 Codex CLI 生态 Top 10，再比较 Compound Engineering、`mattpocock/skills`、`academic-research-skills-codex`、ARIS、`leonxlnx/taste-skill`、`helloianneo/ian-xiaohei-illustrations` 和 `plexpt/awesome-chatgpt-prompts-zh` 的能力、安装路径、prompt 示例和边界。
 4. 插件页：`compound-engineering.html`，说明 EveryInc Compound Engineering plugin 在 Codex Desktop 中的安装和使用方式。
 5. 提示词页：`prompt-guidance.html`，解读 OpenAI GPT-5.6 prompting guidance，并介绍第三方 `refine-user-prompt` skill。
@@ -61,7 +61,7 @@ https://github.com/WhoJay0609/refine-user-prompt
 - `assets/site.css`: 全站共享视觉样式。
 - `assets/site.js`: 全站共享搜索、复制、主题、导航和 Mermaid 渐进增强。
 - `assets/theme.js`: 在共享 CSS 前应用有限的主题偏好，避免错误主题首屏闪烁。
-- `data/site-manifest.json`: 20 个公开根页面、导航、描述、发布 URL 和逐页资料依据的唯一清单。
+- `data/site-manifest.json`: 21 个公开根页面、导航、描述、发布 URL 和逐页资料依据的唯一清单。
 - `data/changelog.json`: 首页“最近更新”和完整更新记录的唯一数据源。
 - `data/heading-fragments.json`: canonical 标题 fragment 与 legacy alias 的受审映射。
 - `data/publication-policy.json`: 公开搜索语料的排除项、敏感内容规则和本地发布边界（`doc/` 不进入公开页面链接）。
@@ -105,7 +105,7 @@ make check
 make check-fast
 ```
 
-需要本地浏览器回归时运行 `make test-browser`；部署完成后再运行 `make check-published`。后者会联网读取 manifest 中的全部 20 个公开页面和关键资产；部署前或网络不可用时必须记录为 `not run`，不能写成通过。
+需要本地浏览器回归时运行 `make test-browser`；部署完成后再运行 `make check-published`。后者会联网读取 manifest 中的全部 21 个公开页面和关键资产；部署前或网络不可用时必须记录为 `not run`，不能写成通过。
 
 生成边界：`scripts/build_site.py` 只负责带 `guide:*` sentinel 的共享块、标题 fragment/alias、共享数据资产和受控属性归一化。正文、案例、prompt 与截图说明仍是 authored content；不要手改 sentinel 内代码，也不要让生成器用整页模板覆盖正文。真实 Desktop 截图只有在原分辨率脱敏复核完成后才能发布；当前缺失截图不得用 mock 代替。
 

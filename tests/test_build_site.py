@@ -29,7 +29,7 @@ class SiteModelTests(unittest.TestCase):
             path.name for path in ROOT.glob("*.html") if path.name not in ROOT_HTML_IGNORE
         )
         self.assertEqual(sorted(page.path for page in model.pages), root_pages)
-        self.assertEqual(len(model.pages), 20)
+        self.assertEqual(len(model.pages), 21)
 
     def test_manifest_rejects_duplicate_navigation_membership(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
