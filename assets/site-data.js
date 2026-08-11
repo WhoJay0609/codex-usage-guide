@@ -5,8 +5,15 @@ window.GUIDE_SITE_DATA = {
     "assets/theme.js": "187420686654f8c1c58df32a0687d4a0d11e6e0707b8696d5f077774982d766a",
     "figures/social-preview.png": "e0ee23ae3b99a8507b4aa423c530289468f1db067d1e7041e4afcefb5fe3ac58"
   },
-  "build_id": "a95afd637fc5",
+  "build_id": "ee947e14a0a9",
   "changelog": [
+    {
+      "category": "quality",
+      "date": "2026-08-11",
+      "summary": "完成首页、Git 概念、CLI Worktree 及 Desktop Worktree／Hand off／清理路径复核，未发现新问题，保留既有 CLI／Desktop 分工与回归门禁。",
+      "target": "git.html#git-worktree-workflow",
+      "title": "第三轮读者与专家复核无新增阻塞问题"
+    },
     {
       "category": "quality",
       "date": "2026-08-11",

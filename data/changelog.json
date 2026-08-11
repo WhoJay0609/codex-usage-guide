@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
   "entries": [
+    {"date": "2026-08-11", "category": "quality", "title": "第三轮读者与专家复核无新增阻塞问题", "summary": "完成首页、Git 概念、CLI Worktree 及 Desktop Worktree／Hand off／清理路径复核，未发现新问题，保留既有 CLI／Desktop 分工与回归门禁。", "target": "git.html#git-worktree-workflow"},
     {"date": "2026-08-11", "category": "quality", "title": "补齐 CLI Worktree 路径与 Local 术语", "summary": "解释 CLI 占位符与仓库根目录前置条件，增加创建后状态检查，并区分 Local environment 与 Local 主工作树。", "target": "git.html#git-worktree-workflow"},
     {"date": "2026-08-11", "category": "content", "title": "补齐 Git 与 Worktree 概念入口", "summary": "首页新增 Git 与 Worktrees 卡片，并说明 Local 前台工作区、Hand off 操作和依赖／缓存边界。", "target": "index.html#需要时再查概念"},
     {"date": "2026-08-11", "category": "content", "title": "把 Git 页重构为 Worktree 主线", "summary": "压缩分支与 PR 介绍，补充 Worktree 的共享／独立边界、保护 Local 的高频闭环、安全清理规则和两张生成式辅助插图。", "target": "git.html#git-worktree-model"},
