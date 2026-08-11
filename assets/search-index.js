@@ -15,7 +15,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "index.html",
       "prompts": [],
       "section": "最近更新",
-      "text": "更新记录由 data/changelog.json 生成；先看最近三项，需要时再展开完整记录。2026-08-11内容补齐 Git 与 Worktree 概念入口首页新增 Git 与 Worktrees 卡片，并说明 Local 前台工作区、Hand off 操作和依赖／缓存边界。2026-08-11内容把 Git 页重构为 Worktree 主线压缩分支与 PR 介绍，补充 Worktree 的共享／独立边界、保护 Local 的高频闭环、安全清理规则和两张生成式辅助插图。2026-08-11内容新增 Git 基础与项目高频操作用中文解释 repository、working tree、暂存区、commit、分支、HEAD、remote、merge 和 PR，并以匿名只读历史会话整理 dev 集成、短分支、显式 staging、验证和 PR 的项目模式。查看完整更新记录（19）2026-08-11内容补齐 Git 与 Worktree 概念入口首页新增 Git 与 Worktrees 卡片，并说明 Local 前台工作区、Hand off 操作和依赖／缓存边界。2026-08-11内容把 Git 页重构为 Worktree 主线压缩分支与 PR 介绍，补充 Worktree 的共享／独立边界、保护 Local 的高频闭环、安全清理规则和两张生成式辅助插图。2026-08-11内容新增 Git 基础与项目高频操作用中文解释 repository、working tree、暂存区、commit、分支、HEAD、remote、merge 和 PR，并以匿名只读历史会话整理 dev 集成、短分支、显式 staging、验证和 PR 的项目模式。2026-08-06质量根据读者与专家反馈整理首轮指南把新手首条路径、$skill-name 与插件 slash 命令、项目验证命令和 Desktop 页面边界说清，并加入公开发布路径与搜索索引覆盖门禁。2026-08-06内容同步 Matt Pocock skills v1.2.2 说明更新 user-invoked / model-invoked 分层、ask-matt 到 implement 的工程主线、skills.sh 的 Codex 安装边界，以及原生 Codex plugin 暂缓和近期技能改名。2026-07-23内容补齐 Desktop 界面证据与可迁移案例新增五张 Desktop 操作示意截图、screenshot registry、日常/工程/学术/权限/MCP 演示案例，以及 CLI 附录、404、robots 与 sitemap。2026-07-22内容新增 whojay-skill 证据工作流说明补充 WhoJay0609/whojay-skill 的工程与学术双工作流、证据状态、授权边界与隐私去标识说明。2026-07-22内容新增 dot-skills 开放格式目录说明补充 pproenca/dot-skills 的 curated/experimental 分层、Codex 安装目录、按项审查与第三方权限边界。2026-07-22内容新增 OpenCodex 第三方代理说明补充 lidge-jun/opencodex 的本地 provider proxy 定位、原生 Codex 恢复路径及网络、凭据、账户和服务条款边界。2026-07-21质量统一 Apple 风格界面体验系统化调整排版、材质、色彩、响应式层级与即时交互反馈，并补齐减少动态效果、减少透明度和高对比度适配。2026-07-16质量调整流程图与正文配图Mermaid 流程图尺寸；权限、MCP、Subagents、提示词四页的小黑配图；配图图注与替代文本。2026-07-16质量补齐资料依据与页面信息逐页资料依据、首页更新日志、权限模式表述、Skill／Plugin／MCP 分层、页脚内容与全页面响应式适配。2026-07-16内容新增 GPT-5.6 提示词指南GPT-5.6 prompting guidance 中文解读、refine-user-prompt skill 介绍；移除原 Goal Entry 专题。2026-07-12内容新增中文 Prompt 仓库条目awesome-chatgpt-prompts-zh 仓库说明、Codex 使用示例与提示词安全边界。2026-07-12内容新增视觉与中文配图 Skillstaste-skill 与 Ian Xiaohei Illustrations 的仓库说明、使用示例和适用边界。2026-07-12内容新增 Codex 生态 Top 10Skills、MCP、辅助工具榜单与官方基础设施条目。2026-07-11结构新增站点清单与更新日志统一站点清单、首页最近更新、完整更新日志与站点生成数据。2026-07-10内容新增 Skills 仓库选择指南第三方 Skills 仓库对比、任务选择表与安装入口。2026-07-07内容新增 Compound Engineering 指南插件安装、核心流程与真实实例。 先分清边界",
+      "text": "更新记录由 data/changelog.json 生成；先看最近三项，需要时再展开完整记录。2026-08-11质量补齐 CLI Worktree 路径与 Local 术语解释 CLI 占位符与仓库根目录前置条件，增加创建后状态检查，并区分 Local environment 与 Local 主工作树。2026-08-11内容补齐 Git 与 Worktree 概念入口首页新增 Git 与 Worktrees 卡片，并说明 Local 前台工作区、Hand off 操作和依赖／缓存边界。2026-08-11内容把 Git 页重构为 Worktree 主线压缩分支与 PR 介绍，补充 Worktree 的共享／独立边界、保护 Local 的高频闭环、安全清理规则和两张生成式辅助插图。查看完整更新记录（20）2026-08-11质量补齐 CLI Worktree 路径与 Local 术语解释 CLI 占位符与仓库根目录前置条件，增加创建后状态检查，并区分 Local environment 与 Local 主工作树。2026-08-11内容补齐 Git 与 Worktree 概念入口首页新增 Git 与 Worktrees 卡片，并说明 Local 前台工作区、Hand off 操作和依赖／缓存边界。2026-08-11内容把 Git 页重构为 Worktree 主线压缩分支与 PR 介绍，补充 Worktree 的共享／独立边界、保护 Local 的高频闭环、安全清理规则和两张生成式辅助插图。2026-08-11内容新增 Git 基础与项目高频操作用中文解释 repository、working tree、暂存区、commit、分支、HEAD、remote、merge 和 PR，并以匿名只读历史会话整理 dev 集成、短分支、显式 staging、验证和 PR 的项目模式。2026-08-06质量根据读者与专家反馈整理首轮指南把新手首条路径、$skill-name 与插件 slash 命令、项目验证命令和 Desktop 页面边界说清，并加入公开发布路径与搜索索引覆盖门禁。2026-08-06内容同步 Matt Pocock skills v1.2.2 说明更新 user-invoked / model-invoked 分层、ask-matt 到 implement 的工程主线、skills.sh 的 Codex 安装边界，以及原生 Codex plugin 暂缓和近期技能改名。2026-07-23内容补齐 Desktop 界面证据与可迁移案例新增五张 Desktop 操作示意截图、screenshot registry、日常/工程/学术/权限/MCP 演示案例，以及 CLI 附录、404、robots 与 sitemap。2026-07-22内容新增 whojay-skill 证据工作流说明补充 WhoJay0609/whojay-skill 的工程与学术双工作流、证据状态、授权边界与隐私去标识说明。2026-07-22内容新增 dot-skills 开放格式目录说明补充 pproenca/dot-skills 的 curated/experimental 分层、Codex 安装目录、按项审查与第三方权限边界。2026-07-22内容新增 OpenCodex 第三方代理说明补充 lidge-jun/opencodex 的本地 provider proxy 定位、原生 Codex 恢复路径及网络、凭据、账户和服务条款边界。2026-07-21质量统一 Apple 风格界面体验系统化调整排版、材质、色彩、响应式层级与即时交互反馈，并补齐减少动态效果、减少透明度和高对比度适配。2026-07-16质量调整流程图与正文配图Mermaid 流程图尺寸；权限、MCP、Subagents、提示词四页的小黑配图；配图图注与替代文本。2026-07-16质量补齐资料依据与页面信息逐页资料依据、首页更新日志、权限模式表述、Skill／Plugin／MCP 分层、页脚内容与全页面响应式适配。2026-07-16内容新增 GPT-5.6 提示词指南GPT-5.6 prompting guidance 中文解读、refine-user-prompt skill 介绍；移除原 Goal Entry 专题。2026-07-12内容新增中文 Prompt 仓库条目awesome-chatgpt-prompts-zh 仓库说明、Codex 使用示例与提示词安全边界。2026-07-12内容新增视觉与中文配图 Skillstaste-skill 与 Ian Xiaohei Illustrations 的仓库说明、使用示例和适用边界。2026-07-12内容新增 Codex 生态 Top 10Skills、MCP、辅助工具榜单与官方基础设施条目。2026-07-11结构新增站点清单与更新日志统一站点清单、首页最近更新、完整更新日志与站点生成数据。2026-07-10内容新增 Skills 仓库选择指南第三方 Skills 仓库对比、任务选择表与安装入口。2026-07-07内容新增 Compound Engineering 指南插件安装、核心流程与真实实例。 先分清边界",
       "title": "中文 Codex 实战手册"
     },
     {
@@ -688,7 +688,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "git.html",
       "prompts": [],
       "section": "",
-      "text": "从够用的 Git 基础进入 Worktree：保护 Local、创建独立任务目录、验证、交接并安全清理。",
+      "text": "从够用的 Git 基础进入 Worktree：保护 Local、用 CLI 创建独立任务目录、验证、交接并安全清理。",
       "title": "Git 基础与 Worktree 高频操作"
     },
     {
@@ -725,10 +725,10 @@ window.GUIDE_SEARCH_INDEX = {
       "level": "h2",
       "page": "git.html",
       "prompts": [
-        "git status --short --branch\ngit worktree list\ngit fetch origin\ngit worktree add -b codex/<task> ../<repo>-<task> origin/<base>\ngit -C ../<repo>-<task> status --short --branch\ngit -C ../<repo>-<task> diff"
+        "git status --short --branch\ngit worktree list\ngit fetch origin\ncd \"$(git rev-parse --show-toplevel)\"\ngit worktree add -b codex/<task> \"../<repo>-<task>\" origin/<base>\ngit -C \"../<repo>-<task>\" status --short --branch\ngit -C \"../<repo>-<task>\" diff"
       ],
       "section": "保留 Local，创建 clean Worktree，再交付",
-      "text": "1 · 保护 Local记录 git status，不回滚、不 stash、不吸收用户已有修改。 2 · 选定基线确认后 fetch 远程状态，以项目规则指定的 <base> 为新任务起点。 3 · 新建 Worktree创建独立目录并附着任务名称；分支命名只是承载任务，不是这一步的学习重点。 4 · 窄改与验证在新目录只改目标文件，运行 focused checks，审查 diff 和暂存快照。 5 · 交接后再清理commit、PR 或 Hand off 完成后先确认无独有工作；删除 Worktree 必须有明确授权。 git status --short --branch git worktree list git fetch origin git worktree add -b codex/<task> ../<repo>-<task> origin/<base> git -C ../<repo>-<task> status --short --branch git -C ../<repo>-<task> diff git fetch origin 不会改 working-tree 文件，也不会修改远程仓库；它会更新本地 remote-tracking refs、FETCH_HEAD 等 Git 元数据，因此执行前仍要确认操作边界。 图意：先封存 Local 现场，再在 clean Worktree 中编辑和验证；交付发生在独立任务目录，Local 始终不被覆盖。 在 Codex Desktop 中可直接为新任务选择 Worktree；需要回到本机前台继续时使用 Hand off。完整界面操作、detached HEAD 和 .worktreeinclude 说明见 Worktrees 专页。 安全边界",
+      "text": "1 · 保护 Local记录 git status，不回滚、不 stash、不吸收用户已有修改。 2 · 选定基线确认后 fetch 远程状态，以项目规则指定的 <base> 为新任务起点。 3 · 新建 Worktree创建独立目录并附着任务名称；分支命名只是承载任务，不是这一步的学习重点。 4 · 窄改与验证在新目录只改目标文件，运行 focused checks，审查 diff 和暂存快照。 5 · 交接后再清理commit、PR 或 Hand off 完成后先确认无独有工作；删除 Worktree 必须有明确授权。 git status --short --branch git worktree list git fetch origin cd \"$(git rev-parse --show-toplevel)\" git worktree add -b codex/<task> \"../<repo>-<task>\" origin/<base> git -C \"../<repo>-<task>\" status --short --branch git -C \"../<repo>-<task>\" diff 把占位符替换成自己的值：<repo> 是当前仓库目录名，<task> 是简短且未占用的任务标识，<base> 是项目规则确认的起点分支名（例如 main，命令会从 origin/<base> 取基线）。相对目标路径 ../<repo>-<task> 应位于当前仓库根目录外的 sibling；上面的 cd 会先把 shell 切到仓库根目录，所以即使前面的检查从子目录开始也不会把 Worktree 放错位置。 创建后用 git -C \"../<repo>-<task>\" status --short --branch 做稳定检查：结果应表明当前位于预期任务 branch（或明确为 detached HEAD），且工作树为 clean、没有未提交文件；这里只看 branch 与 clean-state 的含义，不要匹配某个 Git 版本的固定输出。如果提示目标路径已存在或名称冲突，停止并改用未占用的 <task> 或目标路径，不要覆盖已有目录。 git fetch origin 不会改 working-tree 文件，也不会修改远程仓库；它会更新本地 remote-tracking refs、FETCH_HEAD 等 Git 元数据，因此执行前仍要确认操作边界。 图意：先封存 Local 现场，再在 clean Worktree 中编辑和验证；交付发生在独立任务目录，Local 始终不被覆盖。 在 Codex Desktop 中可直接为新任务选择 Worktree；需要回到本机前台继续时使用 Hand off。完整界面操作、detached HEAD 和 .worktreeinclude 说明见 Worktrees 专页。 安全边界",
       "title": "Git 基础与 Worktree 高频操作"
     },
     {
@@ -746,7 +746,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "git.html",
       "prompts": [],
       "section": "匿名案例：为什么高频使用 Worktree",
-      "text": "只读历史会话反复出现同一类现场：Local 正在跑实验、保留人工修改或等待验证，此时又来了独立修复。安全做法不是先研究如何切换 branch，而是保留 Local → 从确认过的 base 创建 clean Worktree → 窄改 → 验证 → 由主线程统一交付。源项目未被修改，也不向本页提供修改权限。 Local保留当前未完成工作、运行环境和人工上下文。 Task Worktree只承载一个目标、一个写域和对应验证证据。 主线程检查完整 diff、处理冲突、决定 commit／PR／Hand off；清理另行授权。 与 Codex 协作",
+      "text": "只读历史会话反复出现同一类现场：Local 正在跑实验、保留人工修改或等待验证，此时又来了独立修复。安全做法不是先研究如何切换 branch，而是保留 Local → 从确认过的 base 创建 clean Worktree → 窄改 → 验证 → 由主线程统一交付。源项目未被修改，也不向本页提供修改权限。 Local保留当前未完成工作、运行环境和人工上下文。 Task Worktree只承载一个目标、一个写域和对应验证证据。 主线程检查完整 diff、处理冲突、决定 commit／PR／Hand off；清理另行授权。 与 Codex 协作 · CLI / 手动路径",
       "title": "Git 基础与 Worktree 高频操作"
     },
     {
@@ -757,7 +757,7 @@ window.GUIDE_SEARCH_INDEX = {
         "我有一个新的独立任务，请优先判断是否需要 Worktree。\n先只读检查 git status --short --branch 和 git worktree list。\n如果 Local 有无关改动，必须完整保留，不要 stash、reset、restore 或清理。\n从项目规则指定的 <base> 创建 clean Worktree；只修改 <目标文件>。\n在新 Worktree 运行 <focused checks>，报告 diff、验证结果和剩余风险。\n不要自行删除 Worktree、branch、未跟踪文件，也不要 push 或创建 PR；需要时先请求授权。\n最终给出：Worktree 路径、改动文件、验证证据、交接方式和清理前置条件。"
       ],
       "section": "可复制的 Worktree 任务请求",
-      "text": "我有一个新的独立任务，请优先判断是否需要 Worktree。 先只读检查 git status --short --branch 和 git worktree list。 如果 Local 有无关改动，必须完整保留，不要 stash、reset、restore 或清理。 从项目规则指定的 <base> 创建 clean Worktree；只修改 <目标文件>。 在新 Worktree 运行 <focused checks>，报告 diff、验证结果和剩余风险。 不要自行删除 Worktree、branch、未跟踪文件，也不要 push 或创建 PR；需要时先请求授权。 最终给出：Worktree 路径、改动文件、验证证据、交接方式和清理前置条件。 资料边界",
+      "text": "适用范围：下面是 CLI / 手动创建 Worktree 的请求模板。若你已在 Codex Desktop 新建任务时选择 Worktree，不要再次要求 Codex 创建第二个 Worktree；请改用 Worktrees 专页 的 Desktop 路径。 我有一个新的独立任务，请优先判断是否需要 Worktree。 先只读检查 git status --short --branch 和 git worktree list。 如果 Local 有无关改动，必须完整保留，不要 stash、reset、restore 或清理。 从项目规则指定的 <base> 创建 clean Worktree；只修改 <目标文件>。 在新 Worktree 运行 <focused checks>，报告 diff、验证结果和剩余风险。 不要自行删除 Worktree、branch、未跟踪文件，也不要 push 或创建 PR；需要时先请求授权。 最终给出：Worktree 路径、改动文件、验证证据、交接方式和清理前置条件。 资料边界",
       "title": "Git 基础与 Worktree 高频操作"
     },
     {
@@ -1435,7 +1435,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "worktrees.html",
       "prompts": [],
       "section": "",
-      "text": "在 Codex Desktop 中用 Worktree 隔离并行任务，并安全地在 Local 与 Worktree 间交接。",
+      "text": "在 Codex Desktop 中用 Worktree 隔离并行任务，区分 Local environment 与 Local 主工作树，并安全交接。",
       "title": "Worktrees"
     },
     {
@@ -1453,7 +1453,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "worktrees.html",
       "prompts": [],
       "section": "什么时候用 / 不用",
-      "text": "适合并行功能、试验性改动、后台任务，或 Local 已有未完成修改时。优先 Local单文件小修、需要复用当前开发服务器、只能启动一个应用实例，或必须频繁人工调试时。不要并行多个任务会修改同一 schema、共享 contract 或同一核心文件时，先拆依赖再创建 Worktree。前置条件项目必须位于 Git 仓库中；非 Git 项目不能创建 Worktree。 Desktop 操作",
+      "text": "适合并行功能、试验性改动、后台任务，或 Local 已有未完成修改时。优先 Local单文件小修、需要复用当前开发服务器、只能启动一个应用实例，或必须频繁人工调试时。不要并行多个任务会修改同一 schema、共享 contract 或同一核心文件时，先拆依赖再创建 Worktree。前置条件项目必须位于 Git 仓库中；非 Git 项目不能创建 Worktree。 Desktop 操作 · 已选择 Worktree",
       "title": "Worktrees"
     },
     {
@@ -1471,7 +1471,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "worktrees.html",
       "prompts": [],
       "section": "1. 选择 Worktree",
-      "text": "新建任务时，在输入框下方选择 Worktree。如项目配置了 Local environment，可同时选择环境来运行 setup scripts。",
+      "text": "新建任务时，在输入框下方选择 Worktree。如项目配置了 Local environment（运行 setup scripts 的本地环境配置），可同时选择它；它不是 Local 前台／主 Worktree（main worktree），后者是当前打开的目录。",
       "title": "Worktrees"
     },
     {
@@ -1554,7 +1554,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "worktrees.html",
       "prompts": [],
       "section": "Worktree 与 Subagent 的区别",
-      "text": "Worktree隔离目录与 Git 状态一个任务拥有独立 checkout不自动定义谁可以改什么Subagent隔离上下文、责任与写域一个代理只处理明确子任务不自动获得独立 Worktree组合使用Worktree 负责环境隔离Subagent 负责执行边界主线程负责依赖、冲突和最终集成Subagent 的委派合同、推荐拆法和收口规则见 Subagents；按依赖建立并行 lane 的方法见 Issue lanes。 可复制",
+      "text": "Worktree隔离目录与 Git 状态一个任务拥有独立 checkout不自动定义谁可以改什么Subagent隔离上下文、责任与写域一个代理只处理明确子任务不自动获得独立 Worktree组合使用Worktree 负责环境隔离Subagent 负责执行边界主线程负责依赖、冲突和最终集成Subagent 的委派合同、推荐拆法和收口规则见 Subagents；按依赖建立并行 lane 的方法见 Issue lanes。 可复制 · Desktop Worktree 已选",
       "title": "Worktrees"
     },
     {
@@ -1564,8 +1564,8 @@ window.GUIDE_SEARCH_INDEX = {
       "prompts": [
         "请在独立 Worktree 中完成这个任务，不要影响当前 Local 工作区。\n\nBase: 当前 main 的最新提交。\nGoal: 修复首页卡片布局并补浏览器回归测试。\nWritable scope: index.html、assets/site.css、对应测试。\nForbidden: 其他页面、远程 push、合并主分支。\nValidation: 静态检查 + desktop/mobile 浏览器测试。\nHand off: 完成后返回 changed files、测试证据和未验证项；\n需要复用 Local 开发服务器时先停止并建议 Hand off。"
       ],
-      "section": "可复制示例",
-      "text": "请在独立 Worktree 中完成这个任务，不要影响当前 Local 工作区。 Base: 当前 main 的最新提交。 Goal: 修复首页卡片布局并补浏览器回归测试。 Writable scope: index.html、assets/site.css、对应测试。 Forbidden: 其他页面、远程 push、合并主分支。 Validation: 静态检查 + desktop/mobile 浏览器测试。 Hand off: 完成后返回 changed files、测试证据和未验证项； 需要复用 Local 开发服务器时先停止并建议 Hand off。 真实实例",
+      "section": "可复制示例（已选择 Desktop Worktree）",
+      "text": "适用范围：下面的请求适用于你已经在 Codex Desktop 新建任务时选择 Worktree 的路径，不要再次要求 Codex 创建 Worktree。若要手动运行 git worktree add，请改用 Git 页的 CLI / 手动路径。请在独立 Worktree 中完成这个任务，不要影响当前 Local 工作区。 Base: 当前 main 的最新提交。 Goal: 修复首页卡片布局并补浏览器回归测试。 Writable scope: index.html、assets/site.css、对应测试。 Forbidden: 其他页面、远程 push、合并主分支。 Validation: 静态检查 + desktop/mobile 浏览器测试。 Hand off: 完成后返回 changed files、测试证据和未验证项； 需要复用 Local 开发服务器时先停止并建议 Hand off。 真实实例",
       "title": "Worktrees"
     },
     {

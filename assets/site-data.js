@@ -5,8 +5,15 @@ window.GUIDE_SITE_DATA = {
     "assets/theme.js": "187420686654f8c1c58df32a0687d4a0d11e6e0707b8696d5f077774982d766a",
     "figures/social-preview.png": "e0ee23ae3b99a8507b4aa423c530289468f1db067d1e7041e4afcefb5fe3ac58"
   },
-  "build_id": "fc748509ad72",
+  "build_id": "a95afd637fc5",
   "changelog": [
+    {
+      "category": "quality",
+      "date": "2026-08-11",
+      "summary": "解释 CLI 占位符与仓库根目录前置条件，增加创建后状态检查，并区分 Local environment 与 Local 主工作树。",
+      "target": "git.html#git-worktree-workflow",
+      "title": "补齐 CLI Worktree 路径与 Local 术语"
+    },
     {
       "category": "content",
       "date": "2026-08-11",
@@ -764,7 +771,7 @@ window.GUIDE_SITE_DATA = {
       "title": "Codex 是什么"
     },
     {
-      "description": "从够用的 Git 基础进入 Worktree：保护 Local、创建独立任务目录、验证、交接并安全清理。",
+      "description": "从够用的 Git 基础进入 Worktree：保护 Local、用 CLI 创建独立任务目录、验证、交接并安全清理。",
       "facts_verified": "2026-08-11",
       "modified": "2026-08-11",
       "nav_label": "Git",
@@ -864,7 +871,7 @@ window.GUIDE_SITE_DATA = {
       "title": "MCP 与 Plugins"
     },
     {
-      "description": "在 Codex Desktop 中用 Worktree 隔离并行任务，并安全地在 Local 与 Worktree 间交接。",
+      "description": "在 Codex Desktop 中用 Worktree 隔离并行任务，区分 Local environment 与 Local 主工作树，并安全交接。",
       "facts_verified": "2026-08-11",
       "modified": "2026-08-11",
       "nav_label": "Worktrees",
