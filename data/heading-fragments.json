@@ -991,6 +991,56 @@
         ]
       }
     },
+    "git.html": {
+      "git-boundaries": {
+        "canonical": "git-boundaries",
+        "legacy": [
+          "heading-git-8"
+        ]
+      },
+      "git-codex-prompt": {
+        "canonical": "git-codex-prompt",
+        "legacy": [
+          "heading-git-7"
+        ]
+      },
+      "git-fetch-pull": {
+        "canonical": "git-fetch-pull",
+        "legacy": [
+          "heading-git-4"
+        ]
+      },
+      "git-inspection": {
+        "canonical": "git-inspection",
+        "legacy": [
+          "heading-git-2"
+        ]
+      },
+      "git-project-operations": {
+        "canonical": "git-project-operations",
+        "legacy": [
+          "heading-git-6"
+        ]
+      },
+      "git-lifecycle": {
+        "canonical": "git-lifecycle",
+        "legacy": [
+          "heading-git-3"
+        ]
+      },
+      "git-mental-model": {
+        "canonical": "git-mental-model",
+        "legacy": [
+          "heading-git-1"
+        ]
+      },
+      "git-recovery": {
+        "canonical": "git-recovery",
+        "legacy": [
+          "heading-git-5"
+        ]
+      }
+    },
     "prompt-guidance.html": {
       "heading-prompt-guidance-1": {
         "canonical": "先分清三层",
