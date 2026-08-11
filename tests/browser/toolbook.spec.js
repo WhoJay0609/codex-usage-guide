@@ -4,7 +4,7 @@ test('serves the static guide without an application runtime', async ({ page }) 
   await page.goto('/index.html');
   await expect(page).toHaveTitle('中文 Codex 实战手册');
   await expect(page.locator('h1')).toContainText('可验证的小任务');
-  await expect(page.locator('.global-nav [data-nav]')).toHaveCount(20);
+  await expect(page.locator('.global-nav [data-nav]')).toHaveCount(21);
   await expect(page.locator('.global-nav [aria-current="page"]')).toHaveCount(1);
 });
 
@@ -67,9 +67,15 @@ test('keeps article content readable without horizontal overflow', async ({ page
   expect(overflow).toBeFalsy();
 });
 
-test('renders horizontal Mermaid flows at article width without empty fixed-height cards', async ({ page }) => {
+test('renders Mermaid flows at article width without empty fixed-height cards', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
-  for (const path of ['install-desktop.html', 'daily-workflow.html', 'skills.html']) {
+  const diagrams = [
+    ['install-desktop.html', 0.8],
+    ['daily-workflow.html', 0.8],
+    ['skills.html', 0.8],
+    ['worktrees.html', 0.7],
+  ];
+  for (const [path, minWidthRatio] of diagrams) {
     await page.goto(`/${path}`);
     const diagram = page.locator('.mermaid').first();
     const svg = diagram.locator('svg');
@@ -84,20 +90,31 @@ test('renders horizontal Mermaid flows at article width without empty fixed-heig
         svgHeight: rendered.height,
       };
     });
-    expect(geometry.svgWidth, `${path} Mermaid width`).toBeGreaterThan(geometry.containerWidth * 0.8);
+    expect(geometry.svgWidth, `${path} Mermaid width`).toBeGreaterThan(geometry.containerWidth * minWidthRatio);
     expect(geometry.containerHeight - geometry.svgHeight, `${path} Mermaid empty vertical space`).toBeLessThan(90);
   }
 });
 
 test('loads every guide illustration with useful alternative text and a figure explanation', async ({ page }) => {
-  for (const path of ['permissions.html', 'mcp.html', 'subagents.html', 'prompt-guidance.html']) {
+  const illustratedPages = [
+    ['permissions.html', 1],
+    ['mcp.html', 1],
+    ['subagents.html', 1],
+    ['prompt-guidance.html', 1],
+    ['git.html', 2],
+  ];
+  for (const [path, expectedCount] of illustratedPages) {
     await page.goto(`/${path}`);
-    const figure = page.locator('.article-illustration');
-    await expect(figure).toHaveCount(1);
-    await expect(figure.locator('figcaption')).toContainText('图意：');
-    const image = figure.locator('img');
-    await expect(image).toHaveAttribute('alt', /\S{12,}/);
-    await expect.poll(() => image.evaluate((element) => element.naturalWidth)).toBe(1672);
+    const figures = page.locator('.article-illustration');
+    await expect(figures).toHaveCount(expectedCount);
+    for (let index = 0; index < expectedCount; index += 1) {
+      const figure = figures.nth(index);
+      await expect(figure.locator('figcaption')).toContainText('图意：');
+      const image = figure.locator('img');
+      await expect(image).toHaveAttribute('alt', /\S{12,}/);
+      await image.scrollIntoViewIfNeeded();
+      await expect.poll(() => image.evaluate((element) => element.naturalWidth)).toBe(1672);
+    }
   }
 });
 

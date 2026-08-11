@@ -3,29 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Git 基础与项目高频操作</title>
+  <title>Git 基础与 Worktree 高频操作</title>
   <!-- guide:theme-bootstrap:start -->
 <script src="assets/theme.js"></script>
 <!-- guide:theme-bootstrap:end -->
   <link rel="stylesheet" href="assets/site.css">
   <!-- guide:metadata:start -->
-<meta name="description" content="从 repository、working tree、暂存区和 commit 入门 Git，并用匿名历史案例说明 dev、短分支、显式暂存、验证和 PR 边界。">
-<meta name="guide-build" content="e5ccb6d565d7">
+<meta name="description" content="从够用的 Git 基础进入 Worktree：保护 Local、创建独立任务目录、验证、交接并安全清理。">
+<meta name="guide-build" content="fc748509ad72">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/git.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:site_name" content="Codex 使用指南">
-<meta property="og:title" content="Git 基础与项目高频操作">
-<meta property="og:description" content="从 repository、working tree、暂存区和 commit 入门 Git，并用匿名历史案例说明 dev、短分支、显式暂存、验证和 PR 边界。">
+<meta property="og:title" content="Git 基础与 Worktree 高频操作">
+<meta property="og:description" content="从够用的 Git 基础进入 Worktree：保护 Local、创建独立任务目录、验证、交接并安全清理。">
 <meta property="og:url" content="https://whojay0609.github.io/codex-usage-guide/git.html">
 <meta property="og:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Codex 使用指南">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Git 基础与项目高频操作">
-<meta name="twitter:description" content="从 repository、working tree、暂存区和 commit 入门 Git，并用匿名历史案例说明 dev、短分支、显式暂存、验证和 PR 边界。">
+<meta name="twitter:title" content="Git 基础与 Worktree 高频操作">
+<meta name="twitter:description" content="从够用的 Git 基础进入 Worktree：保护 Local、创建独立任务目录、验证、交接并安全清理。">
 <meta name="twitter:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
 <meta name="twitter:image:alt" content="Codex 使用指南">
 <!-- guide:metadata:end -->
@@ -35,153 +35,127 @@
 <script src="assets/site-data.js"></script><a class="skip-link" href="#main-content">跳到正文</a><header class="topbar"><div class="topbar-inner"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span>Codex 使用指南</span></a><div class="topbar-actions"><label class="theme-control"><span class="sr-only">主题</span><select class="theme-select" id="theme-select" name="theme" aria-label="主题"><option value="light" selected>浅色</option><option value="dark">深色</option></select></label><span class="theme-status sr-only" aria-live="polite"></span><button class="search-trigger" type="button" aria-haspopup="dialog" aria-controls="site-search-dialog">搜索</button><button class="menu-toggle" type="button" aria-controls="global-nav" aria-expanded="false">目录</button></div></div></header><dialog class="search-dialog" id="site-search-dialog" role="dialog" aria-modal="true" aria-labelledby="site-search-title"><div class="search-dialog-panel"><div class="search-dialog-head"><p class="search-title" id="site-search-title">搜索全站</p><button class="search-close" type="button" aria-label="关闭搜索">关闭</button></div><label class="search-label" for="site-search-input">搜索标题、正文和可复用 prompt</label><input class="search-input" id="site-search-input" type="search" role="combobox" autocomplete="off" aria-autocomplete="list" aria-controls="site-search-results" aria-describedby="site-search-status" aria-expanded="false"><p class="search-message" id="site-search-status" aria-live="polite">输入关键词开始搜索。</p><ul class="search-results" id="site-search-results" role="listbox" aria-label="搜索结果"></ul></div></dialog>
 <!-- guide:header:end -->
   <!-- guide:shell-open:start -->
-<div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html">首页</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html">Codex</a><a data-nav href="git.html" aria-current="page">Git</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="worktrees.html">Worktrees</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">定时任务</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html">Compound</a><details class="global-nav-disclosure"><summary>Skills 仓库</summary><a data-nav href="skills-repositories.html">全部仓库</a><a href="skills-repositories.html#compound-engineering">Compound Engineering</a><a href="skills-repositories.html#mattpocock-skills">Matt Pocock skills</a><a href="skills-repositories.html#academic-research-skills-codex">ARS</a><a href="skills-repositories.html#aris-auto-claude-code-research-in-sleep">ARIS</a><a href="skills-repositories.html#refine-user-prompt">refine-user-prompt</a></details><a data-nav href="prompt-guidance.html">提示词</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>基础概念</span><span aria-hidden="true">/</span><span aria-current="page">Git</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-08-11">2026-08-11</time></span><span>事实核验：<time datetime="2026-08-11">2026-08-11</time></span></div><aside class="page-sources" aria-label="本页资料依据"><strong>本页依据</strong><a class="page-source-link external-link" href="https://git-scm.com/docs/gittutorial" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span><span class="source-kind">第三方上游</span>Git tutorial</a><a class="page-source-link external-link" href="https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span><span class="source-kind">第三方上游</span>Creating a pull request</a></aside><aside class="page-toc" aria-label="本页目录"><details><summary>本页目录</summary><nav><a class="toc-h2" href="#git-mental-model">先建立一张 Git 心智图</a><a class="toc-h2" href="#git-inspection">用只读命令建立事实</a><a class="toc-h2" href="#git-lifecycle">安全循环：同步、分支、编辑、提交、PR</a><a class="toc-h2" href="#git-fetch-pull">fetch 与 pull：更新不是一回事</a><a class="toc-h2" href="#git-recovery">先保住现场，再选择回退方式</a><a class="toc-h2" href="#git-project-operations">匿名历史案例：项目高频操作</a><a class="toc-h2" href="#git-codex-prompt">可复制的项目 Git Codex 请求</a><a class="toc-h2" href="#git-boundaries">把 Git 事实和仓库规则分开</a></nav></details></aside>
+<div class="toolbook-shell"><aside class="global-nav" id="global-nav" aria-label="全站导航"><section class="global-nav-group"><strong>开始</strong><a data-nav href="index.html">首页</a><a data-nav href="install-desktop.html">安装</a><a data-nav href="desktop-cli.html">Desktop</a></section><section class="global-nav-group"><strong>基础概念</strong><a data-nav href="codex.html">Codex</a><a data-nav href="git.html" aria-current="page">Git</a><a data-nav href="worktrees.html">Worktrees</a><a data-nav href="permissions.html">权限</a><a data-nav href="agents-md.html">AGENTS.md</a><a data-nav href="skills.html">Skills</a><a data-nav href="mcp.html">MCP</a><a data-nav href="subagents.html">Subagents</a><a data-nav href="goal.html">Goal</a></section><section class="global-nav-group"><strong>任务路径</strong><a data-nav href="workflows.html">任务</a><a data-nav href="daily-workflow.html">日常</a><a data-nav href="engineering.html">工程</a><a data-nav href="research.html">学术</a><a data-nav href="automation.html">定时任务</a></section><section class="global-nav-group"><strong>扩展与资料</strong><a data-nav href="compound-engineering.html">Compound</a><details class="global-nav-disclosure"><summary>Skills 仓库</summary><a data-nav href="skills-repositories.html">全部仓库</a><a href="skills-repositories.html#compound-engineering">Compound Engineering</a><a href="skills-repositories.html#mattpocock-skills">Matt Pocock skills</a><a href="skills-repositories.html#academic-research-skills-codex">ARS</a><a href="skills-repositories.html#aris-auto-claude-code-research-in-sleep">ARIS</a><a href="skills-repositories.html#refine-user-prompt">refine-user-prompt</a></details><a data-nav href="prompt-guidance.html">提示词</a><a data-nav href="resources.html">资料</a></section></aside><div class="toolbook-main"><nav class="breadcrumbs" aria-label="面包屑"><a href="index.html">首页</a><span aria-hidden="true">/</span><span>基础概念</span><span aria-hidden="true">/</span><span aria-current="page">Git</span></nav><div class="page-freshness"><span>页面更新：<time datetime="2026-08-11">2026-08-11</time></span><span>事实核验：<time datetime="2026-08-11">2026-08-11</time></span></div><aside class="page-sources" aria-label="本页资料依据"><strong>本页依据</strong><a class="page-source-link external-link" href="https://git-scm.com/docs/gittutorial" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span><span class="source-kind">第三方上游</span>Git tutorial</a><a class="page-source-link external-link" href="https://git-scm.com/docs/git-worktree" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span><span class="source-kind">第三方上游</span>git-worktree</a><a class="page-source-link external-link" href="https://learn.chatgpt.com/docs/environments/git-worktrees" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span><span class="source-kind">OpenAI 官方</span>Git worktrees</a></aside><aside class="page-toc" aria-label="本页目录"><details><summary>本页目录</summary><nav><a class="toc-h2" href="#git-mental-model">Git 只保留四个概念</a><a class="toc-h2" href="#git-inspection">先看工作树，再决定是否开 Worktree</a><a class="toc-h2" href="#git-worktree-model">Worktree 才是任务隔离主线</a><a class="toc-h2" href="#git-worktree-workflow">保留 Local，创建 clean Worktree，再交付</a><a class="toc-h2" href="#git-worktree-safety">Worktree 最容易踩的五个坑</a><a class="toc-h2" href="#git-project-operations">匿名案例：为什么高频使用 Worktree</a><a class="toc-h2" href="#git-codex-prompt">可复制的 Worktree 任务请求</a><a class="toc-h2" href="#git-boundaries">事实、案例与项目规则分开</a></nav></details></aside>
 <!-- guide:shell-open:end -->
 <main id="main-content">
     <section class="hero compact">
       <div class="hero-copy">
-        <p class="hero-kicker">基础概念 · Git</p>
-        <h1>Git 基础与项目高频操作</h1>
-        <p class="lead">先把 Git 想成一组可检查的快照，再把每一步变成证据：看状态、确认范围、显式暂存、验证、提交，最后才推送和开 PR。本页先讲通用 Git，再单独标出一个<strong>匿名历史案例</strong>中的项目模式。</p>
+        <p class="hero-kicker">Git 基础 · Worktree 主线</p>
+        <h1>Git 基础与 Worktree 高频操作</h1>
+        <p class="lead">分支只需要理解到“任务有自己的提交线”即可。真正适合 Codex 高频任务的隔离单位是 <strong>Worktree</strong>：保留 Codex Desktop 当前前台主工作区（<strong>Local</strong>），再给新任务一份独立目录、独立 index 和独立 HEAD，最后统一验证与交接。</p>
       </div>
     </section>
 
     <div class="doc-layout">
       <article class="doc-content">
-        <aside class="callout"><strong>阅读边界：</strong>Git 的对象和命令是通用知识；下面的 <code>dev</code>、<code>master</code>、<code>codex/&lt;short-name&gt;</code>、PR base 和验证门禁来自<strong>匿名、只读历史会话</strong>中的项目模式，不是当前项目合同。源项目未被修改，也没有向本页提供修改权限；应用前先读取自己仓库当前的 <code>AGENTS.md</code>、规则和验证命令。</aside>
+        <aside class="callout"><strong>先记结论：</strong>这里的 <strong>Local</strong> 指 Codex Desktop 当前前台打开的主工作区（main worktree）：你在 Desktop 中看到、编辑和运行命令的目录。Git 页只保留紧凑的 Git/command loop；Desktop 菜单、任务生命周期和隔离边界详见 <a href="worktrees.html#desktop-start">Worktrees 专页</a>。Branch 是 Git 历史上的指针；Worktree 是你真正打开、编辑和运行命令的独立目录。创建 Worktree 时通常会附着一个任务 branch，也可以使用 detached HEAD，但日常操作重点是<strong>目录隔离、现场保护和验证交接</strong>，不是反复切 branch。</aside>
 
         <section class="content-block" id="what">
-          <p class="section-kicker">通用概念</p>
-          <span class="fragment-alias" id="heading-git-1" data-canonical-fragment="git-mental-model" aria-hidden="true"></span><h2 id="git-mental-model">先建立一张 Git 心智图<a class="heading-permalink" data-heading-permalink data-search-exclude href="#git-mental-model" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
-          <p>一个 repository（仓库）包含 Git 的历史和项目文件。working tree（工作树）是你此刻磁盘上的文件；staging area / index（暂存区 / 索引）是下一次 commit 准备写入的精确快照；commit（提交）是带作者、时间和父提交的不可变历史节点。</p>
+          <p class="section-kicker">够用的 Git 基础</p>
+          <span class="fragment-alias" id="heading-git-1" data-canonical-fragment="git-mental-model" aria-hidden="true"></span><h2 id="git-mental-model">Git 只保留四个概念<a class="heading-permalink" data-heading-permalink data-search-exclude href="#git-mental-model" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <div class="route-strip">
-            <div class="route-pill"><strong>工作树</strong><span>正在编辑的文件；改动尚未进入下一次提交。</span></div>
-            <div class="route-pill"><strong>index</strong><span>用 <code>git add</code> 选择“下一次提交要包含什么”。</span></div>
-            <div class="route-pill"><strong>commit</strong><span>可被审查、比较和回退的历史快照。</span></div>
-            <div class="route-pill"><strong>HEAD</strong><span>当前检出的提交；当前 branch 通常让 HEAD 指向它。</span></div>
+            <div class="route-pill"><strong>Repository</strong><span>保存 commits、refs 和共享 Git 对象的仓库。</span></div>
+            <div class="route-pill"><strong>Working tree</strong><span>磁盘上真正可编辑、可运行的项目文件。</span></div>
+            <div class="route-pill"><strong>Index</strong><span>下一次 commit 准备包含的精确快照。</span></div>
+            <div class="route-pill"><strong>Commit</strong><span>可以比较、审查和交接的历史节点。</span></div>
           </div>
-          <ul class="mini-list">
-            <li><strong>branch（分支）</strong><span>指向某个提交的可移动名称，用来让一条工作线独立前进。</span></li>
-            <li><strong>remote / origin（远程 / origin）</strong><span>远程仓库的本地别名和跟踪引用；<code>origin</code> 只是常见默认名称，不代表某个固定平台。</span></li>
-            <li><strong>merge（合并）</strong><span>把两条历史合成一个新的历史结果（或在可快进时移动指针）；它是 Git 的历史操作。</span></li>
-            <li><strong>PR（Pull Request）</strong><span>托管平台上的审查与合并工作流，能讨论、跑 CI、选择合并目标；<strong>PR 不是 Git 对象</strong>，也不等于一个 commit。</span></li>
-          </ul>
-          <pre><code>repository
-  ├─ working tree  --编辑-->  git diff
-  ├─ staging area / index  --git add path-->  git diff --cached
-  └─ commit  --branch / HEAD 指向当前快照-->  remote/origin  --push-->  PR（托管审查）</code></pre>
+          <p><code>HEAD</code> 表示当前 checkout 的提交；branch 让一条提交线有名字；remote 是远程仓库别名；<strong>PR 不是 Git 对象</strong>，而是托管平台上的审查流程。理解这些已经足够进入 Worktree。</p>
         </section>
 
         <section class="content-block" id="when">
-          <p class="section-kicker">先读再动</p>
-          <span class="fragment-alias" id="heading-git-2" data-canonical-fragment="git-inspection" aria-hidden="true"></span><h2 id="git-inspection">用只读命令建立事实<a class="heading-permalink" data-heading-permalink data-search-exclude href="#git-inspection" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
-          <p>下面的命令只检查状态或历史，不会把文件放进暂存区。把输出贴给 Codex 或 reviewer，通常比“我应该提交什么”更有用。</p>
+          <p class="section-kicker">先读现场</p>
+          <span class="fragment-alias" id="heading-git-2" data-canonical-fragment="git-inspection" aria-hidden="true"></span><h2 id="git-inspection">先看工作树，再决定是否开 Worktree<a class="heading-permalink" data-heading-permalink data-search-exclude href="#git-inspection" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <pre><code>git status --short --branch
 git diff
 git diff --cached
-git log --oneline --decorate -n 8
-git branch --show-current
-git branch -vv
+git worktree list
 git remote</code></pre>
-          <p><code>git remote</code> 只列远程名称（常见是 <code>origin</code>）。只有需要核对地址时才单独查看 URL；如果地址含凭据或 token，不要回显、复制或贴进 prompt、日志或报告，安全报告只写远程名和主机。</p>
           <div class="bento">
-            <article class="card span-4"><strong>状态</strong><p><code>--short --branch</code> 把当前分支、未跟踪文件和未提交改动压缩成一眼可读的摘要。</p></article>
-            <article class="card span-4"><strong>两个 diff</strong><p><code>git diff</code> 看工作树相对 index 的变化；<code>git diff --cached</code> 看下一次 commit 真的会包含什么。</p></article>
-            <article class="card span-4"><strong>历史与指针</strong><p>短日志、当前分支、跟踪分支和 remote 名称一起确认 HEAD 是否在预期位置。</p></article>
+            <article class="card span-4"><strong>Local 是否有现场</strong><p>有不认识的修改或未跟踪文件时先停下确认归属，不要 reset、restore 或“清理干净”。</p></article>
+            <article class="card span-4"><strong>已有 Worktree</strong><p><code>git worktree list</code> 会列出主工作树、linked worktrees、各自 checkout 和是否为 detached HEAD。</p></article>
+            <article class="card span-4"><strong>新任务是否独立</strong><p>新功能、长测试、并行修复或需要保持 Local 不动时，优先新建 Worktree。</p></article>
           </div>
+          <p><code>git remote</code> 只列远程名称。完整 URL 可能含凭据或 token，不要回显、复制或贴进 prompt、日志和报告。</p>
         </section>
 
         <section class="content-block" id="examples">
-          <p class="section-kicker">通用流程</p>
-          <span class="fragment-alias" id="heading-git-3" data-canonical-fragment="git-lifecycle" aria-hidden="true"></span><h2 id="git-lifecycle">安全循环：同步、分支、编辑、提交、PR<a class="heading-permalink" data-heading-permalink data-search-exclude href="#git-lifecycle" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
-          <p>这是一个可迁移到多数仓库的最小生命周期。每一步都先看证据，再做下一步；不要把所有命令串成未经检查的一行。</p>
-          <div class="steps">
-            <article class="step"><strong>1 · 确认现场</strong><p>先跑 <code>git status --short --branch</code>。有不认识的改动时先停下，确认归属，不要用清理命令“恢复干净”。</p></article>
-            <article class="step"><strong>2 · 同步基线</strong><p>在干净工作树上获取远程信息，检查目标分支，再用显式的快进更新。</p></article>
-            <article class="step"><strong>3 · 创建短分支</strong><p>从已确认的基线创建短命名分支；分支名描述任务，不把个人实验混进稳定分支。</p></article>
-            <article class="step"><strong>4 · 小步编辑</strong><p>只改授权范围。编辑后重跑状态和针对路径的 diff，确认没有无关格式化或生成物。</p></article>
-            <article class="step"><strong>5 · 显式暂存</strong><p>用 <code>git add -- path/to/file</code> 逐个加入目标路径，再用 <code>git diff --cached</code> 审查快照。</p></article>
-            <article class="step"><strong>6 · 验证与提交</strong><p>先跑最窄的测试或文档检查，再提交一个叙述清楚的 commit；提交前保留 diff 证据。</p></article>
-            <article class="step"><strong>7 · 推送短分支</strong><p>只推送已审查的短分支，设置 upstream，记录确切分支名和验证结果。</p></article>
-            <article class="step"><strong>8 · 开 PR</strong><p>在托管平台选择正确的 base，写 summary、verification、issue refs 和 blockers，等待人工审查和 CI。</p></article>
-          </div>
+          <p class="section-kicker">核心模型</p>
+          <span class="fragment-alias" id="heading-git-3" data-canonical-fragment="git-worktree-model" aria-hidden="true"></span><span class="fragment-alias" id="git-lifecycle" data-canonical-fragment="git-worktree-model" aria-hidden="true"></span><h2 id="git-worktree-model">Worktree 才是任务隔离主线<a class="heading-permalink" data-heading-permalink data-search-exclude href="#git-worktree-model" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <p>一个 Git repository 可以拥有一个 main worktree 和多个 linked worktrees。每个 Worktree 有<strong>独立目录、独立 index、独立 HEAD 和独立未提交状态</strong>；它们共享 commits、常规 refs 和大部分仓库配置。这样，新任务不必覆盖或暂存 Local 的现场。</p>
+          <figure class="figure-card article-illustration">
+            <img src="assets/worktree-guide/worktree-isolation.png" alt="手绘示意图：一个共享 Git 仓库连接三个边界清晰的独立工作区，左侧 Local 保留杂乱现场，另外两个 Worktree 保持整洁并分别完成验证" loading="lazy" decoding="async" width="1672" height="941">
+            <figcaption>图意：多个 Worktree 共享同一份 Git 历史，但工作目录、index、HEAD 和未提交改动彼此独立。</figcaption>
+          </figure>
+          <aside class="callout"><strong>Worktree 不是安全沙箱：</strong>它隔离 checkout 文件和 per-worktree Git 状态，但可能共享 credentials、Git config、ignored 文件来源、进程、端口、数据库和外部服务。敏感任务仍要遵守权限与安全规则。</aside>
         </section>
 
         <section class="content-block" id="sync">
-          <p class="section-kicker">同步边界</p>
-          <span class="fragment-alias" id="heading-git-4" data-canonical-fragment="git-fetch-pull" aria-hidden="true"></span><h2 id="git-fetch-pull">fetch 与 pull：更新不是一回事<a class="heading-permalink" data-heading-permalink data-search-exclude href="#git-fetch-pull" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
-          <p><code>git fetch</code> 只把远程的新对象和引用下载到本地，不改当前工作树；<code>git pull</code> 通常是 fetch 加后续整合（merge 或 rebase，取决于配置），所以可能立刻改变当前分支和文件。</p>
-          <pre><code># 先看本地是否干净，再获取远程状态
-git status --short --branch
+          <p class="section-kicker">高频闭环</p>
+          <span class="fragment-alias" id="heading-git-4" data-canonical-fragment="git-worktree-workflow" aria-hidden="true"></span><span class="fragment-alias" id="git-fetch-pull" data-canonical-fragment="git-worktree-workflow" aria-hidden="true"></span><h2 id="git-worktree-workflow">保留 Local，创建 clean Worktree，再交付<a class="heading-permalink" data-heading-permalink data-search-exclude href="#git-worktree-workflow" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <div class="steps">
+            <article class="step"><strong>1 · 保护 Local</strong><p>记录 <code>git status</code>，不回滚、不 stash、不吸收用户已有修改。</p></article>
+            <article class="step"><strong>2 · 选定基线</strong><p>确认后 fetch 远程状态，以项目规则指定的 <code>&lt;base&gt;</code> 为新任务起点。</p></article>
+            <article class="step"><strong>3 · 新建 Worktree</strong><p>创建独立目录并附着任务名称；分支命名只是承载任务，不是这一步的学习重点。</p></article>
+            <article class="step"><strong>4 · 窄改与验证</strong><p>在新目录只改目标文件，运行 focused checks，审查 diff 和暂存快照。</p></article>
+            <article class="step"><strong>5 · 交接后再清理</strong><p>commit、PR 或 <strong>Hand off</strong> 完成后先确认无独有工作；删除 Worktree 必须有明确授权。</p></article>
+          </div>
+          <pre><code>git status --short --branch
+git worktree list
 git fetch origin
-
-# 只有确认工作树干净、且确实要更新该分支时：
-git pull --ff-only origin &lt;branch&gt;</code></pre>
-          <aside class="callout"><strong>不要盲目 pull：</strong>如果工作树里有未提交改动，先停下并确认它们的归属。不要靠 stash、reset 或覆盖式 checkout 掩盖冲突；需要隔离时，使用项目批准的 clean worktree。</aside>
+git worktree add -b codex/&lt;task&gt; ../&lt;repo&gt;-&lt;task&gt; origin/&lt;base&gt;
+git -C ../&lt;repo&gt;-&lt;task&gt; status --short --branch
+git -C ../&lt;repo&gt;-&lt;task&gt; diff</code></pre>
+          <p><code>git fetch origin</code> 不会改 working-tree 文件，也不会修改远程仓库；它会更新本地 remote-tracking refs、<code>FETCH_HEAD</code> 等 Git 元数据，因此执行前仍要确认操作边界。</p>
+          <figure class="figure-card article-illustration">
+            <img src="assets/worktree-guide/worktree-delivery-loop.png" alt="手绘流程图：受保护的脏 Local 保持不动，旁边创建干净 Worktree，随后进行窄改、放大镜验证和交付，最后 Local 现场仍完整保留" loading="lazy" decoding="async" width="1672" height="941">
+            <figcaption>图意：先封存 Local 现场，再在 clean Worktree 中编辑和验证；交付发生在独立任务目录，Local 始终不被覆盖。</figcaption>
+          </figure>
+          <p>在 Codex Desktop 中可直接为新任务选择 <strong>Worktree</strong>；需要回到本机前台继续时使用 <strong>Hand off</strong>。完整界面操作、detached HEAD 和 <code>.worktreeinclude</code> 说明见 <a href="worktrees.html#desktop-start">Worktrees 专页</a>。</p>
         </section>
 
         <section class="content-block" id="recovery">
-          <p class="section-kicker">恢复与冲突</p>
-          <span class="fragment-alias" id="heading-git-5" data-canonical-fragment="git-recovery" aria-hidden="true"></span><h2 id="git-recovery">先保住现场，再选择回退方式<a class="heading-permalink" data-heading-permalink data-search-exclude href="#git-recovery" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <p class="section-kicker">安全边界</p>
+          <span class="fragment-alias" id="heading-git-5" data-canonical-fragment="git-worktree-safety" aria-hidden="true"></span><span class="fragment-alias" id="git-recovery" data-canonical-fragment="git-worktree-safety" aria-hidden="true"></span><h2 id="git-worktree-safety">Worktree 最容易踩的五个坑<a class="heading-permalink" data-heading-permalink data-search-exclude href="#git-worktree-safety" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
           <ul class="mini-list">
-            <li><strong>只取消暂存</strong><span><code>git restore --staged &lt;path&gt;</code> 只把路径从 index 移出，保留 working-tree 编辑；之后重新检查 <code>git diff</code>。</span></li>
-            <li><strong>冲突处理</strong><span>先用 <code>git status</code> 找冲突路径，查看冲突标记并按项目规则解决；逐路径 <code>git add</code> 标记已解决，再跑 focused validation，最后审查 staged diff。</span></li>
-            <li><strong>已经共享的错误</strong><span>优先用 <code>git revert &lt;commit&gt;</code> 生成一个反向提交，保留公共历史；不要重写别人已经拉取的提交。</span></li>
+            <li><strong>同一 branch 不能同时 checkout</strong><span>Git 默认拒绝把同一 branch 放进两个 Worktree；不要用 <code>--force</code> 绕过保护。</span></li>
+            <li><strong>共享历史仍会互相可见</strong><span>一个 Worktree 新建 commit 或 branch 后，其他 Worktree 能看到这些 Git 对象；独立的是工作目录，不是另一个 repository。</span></li>
+            <li><strong>Ignored 文件不一定自动出现</strong><span>本地配置、依赖目录和未跟踪资产要按项目规则重新准备，不能假设新 Worktree 与 Local 完全相同。</span></li>
+            <li><strong>不要直接删除目录</strong><span>先用 <code>git worktree list</code> 定位，再确认 clean、已交接且获授权，最后才执行 <code>git worktree remove &lt;path&gt;</code>。</span></li>
+            <li><strong>不要把 <code>--force</code> 当清理按钮</strong><span>强制删除可能丢失未提交和未跟踪文件；不确定时保留 Worktree 并报告 blocker。</span></li>
           </ul>
-          <aside class="callout"><strong>破坏性 / 需授权：</strong><code>git restore &lt;path&gt;</code> 会丢掉未提交的工作树编辑；<code>git reset --hard</code> 会同时移动指针并丢弃本地改动；force-push、删除 branch、删除 worktree 也可能影响他人。它们不是本页的复制粘贴默认值，执行前必须确认目标、备份/恢复路径和授权人。</aside>
         </section>
 
         <section class="content-block" id="real-example">
           <p class="section-kicker">匿名历史案例 · 只读历史会话</p>
-          <span class="fragment-alias" id="heading-git-6" data-canonical-fragment="git-project-operations" aria-hidden="true"></span><h2 id="git-project-operations">匿名历史案例：项目高频操作<a class="heading-permalink" data-heading-permalink data-search-exclude href="#git-project-operations" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
-          <p>以下内容是从<strong>匿名、只读历史会话</strong>整理的项目模式，不代表任何当前项目合同；源项目未被修改。一个项目可能使用 <code>dev</code> 做集成、<code>master</code> 做稳定发布、<code>codex/...</code> 做短分支，并要求显式 stage、focused verification、短分支推送和 PR base 选择。读者必须先检查自己仓库当前的 <code>AGENTS.md</code>、规则和验证命令，再决定是否采用。</p>
-          <div class="steps">
-            <article class="step"><strong>1 · 从 dev 同步</strong><p>确认当前工作树归属；在干净环境中 <code>git fetch origin</code>，以最新 <code>dev</code> 为基线。若主 worktree 有无关脏改动，按仓库流程从 <code>origin/dev</code> 建立临时 clean worktree，不要清理用户编辑。</p></article>
-            <article class="step"><strong>2 · 建短任务分支</strong><p>优先使用 <code>codex/&lt;short-name&gt;</code>，不要直接在 <code>dev</code> 或 <code>master</code> 上写任务。</p></article>
-            <article class="step"><strong>3 · 显式 stage</strong><p>只加入目标文件，例如 <code>git add -- path/to/target-file</code>；存在无关文件时<strong>不要使用 <code>git add .</code></strong>。</p></article>
-            <article class="step"><strong>4 · 最窄验证</strong><p>先查阅项目自己的验证说明，再运行 <code>&lt;project-check&gt;</code> 或受影响模块的 focused tests，并保留 <code>git diff --check</code> 证据。</p></article>
-            <article class="step"><strong>5 · PR 回 dev</strong><p>推送短分支，PR base 选 <code>dev</code>。PR body 写 summary、verification、issue refs 和 blockers；<code>master</code> 只承担稳定发布，不是日常集成目标。</p></article>
-          </div>
-          <pre><code>git status --short --branch
-git fetch origin
-git switch dev
-git pull --ff-only origin dev
-git switch -c codex/&lt;short-name&gt;
-# 编辑后只 stage 目标路径
-git add -- path/to/changed-file
-git diff --cached
-git commit -m "docs: describe focused change"
-git push -u origin codex/&lt;short-name&gt;
-# 在托管平台创建 PR：base = dev</code></pre>
-          <p>这些命令的 clean-state 前提不能省略；如果 <code>git switch dev</code> 或 <code>git pull</code> 会覆盖当前工作，先停止并交给 worktree/orchestrator 处理。</p>
+          <span class="fragment-alias" id="heading-git-6" data-canonical-fragment="git-project-operations" aria-hidden="true"></span><h2 id="git-project-operations">匿名案例：为什么高频使用 Worktree<a class="heading-permalink" data-heading-permalink data-search-exclude href="#git-project-operations" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <p>只读历史会话反复出现同一类现场：Local 正在跑实验、保留人工修改或等待验证，此时又来了独立修复。安全做法不是先研究如何切换 branch，而是<strong>保留 Local → 从确认过的 base 创建 clean Worktree → 窄改 → 验证 → 由主线程统一交付</strong>。源项目未被修改，也不向本页提供修改权限。</p>
+          <div class="decision-row"><strong>Local</strong><span>保留当前未完成工作、运行环境和人工上下文。</span></div>
+          <div class="decision-row"><strong>Task Worktree</strong><span>只承载一个目标、一个写域和对应验证证据。</span></div>
+          <div class="decision-row"><strong>主线程</strong><span>检查完整 diff、处理冲突、决定 commit／PR／<strong>Hand off</strong>；清理另行授权。</span></div>
         </section>
 
         <section class="content-block" id="prompt">
           <p class="section-kicker">与 Codex 协作</p>
-          <span class="fragment-alias" id="heading-git-7" data-canonical-fragment="git-codex-prompt" aria-hidden="true"></span><h2 id="git-codex-prompt">可复制的项目 Git Codex 请求<a class="heading-permalink" data-heading-permalink data-search-exclude href="#git-codex-prompt" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
-          <p>把仓库约定、禁止动作和证据要求一起写进请求，让 Codex 先读现场再执行。这个 prompt 不授权 push、PR、删除或其它外部写操作。</p>
-          <pre><code>我在一个 Git 项目仓库处理一个短任务。
-请先只读检查：git status --short --branch、git log --oneline --decorate -n 8、git branch -vv、git remote（只列远程名称）。
-如果项目规则采用历史案例模式：dev 是集成分支，master 是稳定发布；任务分支应从最新 dev 创建为 codex/&lt;short-name&gt;。
-范围：只修改 &lt;列出目标文件&gt;，不要碰现有无关脏改动，也不要使用 git add .。
-流程：先说明当前工作树和分支事实，再给最小计划；编辑后用 git diff 和 git diff --cached 检查，显式 stage 目标路径。
-验证：运行 &lt;focused command&gt;、git diff --check，并报告实际输出。
-边界：不要 reset --hard、force-push、删除分支/worktree、push 或创建 PR；需要这些动作时先停下请求授权。
-最终报告：改动文件、行为变化、验证证据、剩余风险。</code></pre>
-          <p>完成后由人检查 staged diff、验证输出和 PR base；“看起来完成”不能替代证据。</p>
+          <span class="fragment-alias" id="heading-git-7" data-canonical-fragment="git-codex-prompt" aria-hidden="true"></span><h2 id="git-codex-prompt">可复制的 Worktree 任务请求<a class="heading-permalink" data-heading-permalink data-search-exclude href="#git-codex-prompt" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <pre><code>我有一个新的独立任务，请优先判断是否需要 Worktree。
+先只读检查 git status --short --branch 和 git worktree list。
+如果 Local 有无关改动，必须完整保留，不要 stash、reset、restore 或清理。
+从项目规则指定的 &lt;base&gt; 创建 clean Worktree；只修改 &lt;目标文件&gt;。
+在新 Worktree 运行 &lt;focused checks&gt;，报告 diff、验证结果和剩余风险。
+不要自行删除 Worktree、branch、未跟踪文件，也不要 push 或创建 PR；需要时先请求授权。
+最终给出：Worktree 路径、改动文件、验证证据、交接方式和清理前置条件。</code></pre>
         </section>
 
         <section class="content-block" id="sources-note">
           <p class="section-kicker">资料边界</p>
-          <span class="fragment-alias" id="heading-git-8" data-canonical-fragment="git-boundaries" aria-hidden="true"></span><h2 id="git-boundaries">把 Git 事实和仓库规则分开<a class="heading-permalink" data-heading-permalink data-search-exclude href="#git-boundaries" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
-          <p>Git 教程和命令语义来自上游 Git 文档；PR 的托管审查流程来自 GitHub 文档。本页的项目化操作模式是从<strong>匿名、只读历史会话记录</strong>整理的示例；源项目未被修改，也不提供本页的修改权限。应用前请读取自己仓库当前的 <code>AGENTS.md</code>、规则和验证命令；本页既不暗示任何项目公开，也不暴露本地路径。</p>
-          <p>需要继续查阅时，可从本页右侧“本页依据”打开 <a href="https://git-scm.com/docs/gittutorial" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>Git 官方教程</a> 和 <a href="https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>GitHub 创建 Pull Request 指南</a>。</p>
+          <span class="fragment-alias" id="heading-git-8" data-canonical-fragment="git-boundaries" aria-hidden="true"></span><h2 id="git-boundaries">事实、案例与项目规则分开<a class="heading-permalink" data-heading-permalink data-search-exclude href="#git-boundaries" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <p>Git 对多个 working trees 的共享/独立边界来自上游 <a href="https://git-scm.com/docs/git-worktree" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>git-worktree 文档</a>；Codex Desktop 的 Worktree 与 <strong>Hand off</strong> 行为来自 <a href="https://learn.chatgpt.com/docs/environments/git-worktrees" class="external-link" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer"><span class="external-link-indicator" data-search-exclude aria-hidden="true">↗</span><span class="sr-only" data-search-exclude>（外部链接）</span>OpenAI Worktrees 文档</a>。匿名案例只来自只读历史会话，应用前仍要读取自己仓库当前的 <code>AGENTS.md</code>、验证命令与清理授权规则。</p>
         </section>
       </article>
     </div>
   </main>
 <!-- guide:shell-close:start -->
-<nav class="page-sequence" aria-label="前后页"><a rel="prev" href="codex.html">← Codex</a><a rel="next" href="permissions.html">权限 →</a></nav></div></div>
+<nav class="page-sequence" aria-label="前后页"><a rel="prev" href="codex.html">← Codex</a><a rel="next" href="worktrees.html">Worktrees →</a></nav></div></div>
 <!-- guide:shell-close:end -->
   <footer class="footer"><p><strong>Codex 使用指南</strong></p></footer>
   <!-- guide:runtime:start -->

@@ -5,8 +5,22 @@ window.GUIDE_SITE_DATA = {
     "assets/theme.js": "187420686654f8c1c58df32a0687d4a0d11e6e0707b8696d5f077774982d766a",
     "figures/social-preview.png": "e0ee23ae3b99a8507b4aa423c530289468f1db067d1e7041e4afcefb5fe3ac58"
   },
-  "build_id": "e5ccb6d565d7",
+  "build_id": "fc748509ad72",
   "changelog": [
+    {
+      "category": "content",
+      "date": "2026-08-11",
+      "summary": "首页新增 Git 与 Worktrees 卡片，并说明 Local 前台工作区、Hand off 操作和依赖／缓存边界。",
+      "target": "index.html#需要时再查概念",
+      "title": "补齐 Git 与 Worktree 概念入口"
+    },
+    {
+      "category": "content",
+      "date": "2026-08-11",
+      "summary": "压缩分支与 PR 介绍，补充 Worktree 的共享／独立边界、保护 Local 的高频闭环、安全清理规则和两张生成式辅助插图。",
+      "target": "git.html#git-worktree-model",
+      "title": "把 Git 页重构为 Worktree 主线"
+    },
     {
       "category": "content",
       "date": "2026-08-11",
@@ -311,9 +325,9 @@ window.GUIDE_SITE_DATA = {
     "git.html": [
       "git-mental-model",
       "git-inspection",
-      "git-lifecycle",
-      "git-fetch-pull",
-      "git-recovery",
+      "git-worktree-model",
+      "git-worktree-workflow",
+      "git-worktree-safety",
       "git-project-operations",
       "git-codex-prompt",
       "git-boundaries"
@@ -351,6 +365,8 @@ window.GUIDE_SITE_DATA = {
       "codex-是什么",
       "权限与安全",
       "agents.md",
+      "git-basics",
+      "worktrees",
       "skills",
       "mcp-plugins",
       "subagents",
@@ -652,11 +668,11 @@ window.GUIDE_SITE_DATA = {
       "pages": [
         "codex.html",
         "git.html",
+        "worktrees.html",
         "permissions.html",
         "agents-md.html",
         "skills.html",
         "mcp.html",
-        "worktrees.html",
         "subagents.html",
         "goal.html"
       ]
@@ -684,8 +700,8 @@ window.GUIDE_SITE_DATA = {
   "pages": [
     {
       "description": "从一个可验证的小任务开始，并区分 Codex 原生能力与本指南推荐实践。",
-      "facts_verified": "2026-07-16",
-      "modified": "2026-08-06",
+      "facts_verified": "2026-08-11",
+      "modified": "2026-08-11",
       "nav_label": "首页",
       "path": "index.html",
       "sources": [
@@ -748,7 +764,7 @@ window.GUIDE_SITE_DATA = {
       "title": "Codex 是什么"
     },
     {
-      "description": "从 repository、working tree、暂存区和 commit 入门 Git，并用匿名历史案例说明 dev、短分支、显式暂存、验证和 PR 边界。",
+      "description": "从够用的 Git 基础进入 Worktree：保护 Local、创建独立任务目录、验证、交接并安全清理。",
       "facts_verified": "2026-08-11",
       "modified": "2026-08-11",
       "nav_label": "Git",
@@ -761,11 +777,16 @@ window.GUIDE_SITE_DATA = {
         },
         {
           "kind": "third_party",
-          "label": "Creating a pull request",
-          "url": "https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request"
+          "label": "git-worktree",
+          "url": "https://git-scm.com/docs/git-worktree"
+        },
+        {
+          "kind": "official",
+          "label": "Git worktrees",
+          "url": "https://learn.chatgpt.com/docs/environments/git-worktrees"
         }
       ],
-      "title": "Git 基础与项目高频操作"
+      "title": "Git 基础与 Worktree 高频操作"
     },
     {
       "description": "理解 Desktop 常见权限模式及底层 sandbox、approval、network 与 secret 边界。",
@@ -844,8 +865,8 @@ window.GUIDE_SITE_DATA = {
     },
     {
       "description": "在 Codex Desktop 中用 Worktree 隔离并行任务，并安全地在 Local 与 Worktree 间交接。",
-      "facts_verified": "2026-07-16",
-      "modified": "2026-07-16",
+      "facts_verified": "2026-08-11",
+      "modified": "2026-08-11",
       "nav_label": "Worktrees",
       "path": "worktrees.html",
       "sources": [
