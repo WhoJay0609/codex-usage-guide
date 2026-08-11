@@ -1004,10 +1004,11 @@
           "heading-git-7"
         ]
       },
-      "git-fetch-pull": {
-        "canonical": "git-fetch-pull",
+      "git-worktree-workflow": {
+        "canonical": "git-worktree-workflow",
         "legacy": [
-          "heading-git-4"
+          "heading-git-4",
+          "git-fetch-pull"
         ]
       },
       "git-inspection": {
@@ -1022,10 +1023,11 @@
           "heading-git-6"
         ]
       },
-      "git-lifecycle": {
-        "canonical": "git-lifecycle",
+      "git-worktree-model": {
+        "canonical": "git-worktree-model",
         "legacy": [
-          "heading-git-3"
+          "heading-git-3",
+          "git-lifecycle"
         ]
       },
       "git-mental-model": {
@@ -1034,10 +1036,11 @@
           "heading-git-1"
         ]
       },
-      "git-recovery": {
-        "canonical": "git-recovery",
+      "git-worktree-safety": {
+        "canonical": "git-worktree-safety",
         "legacy": [
-          "heading-git-5"
+          "heading-git-5",
+          "git-recovery"
         ]
       }
     },
@@ -1259,6 +1262,14 @@
         "legacy": [
           "heading-index-16"
         ]
+      },
+      "git-basics": {
+        "canonical": "git-basics",
+        "legacy": []
+      },
+      "worktrees": {
+        "canonical": "worktrees",
+        "legacy": []
       },
       "heading-index-17": {
         "canonical": "每页都有真实实例",

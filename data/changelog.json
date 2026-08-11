@@ -1,6 +1,8 @@
 {
   "schema_version": 1,
   "entries": [
+    {"date": "2026-08-11", "category": "content", "title": "补齐 Git 与 Worktree 概念入口", "summary": "首页新增 Git 与 Worktrees 卡片，并说明 Local 前台工作区、Hand off 操作和依赖／缓存边界。", "target": "index.html#需要时再查概念"},
+    {"date": "2026-08-11", "category": "content", "title": "把 Git 页重构为 Worktree 主线", "summary": "压缩分支与 PR 介绍，补充 Worktree 的共享／独立边界、保护 Local 的高频闭环、安全清理规则和两张生成式辅助插图。", "target": "git.html#git-worktree-model"},
     {"date": "2026-08-11", "category": "content", "title": "新增 Git 基础与项目高频操作", "summary": "用中文解释 repository、working tree、暂存区、commit、分支、HEAD、remote、merge 和 PR，并以匿名只读历史会话整理 dev 集成、短分支、显式 staging、验证和 PR 的项目模式。", "target": "git.html"},
     {"date": "2026-08-06", "category": "quality", "title": "根据读者与专家反馈整理首轮指南", "summary": "把新手首条路径、$skill-name 与插件 slash 命令、项目验证命令和 Desktop 页面边界说清，并加入公开发布路径与搜索索引覆盖门禁。", "target": "index.html"},
     {"date": "2026-08-06", "category": "content", "title": "同步 Matt Pocock skills v1.2.2 说明", "summary": "更新 user-invoked / model-invoked 分层、ask-matt 到 implement 的工程主线、skills.sh 的 Codex 安装边界，以及原生 Codex plugin 暂缓和近期技能改名。", "target": "skills-repositories.html#mattpocock-skills"},
