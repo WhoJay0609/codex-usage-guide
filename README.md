@@ -112,3 +112,7 @@ make check-fast
 这个检查会确认根目录 HTML 页面可解析、共享导航完整、站内链接和锚点存在，并且主要任务/资料页保留“真实实例”段落。需要 PDF 时再单独运行 `make pdf`。
 
 `src/main.tex` 是独立维护的长文源，不会随 canonical HTML 页面或站点生成器自动同步。修改网页内容时不要假设 PDF 已同步；只有任务明确要求 PDF，并人工核对两套内容边界后，才运行 PDF 构建。
+
+## 许可证
+
+本项目采用 [MIT License](LICENSE)。
