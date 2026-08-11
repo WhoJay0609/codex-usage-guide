@@ -9,15 +9,15 @@
 <!-- guide:theme-bootstrap:end -->
   <link rel="stylesheet" href="assets/site.css">
   <!-- guide:metadata:start -->
-<meta name="description" content="从够用的 Git 基础进入 Worktree：保护 Local、创建独立任务目录、验证、交接并安全清理。">
-<meta name="guide-build" content="fc748509ad72">
+<meta name="description" content="从够用的 Git 基础进入 Worktree：保护 Local、用 CLI 创建独立任务目录、验证、交接并安全清理。">
+<meta name="guide-build" content="a95afd637fc5">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://whojay0609.github.io/codex-usage-guide/git.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:site_name" content="Codex 使用指南">
 <meta property="og:title" content="Git 基础与 Worktree 高频操作">
-<meta property="og:description" content="从够用的 Git 基础进入 Worktree：保护 Local、创建独立任务目录、验证、交接并安全清理。">
+<meta property="og:description" content="从够用的 Git 基础进入 Worktree：保护 Local、用 CLI 创建独立任务目录、验证、交接并安全清理。">
 <meta property="og:url" content="https://whojay0609.github.io/codex-usage-guide/git.html">
 <meta property="og:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
 <meta property="og:image:width" content="1200">
@@ -25,7 +25,7 @@
 <meta property="og:image:alt" content="Codex 使用指南">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Git 基础与 Worktree 高频操作">
-<meta name="twitter:description" content="从够用的 Git 基础进入 Worktree：保护 Local、创建独立任务目录、验证、交接并安全清理。">
+<meta name="twitter:description" content="从够用的 Git 基础进入 Worktree：保护 Local、用 CLI 创建独立任务目录、验证、交接并安全清理。">
 <meta name="twitter:image" content="https://whojay0609.github.io/codex-usage-guide/figures/social-preview.png">
 <meta name="twitter:image:alt" content="Codex 使用指南">
 <!-- guide:metadata:end -->
@@ -102,9 +102,12 @@ git remote</code></pre>
           <pre><code>git status --short --branch
 git worktree list
 git fetch origin
-git worktree add -b codex/&lt;task&gt; ../&lt;repo&gt;-&lt;task&gt; origin/&lt;base&gt;
-git -C ../&lt;repo&gt;-&lt;task&gt; status --short --branch
-git -C ../&lt;repo&gt;-&lt;task&gt; diff</code></pre>
+cd "$(git rev-parse --show-toplevel)"
+git worktree add -b codex/&lt;task&gt; "../&lt;repo&gt;-&lt;task&gt;" origin/&lt;base&gt;
+git -C "../&lt;repo&gt;-&lt;task&gt;" status --short --branch
+git -C "../&lt;repo&gt;-&lt;task&gt;" diff</code></pre>
+          <p>把占位符替换成自己的值：<code>&lt;repo&gt;</code> 是当前仓库目录名，<code>&lt;task&gt;</code> 是简短且未占用的任务标识，<code>&lt;base&gt;</code> 是项目规则确认的起点分支名（例如 <code>main</code>，命令会从 <code>origin/&lt;base&gt;</code> 取基线）。相对目标路径 <code>../&lt;repo&gt;-&lt;task&gt;</code> 应位于当前仓库根目录外的 sibling；上面的 <code>cd</code> 会先把 shell 切到仓库根目录，所以即使前面的检查从子目录开始也不会把 Worktree 放错位置。</p>
+          <p>创建后用 <code>git -C "../&lt;repo&gt;-&lt;task&gt;" status --short --branch</code> 做稳定检查：结果应表明当前位于预期任务 branch（或明确为 detached HEAD），且工作树为 <strong>clean</strong>、没有未提交文件；这里只看 branch 与 clean-state 的含义，不要匹配某个 Git 版本的固定输出。如果提示目标路径已存在或名称冲突，停止并改用未占用的 <code>&lt;task&gt;</code> 或目标路径，不要覆盖已有目录。</p>
           <p><code>git fetch origin</code> 不会改 working-tree 文件，也不会修改远程仓库；它会更新本地 remote-tracking refs、<code>FETCH_HEAD</code> 等 Git 元数据，因此执行前仍要确认操作边界。</p>
           <figure class="figure-card article-illustration">
             <img src="assets/worktree-guide/worktree-delivery-loop.png" alt="手绘流程图：受保护的脏 Local 保持不动，旁边创建干净 Worktree，随后进行窄改、放大镜验证和交付，最后 Local 现场仍完整保留" loading="lazy" decoding="async" width="1672" height="941">
@@ -135,8 +138,9 @@ git -C ../&lt;repo&gt;-&lt;task&gt; diff</code></pre>
         </section>
 
         <section class="content-block" id="prompt">
-          <p class="section-kicker">与 Codex 协作</p>
+          <p class="section-kicker">与 Codex 协作 · CLI / 手动路径</p>
           <span class="fragment-alias" id="heading-git-7" data-canonical-fragment="git-codex-prompt" aria-hidden="true"></span><h2 id="git-codex-prompt">可复制的 Worktree 任务请求<a class="heading-permalink" data-heading-permalink data-search-exclude href="#git-codex-prompt" aria-label="本节永久链接"><span aria-hidden="true">#</span></a></h2>
+          <aside class="callout"><strong>适用范围：</strong>下面是 CLI / 手动创建 Worktree 的请求模板。若你已在 Codex Desktop 新建任务时选择 <strong>Worktree</strong>，不要再次要求 Codex 创建第二个 Worktree；请改用 <a href="worktrees.html#desktop-start">Worktrees 专页</a> 的 Desktop 路径。</aside>
           <pre><code>我有一个新的独立任务，请优先判断是否需要 Worktree。
 先只读检查 git status --short --branch 和 git worktree list。
 如果 Local 有无关改动，必须完整保留，不要 stash、reset、restore 或清理。

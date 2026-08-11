@@ -213,12 +213,25 @@ test('introduces Agent Reach as a third-party capability router with explicit di
 });
 
 test('introduces Worktrees on a standalone page and keeps Subagents focused', async ({ page }) => {
+  await page.goto('/git.html#git-worktree-workflow');
+  const workflow = page.locator('#git-worktree-workflow').locator('xpath=ancestor::section[1]');
+  await expect(workflow.locator('pre code')).toContainText('git rev-parse --show-toplevel');
+  await expect(workflow.locator('pre code')).toContainText('git worktree add -b');
+  await expect(workflow.locator('pre code')).toContainText('"../<repo>-<task>"');
+  await expect(workflow.locator('pre code')).toContainText('origin/<base>');
+
   await page.goto('/worktrees.html');
   await expect(page.locator('h1')).toHaveText('Worktrees');
   await expect(page.locator('.global-nav a[href="worktrees.html"]')).toHaveAttribute('aria-current', 'page');
   await expect(page.locator('#desktop-start')).toContainText('detached HEAD');
-  await expect(page.locator('#handoff')).toContainText('Hand off');
-  await expect(page.locator('#safety')).toContainText('.worktreeinclude');
+  const handoff = page.locator('#handoff');
+  await expect(handoff.locator('code')).toContainText(['Create branch here', 'Hand off']);
+  const cleanup = page.locator('#cleanup');
+  await expect(cleanup).toContainText('Managed Worktree');
+  await expect(cleanup).toContainText('Permanent Worktree');
+  await expect(cleanup).toContainText('保存快照');
+  await expect(cleanup).toContainText('可以恢复');
+  await expect(page.locator('#safety pre code')).toContainText('.worktreeinclude');
 
   await page.goto('/subagents.html');
   const relationship = page.locator('#worktree-subagent');
