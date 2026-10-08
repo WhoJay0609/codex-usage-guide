@@ -1,5 +1,51 @@
 {
   "pages": {
+    "token-efficiency.html": {
+      "先分清消耗来自哪里": {
+        "canonical": "先分清消耗来自哪里",
+        "legacy": []
+      },
+      "从低成本试起": {
+        "canonical": "从低成本试起",
+        "legacy": []
+      },
+      "配置代理并发和默认模型": {
+        "canonical": "配置代理并发和默认模型",
+        "legacy": []
+      },
+      "用任务合同减少返工": {
+        "canonical": "用任务合同减少返工",
+        "legacy": []
+      },
+      "精简-agentsmd": {
+        "canonical": "精简-agentsmd",
+        "legacy": []
+      },
+      "用-caveman-缩短输出": {
+        "canonical": "用-caveman-缩短输出",
+        "legacy": []
+      },
+      "用-ponytail-避免多写代码": {
+        "canonical": "用-ponytail-避免多写代码",
+        "legacy": []
+      },
+      "用-rtk-压缩常见输出": {
+        "canonical": "用-rtk-压缩常见输出",
+        "legacy": []
+      },
+      "可复制的节省上下文提示词": {
+        "canonical": "可复制的节省上下文提示词",
+        "legacy": []
+      },
+      "如何做可信的前后比较": {
+        "canonical": "如何做可信的前后比较",
+        "legacy": []
+      },
+      "本机记录与实测边界": {
+        "canonical": "本机记录与实测边界",
+        "legacy": []
+      }
+    },
     "agents-md.html": {
       "heading-agents-md-1": {
         "canonical": "它是什么",

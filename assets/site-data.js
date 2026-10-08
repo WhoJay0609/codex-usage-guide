@@ -5,8 +5,15 @@ window.GUIDE_SITE_DATA = {
     "assets/theme.js": "187420686654f8c1c58df32a0687d4a0d11e6e0707b8696d5f077774982d766a",
     "figures/social-preview.png": "e0ee23ae3b99a8507b4aa423c530289468f1db067d1e7041e4afcefb5fe3ac58"
   },
-  "build_id": "ee947e14a0a9",
+  "build_id": "a3f918a0fa86",
   "changelog": [
+    {
+      "category": "content",
+      "date": "2026-10-08",
+      "summary": "提供子代理和 AGENTS.md 配置、Caveman／RTK／Ponytail 用法，并区分本机统计、工具估算与实际费用。",
+      "target": "token-efficiency.html",
+      "title": "新增减少 Codex 消耗指南"
+    },
     {
       "category": "quality",
       "date": "2026-08-11",
@@ -612,6 +619,19 @@ window.GUIDE_SITE_DATA = {
       "bad-split-repaired-split",
       "真实实例-历史复合案例"
     ],
+    "token-efficiency.html": [
+      "先分清消耗来自哪里",
+      "从低成本试起",
+      "配置代理并发和默认模型",
+      "用任务合同减少返工",
+      "精简-agentsmd",
+      "用-caveman-缩短输出",
+      "用-ponytail-避免多写代码",
+      "用-rtk-压缩常见输出",
+      "可复制的节省上下文提示词",
+      "如何做可信的前后比较",
+      "本机记录与实测边界"
+    ],
     "workflows.html": [
       "先选工作面-再写任务",
       "安装-desktop",
@@ -704,6 +724,7 @@ window.GUIDE_SITE_DATA = {
     {
       "label": "扩展与资料",
       "pages": [
+        "token-efficiency.html",
         "compound-engineering.html",
         "skills-repositories.html",
         "prompt-guidance.html",
@@ -713,9 +734,49 @@ window.GUIDE_SITE_DATA = {
   ],
   "pages": [
     {
+      "description": "配置子代理、AGENTS.md、Caveman、RTK 与 Ponytail，区分 token、费用和耗时，并核对本机统计。",
+      "facts_verified": "2026-10-08",
+      "modified": "2026-10-08",
+      "nav_label": "减少消耗",
+      "path": "token-efficiency.html",
+      "sources": [
+        {
+          "kind": "official",
+          "label": "Subagents",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/subagents"
+        },
+        {
+          "kind": "official",
+          "label": "AGENTS.md",
+          "url": "https://learn.chatgpt.com/docs/agent-configuration/agents-md"
+        },
+        {
+          "kind": "official",
+          "label": "Configuration Reference",
+          "url": "https://learn.chatgpt.com/docs/config-file/config-reference"
+        },
+        {
+          "kind": "third_party",
+          "label": "Caveman installation",
+          "url": "https://github.com/JuliusBrussee/caveman/blob/main/INSTALL.md"
+        },
+        {
+          "kind": "third_party",
+          "label": "Rust Token Killer",
+          "url": "https://github.com/rtk-ai/rtk"
+        },
+        {
+          "kind": "third_party",
+          "label": "Ponytail",
+          "url": "https://github.com/DietrichGebert/ponytail"
+        }
+      ],
+      "title": "减少 Codex 消耗：子代理、配置与工具"
+    },
+    {
       "description": "从一个可验证的小任务开始，并区分 Codex 原生能力与本指南推荐实践。",
       "facts_verified": "2026-08-11",
-      "modified": "2026-08-11",
+      "modified": "2026-10-08",
       "nav_label": "首页",
       "path": "index.html",
       "sources": [

@@ -1,0 +1,33 @@
+{
+  "captured_at_utc": "2026-10-08T07:10:40Z",
+  "project": "codex-usage-guide",
+  "rtk_version": "0.43.0",
+  "scope": "Cumulative RTK project statistics, not model usage or an A/B experiment",
+  "commands": ["rtk gain --project --format json", "rtk gain --project --daily --format json"],
+  "measurement": "RTK estimates command-output tokens using bytes / 4; input means raw command output, output means filtered command output",
+  "summary": {
+    "total_commands": 846,
+    "total_input_estimate": 1767070,
+    "total_output_estimate": 1286434,
+    "reported_saved_estimate": 480766,
+    "reported_savings_pct": 27.206958411381553,
+    "computed_input_minus_output": 480636,
+    "computed_reduction_pct": 27.199601600389343
+  },
+  "daily": [
+    {"date": "2026-07-17", "commands": 4, "input_estimate": 2984, "output_estimate": 2968, "reported_saved_estimate": 16},
+    {"date": "2026-07-20", "commands": 36, "input_estimate": 46290, "output_estimate": 15058, "reported_saved_estimate": 31236},
+    {"date": "2026-07-22", "commands": 7, "input_estimate": 487, "output_estimate": 85, "reported_saved_estimate": 405},
+    {"date": "2026-07-31", "commands": 21, "input_estimate": 25139, "output_estimate": 21834, "reported_saved_estimate": 3305},
+    {"date": "2026-08-06", "commands": 27, "input_estimate": 4419, "output_estimate": 4126, "reported_saved_estimate": 293},
+    {"date": "2026-08-11", "commands": 732, "input_estimate": 1673019, "output_estimate": 1229897, "reported_saved_estimate": 443242},
+    {"date": "2026-10-08", "commands": 19, "input_estimate": 14732, "output_estimate": 12466, "reported_saved_estimate": 2269}
+  ],
+  "limitations": [
+    "Sparse cumulative records from 2026-07-17 to 2026-10-08; no matched baseline or task-quality comparison",
+    "732 of 846 command records are from 2026-08-11; the sample is not balanced across dates or tasks",
+    "RTK reported saved exceeds input minus output by 130; the discrepancy is retained and its cause is not established",
+    "No provider billing, parent/child token usage, prompt content, command arguments, raw history, usernames or private paths are included"
+  ],
+  "method_source": "https://github.com/rtk-ai/rtk/blob/develop/docs/guide/resources/savings-explained.md"
+}

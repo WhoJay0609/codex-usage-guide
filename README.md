@@ -19,6 +19,7 @@
 | 使用 Git、Worktree、Hand off 或安全清理 | [保留 Local，创建 clean Worktree，再交付](https://whojay0609.github.io/codex-usage-guide/git.html#git-worktree-workflow) |
 | 判断定时任务和无人值守是否合适 | [自动化前置条件](https://whojay0609.github.io/codex-usage-guide/automation.html#自动化前置条件) |
 | 比较第三方 Skills、插件和辅助仓库 | [30 秒选择表](https://whojay0609.github.io/codex-usage-guide/skills-repositories.html#30-秒选择表) |
+| 减少 token、费用和重复工作，配置子代理及工具 | [减少 Codex 消耗](https://whojay0609.github.io/codex-usage-guide/token-efficiency.html) |
 
 ## 内容结构
 
@@ -49,7 +50,7 @@ python3 -m http.server 8000
 
 ```console
 $ make check
-Site check passed: 21 HTML pages, local links, anchors, and required sections are valid.
+Site check passed: 22 HTML pages, local links, anchors, and required sections are valid.
 ```
 
 ## 仓库文件
@@ -58,7 +59,7 @@ Site check passed: 21 HTML pages, local links, anchors, and required sections ar
 - `assets/site.css`: 全站共享视觉样式。
 - `assets/site.js`: 全站共享搜索、复制、主题、导航和 Mermaid 渐进增强。
 - `assets/theme.js`: 在共享 CSS 前应用有限的主题偏好，避免错误主题首屏闪烁。
-- `data/site-manifest.json`: 21 个公开根页面、导航、描述、发布 URL 和逐页资料依据的唯一清单。
+- `data/site-manifest.json`: 公开根页面、导航、描述、发布 URL 和逐页资料依据的唯一清单。
 - `data/changelog.json`: 首页“最近更新”和完整更新记录的唯一数据源。
 - `data/heading-fragments.json`: canonical 标题 fragment 与 legacy alias 的受审映射。
 - `data/publication-policy.json`: 公开搜索语料的排除项、敏感内容规则和本地发布边界（`doc/` 不进入公开页面链接）。
@@ -114,7 +115,7 @@ make check
 make check-fast
 ```
 
-需要本地浏览器回归时运行 `make test-browser`；部署完成后再运行 `make check-published`。后者会联网读取 manifest 中的全部 21 个公开页面和关键资产；部署前或网络不可用时必须记录为 `not run`，不能写成通过。
+需要本地浏览器回归时运行 `make test-browser`；部署完成后再运行 `make check-published`。后者会联网读取 manifest 中的全部公开页面和关键资产；部署前或网络不可用时必须记录为 `not run`，不能写成通过。
 
 生成边界：`scripts/build_site.py` 只负责带 `guide:*` sentinel 的共享块、标题 fragment/alias、共享数据资产和受控属性归一化。正文、案例、prompt 与截图说明仍是 authored content；不要手改 sentinel 内代码，也不要让生成器用整页模板覆盖正文。真实 Desktop 截图只有在原分辨率脱敏复核完成后才能发布；当前缺失截图不得用 mock 代替。
 

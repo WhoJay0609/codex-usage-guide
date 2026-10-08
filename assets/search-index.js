@@ -3,6 +3,136 @@ window.GUIDE_SEARCH_INDEX = {
     {
       "fragment": "",
       "level": "page",
+      "page": "token-efficiency.html",
+      "prompts": [],
+      "section": "",
+      "text": "配置子代理、AGENTS.md、Caveman、RTK 与 Ponytail，区分 token、费用和耗时，并核对本机统计。",
+      "title": "减少 Codex 消耗：子代理、配置与工具"
+    },
+    {
+      "fragment": "先分清消耗来自哪里",
+      "level": "h2",
+      "page": "token-efficiency.html",
+      "prompts": [],
+      "section": "先分清消耗来自哪里",
+      "text": "每个工具处理的成本环节不同。先看任务里是哪一类浪费，再选一个改动；不要一次装齐后把结果归功于其中某个工具。 先分开记录总 Token、实际费用或额度、完成耗时。换用较便宜的模型，可能降低费用但增加总 Token；并行可能缩短耗时但增加用量。API 价格、缓存折扣与订阅额度采用不同口径，不能从一个工具的百分比直接换算。 方法输入与输出模型消耗影响可能省下的工作 Subagent主线程传入目标、必要上下文和子任务边界；子线程返回发现、改动或检查结果。每个子线程也会读上下文并调用工具。并行任务的总 Token 通常会高于同一项简单串行工作；模型、上下文和运行次数都会影响总量。减少主线程逐项调查的等待时间，隔离专门任务的上下文。 配置配置代理并发上限、默认模型和推理强度。选择更合适的模型或较低强度可能降低单次开销；并发上限限制同时打开的子代理线程数（不含主线程），不会自动缩短提示词。防止意外开太多子线程，并让简单任务使用足够的模型。 AGENTS.mdCodex 按目录读取持久规则；回复不会自动把这些规则从上下文中删除。简短、稳定的规则可少让你重复贴上下文；冗长或重复的说明会增加持续输入。减少反复纠正、找命令和试错。 Caveman给回答加简洁风格要求，或读取对应 skill。可能减少输出 Token，但 skill 说明本身会占输入；更短的文字不等于推理 Token 或实际费用按同一比例下降。缩短状态说明、解释和汇报。 Ponytail要求先复用已有能力，再写最小改动。少写代码有机会减少生成和审查，但正确性、安全性或必要验证不能为省 Token 而删掉。避免无请求的抽象、脚手架和额外依赖。 RTK经工具代理压缩部分命令行输出，再把摘要交给模型。减少进入上下文的工具输出可能省 Token；工具自身的提示和转发也有开销，节省报告是估算，不是账单。处理状态、测试或构建等冗长输出。 Subagent 的启用与调用方式见 OpenAI 官方 Subagents 文档；目录指令和配置字段见 OpenAI 官方 AGENTS.md 文档及配置参考。Caveman、Ponytail、RTK 是第三方项目，功能以各自上游说明为准。 建议顺序",
+      "title": "减少 Codex 消耗：子代理、配置与工具"
+    },
+    {
+      "fragment": "从低成本试起",
+      "level": "h2",
+      "page": "token-efficiency.html",
+      "prompts": [],
+      "section": "从低成本试起",
+      "text": "先缩小任务上下文。说清目标、范围、相关文件和验收方式。不要把整份仓库文档或完整历史都贴进每次请求。 只在能分工时使用 Subagent。适合互不重叠的只读调查、审查或实现切片；若主线程必须逐步提供信息、反复合并，直接串行可能更省。 把重复规则写短。把常用路径、命令和编辑边界放入合适的 AGENTS.md，不要复制临时任务细节或整份参考手册。 最后试输出和命令工具。Caveman 负责表达长度，Ponytail 约束实现范围，RTK 压缩受支持的命令输出。一次只启用一个，观察结果后再决定是否保留。 并发和模型",
+      "title": "减少 Codex 消耗：子代理、配置与工具"
+    },
+    {
+      "fragment": "配置代理并发和默认模型",
+      "level": "h2",
+      "page": "token-efficiency.html",
+      "prompts": [
+        "# ~/.codex/config.toml\ntool_output_token_limit = 4000  # 可选：单项工具输出的历史预算，不是任务总 Token 上限\n# model_reasoning_effort = \"medium\"  # 主线程可单独调整；先确认所选模型支持此级别\n\n[agents]\nenabled = true\nmax_concurrent_threads_per_session = 2\ndefault_subagent_model = \"gpt-6-luna\"\ndefault_subagent_reasoning_effort = \"high\"",
+        "# ~/.codex/agents/luna-worker.toml\nname = \"luna_worker\"\ndescription = \"只读调查一个已指定的问题并报告证据\"\ndeveloper_instructions = \"只读；报告文件路径、依据、未知项，不提出最终架构结论。\"\nmodel = \"gpt-6-luna\"\nmodel_reasoning_effort = \"high\"\nsandbox_mode = \"read-only\""
+      ],
+      "section": "配置代理并发和默认模型",
+      "text": "近期 Codex 版本默认启用 Subagent；你可以直接提出子任务，也可以在适用的 AGENTS.md 或 skill 中要求使用。并发会增加总计算和 Token 用量，但能换取较短等待时间及相互隔离的工作上下文。先从一项有明确边界的子任务开始，再根据质量和总用量调整。模型名称是否可用取决于客户端与账户。 下面是一个示例起点，不是节省费用的通用配置。它把同时打开的子代理线程限制为两个（不含主线程），并选择一个可用的默认子代理模型。已完成的子线程仍可能保持打开；需要释放名额时，可让 Codex 关闭已完成的子线程。文件中的顶层键要写在 TOML 表之前；写入前应检查现有配置并合并。 # ~/.codex/config.toml tool_output_token_limit = 4000 # 可选：单项工具输出的历史预算，不是任务总 Token 上限 # model_reasoning_effort = \"medium\" # 主线程可单独调整；先确认所选模型支持此级别 [agents] enabled = true max_concurrent_threads_per_session = 2 default_subagent_model = \"gpt-6-luna\" default_subagent_reasoning_effort = \"high\" 如果任务很小，可以尝试更低的推理强度或不启动子线程；如果质量下降，就恢复较高设置。不要把“高”当成所有任务的默认节省选项。主模型和代理模型也可能有不同价格，应按实际使用的模型核算。 重复使用某类子任务时，可以建立 custom agent。放在用户目录时，文件路径为 ~/.codex/agents/luna-worker.toml；需要团队共享时可放在项目的 .codex/agents/luna-worker.toml。 # ~/.codex/agents/luna-worker.toml name = \"luna_worker\" description = \"只读调查一个已指定的问题并报告证据\" developer_instructions = \"只读；报告文件路径、依据、未知项，不提出最终架构结论。\" model = \"gpt-6-luna\" model_reasoning_effort = \"high\" sandbox_mode = \"read-only\" 角色的模型和推理强度设置优先于调用时的默认解析。sandbox_mode 是请求的隔离设置，不是对所有环境的保证；运行时或父线程策略可以覆盖它。若账户不提供该模型，或本机版本使用不同字段，应以客户端当前配置文档和错误信息为准。OpenAI Subagents 文档说明了当前的调用与角色配置方式。 保存配置后，重启客户端或新开任务，确认角色已出现在可用列表。字段兼容性应先用 codex --version 和当前文档核对。遇到截断日志，应按需读回完整失败证据；过小的输出上限会增加重试。关闭不需要的插件或 skill，避免把同一套规则同时写进全局文件、项目文件和插件。 交给代理的任务",
+      "title": "减少 Codex 消耗：子代理、配置与工具"
+    },
+    {
+      "fragment": "用任务合同减少返工",
+      "level": "h2",
+      "page": "token-efficiency.html",
+      "prompts": [
+        "目标：[完成后可观察的结果]\n上下文：[完成子任务必需的文件、决定或证据]\n写域：[可编辑文件；或明确写“只读”]\n排除：[不得改动的文件、接口、外部系统]\n接口：[与主线程或其他子任务的约定]\n完成标准：[结果必须满足什么]\n验证：[要运行的命令或要检查的证据]\n停止条件：[信息、权限或环境不足时如何报告]\n输出：[实际发现、改动、精确检查结果和未解决项]",
+        "请派发一个只读子任务给 luna_worker。\n问题：核验 tool_output_token_limit 限制单项工具输出预算，还是整个任务的 Token 总量。\n证据范围：OpenAI 官方配置参考页；不要读取本机配置或修改文件。\n返回：来源链接、字段名、简短结论、未知项，最多 4 条。\n不要复制完整会话历史、整页原文或密钥；不要提出最终架构判断。"
+      ],
+      "section": "用任务合同减少返工",
+      "text": "模糊任务会让代理搜索更多内容、做更多无关改动，再让主线程花 Token 修正。每个子任务只传必要背景，并明确写域、输出和停止条件。下面的文本可复制后替换方括号： 目标：[完成后可观察的结果] 上下文：[完成子任务必需的文件、决定或证据] 写域：[可编辑文件；或明确写“只读”] 排除：[不得改动的文件、接口、外部系统] 接口：[与主线程或其他子任务的约定] 完成标准：[结果必须满足什么] 验证：[要运行的命令或要检查的证据] 停止条件：[信息、权限或环境不足时如何报告] 输出：[实际发现、改动、精确检查结果和未解决项] 只读调查可把“实际文件和行号、支持证据、推断、未知项”设为输出；实现任务则写清唯一所有者和精确文件列表。主线程负责检查完整 diff、整合接口并决定整体是否通过。不要让多个代理同时改同一文件来省时间。给子线程传完成工作所需的上下文即可，不必复制整段聊天历史或原始长日志；要求简短证据和命令结果，再由主线程收集摘要，不复制整份子线程记录。 具体调用示例：安装并启用 custom agent 后，可在请求中指名角色；若客户端不支持这个角色名，就改用它实际显示的名称。 请派发一个只读子任务给 luna_worker。 问题：核验 tool_output_token_limit 限制单项工具输出预算，还是整个任务的 Token 总量。 证据范围：OpenAI 官方配置参考页；不要读取本机配置或修改文件。 返回：来源链接、字段名、简短结论、未知项，最多 4 条。 不要复制完整会话历史、整页原文或密钥；不要提出最终架构判断。 持久上下文",
+      "title": "减少 Codex 消耗：子代理、配置与工具"
+    },
+    {
+      "fragment": "精简-agentsmd",
+      "level": "h2",
+      "page": "token-efficiency.html",
+      "prompts": [
+        "# ~/.codex/AGENTS.md\n## 通用工作方式\n- 开始前先读适用的项目说明和目标文件。\n- 只改完成当前请求所需的范围。\n- 运行请求明确要求且与改动相关的验证；报告精确命令和结果。\n- 证据不足时说明未知项，不要猜测。",
+        "# <repo>/AGENTS.md\n## 项目验证\n- 快速检查：<替换为最窄的相关命令>\n- 完整检查：<替换为项目验收命令>\n## 按需读取\n- 修改接口时读取 docs/api.md；请先把此路径换成项目中实际存在的接口文档。\n## 编辑边界\n- 页面正文由作者维护；导航和搜索索引由生成器维护。\n- 保留与当前任务无关的工作区修改。"
+      ],
+      "section": "精简 AGENTS.md",
+      "text": "AGENTS.md 适合保存会重复使用的项目事实：重要入口、编辑边界、验证命令和报告格式。全局文件写跨项目习惯，仓库文件写该项目事实，子目录文件写局部规则。用户级文件通常位于 ~/.codex/AGENTS.md；如存在 ~/.codex/AGENTS.override.md，它优先用于该层。项目规则从 Git 根目录向当前工作目录逐层查找并累积；每层按 AGENTS.override.md、AGENTS.md、配置的 project_doc_fallback_filenames 选择适用文件。更近一层只覆盖冲突规则，不会自动删掉父目录的其他说明。 官方文档说明默认累计项目指令上限为 32 KiB。不要把上限调得很小来省 Token：这会让后面的规则被截掉。把稳定事实写短，把详细内容放在按需读取的文件里，并在指令中给出清楚路径。新会话中再验证规则是否生效。 用户级示例：先检查目标文件是否已存在，再把下面的短规则合并进去。 # ~/.codex/AGENTS.md ## 通用工作方式 - 开始前先读适用的项目说明和目标文件。 - 只改完成当前请求所需的范围。 - 运行请求明确要求且与改动相关的验证；报告精确命令和结果。 - 证据不足时说明未知项，不要猜测。 项目级示例：请把占位命令换成仓库真实命令，并删除不适用的规则。 # <repo>/AGENTS.md ## 项目验证 - 快速检查：<替换为最窄的相关命令> - 完整检查：<替换为项目验收命令> ## 按需读取 - 修改接口时读取 docs/api.md；请先把此路径换成项目中实际存在的接口文档。 ## 编辑边界 - 页面正文由作者维护；导航和搜索索引由生成器维护。 - 保留与当前任务无关的工作区修改。 规则写得越多，不一定越有效：重复列出仓库文件树、粘贴日志或包含所有子目录的通用说明，会让每次相关任务都背上额外上下文。只引用确实存在的文档；任务要求读取的路径缺失时，应先报告，不要编造内容。官方发现顺序和大小限制见 OpenAI AGENTS.md 文档。 简洁表达",
+      "title": "减少 Codex 消耗：子代理、配置与工具"
+    },
+    {
+      "fragment": "用-caveman-缩短输出",
+      "level": "h2",
+      "page": "token-efficiency.html",
+      "prompts": [
+        "npx skills add JuliusBrussee/caveman -a codex -g",
+        "$caveman 请用简洁中文和完整短句回答，保留条件、数字、代码和必要的不确定性。"
+      ],
+      "section": "用 Caveman 缩短输出",
+      "text": "Caveman 是第三方 skill，目标是压缩表达。上游提供面向 Codex 的交互式安装器；运行后只选择 caveman 这个 skill，不要顺手安装不需要的其他项： npx skills add JuliusBrussee/caveman -a codex -g 安装后先查看本机列出的 skill 名称。使用时在任务里调用它，并说明要保留完整中文语法、条件、数字、代码和不确定性，例如： $caveman 请用简洁中文和完整短句回答，保留条件、数字、代码和必要的不确定性。 如本机插件列表显示命名空间名称，应使用列表里的实际名称；不同安装方式的调用名可能不同。本机旧版可能支持 lite/full/ultra，上游版本也可能更改模式名，先读安装后的 SKILL.md。想单独恢复普通表达，可说 stop caveman；normal mode 可能同时关闭会话中启用的 Caveman 和 Ponytail。用很小的解释任务比较启用前后的总 Token 与可读性。上游安装说明见 Caveman INSTALL.md，项目主页见 JuliusBrussee/caveman。它改的是表达长度，不是推理强度或计费规则；项目宣传的节省比例不代表你的实测。 最小实现",
+      "title": "减少 Codex 消耗：子代理、配置与工具"
+    },
+    {
+      "fragment": "用-ponytail-避免多写代码",
+      "level": "h2",
+      "page": "token-efficiency.html",
+      "prompts": [
+        "codex plugin marketplace add DietrichGebert/ponytail\ncodex plugin add ponytail@ponytail"
+      ],
+      "section": "用 Ponytail 避免多写代码",
+      "text": "Ponytail 是第三方 skill / 插件，要求先复用现有 helper、标准库和平台能力，再增加代码。它不应省掉必要的输入校验、安全处理、可访问性或有价值的验证。 按上游方式安装插件： codex plugin marketplace add DietrichGebert/ponytail codex plugin add ponytail@ponytail 用当前安装列出的 skill 名称启用，例如 $ponytail:ponytail full；独立安装时调用 $ponytail。告诉 Codex 先检查当前调用路径、已存在实现和验收，再做最小可用改动。若启用插件时安装了 hook，使用 /hooks 检查具体生命周期动作后再决定是否保留。需要退出本轮风格时说 stop ponytail 或 normal mode；需要卸载时从当前 Codex 插件管理界面移除插件。 如果你不安装插件，可先审阅上游 SKILL.md，再把文件放在 ~/.agents/skills/ponytail/SKILL.md。安装完成后，确认 Codex 能列出该 skill；用一个有真实验收条件的小改动检查它是否减少了无关实现。若使用 /ponytail-gain，把它当成项目示例的基准分数，不要当成当前 Codex 账单。查看插件 hook 后，开一个新任务确认实际行为。来源：Ponytail 上游仓库。 命令输出",
+      "title": "减少 Codex 消耗：子代理、配置与工具"
+    },
+    {
+      "fragment": "用-rtk-压缩常见输出",
+      "level": "h2",
+      "page": "token-efficiency.html",
+      "prompts": [
+        "# macOS\nbrew install rtk\n\n# Windows\nwinget install rtk-ai.rtk\n\n# Linux with Rust toolchain\ncargo install --git https://github.com/rtk-ai/rtk",
+        "rtk --version\nrtk init --codex --dry-run",
+        "rtk init --codex\nrtk --version\nrtk gain"
+      ],
+      "section": "用 RTK 压缩常见输出",
+      "text": "RTK 是第三方命令输出压缩工具。先按官方安装说明选择适合系统的方法，并检查同名命令冲突：例如 rtk 是否已指向 Rust 工具包。以下命令来自上游安装说明，按系统选择一项即可；Cargo 路径需要 Rust 工具链： # macOS brew install rtk # Windows winget install rtk-ai.rtk # Linux with Rust toolchain cargo install --git https://github.com/rtk-ai/rtk 安装后先预览 Codex 初始化会改什么： rtk --version rtk init --codex --dry-run 如果预览内容正确，再运行项目级初始化；需要全局配置时，才考虑加 -g： rtk init --codex rtk --version rtk gain 初始化会写入 AGENTS.md 和 RTK.md。先备份或提交已有工作，逐项合并生成说明；不要用工具生成的通用文件覆盖已有项目规则。之后可试用常见命令，如 rtk git status、rtk pytest -q、rtk npm run build。要看精确 diff、完整失败输出或原始证据时，用普通命令，或按上游说明使用 rtk proxy git diff。如果宿主已经自动重写这些命令，不要再套一层代理。全局初始化可用 rtk init --codex -g，仍应先检查预览和已有指令。 rtk gain 给出的节省值是工具估算，用来比较压缩情况，不等同实际 API 用量或账单。上游安装与命令说明见 RTK 安装文档。 组合使用",
+      "title": "减少 Codex 消耗：子代理、配置与工具"
+    },
+    {
+      "fragment": "可复制的节省上下文提示词",
+      "level": "h2",
+      "page": "token-efficiency.html",
+      "prompts": [
+        "目标：[一句话说明完成结果]\n范围：[相关文件或证据]\n验收：[如何判断完成]\n请先查看适用的 AGENTS.md，只读与任务有关的文件。\n只有当子任务彼此独立、边界清楚时才用 Subagent，并限制数量；每个子任务都写明输入、写域和输出。\n回答使用简洁中文，保留必要的条件、数字、路径、命令和未知项。\n实现时优先复用现有代码和标准库，不做无关重构。\n验证：[最窄的相关命令]\n报告实际改动、精确检查结果、未解决问题。"
+      ],
+      "section": "可复制的节省上下文提示词",
+      "text": "每项任务只启用真正需要的方法。这个提示词可作为起点；删掉不适用的行，不要把所有工具都变成默认要求。 目标：[一句话说明完成结果] 范围：[相关文件或证据] 验收：[如何判断完成] 请先查看适用的 AGENTS.md，只读与任务有关的文件。 只有当子任务彼此独立、边界清楚时才用 Subagent，并限制数量；每个子任务都写明输入、写域和输出。 回答使用简洁中文，保留必要的条件、数字、路径、命令和未知项。 实现时优先复用现有代码和标准库，不做无关重构。 验证：[最窄的相关命令] 报告实际改动、精确检查结果、未解决问题。 这是一条任务提示，不是全局设置。只有当你持续遇到同一类重复行为时，才把稳定规则移入 AGENTS.md。如果主线程已经有足够信息，直接完成小任务通常比启动多个代理更省。 比较方法",
+      "title": "减少 Codex 消耗：子代理、配置与工具"
+    },
+    {
+      "fragment": "如何做可信的前后比较",
+      "level": "h2",
+      "page": "token-efficiency.html",
+      "prompts": [],
+      "section": "如何做可信的前后比较",
+      "text": "比较前先冻结一个真实任务、同一仓库状态、相同验收条件、模型、推理强度和工具权限。一次只改一个因素，例如“是否使用 RTK”或“是否派一个只读代理”。记录任务是否一次通过、返工次数、工具调用数、耗时和总用量。任务难度差异很大时，多次交替运行两种设置，并把差异保留下来。 若客户端或 API 能提供用量记录，按父线程和所有子线程分别记录输入、缓存输入、输出和推理 Token，再汇总同一次任务。按线程分别汇总同名字段。先确认缓存输入是否已包含在输入总量中、推理 Token 是否已包含在输出总量中；属于子集的明细不要重复相加。不同模型可能采用不同计量字段或价格，比较账单时应使用对应模型的实际费率。没有可靠的用量明细时，只报告可观察的调用数、耗时和成功率，不要把压缩工具显示的估算写成实际账单节省。 缓存会影响重复运行。把冷缓存和暖缓存结果分开记录，不要只拿一次运行得出结论。保留每次重试和失败的用量；只看成功那次会低估真实任务成本。比起单看最短回答，优先比较满足验收的总消耗。 本机边界",
+      "title": "减少 Codex 消耗：子代理、配置与工具"
+    },
+    {
+      "fragment": "本机记录与实测边界",
+      "level": "h2",
+      "page": "token-efficiency.html",
+      "prompts": [
+        "# 在项目根目录读取本机 RTK 统计；这些命令不会复现同一历史快照\nrtk gain --project --format json\nrtk gain --project --daily --format json\n\n# 本文按过滤前后两列计算\n(1,767,070 - 1,286,434) / 1,767,070 = 27.1996%"
+      ],
+      "section": "本机记录与实测边界",
+      "text": "本项目有 RTK 的实际使用记录，尚不能据此得出 Codex 总费用的节省比例。以下为 2026-10-08 07:10:40 UTC 冻结的项目统计，RTK 版本为 0.43.0。记录日期从 2026-07-17 到 2026-10-08，并非每天都有数据。原始命令参数、会话内容和私人路径均未公开。 命令记录数：846。 过滤前命令输出的 Token 估算量：1,767,070。 过滤后命令输出的 Token 估算量：1,286,434。 两者相减：480,636；相对过滤前减少约 27.2%。 # 在项目根目录读取本机 RTK 统计；这些命令不会复现同一历史快照 rtk gain --project --format json rtk gain --project --daily --format json # 本文按过滤前后两列计算 (1,767,070 - 1,286,434) / 1,767,070 = 27.1996% RTK 自身的 saved 字段为 480,766，比两列相减多 130。这里保留差异，原因尚未确认，不将两种口径混用。846 条记录中有 732 条集中在 8 月 11 日，不能把该比例外推到所有项目。脱敏的汇总及逐日数据见 项目统计 JSON。 这里的 Input / Output 指命令过滤前后的输出，不是 GPT 的输入和回答。RTK 使用 bytes / 4 估算 Token；它没有测量提示词、推理、全部父子线程用量、缓存费用或任务质量，也没有同任务的关闭 RTK 对照组。因此这些记录只支持“命令输出变短”，不支持“账单省了 27.2%”。方法依据：RTK 统计口径说明。 配置实例：核对时本机 Codex CLI 为 0.159.1，子代理默认配置为 gpt-6-luna / max。这是已有配置的记录，不能证明该配置最省，也不等于每次子任务的实际模型。上文推荐从两个打开的子线程、high 起试，是便于比较的起点；角色配置和运行时设置仍需核对。 本次查阅的记录中，未找到我们对 Caveman、Ponytail、精简 AGENTS.md 或模型分工做过可复核的 Codex 总用量对照测试。上游 benchmark 不计作本项目实测。Caveman 的旧版“65%”宣传也不用于本文结论；其当前 数字说明区分了输出长度测试和费用结论。后续若补充实验，应按上节的方法同时记录质量、重试和全部用量。",
+      "title": "减少 Codex 消耗：子代理、配置与工具"
+    },
+    {
+      "fragment": "",
+      "level": "page",
       "page": "index.html",
       "prompts": [],
       "section": "",
@@ -15,7 +145,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "index.html",
       "prompts": [],
       "section": "最近更新",
-      "text": "更新记录由 data/changelog.json 生成；先看最近三项，需要时再展开完整记录。2026-08-11质量第三轮读者与专家复核无新增阻塞问题完成首页、Git 概念、CLI Worktree 及 Desktop Worktree／Hand off／清理路径复核，未发现新问题，保留既有 CLI／Desktop 分工与回归门禁。2026-08-11质量补齐 CLI Worktree 路径与 Local 术语解释 CLI 占位符与仓库根目录前置条件，增加创建后状态检查，并区分 Local environment 与 Local 主工作树。2026-08-11内容补齐 Git 与 Worktree 概念入口首页新增 Git 与 Worktrees 卡片，并说明 Local 前台工作区、Hand off 操作和依赖／缓存边界。查看完整更新记录（21）2026-08-11质量第三轮读者与专家复核无新增阻塞问题完成首页、Git 概念、CLI Worktree 及 Desktop Worktree／Hand off／清理路径复核，未发现新问题，保留既有 CLI／Desktop 分工与回归门禁。2026-08-11质量补齐 CLI Worktree 路径与 Local 术语解释 CLI 占位符与仓库根目录前置条件，增加创建后状态检查，并区分 Local environment 与 Local 主工作树。2026-08-11内容补齐 Git 与 Worktree 概念入口首页新增 Git 与 Worktrees 卡片，并说明 Local 前台工作区、Hand off 操作和依赖／缓存边界。2026-08-11内容把 Git 页重构为 Worktree 主线压缩分支与 PR 介绍，补充 Worktree 的共享／独立边界、保护 Local 的高频闭环、安全清理规则和两张生成式辅助插图。2026-08-11内容新增 Git 基础与项目高频操作用中文解释 repository、working tree、暂存区、commit、分支、HEAD、remote、merge 和 PR，并以匿名只读历史会话整理 dev 集成、短分支、显式 staging、验证和 PR 的项目模式。2026-08-06质量根据读者与专家反馈整理首轮指南把新手首条路径、$skill-name 与插件 slash 命令、项目验证命令和 Desktop 页面边界说清，并加入公开发布路径与搜索索引覆盖门禁。2026-08-06内容同步 Matt Pocock skills v1.2.2 说明更新 user-invoked / model-invoked 分层、ask-matt 到 implement 的工程主线、skills.sh 的 Codex 安装边界，以及原生 Codex plugin 暂缓和近期技能改名。2026-07-23内容补齐 Desktop 界面证据与可迁移案例新增五张 Desktop 操作示意截图、screenshot registry、日常/工程/学术/权限/MCP 演示案例，以及 CLI 附录、404、robots 与 sitemap。2026-07-22内容新增 whojay-skill 证据工作流说明补充 WhoJay0609/whojay-skill 的工程与学术双工作流、证据状态、授权边界与隐私去标识说明。2026-07-22内容新增 dot-skills 开放格式目录说明补充 pproenca/dot-skills 的 curated/experimental 分层、Codex 安装目录、按项审查与第三方权限边界。2026-07-22内容新增 OpenCodex 第三方代理说明补充 lidge-jun/opencodex 的本地 provider proxy 定位、原生 Codex 恢复路径及网络、凭据、账户和服务条款边界。2026-07-21质量统一 Apple 风格界面体验系统化调整排版、材质、色彩、响应式层级与即时交互反馈，并补齐减少动态效果、减少透明度和高对比度适配。2026-07-16质量调整流程图与正文配图Mermaid 流程图尺寸；权限、MCP、Subagents、提示词四页的小黑配图；配图图注与替代文本。2026-07-16质量补齐资料依据与页面信息逐页资料依据、首页更新日志、权限模式表述、Skill／Plugin／MCP 分层、页脚内容与全页面响应式适配。2026-07-16内容新增 GPT-5.6 提示词指南GPT-5.6 prompting guidance 中文解读、refine-user-prompt skill 介绍；移除原 Goal Entry 专题。2026-07-12内容新增中文 Prompt 仓库条目awesome-chatgpt-prompts-zh 仓库说明、Codex 使用示例与提示词安全边界。2026-07-12内容新增视觉与中文配图 Skillstaste-skill 与 Ian Xiaohei Illustrations 的仓库说明、使用示例和适用边界。2026-07-12内容新增 Codex 生态 Top 10Skills、MCP、辅助工具榜单与官方基础设施条目。2026-07-11结构新增站点清单与更新日志统一站点清单、首页最近更新、完整更新日志与站点生成数据。2026-07-10内容新增 Skills 仓库选择指南第三方 Skills 仓库对比、任务选择表与安装入口。2026-07-07内容新增 Compound Engineering 指南插件安装、核心流程与真实实例。 先分清边界",
+      "text": "更新记录由 data/changelog.json 生成；先看最近三项，需要时再展开完整记录。2026-10-08内容新增减少 Codex 消耗指南提供子代理和 AGENTS.md 配置、Caveman／RTK／Ponytail 用法，并区分本机统计、工具估算与实际费用。2026-08-11质量第三轮读者与专家复核无新增阻塞问题完成首页、Git 概念、CLI Worktree 及 Desktop Worktree／Hand off／清理路径复核，未发现新问题，保留既有 CLI／Desktop 分工与回归门禁。2026-08-11质量补齐 CLI Worktree 路径与 Local 术语解释 CLI 占位符与仓库根目录前置条件，增加创建后状态检查，并区分 Local environment 与 Local 主工作树。查看完整更新记录（22）2026-10-08内容新增减少 Codex 消耗指南提供子代理和 AGENTS.md 配置、Caveman／RTK／Ponytail 用法，并区分本机统计、工具估算与实际费用。2026-08-11质量第三轮读者与专家复核无新增阻塞问题完成首页、Git 概念、CLI Worktree 及 Desktop Worktree／Hand off／清理路径复核，未发现新问题，保留既有 CLI／Desktop 分工与回归门禁。2026-08-11质量补齐 CLI Worktree 路径与 Local 术语解释 CLI 占位符与仓库根目录前置条件，增加创建后状态检查，并区分 Local environment 与 Local 主工作树。2026-08-11内容补齐 Git 与 Worktree 概念入口首页新增 Git 与 Worktrees 卡片，并说明 Local 前台工作区、Hand off 操作和依赖／缓存边界。2026-08-11内容把 Git 页重构为 Worktree 主线压缩分支与 PR 介绍，补充 Worktree 的共享／独立边界、保护 Local 的高频闭环、安全清理规则和两张生成式辅助插图。2026-08-11内容新增 Git 基础与项目高频操作用中文解释 repository、working tree、暂存区、commit、分支、HEAD、remote、merge 和 PR，并以匿名只读历史会话整理 dev 集成、短分支、显式 staging、验证和 PR 的项目模式。2026-08-06质量根据读者与专家反馈整理首轮指南把新手首条路径、$skill-name 与插件 slash 命令、项目验证命令和 Desktop 页面边界说清，并加入公开发布路径与搜索索引覆盖门禁。2026-08-06内容同步 Matt Pocock skills v1.2.2 说明更新 user-invoked / model-invoked 分层、ask-matt 到 implement 的工程主线、skills.sh 的 Codex 安装边界，以及原生 Codex plugin 暂缓和近期技能改名。2026-07-23内容补齐 Desktop 界面证据与可迁移案例新增五张 Desktop 操作示意截图、screenshot registry、日常/工程/学术/权限/MCP 演示案例，以及 CLI 附录、404、robots 与 sitemap。2026-07-22内容新增 whojay-skill 证据工作流说明补充 WhoJay0609/whojay-skill 的工程与学术双工作流、证据状态、授权边界与隐私去标识说明。2026-07-22内容新增 dot-skills 开放格式目录说明补充 pproenca/dot-skills 的 curated/experimental 分层、Codex 安装目录、按项审查与第三方权限边界。2026-07-22内容新增 OpenCodex 第三方代理说明补充 lidge-jun/opencodex 的本地 provider proxy 定位、原生 Codex 恢复路径及网络、凭据、账户和服务条款边界。2026-07-21质量统一 Apple 风格界面体验系统化调整排版、材质、色彩、响应式层级与即时交互反馈，并补齐减少动态效果、减少透明度和高对比度适配。2026-07-16质量调整流程图与正文配图Mermaid 流程图尺寸；权限、MCP、Subagents、提示词四页的小黑配图；配图图注与替代文本。2026-07-16质量补齐资料依据与页面信息逐页资料依据、首页更新日志、权限模式表述、Skill／Plugin／MCP 分层、页脚内容与全页面响应式适配。2026-07-16内容新增 GPT-5.6 提示词指南GPT-5.6 prompting guidance 中文解读、refine-user-prompt skill 介绍；移除原 Goal Entry 专题。2026-07-12内容新增中文 Prompt 仓库条目awesome-chatgpt-prompts-zh 仓库说明、Codex 使用示例与提示词安全边界。2026-07-12内容新增视觉与中文配图 Skillstaste-skill 与 Ian Xiaohei Illustrations 的仓库说明、使用示例和适用边界。2026-07-12内容新增 Codex 生态 Top 10Skills、MCP、辅助工具榜单与官方基础设施条目。2026-07-11结构新增站点清单与更新日志统一站点清单、首页最近更新、完整更新日志与站点生成数据。2026-07-10内容新增 Skills 仓库选择指南第三方 Skills 仓库对比、任务选择表与安装入口。2026-07-07内容新增 Compound Engineering 指南插件安装、核心流程与真实实例。 先分清边界",
       "title": "中文 Codex 实战手册"
     },
     {
@@ -114,7 +244,7 @@ window.GUIDE_SEARCH_INDEX = {
       "page": "index.html",
       "prompts": [],
       "section": "30 秒选择入口",
-      "text": "先选工作面，再看页面。读者不需要知道所有术语，只要知道当前任务最适合放在哪个入口，以及完成后拿什么证据验收。 改网页首选：Desktop + Browser（内置浏览器）避免：只用口头描述问题证据：页面预览、截图/评论、make check 修测试首选：Desktop 任务 + Integrated terminal（集成终端）避免：让模型凭猜测改代码证据：失败日志、最窄测试、diff（差异）审查 长任务首选：Goal（目标）/ subagent（子代理）/ skills（技能）避免：单轮聊天里混多个目标证据：objective（目标）、validation（验证）、closeout（收口） 周期任务首选：Scheduled tasks（定时任务）避免：手工重复提醒证据：Scheduled 视图、运行记录、后台 worktree（工作树） 官方事实：OpenAI Codex docs 插件扩展：Compound Engineering / local skills 经验建议：本指南工作流沉淀 概念地图",
+      "text": "先选工作面，再看页面。读者不需要知道所有术语，只要知道当前任务最适合放在哪个入口，以及完成后拿什么证据验收。 改网页首选：Desktop + Browser（内置浏览器）避免：只用口头描述问题证据：页面预览、截图/评论、make check 修测试首选：Desktop 任务 + Integrated terminal（集成终端）避免：让模型凭猜测改代码证据：失败日志、最窄测试、diff（差异）审查 长任务首选：Goal（目标）/ subagent（子代理）/ skills（技能）避免：单轮聊天里混多个目标证据：objective（目标）、validation（验证）、closeout（收口） 周期任务首选：Scheduled tasks（定时任务）避免：手工重复提醒证据：Scheduled 视图、运行记录、后台 worktree（工作树） 减少消耗入口：子代理、配置与工具方法：精简 AGENTS.md，按需使用 Caveman、RTK、Ponytail证据：区分总 token、命令输出估算和实际费用 官方事实：OpenAI Codex docs 插件扩展：Compound Engineering / local skills 经验建议：本指南工作流沉淀 概念地图",
       "title": "中文 Codex 实战手册"
     },
     {

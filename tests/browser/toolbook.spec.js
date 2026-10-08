@@ -4,7 +4,7 @@ test('serves the static guide without an application runtime', async ({ page }) 
   await page.goto('/index.html');
   await expect(page).toHaveTitle('中文 Codex 实战手册');
   await expect(page.locator('h1')).toContainText('可验证的小任务');
-  await expect(page.locator('.global-nav [data-nav]')).toHaveCount(21);
+  await expect(page.locator('.global-nav [data-nav]')).toHaveCount(22);
   await expect(page.locator('.global-nav [aria-current="page"]')).toHaveCount(1);
 });
 
