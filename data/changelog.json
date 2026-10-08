@@ -1,6 +1,7 @@
 {
   "schema_version": 1,
   "entries": [
+    {"date": "2026-10-08", "category": "content", "title": "补充 .codex/agents 角色配置", "summary": "提供项目级和用户级角色目录、Luna 执行者与 reviewer 的 TOML 示例和调用方法，并精简减少消耗指南的重复说明。", "target": "token-efficiency.html#codex-agents"},
     {"date": "2026-10-08", "category": "content", "title": "新增减少 Codex 消耗指南", "summary": "提供子代理和 AGENTS.md 配置、Caveman／RTK／Ponytail 用法，并区分本机统计、工具估算与实际费用。", "target": "token-efficiency.html"},
     {"date": "2026-08-11", "category": "quality", "title": "第三轮读者与专家复核无新增阻塞问题", "summary": "完成首页、Git 概念、CLI Worktree 及 Desktop Worktree／Hand off／清理路径复核，未发现新问题，保留既有 CLI／Desktop 分工与回归门禁。", "target": "git.html#git-worktree-workflow"},
     {"date": "2026-08-11", "category": "quality", "title": "补齐 CLI Worktree 路径与 Local 术语", "summary": "解释 CLI 占位符与仓库根目录前置条件，增加创建后状态检查，并区分 Local environment 与 Local 主工作树。", "target": "git.html#git-worktree-workflow"},

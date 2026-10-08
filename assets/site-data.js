@@ -5,8 +5,15 @@ window.GUIDE_SITE_DATA = {
     "assets/theme.js": "187420686654f8c1c58df32a0687d4a0d11e6e0707b8696d5f077774982d766a",
     "figures/social-preview.png": "e0ee23ae3b99a8507b4aa423c530289468f1db067d1e7041e4afcefb5fe3ac58"
   },
-  "build_id": "a3f918a0fa86",
+  "build_id": "2324371c0e38",
   "changelog": [
+    {
+      "category": "content",
+      "date": "2026-10-08",
+      "summary": "提供项目级和用户级角色目录、Luna 执行者与 reviewer 的 TOML 示例和调用方法，并精简减少消耗指南的重复说明。",
+      "target": "token-efficiency.html#codex-agents",
+      "title": "补充 .codex/agents 角色配置"
+    },
     {
       "category": "content",
       "date": "2026-10-08",
@@ -623,6 +630,7 @@ window.GUIDE_SITE_DATA = {
       "先分清消耗来自哪里",
       "从低成本试起",
       "配置代理并发和默认模型",
+      "codex-agents",
       "用任务合同减少返工",
       "精简-agentsmd",
       "用-caveman-缩短输出",

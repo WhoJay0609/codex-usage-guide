@@ -13,6 +13,10 @@
         "canonical": "配置代理并发和默认模型",
         "legacy": []
       },
+      "codex-agents": {
+        "canonical": "codex-agents",
+        "legacy": []
+      },
       "用任务合同减少返工": {
         "canonical": "用任务合同减少返工",
         "legacy": []
